@@ -1,5 +1,5 @@
-import 'package:tot_pos/data/models/meta.dart';
-import 'package:tot_pos/data/models/translation_model.dart';
+import '../side_models/meta.dart';
+import '../side_models/translation_model.dart';
 
 
 class CategoriesPaginateResponse {

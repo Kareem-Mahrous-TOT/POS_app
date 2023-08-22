@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/data/models/bag/bag_model.dart';
+import 'package:tot_pos/data/models/products_model.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/pos_counter.dart';
 
-class AlertDialogCustom extends StatelessWidget {
-  const AlertDialogCustom({super.key});
+int counter = 1;
 
+class AlertDialogCustom extends StatefulWidget {
+  const AlertDialogCustom({
+    super.key,
+    required this.data,
+  });
+
+  final ProductsData data;
+
+  @override
+  State<AlertDialogCustom> createState() => _AlertDialogCustomState();
+}
+
+class _AlertDialogCustomState extends State<AlertDialogCustom> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -21,29 +36,41 @@ class AlertDialogCustom extends StatelessWidget {
                 totImage: TOTImageAtom.network(
                     width: w * 0.2,
                     height: h * 0.3,
-                    "https://foodyman.s3.amazonaws.com/public/images/products/334-1676377275.jpeg"),
+                    widget.data.img.toString()),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+                padding: EdgeInsets.only(top: h * 0.03),
                 child: Container(
-                  color: Colors.yellow,
-                  width: w * 0.082,
+                  decoration: BoxDecoration(
+                    color: AppColors.grey,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  width: w * 0.15,
                   height: h * 0.07,
-                  child: const TOTCounterMolecule(),
+                  child: const TOTPOSItemCounterMolecule(),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: h * 0.03),
                 child: Container(
                   color: Colors.yellow,
-                  width: w * 0.082,
+                  width: w * 0.15,
                   height: h * 0.06,
                   child: TOTButtonAtom.filledButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
                     text: "Add",
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        dummylistBagModel.add(BagModel(
+                            itemName: widget.data.translation!.title.toString(),
+                            itemPrice: widget.data.stocks![0]!.totalPrice!,
+                            itemQuantity: counter.toDouble()));
+                      });
+                      Navigator.pop(context);
+                      counter = 1;
+                    },
                     textColor: AppColors.black,
                     backgroundColor: AppColors.green,
                   ),
@@ -52,41 +79,41 @@ class AlertDialogCustom extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 30),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TOTTextAtom.headLineMedium(
-                'Watering Meals',
+                widget.data.translation!.title.toString(),
                 color: AppColors.black,
               ),
               TOTTextAtom.titleLarge(
-                'Best',
+                widget.data.translation!.description.toString(),
                 color: AppColors.grey,
               ),
-              Divider(
+              const Divider(
                 thickness: 20,
                 color: AppColors.black,
               ),
-              TOTTextAtom.headLineMedium(
+              const TOTTextAtom.headLineMedium(
                 'Color',
                 color: AppColors.black,
               ),
-              TOTIconWithTextMolecule(
+              const TOTIconWithTextMolecule(
                 text: 'black',
-                codePoint: 0xef2a,
+                codePoint: 0xf2e6,
                 colorText: AppColors.grey,
                 color: AppColors.black,
               ),
             ],
           ),
           const SizedBox(width: 30),
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TOTTextAtom.headLineSmall('Price:', color: AppColors.black),
+              const TOTTextAtom.headLineSmall('Price:', color: AppColors.black),
               TOTTextAtom.headLineMedium(
-                '\$114.00',
+                '\$${widget.data.stocks![0]!.totalPrice}',
                 color: AppColors.black,
               ),
             ],
@@ -94,6 +121,5 @@ class AlertDialogCustom extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

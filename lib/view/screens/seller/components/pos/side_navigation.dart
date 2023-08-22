@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:tot_pos/view/screens/seller/page/dashboard/order_page.dart';
 
 import '../../../../../core/theme/pallete.dart';
 import '../../page/dashboard/home_page.dart';
@@ -19,7 +20,7 @@ class _TOTPOSSideNavigationState extends State<TOTPOSSideNavigation> {
   int currentIndex = 0;
  List<Widget> screens = [
     const HomePage(),
-    const ProfilePage1(),
+    const OrderPage(),
     const ProfilePage2(),
     const ProfilePage3(),
     const ProfilePage4(),

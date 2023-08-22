@@ -1,4 +1,4 @@
-import 'package:tot_pos/data/models/translation_model.dart';
+import '../side_models/translation_model.dart';
 
 
 class PaymentsResponse {

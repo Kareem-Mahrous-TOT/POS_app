@@ -1,4 +1,4 @@
-import 'package:tot_pos/data/models/translation_model.dart';
+import 'translation_model.dart';
 
 
 class ShopDelivery {

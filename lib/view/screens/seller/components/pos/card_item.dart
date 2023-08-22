@@ -2,37 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-import 'alert_dialog_custom.dart';
 
 class TOTPOSCardItem extends StatelessWidget {
-  const TOTPOSCardItem({super.key});
+  final String mealName;
+
+  final String mealDescription;
+
+  final String price;
+  final String mealImage;
+  
+  final VoidCallback onTap;
+
+  const TOTPOSCardItem(
+      {super.key,
+      required this.mealName,
+      required this.mealDescription,
+      required this.price, required this.mealImage, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return InkWell(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              icon: Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.close))),
-              content: SizedBox(
-                width: w * 0.6,
-                height: h * 0.6,
-                child: const AlertDialogCustom(),
-              ),
-            );
-          },
-        );
-      },
+      onTap: onTap,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: AppColors.white,
@@ -42,27 +34,27 @@ class TOTPOSCardItem extends StatelessWidget {
             TOTClippedImageMolecule(
               radius: 5,
               totImage: TOTImageAtom.network(
-                "https://foodyman.s3.amazonaws.com/public/images/products/334-1676377275.jpeg",
+                mealImage,
                 boxFit: BoxFit.cover,
                 height: h * 0.2,
                 width: w * 0.3,
               ),
             ),
-            const Align(
+            Align(
                 alignment: Alignment.topLeft,
                 child: TOTTextAtom.titleMedium(
-                  "text",
+                  mealName,
                   color: AppColors.black,
                 )),
-            const Align(
+            Align(
                 alignment: Alignment.topLeft,
                 child: TOTTextAtom.bodyMedium(
-                  "text",
+                  mealDescription,
                   color: AppColors.green,
                 )),
-            const Align(
+            Align(
                 alignment: Alignment.topLeft,
-                child: TOTTextAtom.titleLarge("\$text"))
+                child: TOTTextAtom.titleLarge("\$ $price"))
           ]),
         ),
       ),

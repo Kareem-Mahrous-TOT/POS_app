@@ -34,18 +34,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   }
 }
 
-class ProfilePage1 extends StatelessWidget {
-  const ProfilePage1({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      color: AppColors.green,
-    );
-  }
-}
 
 class ProfilePage2 extends StatelessWidget {
   const ProfilePage2({super.key});

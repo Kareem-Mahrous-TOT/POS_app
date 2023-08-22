@@ -1,5 +1,6 @@
 
-import 'package:tot_pos/data/models/location_data_model.dart';
+
+import 'location_data_model.dart';
 
 
 class AddressData {

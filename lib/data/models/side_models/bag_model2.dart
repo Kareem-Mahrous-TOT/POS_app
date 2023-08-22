@@ -1,5 +1,5 @@
 import 'package:tot_pos/data/models/response/payment_response.dart';
-import 'package:tot_pos/data/models/user_data_model.dart';
+import 'user_data_model.dart';
 
 import 'address_model.dart';
 import 'currency_model.dart';

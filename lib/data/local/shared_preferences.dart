@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/models/response/settings_response.dart';
 
-import '../models/bag_model.dart';
-import '../models/currency_model.dart';
-import '../models/user_data_model.dart';
+import '../models/side_models/bag_model2.dart';
+import '../models/side_models/currency_model.dart';
+import '../models/side_models/user_data_model.dart';
 
 class LocalStorage {
   static SharedPreferences? _preferences;

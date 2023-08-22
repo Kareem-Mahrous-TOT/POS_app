@@ -18,6 +18,8 @@ dependencies:
   bloc:
   flutter_bloc:
   freezed_annotation:
+  flutter_slidable:
+  json_annotation:
   intl:
   tot_atomic_design:
     git:
@@ -30,6 +32,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed:
+  json_serializable:
+  build_runner:
 
 dependency_overrides:
   intl:

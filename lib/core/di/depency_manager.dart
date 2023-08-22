@@ -1,7 +1,6 @@
 
 import 'package:get_it/get_it.dart';
 
-import '../../data/repository/category_repo.dart';
 import '../network/http_service.dart';
 
 
@@ -15,7 +14,7 @@ void setUpDependencies() {
   // sl.registerSingleton<ShopsRepository>(ShopsRepositoryImpl());
   // sl.registerSingleton<BrandsRepository>(BrandsRepositoryImpl());
   // sl.registerSingleton<GalleryRepositoryFacade>(GalleryRepository());
-  sl.registerSingleton(CategoriesRepository());
+  // sl.registerSingleton(CategoriesRepository());
   // sl.registerSingleton<CurrenciesRepository>(CurrenciesRepositoryImpl());
   // sl.registerSingleton<PaymentsRepository>(PaymentsRepositoryImpl());
   // sl.registerSingleton<OrdersRepository>(OrdersRepositoryImpl());
@@ -31,7 +30,7 @@ void setUpDependencies() {
 // final shopsRepository = sl.get<ShopsRepository>();
 // final brandsRepository = sl.get<BrandsRepository>();
 // final galleryRepository = sl.get<GalleryRepositoryFacade>();
-final categoriesRepository = sl.get<CategoriesRepository>();
+// final categoriesRepository = sl.get<CategoriesRepository>();
 // final currenciesRepository = sl.get<CurrenciesRepository>();
 // final paymentsRepository = sl.get<PaymentsRepository>();
 // final ordersRepository = sl.get<OrdersRepository>();

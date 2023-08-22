@@ -1,5 +1,5 @@
-import 'package:tot_pos/data/models/shop_delivery_model.dart';
-import 'package:tot_pos/data/models/translation_model.dart';
+import 'shop_delivery_model.dart';
+import 'translation_model.dart';
 
 import 'location.dart';
 
