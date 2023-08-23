@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/custom_appbar.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../components/pos/side_navigation.dart';
+import '../../components/pos/home_components/side_navigation.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -19,22 +19,19 @@ class _LayoutScreenState extends State<LayoutScreen> {
     return const SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: 
-        // AppBar(
-        //   title: Text(context.translate.appBar),
-        // )
-         PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: TOTPOSAppBar()),
-        
+        appBar:
+            // AppBar(
+            //   title: Text(context.translate.appBar),
+            // )
+            PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight),
+                child: TOTPOSAppBar()),
         backgroundColor: AppColors.grey,
         body: TOTPOSSideNavigation(),
       ),
     );
   }
 }
-
-
 
 class ProfilePage2 extends StatelessWidget {
   const ProfilePage2({super.key});

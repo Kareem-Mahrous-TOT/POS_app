@@ -4,10 +4,10 @@ import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/core/utils/json_handlers.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/data/models/products_model.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/card_item.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_page_appbar.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/card_item.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_page_appbar.dart';
 
-import '../../components/pos/alert_dialog_custom.dart';
+import '../../components/pos/home_components/alert_dialog_custom.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

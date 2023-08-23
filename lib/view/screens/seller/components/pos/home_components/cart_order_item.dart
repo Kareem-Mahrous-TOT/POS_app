@@ -5,8 +5,8 @@ import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/local/shared_preferences.dart';
 
 
-import '../../../../../data/models/side_models/addon_model.dart';
-import '../../../../../data/models/side_models/product_dummy_model.dart';
+import '../../../../../../data/models/side_models/addon_model.dart';
+import '../../../../../../data/models/side_models/product_dummy_model.dart';
 import 'animated_button.dart';
 
 class CartOrderItem extends StatelessWidget {

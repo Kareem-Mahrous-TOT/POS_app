@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/theme/pallete.dart';
+import '../../../../../../core/theme/pallete.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
   const TOTPOSAppBar({super.key});

@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:tot_pos/view/screens/seller/page/dashboard/order_page.dart';
 
-import '../../../../../core/theme/pallete.dart';
-import '../../page/dashboard/home_page.dart';
-import '../../page/dashboard/layout.dart';
+import '../../../../../../core/theme/pallete.dart';
+import '../../../page/dashboard/home_page.dart';
+import '../../../page/dashboard/layout.dart';
 
 
 class TOTPOSSideNavigation extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/animated_button.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/animated_button.dart';
 
 class CategoryTabBarItem extends StatelessWidget {
   final String? title;

@@ -3,7 +3,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/data/models/products_model.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/pos_counter.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/pos_counter.dart';
 
 int counter = 1;
 

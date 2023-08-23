@@ -1,13 +1,12 @@
 
 import 'package:get_it/get_it.dart';
 
-import '../network/http_service.dart';
 
 
 final GetIt sl = GetIt.instance;
 
 void setUpDependencies() {
-  sl.registerLazySingleton<HttpService>(() => HttpService());
+  // sl.registerLazySingleton<HttpService>(() => HttpService());
   // sl.registerSingleton<SettingsRepository>(SettingsSettingsRepositoryImpl());
   // sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
   // sl.registerSingleton<ProductsRepository>(ProductsRepositoryImpl());
