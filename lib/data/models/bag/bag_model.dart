@@ -12,12 +12,4 @@ class BagModel {
 
   
 }
-
-List<BagModel> dummylistBagModel = [
-  // BagModel(
-  //     itemName: "Meat",
-  //     itemPrice: 100,
-  //     itemQuantity: 1,
-  //     ),
-
-];
+List<BagModel> dummylistBagModel = [];
