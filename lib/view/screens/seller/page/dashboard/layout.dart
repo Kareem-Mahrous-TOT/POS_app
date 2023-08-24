@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/custom_appbar.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../components/pos/home_components/side_navigation.dart';
+import '../../components/pos/side_navigation.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -33,22 +33,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
   }
 }
 
-class ProfilePage2 extends StatelessWidget {
-  const ProfilePage2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      color: AppColors.blue,
-    );
-  }
-}
-
 class ProfilePage3 extends StatelessWidget {
   const ProfilePage3({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(

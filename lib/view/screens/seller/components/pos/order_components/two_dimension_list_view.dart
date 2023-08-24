@@ -2,18 +2,19 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/models/order/order_card_model.dart';
-import 'package:tot_pos/data/models/order/order_header_model.dart';
+import 'package:tot_pos/data/models/order/order_header.dart';
 
 import '../../../../../../core/theme/pallete.dart';
 import 'order_card.dart';
 
 class TOTTwoDimensionalListView extends StatelessWidget {
-  final List<OrderHeaderModel> headerModel;
-  final List<OrderCardModel> orderModel;
+  final OrderHeader headerModel;
+  // final List<OrderCardModel> orderModel;
 
-  const TOTTwoDimensionalListView(
-      {super.key, required this.headerModel, required this.orderModel});
+  const TOTTwoDimensionalListView({
+    super.key,
+    required this.headerModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class TOTTwoDimensionalListView extends StatelessWidget {
     return SizedBox(
       height: h * 0.83,
       child: ListView.builder(
-        itemCount: headerModel.length,
+        itemCount: headerModel.header.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Column(
@@ -47,18 +48,17 @@ class TOTTwoDimensionalListView extends StatelessWidget {
                           child: Row(
                             children: [
                               TOTTextAtom.labelLarge(
-                                  headerModel[index].labelName),
+                                  headerModel.header[index].labelName),
                               const SizedBox(width: 10),
                               Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 4),
                                 decoration: BoxDecoration(
-                                    color: headerModel[index].color ??
-                                        AppColors.blue,
+                                    color: AppColors.blue,
                                     borderRadius: BorderRadius.circular(20)),
-                                child: TOTTextAtom.labelLarge(
-                                  index.toString(),
-                                ),
+                                child: TOTTextAtom.labelLarge(headerModel
+                                    .header[index].cardOrder.length
+                                    .toString()),
                               ),
                             ],
                           ),
@@ -79,7 +79,7 @@ class TOTTwoDimensionalListView extends StatelessWidget {
                 ),
               ),
               OrderCard(
-                orderModel: orderModel,
+                orderModel: headerModel.header[index],
               ),
             ],
           );

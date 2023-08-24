@@ -95,9 +95,7 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
                   : index == 1
                       ? CategoryTabBarItem(
                           isActive: false, onTap: () {}, title: "meat"
-                          //  categoriesPaginateResponse
-                          //     .data![0].translation!.title
-                          //     .toString(),
+                         
                           )
                       : CategoryTabBarItem(
                           isActive: false,

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../constants.dart';
-import 'token_interceptor.dart';
 
 class HttpService {
 
@@ -17,6 +16,5 @@ class HttpService {
       },
     ),
   )
-    ..interceptors.add(TokenInterceptor(requireAuth: requireAuth))
     ..interceptors.add(LogInterceptor(responseBody: true,requestBody: true));
 }

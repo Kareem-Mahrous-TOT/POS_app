@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/models/order/order_card_model.dart';
+import 'package:tot_pos/data/models/order/order_header.dart';
 
 import '../../../../../../core/theme/pallete.dart';
 
@@ -11,7 +11,7 @@ class OrderCard extends StatelessWidget {
     super.key,
     required this.orderModel,
   });
-  final List<OrderCardModel> orderModel;
+  final HeaderItem orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,9 @@ class OrderCard extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: SizedBox(
         height: h * 0.75,
-        width: w * 0.2,
+        width: w * 0.21,
         child: ListView.builder(
-          itemCount: orderModel.length,
+          itemCount: orderModel.cardOrder.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Container(
@@ -31,7 +31,7 @@ class OrderCard extends StatelessWidget {
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(20)),
               height: h * 0.4,
-              width: 0.2,
+              width: w * 0.2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,13 +43,14 @@ class OrderCard extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            TOTAvatarAtom.network(orderModel[index].cardImage),
+                            TOTAvatarAtom.network(
+                                orderModel.cardOrder[index].cardImage),
                             const SizedBox(
                               width: 10,
                             ),
                             TOTDuplexTextMolecule(
-                                upper: orderModel[index].cardUserName,
-                                lower: orderModel[index].cardUserCode)
+                                upper: orderModel.cardOrder[index].cardUserName,
+                                lower: orderModel.cardOrder[index].cardUserCode)
                           ],
                         ),
                       ),
@@ -75,7 +76,7 @@ class OrderCard extends StatelessWidget {
                       children: [
                         const TOTIconAtom.displayLarge(codePoint: 0xf051f),
                         TOTTextAtom.headLineSmall(
-                            " Date: ${orderModel[index].date}")
+                            " Date: ${orderModel.cardOrder[index].date}")
                       ],
                     ),
                   ),
@@ -85,7 +86,7 @@ class OrderCard extends StatelessWidget {
                       children: [
                         const TOTIconAtom.displayLarge(codePoint: 0xe0b2),
                         TOTTextAtom.headLineSmall(
-                            " Amount:${orderModel[index].amount}")
+                            " Amount:${orderModel.cardOrder[index].amount}")
                       ],
                     ),
                   ),
@@ -95,22 +96,22 @@ class OrderCard extends StatelessWidget {
                       children: [
                         const TOTIconAtom.displayLarge(codePoint: 0xf266),
                         TOTTextAtom.headLineSmall(
-                            " Payment: ${orderModel[index].payment}")
+                            " Payment: ${orderModel.cardOrder[index].payment}")
                       ],
                     ),
                   ),
-                  orderModel[index].address == null
-                      ? const SizedBox.shrink()
-                      : Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              const TOTIconAtom.displayLarge(codePoint: 0xf2a9),
-                              TOTTextAtom.headLineSmall(
-                                  " Address: ${orderModel[index].address}")
-                            ],
-                          ),
-                        ),
+                  // orderModel.cardOrder[index].address == null
+                  //     ? const SizedBox.shrink()
+                  //     : Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Row(
+                  //           children: [
+                  //             const TOTIconAtom.displayLarge(codePoint: 0xf2a9),
+                  //             TOTTextAtom.headLineSmall(
+                  //                 " Address: ${orderModel[index].address}")
+                  //           ],
+                  //         ),
+                  //       ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -125,12 +126,13 @@ class OrderCard extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              orderModel[index].type == "Dine-In"
+                              orderModel.cardOrder[index].type == "Dine-In"
                                   ? const TOTTextAtom.headLineSmall("Dine-In")
-                                  : orderModel[index].type == "Pickup"
+                                  : orderModel.cardOrder[index].type == "Pickup"
                                       ? const TOTTextAtom.headLineSmall(
                                           "Pickup")
-                                      : orderModel[index].type == "Delivery"
+                                      : orderModel.cardOrder[index].type ==
+                                              "Delivery"
                                           ? const TOTTextAtom.headLineSmall(
                                               "Delivery")
                                           : const SizedBox.shrink(),
@@ -141,15 +143,18 @@ class OrderCard extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                         color: Colors.black, width: 1)),
-                                child: orderModel[index].type == "Dine-In"
+                                child: orderModel.cardOrder[index].type ==
+                                        "Dine-In"
                                     ? const TOTIconAtom.displayMedium(
                                         codePoint: 0xf0398,
                                         color: AppColors.black)
-                                    : orderModel[index].type == "Pickup"
+                                    : orderModel.cardOrder[index].type ==
+                                            "Pickup"
                                         ? const TOTIconAtom.displayMedium(
                                             codePoint: 0xefd0,
                                             color: AppColors.black)
-                                        : orderModel[index].type == "Delivery"
+                                        : orderModel.cardOrder[index].type ==
+                                                "Delivery"
                                             ? const TOTIconAtom.displayMedium(
                                                 codePoint: 0xf699,
                                                 color: AppColors.black)

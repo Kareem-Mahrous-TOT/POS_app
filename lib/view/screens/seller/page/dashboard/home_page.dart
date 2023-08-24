@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/core/utils/json_handlers.dart';
@@ -7,7 +10,7 @@ import 'package:tot_pos/data/models/products_model.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/card_item.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_page_appbar.dart';
 
-import '../../components/pos/home_components/alert_dialog_custom.dart';
+import '../../components/pos/home_components/alert_dialog_bag.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -147,12 +150,35 @@ class _HomePageState extends State<HomePage> {
                                     itemCount: dummylistBagModel.length,
                                     itemBuilder: (context, index) {
                                       BagModel item = dummylistBagModel[index];
-                                      return ListTile(
-                                        title: Text(item.itemName),
-                                        subtitle:
-                                            Text('Price: \$${item.itemPrice}'),
-                                        trailing: Text(
-                                            'Quantity: ${item.itemQuantity}'),
+                                      return Slidable(
+                                        startActionPane: ActionPane(
+                                            motion: const ScrollMotion(),
+                                            extentRatio: 0.2,
+                                            children: [
+                                              SlidableAction(
+                                                autoClose: true,
+                                                flex: 1,
+                                                onPressed: (context) {
+                                                  log("slidableeeeee removed");
+                                                  setState(() {
+                                                    dummylistBagModel
+                                                        .removeAt(index);
+                                                  });
+                                                },
+                                                backgroundColor:
+                                                    const Color(0xFFFE4A49),
+                                                foregroundColor: Colors.white,
+                                                icon: Icons.delete,
+                                                label: 'Delete',
+                                              ),
+                                            ]),
+                                        child: ListTile(
+                                          title: Text(item.itemName),
+                                          subtitle: Text(
+                                              'Price: \$${item.itemPrice}'),
+                                          trailing: Text(
+                                              'Quantity: ${item.itemQuantity}'),
+                                        ),
                                       );
                                     },
                                   ),
