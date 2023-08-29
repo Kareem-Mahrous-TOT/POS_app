@@ -1,0 +1,1318 @@
+{
+  "timestamp": "2023-08-27T09:18:11.173653Z",
+  "status": true,
+  "message": "Success",
+  "data": {
+    "statistic": {
+      "progress_orders_count": 73,
+      "delivered_orders_count": 86,
+      "total_delivered_price": 748768.4407,
+      "last_delivered_fee": 22934.6,
+      "cancel_orders_count": 34,
+      "new_orders_count": 0,
+      "accepted_orders_count": 0,
+      "cooking_orders_count": 7,
+      "ready_orders_count": 51,
+      "on_a_way_orders_count": 15,
+      "orders_count": 193,
+      "total_price": 1098689.6603999995,
+      "today_count": 0,
+      "total": 51
+    },
+    "orders": [
+      {
+        "id": 3496,
+        "user_id": 1532,
+        "total_price": 28.3618,
+        "origin_price": 18.18,
+        "seller_fee": 3.361799999999999,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.1818,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": 0,
+          "longitude": 0
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": null
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-25",
+        "delivery_time": "16:09",
+        "delivery_date_time": "2023-08-25 16:09:00Z",
+        "current": false,
+        "created_at": "2023-08-25 12:09:18Z",
+        "updated_at": "2023-08-25 13:09:15Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1532,
+          "firstname": "Paul",
+          "lastname": "Dame",
+          "empty_p": true,
+          "phone": "+2348070506912",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3482,
+          "payable_id": 3496,
+          "price": 28.3618,
+          "note": "3496",
+          "request": "waiting",
+          "perform_time": "2023-08-25 12:09:18",
+          "status": "progress",
+          "status_description": "Transaction for order #3496",
+          "created_at": "2023-08-25 12:09:18Z",
+          "updated_at": "2023-08-25 12:09:18Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3493,
+        "user_id": 1538,
+        "total_price": 15.959,
+        "origin_price": 5.9,
+        "seller_fee": -9.041,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.059,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.462411879208442,
+          "longitude": -50.446239153379345
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "GHM2+PM Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "454545",
+        "current": false,
+        "created_at": "2023-08-25 11:27:52Z",
+        "updated_at": "2023-08-25 11:46:38Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1538,
+          "firstname": "v922tzddsy@privaterelay.appleid.com",
+          "lastname": null,
+          "empty_p": true,
+          "email": "v922tzddsy@privaterelay.appleid.com",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3479,
+          "payable_id": 3493,
+          "price": 15.959,
+          "note": "3493",
+          "request": "waiting",
+          "perform_time": "2023-08-25 11:27:53",
+          "status": "progress",
+          "status_description": "Transaction for order #3493",
+          "created_at": "2023-08-25 11:27:53Z",
+          "updated_at": "2023-08-25 11:27:53Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3476,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "98989898989898",
+        "current": false,
+        "created_at": "2023-08-25 07:16:33Z",
+        "updated_at": "2023-08-26 12:01:08Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3463,
+          "payable_id": 3476,
+          "price": 12.0402,
+          "note": "3476",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:16:35",
+          "status": "progress",
+          "status_description": "Transaction for order #3476",
+          "created_at": "2023-08-25 07:16:35Z",
+          "updated_at": "2023-08-25 07:16:35Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3475,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "9090909090",
+        "current": false,
+        "created_at": "2023-08-25 07:15:27Z",
+        "updated_at": "2023-08-25 11:46:02Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3462,
+          "payable_id": 3475,
+          "price": 12.0402,
+          "note": "3475",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:15:28",
+          "status": "progress",
+          "status_description": "Transaction for order #3475",
+          "created_at": "2023-08-25 07:15:28Z",
+          "updated_at": "2023-08-25 07:15:28Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3496,
+        "user_id": 1532,
+        "total_price": 28.3618,
+        "origin_price": 18.18,
+        "seller_fee": 3.361799999999999,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.1818,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": 0,
+          "longitude": 0
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": null
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-25",
+        "delivery_time": "16:09",
+        "delivery_date_time": "2023-08-25 16:09:00Z",
+        "current": false,
+        "created_at": "2023-08-25 12:09:18Z",
+        "updated_at": "2023-08-25 13:09:15Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1532,
+          "firstname": "Paul",
+          "lastname": "Dame",
+          "empty_p": true,
+          "phone": "+2348070506912",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3482,
+          "payable_id": 3496,
+          "price": 28.3618,
+          "note": "3496",
+          "request": "waiting",
+          "perform_time": "2023-08-25 12:09:18",
+          "status": "progress",
+          "status_description": "Transaction for order #3496",
+          "created_at": "2023-08-25 12:09:18Z",
+          "updated_at": "2023-08-25 12:09:18Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3493,
+        "user_id": 1538,
+        "total_price": 15.959,
+        "origin_price": 5.9,
+        "seller_fee": -9.041,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.059,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.462411879208442,
+          "longitude": -50.446239153379345
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "GHM2+PM Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "454545",
+        "current": false,
+        "created_at": "2023-08-25 11:27:52Z",
+        "updated_at": "2023-08-25 11:46:38Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1538,
+          "firstname": "v922tzddsy@privaterelay.appleid.com",
+          "lastname": null,
+          "empty_p": true,
+          "email": "v922tzddsy@privaterelay.appleid.com",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3479,
+          "payable_id": 3493,
+          "price": 15.959,
+          "note": "3493",
+          "request": "waiting",
+          "perform_time": "2023-08-25 11:27:53",
+          "status": "progress",
+          "status_description": "Transaction for order #3493",
+          "created_at": "2023-08-25 11:27:53Z",
+          "updated_at": "2023-08-25 11:27:53Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3476,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "98989898989898",
+        "current": false,
+        "created_at": "2023-08-25 07:16:33Z",
+        "updated_at": "2023-08-26 12:01:08Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3463,
+          "payable_id": 3476,
+          "price": 12.0402,
+          "note": "3476",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:16:35",
+          "status": "progress",
+          "status_description": "Transaction for order #3476",
+          "created_at": "2023-08-25 07:16:35Z",
+          "updated_at": "2023-08-25 07:16:35Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3475,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "9090909090",
+        "current": false,
+        "created_at": "2023-08-25 07:15:27Z",
+        "updated_at": "2023-08-25 11:46:02Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3462,
+          "payable_id": 3475,
+          "price": 12.0402,
+          "note": "3475",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:15:28",
+          "status": "progress",
+          "status_description": "Transaction for order #3475",
+          "created_at": "2023-08-25 07:15:28Z",
+          "updated_at": "2023-08-25 07:15:28Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3496,
+        "user_id": 1532,
+        "total_price": 28.3618,
+        "origin_price": 18.18,
+        "seller_fee": 3.361799999999999,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.1818,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": 0,
+          "longitude": 0
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": null
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-25",
+        "delivery_time": "16:09",
+        "delivery_date_time": "2023-08-25 16:09:00Z",
+        "current": false,
+        "created_at": "2023-08-25 12:09:18Z",
+        "updated_at": "2023-08-25 13:09:15Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1532,
+          "firstname": "Paul",
+          "lastname": "Dame",
+          "empty_p": true,
+          "phone": "+2348070506912",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3482,
+          "payable_id": 3496,
+          "price": 28.3618,
+          "note": "3496",
+          "request": "waiting",
+          "perform_time": "2023-08-25 12:09:18",
+          "status": "progress",
+          "status_description": "Transaction for order #3496",
+          "created_at": "2023-08-25 12:09:18Z",
+          "updated_at": "2023-08-25 12:09:18Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3493,
+        "user_id": 1538,
+        "total_price": 15.959,
+        "origin_price": 5.9,
+        "seller_fee": -9.041,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.059,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.462411879208442,
+          "longitude": -50.446239153379345
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "GHM2+PM Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "454545",
+        "current": false,
+        "created_at": "2023-08-25 11:27:52Z",
+        "updated_at": "2023-08-25 11:46:38Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1538,
+          "firstname": "v922tzddsy@privaterelay.appleid.com",
+          "lastname": null,
+          "empty_p": true,
+          "email": "v922tzddsy@privaterelay.appleid.com",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3479,
+          "payable_id": 3493,
+          "price": 15.959,
+          "note": "3493",
+          "request": "waiting",
+          "perform_time": "2023-08-25 11:27:53",
+          "status": "progress",
+          "status_description": "Transaction for order #3493",
+          "created_at": "2023-08-25 11:27:53Z",
+          "updated_at": "2023-08-25 11:27:53Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3476,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "98989898989898",
+        "current": false,
+        "created_at": "2023-08-25 07:16:33Z",
+        "updated_at": "2023-08-26 12:01:08Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3463,
+          "payable_id": 3476,
+          "price": 12.0402,
+          "note": "3476",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:16:35",
+          "status": "progress",
+          "status_description": "Transaction for order #3476",
+          "created_at": "2023-08-25 07:16:35Z",
+          "updated_at": "2023-08-25 07:16:35Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3475,
+        "user_id": 1535,
+        "total_price": 12.0402,
+        "origin_price": 2.0199999999999996,
+        "seller_fee": -12.9598,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.0202,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": -18.389478120917982,
+          "longitude": -50.38273559830973
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "JJ68+6W Quirinópolis, State of Goiás, Brazil"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-26",
+        "delivery_time": "05:00",
+        "delivery_date_time": "2023-08-26 05:00:00Z",
+        "phone": "9090909090",
+        "current": false,
+        "created_at": "2023-08-25 07:15:27Z",
+        "updated_at": "2023-08-25 11:46:02Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1535,
+          "firstname": "Jad",
+          "lastname": "Iskander",
+          "empty_p": true,
+          "email": "jadiskander5@gmail.com",
+          "phone": "9090909090",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3462,
+          "payable_id": 3475,
+          "price": 12.0402,
+          "note": "3475",
+          "request": "waiting",
+          "perform_time": "2023-08-25 07:15:28",
+          "status": "progress",
+          "status_description": "Transaction for order #3475",
+          "created_at": "2023-08-25 07:15:28Z",
+          "updated_at": "2023-08-25 07:15:28Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3378,
+        "user_id": 1475,
+        "total_price": 279.3064,
+        "origin_price": 266.64,
+        "seller_fee": 254.3064,
+        "rate": 1,
+        "order_details_count": 2,
+        "tax": 2.6664,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "address": {
+          "address": null
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-08-08",
+        "current": false,
+        "created_at": "2023-08-08 09:04:38Z",
+        "updated_at": "2023-08-26 12:01:15Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1475,
+          "firstname": "Janice",
+          "lastname": null,
+          "empty_p": true,
+          "email": "x7mnd59hq4@privaterelay.appleid.com",
+          "active": null,
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3371,
+          "payable_id": 3378,
+          "price": 279.3064,
+          "note": "3378",
+          "request": "waiting",
+          "perform_time": "2023-08-08 09:04:39",
+          "status": "progress",
+          "status_description": "Transaction for order #3378",
+          "created_at": "2023-08-08 09:04:39Z",
+          "updated_at": "2023-08-08 09:04:39Z",
+          "payment_system": {
+            "id": 1,
+            "tag": "cash",
+            "input": 1,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3231,
+        "user_id": 1323,
+        "total_price": 28.3618,
+        "origin_price": 18.18,
+        "seller_fee": 3.361799999999999,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.1818,
+        "commission_fee": 15,
+        "service_fee": 10,
+        "status": "ready",
+        "location": {
+          "latitude": 40.48450778912153,
+          "longitude": 71.74428798258305
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "Marg‘ilon, FPMV+W98, Marg‘ilon, FPMV+W98"
+        },
+        "delivery_type": "pickup",
+        "delivery_date": "2023-07-27",
+        "delivery_time": "14:47",
+        "delivery_date_time": "2023-07-27 14:47:00Z",
+        "current": false,
+        "created_at": "2023-07-27 09:47:54Z",
+        "updated_at": "2023-08-09 00:16:14Z",
+        "deliveryman": null,
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1323,
+          "firstname": "Nurillo",
+          "lastname": "Hayitov",
+          "empty_p": true,
+          "email": "nurillohayitov7@gmail.com",
+          "phone": "8596324454",
+          "active": null,
+          "img": "https://foodyman.s3.amazonaws.com/public/images/users/1323-1690283626.webp",
+          "role": "user"
+        },
+        "transaction": {
+          "id": 3225,
+          "payable_id": 3231,
+          "price": 28.3618,
+          "note": "3231",
+          "perform_time": "2023-07-27 09:48:04",
+          "status": "paid",
+          "status_description": "Transaction for order #3231",
+          "created_at": "2023-07-27 09:48:04Z",
+          "updated_at": "2023-07-27 09:48:04Z",
+          "payment_system": {
+            "id": 2,
+            "tag": "wallet",
+            "input": 2,
+            "active": true,
+            "created_at": "2022-12-16 21:04:13Z",
+            "updated_at": "2023-07-15 09:10:16Z"
+          }
+        }
+      },
+      {
+        "id": 3107,
+        "user_id": 1397,
+        "total_price": 8907.5315,
+        "origin_price": 15.149999999999636,
+        "seller_fee": 0.301499999999578,
+        "rate": 1,
+        "order_details_count": 1,
+        "tax": 0.1515,
+        "commission_fee": 15,
+        "status": "ready",
+        "location": {
+          "latitude": -18.4623477325442,
+          "longitude": -50.446469015400424
+        },
+        "address": {
+          "floor": null,
+          "house": null,
+          "office": null,
+          "address": "Italy Rome Via delle Strelitzie 35,"
+        },
+        "delivery_type": "delivery",
+        "delivery_fee": 8892.23,
+        "delivery_date": "2023-06-15",
+        "delivery_time": "00:00",
+        "delivery_date_time": "2023-06-15 00:00:00Z",
+        "current": false,
+        "created_at": "2023-06-14 13:03:54Z",
+        "updated_at": "2023-07-25 13:11:01Z",
+        "deliveryman": {
+          "id": 358,
+          "firstname": "Temur",
+          "lastname": "Del",
+          "empty_p": true,
+          "active": null,
+          "role": "deliveryman"
+        },
+        "shop": {
+          "id": 651,
+          "open": false,
+          "visibility": null,
+          "verify": null,
+          "logo_img": "https://foodyman.s3.amazonaws.com/public/images/shops/logo/334-1691532993.webp",
+          "avg_rate": 2.372093023255814,
+          "invite_link": "/shop/invitation//link",
+          "products_count": 0,
+          "translation": {
+            "id": 1133,
+            "locale": "en",
+            "title": "Terra store"
+          }
+        },
+        "currency": {
+          "id": 2,
+          "symbol": "$",
+          "title": "USD",
+          "rate": 1,
+          "default": true,
+          "position": "before",
+          "active": true,
+          "created_at": "2022-12-03 16:56:18Z",
+          "updated_at": "2023-05-25 02:08:48Z"
+        },
+        "user": {
+          "id": 1397,
+          "firstname": "News",
+          "lastname": "Feed",
+          "empty_p": true,
+          "email": "newsefeed@gmail.com",
+          "phone": "+1512345867",
+          "active": null,
+          "img": "https://foodyman.s3.amazonaws.com/public/images/users/1397-1686589644.webp",
+          "role": "user"
+        },
+        "transaction": null
+      }
+    ],
+    "meta": {
+      "current_page": 1,
+      "per_page": 7,
+      "last_page": 8,
+      "total": 51
+    }
+  }
+}

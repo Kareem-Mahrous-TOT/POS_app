@@ -14,16 +14,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-    //  MultiBlocProvider(
-    //   providers: [
-    //     // BlocProvider(create: (context) => HomePageCubit()..calculateTotalPrice()),
-    //   ],
-    //   child:
-       const MaterialApp(
-        home: LayoutScreen(),
-        supportedLocales: AppLang.supportedLocales,
-        localizationsDelegates: AppLang.localizationsDelegates,
+    return const MaterialApp(
+      home: LayoutScreen(),
+      supportedLocales: AppLang.supportedLocales,
+      localizationsDelegates: AppLang.localizationsDelegates,
       // ),
     );
   }

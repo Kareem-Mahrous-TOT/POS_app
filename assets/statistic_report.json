@@ -1,0 +1,40 @@
+{
+    "new": {
+        "sum": 0,
+        "percent": 0
+    },
+    "accepted": {
+        "sum": 0,
+        "percent": 0
+    },
+    "ready": {
+        "sum": 4,
+        "percent": 57.14285714285714
+    },
+    "on_a_way": {
+        "sum": 0,
+        "percent": 0
+    },
+    "delivered": {
+        "sum": 2,
+        "percent": 28.57142857142857
+    },
+    "canceled": {
+        "sum": 1,
+        "percent": 14.285714285714285
+    },
+    "group": {
+        "active": {
+            "sum": 4,
+            "percent": 57.14285714285714
+        },
+        "completed": {
+            "sum": 2,
+            "percent": 28.57142857142857
+        },
+        "ended": {
+            "sum": 1,
+            "percent": 14.285714285714285
+        }
+    }
+}

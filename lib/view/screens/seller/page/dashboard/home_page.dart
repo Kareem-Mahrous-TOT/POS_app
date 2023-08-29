@@ -7,10 +7,8 @@ import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/core/utils/json_handlers.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/data/models/products_model.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/card_item.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_page_appbar.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_comp.dart';
 
-import '../../components/pos/home_components/alert_dialog_bag.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,7 +54,9 @@ class _HomePageState extends State<HomePage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return !isLoaded
-        ? const SizedBox()
+        ? const Center(
+          child: CircularProgressIndicator(),
+        )
         : Column(
             children: [
               const TOTPOSHomePageAppBar(),

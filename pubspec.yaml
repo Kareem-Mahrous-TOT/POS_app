@@ -7,15 +7,16 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-  flutter_bloc:
   bloc:
   bloc_provider:
   cached_network_image:
   dio: ^5.3.2
+  fl_chart: ^0.63.0
+  flutter:
+    sdk: flutter
+  flutter_bloc:
+  flutter_localizations:
+    sdk: flutter
   flutter_slidable: ^3.0.0
   freezed_annotation:
   get_it: ^7.6.0
@@ -31,7 +32,7 @@ dependencies:
 
 dev_dependencies:
   build_runner:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.2
   flutter_test:
     sdk: flutter
   freezed:

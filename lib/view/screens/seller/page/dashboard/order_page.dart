@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
@@ -27,9 +25,8 @@ class _OrderPageState extends State<OrderPage> {
 
   fetch() async {
     await AppJsonDecoder().decode(path: "assets/order.json").then((value) {
-      log("value:: $value ##");
+      // log("value:: $value ##");
       // print("value---- $value sssssss");
-
       setState(() {
         orderHeader = OrderHeader.fromJson(value);
         isLoaded = true;

@@ -3,11 +3,11 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/utils/json_handlers.dart';
 import 'package:tot_pos/data/models/customer/current_customer.dart';
 import 'package:tot_pos/data/models/customer/recent_customers.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/cutomer/alert_dialog_customer.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/customer/alert_dialog_customer.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../components/pos/cutomer/customer_card.dart';
-import '../../components/pos/cutomer/recent_customers.dart';
+import '../../components/pos/customer/customer_card.dart';
+import '../../components/pos/customer/recent_customers.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});
@@ -19,9 +19,8 @@ class CustomerPage extends StatefulWidget {
 class _CustomerPageState extends State<CustomerPage> {
   CurrentCustomer? currentCustomer;
   RecentCustomers? recentCustomers;
-
-  bool isLoaded1 = false;
-  bool isLoaded2 = false;
+  late List<RecentCustomer> mylist;
+  bool isLoaded = false;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -39,7 +38,6 @@ class _CustomerPageState extends State<CustomerPage> {
       // log("value:: $value ##");
       setState(() {
         currentCustomer = CurrentCustomer.fromJson(value);
-        isLoaded1 = true;
       });
     });
   }
@@ -51,7 +49,8 @@ class _CustomerPageState extends State<CustomerPage> {
       // log("value:: $value ##");
       setState(() {
         recentCustomers = RecentCustomers.fromJson(value);
-        isLoaded2 = true;
+        isLoaded = true;
+        mylist = recentCustomers!.recentCustomers;
       });
     });
   }
@@ -60,9 +59,8 @@ class _CustomerPageState extends State<CustomerPage> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    List<RecentCustomer> mylist = recentCustomers!.recentCustomers;
 
-    return isLoaded1 && isLoaded2
+    return isLoaded
         ? Padding(
             padding: const EdgeInsets.all(8.0),
             child:
