@@ -1,12 +1,16 @@
-
 import 'package:flutter/material.dart';
-
-import 'alert_dialog_bag.dart';
 
 class TOTPOSItemCounterMolecule extends StatefulWidget {
   const TOTPOSItemCounterMolecule({
     super.key,
+    required this.increment,
+    required this.decrement,
+    required this.value,
   });
+
+  final VoidCallback increment;
+  final VoidCallback decrement;
+  final String value;
 
   @override
   State<TOTPOSItemCounterMolecule> createState() =>
@@ -14,22 +18,6 @@ class TOTPOSItemCounterMolecule extends StatefulWidget {
 }
 
 class _TOTPOSItemCounterMoleculeState extends State<TOTPOSItemCounterMolecule> {
-  void increment() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  void decrement() {
-    setState(() {
-      if (counter > 1) {
-        counter--;
-      } else {
-        counter = 1;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -39,17 +27,13 @@ class _TOTPOSItemCounterMoleculeState extends State<TOTPOSItemCounterMolecule> {
             icon: const Icon(
               Icons.add_circle_outline_rounded,
             ),
-            onPressed: () {
-              increment();
-            }),
-        Text('$counter'),
-        IconButton(
+            onPressed: widget.increment),
+        Text(widget.value),
+        IconButton( 
           icon: const Icon(
             Icons.remove_circle_outline_rounded,
           ),
-          onPressed: () {
-            decrement();
-          },
+          onPressed: widget.decrement,
         ),
       ],
     );

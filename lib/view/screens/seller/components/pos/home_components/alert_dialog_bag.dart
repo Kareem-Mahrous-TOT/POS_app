@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/data/models/products_model.dart';
+import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/pos_counter.dart';
 
-int counter = 1;
+// int counter = 1;
 
 class AlertDialogCustom extends StatefulWidget {
   const AlertDialogCustom({
@@ -20,6 +22,7 @@ class AlertDialogCustom extends StatefulWidget {
 }
 
 class _AlertDialogCustomState extends State<AlertDialogCustom> {
+  int counter = 1;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -47,7 +50,19 @@ class _AlertDialogCustomState extends State<AlertDialogCustom> {
                   ),
                   width: w * 0.15,
                   height: h * 0.07,
-                  child: const TOTPOSItemCounterMolecule(),
+                  child: TOTPOSItemCounterMolecule(
+                    increment: () {
+                      setState(() {
+                        counter++;
+                      });
+                    },
+                    decrement: () {
+                      setState(() {
+                        counter--;
+                      });
+                    },
+                    value: counter.toString(),
+                  ),
                 ),
               ),
               Padding(
@@ -61,15 +76,18 @@ class _AlertDialogCustomState extends State<AlertDialogCustom> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
                     text: "Add",
-                    onPressed: () {
-                      setState(() {
-                        dummylistBagModel.add(BagModel(
-                            itemName: widget.data.translation!.title.toString(),
-                            itemPrice: widget.data.stocks![0]!.totalPrice!,
-                            itemQuantity: counter.toDouble()));
-                      });
+                    onPressed: () async {
+                      final product = BagModel(
+                          itemName: widget.data.translation!.title.toString(),
+                          itemPrice: widget.data.stocks![0]!.totalPrice!,
+                          itemQuantity: counter.toDouble());
+
+                      await context.read<ProductsCubit>().updatedList(product);
+                      context.read<ProductsCubit>().calculateTotalPrice();
+
+                      // dummylistBagModel.add(
+
                       Navigator.pop(context);
-                      counter = 1;
                     },
                     textColor: AppColors.black,
                     backgroundColor: AppColors.green,

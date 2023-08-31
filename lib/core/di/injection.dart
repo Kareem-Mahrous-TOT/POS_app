@@ -1,5 +1,5 @@
-import 'package:get_it/get_it.dart';
+// import 'package:get_it/get_it.dart';
 
-T inject<T extends Object>() {
-  return GetIt.I.get<T>();
-}
+// T inject<T extends Object>() {
+//   return GetIt.I.get<T>();
+// }

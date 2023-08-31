@@ -12,4 +12,3 @@ class BagModel {
 
   
 }
-List<BagModel> dummylistBagModel = [];

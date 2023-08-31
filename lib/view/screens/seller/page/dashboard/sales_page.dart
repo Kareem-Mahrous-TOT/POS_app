@@ -69,7 +69,7 @@ class _SalesPageState extends State<SalesPage>
     double h = MediaQuery.of(context).size.height;
     return isLoaded
         ? Container(
-            color: AppColors.grey,
+            color: const Color.fromARGB(135, 138, 212, 244),
             width: w * 0.95,
             height: h * 0.93,
             child: DefaultTabController(

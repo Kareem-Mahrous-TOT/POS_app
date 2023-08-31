@@ -36,21 +36,17 @@ class _OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
+    // double w = MediaQuery.of(context).size.width;
     // double h = MediaQuery.of(context).size.height;
     return isLoaded
         ? Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                color: AppColors.white,
-                width: w * 0.98,
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TOTTextAtom.headLineSmall(
-                    "Order",
-                    color: AppColors.black,
-                  ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TOTTextAtom.headLineSmall(
+                  "Order",
+                  color: AppColors.black,
                 ),
               ),
               Padding(

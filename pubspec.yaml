@@ -7,21 +7,22 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  bloc:
-  bloc_provider:
-  cached_network_image:
+  bloc: null
+  bloc_provider: null
+  cached_network_image: null
   dio: ^5.3.2
   fl_chart: ^0.63.0
   flutter:
     sdk: flutter
-  flutter_bloc:
+  flutter_bloc: null
   flutter_localizations:
     sdk: flutter
+  flutter_screenutil: ^5.9.0
   flutter_slidable: ^3.0.0
-  freezed_annotation:
+  freezed_annotation: null
   get_it: ^7.6.0
-  intl:
-  json_annotation:
+  intl: null
+  json_annotation: null
   shared_preferences: ^2.2.0
   shimmer: ^3.0.0
   tot_atomic_design:
@@ -31,15 +32,15 @@ dependencies:
       ref: dev
 
 dev_dependencies:
-  build_runner:
+  build_runner: null
   flutter_lints: ^2.0.2
   flutter_test:
     sdk: flutter
-  freezed:
-  json_serializable:
+  freezed: null
+  json_serializable: null
 
 dependency_overrides:
-  intl:
+  ? intl
 
 flutter:
   uses-material-design: true
