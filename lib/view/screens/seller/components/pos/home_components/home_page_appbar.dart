@@ -37,7 +37,7 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
         children: [
           const TOTFilterCategoriesOrganism(),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.31,
+            width: MediaQuery.of(context).size.width * 0.3,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,13 +52,6 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                         color: AppColors.black,
                         colorText: AppColors.black),
                   ),
-                ),
-                Card(
-                  color: Colors.white,
-                  child: TOTIconButtonAtom.displayMedium(
-                      codePoint: 0xe047,
-                      iconColor: AppColors.black,
-                      onPressed: () {}),
                 ),
               ],
             ),
@@ -94,9 +87,7 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
                     )
                   : index == 1
                       ? CategoryTabBarItem(
-                          isActive: false, onTap: () {}, title: "meat"
-                         
-                          )
+                          isActive: false, onTap: () {}, title: "meat")
                       : CategoryTabBarItem(
                           isActive: false,
                           onTap: () {},

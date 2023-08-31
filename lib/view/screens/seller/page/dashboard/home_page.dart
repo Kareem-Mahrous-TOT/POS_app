@@ -19,8 +19,6 @@ class HomePage extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        // HomeCubit myCubit = HomeCubit.get(context);
-
         return state.map(
             initial: (value) => const Center(
                   child: CircularProgressIndicator(),
@@ -90,7 +88,10 @@ class HomePage extends StatelessWidget {
                       BlocConsumer<ProductsCubit, ProductsState>(
                           listener: (context, state) {},
                           builder: (context, state) {
-                            return state.map(
+                            return state.maybeMap(
+                              orElse: () {
+                                return const SizedBox();
+                              },
                               empty: (value) {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),

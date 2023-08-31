@@ -58,7 +58,11 @@ class _AlertDialogCustomState extends State<AlertDialogCustom> {
                     },
                     decrement: () {
                       setState(() {
-                        counter--;
+                        if (counter > 1) {
+                          counter--;
+                        } else {
+                          counter = 1;
+                        }
                       });
                     },
                     value: counter.toString(),
@@ -83,11 +87,10 @@ class _AlertDialogCustomState extends State<AlertDialogCustom> {
                           itemQuantity: counter.toDouble());
 
                       await context.read<ProductsCubit>().updatedList(product);
-                      context.read<ProductsCubit>().calculateTotalPrice();
-
-                      // dummylistBagModel.add(
-
-                      Navigator.pop(context);
+                      if (mounted) {
+                        // context.read<ProductsCubit>().calculateTotalPrice();
+                        Navigator.pop(context);
+                      }
                     },
                     textColor: AppColors.black,
                     backgroundColor: AppColors.green,

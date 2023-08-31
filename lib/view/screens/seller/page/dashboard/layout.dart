@@ -22,7 +22,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   final List<Widget> screens = [
     const HomePage(),
     const OrderPage(),
-    const CustomerPage(),
+    CustomerPage(),
     const SalesPage(),
     const ReportsPage(),
   ];

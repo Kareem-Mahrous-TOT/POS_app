@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/core/utils/json_handlers.dart';
-import 'package:tot_pos/data/models/sales/sales_model.dart';
+import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/sales/sales_history_card.dart';
 
 class SalesPage extends StatefulWidget {
@@ -14,10 +14,6 @@ class SalesPage extends StatefulWidget {
 
 class _SalesPageState extends State<SalesPage>
     with SingleTickerProviderStateMixin {
-  SalesModel? salesModel;
-
-  bool isLoaded = false;
-
   final List<Tab> tabs = [
     const Tab(
       child: TOTTextAtom.headLineSmall(
@@ -41,34 +37,15 @@ class _SalesPageState extends State<SalesPage>
 
   int currentIndex = 2;
 
-  fetch() async {
-    await AppJsonDecoder()
-        .decode(path: "assets/sales_history.json")
-        .then((value) {
-      // log("value:: $value ##");
-      // if (kDebugMode) {
-      //   print("value---- $value sssssss");
-      // }
-
-      setState(() {
-        salesModel = SalesModel.fromJson(value);
-        isLoaded = true;
-      });
-    });
-  }
-
-  @override
-  void didChangeDependencies() {
-    fetch();
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return isLoaded
-        ? Container(
+    return BlocBuilder<SalesCubit, SalesState>(
+      builder: (context, state) {
+        return state.map(
+          initial: (value) => const Center(child: CircularProgressIndicator()),
+          loadSuccess: (value) => Container(
             color: const Color.fromARGB(135, 138, 212, 244),
             width: w * 0.95,
             height: h * 0.93,
@@ -174,66 +151,75 @@ class _SalesPageState extends State<SalesPage>
                                           ),
                                         ],
                                         rows: List.generate(
-                                            salesModel?.data.orders.length ?? 0,
+                                            value.data.data.orders.length,
                                             (rowsIndex) {
                                           return DataRow(
                                             cells: [
-                                              DataCell(Text(salesModel!
-                                                  .data.orders[rowsIndex].userId
+                                              DataCell(Text(value.data.data
+                                                  .orders[rowsIndex].userId
                                                   .toString())),
-                                              DataCell(Text(salesModel!
+                                              DataCell(Text(value
+                                                  .data
                                                   .data
                                                   .orders[rowsIndex]
                                                   .user!
                                                   .firstname
                                                   .toString())),
-                                              DataCell(Text(salesModel!
+                                              DataCell(Text(value
+                                                          .data
                                                           .data
                                                           .orders[rowsIndex]
                                                           .totalPrice ==
                                                       null
                                                   ? "N/A"
-                                                  : salesModel!
+                                                  : value
+                                                      .data
                                                       .data
                                                       .orders[rowsIndex]
                                                       .totalPrice
                                                       .toString())),
-                                              DataCell(Text(salesModel
-                                                          ?.data
+                                              DataCell(Text(value
+                                                          .data
+                                                          .data
                                                           .orders[rowsIndex]
                                                           .transaction
                                                           ?.paymentSystem
                                                           ?.tag ==
                                                       null
                                                   ? "N/A"
-                                                  : salesModel!
+                                                  : value
+                                                      .data
                                                       .data
                                                       .orders[rowsIndex]
                                                       .transaction!
                                                       .paymentSystem!
                                                       .tag
                                                       .toString())),
-                                              DataCell(Text(salesModel
-                                                          ?.data
+                                              DataCell(Text(value
+                                                          .data
+                                                          .data
                                                           .orders[rowsIndex]
                                                           .transaction
                                                           ?.note ==
                                                       null
                                                   ? "N/A"
-                                                  : salesModel!
+                                                  : value
+                                                      .data
                                                       .data
                                                       .orders[rowsIndex]
                                                       .transaction!
                                                       .note
                                                       .toString())),
                                               DataCell(
-                                                Text(salesModel!
+                                                Text(value
+                                                            .data
                                                             .data
                                                             .orders[rowsIndex]
                                                             .deliveryDate ==
                                                         null
                                                     ? "N/A"
-                                                    : salesModel!
+                                                    : value
+                                                        .data
                                                         .data
                                                         .orders[rowsIndex]
                                                         .deliveryDate
@@ -313,66 +299,75 @@ class _SalesPageState extends State<SalesPage>
                                         ),
                                       ],
                                       rows: List.generate(
-                                          salesModel?.data.orders.length ?? 0,
+                                          value.data.data.orders.length,
                                           (rowsIndex) {
                                         return DataRow(
                                           cells: [
-                                            DataCell(Text(salesModel!
-                                                .data.orders[rowsIndex].userId
+                                            DataCell(Text(value.data.data
+                                                .orders[rowsIndex].userId
                                                 .toString())),
-                                            DataCell(Text(salesModel!
+                                            DataCell(Text(value
+                                                .data
                                                 .data
                                                 .orders[rowsIndex]
                                                 .user!
                                                 .firstname
                                                 .toString())),
-                                            DataCell(Text(salesModel!
+                                            DataCell(Text(value
+                                                        .data
                                                         .data
                                                         .orders[rowsIndex]
                                                         .totalPrice ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .totalPrice
                                                     .toString())),
-                                            DataCell(Text(salesModel
-                                                        ?.data
+                                            DataCell(Text(value
+                                                        .data
+                                                        .data
                                                         .orders[rowsIndex]
                                                         .transaction
                                                         ?.paymentSystem
                                                         ?.tag ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .transaction!
                                                     .paymentSystem!
                                                     .tag
                                                     .toString())),
-                                            DataCell(Text(salesModel
-                                                        ?.data
+                                            DataCell(Text(value
+                                                        .data
+                                                        .data
                                                         .orders[rowsIndex]
                                                         .transaction
                                                         ?.note ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .transaction!
                                                     .note
                                                     .toString())),
                                             DataCell(
-                                              Text(salesModel!
+                                              Text(value
+                                                          .data
                                                           .data
                                                           .orders[rowsIndex]
                                                           .deliveryDate ==
                                                       null
                                                   ? "N/A"
-                                                  : salesModel!
+                                                  : value
+                                                      .data
                                                       .data
                                                       .orders[rowsIndex]
                                                       .deliveryDate
@@ -451,66 +446,75 @@ class _SalesPageState extends State<SalesPage>
                                         ),
                                       ],
                                       rows: List.generate(
-                                          salesModel?.data.orders.length ?? 0,
+                                          value.data.data.orders.length,
                                           (rowsIndex) {
                                         return DataRow(
                                           cells: [
-                                            DataCell(Text(salesModel!
-                                                .data.orders[rowsIndex].userId
+                                            DataCell(Text(value.data.data
+                                                .orders[rowsIndex].userId
                                                 .toString())),
-                                            DataCell(Text(salesModel!
+                                            DataCell(Text(value
+                                                .data
                                                 .data
                                                 .orders[rowsIndex]
                                                 .user!
                                                 .firstname
                                                 .toString())),
-                                            DataCell(Text(salesModel!
+                                            DataCell(Text(value
+                                                        .data
                                                         .data
                                                         .orders[rowsIndex]
                                                         .totalPrice ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .totalPrice
                                                     .toString())),
-                                            DataCell(Text(salesModel
-                                                        ?.data
+                                            DataCell(Text(value
+                                                        .data
+                                                        .data
                                                         .orders[rowsIndex]
                                                         .transaction
                                                         ?.paymentSystem
                                                         ?.tag ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .transaction!
                                                     .paymentSystem!
                                                     .tag
                                                     .toString())),
-                                            DataCell(Text(salesModel
-                                                        ?.data
+                                            DataCell(Text(value
+                                                        .data
+                                                        .data
                                                         .orders[rowsIndex]
                                                         .transaction
                                                         ?.note ==
                                                     null
                                                 ? "N/A"
-                                                : salesModel!
+                                                : value
+                                                    .data
                                                     .data
                                                     .orders[rowsIndex]
                                                     .transaction!
                                                     .note
                                                     .toString())),
                                             DataCell(
-                                              Text(salesModel!
+                                              Text(value
+                                                          .data
                                                           .data
                                                           .orders[rowsIndex]
                                                           .deliveryDate ==
                                                       null
                                                   ? "N/A"
-                                                  : salesModel!
+                                                  : value
+                                                      .data
                                                       .data
                                                       .orders[rowsIndex]
                                                       .deliveryDate
@@ -528,9 +532,9 @@ class _SalesPageState extends State<SalesPage>
                     )
                   ]),
             ),
-          )
-        : const Center(
-            child: CircularProgressIndicator(),
-          );
+          ),
+        );
+      },
+    );
   }
 }

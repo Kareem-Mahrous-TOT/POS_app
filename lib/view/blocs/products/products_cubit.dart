@@ -7,6 +7,7 @@ part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit() : super(_Initial());
+  
 
   fetch() {
     final List<BagModel> result = [];
@@ -18,21 +19,25 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   updatedList(BagModel product) async {
-    state.map( 
+    state.maybeMap(
+        orElse: () {},
         initial: (value) {},
         empty: (value) {
           emit(_UpdateListState([product], 0.0));
+          calculateTotalPrice();
         },
         updateList: (value) {
           var list = value.bag;
           list.add(product);
 
           emit(value.copyWith(bag: list));
+          calculateTotalPrice();
         });
   }
 
   void clearItem(int index) {
-    state.map(
+    state.maybeMap(
+      orElse: () {},
       initial: (value) {},
       empty: (value) {},
       updateList: (value) {

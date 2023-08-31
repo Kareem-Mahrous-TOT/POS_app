@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/data/models/reports/cost_model.dart';
+import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
+import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/reports/circular_indicator.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/reports/line_chart.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/sales/sales_history_card.dart';
 
-import '../../../../../core/utils/json_handlers.dart';
-import '../../../../../data/models/reports/statistic_model.dart';
 import '../../components/pos/reports/pie_chart_api.dart';
 
 class ReportsPage extends StatefulWidget {
@@ -18,40 +18,6 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
-  ReportPieChart? reportPieChart;
-  CostModel? costModel;
-  bool isLoading = false;
-
-  fetchPieChart() async {
-    await AppJsonDecoder()
-        .decode(path: "assets/statistic_report.json")
-        .then((value) {
-      setState(() {
-        reportPieChart = ReportPieChart.fromJson(value);
-        // log("sum:: ${reportPieChart!.ready.sum} ## Loadin:: $isLoading ");
-      });
-    });
-  }
-
-  fetchCost() async {
-    await AppJsonDecoder()
-        .decode(path: "assets/cost_reports.json")
-        .then((value) {
-      setState(() {
-        costModel = CostModel.fromJson(value);
-        isLoading = true;
-        // log("sum:: ${costModel!.revenue} ## Loadin:: $isLoading ");
-      });
-    });
-  }
-
-  @override
-  void didChangeDependencies() {
-    fetchPieChart();
-    fetchCost();
-    super.didChangeDependencies();
-  }
-
   final List<Tab> tabs = [
     const Tab(
       child: TOTTextAtom.labelLarge(
@@ -119,17 +85,24 @@ class _ReportsPageState extends State<ReportsPage> {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          isLoading
-                              ? Row(
+                          BlocBuilder<ReportCostCubit, ReportCostState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                                loadSuccess: (value) => Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SalesCard(
-                                        plus: costModel!.revenuePercentType ==
+                                        plus: value.model.revenuePercentType ==
                                             "plus",
-                                        percentage: costModel!.revenuePercent
+                                        percentage: value.model.revenuePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.revenue.toString(),
+                                        cost: value.model.revenue.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.orange,
@@ -137,22 +110,22 @@ class _ReportsPageState extends State<ReportsPage> {
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
                                     SalesCard(
-                                        plus: costModel!.ordersPercentType ==
+                                        plus: value.model.ordersPercentType ==
                                             "plus",
-                                        percentage: costModel!.ordersPercent
+                                        percentage: value.model.ordersPercent
                                             .ceilToDouble(),
-                                        cost: costModel!.orders.toString(),
+                                        cost: value.model.orders.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
                                     SalesCard(
-                                        plus: costModel!.averagePercentType ==
+                                        plus: value.model.averagePercentType ==
                                             "plus",
-                                        percentage: costModel!.averagePercent
+                                        percentage: value.model.averagePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.average.toString(),
+                                        cost: value.model.average.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.black,
@@ -160,9 +133,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                             Icons.compare_arrows_rounded,
                                         title: 'Average'),
                                   ],
-                                )
-                              : const Center(
-                                  child: CircularProgressIndicator()),
+                                ),
+                              );
+                            },
+                          ),
                           Container(
                             height: h * 0.4,
                             // width: double.infinity,
@@ -184,8 +158,13 @@ class _ReportsPageState extends State<ReportsPage> {
                           const SizedBox(
                             height: 5,
                           ),
-                          isLoading
-                              ? SizedBox(
+                          BlocBuilder<ReportChartPieCubit, ReportChartPieState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                loadSuccess: (value) => SizedBox(
                                   width: w * 0.9,
                                   height: h * 0.55,
                                   child: Row(
@@ -293,11 +272,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             width: w * 0.11,
                                                             height: w * 0.11,
                                                             labelText: "Ready",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .ready
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value.model
+                                                                .ready.percent
+                                                                .toDouble(),
                                                             color: AppColors
                                                                 .black)),
                                                 SizedBox(
@@ -307,7 +284,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                         CircularIndicatorMolecule(
                                                             backgroundColor:
                                                                 const Color
-                                                                        .fromARGB(
+                                                                    .fromARGB(
                                                                     255,
                                                                     217,
                                                                     210,
@@ -316,32 +293,26 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             height: w * 0.11,
                                                             labelText:
                                                                 "Delivered",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .delivered
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value
+                                                                .model
+                                                                .delivered
+                                                                .percent
+                                                                .toDouble(),
                                                             color: const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                255,
-                                                                230,
-                                                                2))),
+                                                                .fromARGB(255,
+                                                                255, 230, 2))),
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child: CircularIndicatorMolecule(
                                                         backgroundColor:
                                                             const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                144,
-                                                                215,
-                                                                146),
+                                                                .fromARGB(255,
+                                                                144, 215, 146),
                                                         width: w * 0.11,
                                                         height: w * 0.11,
                                                         labelText: "Accepted",
-                                                        value: reportPieChart!
+                                                        value: value.model
                                                             .accepted.percent
                                                             .toDouble(),
                                                         color: Colors.green)),
@@ -359,7 +330,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                       width: w * 0.11,
                                                       height: w * 0.11,
                                                       labelText: "Canceled",
-                                                      value: reportPieChart!
+                                                      value: value.model
                                                           .canceled.percent
                                                           .toDouble(),
                                                       color: Colors.red,
@@ -371,25 +342,34 @@ class _ReportsPageState extends State<ReportsPage> {
                                       ),
                                     ],
                                   ),
-                                )
-                              : const Center(child: CircularProgressIndicator())
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          isLoading
-                              ? Row(
+                          BlocBuilder<ReportCostCubit, ReportCostState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                                loadSuccess: (value) => Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SalesCard(
-                                        plus: costModel!.revenuePercentType ==
+                                        plus: value.model.revenuePercentType ==
                                             "plus",
-                                        percentage: costModel!.revenuePercent
+                                        percentage: value.model.revenuePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.revenue.toString(),
+                                        cost: value.model.revenue.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.orange,
@@ -397,22 +377,22 @@ class _ReportsPageState extends State<ReportsPage> {
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
                                     SalesCard(
-                                        plus: costModel!.ordersPercentType ==
+                                        plus: value.model.ordersPercentType ==
                                             "plus",
-                                        percentage: costModel!.ordersPercent
+                                        percentage: value.model.ordersPercent
                                             .ceilToDouble(),
-                                        cost: costModel!.orders.toString(),
+                                        cost: value.model.orders.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
                                     SalesCard(
-                                        plus: costModel!.averagePercentType ==
+                                        plus: value.model.averagePercentType ==
                                             "plus",
-                                        percentage: costModel!.averagePercent
+                                        percentage: value.model.averagePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.average.toString(),
+                                        cost: value.model.average.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.black,
@@ -420,9 +400,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                             Icons.compare_arrows_rounded,
                                         title: 'Average'),
                                   ],
-                                )
-                              : const Center(
-                                  child: CircularProgressIndicator()),
+                                ),
+                              );
+                            },
+                          ),
                           Container(
                             height: h * 0.4,
                             // width: double.infinity,
@@ -443,8 +424,13 @@ class _ReportsPageState extends State<ReportsPage> {
                           const SizedBox(
                             height: 5,
                           ),
-                          isLoading
-                              ? SizedBox(
+                          BlocBuilder<ReportChartPieCubit, ReportChartPieState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                loadSuccess: (value) => SizedBox(
                                   width: w * 0.9,
                                   height: h * 0.55,
                                   child: Row(
@@ -552,11 +538,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             width: w * 0.11,
                                                             height: w * 0.11,
                                                             labelText: "Ready",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .ready
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value.model
+                                                                .ready.percent
+                                                                .toDouble(),
                                                             color: AppColors
                                                                 .black)),
                                                 SizedBox(
@@ -566,7 +550,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                         CircularIndicatorMolecule(
                                                             backgroundColor:
                                                                 const Color
-                                                                        .fromARGB(
+                                                                    .fromARGB(
                                                                     255,
                                                                     217,
                                                                     210,
@@ -575,32 +559,26 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             height: w * 0.11,
                                                             labelText:
                                                                 "Delivered",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .delivered
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value
+                                                                .model
+                                                                .delivered
+                                                                .percent
+                                                                .toDouble(),
                                                             color: const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                255,
-                                                                230,
-                                                                2))),
+                                                                .fromARGB(255,
+                                                                255, 230, 2))),
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child: CircularIndicatorMolecule(
                                                         backgroundColor:
                                                             const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                144,
-                                                                215,
-                                                                146),
+                                                                .fromARGB(255,
+                                                                144, 215, 146),
                                                         width: w * 0.11,
                                                         height: w * 0.11,
                                                         labelText: "Accepted",
-                                                        value: reportPieChart!
+                                                        value: value.model
                                                             .accepted.percent
                                                             .toDouble(),
                                                         color: Colors.green)),
@@ -618,7 +596,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                       width: w * 0.11,
                                                       height: w * 0.11,
                                                       labelText: "Canceled",
-                                                      value: reportPieChart!
+                                                      value: value.model
                                                           .canceled.percent
                                                           .toDouble(),
                                                       color: Colors.red,
@@ -630,25 +608,34 @@ class _ReportsPageState extends State<ReportsPage> {
                                       ),
                                     ],
                                   ),
-                                )
-                              : const Center(child: CircularProgressIndicator())
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          isLoading
-                              ? Row(
+                          BlocBuilder<ReportCostCubit, ReportCostState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                                loadSuccess: (value) => Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SalesCard(
-                                        plus: costModel!.revenuePercentType ==
+                                        plus: value.model.revenuePercentType ==
                                             "plus",
-                                        percentage: costModel!.revenuePercent
+                                        percentage: value.model.revenuePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.revenue.toString(),
+                                        cost: value.model.revenue.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.orange,
@@ -656,22 +643,22 @@ class _ReportsPageState extends State<ReportsPage> {
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
                                     SalesCard(
-                                        plus: costModel!.ordersPercentType ==
+                                        plus: value.model.ordersPercentType ==
                                             "plus",
-                                        percentage: costModel!.ordersPercent
+                                        percentage: value.model.ordersPercent
                                             .ceilToDouble(),
-                                        cost: costModel!.orders.toString(),
+                                        cost: value.model.orders.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
                                     SalesCard(
-                                        plus: costModel!.averagePercentType ==
+                                        plus: value.model.averagePercentType ==
                                             "plus",
-                                        percentage: costModel!.averagePercent
+                                        percentage: value.model.averagePercent
                                             .ceilToDouble(),
-                                        cost: costModel!.average.toString(),
+                                        cost: value.model.average.toString(),
                                         hasLeadingIcon: true,
                                         hasPercentage: true,
                                         leadingColor: Colors.black,
@@ -679,9 +666,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                             Icons.compare_arrows_rounded,
                                         title: 'Average'),
                                   ],
-                                )
-                              : const Center(
-                                  child: CircularProgressIndicator()),
+                                ),
+                              );
+                            },
+                          ),
                           Container(
                             height: h * 0.4,
                             // width: double.infinity,
@@ -703,8 +691,13 @@ class _ReportsPageState extends State<ReportsPage> {
                           const SizedBox(
                             height: 5,
                           ),
-                          isLoading
-                              ? SizedBox(
+                          BlocBuilder<ReportChartPieCubit, ReportChartPieState>(
+                            builder: (context, state) {
+                              return state.map(
+                                initial: (value) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                loadSuccess: (value) => SizedBox(
                                   width: w * 0.9,
                                   height: h * 0.55,
                                   child: Row(
@@ -812,11 +805,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             width: w * 0.11,
                                                             height: w * 0.11,
                                                             labelText: "Ready",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .ready
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value.model
+                                                                .ready.percent
+                                                                .toDouble(),
                                                             color: AppColors
                                                                 .black)),
                                                 SizedBox(
@@ -826,7 +817,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                         CircularIndicatorMolecule(
                                                             backgroundColor:
                                                                 const Color
-                                                                        .fromARGB(
+                                                                    .fromARGB(
                                                                     255,
                                                                     217,
                                                                     210,
@@ -835,32 +826,26 @@ class _ReportsPageState extends State<ReportsPage> {
                                                             height: w * 0.11,
                                                             labelText:
                                                                 "Delivered",
-                                                            value:
-                                                                reportPieChart!
-                                                                    .delivered
-                                                                    .percent
-                                                                    .toDouble(),
+                                                            value: value
+                                                                .model
+                                                                .delivered
+                                                                .percent
+                                                                .toDouble(),
                                                             color: const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                255,
-                                                                230,
-                                                                2))),
+                                                                .fromARGB(255,
+                                                                255, 230, 2))),
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child: CircularIndicatorMolecule(
                                                         backgroundColor:
                                                             const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                144,
-                                                                215,
-                                                                146),
+                                                                .fromARGB(255,
+                                                                144, 215, 146),
                                                         width: w * 0.11,
                                                         height: w * 0.11,
                                                         labelText: "Accepted",
-                                                        value: reportPieChart!
+                                                        value: value.model
                                                             .accepted.percent
                                                             .toDouble(),
                                                         color: Colors.green)),
@@ -878,7 +863,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                       width: w * 0.11,
                                                       height: w * 0.11,
                                                       labelText: "Canceled",
-                                                      value: reportPieChart!
+                                                      value: value.model
                                                           .canceled.percent
                                                           .toDouble(),
                                                       color: Colors.red,
@@ -890,8 +875,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                       ),
                                     ],
                                   ),
-                                )
-                              : const Center(child: CircularProgressIndicator())
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
