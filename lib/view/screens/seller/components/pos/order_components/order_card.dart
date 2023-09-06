@@ -6,13 +6,16 @@ import 'package:tot_pos/data/models/order/order_header.dart';
 
 import '../../../../../../core/theme/pallete.dart';
 
-class OrderCard extends StatelessWidget {
-  const OrderCard({
+class TOTOrderCardMolecule extends StatelessWidget {
+  const TOTOrderCardMolecule({
     super.key,
     required this.orderModel,
+    this.height,
+    this.width,
   });
   final HeaderItem orderModel;
-
+  final double? height;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -20,8 +23,8 @@ class OrderCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: SizedBox(
-        height: h * 0.75,
-        width: w * 0.21,
+        height: height ?? h * 0.75,
+        width: width ?? w * 0.21,
         child: ListView.builder(
           itemCount: orderModel.cardOrder.length,
           itemBuilder: (context, index) => Padding(

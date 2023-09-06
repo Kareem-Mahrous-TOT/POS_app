@@ -594,7 +594,7 @@ class _$_UpdateIndexState implements _UpdateIndexState {
 }
 
 abstract class _UpdateIndexState implements LayoutState {
-  const factory _UpdateIndexState(final int index) = _$_UpdateIndexState;
+  const factory   _UpdateIndexState(final int index) = _$_UpdateIndexState;
 
   int get index;
   @JsonKey(ignore: true)

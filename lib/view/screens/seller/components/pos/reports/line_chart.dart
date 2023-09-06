@@ -2,15 +2,19 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class LineChartMolecule extends StatelessWidget {
-  const LineChartMolecule(
+class TOTLineChartMolecule extends StatelessWidget {
+  /// this is a package from pub.dev called fl_chart
+  /// to use it you'd have 2 lists for items of X and y Axes
+  /// then create a list for the spots on the graph noting that spots number must be less than the X axis by 1 too keep it from overflowing
+
+  const TOTLineChartMolecule(
       {super.key,
-      required this.price,
-      required this.times,
+      required this.xAxis,
+      required this.yAxis,
       required this.spots,
       required this.belowBarGradientColors});
-  final List<num> price;
-  final List<DateTime> times;
+  final List<num> xAxis;
+  final List<DateTime> yAxis;
   final List<Color> belowBarGradientColors;
   final List<FlSpot> spots;
   @override
@@ -20,11 +24,11 @@ class LineChartMolecule extends StatelessWidget {
       gridData: const FlGridData(show: false),
       minX: 0,
       // maxX: times.length.toDouble() - 1,
-      maxX: (times.length - 1)
+      maxX: (yAxis.length - 1)
           .toDouble()
-          .clamp(0, (chartWidth / (chartWidth / times.length)).toDouble()),
+          .clamp(0, (chartWidth / (chartWidth / yAxis.length)).toDouble()),
       minY: 0,
-      maxY: price.length.toDouble() - 1,
+      maxY: xAxis.length.toDouble() - 1,
       titlesData: FlTitlesData(
         show: true,
         topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -40,7 +44,7 @@ class LineChartMolecule extends StatelessWidget {
               return SideTitleWidget(
                 axisSide: titleMeta.axisSide,
                 child: Text(
-                  DateFormat("MMM d").format(times[index]).toString(),
+                  DateFormat("MMM d").format(yAxis[index]).toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -59,7 +63,7 @@ class LineChartMolecule extends StatelessWidget {
               final index = value.toInt();
               final number =
                   NumberFormat.currency(symbol: "\$", decimalDigits: 0)
-                      .format(price[index]);
+                      .format(xAxis[index]);
               return Text(number,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/models/order/order_header.dart';
@@ -7,13 +5,15 @@ import 'package:tot_pos/data/models/order/order_header.dart';
 import '../../../../../../core/theme/pallete.dart';
 import 'order_card.dart';
 
-class TOTTwoDimensionalListView extends StatelessWidget {
+class TOTListViewWithHeaderOrganism extends StatelessWidget {
   final OrderHeader headerModel;
-  // final List<OrderCardModel> orderModel;
 
-  const TOTTwoDimensionalListView({
+  final VoidCallback onPressed;
+
+  const TOTListViewWithHeaderOrganism({
     super.key,
     required this.headerModel,
+    required this.onPressed,
   });
 
   @override
@@ -67,18 +67,15 @@ class TOTTwoDimensionalListView extends StatelessWidget {
                       SizedBox(
                         height: h * 0.05,
                         child: TOTIconButtonAtom.displayMedium(
-                          codePoint: 0xf00e9,
-                          iconColor: AppColors.black,
-                          onPressed: () {
-                            log("Refresh pressed -------------");
-                          },
-                        ),
+                            codePoint: 0xf00e9,
+                            iconColor: AppColors.black,
+                            onPressed: onPressed),
                       )
                     ],
                   ),
                 ),
               ),
-              OrderCard(
+              TOTOrderCardMolecule(
                 orderModel: headerModel.header[index],
               ),
             ],

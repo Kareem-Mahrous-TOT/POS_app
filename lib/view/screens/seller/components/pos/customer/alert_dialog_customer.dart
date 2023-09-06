@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-class AlertDialogCustomer extends StatelessWidget {
+class TOTAddCustomerAlertDialog extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController emailController;
 
   final VoidCallback onPressed;
 
-  const AlertDialogCustomer(
+  const TOTAddCustomerAlertDialog(
       {super.key,
       required this.nameController,
       required this.emailController,

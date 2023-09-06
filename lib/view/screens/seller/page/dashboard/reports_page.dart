@@ -4,11 +4,8 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/circular_indicator.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/line_chart.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/sales/sales_history_card.dart';
-
-import '../../components/pos/reports/pie_chart_api.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/reports/reports_exp.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
 
 class ReportsPage extends StatefulWidget {
   const ReportsPage({super.key});
@@ -97,7 +94,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.revenuePercentType ==
                                             "plus",
                                         percentage: value.model.revenuePercent
@@ -109,7 +106,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingIcon: Icons
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.ordersPercentType ==
                                             "plus",
                                         percentage: value.model.ordersPercent
@@ -120,7 +117,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.averagePercentType ==
                                             "plus",
                                         percentage: value.model.averagePercent
@@ -148,11 +145,11 @@ class _ReportsPageState extends State<ReportsPage> {
                               color: AppColors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: LineChartMolecule(
+                            child: TOTLineChartMolecule(
                               belowBarGradientColors: gradientColors,
-                              price: price,
+                              xAxis: price,
                               spots: spots,
-                              times: times,
+                              yAxis: times,
                             ),
                           ),
                           const SizedBox(
@@ -193,7 +190,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                             SizedBox(
                                                 height: h * 0.35,
                                                 width: w * 0.3,
-                                                child: const POSPieChart()),
+                                                child: POSPieChart(
+                                                    reportPieModel:
+                                                        value.model)),
                                           ],
                                         ),
                                       ),
@@ -265,7 +264,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 AppColors
                                                                     .blueGrey,
@@ -281,7 +280,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 const Color
                                                                     .fromARGB(
@@ -304,7 +303,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child: CircularIndicatorMolecule(
+                                                    child: TOTCircularProgressWithValueMolecule(
                                                         backgroundColor:
                                                             const Color
                                                                 .fromARGB(255,
@@ -320,7 +319,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                       backgroundColor:
                                                           const Color.fromARGB(
                                                               255,
@@ -364,7 +363,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.revenuePercentType ==
                                             "plus",
                                         percentage: value.model.revenuePercent
@@ -376,7 +375,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingIcon: Icons
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.ordersPercentType ==
                                             "plus",
                                         percentage: value.model.ordersPercent
@@ -387,7 +386,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.averagePercentType ==
                                             "plus",
                                         percentage: value.model.averagePercent
@@ -414,11 +413,11 @@ class _ReportsPageState extends State<ReportsPage> {
                               color: AppColors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: LineChartMolecule(
+                            child: TOTLineChartMolecule(
                               belowBarGradientColors: gradientColors,
-                              price: price,
+                              xAxis: price,
                               spots: spots,
-                              times: times,
+                              yAxis: times,
                             ),
                           ),
                           const SizedBox(
@@ -459,7 +458,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                             SizedBox(
                                                 height: h * 0.35,
                                                 width: w * 0.3,
-                                                child: const POSPieChart()),
+                                                child: POSPieChart(
+                                                  reportPieModel: value.model,
+                                                )),
                                           ],
                                         ),
                                       ),
@@ -531,7 +532,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 AppColors
                                                                     .blueGrey,
@@ -547,7 +548,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 const Color
                                                                     .fromARGB(
@@ -570,7 +571,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child: CircularIndicatorMolecule(
+                                                    child: TOTCircularProgressWithValueMolecule(
                                                         backgroundColor:
                                                             const Color
                                                                 .fromARGB(255,
@@ -586,7 +587,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                       backgroundColor:
                                                           const Color.fromARGB(
                                                               255,
@@ -630,7 +631,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.revenuePercentType ==
                                             "plus",
                                         percentage: value.model.revenuePercent
@@ -642,7 +643,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingIcon: Icons
                                             .account_balance_wallet_rounded,
                                         title: 'Revenue'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.ordersPercentType ==
                                             "plus",
                                         percentage: value.model.ordersPercent
@@ -653,7 +654,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         leadingColor: Colors.greenAccent,
                                         leadingIcon: Icons.shopping_cart,
                                         title: 'Orders'),
-                                    SalesCard(
+                                    TOTSalesCardMolecule(
                                         plus: value.model.averagePercentType ==
                                             "plus",
                                         percentage: value.model.averagePercent
@@ -681,11 +682,11 @@ class _ReportsPageState extends State<ReportsPage> {
                               color: AppColors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: LineChartMolecule(
+                            child: TOTLineChartMolecule(
                               belowBarGradientColors: gradientColors,
-                              price: price,
+                              xAxis: price,
                               spots: spots,
-                              times: times,
+                              yAxis: times,
                             ),
                           ),
                           const SizedBox(
@@ -726,7 +727,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                             SizedBox(
                                                 height: h * 0.35,
                                                 width: w * 0.3,
-                                                child: const POSPieChart()),
+                                                child: POSPieChart(
+                                                    reportPieModel:
+                                                        value.model)),
                                           ],
                                         ),
                                       ),
@@ -798,7 +801,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 AppColors
                                                                     .blueGrey,
@@ -814,7 +817,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                             backgroundColor:
                                                                 const Color
                                                                     .fromARGB(
@@ -837,7 +840,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                 SizedBox(
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child: CircularIndicatorMolecule(
+                                                    child: TOTCircularProgressWithValueMolecule(
                                                         backgroundColor:
                                                             const Color
                                                                 .fromARGB(255,
@@ -853,7 +856,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     width: w * 0.11,
                                                     height: w * 0.11,
                                                     child:
-                                                        CircularIndicatorMolecule(
+                                                        TOTCircularProgressWithValueMolecule(
                                                       backgroundColor:
                                                           const Color.fromARGB(
                                                               255,

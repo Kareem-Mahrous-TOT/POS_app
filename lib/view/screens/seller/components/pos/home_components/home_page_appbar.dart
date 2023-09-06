@@ -1,31 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/category_tab_bar.dart';
 
-class TOTPOSHomePageAppBar extends StatefulWidget {
+class TOTPOSHomePageAppBar extends StatelessWidget {
   final Color? filterColor;
   const TOTPOSHomePageAppBar({
     super.key,
     this.filterColor, //change the initialized data
   });
-
-  @override
-  State<TOTPOSHomePageAppBar> createState() => _TOTPOSHomePageAppBarState();
-}
-
-class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
-  // late CategoriesPaginateResponse categoriesPaginateResponse;
-
-  fetch() async {
-    // categoriesPaginateResponse = await CategoriesRepository.searchCategories();
-  }
-
-  @override
-  void initState() {
-    fetch();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +68,9 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
                           codePoint: 0xf755, color: AppColors.black),
                     )
                   : index == 1
-                      ? CategoryTabBarItem(
-                          isActive: false, onTap: () {}, title: "meat")
-                      : CategoryTabBarItem(
-                          isActive: false,
-                          onTap: () {},
-                          title: "fish",
+                      ? const Text("meat")
+                      : const Text(
+                          "fish",
                         );
             }),
       ),

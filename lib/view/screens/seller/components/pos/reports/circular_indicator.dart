@@ -1,21 +1,23 @@
-
 import 'package:flutter/material.dart';
 
-class CircularIndicatorMolecule extends StatelessWidget {
-  const CircularIndicatorMolecule(
+class TOTCircularProgressWithValueMolecule extends StatelessWidget {
+  final Color? textColor;
+
+  const TOTCircularProgressWithValueMolecule(
       {super.key,
       required this.labelText,
       required this.value,
       required this.color,
       required this.height,
       required this.width,
-      required this.backgroundColor});
+      required this.backgroundColor,
+      this.textColor});
   final String labelText;
   final double value;
   final double height;
   final double width;
-  final Color color;
-  final Color backgroundColor;
+  final Color? color;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +34,15 @@ class CircularIndicatorMolecule extends StatelessWidget {
             height: height,
             child: CircularProgressIndicator(
               value: value / 100,
-              valueColor: AlwaysStoppedAnimation<Color>(color),
+              valueColor: AlwaysStoppedAnimation<Color>(color ?? Colors.black),
               backgroundColor: Colors.transparent,
             ),
           ),
           Center(
             child: Text(
               labelText,
-              style: const TextStyle(
-                color: Colors.black,
+              style: TextStyle(
+                color: textColor ?? Colors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

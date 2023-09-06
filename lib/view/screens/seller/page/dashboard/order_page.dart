@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/order_components/two_dimension_list_view.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/order_components/listview_with_header.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
@@ -31,7 +31,8 @@ class OrderPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          TOTTwoDimensionalListView(
+                          TOTListViewWithHeaderOrganism(
+                            onPressed: () {},
                             headerModel: value.orders,
                           )
                         ],

@@ -3,12 +3,13 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/view/blocs/home/home_cubit.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_comp.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -41,8 +42,16 @@ class HomePage extends StatelessWidget {
                           itemCount: value.products.data.length,
                           itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TOTPOSCardItem(
+                            child: TOTPOSFoodCardItemMolecule(
                                 onTap: () {
+                                  showAdaptiveDialog(
+                                    context: context,
+                                    builder: (context) =>
+                                        const AlertDialog.adaptive(
+                                      content: Text("Adaptive Dialog"),
+                                    ),
+                                  );
+
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -51,13 +60,13 @@ class HomePage extends StatelessWidget {
                                             alignment: Alignment.topRight,
                                             child: IconButton(
                                                 onPressed: () {
-                                                  Navigator.pop(context);
+                                                  context.pop();
                                                 },
                                                 icon: const Icon(Icons.close))),
                                         content: SizedBox(
                                           width: w * 0.6,
                                           height: h * 0.6,
-                                          child: AlertDialogCustom(
+                                          child: POSFoodItemAlertDialog(
                                             data: value.products.data[index]!,
                                           ),
                                         ),

@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-class PieChartFor3Molecule extends StatefulWidget {
+class TOTPieChartFor3Molecule extends StatefulWidget {
   final double value1;
   final String title1;
   final Color? color1;
@@ -15,7 +15,7 @@ class PieChartFor3Molecule extends StatefulWidget {
   final String title3;
   final Color? color3;
 
-  const PieChartFor3Molecule(
+  const TOTPieChartFor3Molecule(
       {super.key,
       required this.value1,
       required this.title1,
@@ -28,10 +28,11 @@ class PieChartFor3Molecule extends StatefulWidget {
       this.color3});
 
   @override
-  State<PieChartFor3Molecule> createState() => _PieChartFor3MoleculeState();
+  State<TOTPieChartFor3Molecule> createState() =>
+      _TOTPieChartFor3MoleculeState();
 }
 
-class _PieChartFor3MoleculeState extends State<PieChartFor3Molecule> {
+class _TOTPieChartFor3MoleculeState extends State<TOTPieChartFor3Molecule> {
   int touchedIndex = -1;
 
   @override

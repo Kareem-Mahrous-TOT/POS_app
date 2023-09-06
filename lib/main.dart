@@ -44,7 +44,8 @@ class MainApp extends StatelessWidget {
                   sl<RecentCustomersCubit>()..loadedRecentCustomers()),
           BlocProvider(create: (context) => sl<OrderCubit>()..loadData()),
           BlocProvider(create: (context) => sl<SalesCubit>()..loadData()),
-          BlocProvider(create: (context) => sl<ReportChartPieCubit>()..loadData()),
+          BlocProvider(
+              create: (context) => sl<ReportChartPieCubit>()..loadData()),
           BlocProvider(create: (context) => sl<ReportCostCubit>()..loadData()),
         ],
         child: const MaterialApp(

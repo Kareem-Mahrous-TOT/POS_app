@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
 import 'package:tot_pos/data/models/products_model.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/pos_counter.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
 
 // int counter = 1;
 
-class AlertDialogCustom extends StatefulWidget {
-  const AlertDialogCustom({
+class POSFoodItemAlertDialog extends StatefulWidget {
+  const POSFoodItemAlertDialog({
     super.key,
     required this.data,
   });
@@ -18,10 +19,10 @@ class AlertDialogCustom extends StatefulWidget {
   final ProductsData data;
 
   @override
-  State<AlertDialogCustom> createState() => _AlertDialogCustomState();
+  State<POSFoodItemAlertDialog> createState() => _POSFoodItemAlertDialogState();
 }
 
-class _AlertDialogCustomState extends State<AlertDialogCustom> {
+class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
   int counter = 1;
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,7 @@ class _AlertDialogCustomState extends State<AlertDialogCustom> {
                       await context.read<ProductsCubit>().updatedList(product);
                       if (mounted) {
                         // context.read<ProductsCubit>().calculateTotalPrice();
-                        Navigator.pop(context);
+                        context.pop();
                       }
                     },
                     textColor: AppColors.black,

@@ -3,10 +3,10 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/customer/recent_customers.dart';
 
-class CustomersList extends StatelessWidget {
+class CustomersListMolecule extends StatelessWidget {
   final List<RecentCustomer> model;
 
-  const CustomersList({super.key, required this.model});
+  const CustomersListMolecule({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {

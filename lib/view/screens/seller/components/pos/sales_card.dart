@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-class SalesCard extends StatelessWidget {
-  const SalesCard({
+class TOTSalesCardMolecule extends StatelessWidget {
+  const TOTSalesCardMolecule({
     super.key,
     this.iconData,
     this.shadowColor,

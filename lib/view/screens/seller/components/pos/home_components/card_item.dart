@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-
-class TOTPOSCardItem extends StatelessWidget {
+class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final String mealName;
 
   final String mealDescription;
 
   final String price;
   final String mealImage;
-  
+
   final VoidCallback onTap;
 
-  const TOTPOSCardItem(
+  const TOTPOSFoodCardItemMolecule(
       {super.key,
       required this.mealName,
       required this.mealDescription,
-      required this.price, required this.mealImage, required this.onTap});
+      required this.price,
+      required this.mealImage,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {

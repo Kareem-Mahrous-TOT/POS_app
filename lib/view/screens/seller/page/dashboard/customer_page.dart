@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/models/customer/recent_customers.dart';
 import 'package:tot_pos/view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/customer/alert_dialog_customer.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/customer/customer_exp.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../components/pos/customer/customer_card.dart';
-import '../../components/pos/customer/recent_customers.dart';
 
 class CustomerPage extends StatelessWidget {
   CustomerPage({
@@ -51,7 +50,7 @@ class CustomerPage extends StatelessWidget {
                                 showDialog(
                                   context: context,
                                   builder: (context) => SizedBox(
-                                      child: AlertDialogCustomer(
+                                      child: TOTAddCustomerAlertDialog(
                                     nameController: nameController,
                                     emailController: emailController,
                                     onPressed: () {
@@ -62,13 +61,11 @@ class CustomerPage extends StatelessWidget {
                                           name: nameController.text,
                                           creationDate:
                                               DateTime.now().toString());
-                                      // setState(() {
-                                      //   mylist!.add(newCustomer);
-                                      // });
+
                                       context
                                           .read<RecentCustomersCubit>()
                                           .updateList(newCustomer);
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   )),
                                 );
@@ -96,7 +93,8 @@ class CustomerPage extends StatelessWidget {
                         return state.map(
                           initial: (value) =>
                               const Center(child: CircularProgressIndicator()),
-                          loadedCurrentCustomerData: (value) => CustomerCard(
+                          loadedCurrentCustomerData: (value) =>
+                              TOTCustomerCardMolecule(
                             code: value.data.code.toString(),
                             customerImage: value.data.customerImage.toString(),
                             email: value.data.email.toString(),
@@ -130,7 +128,7 @@ class CustomerPage extends StatelessWidget {
                               ),
                               SizedBox(
                                   height: h * 0.487,
-                                  child: CustomersList(
+                                  child: CustomersListMolecule(
                                       model: value.data.recentCustomers)),
                             ],
                           ),

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/sales/sales_history_card.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
 
 class SalesPage extends StatefulWidget {
   const SalesPage({super.key});
@@ -35,7 +35,7 @@ class _SalesPageState extends State<SalesPage>
     ),
   ];
 
-  int currentIndex = 2;
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ class _SalesPageState extends State<SalesPage>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  const SalesCard(
+                                  const TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData:
                                         Icons.account_balance_wallet_rounded,
@@ -98,12 +98,12 @@ class _SalesPageState extends State<SalesPage>
                                     title: 'Opening Drawer Account',
                                     percentage: null,
                                   ),
-                                  SalesCard(
+                                  TOTSalesCardMolecule(
                                       cost: "0.00",
                                       iconData: Icons.attach_money_outlined,
                                       shadowColor: Colors.orange[600]!,
                                       title: 'Cash Payment Sale'),
-                                  const SalesCard(
+                                  const TOTSalesCardMolecule(
                                       cost: "0.00",
                                       iconData: Icons.credit_card_outlined,
                                       shadowColor: AppColors.blue,
@@ -240,18 +240,18 @@ class _SalesPageState extends State<SalesPage>
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                const SalesCard(
+                                const TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData:
                                         Icons.account_balance_wallet_rounded,
                                     shadowColor: Colors.greenAccent,
                                     title: 'Opening Drawer Account'),
-                                SalesCard(
+                                TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData: Icons.attach_money_outlined,
                                     shadowColor: Colors.orange[600]!,
                                     title: 'Cash Payment Sale'),
-                                const SalesCard(
+                                const TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData: Icons.credit_card_outlined,
                                     shadowColor: AppColors.blue,
@@ -387,18 +387,18 @@ class _SalesPageState extends State<SalesPage>
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                const SalesCard(
+                                const TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData:
                                         Icons.account_balance_wallet_rounded,
                                     shadowColor: Colors.greenAccent,
                                     title: 'Opening Drawer Account'),
-                                SalesCard(
+                                TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData: Icons.attach_money_outlined,
                                     shadowColor: Colors.orange[600]!,
                                     title: 'Cash Payment Sale'),
-                                const SalesCard(
+                                const TOTSalesCardMolecule(
                                     cost: "0.00",
                                     iconData: Icons.credit_card_outlined,
                                     shadowColor: AppColors.blue,

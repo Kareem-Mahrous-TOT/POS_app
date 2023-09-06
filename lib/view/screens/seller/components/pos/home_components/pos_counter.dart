@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TOTPOSItemCounterMolecule extends StatefulWidget {
+class TOTPOSItemCounterMolecule extends StatelessWidget {
   const TOTPOSItemCounterMolecule(
       {super.key,
       required,
@@ -11,12 +11,6 @@ class TOTPOSItemCounterMolecule extends StatefulWidget {
   final VoidCallback decrement;
   final String value;
   @override
-  State<TOTPOSItemCounterMolecule> createState() =>
-      _TOTPOSItemCounterMoleculeState();
-}
-
-class _TOTPOSItemCounterMoleculeState extends State<TOTPOSItemCounterMolecule> {
-  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,15 +20,15 @@ class _TOTPOSItemCounterMoleculeState extends State<TOTPOSItemCounterMolecule> {
               Icons.add_circle_outline_rounded,
             ),
             onPressed: () {
-              widget.increment;
+              increment;
             }),
-        Text(widget.value),
+        Text(value),
         IconButton(
           icon: const Icon(
             Icons.remove_circle_outline_rounded,
           ),
           onPressed: () {
-            widget.decrement();
+            decrement();
           },
         ),
       ],

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
-import 'package:tot_pos/view/screens/seller/page/dashboard/reports_page.dart';
-import 'package:tot_pos/view/screens/seller/page/dashboard/sales_page.dart';
 
 import '../../../../../core/theme/pallete.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import 'customer_page.dart';
 import 'home_page.dart';
 import 'order_page.dart';
+import 'reports_page.dart';
+import 'sales_page.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -18,7 +18,6 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
-  // final user = LocalStorage.instance.getUser();
   final List<Widget> screens = [
     const HomePage(),
     const OrderPage(),
@@ -65,9 +64,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 ],
                 selectedIconTheme: const IconThemeData(color: Colors.amber),
                 onDestinationSelected: (index) {
-                  // setState(() {
-                  //   currentIndex = index;
-                  // });
                   context
                       .read<LayoutBloc>()
                       .add(LayoutEvent.updateIndex(index));

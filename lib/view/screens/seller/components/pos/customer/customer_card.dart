@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-class CustomerCard extends StatelessWidget {
+class TOTCustomerCardMolecule extends StatelessWidget {
   final String customerImage;
 
   final String email;
 
   final String code;
 
-  const CustomerCard(
+  const TOTCustomerCardMolecule(
       {super.key,
       required this.customerImage,
       required this.email,
