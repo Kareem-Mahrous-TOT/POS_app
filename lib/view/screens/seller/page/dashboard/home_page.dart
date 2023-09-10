@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
@@ -44,14 +41,6 @@ class HomePage extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: TOTPOSFoodCardItemMolecule(
                                 onTap: () {
-                                  showAdaptiveDialog(
-                                    context: context,
-                                    builder: (context) =>
-                                        const AlertDialog.adaptive(
-                                      content: Text("Adaptive Dialog"),
-                                    ),
-                                  );
-
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -60,7 +49,7 @@ class HomePage extends StatelessWidget {
                                             alignment: Alignment.topRight,
                                             child: IconButton(
                                                 onPressed: () {
-                                                  context.pop();
+                                                  Navigator.pop(context);
                                                 },
                                                 icon: const Icon(Icons.close))),
                                         content: SizedBox(
@@ -94,125 +83,115 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      BlocConsumer<ProductsCubit, ProductsState>(
-                          listener: (context, state) {},
+                      BlocBuilder<ProductsCubit, ProductsState>(
                           builder: (context, state) {
-                            return state.maybeMap(
-                              orElse: () {
-                                return const SizedBox();
-                              },
-                              empty: (value) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: w * 0.31,
-                                    color: AppColors.white,
-                                    height: h * 0.5,
-                                    child: const Center(
-                                      child: TOTTextAtom.headLineMedium(
-                                          "The bag is empty",
-                                          color: AppColors.grey),
-                                    ),
-                                  ),
-                                );
-                              },
-                              initial: (value) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: w * 0.31,
-                                    color: AppColors.white,
-                                    height: h * 0.5,
-                                    child: const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                  ),
-                                );
-                              },
-                              updateList: (value) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: w * 0.31,
-                                    color: AppColors.white,
-                                    height: h * 0.5,
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          height: h * 0.4,
-                                          child: ListView.builder(
-                                            itemCount: value.bag.length,
-                                            itemBuilder: (context, index) {
-                                              BagModel item = value.bag[index];
-                                              return Slidable(
-                                                startActionPane: ActionPane(
-                                                    motion:
-                                                        const ScrollMotion(),
-                                                    extentRatio: 0.2,
-                                                    children: [
-                                                      SlidableAction(
-                                                        autoClose: true,
-                                                        flex: 1,
-                                                        onPressed: (context) {
-                                                          log("slidableeeeee removed");
-                                                          context
-                                                              .read<
-                                                                  ProductsCubit>()
-                                                              .clearItem(index);
-                                                        },
-                                                        backgroundColor:
-                                                            const Color(
-                                                                0xFFFE4A49),
-                                                        foregroundColor:
-                                                            Colors.white,
-                                                        icon: Icons.delete,
-                                                        label: 'Delete',
-                                                      ),
-                                                    ]),
-                                                child: ListTile(
-                                                  title: Text(item.itemName),
-                                                  subtitle: Text(
-                                                      'Price: \$${item.itemPrice}'),
-                                                  trailing: Text(
-                                                      'Quantity: ${item.itemQuantity}'),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                'Total Price: ${value.totalPrice.toString()}',
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              TOTButtonAtom.filledButton(
-                                                  backgroundColor:
-                                                      AppColors.orange,
-                                                  text: "Clear list",
-                                                  onPressed: () {
-                                                    context
-                                                        .read<ProductsCubit>()
-                                                        .clearList();
-                                                  },
-                                                  textColor: AppColors.black)
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
+                        return state.map(
+                          empty: (value) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: w * 0.31,
+                                color: AppColors.white,
+                                height: h * 0.5,
+                                child: const Center(
+                                  child: TOTTextAtom.headLineMedium(
+                                      "The bag is empty",
+                                      color: AppColors.grey),
+                                ),
+                              ),
                             );
-                          }),
+                          },
+                          initial: (value) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: w * 0.31,
+                                color: AppColors.white,
+                                height: h * 0.5,
+                                child: const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                            );
+                          },
+                          updateList: (value) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: w * 0.31,
+                                color: AppColors.white,
+                                height: h * 0.5,
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: h * 0.4,
+                                      child: ListView.builder(
+                                        itemCount: value.bag.length,
+                                        itemBuilder: (context, index) {
+                                          BagModel item = value.bag[index];
+                                          return Slidable(
+                                            startActionPane: ActionPane(
+                                                motion: const ScrollMotion(),
+                                                extentRatio: 0.2,
+                                                children: [
+                                                  SlidableAction(
+                                                    autoClose: true,
+                                                    flex: 1,
+                                                    onPressed: (context) {
+                                                      context
+                                                          .read<ProductsCubit>()
+                                                          .clearItem(index);
+                                                    },
+                                                    backgroundColor:
+                                                        const Color(0xFFFE4A49),
+                                                    foregroundColor:
+                                                        Colors.white,
+                                                    icon: Icons.delete,
+                                                    label: 'Delete',
+                                                  ),
+                                                ]),
+                                            child: ListTile(
+                                              title: Text(item.itemName),
+                                              subtitle: Text(
+                                                  'Price: \$${item.itemPrice}'),
+                                              trailing: Text(
+                                                  'Quantity: ${item.itemQuantity}'),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Total Price: ${value.totalPrice.toString()}',
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          TOTButtonAtom.filledButton(
+                                              backgroundColor: AppColors.orange,
+                                              text: "Clear list",
+                                              onPressed: () {
+                                                context
+                                                    .read<ProductsCubit>()
+                                                    .clearList();
+                                              },
+                                              textColor: AppColors.black)
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ],

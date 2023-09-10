@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/pallete.dart';
+import '../../../../blocs/customer/recent_customers/recent_customers_cubit.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
-  const TOTPOSAppBar({super.key});
+  const TOTPOSAppBar({
+    super.key,
+    required this.text,
+  });
+  final String text;
+  // final Function() searchWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -13,44 +21,15 @@ class TOTPOSAppBar extends StatelessWidget {
       elevation: 0.5,
       title: IntrinsicHeight(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 16,
-            ),
-            const Icon(Icons.workspaces_sharp),
-            const SizedBox(
-              height: 12,
-            ),
-            const Text(
-              "Name",
-              style: TextStyle(
+            Text(
+              text,
+              style: const TextStyle(
                   color: AppColors.black, fontWeight: FontWeight.bold),
             ),
-            const VerticalDivider(),
-            const SizedBox(
-              height: 30,
-            ),
-            const Expanded(
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.search,
-                    size: 20,
-                    color: AppColors.black,
-                  ),
-                  SizedBox(
-                    width: 17,
-                  ),
-                ],
-              ),
-            ),
-            const VerticalDivider(),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.abc_rounded,
-                  color: AppColors.black,
-                )),
+            const VerticalDivider(thickness: 1),
+            SizedBox(width: 1000.w, child: const SearchWidget()),
             IconButton(
                 onPressed: () {
                   showDialog(
@@ -74,6 +53,53 @@ class TOTPOSAppBar extends StatelessWidget {
                 )),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SearchWidget extends StatefulWidget {
+  const SearchWidget({super.key});
+
+  @override
+  State<SearchWidget> createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  late TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SearchBar(
+      leading: const Icon(
+        Icons.search,
+        color: AppColors.black,
+      ),
+      elevation: const MaterialStatePropertyAll(0),
+      controller: controller,
+      onChanged: (onChangedValue) {
+        context.read<RecentCustomersCubit>().add(
+              RecentCustomersEvent.searchList(
+                query: controller.text.trim(),
+              ),
+            );
+      },
+      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+      hintText: "Search",
+      hintStyle: const MaterialStatePropertyAll(
+        TextStyle(color: AppColors.grey),
       ),
     );
   }

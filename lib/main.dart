@@ -1,4 +1,6 @@
 // import 'package:bloc/bloc.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +10,7 @@ import 'package:tot_pos/view/blocs/customer/current_customer/current_customer_cu
 import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_cubit.dart';
 import 'package:tot_pos/view/blocs/layout/layout_bloc.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
+import 'package:tot_pos/view/blocs/products/bloc/product_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
@@ -20,6 +23,7 @@ import 'view/blocs/home/home_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
+  Bloc.observer = MyBlocObserver();
   setUpDependencies();
   runApp(const MainApp());
 }
@@ -38,10 +42,13 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => sl<ProductsCubit>()..fetch()),
           BlocProvider(
               create: (context) =>
-                  sl<CurrentCustomerCubit>()..loadCurrentCustomerData()),
+                  sl<ProductBloc>()..add(ProductEvent.fetch())),
           BlocProvider(
               create: (context) =>
-                  sl<RecentCustomersCubit>()..loadedRecentCustomers()),
+                  sl<CurrentCustomerCubit>()..loadCurrentCustomerData()),
+          BlocProvider(
+              create: (context) => sl<RecentCustomersCubit>()
+                ..add(const RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(create: (context) => sl<OrderCubit>()..loadData()),
           BlocProvider(create: (context) => sl<SalesCubit>()..loadData()),
           BlocProvider(
@@ -56,5 +63,31 @@ class MainApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyBlocObserver extends BlocObserver {
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    log('onCreate -- ${bloc.runtimeType}');
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    log('onChange -- ${bloc.runtimeType}, $change');
+  }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    log('onError -- ${bloc.runtimeType}, $error');
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    log('onClose -- ${bloc.runtimeType}');
   }
 }

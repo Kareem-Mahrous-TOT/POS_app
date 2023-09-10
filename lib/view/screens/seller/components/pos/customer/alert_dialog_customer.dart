@@ -17,6 +17,7 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      
       title: Column(children: [
         TextFormField(
           controller: emailController,

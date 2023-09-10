@@ -4,10 +4,8 @@ part of 'recent_customers_cubit.dart';
 class RecentCustomersState with _$RecentCustomersState {
   factory RecentCustomersState.initial() = _Initial;
 
-  factory RecentCustomersState.loadedRecentCustomerData(
-      RecentCustomers data) = _LoadedRecentCustomerData;
-  // factory RecentCustomersState.empty() = _EmptyState;
-
-  // factory RecentCustomersState.updateList(
-  //     {required List<RecentCustomer> custList}) = _UpdateListState;
+  factory RecentCustomersState.loadedRecentCustomerData({
+    required List<RecentCustomer> data,
+    bool? isSearching,
+  }) = _LoadedRecentCustomerData;
 }

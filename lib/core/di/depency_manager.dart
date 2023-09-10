@@ -11,6 +11,7 @@ import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_cu
 import 'package:tot_pos/view/blocs/home/home_cubit.dart';
 import 'package:tot_pos/view/blocs/layout/layout_bloc.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
+import 'package:tot_pos/view/blocs/products/bloc/product_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
@@ -37,33 +38,5 @@ void setUpDependencies() {
   sl.registerFactory<SalesCubit>(() => SalesCubit());
   sl.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());
   sl.registerFactory<ReportCostCubit>(() => ReportCostCubit());
-
-  // sl.registerLazySingleton<HttpService>(() => HttpService());
-  // sl.registerSingleton<SettingsRepository>(SettingsSettingsRepositoryImpl());
-  // sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
-  // sl.registerSingleton<ProductsRepository>(ProductsRepositoryImpl());
-  // sl.registerSingleton<ShopsRepository>(ShopsRepositoryImpl());
-  // sl.registerSingleton<BrandsRepository>(BrandsRepositoryImpl());
-  // sl.registerSingleton<GalleryRepositoryFacade>(GalleryRepository());
-  // sl.registerSingleton(CategoriesRepository());
-  // sl.registerSingleton<CurrenciesRepository>(CurrenciesRepositoryImpl());
-  // sl.registerSingleton<PaymentsRepository>(PaymentsRepositoryImpl());
-  // sl.registerSingleton<OrdersRepository>(OrdersRepositoryImpl());
-  // sl.registerSingleton<NotificationRepository>(NotificationRepositoryImpl());
-  // sl.registerSingleton<UsersRepository>(UsersRepositoryImpl());
-  // sl.registerSingleton<TableRepository>(TableRepositoryIml());
+  sl.registerFactory<ProductBloc>(() => ProductBloc());
 }
-
-// final settingsRepository = sl.get<SettingsRepository>();
-// final authRepository = sl.get<AuthRepository>();
-// final productsRepository = sl.get<ProductsRepository>();
-// final shopsRepository = sl.get<ShopsRepository>();
-// final brandsRepository = sl.get<BrandsRepository>();
-// final galleryRepository = sl.get<GalleryRepositoryFacade>();
-// final categoriesRepository = sl.get<CategoriesRepository>();
-// final currenciesRepository = sl.get<CurrenciesRepository>();
-// final paymentsRepository = sl.get<PaymentsRepository>();
-// final ordersRepository = sl.get<OrdersRepository>();
-// final notificationRepository = sl.get<NotificationRepository>();
-// final usersRepository = sl.get<UsersRepository>();
-// final tableRepository = sl.get<TableRepository>();

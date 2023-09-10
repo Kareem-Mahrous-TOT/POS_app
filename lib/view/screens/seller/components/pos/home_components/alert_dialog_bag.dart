@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/bag/bag_model.dart';
@@ -89,8 +88,8 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
 
                       await context.read<ProductsCubit>().updatedList(product);
                       if (mounted) {
-                        // context.read<ProductsCubit>().calculateTotalPrice();
-                        context.pop();
+                        Navigator.pop(
+                            context); // context.read<ProductsCubit>().calculateTotalPrice();
                       }
                     },
                     textColor: AppColors.black,

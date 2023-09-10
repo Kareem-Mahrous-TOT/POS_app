@@ -68,9 +68,16 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
                           codePoint: 0xf755, color: AppColors.black),
                     )
                   : index == 1
-                      ? const Text("meat")
+                      ? const Padding(
+                          padding: EdgeInsets.only(right: 16.0, left: 8.0),
+                          child: Text(
+                            "meat",
+                            style: TextStyle(fontSize: 30),
+                          ),
+                        )
                       : const Text(
                           "fish",
+                          style: TextStyle(fontSize: 30),
                         );
             }),
       ),

@@ -19,18 +19,13 @@ class TOTPOSItemCounterMolecule extends StatelessWidget {
             icon: const Icon(
               Icons.add_circle_outline_rounded,
             ),
-            onPressed: () {
-              increment;
-            }),
+            onPressed: increment),
         Text(value),
         IconButton(
-          icon: const Icon(
-            Icons.remove_circle_outline_rounded,
-          ),
-          onPressed: () {
-            decrement();
-          },
-        ),
+            icon: const Icon(
+              Icons.remove_circle_outline_rounded,
+            ),
+            onPressed: decrement),
       ],
     );
   }
