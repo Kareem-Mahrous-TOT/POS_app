@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tot_pos/core/routes/route_paths.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
 
 import '../../../../../core/theme/pallete.dart';
@@ -34,66 +36,87 @@ class _LayoutScreenState extends State<LayoutScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: TOTPOSAppBar(
-          // searchWidget: () {},
-          text: headerName[2],
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(135, 138, 212, 244),
-      body: BlocBuilder<LayoutBloc, LayoutState>(
-        builder: (context, state) {
-          final selectedIndex = state.map(
-              initial: (value) => 0, updateIndex: (value) => value.index);
-          return SafeArea(
-            child: Row(
-              children: [
-                NavigationRail(
-                  minWidth: 90,
-                  selectedIndex: selectedIndex,
-                  selectedLabelTextStyle: const TextStyle(
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                  backgroundColor: AppColors.white,
-                  unselectedLabelTextStyle:
-                      const TextStyle(color: AppColors.green),
-                  destinations: const [
-                    NavigationRailDestination(
-                        icon: Icon(Icons.ac_unit_sharp),
-                        label: Text('Dashboard')),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.shopping_bag), label: Text('Orders')),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.man), label: Text('Customers')),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.attach_money), label: Text('Sales')),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.add_chart), label: Text('Reports')),
-                  ],
-                  selectedIconTheme: const IconThemeData(color: Colors.amber),
-                  onDestinationSelected: (index) {
-                    context
-                        .read<LayoutBloc>()
-                        .add(LayoutEvent.updateIndex(index));
-                  },
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: const NeverScrollableScrollPhysics(),
+    return BlocBuilder<LayoutBloc, LayoutState>(
+      builder: (context, state) {
+        final selectedIndex = state.map(
+            initial: (value) => 0, updateIndex: (value) => value.index);
+        return Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: TOTPOSAppBar(
+                selectedIndex: selectedIndex,
+              ),
+            ),
+            backgroundColor: const Color.fromARGB(135, 138, 212, 244),
+            body: SafeArea(
+              child: Row(
+                children: [
+                  Container(
+                    color: AppColors.white,
                     child: Column(
-                      children: [screens[selectedIndex]],
+                      children: [
+                        Expanded(
+                          flex: 6,
+                          child: NavigationRail(
+                            minWidth: 90,
+                            selectedIndex: selectedIndex,
+                            selectedLabelTextStyle: const TextStyle(
+                                color: AppColors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                            backgroundColor: AppColors.white,
+                            unselectedLabelTextStyle:
+                                const TextStyle(color: AppColors.green),
+                            destinations: const [
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.ac_unit_sharp),
+                                  label: Text('Dashboard')),
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.shopping_bag),
+                                  label: Text('Orders')),
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.man),
+                                  label: Text('Customers')),
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.attach_money),
+                                  label: Text('Sales')),
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.add_chart),
+                                  label: Text('Reports')),
+                            ],
+                            selectedIconTheme:
+                                const IconThemeData(color: Colors.amber),
+                            onDestinationSelected: (index) {
+                              context
+                                  .read<LayoutBloc>()
+                                  .add(LayoutEvent.updateIndex(index));
+                            },
+                          ),
+                        ),
+                        Expanded(
+                            flex: 1,
+                            child: IconButton(
+                              icon: const Icon(Icons.exit_to_app_rounded),
+                              onPressed: () {
+                                context.go(RoutePaths.login);
+                              },
+                            ))
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      child: Column(
+                        children: [screens[selectedIndex]],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ));
+      },
     );
   }
 }

@@ -1,4 +1,4 @@
-import '../../../core/utils/json_handlers.dart';
+import '../../../core/utils/json_decoder.dart';
 import '../../models/products_model.dart';
 
 class HomeRepo {

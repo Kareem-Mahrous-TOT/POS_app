@@ -68,9 +68,10 @@ class _ReportsPageState extends State<ReportsPage> {
                       unselectedLabelColor: AppColors.white,
                       labelColor: Colors.greenAccent,
                       indicator: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          color: Colors.greenAccent,
-                          borderRadius: BorderRadius.circular(10)),
+                        shape: BoxShape.rectangle,
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       tabs: tabs,
                     ),
                   ),
@@ -188,11 +189,11 @@ class _ReportsPageState extends State<ReportsPage> {
                                                   "Statistics"),
                                             ),
                                             SizedBox(
-                                                height: h * 0.35,
-                                                width: w * 0.3,
-                                                child: POSPieChart(
-                                                    reportPieModel:
-                                                        value.model)),
+                                              height: h * 0.35,
+                                              width: w * 0.3,
+                                              child: POSPieChart(
+                                                  reportPieModel: value.model),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -261,79 +262,77 @@ class _ReportsPageState extends State<ReportsPage> {
                                                   MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 SizedBox(
-                                                    width: w * 0.11,
-                                                    height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                            backgroundColor:
-                                                                AppColors
-                                                                    .blueGrey,
-                                                            width: w * 0.11,
-                                                            height: w * 0.11,
-                                                            labelText: "Ready",
-                                                            value: value.model
-                                                                .ready.percent
-                                                                .toDouble(),
-                                                            color: AppColors
-                                                                .black)),
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                          backgroundColor:
+                                                              AppColors
+                                                                  .blueGrey,
+                                                          width: w * 0.11,
+                                                          height: w * 0.11,
+                                                          labelText: "Ready",
+                                                          value: value.model
+                                                              .ready.percent
+                                                              .toDouble(),
+                                                          color:
+                                                              AppColors.black),
+                                                ),
                                                 SizedBox(
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                    backgroundColor:
+                                                        const Color.fromARGB(
+                                                            255, 217, 210, 149),
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                            backgroundColor:
-                                                                const Color
-                                                                    .fromARGB(
-                                                                    255,
-                                                                    217,
-                                                                    210,
-                                                                    149),
-                                                            width: w * 0.11,
-                                                            height: w * 0.11,
-                                                            labelText:
-                                                                "Delivered",
-                                                            value: value
-                                                                .model
-                                                                .delivered
-                                                                .percent
-                                                                .toDouble(),
-                                                            color: const Color
-                                                                .fromARGB(255,
-                                                                255, 230, 2))),
+                                                    labelText: "Delivered",
+                                                    value: value
+                                                        .model.delivered.percent
+                                                        .toDouble(),
+                                                    color: const Color.fromARGB(
+                                                        255, 255, 230, 2),
+                                                  ),
+                                                ),
                                                 SizedBox(
-                                                    width: w * 0.11,
-                                                    height: w * 0.11,
-                                                    child: TOTCircularProgressWithValueMolecule(
-                                                        backgroundColor:
-                                                            const Color
-                                                                .fromARGB(255,
-                                                                144, 215, 146),
-                                                        width: w * 0.11,
-                                                        height: w * 0.11,
-                                                        labelText: "Accepted",
-                                                        value: value.model
-                                                            .accepted.percent
-                                                            .toDouble(),
-                                                        color: Colors.green)),
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                          backgroundColor:
+                                                              const Color
+                                                                  .fromARGB(
+                                                                  255,
+                                                                  144,
+                                                                  215,
+                                                                  146),
+                                                          width: w * 0.11,
+                                                          height: w * 0.11,
+                                                          labelText: "Accepted",
+                                                          value: value.model
+                                                              .accepted.percent
+                                                              .toDouble(),
+                                                          color: Colors.green),
+                                                ),
                                                 SizedBox(
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                    backgroundColor:
+                                                        const Color.fromARGB(
+                                                            255, 227, 167, 167),
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                      backgroundColor:
-                                                          const Color.fromARGB(
-                                                              255,
-                                                              227,
-                                                              167,
-                                                              167),
-                                                      width: w * 0.11,
-                                                      height: w * 0.11,
-                                                      labelText: "Canceled",
-                                                      value: value.model
-                                                          .canceled.percent
-                                                          .toDouble(),
-                                                      color: Colors.red,
-                                                    )),
+                                                    labelText: "Canceled",
+                                                    value: value
+                                                        .model.canceled.percent
+                                                        .toDouble(),
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ],
@@ -725,11 +724,11 @@ class _ReportsPageState extends State<ReportsPage> {
                                                   "Statistics"),
                                             ),
                                             SizedBox(
-                                                height: h * 0.35,
-                                                width: w * 0.3,
-                                                child: POSPieChart(
-                                                    reportPieModel:
-                                                        value.model)),
+                                              height: h * 0.35,
+                                              width: w * 0.3,
+                                              child: POSPieChart(
+                                                  reportPieModel: value.model),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -760,7 +759,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                       Icons.star,
                                                       color: AppColors.black,
                                                     ),
-                                                    Text("Ready")
+                                                    Text("Ready"),
                                                   ],
                                                 ),
                                                 Row(
@@ -770,7 +769,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                       color: Color.fromARGB(
                                                           255, 255, 230, 2),
                                                     ),
-                                                    Text("Deliverd")
+                                                    Text("Deliverd"),
                                                   ],
                                                 ),
                                                 Row(
@@ -798,79 +797,77 @@ class _ReportsPageState extends State<ReportsPage> {
                                                   MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 SizedBox(
-                                                    width: w * 0.11,
-                                                    height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                            backgroundColor:
-                                                                AppColors
-                                                                    .blueGrey,
-                                                            width: w * 0.11,
-                                                            height: w * 0.11,
-                                                            labelText: "Ready",
-                                                            value: value.model
-                                                                .ready.percent
-                                                                .toDouble(),
-                                                            color: AppColors
-                                                                .black)),
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                          backgroundColor:
+                                                              AppColors
+                                                                  .blueGrey,
+                                                          width: w * 0.11,
+                                                          height: w * 0.11,
+                                                          labelText: "Ready",
+                                                          value: value.model
+                                                              .ready.percent
+                                                              .toDouble(),
+                                                          color:
+                                                              AppColors.black),
+                                                ),
                                                 SizedBox(
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                    backgroundColor:
+                                                        const Color.fromARGB(
+                                                            255, 217, 210, 149),
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                            backgroundColor:
-                                                                const Color
-                                                                    .fromARGB(
-                                                                    255,
-                                                                    217,
-                                                                    210,
-                                                                    149),
-                                                            width: w * 0.11,
-                                                            height: w * 0.11,
-                                                            labelText:
-                                                                "Delivered",
-                                                            value: value
-                                                                .model
-                                                                .delivered
-                                                                .percent
-                                                                .toDouble(),
-                                                            color: const Color
-                                                                .fromARGB(255,
-                                                                255, 230, 2))),
+                                                    labelText: "Delivered",
+                                                    value: value
+                                                        .model.delivered.percent
+                                                        .toDouble(),
+                                                    color: const Color.fromARGB(
+                                                        255, 255, 230, 2),
+                                                  ),
+                                                ),
                                                 SizedBox(
-                                                    width: w * 0.11,
-                                                    height: w * 0.11,
-                                                    child: TOTCircularProgressWithValueMolecule(
-                                                        backgroundColor:
-                                                            const Color
-                                                                .fromARGB(255,
-                                                                144, 215, 146),
-                                                        width: w * 0.11,
-                                                        height: w * 0.11,
-                                                        labelText: "Accepted",
-                                                        value: value.model
-                                                            .accepted.percent
-                                                            .toDouble(),
-                                                        color: Colors.green)),
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                          backgroundColor:
+                                                              const Color
+                                                                  .fromARGB(
+                                                                  255,
+                                                                  144,
+                                                                  215,
+                                                                  146),
+                                                          width: w * 0.11,
+                                                          height: w * 0.11,
+                                                          labelText: "Accepted",
+                                                          value: value.model
+                                                              .accepted.percent
+                                                              .toDouble(),
+                                                          color: Colors.green),
+                                                ),
                                                 SizedBox(
+                                                  width: w * 0.11,
+                                                  height: w * 0.11,
+                                                  child:
+                                                      TOTCircularProgressWithValueMolecule(
+                                                    backgroundColor:
+                                                        const Color.fromARGB(
+                                                            255, 227, 167, 167),
                                                     width: w * 0.11,
                                                     height: w * 0.11,
-                                                    child:
-                                                        TOTCircularProgressWithValueMolecule(
-                                                      backgroundColor:
-                                                          const Color.fromARGB(
-                                                              255,
-                                                              227,
-                                                              167,
-                                                              167),
-                                                      width: w * 0.11,
-                                                      height: w * 0.11,
-                                                      labelText: "Canceled",
-                                                      value: value.model
-                                                          .canceled.percent
-                                                          .toDouble(),
-                                                      color: Colors.red,
-                                                    )),
+                                                    labelText: "Canceled",
+                                                    value: value
+                                                        .model.canceled.percent
+                                                        .toDouble(),
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ],

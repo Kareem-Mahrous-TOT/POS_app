@@ -9,12 +9,13 @@ class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
   @override
   Widget build(BuildContext context) {
-    // double w = MediaQuery.of(context).size.width;
-    // double h = MediaQuery.of(context).size.height;
+  //   double w = MediaQuery.of(context).size.width;
+  //   double h = MediaQuery.of(context).size.height;
     return BlocBuilder<OrderCubit, OrderState>(
       builder: (context, state) {
         return state.map(
-            initial: (value) => const CircularProgressIndicator(),
+            initial: (value) =>
+                const Center(child: CircularProgressIndicator()),
             loadSuccess: (value) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -1,4 +1,4 @@
-part of 'recent_customers_cubit.dart';
+part of 'recent_customers_bloc.dart';
 
 @unfreezed
 class RecentCustomersState with _$RecentCustomersState {

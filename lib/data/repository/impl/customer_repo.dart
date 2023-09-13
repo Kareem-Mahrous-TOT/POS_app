@@ -1,4 +1,4 @@
-import 'package:tot_pos/core/utils/json_handlers.dart';
+import 'package:tot_pos/core/utils/json_decoder.dart';
 import 'package:tot_pos/data/models/customer/current_customer.dart';
 import 'package:tot_pos/data/models/customer/recent_customers.dart';
 

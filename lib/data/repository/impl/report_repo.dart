@@ -1,4 +1,4 @@
-import 'package:tot_pos/core/utils/json_handlers.dart';
+import 'package:tot_pos/core/utils/json_decoder.dart';
 import 'package:tot_pos/data/models/reports/cost_model.dart';
 import 'package:tot_pos/data/models/reports/statistic_model.dart';
 

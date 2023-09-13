@@ -54,33 +54,24 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
     return Card(
       color: AppColors.white,
       child: SizedBox(
-        width: w * 0.6,
-        height: h * 0.05,
-        child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return index == 0
-                  ? const Padding(
-                      padding: EdgeInsets.only(right: 6),
-                      child: TOTIconAtom.displayMedium(
-                          codePoint: 0xf755, color: AppColors.black),
-                    )
-                  : index == 1
-                      ? const Padding(
-                          padding: EdgeInsets.only(right: 16.0, left: 8.0),
-                          child: Text(
-                            "meat",
-                            style: TextStyle(fontSize: 30),
-                          ),
-                        )
-                      : const Text(
-                          "fish",
-                          style: TextStyle(fontSize: 30),
-                        );
-            }),
-      ),
+          width: w * 0.6,
+          height: h * 0.05,
+          child: const Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 6),
+                child: TOTIconAtom.displayMedium(
+                    codePoint: 0xf755, color: AppColors.black),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 16.0, left: 8.0),
+                child: Text(
+                  "All",
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
+            ],
+          )),
     );
   }
 }

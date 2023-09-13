@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../../../blocs/customer/recent_customers/recent_customers_cubit.dart';
+import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
-  const TOTPOSAppBar({
-    super.key,
-    required this.text,
-  });
-  final String text;
-  // final Function() searchWidget;
+  const TOTPOSAppBar({super.key, required this.selectedIndex});
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +21,17 @@ class TOTPOSAppBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              text,
-              style: const TextStyle(
-                  color: AppColors.black, fontWeight: FontWeight.bold),
+            TOTImageAtom.asset(
+              "assets/ic_launcher.png",
+              width: 50.w,
+              height: 50.h,
             ),
             const VerticalDivider(thickness: 1),
-            SizedBox(width: 1000.w, child: const SearchWidget()),
+            SizedBox(
+                width: 1000.w,
+                child: SearchWidget(
+                  selectedIndex: selectedIndex,
+                )),
             IconButton(
                 onPressed: () {
                   showDialog(
@@ -59,7 +61,8 @@ class TOTPOSAppBar extends StatelessWidget {
 }
 
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({super.key});
+  const SearchWidget({super.key, required this.selectedIndex});
+  final int selectedIndex;
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
@@ -90,11 +93,22 @@ class _SearchWidgetState extends State<SearchWidget> {
       elevation: const MaterialStatePropertyAll(0),
       controller: controller,
       onChanged: (onChangedValue) {
-        context.read<RecentCustomersCubit>().add(
-              RecentCustomersEvent.searchList(
-                query: controller.text.trim(),
-              ),
-            );
+        // if(widget.selectedIndex == 0){
+
+        switch (widget.selectedIndex) {
+          case 0:
+            context.read<HomeBloc>().add(
+                  HomeEvent.searchList(
+                    query: controller.text.trim(),
+                  ),
+                );
+          case 2:
+            context.read<RecentCustomersBloc>().add(
+                  RecentCustomersEvent.searchList(
+                    query: controller.text.trim(),
+                  ),
+                );
+        }
       },
       backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
       hintText: "Search",

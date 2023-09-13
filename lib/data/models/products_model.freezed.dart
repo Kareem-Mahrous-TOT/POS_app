@@ -20,7 +20,7 @@ ProductsModel _$ProductsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductsModel {
-  List<ProductsData?> get data => throw _privateConstructorUsedError;
+  List<ProductsData> get data => throw _privateConstructorUsedError;
   Links? get links => throw _privateConstructorUsedError;
   Meta? get meta => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $ProductsModelCopyWith<$Res> {
           ProductsModel value, $Res Function(ProductsModel) then) =
       _$ProductsModelCopyWithImpl<$Res, ProductsModel>;
   @useResult
-  $Res call({List<ProductsData?> data, Links? links, Meta? meta});
+  $Res call({List<ProductsData> data, Links? links, Meta? meta});
 
   $LinksCopyWith<$Res>? get links;
   $MetaCopyWith<$Res>? get meta;
@@ -63,7 +63,7 @@ class _$ProductsModelCopyWithImpl<$Res, $Val extends ProductsModel>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ProductsData?>,
+              as List<ProductsData>,
       links: freezed == links
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ abstract class _$$_ProductsModelCopyWith<$Res>
       __$$_ProductsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ProductsData?> data, Links? links, Meta? meta});
+  $Res call({List<ProductsData> data, Links? links, Meta? meta});
 
   @override
   $LinksCopyWith<$Res>? get links;
@@ -135,7 +135,7 @@ class __$$_ProductsModelCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ProductsData?>,
+              as List<ProductsData>,
       links: freezed == links
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ class __$$_ProductsModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductsModel implements _ProductsModel {
   _$_ProductsModel(
-      {required final List<ProductsData?> data,
+      {required final List<ProductsData> data,
       required this.links,
       required this.meta})
       : _data = data;
@@ -160,9 +160,9 @@ class _$_ProductsModel implements _ProductsModel {
   factory _$_ProductsModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductsModelFromJson(json);
 
-  final List<ProductsData?> _data;
+  final List<ProductsData> _data;
   @override
-  List<ProductsData?> get data {
+  List<ProductsData> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -209,7 +209,7 @@ class _$_ProductsModel implements _ProductsModel {
 
 abstract class _ProductsModel implements ProductsModel {
   factory _ProductsModel(
-      {required final List<ProductsData?> data,
+      {required final List<ProductsData> data,
       required final Links? links,
       required final Meta? meta}) = _$_ProductsModel;
 
@@ -217,7 +217,7 @@ abstract class _ProductsModel implements ProductsModel {
       _$_ProductsModel.fromJson;
 
   @override
-  List<ProductsData?> get data;
+  List<ProductsData> get data;
   @override
   Links? get links;
   @override

@@ -1,6 +1,3 @@
-
-// ignore_for_file: invalid_annotation_target
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'products_model.freezed.dart';
@@ -9,7 +6,7 @@ part 'products_model.g.dart';
 @freezed
 class ProductsModel with _$ProductsModel {
   factory ProductsModel({
-    required List<ProductsData?> data,
+    required List<ProductsData> data,
     required Links? links,
     required Meta? meta,
   }) = _ProductsModel;
@@ -46,7 +43,8 @@ class ProductsData with _$ProductsData {
     required dynamic unit,
   }) = _ProductsData;
 
-  factory ProductsData.fromJson(Map<String, dynamic> json) => _$ProductsDataFromJson(json);
+  factory ProductsData.fromJson(Map<String, dynamic> json) =>
+      _$ProductsDataFromJson(json);
 }
 
 @freezed

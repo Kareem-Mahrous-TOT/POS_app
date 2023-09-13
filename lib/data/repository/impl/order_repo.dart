@@ -1,6 +1,6 @@
 import 'package:tot_pos/data/models/order/order_header.dart';
 
-import '../../../core/utils/json_handlers.dart';
+import '../../../core/utils/json_decoder.dart';
 
 class OrderRepo {
   Future<OrderHeader> fetch() async {

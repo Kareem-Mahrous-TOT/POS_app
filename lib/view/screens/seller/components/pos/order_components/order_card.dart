@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/models/order/order_header.dart';
@@ -60,9 +58,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       TOTIconButtonAtom.displayMedium(
                           codePoint: 0xf8d9,
                           iconColor: AppColors.black,
-                          onPressed: () {
-                            log("IconButton in Card pressed ----");
-                          }),
+                          onPressed: () {}),
                     ],
                   ),
                   const Padding(

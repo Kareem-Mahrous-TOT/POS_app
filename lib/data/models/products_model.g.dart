@@ -9,9 +9,7 @@ part of 'products_model.dart';
 _$_ProductsModel _$$_ProductsModelFromJson(Map<String, dynamic> json) =>
     _$_ProductsModel(
       data: (json['data'] as List<dynamic>)
-          .map((e) => e == null
-              ? null
-              : ProductsData.fromJson(e as Map<String, dynamic>))
+          .map((e) => ProductsData.fromJson(e as Map<String, dynamic>))
           .toList(),
       links: json['links'] == null
           ? null
