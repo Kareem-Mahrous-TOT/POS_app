@@ -20,7 +20,7 @@ class _SignupPageState extends State<SignupPage> {
 
   late TextEditingController passwordController;
 
-  late TextEditingController phoneController;
+  late TextEditingController emailController;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -29,14 +29,14 @@ class _SignupPageState extends State<SignupPage> {
     super.initState();
     usernameController = TextEditingController();
     passwordController = TextEditingController();
-    phoneController = TextEditingController();
+    emailController = TextEditingController();
   }
 
   @override
   void dispose() {
     usernameController.dispose();
     passwordController.dispose();
-    phoneController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
@@ -92,8 +92,8 @@ class _SignupPageState extends State<SignupPage> {
                           lowerText: "Please Enter your email and password",
                           upperText: "Welcome Back",
                           buttonWidth: 300.w,
-                          phoneController: phoneController,
-                          emailController: usernameController,
+                          usernameController: usernameController,
+                          emailController: emailController,
                           passwordController: passwordController,
                           textColor: AppColors.black,
                           loginColor: Colors.greenAccent,
@@ -137,6 +137,7 @@ class _SignupPageState extends State<SignupPage> {
                             // if (formKey.currentState!.validate()) {
                             context.read<AuthBloc>().add(
                                   AuthEvent.loadingSignupData(
+                                    email: emailController.text,
                                     username: usernameController.text,
                                     password: passwordController.text,
                                   ),
@@ -197,7 +198,7 @@ class TOTSignUpOrganismCustomWidget extends TOTWidget {
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final TextEditingController phoneController;
+  final TextEditingController usernameController;
 
   final VoidCallback onPressed;
   final VoidCallback loginonPressed;
@@ -213,17 +214,19 @@ class TOTSignUpOrganismCustomWidget extends TOTWidget {
 
   final String? Function(String?)? validatorEmail;
   final String? Function(String?)? validatorPassword;
+  final String? Function(String?)? validatorUsername;
 
   const TOTSignUpOrganismCustomWidget({
     this.validatorEmail,
     this.validatorPassword,
+    this.validatorUsername,
     required this.widget,
     super.key,
     required this.lowerText,
     required this.upperText,
     required this.emailController,
     required this.passwordController,
-    required this.phoneController,
+    required this.usernameController,
     required this.onPressed,
     required this.buttonBackgroundColor,
     required this.loginonPressed,
@@ -306,9 +309,9 @@ class TOTSignUpOrganismCustomWidget extends TOTWidget {
         ),
         const SizedBox(height: 10),
         TextFormField(
-          controller: phoneController,
+          controller: usernameController,
           decoration: InputDecoration(
-            hintText: "Phone Number",
+            hintText: "Username",
             disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(color: AppColors.grey)),

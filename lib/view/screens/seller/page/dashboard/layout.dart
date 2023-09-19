@@ -36,10 +36,32 @@ class _LayoutScreenState extends State<LayoutScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LayoutBloc, LayoutState>(
+    
+    return BlocConsumer<LayoutBloc, LayoutState>(
+      listener: (context, state) {
+        state.maybeMap(
+          orElse: () {},
+          logoutSuccess: (value) {
+            context.go(RoutePaths.login);
+          },
+          logoutFailed: (value) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Center(
+                  child: Text(
+                    value.toString(),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
       builder: (context, state) {
-        final selectedIndex = state.map(
-            initial: (value) => 0, updateIndex: (value) => value.index);
+        final selectedIndex = state.maybeMap(
+            orElse: () => 0,
+            initial: (value) => 0,
+            updateIndex: (value) => value.index);
         return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: PreferredSize(
@@ -99,7 +121,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                             child: IconButton(
                               icon: const Icon(Icons.exit_to_app_rounded),
                               onPressed: () {
-                                context.go(RoutePaths.login);
+                                context
+                                    .read<LayoutBloc>()
+                                    .add(const LayoutEvent.logout());
                               },
                             ))
                       ],

@@ -13,6 +13,7 @@ dependencies:
   cached_network_image: null
   dartz: ^0.10.1
   dio: ^5.3.2
+  logger: ^2.0.2
   fl_chart: ^0.63.0
   flutter:
     sdk: flutter

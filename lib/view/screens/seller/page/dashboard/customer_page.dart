@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 
 import '../../../../../core/theme/pallete.dart';
-import '../../../../../data/models/customer/recent_customers.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
@@ -53,22 +53,15 @@ class CustomerPage extends StatelessWidget {
                                 nameController: nameController,
                                 emailController: emailController,
                                 onPressed: () {
-                                  DateTime now = DateTime.now();
-                                  final newCustomer = RecentCustomer(
-                                      email: emailController.text,
-                                      customerListImage:
-                                          "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
-                                      name: nameController.text,
-                                      creationDate: DateTime(
-                                              now.year,
-                                              now.month,
-                                              now.day,
-                                              now.hour,
-                                              now.minute)
-                                          .toString());
+                                  final newCustomer = Member(
+                                    emails: [emailController.text],
+                                    iconUrl:
+                                        "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
+                                    name: nameController.text,
+                                  );
 
                                   context.read<RecentCustomersBloc>().add(
-                                      RecentCustomersEvent.updateList(
+                                      RecentCustomersEvent.addCustomer(
                                           newCustomer));
 
                                   Navigator.pop(context);
@@ -112,11 +105,13 @@ class CustomerPage extends StatelessWidget {
                 ),
                 BlocBuilder<RecentCustomersBloc, RecentCustomersState>(
                     builder: (context, state) {
-                  return state.map(
+                  return state.maybeMap(
+                    orElse: () =>
+                        const Center(child: CircularProgressIndicator()),
                     initial: (value) =>
                         const Center(child: CircularProgressIndicator()),
                     loadedRecentCustomerData: (value) {
-                      if (value.data.isEmpty && value.isSearching == false) {
+                      if (value.customers.isEmpty && value.isSearching == false) {
                         return Center(
                           child: Text(
                             "No items found!",
@@ -156,7 +151,7 @@ class CustomerPage extends StatelessWidget {
                                 SizedBox(
                                     height: h * 0.487,
                                     child: CustomersListMolecule(
-                                        model: value.data)),
+                                        model: value.customers)),
                               ],
                             ),
                           ),

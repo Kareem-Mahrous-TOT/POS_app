@@ -22,7 +22,7 @@ mixin _$AuthEvent {
     required TResult Function(
             String username, String password, bool? rememberMe)
         loadingLoginData,
-    required TResult Function(String username, String password, String? email)
+    required TResult Function(String username, String password, String email)
         loadingSignupData,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ mixin _$AuthEvent {
     TResult? Function()? started,
     TResult? Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult? Function(String username, String password, String? email)?
+    TResult? Function(String username, String password, String email)?
         loadingSignupData,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ mixin _$AuthEvent {
     TResult Function()? started,
     TResult Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult Function(String username, String password, String? email)?
+    TResult Function(String username, String password, String email)?
         loadingSignupData,
     required TResult orElse(),
   }) =>
@@ -127,7 +127,7 @@ class _$_Started implements _Started {
     required TResult Function(
             String username, String password, bool? rememberMe)
         loadingLoginData,
-    required TResult Function(String username, String password, String? email)
+    required TResult Function(String username, String password, String email)
         loadingSignupData,
   }) {
     return started();
@@ -139,7 +139,7 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult? Function(String username, String password, String? email)?
+    TResult? Function(String username, String password, String email)?
         loadingSignupData,
   }) {
     return started?.call();
@@ -151,7 +151,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult Function(String username, String password, String? email)?
+    TResult Function(String username, String password, String email)?
         loadingSignupData,
     required TResult orElse(),
   }) {
@@ -288,7 +288,7 @@ class _$_LoadingLoginData implements _LoadingLoginData {
     required TResult Function(
             String username, String password, bool? rememberMe)
         loadingLoginData,
-    required TResult Function(String username, String password, String? email)
+    required TResult Function(String username, String password, String email)
         loadingSignupData,
   }) {
     return loadingLoginData(username, password, rememberMe);
@@ -300,7 +300,7 @@ class _$_LoadingLoginData implements _LoadingLoginData {
     TResult? Function()? started,
     TResult? Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult? Function(String username, String password, String? email)?
+    TResult? Function(String username, String password, String email)?
         loadingSignupData,
   }) {
     return loadingLoginData?.call(username, password, rememberMe);
@@ -312,7 +312,7 @@ class _$_LoadingLoginData implements _LoadingLoginData {
     TResult Function()? started,
     TResult Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult Function(String username, String password, String? email)?
+    TResult Function(String username, String password, String email)?
         loadingSignupData,
     required TResult orElse(),
   }) {
@@ -377,7 +377,7 @@ abstract class _$$_LoadingSignupDataCopyWith<$Res> {
           $Res Function(_$_LoadingSignupData) then) =
       __$$_LoadingSignupDataCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, String password, String? email});
+  $Res call({String username, String password, String email});
 }
 
 /// @nodoc
@@ -393,7 +393,7 @@ class __$$_LoadingSignupDataCopyWithImpl<$Res>
   $Res call({
     Object? username = null,
     Object? password = null,
-    Object? email = freezed,
+    Object? email = null,
   }) {
     return _then(_$_LoadingSignupData(
       username: null == username
@@ -404,10 +404,10 @@ class __$$_LoadingSignupDataCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      email: freezed == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -416,14 +416,14 @@ class __$$_LoadingSignupDataCopyWithImpl<$Res>
 
 class _$_LoadingSignupData implements _LoadingSignupData {
   const _$_LoadingSignupData(
-      {required this.username, required this.password, this.email});
+      {required this.username, required this.password, required this.email});
 
   @override
   final String username;
   @override
   final String password;
   @override
-  final String? email;
+  final String email;
 
   @override
   String toString() {
@@ -459,7 +459,7 @@ class _$_LoadingSignupData implements _LoadingSignupData {
     required TResult Function(
             String username, String password, bool? rememberMe)
         loadingLoginData,
-    required TResult Function(String username, String password, String? email)
+    required TResult Function(String username, String password, String email)
         loadingSignupData,
   }) {
     return loadingSignupData(username, password, email);
@@ -471,7 +471,7 @@ class _$_LoadingSignupData implements _LoadingSignupData {
     TResult? Function()? started,
     TResult? Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult? Function(String username, String password, String? email)?
+    TResult? Function(String username, String password, String email)?
         loadingSignupData,
   }) {
     return loadingSignupData?.call(username, password, email);
@@ -483,7 +483,7 @@ class _$_LoadingSignupData implements _LoadingSignupData {
     TResult Function()? started,
     TResult Function(String username, String password, bool? rememberMe)?
         loadingLoginData,
-    TResult Function(String username, String password, String? email)?
+    TResult Function(String username, String password, String email)?
         loadingSignupData,
     required TResult orElse(),
   }) {
@@ -532,11 +532,11 @@ abstract class _LoadingSignupData implements AuthEvent {
   const factory _LoadingSignupData(
       {required final String username,
       required final String password,
-      final String? email}) = _$_LoadingSignupData;
+      required final String email}) = _$_LoadingSignupData;
 
   String get username;
   String get password;
-  String? get email;
+  String get email;
   @JsonKey(ignore: true)
   _$$_LoadingSignupDataCopyWith<_$_LoadingSignupData> get copyWith =>
       throw _privateConstructorUsedError;

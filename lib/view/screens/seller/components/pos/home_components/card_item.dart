@@ -51,7 +51,9 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: TOTTextAtom.bodyMedium(
                   mealDescription,
-                  color: AppColors.green,
+                  color: mealDescription == "In stock"
+                      ? AppColors.green
+                      : AppColors.red,
                 )),
             Align(
                 alignment: Alignment.topLeft,

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants.dart';
 import 'package:tot_pos/core/routes/route_paths.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/auth/auth_bloc.dart';
@@ -91,9 +90,10 @@ class _LoginPageState extends State<LoginPage> {
                           validatorEmail: (value) {
                             if (value!.isEmpty) {
                               return "Email cannot be empty";
-                            } else if (!isEmailValid(value)) {
-                              return "Make sure your email looks like this example@example.com";
                             }
+                            // else if (!isEmailValid(value)) {
+                            //   return "Make sure your email looks like this example@example.com";
+                            // }
                             return null;
                           },
                           validatorPassword: (value) {
@@ -111,17 +111,20 @@ class _LoginPageState extends State<LoginPage> {
                                 .trim()
                                 .contains(RegExp(r'[a-z]'))) {
                               return "Password must Contains LowerCase Letter";
-                            } else if (!value
-                                .trim()
-                                .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-                              return "Password must Contains Special Character";
-                            } else if (value.trim().length < 8) {
-                              return "Password must be more than 8 Letters";
-                            } else if (!RegExp(
-                                    r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~.]).{8,}$')
-                                .hasMatch(value.trim())) {
-                              return "Password is not Valid";
                             }
+                            // else if (!value
+                            //     .trim()
+                            //     .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                            //   return "Password must Contains Special Character";
+                            // }
+                            else if (value.trim().length < 8) {
+                              return "Password must be more than 8 Letters";
+                            }
+                            // else if (!RegExp(
+                            //         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~.]).{8,}$')
+                            //     .hasMatch(value.trim())) {
+                            //   return "Password is not Valid";
+                            // }
                             return null;
                           },
                           textColor: AppColors.black,
@@ -140,6 +143,11 @@ class _LoginPageState extends State<LoginPage> {
                             context.push(RoutePaths.signUp);
                           },
                           widget: state.maybeMap(
+                            loadingState: (value) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
                             orElse: () {
                               return const Text(
                                 "Login",
@@ -147,11 +155,6 @@ class _LoginPageState extends State<LoginPage> {
                                   color: Colors.black,
                                   fontSize: 16,
                                 ),
-                              );
-                            },
-                            loadingState: (value) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
                               );
                             },
                           ),

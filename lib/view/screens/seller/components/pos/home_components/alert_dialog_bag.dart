@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/data/models/bag/bag_model.dart';
-import 'package:tot_pos/data/models/products_model.dart';
+import 'package:tot_pos/data/models/response/bag/bag_model.dart';
+import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
 
@@ -15,7 +15,7 @@ class POSFoodItemAlertDialog extends StatefulWidget {
     required this.data,
   });
 
-  final ProductsData data;
+  final TOTProduct data;
 
   @override
   State<POSFoodItemAlertDialog> createState() => _POSFoodItemAlertDialogState();
@@ -39,7 +39,9 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                 totImage: TOTImageAtom.network(
                     width: w * 0.2,
                     height: h * 0.3,
-                    widget.data.img.toString()),
+                    widget.data.imgSrc == null || widget.data.imgSrc == ""
+                        ? "https://foodyman.s3.amazonaws.com/public/images/products/334-1676377275.jpeg"
+                        : widget.data.imgSrc.toString()),
               ),
               Padding(
                 padding: EdgeInsets.only(top: h * 0.03),
@@ -80,18 +82,27 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
                     text: "Add",
-                    onPressed: () async {
-                      final product = BagModel(
-                          itemName: widget.data.translation!.title.toString(),
-                          itemPrice: widget.data.stocks![0]!.totalPrice!,
-                          itemQuantity: counter.toDouble());
-
-                      await context.read<ProductsCubit>().updatedList(product);
-                      if (mounted) {
-                        Navigator.pop(
-                            context); // context.read<ProductsCubit>().calculateTotalPrice();
-                      }
-                    },
+                    onPressed: widget.data.minQuantity == 0
+                        ? () {}
+                        : () async {
+                            final product = BagModel(
+                                itemName: widget.data.name,
+                                itemPrice:
+                                    widget.data.minQuantity!.toDouble() > 0
+                                        ? 120
+                                        : 0,
+                                itemQuantity:
+                                    widget.data.minQuantity!.toDouble() > 0
+                                        ? counter.toDouble()
+                                        : 0);
+                            await context
+                                .read<ProductsCubit>()
+                                .updatedList(product);
+                            if (mounted) {
+                              Navigator.pop(
+                                  context); // context.read<ProductsCubit>().calculateTotalPrice();
+                            }
+                          },
                     textColor: AppColors.black,
                     backgroundColor: AppColors.green,
                   ),
@@ -104,11 +115,11 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TOTTextAtom.headLineMedium(
-                widget.data.translation!.title.toString(),
+                widget.data.name.toString(),
                 color: AppColors.black,
               ),
               TOTTextAtom.titleLarge(
-                widget.data.translation!.description.toString(),
+                widget.data.catalogId.toString(),
                 color: AppColors.grey,
               ),
               const Divider(
@@ -128,13 +139,13 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
             ],
           ),
           const SizedBox(width: 30),
-          Column(
+          const Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TOTTextAtom.headLineSmall('Price:', color: AppColors.black),
+              TOTTextAtom.headLineSmall('Price:', color: AppColors.black),
               TOTTextAtom.headLineMedium(
-                '\$${widget.data.stocks![0]!.totalPrice}',
+                '\$${120}',
                 color: AppColors.black,
               ),
             ],

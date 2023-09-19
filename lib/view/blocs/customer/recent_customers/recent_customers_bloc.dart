@@ -1,7 +1,13 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/customer/recent_customers.dart';
-import 'package:tot_pos/data/repository/impl/customer_repo.dart';
+import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import 'package:tot_pos/data/models/request/tot_customer_request/customers_search_model.dart';
+import 'package:tot_pos/data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
+import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
+import 'package:tot_pos/data/network/failure_exception.dart';
+import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 
 part 'recent_customers_bloc.freezed.dart';
 part 'recent_customers_event.dart';
@@ -9,39 +15,73 @@ part 'recent_customers_state.dart';
 
 class RecentCustomersBloc
     extends Bloc<RecentCustomersEvent, RecentCustomersState> {
-  CustomerRepo repo;
-  RecentCustomersBloc(this.repo) : super(_Initial()) {
-    List<RecentCustomer> listRecentCustomers = [];
-    RecentCustomers allCustomers;
-    List<RecentCustomer> result;
+  TOTCustomersSearchRequest request =
+      const TOTCustomersSearchRequest(memberType: "Contact", take: 1000);
+
+  CustomersRepoBase customersRepoBase;
+
+  RecentCustomersBloc(this.customersRepoBase) : super(_Initial()) {
+    List<Member> listRecentCustomers = [];
+    // List<Member> result;
     on<RecentCustomersEvent>(
       (event, emit) async {
         await event.map(
           started: (value) {},
-          fetch: (value) async {
-            allCustomers = await repo.fetchRecentCustomers();
-            result = allCustomers.recentCustomers;
-            if (result.isNotEmpty) {
-              emit(_LoadedRecentCustomerData(
-                  data: allCustomers.recentCustomers));
-            }
-          },
           loadRecentCustomers: (value) async {
-            final data = await repo.fetchRecentCustomers();
-            listRecentCustomers = data.recentCustomers;
-            emit(
-              _LoadedRecentCustomerData(
-                data: data.recentCustomers, // new list1 from the api directly
-              ),
-            );
+            final data = await customersRepoBase.fetch(request);
+            data.fold(
+                (l) => emit(_$_FailedLoadingRecentCustomerData(l.message)),
+                (r) {
+              listRecentCustomers = r.results;
+              emit(
+                _LoadedRecentCustomerData(
+                    r.results // new list1 from the api directly
+                    ),
+              );
+            });
           },
-          updateList: (event) {
-            state.maybeMap(
-              loadedRecentCustomerData: (value) {
-                var customers = value.data;
-                customers.add(event.customer);
-                listRecentCustomers = customers;
-                emit(value.copyWith(data: customers));
+          addCustomer: (event) async {
+            await state.maybeMap(
+              loadedRecentCustomerData: (myState) async {
+                String firstName = event.customer.emails!.first;
+                String lastName = event.customer.name!;
+                TOTAddCustomerModelRequest addRequest =
+                    TOTAddCustomerModelRequest(
+                  memberType: "Contact",
+                  status: "New",
+                  firstName: firstName,
+                  lastName: lastName,
+                  fullName: firstName + lastName,
+                );
+                var customers = myState.customers;
+                final data = await customersRepoBase.addCustomer(addRequest);
+                final fetchNewdata = await customersRepoBase.fetch(request);
+                data.fold((l) {
+                  emit(_AddCustomerFailed(l.message));
+                }, (r) {
+                  // customers.add(event.customer);
+                  listRecentCustomers = customers;
+                  fetchNewdata.fold(
+                      (l) =>
+                          FailureException(message: "Fetching data went wrong"),
+                      (r) {
+                    listRecentCustomers = r.results;
+                    emit(_LoadedRecentCustomerData(r.results));
+                    log("fetched Data Successfully");
+                  });
+                  log("Added new User ${r.name}");
+                });
+              },
+              addCustomerFailed: (value) async {
+                final data = await customersRepoBase.fetch(request);
+                data.fold(
+                    (l) => emit(_$_FailedLoadingRecentCustomerData(l.message)),
+                    (r) {
+                  listRecentCustomers = r.results;
+                  emit(
+                      _LoadedRecentCustomerData(r.results, isSearching: false));
+                });
+                log("New data failed to be added");
               },
               orElse: () {},
             );
@@ -52,22 +92,31 @@ class RecentCustomersBloc
                 orElse: () {},
                 loadedRecentCustomerData: (value) async {
                   emit(value.copyWith(
-                      data: listRecentCustomers, isSearching: true));
-                  final recentCustomer = listRecentCustomers
-                      .where((element) => element.name!
+                      customers: listRecentCustomers, isSearching: true));
+                  final recentCustomer = listRecentCustomers.where((element) {
+                    String cName = element.name.toString();
+
+                    if (cName == "null" || cName == "") {
+                      cName = "No name found";
+                      return cName
                           .toLowerCase()
-                          .contains(event.query!.toLowerCase()))
-                      .toList();
+                          .contains(event.query!.toLowerCase());
+                    } else {
+                      return cName
+                          .toLowerCase()
+                          .contains(event.query!.toLowerCase());
+                    }
+                  }).toList();
                   await Future.delayed(const Duration(seconds: 1), () {
-                    emit(_LoadedRecentCustomerData(
-                        data: recentCustomer, isSearching: false));
+                    emit(_LoadedRecentCustomerData(recentCustomer,
+                        isSearching: false));
                   });
                 },
               );
             } else {
               emit(
                 _LoadedRecentCustomerData(
-                  data: listRecentCustomers,
+                  listRecentCustomers,
                   isSearching: false,
                 ),
               );

@@ -1,9 +1,13 @@
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/data/network/dio_helper.dart';
 import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
+import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 import 'package:tot_pos/data/repository/base/layout_repo_base.dart';
+import 'package:tot_pos/data/repository/base/products_repo_base.dart';
 import 'package:tot_pos/data/repository/impl/auth_repo_impl.dart';
-import 'package:tot_pos/data/repository/impl/customer_repo.dart';
-import 'package:tot_pos/data/repository/impl/home_repo.dart';
+import 'package:tot_pos/data/repository/impl/customer_repo_impl.dart';
+import 'package:tot_pos/data/repository/impl/product_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/layout_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/order_repo.dart';
 import 'package:tot_pos/data/repository/impl/report_repo.dart';
@@ -21,22 +25,31 @@ import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
-void setUpDependencies() {
+SharedPreferences prefs = sl();
+
+Future<void> setUpDependencies() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
   //repo
-  sl.registerSingleton<HomeRepo>(HomeRepo());
+  sl.registerSingleton<SharedPreferences>(sharedPreferences);
+  sl.registerSingleton<DioHelper>(DioHelper());
+
+  // sl.registerSingleton<HomeRepo>(HomeRepo());
   sl.registerSingleton<LayoutRepoBase>(LayoutRepoImpl());
   sl.registerSingleton<CustomerRepo>(CustomerRepo());
   sl.registerSingleton<OrderRepo>(OrderRepo());
   sl.registerSingleton<SalesRepo>(SalesRepo());
   sl.registerSingleton<ReportRepo>(ReportRepo());
-  sl.registerSingleton<AuthBaseRepo>(AuthRepoImpl());
+  sl.registerSingleton<AuthBaseRepo>(AuthRepoImpl(dioHelper: sl()));
+  sl.registerSingleton<ProductsRepoBase>(ProductsRepoImpl());
+  sl.registerSingleton<CustomersRepoBase>(CustomersRepoImpl());
 
   //cubits
-  sl.registerFactory<HomeBloc>(() => HomeBloc(sl()));
+  sl.registerFactory<HomeBloc>(() => HomeBloc(sl(),sl()));
   sl.registerFactory<LayoutBloc>(() => LayoutBloc(sl()));
   sl.registerFactory<ProductsCubit>(() => ProductsCubit());
   sl.registerFactory<CurrentCustomerCubit>(() => CurrentCustomerCubit(sl()));
-  sl.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(sl()));
+  sl.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(sl(),));
   sl.registerFactory<OrderCubit>(() => OrderCubit(sl()));
   sl.registerFactory<SalesCubit>(() => SalesCubit());
   sl.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());

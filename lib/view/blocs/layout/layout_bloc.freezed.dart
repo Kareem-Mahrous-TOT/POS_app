@@ -20,18 +20,21 @@ mixin _$LayoutEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$LayoutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_Logout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,12 +97,18 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
+class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LayoutEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LayoutEvent.started'));
   }
 
   @override
@@ -113,6 +125,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logout,
   }) {
     return started();
   }
@@ -122,6 +135,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logout,
   }) {
     return started?.call();
   }
@@ -131,6 +145,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +159,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_Logout value) logout,
   }) {
     return started(this);
   }
@@ -153,6 +169,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_Logout value)? logout,
   }) {
     return started?.call(this);
   }
@@ -162,6 +179,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -208,15 +226,23 @@ class __$$_UpdateIndexCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateIndex implements _UpdateIndex {
+class _$_UpdateIndex with DiagnosticableTreeMixin implements _UpdateIndex {
   const _$_UpdateIndex(this.index);
 
   @override
   final int index;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LayoutEvent.updateIndex(index: $index)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LayoutEvent.updateIndex'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
@@ -241,6 +267,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logout,
   }) {
     return updateIndex(index);
   }
@@ -250,6 +277,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logout,
   }) {
     return updateIndex?.call(index);
   }
@@ -259,6 +287,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (updateIndex != null) {
@@ -272,6 +301,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_Logout value) logout,
   }) {
     return updateIndex(this);
   }
@@ -281,6 +311,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_Logout value)? logout,
   }) {
     return updateIndex?.call(this);
   }
@@ -290,6 +321,7 @@ class _$_UpdateIndex implements _UpdateIndex {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
     if (updateIndex != null) {
@@ -309,23 +341,141 @@ abstract class _UpdateIndex implements LayoutEvent {
 }
 
 /// @nodoc
+abstract class _$$_LogoutCopyWith<$Res> {
+  factory _$$_LogoutCopyWith(_$_Logout value, $Res Function(_$_Logout) then) =
+      __$$_LogoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LogoutCopyWithImpl<$Res>
+    extends _$LayoutEventCopyWithImpl<$Res, _$_Logout>
+    implements _$$_LogoutCopyWith<$Res> {
+  __$$_LogoutCopyWithImpl(_$_Logout _value, $Res Function(_$_Logout) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Logout with DiagnosticableTreeMixin implements _Logout {
+  const _$_Logout();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LayoutEvent.logout()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LayoutEvent.logout'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Logout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index) updateIndex,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int index)? updateIndex,
+    TResult? Function()? logout,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index)? updateIndex,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_Logout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_Logout value)? logout,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Logout implements LayoutEvent {
+  const factory _Logout() = _$_Logout;
+}
+
+/// @nodoc
 mixin _$LayoutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -333,18 +483,24 @@ mixin _$LayoutState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -385,28 +541,27 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
+  _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LayoutState.initial()';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LayoutState.initial'));
   }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
   }) {
     return initial();
   }
@@ -416,6 +571,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
   }) {
     return initial?.call();
   }
@@ -425,6 +582,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -438,6 +597,8 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
     return initial(this);
   }
@@ -447,6 +608,8 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
     return initial?.call(this);
   }
@@ -456,6 +619,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -466,7 +631,7 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LayoutState {
-  const factory _Initial() = _$_Initial;
+  factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
@@ -502,27 +667,26 @@ class __$$_UpdateIndexStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateIndexState implements _UpdateIndexState {
-  const _$_UpdateIndexState(this.index);
+class _$_UpdateIndexState
+    with DiagnosticableTreeMixin
+    implements _UpdateIndexState {
+  _$_UpdateIndexState(this.index);
 
   @override
-  final int index;
+  int index;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LayoutState.updateIndex(index: $index)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdateIndexState &&
-            (identical(other.index, index) || other.index == index));
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LayoutState.updateIndex'))
+      ..add(DiagnosticsProperty('index', index));
   }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
 
   @JsonKey(ignore: true)
   @override
@@ -535,6 +699,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
   }) {
     return updateIndex(index);
   }
@@ -544,6 +710,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
   }) {
     return updateIndex?.call(index);
   }
@@ -553,6 +721,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
     required TResult orElse(),
   }) {
     if (updateIndex != null) {
@@ -566,6 +736,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
     return updateIndex(this);
   }
@@ -575,6 +747,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
     return updateIndex?.call(this);
   }
@@ -584,6 +758,8 @@ class _$_UpdateIndexState implements _UpdateIndexState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
   }) {
     if (updateIndex != null) {
@@ -594,10 +770,265 @@ class _$_UpdateIndexState implements _UpdateIndexState {
 }
 
 abstract class _UpdateIndexState implements LayoutState {
-  const factory _UpdateIndexState(final int index) = _$_UpdateIndexState;
+  factory _UpdateIndexState(int index) = _$_UpdateIndexState;
 
   int get index;
+  set index(int value);
   @JsonKey(ignore: true)
   _$$_UpdateIndexStateCopyWith<_$_UpdateIndexState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LogoutSuccessCopyWith<$Res> {
+  factory _$$_LogoutSuccessCopyWith(
+          _$_LogoutSuccess value, $Res Function(_$_LogoutSuccess) then) =
+      __$$_LogoutSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LogoutSuccessCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$_LogoutSuccess>
+    implements _$$_LogoutSuccessCopyWith<$Res> {
+  __$$_LogoutSuccessCopyWithImpl(
+      _$_LogoutSuccess _value, $Res Function(_$_LogoutSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LogoutSuccess with DiagnosticableTreeMixin implements _LogoutSuccess {
+  _$_LogoutSuccess();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LayoutState.logoutSuccess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LayoutState.logoutSuccess'));
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) updateIndex,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
+  }) {
+    return logoutSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
+  }) {
+    return logoutSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? updateIndex,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutSuccess != null) {
+      return logoutSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
+  }) {
+    return logoutSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
+  }) {
+    return logoutSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutSuccess != null) {
+      return logoutSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogoutSuccess implements LayoutState {
+  factory _LogoutSuccess() = _$_LogoutSuccess;
+}
+
+/// @nodoc
+abstract class _$$_LogoutFailedCopyWith<$Res> {
+  factory _$$_LogoutFailedCopyWith(
+          _$_LogoutFailed value, $Res Function(_$_LogoutFailed) then) =
+      __$$_LogoutFailedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_LogoutFailedCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$_LogoutFailed>
+    implements _$$_LogoutFailedCopyWith<$Res> {
+  __$$_LogoutFailedCopyWithImpl(
+      _$_LogoutFailed _value, $Res Function(_$_LogoutFailed) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_LogoutFailed(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LogoutFailed with DiagnosticableTreeMixin implements _LogoutFailed {
+  _$_LogoutFailed(this.message);
+
+  @override
+  String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LayoutState.logoutFailed(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LayoutState.logoutFailed'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LogoutFailedCopyWith<_$_LogoutFailed> get copyWith =>
+      __$$_LogoutFailedCopyWithImpl<_$_LogoutFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) updateIndex,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
+  }) {
+    return logoutFailed(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
+  }) {
+    return logoutFailed?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? updateIndex,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutFailed != null) {
+      return logoutFailed(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
+  }) {
+    return logoutFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
+  }) {
+    return logoutFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutFailed != null) {
+      return logoutFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogoutFailed implements LayoutState {
+  factory _LogoutFailed(String message) = _$_LogoutFailed;
+
+  String get message;
+  set message(String value);
+  @JsonKey(ignore: true)
+  _$$_LogoutFailedCopyWith<_$_LogoutFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

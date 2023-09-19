@@ -1,12 +1,10 @@
 part of 'recent_customers_bloc.dart';
 
-@freezed
+@unfreezed
 class RecentCustomersEvent with _$RecentCustomersEvent {
-  const factory RecentCustomersEvent.started() = _Started;
-  const factory RecentCustomersEvent.loadRecentCustomers() =
-      _LoadRecentCustomers;
-  const factory RecentCustomersEvent.fetch() = _Fetch;
-  const factory RecentCustomersEvent.updateList(RecentCustomer customer) =
-      _UpdateList;
-  const factory RecentCustomersEvent.searchList({String? query}) = _SearchList;
+  factory RecentCustomersEvent.started() = _Started;
+  factory RecentCustomersEvent.loadRecentCustomers() = _LoadRecentCustomers;
+  // factory RecentCustomersEvent.fetch() = _Fetch;
+  factory RecentCustomersEvent.addCustomer(Member customer) = _AddCustomer;
+  factory RecentCustomersEvent.searchList({String? query}) = _SearchList;
 }

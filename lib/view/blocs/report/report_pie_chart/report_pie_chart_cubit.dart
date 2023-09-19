@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/reports/statistic_model.dart';
+import 'package:tot_pos/data/models/response/reports/statistic_model.dart';
 import 'package:tot_pos/data/repository/impl/report_repo.dart';
 
 part 'report_pie_chart_cubit.freezed.dart';

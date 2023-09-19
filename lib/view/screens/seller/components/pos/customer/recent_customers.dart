@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/data/models/customer/recent_customers.dart';
+import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 
 class CustomersListMolecule extends StatelessWidget {
-  final List<RecentCustomer> model;
+  final List<Member> model;
 
   const CustomersListMolecule({super.key, required this.model});
 
@@ -32,7 +32,9 @@ class CustomersListMolecule extends StatelessWidget {
                         backgroundColor: AppColors.grey,
                         child: ClipRRect(
                           child: TOTImageAtom.network(
-                            model[index].customerListImage!,
+                            model[index].iconUrl != null
+                                ? model[index].iconUrl.toString()
+                                : "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
                             boxFit: BoxFit.cover,
                           ),
                         ),
@@ -46,11 +48,17 @@ class CustomersListMolecule extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TOTTextAtom.headLineSmall(
-                            model[index].name!,
+                            model[index].name == null ||
+                                    model[index].name == "" ||
+                                    model[index].name == "null"
+                                ? "No name found"
+                                : model[index].name.toString(),
                             color: AppColors.black,
                           ),
                           TOTTextAtom.labelMedium(
-                            model[index].email!,
+                            model[index].emails!.isNotEmpty
+                                ? model[index].emails![0]
+                                : "No emails found",
                             color: AppColors.grey,
                           ),
                         ]),
@@ -60,7 +68,7 @@ class CustomersListMolecule extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TOTTextAtom.labelMedium(
-                  model[index].creationDate!,
+                  model[index].createdDate.toString(),
                   color: AppColors.grey,
                 ),
               ),

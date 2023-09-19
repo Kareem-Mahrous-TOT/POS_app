@@ -4,8 +4,18 @@ part of 'recent_customers_bloc.dart';
 class RecentCustomersState with _$RecentCustomersState {
   factory RecentCustomersState.initial() = _Initial;
 
-  factory RecentCustomersState.loadedRecentCustomerData({
-    required List<RecentCustomer> data,
+  factory RecentCustomersState.loadedRecentCustomerData(
+    List<Member> customers, {
     bool? isSearching,
+    
   }) = _LoadedRecentCustomerData;
+
+  factory RecentCustomersState.failedLoadinRecentCustomerData(String message) =
+      _FailedLoadingRecentCustomerData;
+  factory RecentCustomersState.addCustomerFailed(String message) =
+      _AddCustomerFailed;
+  factory RecentCustomersState.addCustomerSuccess(TOTAddCustomerModelResponse response) =
+      _AddCustomerSuccess;
+
+      
 }

@@ -1,0 +1,11 @@
+{
+  "customerId": "ebb6f3b3-e493-419a-ad63-d04baa20010a",
+  "storeId": "string",
+  "storeName": "alkhbaz",
+  "discountAmount": 0,
+  "total": 100,
+  "isApproved": false,
+  "status": "Created",
+  "currency": "EGP",
+  "sum": 100
+}

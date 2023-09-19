@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/sales/sales_model.dart';
+import 'package:tot_pos/data/models/response/sales/sales_model.dart';
 import 'package:tot_pos/data/repository/impl/sales_repo.dart';
 
 part 'sales_cubit.freezed.dart';

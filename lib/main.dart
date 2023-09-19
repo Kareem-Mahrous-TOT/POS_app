@@ -17,16 +17,12 @@ import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
 
-import 'data/local/shared_preferences.dart';
-import 'data/network/dio_helper.dart';
 import 'view/blocs/home/home_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CacheHelper.init();
-  await DioHelper.init();
-  Bloc.observer = MyBlocObserver();
   setUpDependencies();
+  Bloc.observer = MyBlocObserver();
   runApp(const MainApp());
 }
 
@@ -40,18 +36,18 @@ class MainApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => sl<HomeBloc>()
-                ..add(const HomeEvent.fetch())
-                ..add(const HomeEvent.loadProducts())),
+            create: (context) => sl<HomeBloc>()
+              ..add(const HomeEvent.loadProducts())
+              ..add(HomeEvent.getCustomers(sl())),
+          ),
+          BlocProvider(create: (context) => sl<ProductsCubit>()..fetch()),
           BlocProvider(create: (context) => sl<LayoutBloc>()),
-          BlocProvider(create: (context) => sl<ProductsCubit>()..fetch()),
-          BlocProvider(create: (context) => sl<ProductsCubit>()..fetch()),
           BlocProvider(
               create: (context) =>
                   sl<CurrentCustomerCubit>()..loadCurrentCustomerData()),
           BlocProvider(
               create: (context) => sl<RecentCustomersBloc>()
-                ..add(const RecentCustomersEvent.loadRecentCustomers())),
+                ..add(RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(create: (context) => sl<OrderCubit>()..loadData()),
           BlocProvider(create: (context) => sl<SalesCubit>()..loadData()),
           BlocProvider(

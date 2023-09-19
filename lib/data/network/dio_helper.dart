@@ -4,10 +4,7 @@ import 'end_points.dart';
 
 //Dio Helper That's Connect and Talk to API.
 class DioHelper {
-  static late Dio dio;
-
-  //Here The Initialize of Dio and Start Connect to API Using baseUrl.
-  static init() {
+  DioHelper() {
     dio = Dio(
       BaseOptions(
         //Here the URL of API.
@@ -23,6 +20,8 @@ class DioHelper {
     );
     dio.options.contentType = Headers.formUrlEncodedContentType;
   }
+
+  static late Dio dio;
 
   //This Function to call API and get Some Data based on url(End Points) and Headers needed in API to get the Specific Data.
   static Future<Response> getData({
@@ -73,7 +72,6 @@ class DioHelper {
       rethrow;
     }
   }
-
 
   //This Function That's Used to Update Some Date based on URL(End Points) and Send what's you need to Update as Map.
   static Future<Response> putData({

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/data/models/bag/bag_model.dart';
+import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
@@ -25,32 +25,70 @@ class HomePage extends StatelessWidget {
             SizedBox(
               width: w * 0.6,
               height: h * 0.8,
-              child: BlocBuilder<HomeBloc, HomeState>(
-                builder: (context, state) {
-                  return state.map(initial: (value) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }, loadedData: (value) {
-                    if (value.products.isEmpty && value.isSearching == false) {
-                      return Center(
-                        child: Text(
-                          "No items found!",
-                          style: Theme.of(context).textTheme.headlineSmall,
+              child: BlocConsumer<HomeBloc, HomeState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    orElse: () {},
+                    fetchingCustomersFailed: (message) =>
+                        ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Center(
+                          child: Text(
+                            message.trim.toString(),
+                          ),
                         ),
-                      );
-                    }
-                    if (value.isSearching == true) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4, childAspectRatio: 0.7),
-                        itemCount: value.products.length,
-                        itemBuilder: (context, index) => Padding(
+                      ),
+                    ),
+                    failedLoadingData: (message) =>
+                        ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Center(
+                          child: Text(
+                            message.toString(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeMap(
+                      orElse: () {
+                        return Container(
+                          color: Colors.orange,
+                          width: 100,
+                          height: 100,
+                        );
+                      },
+                      failedLoadingData: (value) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                      initial: (value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                      loadedData: (value) {
+                        if (value.products.isEmpty &&
+                            value.isSearching == false) {
+                          return Center(
+                            child: Text(
+                              "No items found!",
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
+                          );
+                        }
+                        if (value.isSearching == true) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4, childAspectRatio: 0.7),
+                          itemCount: value.products.length,
+                          itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TOTPOSFoodCardItemMolecule(
                                 onTap: () {
@@ -76,22 +114,26 @@ class HomePage extends StatelessWidget {
                                     },
                                   );
                                 },
-                                mealImage: value.products[index].img.toString(),
-                                mealName: value
-                                            .products[index].translation!.title
-                                            .toString() ==
-                                        ""
-                                    ? "Not found"
-                                    : value.products[index].translation!.title
-                                        .toString(),
+                                mealImage: value.products[index].imgSrc == null
+                                    ? "https://foodyman.s3.amazonaws.com/public/images/products/334-1676377275.jpeg"
+                                    : value.products[index].imgSrc.toString(),
+                                mealName:
+                                    value.products[index].name.toString() ==
+                                            "null"
+                                        ? "Not found"
+                                        : value.products[index].name.toString(),
                                 mealDescription:
-                                    value.products[index].stocks != null
-                                        ? "In stock"
-                                        : "Out of stock",
-                                price: value
-                                    .products[index].stocks![0]!.totalPrice
-                                    .toString())));
-                  });
+                                    value.products[index].minQuantity == null ||
+                                            value.products[index].minQuantity ==
+                                                0
+                                        ? "Out of stock"
+                                        : "In stock",
+                                price: value.products[index].minQuantity != null
+                                    ? "120"
+                                    : "0"),
+                          ),
+                        );
+                      });
                 },
               ),
             ),
