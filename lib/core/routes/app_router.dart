@@ -15,7 +15,7 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter allRoutes = GoRouter(
     navigatorKey: navigatorKey,
-    initialLocation: RoutePaths.layout,
+    initialLocation: RoutePaths.login,
     routes: <RouteBase>[
       GoRoute(
         path: RoutePaths.layout,

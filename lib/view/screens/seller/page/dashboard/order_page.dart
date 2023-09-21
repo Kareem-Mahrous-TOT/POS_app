@@ -9,8 +9,8 @@ class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
   @override
   Widget build(BuildContext context) {
-  //   double w = MediaQuery.of(context).size.width;
-  //   double h = MediaQuery.of(context).size.height;
+    //   double w = MediaQuery.of(context).size.width;
+    //   double h = MediaQuery.of(context).size.height;
     return BlocBuilder<OrderCubit, OrderState>(
       builder: (context, state) {
         return state.map(
@@ -28,15 +28,9 @@ class OrderPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          TOTListViewWithHeaderOrganism(
-                            onPressed: () {},
-                            headerModel: value.orders,
-                          )
-                        ],
+                      child: TOTListViewWithHeaderOrganism(
+                        onPressed: () {},
+                        headerModel: value.orders,
                       ),
                     )
                   ],

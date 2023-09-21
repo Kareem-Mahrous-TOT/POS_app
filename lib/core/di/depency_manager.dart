@@ -2,14 +2,15 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/network/dio_helper.dart';
 import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
+import 'package:tot_pos/data/repository/base/order_repo_base.dart';
 import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 import 'package:tot_pos/data/repository/base/layout_repo_base.dart';
 import 'package:tot_pos/data/repository/base/products_repo_base.dart';
 import 'package:tot_pos/data/repository/impl/auth_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/customer_repo_impl.dart';
-import 'package:tot_pos/data/repository/impl/product_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/layout_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/order_repo.dart';
+import 'package:tot_pos/data/repository/impl/product_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/report_repo.dart';
 import 'package:tot_pos/data/repository/impl/sales_repo.dart';
 import 'package:tot_pos/view/blocs/auth/auth_bloc.dart';
@@ -43,13 +44,16 @@ Future<void> setUpDependencies() async {
   sl.registerSingleton<AuthBaseRepo>(AuthRepoImpl(dioHelper: sl()));
   sl.registerSingleton<ProductsRepoBase>(ProductsRepoImpl());
   sl.registerSingleton<CustomersRepoBase>(CustomersRepoImpl());
+  sl.registerSingleton<OrderRepoBase>(CreateOrderRepoImpl());
 
   //cubits
-  sl.registerFactory<HomeBloc>(() => HomeBloc(sl(),sl()));
+  sl.registerFactory<HomeBloc>(() => HomeBloc(sl(), sl()));
   sl.registerFactory<LayoutBloc>(() => LayoutBloc(sl()));
-  sl.registerFactory<ProductsCubit>(() => ProductsCubit());
+  sl.registerFactory<ProductsCubit>(() => ProductsCubit(sl()));
   sl.registerFactory<CurrentCustomerCubit>(() => CurrentCustomerCubit(sl()));
-  sl.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(sl(),));
+  sl.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
+        sl(),
+      ));
   sl.registerFactory<OrderCubit>(() => OrderCubit(sl()));
   sl.registerFactory<SalesCubit>(() => SalesCubit());
   sl.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());

@@ -5,7 +5,6 @@ import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
 
 // int counter = 1;
 
@@ -86,6 +85,9 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                         ? () {}
                         : () async {
                             final product = BagModel(
+                                code: widget.data.code,
+                                id: widget.data.id,
+                                totalprice: 100,
                                 itemName: widget.data.name,
                                 itemPrice:
                                     widget.data.minQuantity!.toDouble() > 0

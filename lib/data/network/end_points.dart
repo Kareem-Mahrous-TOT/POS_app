@@ -10,8 +10,12 @@ const signoutEndPoint = '/api/platform/security/logout';
 // End Points for Products
 const totProductsEndPoint = "/api/catalog/search/products";
 
+// End points for Orders
+const totCreateOrderEndPoint = "/api/order/customerOrders";
+
 //End Points for customers
 const totCustomersEndPoint = "/api/members/search";
 const totAddCustomerEndPoint = "/api/members";
 
 const bakeryId = "f5790b39-4fc8-4aad-8318-259d28595f05";
+const storeId = "alkhbaz";

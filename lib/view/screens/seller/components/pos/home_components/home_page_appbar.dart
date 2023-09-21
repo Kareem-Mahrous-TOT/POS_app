@@ -20,9 +20,8 @@ class TOTPOSHomePageAppBar extends StatefulWidget {
 }
 
 class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
-  late List<Member> customers = [const Member(name: "Select a Customer")];
-  List<Map<int, String>> names = [];
-  dynamic dropdownValue;
+  List<Member> customers = [const Member(name: "Select a Customer")];
+  List<Map<String, String>> names = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,24 +36,24 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
             loadedData: (value) {
               customers = value.customers == null ? [] : value.customers!;
               for (int i = 0; i < customers.length; i++) {
-                names.add({i: customers[i].name!});
+                names.add({customers[i].id.toString(): customers[i].name!});
                 log(names.first.values.single);
                 // log(customers[i].name.toString());
                 // customers[i].id;
-                dropdownValue = {
-                  names.first.keys.first: names.first.values.first
+
+                value.dropdownValue = {
+                  customers[i].id.toString(): names.first.values.first
                 };
               }
-              log("name::: ${names.first.values.first}");
               return customers;
             },
           );
 
           return Row(
             children: [
-              const TOTFilterCategoriesOrganism(),
-              SizedBox(
-                width: 384.w,
+              const Expanded(flex: 8, child: TOTFilterCategoriesOrganism()),
+              Expanded(
+                flex: 5,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -78,7 +77,7 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                         color: AppColors.white,
                         child: SizedBox(
                           height: 40.h,
-                          child: DropdownButtonFormField<Map<int, String>>(
+                          child: DropdownButtonFormField<Map<String, String>>(
                             padding: const EdgeInsets.only(
                               left: 5,
                             ),
@@ -88,12 +87,17 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                             // value: dropdownValue,
                             hint: const Text("Select a customer"),
                             items: names.map((e) {
-                              return DropdownMenuItem<Map<int, String>>(
+                              return DropdownMenuItem<Map<String, String>>(
                                   value: e,
                                   child: Text(e.values.first.toString()));
                             }).toList(),
-                            onChanged: (value) {
-                              dropdownValue = value;
+                            onChanged: (changedValue) {
+                              state.maybeMap(
+                                orElse: () {},
+                                loadedData: (value) {
+                                  value.dropdownValue = changedValue;
+                                },
+                              );
                             },
                           ),
                         ),
@@ -115,29 +119,27 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Card(
       color: AppColors.white,
       child: SizedBox(
-          width: w * 0.6,
-          height: h * 0.05,
-          child: const Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(right: 6),
-                child: TOTIconAtom.displayMedium(
-                    codePoint: 0xf755, color: AppColors.black),
+        height: 40.h,
+        child: const Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 6),
+              child: TOTIconAtom.displayMedium(
+                  codePoint: 0xf755, color: AppColors.black),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 16.0, left: 8.0),
+              child: Text(
+                "All",
+                style: TextStyle(fontSize: 30),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 16.0, left: 8.0),
-                child: Text(
-                  "All",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

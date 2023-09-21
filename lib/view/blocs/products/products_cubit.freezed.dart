@@ -19,22 +19,26 @@ mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<BagModel> bag, double totalPrice) updateList,
+    required TResult Function(String? message) empty,
+    required TResult Function(
+            List<BagModel> bag, double? totalPrice, String? message)
+        updateList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult? Function(String? message)? empty,
+    TResult? Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult Function(String? message)? empty,
+    TResult Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,8 +113,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<BagModel> bag, double totalPrice) updateList,
+    required TResult Function(String? message) empty,
+    required TResult Function(
+            List<BagModel> bag, double? totalPrice, String? message)
+        updateList,
   }) {
     return initial();
   }
@@ -119,8 +125,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult? Function(String? message)? empty,
+    TResult? Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
   }) {
     return initial?.call();
   }
@@ -129,8 +136,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult Function(String? message)? empty,
+    TResult Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,6 +191,8 @@ abstract class _$$_EmptyStateCopyWith<$Res> {
   factory _$$_EmptyStateCopyWith(
           _$_EmptyState value, $Res Function(_$_EmptyState) then) =
       __$$_EmptyStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -192,48 +202,74 @@ class __$$_EmptyStateCopyWithImpl<$Res>
   __$$_EmptyStateCopyWithImpl(
       _$_EmptyState _value, $Res Function(_$_EmptyState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_EmptyState(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_EmptyState implements _EmptyState {
-  _$_EmptyState();
+  _$_EmptyState({this.message});
+
+  @override
+  String? message;
 
   @override
   String toString() {
-    return 'ProductsState.empty()';
+    return 'ProductsState.empty(message: $message)';
   }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EmptyStateCopyWith<_$_EmptyState> get copyWith =>
+      __$$_EmptyStateCopyWithImpl<_$_EmptyState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<BagModel> bag, double totalPrice) updateList,
+    required TResult Function(String? message) empty,
+    required TResult Function(
+            List<BagModel> bag, double? totalPrice, String? message)
+        updateList,
   }) {
-    return empty();
+    return empty(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult? Function(String? message)? empty,
+    TResult? Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
   }) {
-    return empty?.call();
+    return empty?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult Function(String? message)? empty,
+    TResult Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty();
+      return empty(message);
     }
     return orElse();
   }
@@ -274,7 +310,13 @@ class _$_EmptyState implements _EmptyState {
 }
 
 abstract class _EmptyState implements ProductsState {
-  factory _EmptyState() = _$_EmptyState;
+  factory _EmptyState({String? message}) = _$_EmptyState;
+
+  String? get message;
+  set message(String? value);
+  @JsonKey(ignore: true)
+  _$$_EmptyStateCopyWith<_$_EmptyState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -283,7 +325,7 @@ abstract class _$$_UpdateListStateCopyWith<$Res> {
           _$_UpdateListState value, $Res Function(_$_UpdateListState) then) =
       __$$_UpdateListStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<BagModel> bag, double totalPrice});
+  $Res call({List<BagModel> bag, double? totalPrice, String? message});
 }
 
 /// @nodoc
@@ -298,17 +340,22 @@ class __$$_UpdateListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bag = null,
-    Object? totalPrice = null,
+    Object? totalPrice = freezed,
+    Object? message = freezed,
   }) {
     return _then(_$_UpdateListState(
-      null == bag
+      bag: null == bag
           ? _value.bag
           : bag // ignore: cast_nullable_to_non_nullable
               as List<BagModel>,
-      null == totalPrice
+      totalPrice: freezed == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -316,16 +363,18 @@ class __$$_UpdateListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UpdateListState implements _UpdateListState {
-  _$_UpdateListState(this.bag, this.totalPrice);
+  _$_UpdateListState({required this.bag, this.totalPrice, this.message});
 
   @override
   List<BagModel> bag;
   @override
-  double totalPrice;
+  double? totalPrice;
+  @override
+  String? message;
 
   @override
   String toString() {
-    return 'ProductsState.updateList(bag: $bag, totalPrice: $totalPrice)';
+    return 'ProductsState.updateList(bag: $bag, totalPrice: $totalPrice, message: $message)';
   }
 
   @JsonKey(ignore: true)
@@ -338,32 +387,36 @@ class _$_UpdateListState implements _UpdateListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() empty,
-    required TResult Function(List<BagModel> bag, double totalPrice) updateList,
+    required TResult Function(String? message) empty,
+    required TResult Function(
+            List<BagModel> bag, double? totalPrice, String? message)
+        updateList,
   }) {
-    return updateList(bag, totalPrice);
+    return updateList(bag, totalPrice, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? empty,
-    TResult? Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult? Function(String? message)? empty,
+    TResult? Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
   }) {
-    return updateList?.call(bag, totalPrice);
+    return updateList?.call(bag, totalPrice, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? empty,
-    TResult Function(List<BagModel> bag, double totalPrice)? updateList,
+    TResult Function(String? message)? empty,
+    TResult Function(List<BagModel> bag, double? totalPrice, String? message)?
+        updateList,
     required TResult orElse(),
   }) {
     if (updateList != null) {
-      return updateList(bag, totalPrice);
+      return updateList(bag, totalPrice, message);
     }
     return orElse();
   }
@@ -404,13 +457,17 @@ class _$_UpdateListState implements _UpdateListState {
 }
 
 abstract class _UpdateListState implements ProductsState {
-  factory _UpdateListState(List<BagModel> bag, double totalPrice) =
-      _$_UpdateListState;
+  factory _UpdateListState(
+      {required List<BagModel> bag,
+      double? totalPrice,
+      String? message}) = _$_UpdateListState;
 
   List<BagModel> get bag;
   set bag(List<BagModel> value);
-  double get totalPrice;
-  set totalPrice(double value);
+  double? get totalPrice;
+  set totalPrice(double? value);
+  String? get message;
+  set message(String? value);
   @JsonKey(ignore: true)
   _$$_UpdateListStateCopyWith<_$_UpdateListState> get copyWith =>
       throw _privateConstructorUsedError;

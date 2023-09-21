@@ -7,7 +7,7 @@ import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import '../../../../../core/theme/pallete.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
-import '../../components/pos/customer/customer_exp.dart';
+import '../../components/pos/customer/alert_dialog_customer.dart';
 
 class CustomerPage extends StatelessWidget {
   CustomerPage({
@@ -111,7 +111,8 @@ class CustomerPage extends StatelessWidget {
                     initial: (value) =>
                         const Center(child: CircularProgressIndicator()),
                     loadedRecentCustomerData: (value) {
-                      if (value.customers.isEmpty && value.isSearching == false) {
+                      if (value.customers.isEmpty &&
+                          value.isSearching == false) {
                         return Center(
                           child: Text(
                             "No items found!",

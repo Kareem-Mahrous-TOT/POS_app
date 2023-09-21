@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
 
 class SalesPage extends StatefulWidget {
   const SalesPage({super.key});

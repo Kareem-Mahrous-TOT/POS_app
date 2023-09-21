@@ -1,11 +1,2163 @@
 {
-  "customerId": "ebb6f3b3-e493-419a-ad63-d04baa20010a",
-  "storeId": "string",
-  "storeName": "alkhbaz",
-  "discountAmount": 0,
-  "total": 100,
-  "isApproved": false,
-  "status": "Created",
-  "currency": "EGP",
-  "sum": 100
-}
+    "rowVersion": "string",
+    "customerId": "string",
+    "customerName": "string",
+    "channelId": "string",
+    "storeId": "string",
+    "storeName": "string",
+    "organizationId": "string",
+    "organizationName": "string",
+    "employeeId": "string",
+    "employeeName": "string",
+    "shoppingCartId": "string",
+    "isPrototype": true,
+    "purchaseOrderNumber": "string",
+    "subscriptionNumber": "string",
+    "subscriptionId": "string",
+    "objectType": "string",
+    "addresses": [
+      {
+        "addressType": "Undefined",
+        "key": "string",
+        "name": "string",
+        "organization": "string",
+        "countryCode": "string",
+        "countryName": "string",
+        "city": "string",
+        "postalCode": "string",
+        "zip": "string",
+        "line1": "string",
+        "line2": "string",
+        "regionId": "string",
+        "regionName": "string",
+        "firstName": "string",
+        "middleName": "string",
+        "lastName": "string",
+        "phone": "string",
+        "email": "string",
+        "outerId": "string",
+        "isDefault": true,
+        "description": "string"
+      }
+    ],
+    "inPayments": [
+      {
+        "orderId": "string",
+        "purpose": "string",
+        "gatewayCode": "string",
+        "paymentMethod": {
+          "code": "string",
+          "name": "string",
+          "logoUrl": "string",
+          "isActive": true,
+          "priority": 0,
+          "isAvailableForPartial": true,
+          "allowDeferredPayment": true,
+          "currency": "string",
+          "price": 0,
+          "priceWithTax": 0,
+          "total": 0,
+          "totalWithTax": 0,
+          "discountAmount": 0,
+          "discountAmountWithTax": 0,
+          "storeId": "string",
+          "description": "string",
+          "typeName": "string",
+          "settings": [
+            {
+              "itHasValues": true,
+              "objectId": "string",
+              "objectType": "string",
+              "isReadOnly": true,
+              "value": {},
+              "id": "string",
+              "restartRequired": true,
+              "moduleId": "string",
+              "groupName": "string",
+              "name": "string",
+              "displayName": "string",
+              "isRequired": true,
+              "isHidden": true,
+              "valueType": "ShortText",
+              "allowedValues": [
+                {}
+              ],
+              "defaultValue": {},
+              "isDictionary": true
+            }
+          ],
+          "taxType": "string",
+          "taxTotal": 0,
+          "taxPercentRate": 0,
+          "taxDetails": [
+            {
+              "rate": 0,
+              "amount": 0,
+              "name": "string"
+            }
+          ],
+          "paymentMethodType": "Unknown",
+          "paymentMethodGroupType": "Paypal",
+          "id": "string"
+        },
+        "organizationId": "string",
+        "organizationName": "string",
+        "customerId": "string",
+        "customerName": "string",
+        "incomingDate": "2023-09-20T06:25:51.100Z",
+        "billingAddress": {
+          "addressType": "Undefined",
+          "key": "string",
+          "name": "string",
+          "organization": "string",
+          "countryCode": "string",
+          "countryName": "string",
+          "city": "string",
+          "postalCode": "string",
+          "zip": "string",
+          "line1": "string",
+          "line2": "string",
+          "regionId": "string",
+          "regionName": "string",
+          "firstName": "string",
+          "middleName": "string",
+          "lastName": "string",
+          "phone": "string",
+          "email": "string",
+          "outerId": "string",
+          "isDefault": true,
+          "description": "string"
+        },
+        "paymentStatus": "New",
+        "authorizedDate": "2023-09-20T06:25:51.100Z",
+        "capturedDate": "2023-09-20T06:25:51.100Z",
+        "voidedDate": "2023-09-20T06:25:51.100Z",
+        "processPaymentResult": {
+          "redirectUrl": "string",
+          "htmlForm": "string",
+          "outerId": "string",
+          "paymentMethod": {
+            "code": "string",
+            "name": "string",
+            "logoUrl": "string",
+            "isActive": true,
+            "priority": 0,
+            "isAvailableForPartial": true,
+            "allowDeferredPayment": true,
+            "currency": "string",
+            "price": 0,
+            "priceWithTax": 0,
+            "total": 0,
+            "totalWithTax": 0,
+            "discountAmount": 0,
+            "discountAmountWithTax": 0,
+            "storeId": "string",
+            "description": "string",
+            "typeName": "string",
+            "settings": [
+              {
+                "itHasValues": true,
+                "objectId": "string",
+                "objectType": "string",
+                "isReadOnly": true,
+                "value": {},
+                "id": "string",
+                "restartRequired": true,
+                "moduleId": "string",
+                "groupName": "string",
+                "name": "string",
+                "displayName": "string",
+                "isRequired": true,
+                "isHidden": true,
+                "valueType": "ShortText",
+                "allowedValues": [
+                  {}
+                ],
+                "defaultValue": {},
+                "isDictionary": true
+              }
+            ],
+            "taxType": "string",
+            "taxTotal": 0,
+            "taxPercentRate": 0,
+            "taxDetails": [
+              {
+                "rate": 0,
+                "amount": 0,
+                "name": "string"
+              }
+            ],
+            "paymentMethodType": "Unknown",
+            "paymentMethodGroupType": "Paypal",
+            "id": "string"
+          },
+          "isSuccess": true,
+          "errorMessage": "string",
+          "newPaymentStatus": "New",
+          "publicParameters": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
+        },
+        "price": 0,
+        "priceWithTax": 0,
+        "total": 0,
+        "totalWithTax": 0,
+        "discountAmount": 0,
+        "discountAmountWithTax": 0,
+        "objectType": "string",
+        "feeDetails": [
+          {
+            "feeId": "string",
+            "currency": "string",
+            "amount": 0,
+            "description": "string"
+          }
+        ],
+        "vendorId": "string",
+        "taxType": "string",
+        "taxTotal": 0,
+        "taxPercentRate": 0,
+        "taxDetails": [
+          {
+            "rate": 0,
+            "amount": 0,
+            "name": "string"
+          }
+        ],
+        "discounts": [
+          {
+            "promotionId": "string",
+            "currency": "string",
+            "discountAmount": 0,
+            "discountAmountWithTax": 0,
+            "coupon": "string",
+            "description": "string",
+            "id": "string"
+          }
+        ],
+        "transactions": [
+          {
+            "amount": 0,
+            "currencyCode": "string",
+            "isProcessed": true,
+            "processedDate": "2023-09-20T06:25:51.100Z",
+            "processError": "string",
+            "processAttemptCount": 0,
+            "requestData": "string",
+            "responseData": "string",
+            "responseCode": "string",
+            "gatewayIpAddress": "string",
+            "type": "string",
+            "status": "string",
+            "note": "string",
+            "createdDate": "2023-09-20T06:25:51.100Z",
+            "modifiedDate": "2023-09-20T06:25:51.100Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "refunds": [
+          {
+            "objectType": "string",
+            "amount": 0,
+            "reasonCode": "Duplicate",
+            "refundStatus": "Pending",
+            "reasonMessage": "string",
+            "rejectReasonMessage": "string",
+            "vendorId": "string",
+            "transactionId": "string",
+            "customerOrderId": "string",
+            "paymentId": "string",
+            "items": [
+              {
+                "quantity": 0,
+                "lineItemId": "string",
+                "lineItem": {
+                  "priceId": "string",
+                  "currency": "string",
+                  "price": 0,
+                  "priceWithTax": 0,
+                  "placedPrice": 0,
+                  "placedPriceWithTax": 0,
+                  "extendedPrice": 0,
+                  "extendedPriceWithTax": 0,
+                  "discountAmount": 0,
+                  "discountAmountWithTax": 0,
+                  "discountTotal": 0,
+                  "discountTotalWithTax": 0,
+                  "fee": 0,
+                  "feeWithTax": 0,
+                  "taxType": "string",
+                  "taxTotal": 0,
+                  "taxPercentRate": 0,
+                  "reserveQuantity": 0,
+                  "quantity": 0,
+                  "productId": "string",
+                  "sku": "string",
+                  "productType": "string",
+                  "catalogId": "string",
+                  "categoryId": "string",
+                  "name": "string",
+                  "comment": "string",
+                  "status": "string",
+                  "imageUrl": "string",
+                  "isGift": true,
+                  "shippingMethodCode": "string",
+                  "fulfillmentLocationCode": "string",
+                  "fulfillmentCenterId": "string",
+                  "fulfillmentCenterName": "string",
+                  "outerId": "string",
+                  "feeDetails": [
+                    {
+                      "feeId": "string",
+                      "currency": "string",
+                      "amount": 0,
+                      "description": "string"
+                    }
+                  ],
+                  "vendorId": "string",
+                  "weightUnit": "string",
+                  "weight": 0,
+                  "measureUnit": "string",
+                  "height": 0,
+                  "length": 0,
+                  "width": 0,
+                  "isCancelled": true,
+                  "cancelledDate": "2023-09-20T06:25:51.100Z",
+                  "cancelReason": "string",
+                  "objectType": "string",
+                  "dynamicProperties": [
+                    {
+                      "objectId": "string",
+                      "values": [
+                        {
+                          "objectType": "string",
+                          "objectId": "string",
+                          "locale": "string",
+                          "value": {},
+                          "valueId": "string",
+                          "valueType": "Undefined",
+                          "propertyId": "string",
+                          "propertyName": "string"
+                        }
+                      ],
+                      "name": "string",
+                      "description": "string",
+                      "objectType": "string",
+                      "isArray": true,
+                      "isDictionary": true,
+                      "isMultilingual": true,
+                      "isRequired": true,
+                      "displayOrder": 0,
+                      "valueType": "Undefined",
+                      "displayNames": [
+                        {
+                          "locale": "string",
+                          "name": "string"
+                        }
+                      ],
+                      "createdDate": "2023-09-20T06:25:51.100Z",
+                      "modifiedDate": "2023-09-20T06:25:51.100Z",
+                      "createdBy": "string",
+                      "modifiedBy": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "discounts": [
+                    {
+                      "promotionId": "string",
+                      "currency": "string",
+                      "discountAmount": 0,
+                      "discountAmountWithTax": 0,
+                      "coupon": "string",
+                      "description": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "taxDetails": [
+                    {
+                      "rate": 0,
+                      "amount": 0,
+                      "name": "string"
+                    }
+                  ],
+                  "createdDate": "2023-09-20T06:25:51.100Z",
+                  "modifiedDate": "2023-09-20T06:25:51.100Z",
+                  "createdBy": "string",
+                  "modifiedBy": "string",
+                  "id": "string"
+                },
+                "refundId": "string",
+                "outerId": "string",
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationType": "string",
+            "parentOperationId": "string",
+            "number": "string",
+            "isApproved": true,
+            "status": "string",
+            "comment": "string",
+            "currency": "string",
+            "sum": 0,
+            "outerId": "string",
+            "cancelledState": "Undefined",
+            "isCancelled": true,
+            "cancelledDate": "2023-09-20T06:25:51.100Z",
+            "cancelReason": "string",
+            "dynamicProperties": [
+              {
+                "objectId": "string",
+                "values": [
+                  {
+                    "objectType": "string",
+                    "objectId": "string",
+                    "locale": "string",
+                    "value": {},
+                    "valueId": "string",
+                    "valueType": "Undefined",
+                    "propertyId": "string",
+                    "propertyName": "string"
+                  }
+                ],
+                "name": "string",
+                "description": "string",
+                "objectType": "string",
+                "isArray": true,
+                "isDictionary": true,
+                "isMultilingual": true,
+                "isRequired": true,
+                "displayOrder": 0,
+                "valueType": "Undefined",
+                "displayNames": [
+                  {
+                    "locale": "string",
+                    "name": "string"
+                  }
+                ],
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationsLog": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "operationType": "Detached",
+                "detail": "string",
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.100Z",
+            "modifiedDate": "2023-09-20T06:25:51.100Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "captures": [
+          {
+            "objectType": "string",
+            "amount": 0,
+            "vendorId": "string",
+            "transactionId": "string",
+            "customerOrderId": "string",
+            "paymentId": "string",
+            "items": [
+              {
+                "quantity": 0,
+                "lineItemId": "string",
+                "lineItem": {
+                  "priceId": "string",
+                  "currency": "string",
+                  "price": 0,
+                  "priceWithTax": 0,
+                  "placedPrice": 0,
+                  "placedPriceWithTax": 0,
+                  "extendedPrice": 0,
+                  "extendedPriceWithTax": 0,
+                  "discountAmount": 0,
+                  "discountAmountWithTax": 0,
+                  "discountTotal": 0,
+                  "discountTotalWithTax": 0,
+                  "fee": 0,
+                  "feeWithTax": 0,
+                  "taxType": "string",
+                  "taxTotal": 0,
+                  "taxPercentRate": 0,
+                  "reserveQuantity": 0,
+                  "quantity": 0,
+                  "productId": "string",
+                  "sku": "string",
+                  "productType": "string",
+                  "catalogId": "string",
+                  "categoryId": "string",
+                  "name": "string",
+                  "comment": "string",
+                  "status": "string",
+                  "imageUrl": "string",
+                  "isGift": true,
+                  "shippingMethodCode": "string",
+                  "fulfillmentLocationCode": "string",
+                  "fulfillmentCenterId": "string",
+                  "fulfillmentCenterName": "string",
+                  "outerId": "string",
+                  "feeDetails": [
+                    {
+                      "feeId": "string",
+                      "currency": "string",
+                      "amount": 0,
+                      "description": "string"
+                    }
+                  ],
+                  "vendorId": "string",
+                  "weightUnit": "string",
+                  "weight": 0,
+                  "measureUnit": "string",
+                  "height": 0,
+                  "length": 0,
+                  "width": 0,
+                  "isCancelled": true,
+                  "cancelledDate": "2023-09-20T06:25:51.100Z",
+                  "cancelReason": "string",
+                  "objectType": "string",
+                  "dynamicProperties": [
+                    {
+                      "objectId": "string",
+                      "values": [
+                        {
+                          "objectType": "string",
+                          "objectId": "string",
+                          "locale": "string",
+                          "value": {},
+                          "valueId": "string",
+                          "valueType": "Undefined",
+                          "propertyId": "string",
+                          "propertyName": "string"
+                        }
+                      ],
+                      "name": "string",
+                      "description": "string",
+                      "objectType": "string",
+                      "isArray": true,
+                      "isDictionary": true,
+                      "isMultilingual": true,
+                      "isRequired": true,
+                      "displayOrder": 0,
+                      "valueType": "Undefined",
+                      "displayNames": [
+                        {
+                          "locale": "string",
+                          "name": "string"
+                        }
+                      ],
+                      "createdDate": "2023-09-20T06:25:51.100Z",
+                      "modifiedDate": "2023-09-20T06:25:51.100Z",
+                      "createdBy": "string",
+                      "modifiedBy": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "discounts": [
+                    {
+                      "promotionId": "string",
+                      "currency": "string",
+                      "discountAmount": 0,
+                      "discountAmountWithTax": 0,
+                      "coupon": "string",
+                      "description": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "taxDetails": [
+                    {
+                      "rate": 0,
+                      "amount": 0,
+                      "name": "string"
+                    }
+                  ],
+                  "createdDate": "2023-09-20T06:25:51.100Z",
+                  "modifiedDate": "2023-09-20T06:25:51.100Z",
+                  "createdBy": "string",
+                  "modifiedBy": "string",
+                  "id": "string"
+                },
+                "captureId": "string",
+                "outerId": "string",
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationType": "string",
+            "parentOperationId": "string",
+            "number": "string",
+            "isApproved": true,
+            "status": "string",
+            "comment": "string",
+            "currency": "string",
+            "sum": 0,
+            "outerId": "string",
+            "cancelledState": "Undefined",
+            "isCancelled": true,
+            "cancelledDate": "2023-09-20T06:25:51.100Z",
+            "cancelReason": "string",
+            "dynamicProperties": [
+              {
+                "objectId": "string",
+                "values": [
+                  {
+                    "objectType": "string",
+                    "objectId": "string",
+                    "locale": "string",
+                    "value": {},
+                    "valueId": "string",
+                    "valueType": "Undefined",
+                    "propertyId": "string",
+                    "propertyName": "string"
+                  }
+                ],
+                "name": "string",
+                "description": "string",
+                "objectType": "string",
+                "isArray": true,
+                "isDictionary": true,
+                "isMultilingual": true,
+                "isRequired": true,
+                "displayOrder": 0,
+                "valueType": "Undefined",
+                "displayNames": [
+                  {
+                    "locale": "string",
+                    "name": "string"
+                  }
+                ],
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationsLog": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "operationType": "Detached",
+                "detail": "string",
+                "createdDate": "2023-09-20T06:25:51.100Z",
+                "modifiedDate": "2023-09-20T06:25:51.100Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.100Z",
+            "modifiedDate": "2023-09-20T06:25:51.100Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "operationType": "string",
+        "parentOperationId": "string",
+        "number": "string",
+        "isApproved": true,
+        "status": "string",
+        "comment": "string",
+        "currency": "string",
+        "sum": 0,
+        "outerId": "string",
+        "cancelledState": "Undefined",
+        "isCancelled": true,
+        "cancelledDate": "2023-09-20T06:25:51.100Z",
+        "cancelReason": "string",
+        "dynamicProperties": [
+          {
+            "objectId": "string",
+            "values": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "locale": "string",
+                "value": {},
+                "valueId": "string",
+                "valueType": "Undefined",
+                "propertyId": "string",
+                "propertyName": "string"
+              }
+            ],
+            "name": "string",
+            "description": "string",
+            "objectType": "string",
+            "isArray": true,
+            "isDictionary": true,
+            "isMultilingual": true,
+            "isRequired": true,
+            "displayOrder": 0,
+            "valueType": "Undefined",
+            "displayNames": [
+              {
+                "locale": "string",
+                "name": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.100Z",
+            "modifiedDate": "2023-09-20T06:25:51.100Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "operationsLog": [
+          {
+            "objectType": "string",
+            "objectId": "string",
+            "operationType": "Detached",
+            "detail": "string",
+            "createdDate": "2023-09-20T06:25:51.101Z",
+            "modifiedDate": "2023-09-20T06:25:51.101Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "createdDate": "2023-09-20T06:25:51.101Z",
+        "modifiedDate": "2023-09-20T06:25:51.101Z",
+        "createdBy": "string",
+        "modifiedBy": "string",
+        "id": "string"
+      }
+    ],
+    "items": [
+      {
+        "priceId": "string",
+        "currency": "string",
+        "price": 0,
+        "priceWithTax": 0,
+        "placedPrice": 0,
+        "placedPriceWithTax": 0,
+        "extendedPrice": 0,
+        "extendedPriceWithTax": 0,
+        "discountAmount": 0,
+        "discountAmountWithTax": 0,
+        "discountTotal": 0,
+        "discountTotalWithTax": 0,
+        "fee": 0,
+        "feeWithTax": 0,
+        "taxType": "string",
+        "taxTotal": 0,
+        "taxPercentRate": 0,
+        "reserveQuantity": 0,
+        "quantity": 0,
+        "productId": "string",
+        "sku": "string",
+        "productType": "string",
+        "catalogId": "string",
+        "categoryId": "string",
+        "name": "string",
+        "comment": "string",
+        "status": "string",
+        "imageUrl": "string",
+        "isGift": true,
+        "shippingMethodCode": "string",
+        "fulfillmentLocationCode": "string",
+        "fulfillmentCenterId": "string",
+        "fulfillmentCenterName": "string",
+        "outerId": "string",
+        "feeDetails": [
+          {
+            "feeId": "string",
+            "currency": "string",
+            "amount": 0,
+            "description": "string"
+          }
+        ],
+        "vendorId": "string",
+        "weightUnit": "string",
+        "weight": 0,
+        "measureUnit": "string",
+        "height": 0,
+        "length": 0,
+        "width": 0,
+        "isCancelled": true,
+        "cancelledDate": "2023-09-20T06:25:51.102Z",
+        "cancelReason": "string",
+        "objectType": "string",
+        "dynamicProperties": [
+          {
+            "objectId": "string",
+            "values": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "locale": "string",
+                "value": {},
+                "valueId": "string",
+                "valueType": "Undefined",
+                "propertyId": "string",
+                "propertyName": "string"
+              }
+            ],
+            "name": "string",
+            "description": "string",
+            "objectType": "string",
+            "isArray": true,
+            "isDictionary": true,
+            "isMultilingual": true,
+            "isRequired": true,
+            "displayOrder": 0,
+            "valueType": "Undefined",
+            "displayNames": [
+              {
+                "locale": "string",
+                "name": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "discounts": [
+          {
+            "promotionId": "string",
+            "currency": "string",
+            "discountAmount": 0,
+            "discountAmountWithTax": 0,
+            "coupon": "string",
+            "description": "string",
+            "id": "string"
+          }
+        ],
+        "taxDetails": [
+          {
+            "rate": 0,
+            "amount": 0,
+            "name": "string"
+          }
+        ],
+        "createdDate": "2023-09-20T06:25:51.102Z",
+        "modifiedDate": "2023-09-20T06:25:51.102Z",
+        "createdBy": "string",
+        "modifiedBy": "string",
+        "id": "string"
+      }
+    ],
+    "shipments": [
+      {
+        "organizationId": "string",
+        "organizationName": "string",
+        "fulfillmentCenterId": "string",
+        "fulfillmentCenterName": "string",
+        "employeeId": "string",
+        "employeeName": "string",
+        "shipmentMethodCode": "string",
+        "shipmentMethodOption": "string",
+        "shippingMethod": {
+          "code": "string",
+          "name": "string",
+          "description": "string",
+          "logoUrl": "string",
+          "isActive": true,
+          "priority": 0,
+          "taxType": "string",
+          "storeId": "string",
+          "settings": [
+            {
+              "itHasValues": true,
+              "objectId": "string",
+              "objectType": "string",
+              "isReadOnly": true,
+              "value": {},
+              "id": "string",
+              "restartRequired": true,
+              "moduleId": "string",
+              "groupName": "string",
+              "name": "string",
+              "displayName": "string",
+              "isRequired": true,
+              "isHidden": true,
+              "valueType": "ShortText",
+              "allowedValues": [
+                {}
+              ],
+              "defaultValue": {},
+              "isDictionary": true
+            }
+          ],
+          "typeName": "string",
+          "id": "string"
+        },
+        "customerOrderId": "string",
+        "customerOrder": "string",
+        "items": [
+          {
+            "lineItemId": "string",
+            "lineItem": {
+              "priceId": "string",
+              "currency": "string",
+              "price": 0,
+              "priceWithTax": 0,
+              "placedPrice": 0,
+              "placedPriceWithTax": 0,
+              "extendedPrice": 0,
+              "extendedPriceWithTax": 0,
+              "discountAmount": 0,
+              "discountAmountWithTax": 0,
+              "discountTotal": 0,
+              "discountTotalWithTax": 0,
+              "fee": 0,
+              "feeWithTax": 0,
+              "taxType": "string",
+              "taxTotal": 0,
+              "taxPercentRate": 0,
+              "reserveQuantity": 0,
+              "quantity": 0,
+              "productId": "string",
+              "sku": "string",
+              "productType": "string",
+              "catalogId": "string",
+              "categoryId": "string",
+              "name": "string",
+              "comment": "string",
+              "status": "string",
+              "imageUrl": "string",
+              "isGift": true,
+              "shippingMethodCode": "string",
+              "fulfillmentLocationCode": "string",
+              "fulfillmentCenterId": "string",
+              "fulfillmentCenterName": "string",
+              "outerId": "string",
+              "feeDetails": [
+                {
+                  "feeId": "string",
+                  "currency": "string",
+                  "amount": 0,
+                  "description": "string"
+                }
+              ],
+              "vendorId": "string",
+              "weightUnit": "string",
+              "weight": 0,
+              "measureUnit": "string",
+              "height": 0,
+              "length": 0,
+              "width": 0,
+              "isCancelled": true,
+              "cancelledDate": "2023-09-20T06:25:51.102Z",
+              "cancelReason": "string",
+              "objectType": "string",
+              "dynamicProperties": [
+                {
+                  "objectId": "string",
+                  "values": [
+                    {
+                      "objectType": "string",
+                      "objectId": "string",
+                      "locale": "string",
+                      "value": {},
+                      "valueId": "string",
+                      "valueType": "Undefined",
+                      "propertyId": "string",
+                      "propertyName": "string"
+                    }
+                  ],
+                  "name": "string",
+                  "description": "string",
+                  "objectType": "string",
+                  "isArray": true,
+                  "isDictionary": true,
+                  "isMultilingual": true,
+                  "isRequired": true,
+                  "displayOrder": 0,
+                  "valueType": "Undefined",
+                  "displayNames": [
+                    {
+                      "locale": "string",
+                      "name": "string"
+                    }
+                  ],
+                  "createdDate": "2023-09-20T06:25:51.102Z",
+                  "modifiedDate": "2023-09-20T06:25:51.102Z",
+                  "createdBy": "string",
+                  "modifiedBy": "string",
+                  "id": "string"
+                }
+              ],
+              "discounts": [
+                {
+                  "promotionId": "string",
+                  "currency": "string",
+                  "discountAmount": 0,
+                  "discountAmountWithTax": 0,
+                  "coupon": "string",
+                  "description": "string",
+                  "id": "string"
+                }
+              ],
+              "taxDetails": [
+                {
+                  "rate": 0,
+                  "amount": 0,
+                  "name": "string"
+                }
+              ],
+              "createdDate": "2023-09-20T06:25:51.102Z",
+              "modifiedDate": "2023-09-20T06:25:51.102Z",
+              "createdBy": "string",
+              "modifiedBy": "string",
+              "id": "string"
+            },
+            "barCode": "string",
+            "quantity": 0,
+            "outerId": "string",
+            "status": "string",
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "packages": [
+          {
+            "barCode": "string",
+            "packageType": "string",
+            "items": [
+              {
+                "lineItemId": "string",
+                "lineItem": {
+                  "priceId": "string",
+                  "currency": "string",
+                  "price": 0,
+                  "priceWithTax": 0,
+                  "placedPrice": 0,
+                  "placedPriceWithTax": 0,
+                  "extendedPrice": 0,
+                  "extendedPriceWithTax": 0,
+                  "discountAmount": 0,
+                  "discountAmountWithTax": 0,
+                  "discountTotal": 0,
+                  "discountTotalWithTax": 0,
+                  "fee": 0,
+                  "feeWithTax": 0,
+                  "taxType": "string",
+                  "taxTotal": 0,
+                  "taxPercentRate": 0,
+                  "reserveQuantity": 0,
+                  "quantity": 0,
+                  "productId": "string",
+                  "sku": "string",
+                  "productType": "string",
+                  "catalogId": "string",
+                  "categoryId": "string",
+                  "name": "string",
+                  "comment": "string",
+                  "status": "string",
+                  "imageUrl": "string",
+                  "isGift": true,
+                  "shippingMethodCode": "string",
+                  "fulfillmentLocationCode": "string",
+                  "fulfillmentCenterId": "string",
+                  "fulfillmentCenterName": "string",
+                  "outerId": "string",
+                  "feeDetails": [
+                    {
+                      "feeId": "string",
+                      "currency": "string",
+                      "amount": 0,
+                      "description": "string"
+                    }
+                  ],
+                  "vendorId": "string",
+                  "weightUnit": "string",
+                  "weight": 0,
+                  "measureUnit": "string",
+                  "height": 0,
+                  "length": 0,
+                  "width": 0,
+                  "isCancelled": true,
+                  "cancelledDate": "2023-09-20T06:25:51.102Z",
+                  "cancelReason": "string",
+                  "objectType": "string",
+                  "dynamicProperties": [
+                    {
+                      "objectId": "string",
+                      "values": [
+                        {
+                          "objectType": "string",
+                          "objectId": "string",
+                          "locale": "string",
+                          "value": {},
+                          "valueId": "string",
+                          "valueType": "Undefined",
+                          "propertyId": "string",
+                          "propertyName": "string"
+                        }
+                      ],
+                      "name": "string",
+                      "description": "string",
+                      "objectType": "string",
+                      "isArray": true,
+                      "isDictionary": true,
+                      "isMultilingual": true,
+                      "isRequired": true,
+                      "displayOrder": 0,
+                      "valueType": "Undefined",
+                      "displayNames": [
+                        {
+                          "locale": "string",
+                          "name": "string"
+                        }
+                      ],
+                      "createdDate": "2023-09-20T06:25:51.102Z",
+                      "modifiedDate": "2023-09-20T06:25:51.102Z",
+                      "createdBy": "string",
+                      "modifiedBy": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "discounts": [
+                    {
+                      "promotionId": "string",
+                      "currency": "string",
+                      "discountAmount": 0,
+                      "discountAmountWithTax": 0,
+                      "coupon": "string",
+                      "description": "string",
+                      "id": "string"
+                    }
+                  ],
+                  "taxDetails": [
+                    {
+                      "rate": 0,
+                      "amount": 0,
+                      "name": "string"
+                    }
+                  ],
+                  "createdDate": "2023-09-20T06:25:51.102Z",
+                  "modifiedDate": "2023-09-20T06:25:51.102Z",
+                  "createdBy": "string",
+                  "modifiedBy": "string",
+                  "id": "string"
+                },
+                "barCode": "string",
+                "quantity": 0,
+                "outerId": "string",
+                "status": "string",
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "weightUnit": "string",
+            "weight": 0,
+            "measureUnit": "string",
+            "height": 0,
+            "length": 0,
+            "width": 0,
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "inPayments": [
+          {
+            "orderId": "string",
+            "purpose": "string",
+            "gatewayCode": "string",
+            "paymentMethod": {
+              "code": "string",
+              "name": "string",
+              "logoUrl": "string",
+              "isActive": true,
+              "priority": 0,
+              "isAvailableForPartial": true,
+              "allowDeferredPayment": true,
+              "currency": "string",
+              "price": 0,
+              "priceWithTax": 0,
+              "total": 0,
+              "totalWithTax": 0,
+              "discountAmount": 0,
+              "discountAmountWithTax": 0,
+              "storeId": "string",
+              "description": "string",
+              "typeName": "string",
+              "settings": [
+                {
+                  "itHasValues": true,
+                  "objectId": "string",
+                  "objectType": "string",
+                  "isReadOnly": true,
+                  "value": {},
+                  "id": "string",
+                  "restartRequired": true,
+                  "moduleId": "string",
+                  "groupName": "string",
+                  "name": "string",
+                  "displayName": "string",
+                  "isRequired": true,
+                  "isHidden": true,
+                  "valueType": "ShortText",
+                  "allowedValues": [
+                    {}
+                  ],
+                  "defaultValue": {},
+                  "isDictionary": true
+                }
+              ],
+              "taxType": "string",
+              "taxTotal": 0,
+              "taxPercentRate": 0,
+              "taxDetails": [
+                {
+                  "rate": 0,
+                  "amount": 0,
+                  "name": "string"
+                }
+              ],
+              "paymentMethodType": "Unknown",
+              "paymentMethodGroupType": "Paypal",
+              "id": "string"
+            },
+            "organizationId": "string",
+            "organizationName": "string",
+            "customerId": "string",
+            "customerName": "string",
+            "incomingDate": "2023-09-20T06:25:51.102Z",
+            "billingAddress": {
+              "addressType": "Undefined",
+              "key": "string",
+              "name": "string",
+              "organization": "string",
+              "countryCode": "string",
+              "countryName": "string",
+              "city": "string",
+              "postalCode": "string",
+              "zip": "string",
+              "line1": "string",
+              "line2": "string",
+              "regionId": "string",
+              "regionName": "string",
+              "firstName": "string",
+              "middleName": "string",
+              "lastName": "string",
+              "phone": "string",
+              "email": "string",
+              "outerId": "string",
+              "isDefault": true,
+              "description": "string"
+            },
+            "paymentStatus": "New",
+            "authorizedDate": "2023-09-20T06:25:51.102Z",
+            "capturedDate": "2023-09-20T06:25:51.102Z",
+            "voidedDate": "2023-09-20T06:25:51.102Z",
+            "processPaymentResult": {
+              "redirectUrl": "string",
+              "htmlForm": "string",
+              "outerId": "string",
+              "paymentMethod": {
+                "code": "string",
+                "name": "string",
+                "logoUrl": "string",
+                "isActive": true,
+                "priority": 0,
+                "isAvailableForPartial": true,
+                "allowDeferredPayment": true,
+                "currency": "string",
+                "price": 0,
+                "priceWithTax": 0,
+                "total": 0,
+                "totalWithTax": 0,
+                "discountAmount": 0,
+                "discountAmountWithTax": 0,
+                "storeId": "string",
+                "description": "string",
+                "typeName": "string",
+                "settings": [
+                  {
+                    "itHasValues": true,
+                    "objectId": "string",
+                    "objectType": "string",
+                    "isReadOnly": true,
+                    "value": {},
+                    "id": "string",
+                    "restartRequired": true,
+                    "moduleId": "string",
+                    "groupName": "string",
+                    "name": "string",
+                    "displayName": "string",
+                    "isRequired": true,
+                    "isHidden": true,
+                    "valueType": "ShortText",
+                    "allowedValues": [
+                      {}
+                    ],
+                    "defaultValue": {},
+                    "isDictionary": true
+                  }
+                ],
+                "taxType": "string",
+                "taxTotal": 0,
+                "taxPercentRate": 0,
+                "taxDetails": [
+                  {
+                    "rate": 0,
+                    "amount": 0,
+                    "name": "string"
+                  }
+                ],
+                "paymentMethodType": "Unknown",
+                "paymentMethodGroupType": "Paypal",
+                "id": "string"
+              },
+              "isSuccess": true,
+              "errorMessage": "string",
+              "newPaymentStatus": "New",
+              "publicParameters": {
+                "additionalProp1": "string",
+                "additionalProp2": "string",
+                "additionalProp3": "string"
+              }
+            },
+            "price": 0,
+            "priceWithTax": 0,
+            "total": 0,
+            "totalWithTax": 0,
+            "discountAmount": 0,
+            "discountAmountWithTax": 0,
+            "objectType": "string",
+            "feeDetails": [
+              {
+                "feeId": "string",
+                "currency": "string",
+                "amount": 0,
+                "description": "string"
+              }
+            ],
+            "vendorId": "string",
+            "taxType": "string",
+            "taxTotal": 0,
+            "taxPercentRate": 0,
+            "taxDetails": [
+              {
+                "rate": 0,
+                "amount": 0,
+                "name": "string"
+              }
+            ],
+            "discounts": [
+              {
+                "promotionId": "string",
+                "currency": "string",
+                "discountAmount": 0,
+                "discountAmountWithTax": 0,
+                "coupon": "string",
+                "description": "string",
+                "id": "string"
+              }
+            ],
+            "transactions": [
+              {
+                "amount": 0,
+                "currencyCode": "string",
+                "isProcessed": true,
+                "processedDate": "2023-09-20T06:25:51.102Z",
+                "processError": "string",
+                "processAttemptCount": 0,
+                "requestData": "string",
+                "responseData": "string",
+                "responseCode": "string",
+                "gatewayIpAddress": "string",
+                "type": "string",
+                "status": "string",
+                "note": "string",
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "refunds": [
+              {
+                "objectType": "string",
+                "amount": 0,
+                "reasonCode": "Duplicate",
+                "refundStatus": "Pending",
+                "reasonMessage": "string",
+                "rejectReasonMessage": "string",
+                "vendorId": "string",
+                "transactionId": "string",
+                "customerOrderId": "string",
+                "paymentId": "string",
+                "items": [
+                  {
+                    "quantity": 0,
+                    "lineItemId": "string",
+                    "lineItem": {
+                      "priceId": "string",
+                      "currency": "string",
+                      "price": 0,
+                      "priceWithTax": 0,
+                      "placedPrice": 0,
+                      "placedPriceWithTax": 0,
+                      "extendedPrice": 0,
+                      "extendedPriceWithTax": 0,
+                      "discountAmount": 0,
+                      "discountAmountWithTax": 0,
+                      "discountTotal": 0,
+                      "discountTotalWithTax": 0,
+                      "fee": 0,
+                      "feeWithTax": 0,
+                      "taxType": "string",
+                      "taxTotal": 0,
+                      "taxPercentRate": 0,
+                      "reserveQuantity": 0,
+                      "quantity": 0,
+                      "productId": "string",
+                      "sku": "string",
+                      "productType": "string",
+                      "catalogId": "string",
+                      "categoryId": "string",
+                      "name": "string",
+                      "comment": "string",
+                      "status": "string",
+                      "imageUrl": "string",
+                      "isGift": true,
+                      "shippingMethodCode": "string",
+                      "fulfillmentLocationCode": "string",
+                      "fulfillmentCenterId": "string",
+                      "fulfillmentCenterName": "string",
+                      "outerId": "string",
+                      "feeDetails": [
+                        {
+                          "feeId": "string",
+                          "currency": "string",
+                          "amount": 0,
+                          "description": "string"
+                        }
+                      ],
+                      "vendorId": "string",
+                      "weightUnit": "string",
+                      "weight": 0,
+                      "measureUnit": "string",
+                      "height": 0,
+                      "length": 0,
+                      "width": 0,
+                      "isCancelled": true,
+                      "cancelledDate": "2023-09-20T06:25:51.102Z",
+                      "cancelReason": "string",
+                      "objectType": "string",
+                      "dynamicProperties": [
+                        {
+                          "objectId": "string",
+                          "values": [
+                            {
+                              "objectType": "string",
+                              "objectId": "string",
+                              "locale": "string",
+                              "value": {},
+                              "valueId": "string",
+                              "valueType": "Undefined",
+                              "propertyId": "string",
+                              "propertyName": "string"
+                            }
+                          ],
+                          "name": "string",
+                          "description": "string",
+                          "objectType": "string",
+                          "isArray": true,
+                          "isDictionary": true,
+                          "isMultilingual": true,
+                          "isRequired": true,
+                          "displayOrder": 0,
+                          "valueType": "Undefined",
+                          "displayNames": [
+                            {
+                              "locale": "string",
+                              "name": "string"
+                            }
+                          ],
+                          "createdDate": "2023-09-20T06:25:51.102Z",
+                          "modifiedDate": "2023-09-20T06:25:51.102Z",
+                          "createdBy": "string",
+                          "modifiedBy": "string",
+                          "id": "string"
+                        }
+                      ],
+                      "discounts": [
+                        {
+                          "promotionId": "string",
+                          "currency": "string",
+                          "discountAmount": 0,
+                          "discountAmountWithTax": 0,
+                          "coupon": "string",
+                          "description": "string",
+                          "id": "string"
+                        }
+                      ],
+                      "taxDetails": [
+                        {
+                          "rate": 0,
+                          "amount": 0,
+                          "name": "string"
+                        }
+                      ],
+                      "createdDate": "2023-09-20T06:25:51.102Z",
+                      "modifiedDate": "2023-09-20T06:25:51.102Z",
+                      "createdBy": "string",
+                      "modifiedBy": "string",
+                      "id": "string"
+                    },
+                    "refundId": "string",
+                    "outerId": "string",
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "operationType": "string",
+                "parentOperationId": "string",
+                "number": "string",
+                "isApproved": true,
+                "status": "string",
+                "comment": "string",
+                "currency": "string",
+                "sum": 0,
+                "outerId": "string",
+                "cancelledState": "Undefined",
+                "isCancelled": true,
+                "cancelledDate": "2023-09-20T06:25:51.102Z",
+                "cancelReason": "string",
+                "dynamicProperties": [
+                  {
+                    "objectId": "string",
+                    "values": [
+                      {
+                        "objectType": "string",
+                        "objectId": "string",
+                        "locale": "string",
+                        "value": {},
+                        "valueId": "string",
+                        "valueType": "Undefined",
+                        "propertyId": "string",
+                        "propertyName": "string"
+                      }
+                    ],
+                    "name": "string",
+                    "description": "string",
+                    "objectType": "string",
+                    "isArray": true,
+                    "isDictionary": true,
+                    "isMultilingual": true,
+                    "isRequired": true,
+                    "displayOrder": 0,
+                    "valueType": "Undefined",
+                    "displayNames": [
+                      {
+                        "locale": "string",
+                        "name": "string"
+                      }
+                    ],
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "operationsLog": [
+                  {
+                    "objectType": "string",
+                    "objectId": "string",
+                    "operationType": "Detached",
+                    "detail": "string",
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "captures": [
+              {
+                "objectType": "string",
+                "amount": 0,
+                "vendorId": "string",
+                "transactionId": "string",
+                "customerOrderId": "string",
+                "paymentId": "string",
+                "items": [
+                  {
+                    "quantity": 0,
+                    "lineItemId": "string",
+                    "lineItem": {
+                      "priceId": "string",
+                      "currency": "string",
+                      "price": 0,
+                      "priceWithTax": 0,
+                      "placedPrice": 0,
+                      "placedPriceWithTax": 0,
+                      "extendedPrice": 0,
+                      "extendedPriceWithTax": 0,
+                      "discountAmount": 0,
+                      "discountAmountWithTax": 0,
+                      "discountTotal": 0,
+                      "discountTotalWithTax": 0,
+                      "fee": 0,
+                      "feeWithTax": 0,
+                      "taxType": "string",
+                      "taxTotal": 0,
+                      "taxPercentRate": 0,
+                      "reserveQuantity": 0,
+                      "quantity": 0,
+                      "productId": "string",
+                      "sku": "string",
+                      "productType": "string",
+                      "catalogId": "string",
+                      "categoryId": "string",
+                      "name": "string",
+                      "comment": "string",
+                      "status": "string",
+                      "imageUrl": "string",
+                      "isGift": true,
+                      "shippingMethodCode": "string",
+                      "fulfillmentLocationCode": "string",
+                      "fulfillmentCenterId": "string",
+                      "fulfillmentCenterName": "string",
+                      "outerId": "string",
+                      "feeDetails": [
+                        {
+                          "feeId": "string",
+                          "currency": "string",
+                          "amount": 0,
+                          "description": "string"
+                        }
+                      ],
+                      "vendorId": "string",
+                      "weightUnit": "string",
+                      "weight": 0,
+                      "measureUnit": "string",
+                      "height": 0,
+                      "length": 0,
+                      "width": 0,
+                      "isCancelled": true,
+                      "cancelledDate": "2023-09-20T06:25:51.102Z",
+                      "cancelReason": "string",
+                      "objectType": "string",
+                      "dynamicProperties": [
+                        {
+                          "objectId": "string",
+                          "values": [
+                            {
+                              "objectType": "string",
+                              "objectId": "string",
+                              "locale": "string",
+                              "value": {},
+                              "valueId": "string",
+                              "valueType": "Undefined",
+                              "propertyId": "string",
+                              "propertyName": "string"
+                            }
+                          ],
+                          "name": "string",
+                          "description": "string",
+                          "objectType": "string",
+                          "isArray": true,
+                          "isDictionary": true,
+                          "isMultilingual": true,
+                          "isRequired": true,
+                          "displayOrder": 0,
+                          "valueType": "Undefined",
+                          "displayNames": [
+                            {
+                              "locale": "string",
+                              "name": "string"
+                            }
+                          ],
+                          "createdDate": "2023-09-20T06:25:51.102Z",
+                          "modifiedDate": "2023-09-20T06:25:51.102Z",
+                          "createdBy": "string",
+                          "modifiedBy": "string",
+                          "id": "string"
+                        }
+                      ],
+                      "discounts": [
+                        {
+                          "promotionId": "string",
+                          "currency": "string",
+                          "discountAmount": 0,
+                          "discountAmountWithTax": 0,
+                          "coupon": "string",
+                          "description": "string",
+                          "id": "string"
+                        }
+                      ],
+                      "taxDetails": [
+                        {
+                          "rate": 0,
+                          "amount": 0,
+                          "name": "string"
+                        }
+                      ],
+                      "createdDate": "2023-09-20T06:25:51.102Z",
+                      "modifiedDate": "2023-09-20T06:25:51.102Z",
+                      "createdBy": "string",
+                      "modifiedBy": "string",
+                      "id": "string"
+                    },
+                    "captureId": "string",
+                    "outerId": "string",
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "operationType": "string",
+                "parentOperationId": "string",
+                "number": "string",
+                "isApproved": true,
+                "status": "string",
+                "comment": "string",
+                "currency": "string",
+                "sum": 0,
+                "outerId": "string",
+                "cancelledState": "Undefined",
+                "isCancelled": true,
+                "cancelledDate": "2023-09-20T06:25:51.102Z",
+                "cancelReason": "string",
+                "dynamicProperties": [
+                  {
+                    "objectId": "string",
+                    "values": [
+                      {
+                        "objectType": "string",
+                        "objectId": "string",
+                        "locale": "string",
+                        "value": {},
+                        "valueId": "string",
+                        "valueType": "Undefined",
+                        "propertyId": "string",
+                        "propertyName": "string"
+                      }
+                    ],
+                    "name": "string",
+                    "description": "string",
+                    "objectType": "string",
+                    "isArray": true,
+                    "isDictionary": true,
+                    "isMultilingual": true,
+                    "isRequired": true,
+                    "displayOrder": 0,
+                    "valueType": "Undefined",
+                    "displayNames": [
+                      {
+                        "locale": "string",
+                        "name": "string"
+                      }
+                    ],
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "operationsLog": [
+                  {
+                    "objectType": "string",
+                    "objectId": "string",
+                    "operationType": "Detached",
+                    "detail": "string",
+                    "createdDate": "2023-09-20T06:25:51.102Z",
+                    "modifiedDate": "2023-09-20T06:25:51.102Z",
+                    "createdBy": "string",
+                    "modifiedBy": "string",
+                    "id": "string"
+                  }
+                ],
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationType": "string",
+            "parentOperationId": "string",
+            "number": "string",
+            "isApproved": true,
+            "status": "string",
+            "comment": "string",
+            "currency": "string",
+            "sum": 0,
+            "outerId": "string",
+            "cancelledState": "Undefined",
+            "isCancelled": true,
+            "cancelledDate": "2023-09-20T06:25:51.102Z",
+            "cancelReason": "string",
+            "dynamicProperties": [
+              {
+                "objectId": "string",
+                "values": [
+                  {
+                    "objectType": "string",
+                    "objectId": "string",
+                    "locale": "string",
+                    "value": {},
+                    "valueId": "string",
+                    "valueType": "Undefined",
+                    "propertyId": "string",
+                    "propertyName": "string"
+                  }
+                ],
+                "name": "string",
+                "description": "string",
+                "objectType": "string",
+                "isArray": true,
+                "isDictionary": true,
+                "isMultilingual": true,
+                "isRequired": true,
+                "displayOrder": 0,
+                "valueType": "Undefined",
+                "displayNames": [
+                  {
+                    "locale": "string",
+                    "name": "string"
+                  }
+                ],
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "operationsLog": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "operationType": "Detached",
+                "detail": "string",
+                "createdDate": "2023-09-20T06:25:51.102Z",
+                "modifiedDate": "2023-09-20T06:25:51.102Z",
+                "createdBy": "string",
+                "modifiedBy": "string",
+                "id": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "feeDetails": [
+          {
+            "feeId": "string",
+            "currency": "string",
+            "amount": 0,
+            "description": "string"
+          }
+        ],
+        "weightUnit": "string",
+        "weight": 0,
+        "measureUnit": "string",
+        "height": 0,
+        "length": 0,
+        "width": 0,
+        "discounts": [
+          {
+            "promotionId": "string",
+            "currency": "string",
+            "discountAmount": 0,
+            "discountAmountWithTax": 0,
+            "coupon": "string",
+            "description": "string",
+            "id": "string"
+          }
+        ],
+        "deliveryAddress": {
+          "addressType": "Undefined",
+          "key": "string",
+          "name": "string",
+          "organization": "string",
+          "countryCode": "string",
+          "countryName": "string",
+          "city": "string",
+          "postalCode": "string",
+          "zip": "string",
+          "line1": "string",
+          "line2": "string",
+          "regionId": "string",
+          "regionName": "string",
+          "firstName": "string",
+          "middleName": "string",
+          "lastName": "string",
+          "phone": "string",
+          "email": "string",
+          "outerId": "string",
+          "isDefault": true,
+          "description": "string"
+        },
+        "price": 0,
+        "priceWithTax": 0,
+        "total": 0,
+        "totalWithTax": 0,
+        "discountAmount": 0,
+        "discountAmountWithTax": 0,
+        "fee": 0,
+        "feeWithTax": 0,
+        "trackingNumber": "string",
+        "trackingUrl": "string",
+        "deliveryDate": "2023-09-20T06:25:51.102Z",
+        "objectType": "string",
+        "vendorId": "string",
+        "taxType": "string",
+        "taxTotal": 0,
+        "taxPercentRate": 0,
+        "taxDetails": [
+          {
+            "rate": 0,
+            "amount": 0,
+            "name": "string"
+          }
+        ],
+        "operationType": "string",
+        "parentOperationId": "string",
+        "number": "string",
+        "isApproved": true,
+        "status": "string",
+        "comment": "string",
+        "currency": "string",
+        "sum": 0,
+        "outerId": "string",
+        "cancelledState": "Undefined",
+        "isCancelled": true,
+        "cancelledDate": "2023-09-20T06:25:51.102Z",
+        "cancelReason": "string",
+        "dynamicProperties": [
+          {
+            "objectId": "string",
+            "values": [
+              {
+                "objectType": "string",
+                "objectId": "string",
+                "locale": "string",
+                "value": {},
+                "valueId": "string",
+                "valueType": "Undefined",
+                "propertyId": "string",
+                "propertyName": "string"
+              }
+            ],
+            "name": "string",
+            "description": "string",
+            "objectType": "string",
+            "isArray": true,
+            "isDictionary": true,
+            "isMultilingual": true,
+            "isRequired": true,
+            "displayOrder": 0,
+            "valueType": "Undefined",
+            "displayNames": [
+              {
+                "locale": "string",
+                "name": "string"
+              }
+            ],
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "operationsLog": [
+          {
+            "objectType": "string",
+            "objectId": "string",
+            "operationType": "Detached",
+            "detail": "string",
+            "createdDate": "2023-09-20T06:25:51.102Z",
+            "modifiedDate": "2023-09-20T06:25:51.102Z",
+            "createdBy": "string",
+            "modifiedBy": "string",
+            "id": "string"
+          }
+        ],
+        "createdDate": "2023-09-20T06:25:51.102Z",
+        "modifiedDate": "2023-09-20T06:25:51.102Z",
+        "createdBy": "string",
+        "modifiedBy": "string",
+        "id": "string"
+      }
+    ],
+    "feeDetails": [
+      {
+        "feeId": "string",
+        "currency": "string",
+        "amount": 0,
+        "description": "string"
+      }
+    ],
+    "discounts": [
+      {
+        "promotionId": "string",
+        "currency": "string",
+        "discountAmount": 0,
+        "discountAmountWithTax": 0,
+        "coupon": "string",
+        "description": "string",
+        "id": "string"
+      }
+    ],
+    "discountAmount": 0,
+    "taxDetails": [
+      {
+        "rate": 0,
+        "amount": 0,
+        "name": "string"
+      }
+    ],
+    "scopes": [
+      "string"
+    ],
+    "total": 0,
+    "subTotal": 0,
+    "subTotalWithTax": 0,
+    "subTotalDiscount": 0,
+    "subTotalDiscountWithTax": 0,
+    "subTotalTaxTotal": 0,
+    "shippingTotal": 0,
+    "shippingTotalWithTax": 0,
+    "shippingSubTotal": 0,
+    "shippingSubTotalWithTax": 0,
+    "shippingDiscountTotal": 0,
+    "shippingDiscountTotalWithTax": 0,
+    "shippingTaxTotal": 0,
+    "paymentTotal": 0,
+    "paymentTotalWithTax": 0,
+    "paymentSubTotal": 0,
+    "paymentSubTotalWithTax": 0,
+    "paymentDiscountTotal": 0,
+    "paymentDiscountTotalWithTax": 0,
+    "paymentTaxTotal": 0,
+    "discountTotal": 0,
+    "discountTotalWithTax": 0,
+    "fee": 0,
+    "feeWithTax": 0,
+    "feeTotal": 0,
+    "feeTotalWithTax": 0,
+    "handlingTotal": 0,
+    "handlingTotalWithTax": 0,
+    "taxType": "string",
+    "taxTotal": 0,
+    "taxPercentRate": 0,
+    "languageCode": "string",
+    "operationType": "string",
+    "parentOperationId": "string",
+    "number": "string",
+    "isApproved": true,
+    "status": "string",
+    "comment": "string",
+    "currency": "string",
+    "sum": 0,
+    "outerId": "string",
+    "cancelledState": "Undefined",
+    "isCancelled": true,
+    "cancelledDate": "2023-09-20T06:25:51.102Z",
+    "cancelReason": "string",
+    "dynamicProperties": [
+      {
+        "objectId": "string",
+        "values": [
+          {
+            "objectType": "string",
+            "objectId": "string",
+            "locale": "string",
+            "value": {},
+            "valueId": "string",
+            "valueType": "Undefined",
+            "propertyId": "string",
+            "propertyName": "string"
+          }
+        ],
+        "name": "string",
+        "description": "string",
+        "objectType": "string",
+        "isArray": true,
+        "isDictionary": true,
+        "isMultilingual": true,
+        "isRequired": true,
+        "displayOrder": 0,
+        "valueType": "Undefined",
+        "displayNames": [
+          {
+            "locale": "string",
+            "name": "string"
+          }
+        ],
+        "createdDate": "2023-09-20T06:25:51.102Z",
+        "modifiedDate": "2023-09-20T06:25:51.102Z",
+        "createdBy": "string",
+        "modifiedBy": "string",
+        "id": "string"
+      }
+    ],
+    "operationsLog": [
+      {
+        "objectType": "string",
+        "objectId": "string",
+        "operationType": "Detached",
+        "detail": "string",
+        "createdDate": "2023-09-20T06:25:51.102Z",
+        "modifiedDate": "2023-09-20T06:25:51.102Z",
+        "createdBy": "string",
+        "modifiedBy": "string",
+        "id": "string"
+      }
+    ],
+    "createdDate": "2023-09-20T06:25:51.102Z",
+    "modifiedDate": "2023-09-20T06:25:51.102Z",
+    "createdBy": "string",
+    "modifiedBy": "string",
+    "id": "string"
+  }

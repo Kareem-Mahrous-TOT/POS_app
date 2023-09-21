@@ -4,12 +4,21 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
+import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
+import 'package:tot_pos/data/network/end_points.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Map<String, String> customerData;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +78,7 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       loadedData: (value) {
+                        customerData = value.dropdownValue!;
                         if (value.products.isEmpty &&
                             value.isSearching == false) {
                           return Center(
@@ -137,9 +147,32 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            BlocBuilder<ProductsCubit, ProductsState>(
+            BlocConsumer<ProductsCubit, ProductsState>(
+              listener: (context, state) => state.maybeMap(
+                orElse: () {
+                  return null;
+                },
+                empty: (value) => value.message == null
+                    ? ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              value.message.toString(),
+                            ),
+                          ),
+                        ),
+                      )
+                    : null,
+              ),
               builder: (context, state) {
-                return state.map(
+                return state.maybeMap(
+                  orElse: () {
+                    return Container(
+                      color: Colors.orange,
+                      width: 100,
+                      height: 100,
+                    );
+                  },
                   empty: (value) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -168,6 +201,20 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   updateList: (value) {
+                    List<OrderItem> products = [];
+                    for (int i = 0; i < value.bag.length; i++) {
+                      products.add(
+                        OrderItem(
+                          sku: value.bag[i].code,
+                          currency: "EGP",
+                          price: value.bag[i].itemPrice,
+                          productId: value.bag[i].id,
+                          catalogId: "f5790b39-4fc8-4aad-8318-259d28595f05",
+                          name: value.bag[i].itemName,
+                        ),
+                      );
+                    }
+
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -226,15 +273,35 @@ class HomePage extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   TOTButtonAtom.filledButton(
-                                      backgroundColor: AppColors.orange,
-                                      text: "Clear list",
+                                      backgroundColor: AppColors.green,
+                                      text: "Checkout",
                                       onPressed: () {
-                                        context
-                                            .read<ProductsCubit>()
-                                            .clearList();
+                                        context.read<ProductsCubit>().checkout(
+                                            customerId: customerData.keys.first,
+                                            storeId: storeId,
+                                            storeName: "alkhbaz",
+                                            customerName:
+                                                customerData.values.first,
+                                            isApproved: false,
+                                            status: "Created",
+                                            currency: "EGP",
+                                            items: products);
                                       },
                                       textColor: AppColors.black)
                                 ],
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: TOTButtonAtom.filledButton(
+                                    backgroundColor: AppColors.orange,
+                                    text: "Clear list",
+                                    onPressed: () {
+                                      context.read<ProductsCubit>().clearList();
+                                    },
+                                    textColor: AppColors.black),
                               ),
                             ),
                           ],

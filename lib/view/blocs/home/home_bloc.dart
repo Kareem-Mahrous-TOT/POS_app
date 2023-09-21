@@ -28,11 +28,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 const TOTCustomersSearchRequest(
                     memberType: "Contact", take: 1000));
             data.fold(
-              (l) => emit(_FailedLoadingData(
-                  "The error happened here ---------${l.message}")),
+              (l) => emit(_FailedLoadingData(l.message)),
               (r) {
                 productsList = r.items!;
-
                 customersData.fold(
                   (l) => emit(
                     _FetchingCustomersFailed(l.message),
@@ -46,8 +44,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                     );
                   },
                 );
-                // log("Products List >>>> $productsList"),
-                // emit(_LoadedData(r.items!));
               },
             );
           },

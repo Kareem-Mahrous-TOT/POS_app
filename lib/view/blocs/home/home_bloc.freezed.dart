@@ -610,7 +610,7 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
@@ -621,7 +621,7 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -632,7 +632,7 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -720,7 +720,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
@@ -734,7 +734,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -748,7 +748,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -816,7 +816,10 @@ abstract class _$$_LoadedDataCopyWith<$Res> {
       __$$_LoadedDataCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<TOTProduct> products, bool? isSearching, List<Member>? customers});
+      {List<TOTProduct> products,
+      bool? isSearching,
+      List<Member>? customers,
+      Map<String, String>? dropdownValue});
 }
 
 /// @nodoc
@@ -833,6 +836,7 @@ class __$$_LoadedDataCopyWithImpl<$Res>
     Object? products = null,
     Object? isSearching = freezed,
     Object? customers = freezed,
+    Object? dropdownValue = freezed,
   }) {
     return _then(_$_LoadedData(
       null == products
@@ -847,6 +851,10 @@ class __$$_LoadedDataCopyWithImpl<$Res>
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
               as List<Member>?,
+      dropdownValue: freezed == dropdownValue
+          ? _value.dropdownValue
+          : dropdownValue // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
     ));
   }
 }
@@ -854,7 +862,8 @@ class __$$_LoadedDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedData implements _LoadedData {
-  _$_LoadedData(this.products, {this.isSearching, this.customers});
+  _$_LoadedData(this.products,
+      {this.isSearching, this.customers, this.dropdownValue});
 
   @override
   List<TOTProduct> products;
@@ -862,10 +871,12 @@ class _$_LoadedData implements _LoadedData {
   bool? isSearching;
   @override
   List<Member>? customers;
+  @override
+  Map<String, String>? dropdownValue;
 
   @override
   String toString() {
-    return 'HomeState.loadedData(products: $products, isSearching: $isSearching, customers: $customers)';
+    return 'HomeState.loadedData(products: $products, isSearching: $isSearching, customers: $customers, dropdownValue: $dropdownValue)';
   }
 
   @JsonKey(ignore: true)
@@ -879,13 +890,13 @@ class _$_LoadedData implements _LoadedData {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
     required TResult Function(String message) fetchingCustomersFailed,
   }) {
-    return loadedData(products, isSearching, customers);
+    return loadedData(products, isSearching, customers, dropdownValue);
   }
 
   @override
@@ -893,13 +904,13 @@ class _$_LoadedData implements _LoadedData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
     TResult? Function(String message)? fetchingCustomersFailed,
   }) {
-    return loadedData?.call(products, isSearching, customers);
+    return loadedData?.call(products, isSearching, customers, dropdownValue);
   }
 
   @override
@@ -907,7 +918,7 @@ class _$_LoadedData implements _LoadedData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -915,7 +926,7 @@ class _$_LoadedData implements _LoadedData {
     required TResult orElse(),
   }) {
     if (loadedData != null) {
-      return loadedData(products, isSearching, customers);
+      return loadedData(products, isSearching, customers, dropdownValue);
     }
     return orElse();
   }
@@ -966,7 +977,9 @@ class _$_LoadedData implements _LoadedData {
 
 abstract class _LoadedData implements HomeState {
   factory _LoadedData(List<TOTProduct> products,
-      {bool? isSearching, List<Member>? customers}) = _$_LoadedData;
+      {bool? isSearching,
+      List<Member>? customers,
+      Map<String, String>? dropdownValue}) = _$_LoadedData;
 
   List<TOTProduct> get products;
   set products(List<TOTProduct> value);
@@ -974,6 +987,8 @@ abstract class _LoadedData implements HomeState {
   set isSearching(bool? value);
   List<Member>? get customers;
   set customers(List<Member>? value);
+  Map<String, String>? get dropdownValue;
+  set dropdownValue(Map<String, String>? value);
   @JsonKey(ignore: true)
   _$$_LoadedDataCopyWith<_$_LoadedData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1035,7 +1050,7 @@ class _$_FailedLoadingData implements _FailedLoadingData {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
@@ -1049,7 +1064,7 @@ class _$_FailedLoadingData implements _FailedLoadingData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -1063,7 +1078,7 @@ class _$_FailedLoadingData implements _FailedLoadingData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -1187,7 +1202,7 @@ class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
@@ -1201,7 +1216,7 @@ class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -1215,7 +1230,7 @@ class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -1340,7 +1355,7 @@ class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)
+            List<Member>? customers, Map<String, String>? dropdownValue)
         loadedData,
     required TResult Function(String message) failedLoadingData,
     required TResult Function(List<Member> customers) fetchingCustomersSuccess,
@@ -1354,7 +1369,7 @@ class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult? Function(String message)? failedLoadingData,
     TResult? Function(List<Member> customers)? fetchingCustomersSuccess,
@@ -1368,7 +1383,7 @@ class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<TOTProduct> products, bool? isSearching,
-            List<Member>? customers)?
+            List<Member>? customers, Map<String, String>? dropdownValue)?
         loadedData,
     TResult Function(String message)? failedLoadingData,
     TResult Function(List<Member> customers)? fetchingCustomersSuccess,

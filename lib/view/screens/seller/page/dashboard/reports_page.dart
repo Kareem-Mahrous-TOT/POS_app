@@ -4,8 +4,8 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/reports_exp.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
+
+import '../../components/pos/reports/pie_chart_api.dart';
 
 class ReportsPage extends StatefulWidget {
   const ReportsPage({super.key});
