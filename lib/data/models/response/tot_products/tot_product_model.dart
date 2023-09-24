@@ -39,7 +39,7 @@ class TOTProduct with _$TOTProduct {
     String? endDate,
     String? packageType,
     String? weightUnit,
-    int? weight,
+    double? weight,
     String? measureUnit,
     int? height,
     int? length,

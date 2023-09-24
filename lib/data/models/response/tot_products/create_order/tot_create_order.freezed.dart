@@ -40,7 +40,7 @@ mixin _$TotCreateOrderResponse {
   List<Address>? get addresses => throw _privateConstructorUsedError;
   List<InPayment>? get inPayments => throw _privateConstructorUsedError;
   List<OrderItem> get items => throw _privateConstructorUsedError;
-  List<dynamic>? get shipments => throw _privateConstructorUsedError;
+  List<Shipment>? get shipments => throw _privateConstructorUsedError;
   List<FeeDetails>? get feeDetails => throw _privateConstructorUsedError;
   List<Discount>? get discounts => throw _privateConstructorUsedError;
   double? get discountAmount => throw _privateConstructorUsedError;
@@ -92,6 +92,7 @@ mixin _$TotCreateOrderResponse {
   bool? get isCancelled => throw _privateConstructorUsedError;
   DateTime? get cancelledDate => throw _privateConstructorUsedError;
   String? get cancelReason => throw _privateConstructorUsedError;
+  List<Package>? get packages => throw _privateConstructorUsedError;
   List<DynamicProperty>? get dynamicProperties =>
       throw _privateConstructorUsedError;
   List<OperationLog>? get operationsLog => throw _privateConstructorUsedError;
@@ -133,7 +134,7 @@ abstract class $TotCreateOrderResponseCopyWith<$Res> {
       List<Address>? addresses,
       List<InPayment>? inPayments,
       List<OrderItem> items,
-      List<dynamic>? shipments,
+      List<Shipment>? shipments,
       List<FeeDetails>? feeDetails,
       List<Discount>? discounts,
       double? discountAmount,
@@ -184,6 +185,7 @@ abstract class $TotCreateOrderResponseCopyWith<$Res> {
       bool? isCancelled,
       DateTime? cancelledDate,
       String? cancelReason,
+      List<Package>? packages,
       List<DynamicProperty>? dynamicProperties,
       List<OperationLog>? operationsLog,
       DateTime createdDate,
@@ -277,6 +279,7 @@ class _$TotCreateOrderResponseCopyWithImpl<$Res,
     Object? isCancelled = freezed,
     Object? cancelledDate = freezed,
     Object? cancelReason = freezed,
+    Object? packages = freezed,
     Object? dynamicProperties = freezed,
     Object? operationsLog = freezed,
     Object? createdDate = null,
@@ -365,7 +368,7 @@ class _$TotCreateOrderResponseCopyWithImpl<$Res,
       shipments: freezed == shipments
           ? _value.shipments
           : shipments // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<Shipment>?,
       feeDetails: freezed == feeDetails
           ? _value.feeDetails
           : feeDetails // ignore: cast_nullable_to_non_nullable
@@ -566,6 +569,10 @@ class _$TotCreateOrderResponseCopyWithImpl<$Res,
           ? _value.cancelReason
           : cancelReason // ignore: cast_nullable_to_non_nullable
               as String?,
+      packages: freezed == packages
+          ? _value.packages
+          : packages // ignore: cast_nullable_to_non_nullable
+              as List<Package>?,
       dynamicProperties: freezed == dynamicProperties
           ? _value.dynamicProperties
           : dynamicProperties // ignore: cast_nullable_to_non_nullable
@@ -626,7 +633,7 @@ abstract class _$$_TotCreateOrderResponseCopyWith<$Res>
       List<Address>? addresses,
       List<InPayment>? inPayments,
       List<OrderItem> items,
-      List<dynamic>? shipments,
+      List<Shipment>? shipments,
       List<FeeDetails>? feeDetails,
       List<Discount>? discounts,
       double? discountAmount,
@@ -677,6 +684,7 @@ abstract class _$$_TotCreateOrderResponseCopyWith<$Res>
       bool? isCancelled,
       DateTime? cancelledDate,
       String? cancelReason,
+      List<Package>? packages,
       List<DynamicProperty>? dynamicProperties,
       List<OperationLog>? operationsLog,
       DateTime createdDate,
@@ -768,6 +776,7 @@ class __$$_TotCreateOrderResponseCopyWithImpl<$Res>
     Object? isCancelled = freezed,
     Object? cancelledDate = freezed,
     Object? cancelReason = freezed,
+    Object? packages = freezed,
     Object? dynamicProperties = freezed,
     Object? operationsLog = freezed,
     Object? createdDate = null,
@@ -856,7 +865,7 @@ class __$$_TotCreateOrderResponseCopyWithImpl<$Res>
       shipments: freezed == shipments
           ? _value._shipments
           : shipments // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<Shipment>?,
       feeDetails: freezed == feeDetails
           ? _value._feeDetails
           : feeDetails // ignore: cast_nullable_to_non_nullable
@@ -1057,6 +1066,10 @@ class __$$_TotCreateOrderResponseCopyWithImpl<$Res>
           ? _value.cancelReason
           : cancelReason // ignore: cast_nullable_to_non_nullable
               as String?,
+      packages: freezed == packages
+          ? _value._packages
+          : packages // ignore: cast_nullable_to_non_nullable
+              as List<Package>?,
       dynamicProperties: freezed == dynamicProperties
           ? _value._dynamicProperties
           : dynamicProperties // ignore: cast_nullable_to_non_nullable
@@ -1112,7 +1125,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
       final List<Address>? addresses,
       final List<InPayment>? inPayments,
       required final List<OrderItem> items,
-      final List<dynamic>? shipments,
+      final List<Shipment>? shipments,
       final List<FeeDetails>? feeDetails,
       final List<Discount>? discounts,
       this.discountAmount,
@@ -1163,6 +1176,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
       this.isCancelled,
       this.cancelledDate,
       this.cancelReason,
+      final List<Package>? packages,
       final List<DynamicProperty>? dynamicProperties,
       final List<OperationLog>? operationsLog,
       required this.createdDate,
@@ -1178,6 +1192,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
         _discounts = discounts,
         _taxDetails = taxDetails,
         _scopes = scopes,
+        _packages = packages,
         _dynamicProperties = dynamicProperties,
         _operationsLog = operationsLog;
 
@@ -1244,9 +1259,9 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
     return EqualUnmodifiableListView(_items);
   }
 
-  final List<dynamic>? _shipments;
+  final List<Shipment>? _shipments;
   @override
-  List<dynamic>? get shipments {
+  List<Shipment>? get shipments {
     final value = _shipments;
     if (value == null) return null;
     if (_shipments is EqualUnmodifiableListView) return _shipments;
@@ -1386,6 +1401,16 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
   final DateTime? cancelledDate;
   @override
   final String? cancelReason;
+  final List<Package>? _packages;
+  @override
+  List<Package>? get packages {
+    final value = _packages;
+    if (value == null) return null;
+    if (_packages is EqualUnmodifiableListView) return _packages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<DynamicProperty>? _dynamicProperties;
   @override
   List<DynamicProperty>? get dynamicProperties {
@@ -1420,7 +1445,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
 
   @override
   String toString() {
-    return 'TotCreateOrderResponse(rowVersion: $rowVersion, customerId: $customerId, customerName: $customerName, channelId: $channelId, storeId: $storeId, storeName: $storeName, organizationId: $organizationId, organizationName: $organizationName, employeeId: $employeeId, employeeName: $employeeName, shoppingCartId: $shoppingCartId, isPrototype: $isPrototype, purchaseOrderNumber: $purchaseOrderNumber, subscriptionNumber: $subscriptionNumber, subscriptionId: $subscriptionId, objectType: $objectType, addresses: $addresses, inPayments: $inPayments, items: $items, shipments: $shipments, feeDetails: $feeDetails, discounts: $discounts, discountAmount: $discountAmount, taxDetails: $taxDetails, scopes: $scopes, total: $total, subTotal: $subTotal, subTotalWithTax: $subTotalWithTax, subTotalDiscount: $subTotalDiscount, subTotalDiscountWithTax: $subTotalDiscountWithTax, subTotalTaxTotal: $subTotalTaxTotal, shippingTotal: $shippingTotal, shippingTotalWithTax: $shippingTotalWithTax, shippingSubTotal: $shippingSubTotal, shippingSubTotalWithTax: $shippingSubTotalWithTax, shippingDiscountTotal: $shippingDiscountTotal, shippingDiscountTotalWithTax: $shippingDiscountTotalWithTax, shippingTaxTotal: $shippingTaxTotal, paymentTotal: $paymentTotal, paymentTotalWithTax: $paymentTotalWithTax, paymentSubTotal: $paymentSubTotal, paymentSubTotalWithTax: $paymentSubTotalWithTax, paymentDiscountTotal: $paymentDiscountTotal, paymentDiscountTotalWithTax: $paymentDiscountTotalWithTax, paymentTaxTotal: $paymentTaxTotal, discountTotal: $discountTotal, discountTotalWithTax: $discountTotalWithTax, fee: $fee, feeWithTax: $feeWithTax, feeTotal: $feeTotal, feeTotalWithTax: $feeTotalWithTax, handlingTotal: $handlingTotal, handlingTotalWithTax: $handlingTotalWithTax, taxType: $taxType, taxTotal: $taxTotal, taxPercentRate: $taxPercentRate, languageCode: $languageCode, operationType: $operationType, parentOperationId: $parentOperationId, number: $number, isApproved: $isApproved, status: $status, comment: $comment, currency: $currency, sum: $sum, outerId: $outerId, cancelledState: $cancelledState, isCancelled: $isCancelled, cancelledDate: $cancelledDate, cancelReason: $cancelReason, dynamicProperties: $dynamicProperties, operationsLog: $operationsLog, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, id: $id)';
+    return 'TotCreateOrderResponse(rowVersion: $rowVersion, customerId: $customerId, customerName: $customerName, channelId: $channelId, storeId: $storeId, storeName: $storeName, organizationId: $organizationId, organizationName: $organizationName, employeeId: $employeeId, employeeName: $employeeName, shoppingCartId: $shoppingCartId, isPrototype: $isPrototype, purchaseOrderNumber: $purchaseOrderNumber, subscriptionNumber: $subscriptionNumber, subscriptionId: $subscriptionId, objectType: $objectType, addresses: $addresses, inPayments: $inPayments, items: $items, shipments: $shipments, feeDetails: $feeDetails, discounts: $discounts, discountAmount: $discountAmount, taxDetails: $taxDetails, scopes: $scopes, total: $total, subTotal: $subTotal, subTotalWithTax: $subTotalWithTax, subTotalDiscount: $subTotalDiscount, subTotalDiscountWithTax: $subTotalDiscountWithTax, subTotalTaxTotal: $subTotalTaxTotal, shippingTotal: $shippingTotal, shippingTotalWithTax: $shippingTotalWithTax, shippingSubTotal: $shippingSubTotal, shippingSubTotalWithTax: $shippingSubTotalWithTax, shippingDiscountTotal: $shippingDiscountTotal, shippingDiscountTotalWithTax: $shippingDiscountTotalWithTax, shippingTaxTotal: $shippingTaxTotal, paymentTotal: $paymentTotal, paymentTotalWithTax: $paymentTotalWithTax, paymentSubTotal: $paymentSubTotal, paymentSubTotalWithTax: $paymentSubTotalWithTax, paymentDiscountTotal: $paymentDiscountTotal, paymentDiscountTotalWithTax: $paymentDiscountTotalWithTax, paymentTaxTotal: $paymentTaxTotal, discountTotal: $discountTotal, discountTotalWithTax: $discountTotalWithTax, fee: $fee, feeWithTax: $feeWithTax, feeTotal: $feeTotal, feeTotalWithTax: $feeTotalWithTax, handlingTotal: $handlingTotal, handlingTotalWithTax: $handlingTotalWithTax, taxType: $taxType, taxTotal: $taxTotal, taxPercentRate: $taxPercentRate, languageCode: $languageCode, operationType: $operationType, parentOperationId: $parentOperationId, number: $number, isApproved: $isApproved, status: $status, comment: $comment, currency: $currency, sum: $sum, outerId: $outerId, cancelledState: $cancelledState, isCancelled: $isCancelled, cancelledDate: $cancelledDate, cancelReason: $cancelReason, packages: $packages, dynamicProperties: $dynamicProperties, operationsLog: $operationsLog, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, id: $id)';
   }
 
   @override
@@ -1538,6 +1563,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
             (identical(other.isCancelled, isCancelled) || other.isCancelled == isCancelled) &&
             (identical(other.cancelledDate, cancelledDate) || other.cancelledDate == cancelledDate) &&
             (identical(other.cancelReason, cancelReason) || other.cancelReason == cancelReason) &&
+            const DeepCollectionEquality().equals(other._packages, _packages) &&
             const DeepCollectionEquality().equals(other._dynamicProperties, _dynamicProperties) &&
             const DeepCollectionEquality().equals(other._operationsLog, _operationsLog) &&
             (identical(other.createdDate, createdDate) || other.createdDate == createdDate) &&
@@ -1621,6 +1647,7 @@ class _$_TotCreateOrderResponse implements _TotCreateOrderResponse {
         isCancelled,
         cancelledDate,
         cancelReason,
+        const DeepCollectionEquality().hash(_packages),
         const DeepCollectionEquality().hash(_dynamicProperties),
         const DeepCollectionEquality().hash(_operationsLog),
         createdDate,
@@ -1666,7 +1693,7 @@ abstract class _TotCreateOrderResponse implements TotCreateOrderResponse {
       final List<Address>? addresses,
       final List<InPayment>? inPayments,
       required final List<OrderItem> items,
-      final List<dynamic>? shipments,
+      final List<Shipment>? shipments,
       final List<FeeDetails>? feeDetails,
       final List<Discount>? discounts,
       final double? discountAmount,
@@ -1717,6 +1744,7 @@ abstract class _TotCreateOrderResponse implements TotCreateOrderResponse {
       final bool? isCancelled,
       final DateTime? cancelledDate,
       final String? cancelReason,
+      final List<Package>? packages,
       final List<DynamicProperty>? dynamicProperties,
       final List<OperationLog>? operationsLog,
       required final DateTime createdDate,
@@ -1767,7 +1795,7 @@ abstract class _TotCreateOrderResponse implements TotCreateOrderResponse {
   @override
   List<OrderItem> get items;
   @override
-  List<dynamic>? get shipments;
+  List<Shipment>? get shipments;
   @override
   List<FeeDetails>? get feeDetails;
   @override
@@ -1869,6 +1897,8 @@ abstract class _TotCreateOrderResponse implements TotCreateOrderResponse {
   @override
   String? get cancelReason;
   @override
+  List<Package>? get packages;
+  @override
   List<DynamicProperty>? get dynamicProperties;
   @override
   List<OperationLog>? get operationsLog;
@@ -1885,6 +1915,1583 @@ abstract class _TotCreateOrderResponse implements TotCreateOrderResponse {
   @override
   @JsonKey(ignore: true)
   _$$_TotCreateOrderResponseCopyWith<_$_TotCreateOrderResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Package _$PackageFromJson(Map<String, dynamic> json) {
+  return _Package.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Package {
+  List<LineItem>? get items => throw _privateConstructorUsedError;
+  String? get barCode => throw _privateConstructorUsedError;
+  String? get packageType => throw _privateConstructorUsedError;
+  String? get weightUnit => throw _privateConstructorUsedError;
+  String? get measureUnit => throw _privateConstructorUsedError;
+  DateTime? get createdDate => throw _privateConstructorUsedError;
+  DateTime? get modifiedDate => throw _privateConstructorUsedError;
+  String? get createdBy => throw _privateConstructorUsedError;
+  String? get modifiedBy => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PackageCopyWith<Package> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PackageCopyWith<$Res> {
+  factory $PackageCopyWith(Package value, $Res Function(Package) then) =
+      _$PackageCopyWithImpl<$Res, Package>;
+  @useResult
+  $Res call(
+      {List<LineItem>? items,
+      String? barCode,
+      String? packageType,
+      String? weightUnit,
+      String? measureUnit,
+      DateTime? createdDate,
+      DateTime? modifiedDate,
+      String? createdBy,
+      String? modifiedBy,
+      String? id});
+}
+
+/// @nodoc
+class _$PackageCopyWithImpl<$Res, $Val extends Package>
+    implements $PackageCopyWith<$Res> {
+  _$PackageCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = freezed,
+    Object? barCode = freezed,
+    Object? packageType = freezed,
+    Object? weightUnit = freezed,
+    Object? measureUnit = freezed,
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_value.copyWith(
+      items: freezed == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LineItem>?,
+      barCode: freezed == barCode
+          ? _value.barCode
+          : barCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageType: freezed == packageType
+          ? _value.packageType
+          : packageType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weightUnit: freezed == weightUnit
+          ? _value.weightUnit
+          : weightUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      measureUnit: freezed == measureUnit
+          ? _value.measureUnit
+          : measureUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PackageCopyWith<$Res> implements $PackageCopyWith<$Res> {
+  factory _$$_PackageCopyWith(
+          _$_Package value, $Res Function(_$_Package) then) =
+      __$$_PackageCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<LineItem>? items,
+      String? barCode,
+      String? packageType,
+      String? weightUnit,
+      String? measureUnit,
+      DateTime? createdDate,
+      DateTime? modifiedDate,
+      String? createdBy,
+      String? modifiedBy,
+      String? id});
+}
+
+/// @nodoc
+class __$$_PackageCopyWithImpl<$Res>
+    extends _$PackageCopyWithImpl<$Res, _$_Package>
+    implements _$$_PackageCopyWith<$Res> {
+  __$$_PackageCopyWithImpl(_$_Package _value, $Res Function(_$_Package) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = freezed,
+    Object? barCode = freezed,
+    Object? packageType = freezed,
+    Object? weightUnit = freezed,
+    Object? measureUnit = freezed,
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_$_Package(
+      items: freezed == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LineItem>?,
+      barCode: freezed == barCode
+          ? _value.barCode
+          : barCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      packageType: freezed == packageType
+          ? _value.packageType
+          : packageType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weightUnit: freezed == weightUnit
+          ? _value.weightUnit
+          : weightUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      measureUnit: freezed == measureUnit
+          ? _value.measureUnit
+          : measureUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Package implements _Package {
+  const _$_Package(
+      {final List<LineItem>? items,
+      this.barCode,
+      this.packageType,
+      this.weightUnit,
+      this.measureUnit,
+      this.createdDate,
+      this.modifiedDate,
+      this.createdBy,
+      this.modifiedBy,
+      this.id})
+      : _items = items;
+
+  factory _$_Package.fromJson(Map<String, dynamic> json) =>
+      _$$_PackageFromJson(json);
+
+  final List<LineItem>? _items;
+  @override
+  List<LineItem>? get items {
+    final value = _items;
+    if (value == null) return null;
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? barCode;
+  @override
+  final String? packageType;
+  @override
+  final String? weightUnit;
+  @override
+  final String? measureUnit;
+  @override
+  final DateTime? createdDate;
+  @override
+  final DateTime? modifiedDate;
+  @override
+  final String? createdBy;
+  @override
+  final String? modifiedBy;
+  @override
+  final String? id;
+
+  @override
+  String toString() {
+    return 'Package(items: $items, barCode: $barCode, packageType: $packageType, weightUnit: $weightUnit, measureUnit: $measureUnit, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Package &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.barCode, barCode) || other.barCode == barCode) &&
+            (identical(other.packageType, packageType) ||
+                other.packageType == packageType) &&
+            (identical(other.weightUnit, weightUnit) ||
+                other.weightUnit == weightUnit) &&
+            (identical(other.measureUnit, measureUnit) ||
+                other.measureUnit == measureUnit) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate) &&
+            (identical(other.modifiedDate, modifiedDate) ||
+                other.modifiedDate == modifiedDate) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
+            (identical(other.modifiedBy, modifiedBy) ||
+                other.modifiedBy == modifiedBy) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      barCode,
+      packageType,
+      weightUnit,
+      measureUnit,
+      createdDate,
+      modifiedDate,
+      createdBy,
+      modifiedBy,
+      id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PackageCopyWith<_$_Package> get copyWith =>
+      __$$_PackageCopyWithImpl<_$_Package>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PackageToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Package implements Package {
+  const factory _Package(
+      {final List<LineItem>? items,
+      final String? barCode,
+      final String? packageType,
+      final String? weightUnit,
+      final String? measureUnit,
+      final DateTime? createdDate,
+      final DateTime? modifiedDate,
+      final String? createdBy,
+      final String? modifiedBy,
+      final String? id}) = _$_Package;
+
+  factory _Package.fromJson(Map<String, dynamic> json) = _$_Package.fromJson;
+
+  @override
+  List<LineItem>? get items;
+  @override
+  String? get barCode;
+  @override
+  String? get packageType;
+  @override
+  String? get weightUnit;
+  @override
+  String? get measureUnit;
+  @override
+  DateTime? get createdDate;
+  @override
+  DateTime? get modifiedDate;
+  @override
+  String? get createdBy;
+  @override
+  String? get modifiedBy;
+  @override
+  String? get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PackageCopyWith<_$_Package> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Shipment _$ShipmentFromJson(Map<String, dynamic> json) {
+  return _Shipment.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Shipment {
+  String? get organizationId => throw _privateConstructorUsedError;
+  String? get organizationName => throw _privateConstructorUsedError;
+  String? get fulfillmentCenterId => throw _privateConstructorUsedError;
+  String? get fulfillmentCenterName => throw _privateConstructorUsedError;
+  String? get employeeId => throw _privateConstructorUsedError;
+  String? get employeeName => throw _privateConstructorUsedError;
+  String? get shipmentMethodCode => throw _privateConstructorUsedError;
+  String? get shipmentMethodOption => throw _privateConstructorUsedError;
+  String? get customerOrderId => throw _privateConstructorUsedError;
+  String? get customerOrder => throw _privateConstructorUsedError;
+  List<LineItem>? get items => throw _privateConstructorUsedError;
+  String? get weightUnit => throw _privateConstructorUsedError;
+  int? get weight => throw _privateConstructorUsedError;
+  String? get measureUnit => throw _privateConstructorUsedError;
+  int? get height => throw _privateConstructorUsedError;
+  int? get length => throw _privateConstructorUsedError;
+  int? get width => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  int? get priceWithTax => throw _privateConstructorUsedError;
+  int? get total => throw _privateConstructorUsedError;
+  int? get totalWithTax => throw _privateConstructorUsedError;
+  int? get discountAmount => throw _privateConstructorUsedError;
+  int? get discountAmountWithTax => throw _privateConstructorUsedError;
+  int? get fee => throw _privateConstructorUsedError;
+  int? get feeWithTax => throw _privateConstructorUsedError;
+  String? get trackingNumber => throw _privateConstructorUsedError;
+  String? get trackingUrl => throw _privateConstructorUsedError;
+  String? get deliveryDate => throw _privateConstructorUsedError;
+  String? get objectType => throw _privateConstructorUsedError;
+  String? get vendorId => throw _privateConstructorUsedError;
+  String? get taxType => throw _privateConstructorUsedError;
+  int? get taxTotal => throw _privateConstructorUsedError;
+  int? get taxPercentRate => throw _privateConstructorUsedError;
+  String? get operationType => throw _privateConstructorUsedError;
+  String? get parentOperationId => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
+  bool? get isApproved => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
+  int? get sum => throw _privateConstructorUsedError;
+  String? get outerId => throw _privateConstructorUsedError;
+  String? get cancelledState => throw _privateConstructorUsedError;
+  bool? get isCancelled => throw _privateConstructorUsedError;
+  String? get cancelledDate => throw _privateConstructorUsedError;
+  String? get cancelReason => throw _privateConstructorUsedError;
+  String? get createdDate => throw _privateConstructorUsedError;
+  String? get modifiedDate => throw _privateConstructorUsedError;
+  String? get createdBy => throw _privateConstructorUsedError;
+  String? get modifiedBy => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ShipmentCopyWith<Shipment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ShipmentCopyWith<$Res> {
+  factory $ShipmentCopyWith(Shipment value, $Res Function(Shipment) then) =
+      _$ShipmentCopyWithImpl<$Res, Shipment>;
+  @useResult
+  $Res call(
+      {String? organizationId,
+      String? organizationName,
+      String? fulfillmentCenterId,
+      String? fulfillmentCenterName,
+      String? employeeId,
+      String? employeeName,
+      String? shipmentMethodCode,
+      String? shipmentMethodOption,
+      String? customerOrderId,
+      String? customerOrder,
+      List<LineItem>? items,
+      String? weightUnit,
+      int? weight,
+      String? measureUnit,
+      int? height,
+      int? length,
+      int? width,
+      int? price,
+      int? priceWithTax,
+      int? total,
+      int? totalWithTax,
+      int? discountAmount,
+      int? discountAmountWithTax,
+      int? fee,
+      int? feeWithTax,
+      String? trackingNumber,
+      String? trackingUrl,
+      String? deliveryDate,
+      String? objectType,
+      String? vendorId,
+      String? taxType,
+      int? taxTotal,
+      int? taxPercentRate,
+      String? operationType,
+      String? parentOperationId,
+      String? number,
+      bool? isApproved,
+      String? status,
+      String? comment,
+      String? currency,
+      int? sum,
+      String? outerId,
+      String? cancelledState,
+      bool? isCancelled,
+      String? cancelledDate,
+      String? cancelReason,
+      String? createdDate,
+      String? modifiedDate,
+      String? createdBy,
+      String? modifiedBy,
+      String? id});
+}
+
+/// @nodoc
+class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
+    implements $ShipmentCopyWith<$Res> {
+  _$ShipmentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? organizationId = freezed,
+    Object? organizationName = freezed,
+    Object? fulfillmentCenterId = freezed,
+    Object? fulfillmentCenterName = freezed,
+    Object? employeeId = freezed,
+    Object? employeeName = freezed,
+    Object? shipmentMethodCode = freezed,
+    Object? shipmentMethodOption = freezed,
+    Object? customerOrderId = freezed,
+    Object? customerOrder = freezed,
+    Object? items = freezed,
+    Object? weightUnit = freezed,
+    Object? weight = freezed,
+    Object? measureUnit = freezed,
+    Object? height = freezed,
+    Object? length = freezed,
+    Object? width = freezed,
+    Object? price = freezed,
+    Object? priceWithTax = freezed,
+    Object? total = freezed,
+    Object? totalWithTax = freezed,
+    Object? discountAmount = freezed,
+    Object? discountAmountWithTax = freezed,
+    Object? fee = freezed,
+    Object? feeWithTax = freezed,
+    Object? trackingNumber = freezed,
+    Object? trackingUrl = freezed,
+    Object? deliveryDate = freezed,
+    Object? objectType = freezed,
+    Object? vendorId = freezed,
+    Object? taxType = freezed,
+    Object? taxTotal = freezed,
+    Object? taxPercentRate = freezed,
+    Object? operationType = freezed,
+    Object? parentOperationId = freezed,
+    Object? number = freezed,
+    Object? isApproved = freezed,
+    Object? status = freezed,
+    Object? comment = freezed,
+    Object? currency = freezed,
+    Object? sum = freezed,
+    Object? outerId = freezed,
+    Object? cancelledState = freezed,
+    Object? isCancelled = freezed,
+    Object? cancelledDate = freezed,
+    Object? cancelReason = freezed,
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_value.copyWith(
+      organizationId: freezed == organizationId
+          ? _value.organizationId
+          : organizationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      organizationName: freezed == organizationName
+          ? _value.organizationName
+          : organizationName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fulfillmentCenterId: freezed == fulfillmentCenterId
+          ? _value.fulfillmentCenterId
+          : fulfillmentCenterId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fulfillmentCenterName: freezed == fulfillmentCenterName
+          ? _value.fulfillmentCenterName
+          : fulfillmentCenterName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employeeId: freezed == employeeId
+          ? _value.employeeId
+          : employeeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employeeName: freezed == employeeName
+          ? _value.employeeName
+          : employeeName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentMethodCode: freezed == shipmentMethodCode
+          ? _value.shipmentMethodCode
+          : shipmentMethodCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentMethodOption: freezed == shipmentMethodOption
+          ? _value.shipmentMethodOption
+          : shipmentMethodOption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerOrderId: freezed == customerOrderId
+          ? _value.customerOrderId
+          : customerOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerOrder: freezed == customerOrder
+          ? _value.customerOrder
+          : customerOrder // ignore: cast_nullable_to_non_nullable
+              as String?,
+      items: freezed == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LineItem>?,
+      weightUnit: freezed == weightUnit
+          ? _value.weightUnit
+          : weightUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      measureUnit: freezed == measureUnit
+          ? _value.measureUnit
+          : measureUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      length: freezed == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int?,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      priceWithTax: freezed == priceWithTax
+          ? _value.priceWithTax
+          : priceWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalWithTax: freezed == totalWithTax
+          ? _value.totalWithTax
+          : totalWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      discountAmount: freezed == discountAmount
+          ? _value.discountAmount
+          : discountAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      discountAmountWithTax: freezed == discountAmountWithTax
+          ? _value.discountAmountWithTax
+          : discountAmountWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fee: freezed == fee
+          ? _value.fee
+          : fee // ignore: cast_nullable_to_non_nullable
+              as int?,
+      feeWithTax: freezed == feeWithTax
+          ? _value.feeWithTax
+          : feeWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      trackingNumber: freezed == trackingNumber
+          ? _value.trackingNumber
+          : trackingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackingUrl: freezed == trackingUrl
+          ? _value.trackingUrl
+          : trackingUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      objectType: freezed == objectType
+          ? _value.objectType
+          : objectType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vendorId: freezed == vendorId
+          ? _value.vendorId
+          : vendorId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taxType: freezed == taxType
+          ? _value.taxType
+          : taxType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taxTotal: freezed == taxTotal
+          ? _value.taxTotal
+          : taxTotal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      taxPercentRate: freezed == taxPercentRate
+          ? _value.taxPercentRate
+          : taxPercentRate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      operationType: freezed == operationType
+          ? _value.operationType
+          : operationType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parentOperationId: freezed == parentOperationId
+          ? _value.parentOperationId
+          : parentOperationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isApproved: freezed == isApproved
+          ? _value.isApproved
+          : isApproved // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: freezed == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sum: freezed == sum
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      outerId: freezed == outerId
+          ? _value.outerId
+          : outerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelledState: freezed == cancelledState
+          ? _value.cancelledState
+          : cancelledState // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isCancelled: freezed == isCancelled
+          ? _value.isCancelled
+          : isCancelled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      cancelledDate: freezed == cancelledDate
+          ? _value.cancelledDate
+          : cancelledDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelReason: freezed == cancelReason
+          ? _value.cancelReason
+          : cancelReason // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ShipmentCopyWith<$Res> implements $ShipmentCopyWith<$Res> {
+  factory _$$_ShipmentCopyWith(
+          _$_Shipment value, $Res Function(_$_Shipment) then) =
+      __$$_ShipmentCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? organizationId,
+      String? organizationName,
+      String? fulfillmentCenterId,
+      String? fulfillmentCenterName,
+      String? employeeId,
+      String? employeeName,
+      String? shipmentMethodCode,
+      String? shipmentMethodOption,
+      String? customerOrderId,
+      String? customerOrder,
+      List<LineItem>? items,
+      String? weightUnit,
+      int? weight,
+      String? measureUnit,
+      int? height,
+      int? length,
+      int? width,
+      int? price,
+      int? priceWithTax,
+      int? total,
+      int? totalWithTax,
+      int? discountAmount,
+      int? discountAmountWithTax,
+      int? fee,
+      int? feeWithTax,
+      String? trackingNumber,
+      String? trackingUrl,
+      String? deliveryDate,
+      String? objectType,
+      String? vendorId,
+      String? taxType,
+      int? taxTotal,
+      int? taxPercentRate,
+      String? operationType,
+      String? parentOperationId,
+      String? number,
+      bool? isApproved,
+      String? status,
+      String? comment,
+      String? currency,
+      int? sum,
+      String? outerId,
+      String? cancelledState,
+      bool? isCancelled,
+      String? cancelledDate,
+      String? cancelReason,
+      String? createdDate,
+      String? modifiedDate,
+      String? createdBy,
+      String? modifiedBy,
+      String? id});
+}
+
+/// @nodoc
+class __$$_ShipmentCopyWithImpl<$Res>
+    extends _$ShipmentCopyWithImpl<$Res, _$_Shipment>
+    implements _$$_ShipmentCopyWith<$Res> {
+  __$$_ShipmentCopyWithImpl(
+      _$_Shipment _value, $Res Function(_$_Shipment) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? organizationId = freezed,
+    Object? organizationName = freezed,
+    Object? fulfillmentCenterId = freezed,
+    Object? fulfillmentCenterName = freezed,
+    Object? employeeId = freezed,
+    Object? employeeName = freezed,
+    Object? shipmentMethodCode = freezed,
+    Object? shipmentMethodOption = freezed,
+    Object? customerOrderId = freezed,
+    Object? customerOrder = freezed,
+    Object? items = freezed,
+    Object? weightUnit = freezed,
+    Object? weight = freezed,
+    Object? measureUnit = freezed,
+    Object? height = freezed,
+    Object? length = freezed,
+    Object? width = freezed,
+    Object? price = freezed,
+    Object? priceWithTax = freezed,
+    Object? total = freezed,
+    Object? totalWithTax = freezed,
+    Object? discountAmount = freezed,
+    Object? discountAmountWithTax = freezed,
+    Object? fee = freezed,
+    Object? feeWithTax = freezed,
+    Object? trackingNumber = freezed,
+    Object? trackingUrl = freezed,
+    Object? deliveryDate = freezed,
+    Object? objectType = freezed,
+    Object? vendorId = freezed,
+    Object? taxType = freezed,
+    Object? taxTotal = freezed,
+    Object? taxPercentRate = freezed,
+    Object? operationType = freezed,
+    Object? parentOperationId = freezed,
+    Object? number = freezed,
+    Object? isApproved = freezed,
+    Object? status = freezed,
+    Object? comment = freezed,
+    Object? currency = freezed,
+    Object? sum = freezed,
+    Object? outerId = freezed,
+    Object? cancelledState = freezed,
+    Object? isCancelled = freezed,
+    Object? cancelledDate = freezed,
+    Object? cancelReason = freezed,
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_$_Shipment(
+      organizationId: freezed == organizationId
+          ? _value.organizationId
+          : organizationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      organizationName: freezed == organizationName
+          ? _value.organizationName
+          : organizationName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fulfillmentCenterId: freezed == fulfillmentCenterId
+          ? _value.fulfillmentCenterId
+          : fulfillmentCenterId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fulfillmentCenterName: freezed == fulfillmentCenterName
+          ? _value.fulfillmentCenterName
+          : fulfillmentCenterName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employeeId: freezed == employeeId
+          ? _value.employeeId
+          : employeeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employeeName: freezed == employeeName
+          ? _value.employeeName
+          : employeeName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentMethodCode: freezed == shipmentMethodCode
+          ? _value.shipmentMethodCode
+          : shipmentMethodCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      shipmentMethodOption: freezed == shipmentMethodOption
+          ? _value.shipmentMethodOption
+          : shipmentMethodOption // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerOrderId: freezed == customerOrderId
+          ? _value.customerOrderId
+          : customerOrderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerOrder: freezed == customerOrder
+          ? _value.customerOrder
+          : customerOrder // ignore: cast_nullable_to_non_nullable
+              as String?,
+      items: freezed == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<LineItem>?,
+      weightUnit: freezed == weightUnit
+          ? _value.weightUnit
+          : weightUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      measureUnit: freezed == measureUnit
+          ? _value.measureUnit
+          : measureUnit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      length: freezed == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int?,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      priceWithTax: freezed == priceWithTax
+          ? _value.priceWithTax
+          : priceWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalWithTax: freezed == totalWithTax
+          ? _value.totalWithTax
+          : totalWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      discountAmount: freezed == discountAmount
+          ? _value.discountAmount
+          : discountAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      discountAmountWithTax: freezed == discountAmountWithTax
+          ? _value.discountAmountWithTax
+          : discountAmountWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fee: freezed == fee
+          ? _value.fee
+          : fee // ignore: cast_nullable_to_non_nullable
+              as int?,
+      feeWithTax: freezed == feeWithTax
+          ? _value.feeWithTax
+          : feeWithTax // ignore: cast_nullable_to_non_nullable
+              as int?,
+      trackingNumber: freezed == trackingNumber
+          ? _value.trackingNumber
+          : trackingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackingUrl: freezed == trackingUrl
+          ? _value.trackingUrl
+          : trackingUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deliveryDate: freezed == deliveryDate
+          ? _value.deliveryDate
+          : deliveryDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      objectType: freezed == objectType
+          ? _value.objectType
+          : objectType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vendorId: freezed == vendorId
+          ? _value.vendorId
+          : vendorId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taxType: freezed == taxType
+          ? _value.taxType
+          : taxType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taxTotal: freezed == taxTotal
+          ? _value.taxTotal
+          : taxTotal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      taxPercentRate: freezed == taxPercentRate
+          ? _value.taxPercentRate
+          : taxPercentRate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      operationType: freezed == operationType
+          ? _value.operationType
+          : operationType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      parentOperationId: freezed == parentOperationId
+          ? _value.parentOperationId
+          : parentOperationId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isApproved: freezed == isApproved
+          ? _value.isApproved
+          : isApproved // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: freezed == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sum: freezed == sum
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      outerId: freezed == outerId
+          ? _value.outerId
+          : outerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelledState: freezed == cancelledState
+          ? _value.cancelledState
+          : cancelledState // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isCancelled: freezed == isCancelled
+          ? _value.isCancelled
+          : isCancelled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      cancelledDate: freezed == cancelledDate
+          ? _value.cancelledDate
+          : cancelledDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelReason: freezed == cancelReason
+          ? _value.cancelReason
+          : cancelReason // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Shipment implements _Shipment {
+  const _$_Shipment(
+      {this.organizationId,
+      this.organizationName,
+      this.fulfillmentCenterId,
+      this.fulfillmentCenterName,
+      this.employeeId,
+      this.employeeName,
+      this.shipmentMethodCode,
+      this.shipmentMethodOption,
+      this.customerOrderId,
+      this.customerOrder,
+      final List<LineItem>? items,
+      this.weightUnit,
+      this.weight,
+      this.measureUnit,
+      this.height,
+      this.length,
+      this.width,
+      this.price,
+      this.priceWithTax,
+      this.total,
+      this.totalWithTax,
+      this.discountAmount,
+      this.discountAmountWithTax,
+      this.fee,
+      this.feeWithTax,
+      this.trackingNumber,
+      this.trackingUrl,
+      this.deliveryDate,
+      this.objectType,
+      this.vendorId,
+      this.taxType,
+      this.taxTotal,
+      this.taxPercentRate,
+      this.operationType,
+      this.parentOperationId,
+      this.number,
+      this.isApproved,
+      this.status,
+      this.comment,
+      this.currency,
+      this.sum,
+      this.outerId,
+      this.cancelledState,
+      this.isCancelled,
+      this.cancelledDate,
+      this.cancelReason,
+      this.createdDate,
+      this.modifiedDate,
+      this.createdBy,
+      this.modifiedBy,
+      this.id})
+      : _items = items;
+
+  factory _$_Shipment.fromJson(Map<String, dynamic> json) =>
+      _$$_ShipmentFromJson(json);
+
+  @override
+  final String? organizationId;
+  @override
+  final String? organizationName;
+  @override
+  final String? fulfillmentCenterId;
+  @override
+  final String? fulfillmentCenterName;
+  @override
+  final String? employeeId;
+  @override
+  final String? employeeName;
+  @override
+  final String? shipmentMethodCode;
+  @override
+  final String? shipmentMethodOption;
+  @override
+  final String? customerOrderId;
+  @override
+  final String? customerOrder;
+  final List<LineItem>? _items;
+  @override
+  List<LineItem>? get items {
+    final value = _items;
+    if (value == null) return null;
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? weightUnit;
+  @override
+  final int? weight;
+  @override
+  final String? measureUnit;
+  @override
+  final int? height;
+  @override
+  final int? length;
+  @override
+  final int? width;
+  @override
+  final int? price;
+  @override
+  final int? priceWithTax;
+  @override
+  final int? total;
+  @override
+  final int? totalWithTax;
+  @override
+  final int? discountAmount;
+  @override
+  final int? discountAmountWithTax;
+  @override
+  final int? fee;
+  @override
+  final int? feeWithTax;
+  @override
+  final String? trackingNumber;
+  @override
+  final String? trackingUrl;
+  @override
+  final String? deliveryDate;
+  @override
+  final String? objectType;
+  @override
+  final String? vendorId;
+  @override
+  final String? taxType;
+  @override
+  final int? taxTotal;
+  @override
+  final int? taxPercentRate;
+  @override
+  final String? operationType;
+  @override
+  final String? parentOperationId;
+  @override
+  final String? number;
+  @override
+  final bool? isApproved;
+  @override
+  final String? status;
+  @override
+  final String? comment;
+  @override
+  final String? currency;
+  @override
+  final int? sum;
+  @override
+  final String? outerId;
+  @override
+  final String? cancelledState;
+  @override
+  final bool? isCancelled;
+  @override
+  final String? cancelledDate;
+  @override
+  final String? cancelReason;
+  @override
+  final String? createdDate;
+  @override
+  final String? modifiedDate;
+  @override
+  final String? createdBy;
+  @override
+  final String? modifiedBy;
+  @override
+  final String? id;
+
+  @override
+  String toString() {
+    return 'Shipment(organizationId: $organizationId, organizationName: $organizationName, fulfillmentCenterId: $fulfillmentCenterId, fulfillmentCenterName: $fulfillmentCenterName, employeeId: $employeeId, employeeName: $employeeName, shipmentMethodCode: $shipmentMethodCode, shipmentMethodOption: $shipmentMethodOption, customerOrderId: $customerOrderId, customerOrder: $customerOrder, items: $items, weightUnit: $weightUnit, weight: $weight, measureUnit: $measureUnit, height: $height, length: $length, width: $width, price: $price, priceWithTax: $priceWithTax, total: $total, totalWithTax: $totalWithTax, discountAmount: $discountAmount, discountAmountWithTax: $discountAmountWithTax, fee: $fee, feeWithTax: $feeWithTax, trackingNumber: $trackingNumber, trackingUrl: $trackingUrl, deliveryDate: $deliveryDate, objectType: $objectType, vendorId: $vendorId, taxType: $taxType, taxTotal: $taxTotal, taxPercentRate: $taxPercentRate, operationType: $operationType, parentOperationId: $parentOperationId, number: $number, isApproved: $isApproved, status: $status, comment: $comment, currency: $currency, sum: $sum, outerId: $outerId, cancelledState: $cancelledState, isCancelled: $isCancelled, cancelledDate: $cancelledDate, cancelReason: $cancelReason, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Shipment &&
+            (identical(other.organizationId, organizationId) ||
+                other.organizationId == organizationId) &&
+            (identical(other.organizationName, organizationName) ||
+                other.organizationName == organizationName) &&
+            (identical(other.fulfillmentCenterId, fulfillmentCenterId) ||
+                other.fulfillmentCenterId == fulfillmentCenterId) &&
+            (identical(other.fulfillmentCenterName, fulfillmentCenterName) ||
+                other.fulfillmentCenterName == fulfillmentCenterName) &&
+            (identical(other.employeeId, employeeId) ||
+                other.employeeId == employeeId) &&
+            (identical(other.employeeName, employeeName) ||
+                other.employeeName == employeeName) &&
+            (identical(other.shipmentMethodCode, shipmentMethodCode) ||
+                other.shipmentMethodCode == shipmentMethodCode) &&
+            (identical(other.shipmentMethodOption, shipmentMethodOption) ||
+                other.shipmentMethodOption == shipmentMethodOption) &&
+            (identical(other.customerOrderId, customerOrderId) ||
+                other.customerOrderId == customerOrderId) &&
+            (identical(other.customerOrder, customerOrder) ||
+                other.customerOrder == customerOrder) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.weightUnit, weightUnit) ||
+                other.weightUnit == weightUnit) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.measureUnit, measureUnit) ||
+                other.measureUnit == measureUnit) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.length, length) || other.length == length) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.priceWithTax, priceWithTax) ||
+                other.priceWithTax == priceWithTax) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.totalWithTax, totalWithTax) ||
+                other.totalWithTax == totalWithTax) &&
+            (identical(other.discountAmount, discountAmount) ||
+                other.discountAmount == discountAmount) &&
+            (identical(other.discountAmountWithTax, discountAmountWithTax) ||
+                other.discountAmountWithTax == discountAmountWithTax) &&
+            (identical(other.fee, fee) || other.fee == fee) &&
+            (identical(other.feeWithTax, feeWithTax) ||
+                other.feeWithTax == feeWithTax) &&
+            (identical(other.trackingNumber, trackingNumber) ||
+                other.trackingNumber == trackingNumber) &&
+            (identical(other.trackingUrl, trackingUrl) ||
+                other.trackingUrl == trackingUrl) &&
+            (identical(other.deliveryDate, deliveryDate) ||
+                other.deliveryDate == deliveryDate) &&
+            (identical(other.objectType, objectType) ||
+                other.objectType == objectType) &&
+            (identical(other.vendorId, vendorId) ||
+                other.vendorId == vendorId) &&
+            (identical(other.taxType, taxType) || other.taxType == taxType) &&
+            (identical(other.taxTotal, taxTotal) ||
+                other.taxTotal == taxTotal) &&
+            (identical(other.taxPercentRate, taxPercentRate) ||
+                other.taxPercentRate == taxPercentRate) &&
+            (identical(other.operationType, operationType) ||
+                other.operationType == operationType) &&
+            (identical(other.parentOperationId, parentOperationId) ||
+                other.parentOperationId == parentOperationId) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.isApproved, isApproved) ||
+                other.isApproved == isApproved) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.sum, sum) || other.sum == sum) &&
+            (identical(other.outerId, outerId) || other.outerId == outerId) &&
+            (identical(other.cancelledState, cancelledState) ||
+                other.cancelledState == cancelledState) &&
+            (identical(other.isCancelled, isCancelled) ||
+                other.isCancelled == isCancelled) &&
+            (identical(other.cancelledDate, cancelledDate) ||
+                other.cancelledDate == cancelledDate) &&
+            (identical(other.cancelReason, cancelReason) ||
+                other.cancelReason == cancelReason) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate) &&
+            (identical(other.modifiedDate, modifiedDate) ||
+                other.modifiedDate == modifiedDate) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
+            (identical(other.modifiedBy, modifiedBy) ||
+                other.modifiedBy == modifiedBy) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        organizationId,
+        organizationName,
+        fulfillmentCenterId,
+        fulfillmentCenterName,
+        employeeId,
+        employeeName,
+        shipmentMethodCode,
+        shipmentMethodOption,
+        customerOrderId,
+        customerOrder,
+        const DeepCollectionEquality().hash(_items),
+        weightUnit,
+        weight,
+        measureUnit,
+        height,
+        length,
+        width,
+        price,
+        priceWithTax,
+        total,
+        totalWithTax,
+        discountAmount,
+        discountAmountWithTax,
+        fee,
+        feeWithTax,
+        trackingNumber,
+        trackingUrl,
+        deliveryDate,
+        objectType,
+        vendorId,
+        taxType,
+        taxTotal,
+        taxPercentRate,
+        operationType,
+        parentOperationId,
+        number,
+        isApproved,
+        status,
+        comment,
+        currency,
+        sum,
+        outerId,
+        cancelledState,
+        isCancelled,
+        cancelledDate,
+        cancelReason,
+        createdDate,
+        modifiedDate,
+        createdBy,
+        modifiedBy,
+        id
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ShipmentCopyWith<_$_Shipment> get copyWith =>
+      __$$_ShipmentCopyWithImpl<_$_Shipment>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ShipmentToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Shipment implements Shipment {
+  const factory _Shipment(
+      {final String? organizationId,
+      final String? organizationName,
+      final String? fulfillmentCenterId,
+      final String? fulfillmentCenterName,
+      final String? employeeId,
+      final String? employeeName,
+      final String? shipmentMethodCode,
+      final String? shipmentMethodOption,
+      final String? customerOrderId,
+      final String? customerOrder,
+      final List<LineItem>? items,
+      final String? weightUnit,
+      final int? weight,
+      final String? measureUnit,
+      final int? height,
+      final int? length,
+      final int? width,
+      final int? price,
+      final int? priceWithTax,
+      final int? total,
+      final int? totalWithTax,
+      final int? discountAmount,
+      final int? discountAmountWithTax,
+      final int? fee,
+      final int? feeWithTax,
+      final String? trackingNumber,
+      final String? trackingUrl,
+      final String? deliveryDate,
+      final String? objectType,
+      final String? vendorId,
+      final String? taxType,
+      final int? taxTotal,
+      final int? taxPercentRate,
+      final String? operationType,
+      final String? parentOperationId,
+      final String? number,
+      final bool? isApproved,
+      final String? status,
+      final String? comment,
+      final String? currency,
+      final int? sum,
+      final String? outerId,
+      final String? cancelledState,
+      final bool? isCancelled,
+      final String? cancelledDate,
+      final String? cancelReason,
+      final String? createdDate,
+      final String? modifiedDate,
+      final String? createdBy,
+      final String? modifiedBy,
+      final String? id}) = _$_Shipment;
+
+  factory _Shipment.fromJson(Map<String, dynamic> json) = _$_Shipment.fromJson;
+
+  @override
+  String? get organizationId;
+  @override
+  String? get organizationName;
+  @override
+  String? get fulfillmentCenterId;
+  @override
+  String? get fulfillmentCenterName;
+  @override
+  String? get employeeId;
+  @override
+  String? get employeeName;
+  @override
+  String? get shipmentMethodCode;
+  @override
+  String? get shipmentMethodOption;
+  @override
+  String? get customerOrderId;
+  @override
+  String? get customerOrder;
+  @override
+  List<LineItem>? get items;
+  @override
+  String? get weightUnit;
+  @override
+  int? get weight;
+  @override
+  String? get measureUnit;
+  @override
+  int? get height;
+  @override
+  int? get length;
+  @override
+  int? get width;
+  @override
+  int? get price;
+  @override
+  int? get priceWithTax;
+  @override
+  int? get total;
+  @override
+  int? get totalWithTax;
+  @override
+  int? get discountAmount;
+  @override
+  int? get discountAmountWithTax;
+  @override
+  int? get fee;
+  @override
+  int? get feeWithTax;
+  @override
+  String? get trackingNumber;
+  @override
+  String? get trackingUrl;
+  @override
+  String? get deliveryDate;
+  @override
+  String? get objectType;
+  @override
+  String? get vendorId;
+  @override
+  String? get taxType;
+  @override
+  int? get taxTotal;
+  @override
+  int? get taxPercentRate;
+  @override
+  String? get operationType;
+  @override
+  String? get parentOperationId;
+  @override
+  String? get number;
+  @override
+  bool? get isApproved;
+  @override
+  String? get status;
+  @override
+  String? get comment;
+  @override
+  String? get currency;
+  @override
+  int? get sum;
+  @override
+  String? get outerId;
+  @override
+  String? get cancelledState;
+  @override
+  bool? get isCancelled;
+  @override
+  String? get cancelledDate;
+  @override
+  String? get cancelReason;
+  @override
+  String? get createdDate;
+  @override
+  String? get modifiedDate;
+  @override
+  String? get createdBy;
+  @override
+  String? get modifiedBy;
+  @override
+  String? get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ShipmentCopyWith<_$_Shipment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

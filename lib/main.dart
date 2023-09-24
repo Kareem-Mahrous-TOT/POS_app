@@ -55,7 +55,9 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => sl<ReportCostCubit>()..loadData()),
           BlocProvider(create: (context) => sl<AuthBloc>()),
         ],
+        
         child: MaterialApp.router(
+        
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,
           localizationsDelegates: AppLang.localizationsDelegates,

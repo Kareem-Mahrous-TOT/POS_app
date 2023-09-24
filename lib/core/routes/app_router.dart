@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tot_pos/core/constants.dart';
 import 'package:tot_pos/view/screens/seller/page/dashboard/auth/login_page.dart';
 import 'package:tot_pos/view/screens/seller/page/dashboard/auth/signup_page.dart';
 import 'package:tot_pos/view/screens/seller/page/dashboard/customer_page.dart';
@@ -9,13 +10,26 @@ import 'package:tot_pos/view/screens/seller/page/dashboard/reports_page.dart';
 import 'package:tot_pos/view/screens/seller/page/dashboard/sales_page.dart';
 
 import '../../view/screens/seller/page/dashboard/layout.dart';
+import '../di/depency_manager.dart';
 import 'route_paths.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter allRoutes = GoRouter(
+    redirect: (context, state) async {
+      if (prefs.getString(accessToken) != null) {
+        return RoutePaths.layout;
+      } else {
+        return RoutePaths.login;
+      }
+    },
     navigatorKey: navigatorKey,
-    initialLocation: RoutePaths.login,
+    initialLocation:
+        //  prefs.getString(accessToken) != null ||
+        //         prefs.getString(accessToken) != ""
+        //     ? RoutePaths.layout
+        //     :
+        RoutePaths.login,
     routes: <RouteBase>[
       GoRoute(
         path: RoutePaths.layout,

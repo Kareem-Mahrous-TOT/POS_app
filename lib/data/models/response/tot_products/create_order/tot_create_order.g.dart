@@ -34,7 +34,9 @@ _$_TotCreateOrderResponse _$$_TotCreateOrderResponseFromJson(
       items: (json['items'] as List<dynamic>)
           .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shipments: json['shipments'] as List<dynamic>?,
+      shipments: (json['shipments'] as List<dynamic>?)
+          ?.map((e) => Shipment.fromJson(e as Map<String, dynamic>))
+          .toList(),
       feeDetails: (json['feeDetails'] as List<dynamic>?)
           ?.map((e) => FeeDetails.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -100,6 +102,9 @@ _$_TotCreateOrderResponse _$$_TotCreateOrderResponseFromJson(
           ? null
           : DateTime.parse(json['cancelledDate'] as String),
       cancelReason: json['cancelReason'] as String?,
+      packages: (json['packages'] as List<dynamic>?)
+          ?.map((e) => Package.fromJson(e as Map<String, dynamic>))
+          .toList(),
       dynamicProperties: (json['dynamicProperties'] as List<dynamic>?)
           ?.map((e) => DynamicProperty.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -186,10 +191,155 @@ Map<String, dynamic> _$$_TotCreateOrderResponseToJson(
       'isCancelled': instance.isCancelled,
       'cancelledDate': instance.cancelledDate?.toIso8601String(),
       'cancelReason': instance.cancelReason,
+      'packages': instance.packages,
       'dynamicProperties': instance.dynamicProperties,
       'operationsLog': instance.operationsLog,
       'createdDate': instance.createdDate.toIso8601String(),
       'modifiedDate': instance.modifiedDate.toIso8601String(),
+      'createdBy': instance.createdBy,
+      'modifiedBy': instance.modifiedBy,
+      'id': instance.id,
+    };
+
+_$_Package _$$_PackageFromJson(Map<String, dynamic> json) => _$_Package(
+      items: (json['items'] as List<dynamic>?)
+          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      barCode: json['barCode'] as String?,
+      packageType: json['packageType'] as String?,
+      weightUnit: json['weightUnit'] as String?,
+      measureUnit: json['measureUnit'] as String?,
+      createdDate: json['createdDate'] == null
+          ? null
+          : DateTime.parse(json['createdDate'] as String),
+      modifiedDate: json['modifiedDate'] == null
+          ? null
+          : DateTime.parse(json['modifiedDate'] as String),
+      createdBy: json['createdBy'] as String?,
+      modifiedBy: json['modifiedBy'] as String?,
+      id: json['id'] as String?,
+    );
+
+Map<String, dynamic> _$$_PackageToJson(_$_Package instance) =>
+    <String, dynamic>{
+      'items': instance.items,
+      'barCode': instance.barCode,
+      'packageType': instance.packageType,
+      'weightUnit': instance.weightUnit,
+      'measureUnit': instance.measureUnit,
+      'createdDate': instance.createdDate?.toIso8601String(),
+      'modifiedDate': instance.modifiedDate?.toIso8601String(),
+      'createdBy': instance.createdBy,
+      'modifiedBy': instance.modifiedBy,
+      'id': instance.id,
+    };
+
+_$_Shipment _$$_ShipmentFromJson(Map<String, dynamic> json) => _$_Shipment(
+      organizationId: json['organizationId'] as String?,
+      organizationName: json['organizationName'] as String?,
+      fulfillmentCenterId: json['fulfillmentCenterId'] as String?,
+      fulfillmentCenterName: json['fulfillmentCenterName'] as String?,
+      employeeId: json['employeeId'] as String?,
+      employeeName: json['employeeName'] as String?,
+      shipmentMethodCode: json['shipmentMethodCode'] as String?,
+      shipmentMethodOption: json['shipmentMethodOption'] as String?,
+      customerOrderId: json['customerOrderId'] as String?,
+      customerOrder: json['customerOrder'] as String?,
+      items: (json['items'] as List<dynamic>?)
+          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      weightUnit: json['weightUnit'] as String?,
+      weight: json['weight'] as int?,
+      measureUnit: json['measureUnit'] as String?,
+      height: json['height'] as int?,
+      length: json['length'] as int?,
+      width: json['width'] as int?,
+      price: json['price'] as int?,
+      priceWithTax: json['priceWithTax'] as int?,
+      total: json['total'] as int?,
+      totalWithTax: json['totalWithTax'] as int?,
+      discountAmount: json['discountAmount'] as int?,
+      discountAmountWithTax: json['discountAmountWithTax'] as int?,
+      fee: json['fee'] as int?,
+      feeWithTax: json['feeWithTax'] as int?,
+      trackingNumber: json['trackingNumber'] as String?,
+      trackingUrl: json['trackingUrl'] as String?,
+      deliveryDate: json['deliveryDate'] as String?,
+      objectType: json['objectType'] as String?,
+      vendorId: json['vendorId'] as String?,
+      taxType: json['taxType'] as String?,
+      taxTotal: json['taxTotal'] as int?,
+      taxPercentRate: json['taxPercentRate'] as int?,
+      operationType: json['operationType'] as String?,
+      parentOperationId: json['parentOperationId'] as String?,
+      number: json['number'] as String?,
+      isApproved: json['isApproved'] as bool?,
+      status: json['status'] as String?,
+      comment: json['comment'] as String?,
+      currency: json['currency'] as String?,
+      sum: json['sum'] as int?,
+      outerId: json['outerId'] as String?,
+      cancelledState: json['cancelledState'] as String?,
+      isCancelled: json['isCancelled'] as bool?,
+      cancelledDate: json['cancelledDate'] as String?,
+      cancelReason: json['cancelReason'] as String?,
+      createdDate: json['createdDate'] as String?,
+      modifiedDate: json['modifiedDate'] as String?,
+      createdBy: json['createdBy'] as String?,
+      modifiedBy: json['modifiedBy'] as String?,
+      id: json['id'] as String?,
+    );
+
+Map<String, dynamic> _$$_ShipmentToJson(_$_Shipment instance) =>
+    <String, dynamic>{
+      'organizationId': instance.organizationId,
+      'organizationName': instance.organizationName,
+      'fulfillmentCenterId': instance.fulfillmentCenterId,
+      'fulfillmentCenterName': instance.fulfillmentCenterName,
+      'employeeId': instance.employeeId,
+      'employeeName': instance.employeeName,
+      'shipmentMethodCode': instance.shipmentMethodCode,
+      'shipmentMethodOption': instance.shipmentMethodOption,
+      'customerOrderId': instance.customerOrderId,
+      'customerOrder': instance.customerOrder,
+      'items': instance.items,
+      'weightUnit': instance.weightUnit,
+      'weight': instance.weight,
+      'measureUnit': instance.measureUnit,
+      'height': instance.height,
+      'length': instance.length,
+      'width': instance.width,
+      'price': instance.price,
+      'priceWithTax': instance.priceWithTax,
+      'total': instance.total,
+      'totalWithTax': instance.totalWithTax,
+      'discountAmount': instance.discountAmount,
+      'discountAmountWithTax': instance.discountAmountWithTax,
+      'fee': instance.fee,
+      'feeWithTax': instance.feeWithTax,
+      'trackingNumber': instance.trackingNumber,
+      'trackingUrl': instance.trackingUrl,
+      'deliveryDate': instance.deliveryDate,
+      'objectType': instance.objectType,
+      'vendorId': instance.vendorId,
+      'taxType': instance.taxType,
+      'taxTotal': instance.taxTotal,
+      'taxPercentRate': instance.taxPercentRate,
+      'operationType': instance.operationType,
+      'parentOperationId': instance.parentOperationId,
+      'number': instance.number,
+      'isApproved': instance.isApproved,
+      'status': instance.status,
+      'comment': instance.comment,
+      'currency': instance.currency,
+      'sum': instance.sum,
+      'outerId': instance.outerId,
+      'cancelledState': instance.cancelledState,
+      'isCancelled': instance.isCancelled,
+      'cancelledDate': instance.cancelledDate,
+      'cancelReason': instance.cancelReason,
+      'createdDate': instance.createdDate,
+      'modifiedDate': instance.modifiedDate,
       'createdBy': instance.createdBy,
       'modifiedBy': instance.modifiedBy,
       'id': instance.id,

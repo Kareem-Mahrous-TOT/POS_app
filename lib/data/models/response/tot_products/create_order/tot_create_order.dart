@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
 
+import '../customer_order/customer_order_models.dart';
+
 part 'tot_create_order.freezed.dart';
 part 'tot_create_order.g.dart';
 
@@ -26,7 +28,7 @@ class TotCreateOrderResponse with _$TotCreateOrderResponse {
     List<Address>? addresses,
     List<InPayment>? inPayments,
     required List<OrderItem> items,
-    List? shipments,
+    List<Shipment>? shipments,
     List<FeeDetails>? feeDetails,
     List<Discount>? discounts,
     double? discountAmount,
@@ -77,6 +79,7 @@ class TotCreateOrderResponse with _$TotCreateOrderResponse {
     bool? isCancelled,
     DateTime? cancelledDate,
     String? cancelReason,
+    List<Package>? packages,
     List<DynamicProperty>? dynamicProperties,
     List<OperationLog>? operationsLog,
     required DateTime createdDate,
@@ -88,6 +91,85 @@ class TotCreateOrderResponse with _$TotCreateOrderResponse {
 
   factory TotCreateOrderResponse.fromJson(Map<String, dynamic> json) =>
       _$TotCreateOrderResponseFromJson(json);
+}
+
+@freezed
+class Package with _$Package {
+  const factory Package({
+    List<LineItem>? items,
+    String? barCode,
+    String? packageType,
+    String? weightUnit,
+    String? measureUnit,
+    DateTime? createdDate,
+    DateTime? modifiedDate,
+    String? createdBy,
+    String? modifiedBy,
+    String? id,
+  }) = _Package;
+
+  factory Package.fromJson(Map<String, dynamic> json) =>
+      _$PackageFromJson(json);
+}
+
+@freezed
+class Shipment with _$Shipment {
+  const factory Shipment({
+    String? organizationId,
+    String? organizationName,
+    String? fulfillmentCenterId,
+    String? fulfillmentCenterName,
+    String? employeeId,
+    String? employeeName,
+    String? shipmentMethodCode,
+    String? shipmentMethodOption,
+    String? customerOrderId,
+    String? customerOrder,
+    List<LineItem>? items,
+    String? weightUnit,
+    int? weight,
+    String? measureUnit,
+    int? height,
+    int? length,
+    int? width,
+    int? price,
+    int? priceWithTax,
+    int? total,
+    int? totalWithTax,
+    int? discountAmount,
+    int? discountAmountWithTax,
+    int? fee,
+    int? feeWithTax,
+    String? trackingNumber,
+    String? trackingUrl,
+    String? deliveryDate,
+    String? objectType,
+    String? vendorId,
+    String? taxType,
+    int? taxTotal,
+    int? taxPercentRate,
+    String? operationType,
+    String? parentOperationId,
+    String? number,
+    bool? isApproved,
+    String? status,
+    String? comment,
+    String? currency,
+    int? sum,
+    String? outerId,
+    String? cancelledState,
+    bool? isCancelled,
+    String? cancelledDate,
+    String? cancelReason,
+    String? createdDate,
+    String? modifiedDate,
+    String? createdBy,
+    String? modifiedBy,
+    String? id,
+  }) = _Shipment;
+
+  factory Shipment.fromJson(Map<String, dynamic> json) =>
+      _$ShipmentFromJson(json);
 }
 
 @freezed

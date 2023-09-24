@@ -1,57 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/models/response/order/order_header.dart';
+import 'package:tot_pos/view/blocs/order/order_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/order_components/order_card.dart';
 
 import '../../../../../../core/theme/pallete.dart';
 // import 'order_card.dart';
 
-class TOTListViewWithHeaderOrganism extends StatelessWidget {
-  final OrderHeader headerModel;
-
+class TOTListViewWithHeaderOrganism extends StatefulWidget {
   final VoidCallback onPressed;
 
   const TOTListViewWithHeaderOrganism({
     super.key,
-    required this.headerModel,
     required this.onPressed,
   });
+
+  @override
+  State<TOTListViewWithHeaderOrganism> createState() =>
+      _TOTListViewWithHeaderOrganismState();
+}
+
+class _TOTListViewWithHeaderOrganismState
+    extends State<TOTListViewWithHeaderOrganism> {
+  List<String> statuses = ["New", "Processing", "Completed", "Wrong"];
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return SizedBox(
-      height: 800.h,
-      child: Expanded(
-        child: ListView.builder(
-          itemCount: headerModel.header.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    width: w * 0.2,
-                    height: h * 0.05,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
+    return BlocBuilder<OrderCubit, OrderState>(
+      builder: (context, state) {
+        return SizedBox(
+          height: 800.h,
+          child: state.map(
+            initial: (value) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            loadFailed: (value) => const Center(
+              child: Text("No Data found"),
+            ),
+            loadSuccess: (value) => ListView.builder(
+              itemCount: statuses.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Column(
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        width: w * 0.2,
+                        height: h * 0.05,
+                        child: SizedBox(
                           height: h * 0.05,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TOTTextAtom.labelLarge(
-                                    headerModel.header[index].labelName),
+                                    statuses[index].toString()),
                                 const SizedBox(width: 10),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
@@ -59,33 +71,39 @@ class TOTListViewWithHeaderOrganism extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       color: AppColors.blue,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: TOTTextAtom.labelLarge(headerModel
-                                      .header[index].cardOrder.length
-                                      .toString()),
+                                  child: TOTTextAtom.labelLarge(statuses[index]
+                                              .toLowerCase() ==
+                                          "new"
+                                      ? value.newOrder!.length.toString()
+                                      : statuses[index].toLowerCase() ==
+                                              "processing"
+                                          ? value.processing!.length.toString()
+                                          : statuses[index].toLowerCase() ==
+                                                  "completed"
+                                              ? value.completed!.length
+                                                  .toString()
+                                              : value.wrong!.length.toString()),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: h * 0.05,
-                          child: TOTIconButtonAtom.displayMedium(
-                              codePoint: 0xf00e9,
-                              iconColor: AppColors.black,
-                              onPressed: onPressed),
-                        )
-                      ],
-                    ),
+                      )),
+                  TOTOrderCardMolecule(
+                    orderModel: statuses[index].toLowerCase() == "new"
+                        ? value.newOrder
+                        : statuses[index].toLowerCase() == "processing"
+                            ? value.processing
+                            : statuses[index].toLowerCase() == "completed"
+                                ? value.completed
+                                : value.wrong,
                   ),
-                ),
-                TOTOrderCardMolecule(
-                  orderModel: headerModel.header[index],
-                ),
-              ],
-            );
-          },
-        ),
-      ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

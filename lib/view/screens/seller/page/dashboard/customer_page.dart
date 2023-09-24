@@ -7,7 +7,7 @@ import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import '../../../../../core/theme/pallete.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
-import '../../components/pos/customer/alert_dialog_customer.dart';
+import '../../components/pos/customer/customer_exp.dart';
 
 class CustomerPage extends StatelessWidget {
   CustomerPage({
@@ -45,44 +45,45 @@ class CustomerPage extends StatelessWidget {
                     SizedBox(
                       height: h * 0.05,
                       child: ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => SizedBox(
-                                  child: TOTAddCustomerAlertDialog(
-                                nameController: nameController,
-                                emailController: emailController,
-                                onPressed: () {
-                                  final newCustomer = Member(
-                                    emails: [emailController.text],
-                                    iconUrl:
-                                        "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
-                                    name: nameController.text,
-                                  );
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => SizedBox(
+                                child: TOTAddCustomerAlertDialog(
+                              nameController: nameController,
+                              emailController: emailController,
+                              onPressed: () {
+                                final newCustomer = Member(
+                                  emails: [emailController.text],
+                                  iconUrl:
+                                      "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                                  name: nameController.text,
+                                );
 
-                                  context.read<RecentCustomersBloc>().add(
+                                context.read<RecentCustomersBloc>().add(
                                       RecentCustomersEvent.addCustomer(
-                                          newCustomer));
-
-                                  Navigator.pop(context);
-                                  nameController.clear();
-                                  emailController.clear();
-                                },
-                              )),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            backgroundColor: Colors.greenAccent,
-                          ),
-                          child: const TOTIconWithTextMolecule(
-                            codePoint: 0xe047,
-                            text: "Add Customer",
-                            color: AppColors.black,
-                            colorText: AppColors.black,
-                          )),
+                                          newCustomer),
+                                    );
+                                Navigator.pop(context);
+                                nameController.clear();
+                                emailController.clear();
+                              },
+                            )),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          backgroundColor: Colors.greenAccent,
+                        ),
+                        child: const TOTIconWithTextMolecule(
+                          codePoint: 0xe047,
+                          text: "Add Customer",
+                          color: AppColors.black,
+                          colorText: AppColors.black,
+                        ),
+                      ),
                     )
                   ],
                 ),

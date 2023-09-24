@@ -17,13 +17,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await event.map(
           started: (value) {},
           loadingLoginData: (value) async {
+            emit(_LoadingState());
             String username = value.username;
             String password = value.password;
             final dataLogin =
                 await repo.userLogin(username: username, password: password);
             final dataToken =
                 await repo.userToken(username: username, password: password);
-            emit(_LoadingState());
             dataLogin.fold((l) {
               emit(_FailedLoginState(l.message));
             }, (loginModel) {

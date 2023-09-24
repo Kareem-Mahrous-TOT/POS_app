@@ -19,19 +19,22 @@ mixin _$SalesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SalesModel data) loadSuccess,
+    required TResult Function(CustomerOrderResponse orders) loadSuccess,
+    required TResult Function(String message) loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SalesModel data)? loadSuccess,
+    TResult? Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult? Function(String message)? loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SalesModel data)? loadSuccess,
+    TResult Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SalesState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +118,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SalesModel data) loadSuccess,
+    required TResult Function(CustomerOrderResponse orders) loadSuccess,
+    required TResult Function(String message) loadFailed,
   }) {
     return initial();
   }
@@ -121,7 +128,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SalesModel data)? loadSuccess,
+    TResult? Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult? Function(String message)? loadFailed,
   }) {
     return initial?.call();
   }
@@ -130,7 +138,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SalesModel data)? loadSuccess,
+    TResult Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -144,6 +153,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) {
     return initial(this);
   }
@@ -153,6 +163,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) {
     return initial?.call(this);
   }
@@ -162,6 +173,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,9 +193,9 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
           _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
       __$$_LoadSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({SalesModel data});
+  $Res call({CustomerOrderResponse orders});
 
-  $SalesModelCopyWith<$Res> get data;
+  $CustomerOrderResponseCopyWith<$Res> get orders;
 }
 
 /// @nodoc
@@ -197,21 +209,21 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? orders = null,
   }) {
     return _then(_$_LoadSuccess(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SalesModel,
+      null == orders
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as CustomerOrderResponse,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SalesModelCopyWith<$Res> get data {
-    return $SalesModelCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
+  $CustomerOrderResponseCopyWith<$Res> get orders {
+    return $CustomerOrderResponseCopyWith<$Res>(_value.orders, (value) {
+      return _then(_value.copyWith(orders: value));
     });
   }
 }
@@ -219,14 +231,14 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(this.data);
+  const _$_LoadSuccess(this.orders);
 
   @override
-  final SalesModel data;
+  final CustomerOrderResponse orders;
 
   @override
   String toString() {
-    return 'SalesState.loadSuccess(data: $data)';
+    return 'SalesState.loadSuccess(orders: $orders)';
   }
 
   @override
@@ -234,11 +246,11 @@ class _$_LoadSuccess implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadSuccess &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.orders, orders) || other.orders == orders));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, orders);
 
   @JsonKey(ignore: true)
   @override
@@ -250,29 +262,32 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SalesModel data) loadSuccess,
+    required TResult Function(CustomerOrderResponse orders) loadSuccess,
+    required TResult Function(String message) loadFailed,
   }) {
-    return loadSuccess(data);
+    return loadSuccess(orders);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SalesModel data)? loadSuccess,
+    TResult? Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult? Function(String message)? loadFailed,
   }) {
-    return loadSuccess?.call(data);
+    return loadSuccess?.call(orders);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SalesModel data)? loadSuccess,
+    TResult Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(data);
+      return loadSuccess(orders);
     }
     return orElse();
   }
@@ -282,6 +297,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) {
     return loadSuccess(this);
   }
@@ -291,6 +307,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) {
     return loadSuccess?.call(this);
   }
@@ -300,6 +317,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -310,10 +328,150 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements SalesState {
-  const factory _LoadSuccess(final SalesModel data) = _$_LoadSuccess;
+  const factory _LoadSuccess(final CustomerOrderResponse orders) =
+      _$_LoadSuccess;
 
-  SalesModel get data;
+  CustomerOrderResponse get orders;
   @JsonKey(ignore: true)
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LoadFailedCopyWith<$Res> {
+  factory _$$_LoadFailedCopyWith(
+          _$_LoadFailed value, $Res Function(_$_LoadFailed) then) =
+      __$$_LoadFailedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_LoadFailedCopyWithImpl<$Res>
+    extends _$SalesStateCopyWithImpl<$Res, _$_LoadFailed>
+    implements _$$_LoadFailedCopyWith<$Res> {
+  __$$_LoadFailedCopyWithImpl(
+      _$_LoadFailed _value, $Res Function(_$_LoadFailed) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_LoadFailed(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadFailed implements _LoadFailed {
+  const _$_LoadFailed(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'SalesState.loadFailed(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadFailed &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
+      __$$_LoadFailedCopyWithImpl<_$_LoadFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(CustomerOrderResponse orders) loadSuccess,
+    required TResult Function(String message) loadFailed,
+  }) {
+    return loadFailed(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult? Function(String message)? loadFailed,
+  }) {
+    return loadFailed?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(CustomerOrderResponse orders)? loadSuccess,
+    TResult Function(String message)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return loadFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return loadFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadFailed implements SalesState {
+  const factory _LoadFailed(final String message) = _$_LoadFailed;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

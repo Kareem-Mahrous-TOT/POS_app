@@ -42,495 +42,443 @@ class _SalesPageState extends State<SalesPage>
     double h = MediaQuery.of(context).size.height;
     return BlocBuilder<SalesCubit, SalesState>(
       builder: (context, state) {
-        return state.map(
-          initial: (value) => const Center(child: CircularProgressIndicator()),
-          loadSuccess: (value) => Container(
-            color: const Color.fromARGB(135, 138, 212, 244),
-            width: w * 0.95,
-            height: h * 0.93,
-            child: DefaultTabController(
-              initialIndex: 2,
-              length: tabs.length,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TOTTextAtom.headLineSmall(
-                        "Sale History",
-                        color: AppColors.black,
-                      ),
+        return SizedBox(
+          // color: const Color.fromARGB(135, 138, 212, 244),
+          width: w * 0.95,
+          height: h * 0.93,
+          child: DefaultTabController(
+            initialIndex: 2,
+            length: tabs.length,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TOTTextAtom.headLineSmall(
+                  "Sale History",
+                  color: AppColors.black,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(children: [
+                  const Icon(Icons.sort),
+                  SizedBox(
+                    width: w * 0.7,
+                    child: TabBar(
+                      unselectedLabelColor: AppColors.white,
+                      labelColor: Colors.greenAccent,
+                      indicator: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Colors.greenAccent,
+                          borderRadius: BorderRadius.circular(10)),
+                      tabs: tabs,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(children: [
-                        const Icon(Icons.sort),
-                        SizedBox(
-                          width: w * 0.7,
-                          child: TabBar(
-                            unselectedLabelColor: AppColors.white,
-                            labelColor: Colors.greenAccent,
-                            indicator: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Colors.greenAccent,
-                                borderRadius: BorderRadius.circular(10)),
-                            tabs: tabs,
-                          ),
+                  ),
+                ]),
+              ),
+              Expanded(
+                child: TabBarView(children: [
+                  SingleChildScrollView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.account_balance_wallet_rounded,
+                              shadowColor: Colors.greenAccent,
+                              title: 'Opening Drawer Account',
+                              percentage: null,
+                            ),
+                            TOTSalesCardMolecule(
+                                cost: "0.00",
+                                iconData: Icons.attach_money_outlined,
+                                shadowColor: Colors.orange[600]!,
+                                title: 'Cash Payment Sale'),
+                            const TOTSalesCardMolecule(
+                                cost: "0.00",
+                                iconData: Icons.credit_card_outlined,
+                                shadowColor: AppColors.blue,
+                                title: 'Other Payment Sale'),
+                          ],
                         ),
-                      ]),
-                    ),
-                    Expanded(
-                      child: TabBarView(children: [
-                        SingleChildScrollView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  const TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData:
-                                        Icons.account_balance_wallet_rounded,
-                                    shadowColor: Colors.greenAccent,
-                                    title: 'Opening Drawer Account',
-                                    percentage: null,
-                                  ),
-                                  TOTSalesCardMolecule(
-                                      cost: "0.00",
-                                      iconData: Icons.attach_money_outlined,
-                                      shadowColor: Colors.orange[600]!,
-                                      title: 'Cash Payment Sale'),
-                                  const TOTSalesCardMolecule(
-                                      cost: "0.00",
-                                      iconData: Icons.credit_card_outlined,
-                                      shadowColor: AppColors.blue,
-                                      title: 'Other Payment Sale'),
-                                ],
-                              ),
-                              SizedBox(
-                                height: h * 0.01,
-                              ),
-                              Center(
-                                child: Container(
-                                  width: w * 0.9,
-                                  height: h * 0.68,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.vertical,
-                                    child: DataTable(
-                                        columns: const [
-                                          DataColumn(
-                                            label:
-                                                TOTTextAtom.headLineSmall("ID"),
+                        SizedBox(
+                          height: h * 0.01,
+                        ),
+                        Center(
+                          child: Container(
+                            width: w * 0.9,
+                            height: h * 0.68,
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: state.map(
+                              initial: (value) =>
+                                  const CircularProgressIndicator(),
+                              loadFailed: (value) =>
+                                  const Center(child: Text("No data found")),
+                              loadSuccess: (value) {
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  child: DataTable(
+                                    columns: const [
+                                      DataColumn(
+                                        label: TOTTextAtom.headLineSmall("ID"),
+                                      ),
+                                      DataColumn(
+                                        label:
+                                            TOTTextAtom.headLineSmall("Client"),
+                                      ),
+                                      DataColumn(
+                                        label:
+                                            TOTTextAtom.headLineSmall("Amount"),
+                                      ),
+                                      DataColumn(
+                                        label: TOTTextAtom.headLineSmall(
+                                            "Payment"),
+                                      ),
+                                      DataColumn(
+                                        label:
+                                            TOTTextAtom.headLineSmall("Note"),
+                                      ),
+                                      DataColumn(
+                                        label:
+                                            TOTTextAtom.headLineSmall("Date"),
+                                      ),
+                                    ],
+                                    rows: List.generate(
+                                        value.orders.results!.length,
+                                        (rowsIndex) {
+                                      return DataRow(
+                                        cells: [
+                                          DataCell(
+                                            Text(
+                                              value.orders.results![rowsIndex]
+                                                  .customerId
+                                                  .toString()
+                                                  .substring(0, 8),
+                                            ),
                                           ),
-                                          DataColumn(
-                                            label: TOTTextAtom.headLineSmall(
-                                                "Client"),
+                                          DataCell(
+                                            Text(
+                                              value.orders.results![rowsIndex]
+                                                          .customerName ==
+                                                      null
+                                                  ? "Not found"
+                                                  : value
+                                                      .orders
+                                                      .results![rowsIndex]
+                                                      .customerName
+                                                      .toString(),
+                                            ),
                                           ),
-                                          DataColumn(
-                                            label: TOTTextAtom.headLineSmall(
-                                                "Amount"),
+                                          DataCell(
+                                            Text(
+                                              value.orders.results![rowsIndex]
+                                                          .sum ==
+                                                      null
+                                                  ? "N/A"
+                                                  : value.orders
+                                                      .results![rowsIndex].sum
+                                                      .toString(),
+                                            ),
                                           ),
-                                          DataColumn(
-                                            label: TOTTextAtom.headLineSmall(
-                                                "Payment"),
+                                          DataCell(
+                                            Text(
+                                              value.orders.results![rowsIndex]
+                                                          .currency ==
+                                                      null
+                                                  ? "N/A"
+                                                  : value
+                                                      .orders
+                                                      .results![rowsIndex]
+                                                      .currency!,
+                                            ),
                                           ),
-                                          DataColumn(
-                                            label: TOTTextAtom.headLineSmall(
-                                                "Note"),
-                                          ),
-                                          DataColumn(
-                                            label: TOTTextAtom.headLineSmall(
-                                                "Date"),
+                                          DataCell(Text(value
+                                                  .orders
+                                                  .results![rowsIndex]
+                                                  .items!
+                                                  .isEmpty
+                                              ? "N/A"
+                                              : value.orders.results![rowsIndex]
+                                                  .items!.length
+                                                  .toString())),
+                                          DataCell(
+                                            Text(value
+                                                        .orders
+                                                        .results![rowsIndex]
+                                                        .createdDate ==
+                                                    null
+                                                ? "N/A"
+                                                : value
+                                                    .orders
+                                                    .results![rowsIndex]
+                                                    .createdDate
+                                                    .toString()),
                                           ),
                                         ],
-                                        rows: List.generate(
-                                            value.data.data.orders.length,
-                                            (rowsIndex) {
-                                          return DataRow(
-                                            cells: [
-                                              DataCell(Text(value.data.data
-                                                  .orders[rowsIndex].userId
-                                                  .toString())),
-                                              DataCell(Text(value
-                                                  .data
-                                                  .data
-                                                  .orders[rowsIndex]
-                                                  .user!
-                                                  .firstname
-                                                  .toString())),
-                                              DataCell(Text(value
-                                                          .data
-                                                          .data
-                                                          .orders[rowsIndex]
-                                                          .totalPrice ==
-                                                      null
-                                                  ? "N/A"
-                                                  : value
-                                                      .data
-                                                      .data
-                                                      .orders[rowsIndex]
-                                                      .totalPrice
-                                                      .toString())),
-                                              DataCell(Text(value
-                                                          .data
-                                                          .data
-                                                          .orders[rowsIndex]
-                                                          .transaction
-                                                          ?.paymentSystem
-                                                          ?.tag ==
-                                                      null
-                                                  ? "N/A"
-                                                  : value
-                                                      .data
-                                                      .data
-                                                      .orders[rowsIndex]
-                                                      .transaction!
-                                                      .paymentSystem!
-                                                      .tag
-                                                      .toString())),
-                                              DataCell(Text(value
-                                                          .data
-                                                          .data
-                                                          .orders[rowsIndex]
-                                                          .transaction
-                                                          ?.note ==
-                                                      null
-                                                  ? "N/A"
-                                                  : value
-                                                      .data
-                                                      .data
-                                                      .orders[rowsIndex]
-                                                      .transaction!
-                                                      .note
-                                                      .toString())),
-                                              DataCell(
-                                                Text(value
-                                                            .data
-                                                            .data
-                                                            .orders[rowsIndex]
-                                                            .deliveryDate ==
-                                                        null
-                                                    ? "N/A"
-                                                    : value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .deliveryDate
-                                                        .toString()),
-                                              ),
-                                            ],
-                                          );
-                                        })),
+                                      );
+                                    }),
                                   ),
-                                ),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: Column(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.account_balance_wallet_rounded,
+                              shadowColor: Colors.greenAccent,
+                              title: 'Opening Drawer Account'),
+                          TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.attach_money_outlined,
+                              shadowColor: Colors.orange[600]!,
+                              title: 'Cash Payment Sale'),
+                          const TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.credit_card_outlined,
+                              shadowColor: AppColors.blue,
+                              title: 'Other Payment Sale'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: h * 0.01,
+                      ),
+                      Center(
+                        child: Container(
+                          width: w * 0.9,
+                          height: h * 0.68,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: state.map(
+                              initial: (value) => const Center(
+                                  child: CircularProgressIndicator()),
+                              loadFailed: (value) =>
+                                  const Center(child: Text("No data found")),
+                              loadSuccess: (value) => DataTable(
+                                columns: const [
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("ID"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Client"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Amount"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Payment"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Note"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Date"),
+                                  ),
+                                ],
+                                rows: List.generate(
+                                    value.orders.results!.length, (rowsIndex) {
+                                  return DataRow(
+                                    cells: [
+                                      DataCell(Text(value
+                                          .orders.results![rowsIndex].customerId
+                                          .toString()
+                                          .substring(0, 8))),
+                                      DataCell(Text(value
+                                                  .orders
+                                                  .results![rowsIndex]
+                                                  .customerName ==
+                                              null
+                                          ? "Not found"
+                                          : value.orders.results![rowsIndex]
+                                              .customerName
+                                              .toString())),
+                                      DataCell(Text(value.orders
+                                                  .results![rowsIndex].sum ==
+                                              null
+                                          ? "N/A"
+                                          : value.orders.results![rowsIndex].sum
+                                              .toString())),
+                                      DataCell(Text(value
+                                                  .orders
+                                                  .results![rowsIndex]
+                                                  .currency ==
+                                              null
+                                          ? "cash"
+                                          : value.orders.results![rowsIndex]
+                                              .currency
+                                              .toString())),
+                                      DataCell(Text(value
+                                              .orders
+                                              .results![rowsIndex]
+                                              .items!
+                                              .isEmpty
+                                          ? "N/A"
+                                          : value.orders.results![rowsIndex]
+                                              .items!.length
+                                              .toString())),
+                                      DataCell(
+                                        Text(value.orders.results![rowsIndex]
+                                                    .createdDate ==
+                                                null
+                                            ? "N/A"
+                                            : value.orders.results![rowsIndex]
+                                                .createdDate
+                                                .toString()),
+                                      ),
+                                    ],
+                                  );
+                                }),
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                        SingleChildScrollView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          child: Column(children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData:
-                                        Icons.account_balance_wallet_rounded,
-                                    shadowColor: Colors.greenAccent,
-                                    title: 'Opening Drawer Account'),
-                                TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData: Icons.attach_money_outlined,
-                                    shadowColor: Colors.orange[600]!,
-                                    title: 'Cash Payment Sale'),
-                                const TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData: Icons.credit_card_outlined,
-                                    shadowColor: AppColors.blue,
-                                    title: 'Other Payment Sale'),
-                              ],
-                            ),
-                            SizedBox(
-                              height: h * 0.01,
-                            ),
-                            Center(
-                              child: Container(
-                                width: w * 0.9,
-                                height: h * 0.68,
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: DataTable(
-                                      columns: const [
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("ID"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Client"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Amount"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Payment"),
-                                        ),
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("Note"),
-                                        ),
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("Date"),
-                                        ),
-                                      ],
-                                      rows: List.generate(
-                                          value.data.data.orders.length,
-                                          (rowsIndex) {
-                                        return DataRow(
-                                          cells: [
-                                            DataCell(Text(value.data.data
-                                                .orders[rowsIndex].userId
-                                                .toString())),
-                                            DataCell(Text(value
-                                                .data
-                                                .data
-                                                .orders[rowsIndex]
-                                                .user!
-                                                .firstname
-                                                .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .totalPrice ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .totalPrice
-                                                    .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .transaction
-                                                        ?.paymentSystem
-                                                        ?.tag ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .transaction!
-                                                    .paymentSystem!
-                                                    .tag
-                                                    .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .transaction
-                                                        ?.note ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .transaction!
-                                                    .note
-                                                    .toString())),
-                                            DataCell(
-                                              Text(value
-                                                          .data
-                                                          .data
-                                                          .orders[rowsIndex]
-                                                          .deliveryDate ==
-                                                      null
-                                                  ? "N/A"
-                                                  : value
-                                                      .data
-                                                      .data
-                                                      .orders[rowsIndex]
-                                                      .deliveryDate
-                                                      .toString()),
-                                            ),
-                                          ],
-                                        );
-                                      })),
-                                ),
+                      ),
+                    ]),
+                  ),
+                  SingleChildScrollView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: Column(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.account_balance_wallet_rounded,
+                              shadowColor: Colors.greenAccent,
+                              title: 'Opening Drawer Account'),
+                          TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.attach_money_outlined,
+                              shadowColor: Colors.orange[600]!,
+                              title: 'Cash Payment Sale'),
+                          const TOTSalesCardMolecule(
+                              cost: "0.00",
+                              iconData: Icons.credit_card_outlined,
+                              shadowColor: AppColors.blue,
+                              title: 'Other Payment Sale'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: h * 0.01,
+                      ),
+                      Center(
+                        child: Container(
+                          width: w * 0.9,
+                          height: h * 0.68,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: state.map(
+                              initial: (value) => const Center(
+                                  child: CircularProgressIndicator()),
+                              loadFailed: (value) =>
+                                  const Center(child: Text("No data found")),
+                              loadSuccess: (value) => DataTable(
+                                columns: const [
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("ID"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Client"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Amount"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Payment"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Note"),
+                                  ),
+                                  DataColumn(
+                                    label: TOTTextAtom.headLineSmall("Date"),
+                                  ),
+                                ],
+                                rows: List.generate(
+                                    value.orders.results!.length, (rowsIndex) {
+                                  return DataRow(
+                                    cells: [
+                                      DataCell(Text(value
+                                          .orders.results![rowsIndex].customerId
+                                          .toString()
+                                          .substring(0, 8))),
+                                      DataCell(Text(value
+                                                  .orders
+                                                  .results![rowsIndex]
+                                                  .customerName ==
+                                              null
+                                          ? "Not found"
+                                          : value.orders.results![rowsIndex]
+                                              .customerName
+                                              .toString())),
+                                      DataCell(Text(value.orders
+                                                  .results![rowsIndex].sum ==
+                                              null
+                                          ? "N/A"
+                                          : value.orders.results![rowsIndex].sum
+                                              .toString())),
+                                      DataCell(Text(value
+                                                  .orders
+                                                  .results![rowsIndex]
+                                                  .currency ==
+                                              null
+                                          ? "cash"
+                                          : value.orders.results![rowsIndex]
+                                              .currency
+                                              .toString())),
+                                      DataCell(Text(value
+                                              .orders
+                                              .results![rowsIndex]
+                                              .items!
+                                              .isEmpty
+                                          ? "N/A"
+                                          : value.orders.results![rowsIndex]
+                                              .items!.length
+                                              .toString())),
+                                      DataCell(
+                                        Text(value.orders.results![rowsIndex]
+                                                    .createdDate ==
+                                                null
+                                            ? "N/A"
+                                            : value.orders.results![rowsIndex]
+                                                .createdDate
+                                                .toString()),
+                                      ),
+                                    ],
+                                  );
+                                }),
                               ),
                             ),
-                          ]),
+                          ),
                         ),
-                        SingleChildScrollView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          child: Column(children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData:
-                                        Icons.account_balance_wallet_rounded,
-                                    shadowColor: Colors.greenAccent,
-                                    title: 'Opening Drawer Account'),
-                                TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData: Icons.attach_money_outlined,
-                                    shadowColor: Colors.orange[600]!,
-                                    title: 'Cash Payment Sale'),
-                                const TOTSalesCardMolecule(
-                                    cost: "0.00",
-                                    iconData: Icons.credit_card_outlined,
-                                    shadowColor: AppColors.blue,
-                                    title: 'Other Payment Sale'),
-                              ],
-                            ),
-                            SizedBox(
-                              height: h * 0.01,
-                            ),
-                            Center(
-                              child: Container(
-                                width: w * 0.9,
-                                height: h * 0.68,
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: DataTable(
-                                      columns: const [
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("ID"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Client"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Amount"),
-                                        ),
-                                        DataColumn(
-                                          label: TOTTextAtom.headLineSmall(
-                                              "Payment"),
-                                        ),
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("Note"),
-                                        ),
-                                        DataColumn(
-                                          label:
-                                              TOTTextAtom.headLineSmall("Date"),
-                                        ),
-                                      ],
-                                      rows: List.generate(
-                                          value.data.data.orders.length,
-                                          (rowsIndex) {
-                                        return DataRow(
-                                          cells: [
-                                            DataCell(Text(value.data.data
-                                                .orders[rowsIndex].userId
-                                                .toString())),
-                                            DataCell(Text(value
-                                                .data
-                                                .data
-                                                .orders[rowsIndex]
-                                                .user!
-                                                .firstname
-                                                .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .totalPrice ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .totalPrice
-                                                    .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .transaction
-                                                        ?.paymentSystem
-                                                        ?.tag ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .transaction!
-                                                    .paymentSystem!
-                                                    .tag
-                                                    .toString())),
-                                            DataCell(Text(value
-                                                        .data
-                                                        .data
-                                                        .orders[rowsIndex]
-                                                        .transaction
-                                                        ?.note ==
-                                                    null
-                                                ? "N/A"
-                                                : value
-                                                    .data
-                                                    .data
-                                                    .orders[rowsIndex]
-                                                    .transaction!
-                                                    .note
-                                                    .toString())),
-                                            DataCell(
-                                              Text(value
-                                                          .data
-                                                          .data
-                                                          .orders[rowsIndex]
-                                                          .deliveryDate ==
-                                                      null
-                                                  ? "N/A"
-                                                  : value
-                                                      .data
-                                                      .data
-                                                      .orders[rowsIndex]
-                                                      .deliveryDate
-                                                      .toString()),
-                                            ),
-                                          ],
-                                        );
-                                      })),
-                                ),
-                              ),
-                            ),
-                          ]),
-                        ),
-                      ]),
-                    )
-                  ]),
-            ),
+                      ),
+                    ]),
+                  ),
+                ]),
+              )
+            ]),
           ),
         );
       },

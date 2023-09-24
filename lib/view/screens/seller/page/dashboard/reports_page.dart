@@ -44,8 +44,7 @@ class _ReportsPageState extends State<ReportsPage> {
       child: DefaultTabController(
         initialIndex: 2,
         length: tabs.length,
-        child: Container(
-          color: const Color.fromARGB(135, 138, 212, 244),
+        child: SizedBox(
           width: w * 0.95,
           height: h * 0.93,
           child: Column(

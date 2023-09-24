@@ -2,9 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/network/dio_helper.dart';
 import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
-import 'package:tot_pos/data/repository/base/order_repo_base.dart';
 import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 import 'package:tot_pos/data/repository/base/layout_repo_base.dart';
+import 'package:tot_pos/data/repository/base/order_repo_base.dart';
 import 'package:tot_pos/data/repository/base/products_repo_base.dart';
 import 'package:tot_pos/data/repository/impl/auth_repo_impl.dart';
 import 'package:tot_pos/data/repository/impl/customer_repo_impl.dart';
@@ -38,13 +38,13 @@ Future<void> setUpDependencies() async {
   // sl.registerSingleton<HomeRepo>(HomeRepo());
   sl.registerSingleton<LayoutRepoBase>(LayoutRepoImpl());
   sl.registerSingleton<CustomerRepo>(CustomerRepo());
-  sl.registerSingleton<OrderRepo>(OrderRepo());
+  // sl.registerSingleton<OrderRepo>(OrderRepo());
   sl.registerSingleton<SalesRepo>(SalesRepo());
   sl.registerSingleton<ReportRepo>(ReportRepo());
   sl.registerSingleton<AuthBaseRepo>(AuthRepoImpl(dioHelper: sl()));
   sl.registerSingleton<ProductsRepoBase>(ProductsRepoImpl());
   sl.registerSingleton<CustomersRepoBase>(CustomersRepoImpl());
-  sl.registerSingleton<OrderRepoBase>(CreateOrderRepoImpl());
+  sl.registerSingleton<OrderRepoBase>(OrderRepoImpl());
 
   //cubits
   sl.registerFactory<HomeBloc>(() => HomeBloc(sl(), sl()));
@@ -55,7 +55,7 @@ Future<void> setUpDependencies() async {
         sl(),
       ));
   sl.registerFactory<OrderCubit>(() => OrderCubit(sl()));
-  sl.registerFactory<SalesCubit>(() => SalesCubit());
+  sl.registerFactory<SalesCubit>(() => SalesCubit(sl()));
   sl.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());
   sl.registerFactory<ReportCostCubit>(() => ReportCostCubit());
   sl.registerFactory<AuthBloc>(() => AuthBloc(sl()));

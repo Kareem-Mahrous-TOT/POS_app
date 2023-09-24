@@ -36,7 +36,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    
     return BlocConsumer<LayoutBloc, LayoutState>(
       listener: (context, state) {
         state.maybeMap(
@@ -70,7 +69,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 selectedIndex: selectedIndex,
               ),
             ),
-            backgroundColor: const Color.fromARGB(135, 138, 212, 244),
+            backgroundColor: const Color.fromARGB(134, 161, 216, 239),
             body: SafeArea(
               child: Row(
                 children: [
@@ -108,7 +107,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   label: Text('Reports')),
                             ],
                             selectedIconTheme:
-                                const IconThemeData(color: Colors.amber),
+                                const IconThemeData(color: Colors.greenAccent),
                             onDestinationSelected: (index) {
                               context
                                   .read<LayoutBloc>()

@@ -863,7 +863,7 @@ packages:
     description:
       path: "packages/tot_atomic_design"
       ref: dev
-      resolved-ref: f890d37b50affeada6ecc9e892317b1ebeda73ed
+      resolved-ref: "4be12c0abcc06aea1e7c767c03a458bddbd0bc8a"
       url: "https://github.com/TOTPLATFORM/flutter-atoms.git"
     source: git
     version: "0.1.1+1"

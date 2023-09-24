@@ -12,6 +12,7 @@ const totProductsEndPoint = "/api/catalog/search/products";
 
 // End points for Orders
 const totCreateOrderEndPoint = "/api/order/customerOrders";
+const totSearchOrderEndPoint = "/api/order/customerOrders/search";
 
 //End Points for customers
 const totCustomersEndPoint = "/api/members/search";

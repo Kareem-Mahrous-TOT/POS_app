@@ -47,7 +47,7 @@ _$_TOTProduct _$$_TOTProductFromJson(Map<String, dynamic> json) =>
       endDate: json['endDate'] as String?,
       packageType: json['packageType'] as String?,
       weightUnit: json['weightUnit'] as String?,
-      weight: json['weight'] as int?,
+      weight: (json['weight'] as num?)?.toDouble(),
       measureUnit: json['measureUnit'] as String?,
       height: json['height'] as int?,
       length: json['length'] as int?,

@@ -6,6 +6,8 @@ import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 
+import 'pos_counter.dart';
+
 // int counter = 1;
 
 class POSFoodItemAlertDialog extends StatefulWidget {
