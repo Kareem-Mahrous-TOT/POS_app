@@ -23,7 +23,13 @@ class TOTListViewWithHeaderOrganism extends StatefulWidget {
 
 class _TOTListViewWithHeaderOrganismState
     extends State<TOTListViewWithHeaderOrganism> {
-  List<String> statuses = ["New", "Processing", "Completed", "Wrong"];
+  List<String> statuses = [
+    "New",
+    "Accepted",
+    "Processing",
+    "Completed",
+    "Wrong"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +41,9 @@ class _TOTListViewWithHeaderOrganismState
           height: 800.h,
           child: state.map(
             initial: (value) => const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColors.green,
+              ),
             ),
             loadFailed: (value) => const Center(
               child: Text("No Data found"),
@@ -76,13 +84,18 @@ class _TOTListViewWithHeaderOrganismState
                                           "new"
                                       ? value.newOrder!.length.toString()
                                       : statuses[index].toLowerCase() ==
-                                              "processing"
-                                          ? value.processing!.length.toString()
+                                              "accepted"
+                                          ? value.accepted!.length.toString()
                                           : statuses[index].toLowerCase() ==
-                                                  "completed"
-                                              ? value.completed!.length
+                                                  "processing"
+                                              ? value.processing!.length
                                                   .toString()
-                                              : value.wrong!.length.toString()),
+                                              : statuses[index].toLowerCase() ==
+                                                      "completed"
+                                                  ? value.completed!.length
+                                                      .toString()
+                                                  : value.wrong!.length
+                                                      .toString()),
                                 ),
                               ],
                             ),
@@ -92,11 +105,13 @@ class _TOTListViewWithHeaderOrganismState
                   TOTOrderCardMolecule(
                     orderModel: statuses[index].toLowerCase() == "new"
                         ? value.newOrder
-                        : statuses[index].toLowerCase() == "processing"
-                            ? value.processing
-                            : statuses[index].toLowerCase() == "completed"
-                                ? value.completed
-                                : value.wrong,
+                        : statuses[index].toLowerCase() == "accepted"
+                            ? value.accepted
+                            : statuses[index].toLowerCase() == "processing"
+                                ? value.processing
+                                : statuses[index].toLowerCase() == "completed"
+                                    ? value.completed
+                                    : value.wrong!,
                   ),
                 ],
               ),

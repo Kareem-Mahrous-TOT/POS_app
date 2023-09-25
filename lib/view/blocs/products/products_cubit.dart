@@ -10,7 +10,13 @@ part 'products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this.repo) : super(_Initial());
 
-  OrderRepoBase repo;
+  final OrderRepoBase repo;
+
+  Map<String, String> selectedCustomer = {};
+
+  updateCustomer(Map<String, String> selected) {
+    selectedCustomer = selected;
+  }
 
   fetch() {
     final List<BagModel> result = [];
@@ -22,15 +28,14 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   checkout({
-    required String customerId,
     required String storeId,
     required String storeName,
-    required String customerName,
     int? total,
     required bool isApproved,
     required String status,
     required String currency,
     int? sum,
+    // required Map<String, String> selectedCustomer,
     required List<OrderItem> items,
   }) {
     state.maybeMap(
@@ -39,8 +44,8 @@ class ProductsCubit extends Cubit<ProductsState> {
         final data = await repo.fetchResponse(
           items: items,
           currency: currency,
-          customerId: customerId,
-          customerName: customerName,
+          customerId: selectedCustomer.keys.first,
+          customerName: selectedCustomer.values.first,
           isApproved: isApproved,
           status: status,
           storeId: storeId,

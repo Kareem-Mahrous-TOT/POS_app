@@ -7,24 +7,26 @@ class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: TOTTextAtom.headLineSmall(
-            "Order",
-          
-            color: AppColors.black,
+    return Container(
+      color: const Color.fromARGB(255, 229, 229, 229),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TOTTextAtom.headLineSmall(
+              "Order",
+              color: AppColors.black,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: TOTListViewWithHeaderOrganism(
-            onPressed: () {},
-          ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: TOTListViewWithHeaderOrganism(
+              onPressed: () {},
+            ),
+          )
+        ],
+      ),
     );
   }
 }

@@ -26,7 +26,7 @@ import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
-SharedPreferences prefs = sl();
+SharedPreferences prefs = sl<SharedPreferences>();
 
 Future<void> setUpDependencies() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -51,9 +51,11 @@ Future<void> setUpDependencies() async {
   sl.registerFactory<LayoutBloc>(() => LayoutBloc(sl()));
   sl.registerFactory<ProductsCubit>(() => ProductsCubit(sl()));
   sl.registerFactory<CurrentCustomerCubit>(() => CurrentCustomerCubit(sl()));
-  sl.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
-        sl(),
-      ));
+  sl.registerFactory<RecentCustomersBloc>(
+    () => RecentCustomersBloc(
+      sl(),
+    ),
+  );
   sl.registerFactory<OrderCubit>(() => OrderCubit(sl()));
   sl.registerFactory<SalesCubit>(() => SalesCubit(sl()));
   sl.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());

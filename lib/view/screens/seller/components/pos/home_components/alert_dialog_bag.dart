@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
@@ -29,21 +31,36 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(20.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TOTClippedImageMolecule(
-                radius: 10,
-                totImage: TOTImageAtom.network(
-                    width: w * 0.2,
-                    height: h * 0.3,
-                    widget.data.imgSrc == null || widget.data.imgSrc == ""
-                        ? "https://foodyman.s3.amazonaws.com/public/images/products/334-1676377275.jpeg"
-                        : widget.data.imgSrc.toString()),
-              ),
+              widget.data.imgSrc == null || widget.data.imgSrc == ""
+                  ? SizedBox(
+                      width: 200.w,
+                      height: 200.h,
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade100,
+                        highlightColor: Colors.grey.shade300,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: AppColors.grey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    )
+                  : TOTClippedImageMolecule(
+                      radius: 10,
+                      totImage: TOTImageAtom.network(
+                          width: 180.w,
+                          height: 180.h,
+                          widget.data.imgSrc.toString()),
+                    ),
               Padding(
                 padding: EdgeInsets.only(top: h * 0.03),
                 child: Container(
@@ -116,6 +133,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
           ),
           const SizedBox(width: 30),
           Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TOTTextAtom.headLineMedium(
@@ -142,7 +160,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
               ),
             ],
           ),
-          const SizedBox(width: 30),
+          const SizedBox(width: 10),
           const Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,

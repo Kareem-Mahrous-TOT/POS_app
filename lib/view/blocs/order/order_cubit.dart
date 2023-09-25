@@ -28,11 +28,15 @@ class OrderCubit extends Cubit<OrderState> {
       List<CustomerOrderResult>? completeted = r.results
           ?.where((element) => element.status?.toLowerCase() == "completed")
           .toList();
+      List<CustomerOrderResult>? accepted = r.results
+          ?.where((element) => element.status?.toLowerCase() == "accepted")
+          .toList();
       List<CustomerOrderResult>? wrong = r.results
           ?.where((element) =>
               element.status?.toLowerCase() != "created" &&
               element.status?.toLowerCase() != "new" &&
               element.status?.toLowerCase() != "picked" &&
+              element.status?.toLowerCase() != "accepted" &&
               element.status?.toLowerCase() != "completed")
           .toList();
 
@@ -40,7 +44,8 @@ class OrderCubit extends Cubit<OrderState> {
           processing: processing,
           completed: completeted,
           newOrder: newOrder,
-          wrong: wrong));
+          accepted:accepted,
+          wrong: wrong,));
     });
   }
 }

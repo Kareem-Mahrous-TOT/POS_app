@@ -21,7 +21,7 @@ import 'view/blocs/home/home_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setUpDependencies();
+  await setUpDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(const MainApp());
 }
@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(
             create: (context) => sl<HomeBloc>()
               ..add(const HomeEvent.loadProducts())
-              ..add(HomeEvent.getCustomers(sl())),
+              ..add(const HomeEvent.getCustomers()),
           ),
           BlocProvider(create: (context) => sl<ProductsCubit>()..fetch()),
           BlocProvider(create: (context) => sl<LayoutBloc>()),
@@ -55,9 +55,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => sl<ReportCostCubit>()..loadData()),
           BlocProvider(create: (context) => sl<AuthBloc>()),
         ],
-        
         child: MaterialApp.router(
-        
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,
           localizationsDelegates: AppLang.localizationsDelegates,

@@ -5,7 +5,6 @@ import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 import 'package:tot_pos/data/repository/base/products_repo_base.dart';
-import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';
@@ -68,7 +67,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               await state.maybeMap(
                 orElse: () {},
                 loadedData: (value) async {
-                  // log("Products List ::: $productsList");
                   emit(value.copyWith(
                       products: productsList, isSearching: true));
                   final productsAfterSearch = productsList

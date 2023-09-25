@@ -19,8 +19,11 @@ class RecentCustomersBloc
       const TOTCustomersSearchRequest(memberType: "Contact", take: 1000);
 
   CustomersRepoBase customersRepoBase;
+  // HomeBloc homeBloc;
 
-  RecentCustomersBloc(this.customersRepoBase) : super(_Initial()) {
+  RecentCustomersBloc(
+    this.customersRepoBase,
+  ) : super(_Initial()) {
     List<Member> listRecentCustomers = [];
     // List<Member> result;
     on<RecentCustomersEvent>(
@@ -58,7 +61,7 @@ class RecentCustomersBloc
                 final fetchNewdata = await customersRepoBase.fetch(request);
                 data.fold((l) {
                   emit(_AddCustomerFailed(l.message));
-                }, (r) {
+                }, (dataSuccess) {
                   // customers.add(event.customer);
                   listRecentCustomers = customers;
                   fetchNewdata.fold(
@@ -67,9 +70,10 @@ class RecentCustomersBloc
                       (r) {
                     listRecentCustomers = r.results;
                     emit(_LoadedRecentCustomerData(r.results));
+                    // homeBloc.add(const HomeEvent.getCustomers());
                     log("fetched Data Successfully");
                   });
-                  log("Added new User ${r.name}");
+                  log("Added new User ${dataSuccess.name}");
                 });
               },
               addCustomerFailed: (value) async {

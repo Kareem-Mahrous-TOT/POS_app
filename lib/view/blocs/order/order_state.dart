@@ -8,6 +8,7 @@ class OrderState with _$OrderState {
     List<CustomerOrderResult>? processing,
     List<CustomerOrderResult>? completed,
     List<CustomerOrderResult>? wrong,
+    List<CustomerOrderResult>? accepted,
   }) = _LoadSuccess;
   // const factory OrderState.filter(CustomerOrderResult? item) = _FilterState;
   factory OrderState.loadFailed(String message) = _LoadFailed;

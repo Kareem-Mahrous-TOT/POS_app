@@ -23,7 +23,8 @@ mixin _$OrderState {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)
         loadSuccess,
     required TResult Function(String message) loadFailed,
   }) =>
@@ -35,7 +36,8 @@ mixin _$OrderState {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult? Function(String message)? loadFailed,
   }) =>
@@ -47,7 +49,8 @@ mixin _$OrderState {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
@@ -128,7 +131,8 @@ class _$_Initial implements _Initial {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)
         loadSuccess,
     required TResult Function(String message) loadFailed,
   }) {
@@ -143,7 +147,8 @@ class _$_Initial implements _Initial {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult? Function(String message)? loadFailed,
   }) {
@@ -158,7 +163,8 @@ class _$_Initial implements _Initial {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
@@ -218,7 +224,8 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
       {List<CustomerOrderResult>? newOrder,
       List<CustomerOrderResult>? processing,
       List<CustomerOrderResult>? completed,
-      List<CustomerOrderResult>? wrong});
+      List<CustomerOrderResult>? wrong,
+      List<CustomerOrderResult>? accepted});
 }
 
 /// @nodoc
@@ -236,6 +243,7 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
     Object? processing = freezed,
     Object? completed = freezed,
     Object? wrong = freezed,
+    Object? accepted = freezed,
   }) {
     return _then(_$_LoadSuccess(
       newOrder: freezed == newOrder
@@ -254,6 +262,10 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
           ? _value.wrong
           : wrong // ignore: cast_nullable_to_non_nullable
               as List<CustomerOrderResult>?,
+      accepted: freezed == accepted
+          ? _value.accepted
+          : accepted // ignore: cast_nullable_to_non_nullable
+              as List<CustomerOrderResult>?,
     ));
   }
 }
@@ -261,7 +273,12 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadSuccess implements _LoadSuccess {
-  _$_LoadSuccess({this.newOrder, this.processing, this.completed, this.wrong});
+  _$_LoadSuccess(
+      {this.newOrder,
+      this.processing,
+      this.completed,
+      this.wrong,
+      this.accepted});
 
   @override
   List<CustomerOrderResult>? newOrder;
@@ -271,10 +288,12 @@ class _$_LoadSuccess implements _LoadSuccess {
   List<CustomerOrderResult>? completed;
   @override
   List<CustomerOrderResult>? wrong;
+  @override
+  List<CustomerOrderResult>? accepted;
 
   @override
   String toString() {
-    return 'OrderState.loadSuccess(newOrder: $newOrder, processing: $processing, completed: $completed, wrong: $wrong)';
+    return 'OrderState.loadSuccess(newOrder: $newOrder, processing: $processing, completed: $completed, wrong: $wrong, accepted: $accepted)';
   }
 
   @JsonKey(ignore: true)
@@ -291,11 +310,12 @@ class _$_LoadSuccess implements _LoadSuccess {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)
         loadSuccess,
     required TResult Function(String message) loadFailed,
   }) {
-    return loadSuccess(newOrder, processing, completed, wrong);
+    return loadSuccess(newOrder, processing, completed, wrong, accepted);
   }
 
   @override
@@ -306,11 +326,12 @@ class _$_LoadSuccess implements _LoadSuccess {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult? Function(String message)? loadFailed,
   }) {
-    return loadSuccess?.call(newOrder, processing, completed, wrong);
+    return loadSuccess?.call(newOrder, processing, completed, wrong, accepted);
   }
 
   @override
@@ -321,13 +342,14 @@ class _$_LoadSuccess implements _LoadSuccess {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(newOrder, processing, completed, wrong);
+      return loadSuccess(newOrder, processing, completed, wrong, accepted);
     }
     return orElse();
   }
@@ -372,7 +394,8 @@ abstract class _LoadSuccess implements OrderState {
       {List<CustomerOrderResult>? newOrder,
       List<CustomerOrderResult>? processing,
       List<CustomerOrderResult>? completed,
-      List<CustomerOrderResult>? wrong}) = _$_LoadSuccess;
+      List<CustomerOrderResult>? wrong,
+      List<CustomerOrderResult>? accepted}) = _$_LoadSuccess;
 
   List<CustomerOrderResult>? get newOrder;
   set newOrder(List<CustomerOrderResult>? value);
@@ -382,6 +405,8 @@ abstract class _LoadSuccess implements OrderState {
   set completed(List<CustomerOrderResult>? value);
   List<CustomerOrderResult>? get wrong;
   set wrong(List<CustomerOrderResult>? value);
+  List<CustomerOrderResult>? get accepted;
+  set accepted(List<CustomerOrderResult>? value);
   @JsonKey(ignore: true)
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -445,7 +470,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)
         loadSuccess,
     required TResult Function(String message) loadFailed,
   }) {
@@ -460,7 +486,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult? Function(String message)? loadFailed,
   }) {
@@ -475,7 +502,8 @@ class _$_LoadFailed implements _LoadFailed {
             List<CustomerOrderResult>? newOrder,
             List<CustomerOrderResult>? processing,
             List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong)?
+            List<CustomerOrderResult>? wrong,
+            List<CustomerOrderResult>? accepted)?
         loadSuccess,
     TResult Function(String message)? loadFailed,
     required TResult orElse(),

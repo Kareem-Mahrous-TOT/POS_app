@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_pos/core/routes/route_paths.dart';
+import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_bloc.dart';
+import 'package:tot_pos/view/blocs/home/home_bloc.dart';
+import 'package:tot_pos/view/blocs/order/order_cubit.dart';
+import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
+import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
 
 import '../../../../../core/theme/pallete.dart';
@@ -23,7 +28,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   final List<Widget> screens = [
     const HomePage(),
     const OrderPage(),
-    CustomerPage(),
+    const CustomerPage(),
     const SalesPage(),
     const ReportsPage(),
   ];
@@ -61,6 +66,21 @@ class _LayoutScreenState extends State<LayoutScreen> {
             orElse: () => 0,
             initial: (value) => 0,
             updateIndex: (value) => value.index);
+
+        if (selectedIndex == 0) {
+          context.read<HomeBloc>()
+            ..add(const HomeEvent.loadProducts())
+            ..add(const HomeEvent.getCustomers());
+        } else if (selectedIndex == 1) {
+          context.read<OrderCubit>().loadData();
+        } else if (selectedIndex == 2) {
+          context
+              .read<RecentCustomersBloc>()
+              .add(RecentCustomersEvent.loadRecentCustomers());
+        } else if (selectedIndex == 4) {
+          context.read<ReportCostCubit>().loadData();
+          context.read<ReportChartPieCubit>().loadData();
+        }
         return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: PreferredSize(
@@ -69,7 +89,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 selectedIndex: selectedIndex,
               ),
             ),
-            backgroundColor: const Color.fromARGB(134, 161, 216, 239),
             body: SafeArea(
               child: Row(
                 children: [

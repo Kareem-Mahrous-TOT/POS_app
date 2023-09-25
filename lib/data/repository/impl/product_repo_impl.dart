@@ -8,17 +8,6 @@ import 'package:tot_pos/data/repository/base/products_repo_base.dart';
 
 import '../../network/end_points.dart';
 
-// class HomeRepo {
-//   Future<ProductsModel> fetch() async {
-//     late ProductsModel productsModel;
-//     await AppJsonDecoder()
-//         .decode(path: "assets/dashboard_items.json")
-//         .then((value) {
-//       productsModel = ProductsModel.fromJson(value);
-//     });
-//     return productsModel;
-//   }
-// }
 
 class ProductsRepoImpl implements ProductsRepoBase {
   @override

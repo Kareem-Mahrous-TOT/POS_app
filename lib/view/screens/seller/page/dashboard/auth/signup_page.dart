@@ -160,7 +160,9 @@ class _SignupPageState extends State<SignupPage> {
                             },
                             loadingState: (value) {
                               return const Center(
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator(
+                                  color: AppColors.green,
+                                ),
                               );
                             },
                           ),

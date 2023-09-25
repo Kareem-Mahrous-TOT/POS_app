@@ -144,8 +144,10 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           widget: state.maybeMap(
                             loadingState: (value) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
+                              return Center(
+                                child: Transform.scale(
+                                    scale: 0.5,
+                                    child: const CircularProgressIndicator(color: Colors.black,)),
                               );
                             },
                             orElse: () {

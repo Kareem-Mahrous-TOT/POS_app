@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +5,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
+import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 
 class TOTPOSHomePageAppBar extends StatefulWidget {
   final Color? filterColor;
@@ -38,12 +37,6 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
               customers = value.customers == null ? [] : value.customers!;
               for (int i = 0; i < customers.length; i++) {
                 names.add({customers[i].id.toString(): customers[i].name!});
-                log("Customer name ${customers[i].name}");
-                customers[i].id;
-
-                value.dropdownValue = {
-                  customers[i].id.toString(): customers[i].name!
-                };
               }
               return customers;
             },
@@ -92,7 +85,6 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                                 border: UnderlineInputBorder(
                                     borderSide: BorderSide.none),
                               ),
-                              // value: dropdownValue,
                               hint: const Text("Select a customer"),
                               items: names.map((e) {
                                 return DropdownMenuItem<Map<String, String>>(
@@ -100,14 +92,9 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                                     child: Text(e.values.first.toString()));
                               }).toList(),
                               onChanged: (changedValue) {
-                                state.maybeMap(
-                                  orElse: () {},
-                                  loadedData: (value) {
-                                    value.dropdownValue = changedValue;
-                                    // print(
-                                    //     "Changed value  + ${value.dropdownValue}");
-                                  },
-                                );
+                                context
+                                    .read<ProductsCubit>()
+                                    .updateCustomer(changedValue!);
                               },
                               validator: widget.validator,
                             ),

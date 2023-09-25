@@ -7,5 +7,5 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.loadProducts() =
       _LoadProducts;
   const factory HomeEvent.searchList({String? query}) = _SearchList;
-  const factory HomeEvent.getCustomers(RecentCustomersBloc customers)=_GetCustomers;
+  const factory HomeEvent.getCustomers()=_GetCustomers;
 }
