@@ -75,11 +75,7 @@ class _HomePageState extends State<HomePage> {
                     builder: (context, state) {
                       return state.maybeMap(
                           orElse: () {
-                            return Container(
-                              color: Colors.orange,
-                              width: 100,
-                              height: 100,
-                            );
+                            return const SizedBox();
                           },
                           failedLoadingData: (value) => const Center(
                                 child: CircularProgressIndicator(

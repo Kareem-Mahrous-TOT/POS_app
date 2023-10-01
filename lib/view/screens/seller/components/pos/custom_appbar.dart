@@ -35,15 +35,16 @@ class TOTPOSAppBar extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   showDialog(
+                      barrierColor: Colors.transparent,
                       context: context,
                       builder: (_) => Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Dialog(
-                                child: Container(
-                                  color: AppColors.blue,
-                                  width: 50,
-                                  height: 50,
+                                backgroundColor: Colors.amber,
+                                child: SizedBox(
+                                  width: 600.w,
+                                  height: 700.h,
                                 ),
                               ),
                             ],
@@ -85,36 +86,38 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SearchBar(
-      leading: const Icon(
-        Icons.search,
-        color: AppColors.black,
-      ),
-      elevation: const MaterialStatePropertyAll(0),
-      controller: controller,
-      onChanged: (onChangedValue) {
-        // if(widget.selectedIndex == 0){
+    return widget.selectedIndex == 0 || widget.selectedIndex == 2
+        ? SearchBar(
+            leading: const Icon(
+              Icons.search,
+              color: AppColors.black,
+            ),
+            elevation: const MaterialStatePropertyAll(0),
+            controller: controller,
+            onChanged: (onChangedValue) {
+              // if(widget.selectedIndex == 0){
 
-        switch (widget.selectedIndex) {
-          case 0:
-            context.read<HomeBloc>().add(
-                  HomeEvent.searchList(
-                    query: controller.text.trim(),
-                  ),
-                );
-          case 2:
-            context.read<RecentCustomersBloc>().add(
-                  RecentCustomersEvent.searchList(
-                    query: controller.text.trim(),
-                  ),
-                );
-        }
-      },
-      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-      hintText: "Search",
-      hintStyle: const MaterialStatePropertyAll(
-        TextStyle(color: AppColors.grey),
-      ),
-    );
+              switch (widget.selectedIndex) {
+                case 0:
+                  context.read<HomeBloc>().add(
+                        HomeEvent.searchList(
+                          query: controller.text.trim(),
+                        ),
+                      );
+                case 2:
+                  context.read<RecentCustomersBloc>().add(
+                        RecentCustomersEvent.searchList(
+                          query: controller.text.trim(),
+                        ),
+                      );
+              }
+            },
+            backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+            hintText: "Search",
+            hintStyle: const MaterialStatePropertyAll(
+              TextStyle(color: AppColors.grey),
+            ),
+          )
+        : const SizedBox();
   }
 }
