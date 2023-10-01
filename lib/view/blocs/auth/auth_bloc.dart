@@ -24,17 +24,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 await repo.userLogin(username: username, password: password);
             final dataToken =
                 await repo.userToken(username: username, password: password);
-            dataLogin.fold((l) {
-              emit(_FailedLoginState(l.message));
-            }, (loginModel) {
-              if (loginModel.succeeded) {
-                dataToken.fold((l) => emit(_FailedTokenState(l.message)),
-                    (r) => emit(_SuccessTokenState()));
-                emit(_SuccessLoginState(loginModel));
-              } else {
-                emit(_FailedLoginState("Please check username or password"));
-              }
-            });
+            dataLogin.fold(
+              (l) {
+                emit(_FailedLoginState(l.message));
+              },
+              (loginModel) {
+                if (loginModel.succeeded) {
+                  dataToken.fold((l) => emit(_FailedTokenState(l.message)),
+                      (r) => emit(_SuccessTokenState()));
+                  emit(_SuccessLoginState(loginModel));
+                } else {
+                  emit(_FailedLoginState("Please check your username and password"));
+                }
+              },
+            );
           },
           loadingSignupData: (value) async {
             final String password = value.password;

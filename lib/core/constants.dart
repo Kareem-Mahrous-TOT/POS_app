@@ -1,7 +1,7 @@
 /// api variables
-const String baseUrl = "https://api.foodyman.org";
-const String webUrl = "https://foodyman.org";
+///
 const String accessToken = "accessToken";
+const String apiKey = "";
 
 //validation functions
 

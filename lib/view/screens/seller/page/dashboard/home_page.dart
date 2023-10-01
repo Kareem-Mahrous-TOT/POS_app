@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/constants.dart';
+import 'package:tot_pos/core/di/depency_manager.dart';
+import 'package:tot_pos/core/routes/route_paths.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
 import 'package:tot_pos/data/network/end_points.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
+import 'package:tot_pos/view/blocs/layout/layout_bloc.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
 import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
@@ -60,16 +65,26 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        failedLoadingData: (message) =>
-                            ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Center(
-                              child: Text(
-                                message.toString(),
+                        failedLoadingData: (message) {
+                          if (message.contains("401")) {
+                            prefs.remove(accessToken);
+                            context
+                                .read<LayoutBloc>()
+                                .add(const LayoutEvent.logout());
+                            if (mounted) {
+                              context.go(RoutePaths.login);
+                            }
+                          }
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Center(
+                                child: Text(
+                                  message.toString(),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                       );
                     },
                     builder: (context, state) {
@@ -293,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       TOTButtonAtom.filledButton(
-                                          backgroundColor: AppColors.green,
+                                          backgroundColor: primary,
                                           text: "Checkout",
                                           onPressed: () {
                                             if (formKey.currentState!
@@ -314,7 +329,7 @@ class _HomePageState extends State<HomePage> {
                                               }
                                             }
                                           },
-                                          textColor: AppColors.black)
+                                          textColor: AppColors.white)
                                     ],
                                   ),
                                 ),

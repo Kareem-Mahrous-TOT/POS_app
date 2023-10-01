@@ -10,18 +10,31 @@ part 'layout_state.dart';
 class LayoutBloc extends Bloc<LayoutEvent, LayoutState> {
   // final LayoutRepoBase layoutRepo;
   final AuthBaseRepo authRepo;
+
   LayoutBloc(this.authRepo) : super(_Initial()) {
+    // Timer timer = Timer(const Duration(seconds: 10), () {});
     on<LayoutEvent>((event, emit) async {
       await event.map(
-          logout: (value) async {
-            final data = await authRepo.userLogout();
-            data.fold((l) => emit(_LogoutFailed(l.message)),
-                (r) => emit(_LogoutSuccess()));
-          },
-          started: (value) {},
-          updateIndex: (value) async {
-            emit(_UpdateIndexState(value.index));
-          });
+        logout: (value) async {
+          
+          final data = await authRepo.userLogout();
+          data.fold((l) => emit(_LogoutFailed(l.message)),
+              (r) => emit(_LogoutSuccess()));
+        },
+        started: (value) {},
+        updateIndex: (value) async {
+          emit(_UpdateIndexState(value.index));
+        },
+        // sessionStarted: (value) {
+        //   timer;
+        //   emit(_SessionStartedState(timer));
+        // },
+        // sessionTimeout: (value) async {
+        //   timer.cancel();
+        //   emit(_SessionTimeoutState());
+
+        // },
+      );
     });
   }
 }

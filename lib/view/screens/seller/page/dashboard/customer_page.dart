@@ -103,13 +103,13 @@ class _CustomerPageState extends State<CustomerPage> {
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        backgroundColor: Colors.greenAccent,
+                        backgroundColor: primary,
                       ),
                       child: const TOTIconWithTextMolecule(
                         codePoint: 0xe047,
                         text: "Add Customer",
-                        color: AppColors.black,
-                        colorText: AppColors.black,
+                        color: AppColors.white,
+                        colorText: AppColors.white,
                       ),
                     ),
                   )
@@ -174,7 +174,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                     value.isSearching == false) {
                                   return Center(
                                     child: Text(
-                                      "No items found!",
+                                      "No customers found!",
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall,

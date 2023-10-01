@@ -45,20 +45,26 @@ class _LayoutScreenState extends State<LayoutScreen> {
       listener: (context, state) {
         state.maybeMap(
           orElse: () {},
+          // updateIndex: (value) => context.go(RoutePaths.login),
           logoutSuccess: (value) {
             context.go(RoutePaths.login);
           },
           logoutFailed: (value) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Center(
-                  child: Text(
-                    value.toString(),
-                  ),
-                ),
-              ),
-            );
+            context.go(RoutePaths.login);
           },
+          // sessionStartedState: (value) {
+          //   if (value.timer ==
+          //       Timer(
+          //           const Duration(seconds: 0, minutes: 0, hours: 0), () {})) {
+          //     context
+          //         .read<LayoutBloc>()
+          //         .add(const LayoutEvent.sessionTimeout());
+          //   }
+          // },
+          // sessionTimeoutState: (value) {
+          //   prefs.remove(accessToken);
+          //   context.go(RoutePaths.login);
+          // },
         );
       },
       builder: (context, state) {
@@ -101,13 +107,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                           child: NavigationRail(
                             minWidth: 90,
                             selectedIndex: selectedIndex,
-                            selectedLabelTextStyle: const TextStyle(
-                                color: AppColors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
                             backgroundColor: AppColors.white,
-                            unselectedLabelTextStyle:
-                                const TextStyle(color: AppColors.green),
                             destinations: const [
                               NavigationRailDestination(
                                   icon: Icon(Icons.ac_unit_sharp),
@@ -126,7 +126,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   label: Text('Reports')),
                             ],
                             selectedIconTheme:
-                                const IconThemeData(color: Colors.greenAccent),
+                                const IconThemeData(color: primary),
                             onDestinationSelected: (index) {
                               context
                                   .read<LayoutBloc>()

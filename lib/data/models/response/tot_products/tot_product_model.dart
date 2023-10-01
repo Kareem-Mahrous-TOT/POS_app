@@ -41,9 +41,9 @@ class TOTProduct with _$TOTProduct {
     String? weightUnit,
     double? weight,
     String? measureUnit,
-    int? height,
-    int? length,
-    int? width,
+    double? height,
+    double? length,
+    double? width,
     bool? enableReview,
     int? maxNumberOfDownload,
     String? downloadExpiration,
@@ -127,23 +127,21 @@ class Property with _$Property {
 }
 
 @freezed
-class ValidationRule with _$ValidationRule{
+class ValidationRule with _$ValidationRule {
   const factory ValidationRule({
-  bool? isUnique,
-  int? charCountMin,
-  int? charCountMax,
-  String? regExp,
-  String? propertyId,
-  String? id,
-    
-  })=_ValidationRule;
+    bool? isUnique,
+    int? charCountMin,
+    int? charCountMax,
+    String? regExp,
+    String? propertyId,
+    String? id,
+  }) = _ValidationRule;
 
-   factory ValidationRule.fromJson(Map<String, dynamic> json) =>
+  factory ValidationRule.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleFromJson(json);
 }
 
 @freezed
-
 class ValidationRules with _$ValidationRules {
   const factory ValidationRules({
     bool? isUnique,
@@ -156,8 +154,8 @@ class ValidationRules with _$ValidationRules {
   factory ValidationRules.fromJson(Map<String, dynamic> json) =>
       _$ValidationRulesFromJson(json);
 }
-@freezed
 
+@freezed
 class DisplayName with _$DisplayName {
   const factory DisplayName({
     String? name,
@@ -166,8 +164,8 @@ class DisplayName with _$DisplayName {
   factory DisplayName.fromJson(Map<String, dynamic> json) =>
       _$DisplayNameFromJson(json);
 }
-@freezed
 
+@freezed
 class Attribute with _$Attribute {
   const factory Attribute({
     String? propertyId,
@@ -251,8 +249,6 @@ class Variation with _$Variation {
       _$VariationFromJson(json);
 }
 
-
-
 @freezed
 class Review with _$Review {
   const factory Review({
@@ -298,12 +294,12 @@ class Outline with _$Outline {
 
 @freezed
 class OutlineItem with _$OutlineItem {
-  const factory OutlineItem(
-      {required String id,
-      String? seoObjectType,
-      required String name,
-      bool? hasVirtualParent,
-      }) = _OutlineItem;
+  const factory OutlineItem({
+    required String id,
+    String? seoObjectType,
+    required String name,
+    bool? hasVirtualParent,
+  }) = _OutlineItem;
 
   factory OutlineItem.fromJson(Map<String, dynamic> json) =>
       _$OutlineItemFromJson(json);

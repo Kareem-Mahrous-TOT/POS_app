@@ -246,9 +246,9 @@ mixin _$TOTProduct {
   String? get weightUnit => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get measureUnit => throw _privateConstructorUsedError;
-  int? get height => throw _privateConstructorUsedError;
-  int? get length => throw _privateConstructorUsedError;
-  int? get width => throw _privateConstructorUsedError;
+  double? get height => throw _privateConstructorUsedError;
+  double? get length => throw _privateConstructorUsedError;
+  double? get width => throw _privateConstructorUsedError;
   bool? get enableReview => throw _privateConstructorUsedError;
   int? get maxNumberOfDownload => throw _privateConstructorUsedError;
   String? get downloadExpiration => throw _privateConstructorUsedError;
@@ -317,9 +317,9 @@ abstract class $TOTProductCopyWith<$Res> {
       String? weightUnit,
       double? weight,
       String? measureUnit,
-      int? height,
-      int? length,
-      int? width,
+      double? height,
+      double? length,
+      double? width,
       bool? enableReview,
       int? maxNumberOfDownload,
       String? downloadExpiration,
@@ -516,15 +516,15 @@ class _$TOTProductCopyWithImpl<$Res, $Val extends TOTProduct>
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       length: freezed == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       width: freezed == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       enableReview: freezed == enableReview
           ? _value.enableReview
           : enableReview // ignore: cast_nullable_to_non_nullable
@@ -677,9 +677,9 @@ abstract class _$$_TOTProductCopyWith<$Res>
       String? weightUnit,
       double? weight,
       String? measureUnit,
-      int? height,
-      int? length,
-      int? width,
+      double? height,
+      double? length,
+      double? width,
       bool? enableReview,
       int? maxNumberOfDownload,
       String? downloadExpiration,
@@ -874,15 +874,15 @@ class __$$_TOTProductCopyWithImpl<$Res>
       height: freezed == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       length: freezed == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       width: freezed == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       enableReview: freezed == enableReview
           ? _value.enableReview
           : enableReview // ignore: cast_nullable_to_non_nullable
@@ -1123,11 +1123,11 @@ class _$_TOTProduct implements _TOTProduct {
   @override
   final String? measureUnit;
   @override
-  final int? height;
+  final double? height;
   @override
-  final int? length;
+  final double? length;
   @override
-  final int? width;
+  final double? width;
   @override
   final bool? enableReview;
   @override
@@ -1471,9 +1471,9 @@ abstract class _TOTProduct implements TOTProduct {
       final String? weightUnit,
       final double? weight,
       final String? measureUnit,
-      final int? height,
-      final int? length,
-      final int? width,
+      final double? height,
+      final double? length,
+      final double? width,
       final bool? enableReview,
       final int? maxNumberOfDownload,
       final String? downloadExpiration,
@@ -1554,11 +1554,11 @@ abstract class _TOTProduct implements TOTProduct {
   @override
   String? get measureUnit;
   @override
-  int? get height;
+  double? get height;
   @override
-  int? get length;
+  double? get length;
   @override
-  int? get width;
+  double? get width;
   @override
   bool? get enableReview;
   @override

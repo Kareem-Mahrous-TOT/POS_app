@@ -6,4 +6,7 @@ class LayoutState with _$LayoutState {
   factory LayoutState.updateIndex(int index) = _UpdateIndexState;
   factory LayoutState.logoutSuccess() = _LogoutSuccess;
   factory LayoutState.logoutFailed(String message) = _LogoutFailed;
+  // factory LayoutState.sessionTimeoutState() = _SessionTimeoutState;
+  // factory LayoutState.sessionStartedState(Timer timer) = _SessionStartedState;
+  
 }

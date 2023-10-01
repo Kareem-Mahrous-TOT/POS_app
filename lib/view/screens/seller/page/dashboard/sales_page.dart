@@ -62,11 +62,12 @@ class _SalesPageState extends State<SalesPage>
               SizedBox(
                 width: w * 0.7,
                 child: TabBar(
-                  unselectedLabelColor: AppColors.white,
-                  labelColor: Colors.greenAccent,
+                  // unselectedLabelColor: AppColors.white,
+                  // labelColor: Colors.greenAccent,
+
                   indicator: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      color: Colors.greenAccent,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   tabs: tabs,
                 ),

@@ -9,8 +9,9 @@ class DioHelper {
       BaseOptions(
         //Here the URL of API.
         baseUrl: baseUrl,
-
-        //   receiveDataWhenStatusError: true,
+        // queryParameters: {
+        //   "api_key":apiKey
+        // },
         //Here we Put The Headers Needed in The API.
         headers: {
           'Content-Type': '',
@@ -107,7 +108,6 @@ class DioHelper {
   }) async {
     dio.options.headers = {
       'Authorization': 'Bearer $token',
-      // 'Authorization': token ,
       'Content-Type': 'application/json',
     };
     return await dio.patch(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
   late TextEditingController usernameController;
 
   late TextEditingController passwordController;
+
+  late Timer timer;
 
   @override
   void initState() {
@@ -54,6 +58,11 @@ class _LoginPageState extends State<LoginPage> {
                         state.maybeWhen(
                           orElse: () {},
                           successLoginState: (model) {
+                            // if (context.mounted) {
+                            //   context
+                            //       .read<LayoutBloc>()
+                            //       .add(const LayoutEvent.sessionStarted());
+                            // }
                             context.go(RoutePaths.layout);
                           },
                           failedTokenState: (message) =>
@@ -147,7 +156,9 @@ class _LoginPageState extends State<LoginPage> {
                               return Center(
                                 child: Transform.scale(
                                     scale: 0.5,
-                                    child: const CircularProgressIndicator(color: Colors.black,)),
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.black,
+                                    )),
                               );
                             },
                             orElse: () {

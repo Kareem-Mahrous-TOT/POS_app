@@ -73,7 +73,6 @@ class RecentCustomersBloc
                     // homeBloc.add(const HomeEvent.getCustomers());
                     log("fetched Data Successfully");
                   });
-                  log("Added new User ${dataSuccess.name}");
                 });
               },
               addCustomerFailed: (value) async {

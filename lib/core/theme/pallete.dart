@@ -12,3 +12,4 @@ class AppColors {
   static const Color red = Colors.red;
 
 }
+const Color primary = Color(0xff2256a2);

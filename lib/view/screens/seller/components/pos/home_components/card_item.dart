@@ -49,13 +49,29 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                       ),
                     ),
                   )
-                : TOTClippedImageMolecule(
-                    radius: 5,
-                    totImage: TOTImageAtom.network(
-                      mealImage,
-                      boxFit: BoxFit.cover,
+                :
+                // TOTClippedImageMolecule(
+                //     radius: 5,
+                //     totImage: TOTImageAtom.network(
+                //       mealImage,
+                //       boxFit: BoxFit.cover,
+                //       height: h * 0.2,
+                //       width: w * 0.3,
+
+                //     ),
+                //   ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.network(
                       height: h * 0.2,
                       width: w * 0.3,
+                      mealImage,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.network(
+                            height: h * 0.2,
+                            width: w * 0.3,
+                            "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
+                      },
                     ),
                   ),
             Align(

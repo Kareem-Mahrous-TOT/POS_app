@@ -124,8 +124,8 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                                   context); // context.read<ProductsCubit>().calculateTotalPrice();
                             }
                           },
-                    textColor: AppColors.black,
-                    backgroundColor: AppColors.green,
+                    textColor: AppColors.white,
+                    backgroundColor: primary,
                   ),
                 ),
               )
