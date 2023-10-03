@@ -123,7 +123,7 @@ class _CustomerPageState extends State<CustomerPage> {
                   return state.map(
                     initial: (value) => const Center(
                         child: CircularProgressIndicator(
-                      color: AppColors.green,
+                      color: primary,
                     )),
                     loadedCurrentCustomerData: (value) =>
                         TOTCustomerCardMolecule(
@@ -163,11 +163,11 @@ class _CustomerPageState extends State<CustomerPage> {
                             return state.maybeMap(
                               orElse: () => const Center(
                                   child: CircularProgressIndicator(
-                                color: AppColors.green,
+                                color: primary,
                               )),
                               initial: (value) => const Center(
                                   child: CircularProgressIndicator(
-                                color: AppColors.green,
+                                color: primary,
                               )),
                               loadedRecentCustomerData: (value) {
                                 if (value.customers.isEmpty &&
@@ -184,7 +184,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                 if (value.isSearching == true) {
                                   return const Center(
                                     child: CircularProgressIndicator(
-                                      color: AppColors.green,
+                                      color: primary,
                                     ),
                                   );
                                 }

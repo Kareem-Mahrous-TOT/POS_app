@@ -58,17 +58,23 @@ class _SalesPageState extends State<SalesPage>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(children: [
-              const Icon(Icons.sort),
-              SizedBox(
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(Icons.sort),
+              ),
+              Container(
                 width: w * 0.7,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
                 child: TabBar(
                   // unselectedLabelColor: AppColors.white,
                   // labelColor: Colors.greenAccent,
-
                   indicator: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                    shape: BoxShape.rectangle,
+                    color: primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   tabs: tabs,
                 ),
               ),
@@ -136,7 +142,7 @@ class SalesTabs extends StatelessWidget {
                   child: state.map(
                     initial: (value) => const Center(
                         child: CircularProgressIndicator(
-                      color: AppColors.green,
+                      color: primary,
                     )),
                     loadFailed: (value) =>
                         const Center(child: Text("No data found")),

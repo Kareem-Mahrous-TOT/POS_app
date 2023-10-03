@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Transform.scale(
                                     scale: 0.5,
                                     child: const CircularProgressIndicator(
-                                      color: Colors.black,
+                                      color: primary,
                                     )),
                               );
                             },

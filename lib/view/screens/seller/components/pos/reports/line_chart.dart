@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tot_pos/core/theme/pallete.dart';
 
 class TOTLineChartMolecule extends StatelessWidget {
   /// this is a package from pub.dev called fl_chart
@@ -80,8 +81,8 @@ class TOTLineChartMolecule extends StatelessWidget {
             show: false,
           ),
           spots: spots,
-          isCurved: true,
-          color: const Color(0xFF83EA00),
+          isCurved: false,
+          color: primary,
           barWidth: 5,
           isStrokeCapRound: true,
           dotData: const FlDotData(

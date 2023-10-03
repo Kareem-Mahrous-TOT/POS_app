@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
-class TOTSalesCardMolecule extends StatelessWidget {
-  const TOTSalesCardMolecule({
+class TOTSalesCardMolecul extends StatelessWidget {
+  const TOTSalesCardMolecul({
     super.key,
     this.iconData,
     this.shadowColor,
@@ -59,11 +59,10 @@ class TOTSalesCardMolecule extends StatelessWidget {
                                   plus!
                                       ? Icons.arrow_upward
                                       : Icons.arrow_downward,
-                                  color: Colors.greenAccent),
+                                  color: success),
                               Text(
                                 " $percentage%",
-                                style:
-                                    const TextStyle(color: Colors.greenAccent),
+                                style: const TextStyle(color: success),
                               ),
                             ],
                           )

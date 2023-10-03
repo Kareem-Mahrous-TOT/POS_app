@@ -137,6 +137,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                         Expanded(
                             flex: 1,
                             child: IconButton(
+                              focusColor: primary,
+                              highlightColor: primary,
                               icon: const Icon(Icons.exit_to_app_rounded),
                               onPressed: () {
                                 context

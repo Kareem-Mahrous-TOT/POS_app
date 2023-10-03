@@ -94,13 +94,13 @@ class _HomePageState extends State<HomePage> {
                           },
                           failedLoadingData: (value) => const Center(
                                 child: CircularProgressIndicator(
-                                  color: AppColors.green,
+                                  color: primary,
                                 ),
                               ),
                           initial: (value) {
                             return const Center(
                               child: CircularProgressIndicator(
-                                color: AppColors.green,
+                                color: primary,
                               ),
                             );
                           },
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                             if (value.isSearching == true) {
                               return const Center(
                                 child: CircularProgressIndicator(
-                                  color: AppColors.green,
+                                  color: primary,
                                 ),
                               );
                             }
@@ -227,7 +227,7 @@ class _HomePageState extends State<HomePage> {
                             height: h * 0.5,
                             child: const Center(
                               child: CircularProgressIndicator(
-                                color: AppColors.green,
+                                color: primary,
                               ),
                             ),
                           ),
@@ -248,7 +248,6 @@ class _HomePageState extends State<HomePage> {
                                 status: "New"),
                           );
                         }
-
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(

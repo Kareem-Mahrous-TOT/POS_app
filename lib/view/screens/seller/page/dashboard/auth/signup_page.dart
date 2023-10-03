@@ -161,7 +161,7 @@ class _SignupPageState extends State<SignupPage> {
                             loadingState: (value) {
                               return const Center(
                                 child: CircularProgressIndicator(
-                                  color: AppColors.green,
+                                  color: primary,
                                 ),
                               );
                             },

@@ -42,7 +42,7 @@ class _TOTListViewWithHeaderOrganismState
           child: state.map(
             initial: (value) => const Center(
               child: CircularProgressIndicator(
-                color: AppColors.green,
+                color: primary,
               ),
             ),
             loadFailed: (value) => const Center(
