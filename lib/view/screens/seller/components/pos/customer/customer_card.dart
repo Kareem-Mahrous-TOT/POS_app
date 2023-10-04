@@ -5,9 +5,7 @@ import 'package:tot_pos/core/theme/pallete.dart';
 
 class TOTCustomerCardMolecule extends StatelessWidget {
   final String customerImage;
-
   final String email;
-
   final String code;
 
   const TOTCustomerCardMolecule(

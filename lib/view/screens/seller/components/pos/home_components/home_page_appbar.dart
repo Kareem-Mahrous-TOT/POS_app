@@ -80,7 +80,6 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                               padding: const EdgeInsets.only(
                                 left: 5,
                               ),
-
                               decoration: const InputDecoration(
                                 border: UnderlineInputBorder(
                                     borderSide: BorderSide.none),

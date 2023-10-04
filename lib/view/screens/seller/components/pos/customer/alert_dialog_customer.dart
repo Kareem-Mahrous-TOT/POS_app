@@ -5,6 +5,7 @@ import 'package:tot_pos/core/theme/pallete.dart';
 class TOTAddCustomerAlertDialog extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController emailController;
+  final Color? buttonColor;
 
   final VoidCallback onPressed;
 
@@ -12,12 +13,12 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
       {super.key,
       required this.nameController,
       required this.emailController,
-      required this.onPressed});
+      required this.onPressed,
+      this.buttonColor});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      
       title: Column(children: [
         TextFormField(
           controller: emailController,
@@ -73,7 +74,7 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
           text: "Add new customer",
           onPressed: onPressed,
           textColor: AppColors.black,
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: buttonColor ?? primary,
         )
       ]),
     );

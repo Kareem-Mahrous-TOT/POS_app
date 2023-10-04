@@ -45,26 +45,12 @@ class _LayoutScreenState extends State<LayoutScreen> {
       listener: (context, state) {
         state.maybeMap(
           orElse: () {},
-          // updateIndex: (value) => context.go(RoutePaths.login),
           logoutSuccess: (value) {
             context.go(RoutePaths.login);
           },
           logoutFailed: (value) {
             context.go(RoutePaths.login);
           },
-          // sessionStartedState: (value) {
-          //   if (value.timer ==
-          //       Timer(
-          //           const Duration(seconds: 0, minutes: 0, hours: 0), () {})) {
-          //     context
-          //         .read<LayoutBloc>()
-          //         .add(const LayoutEvent.sessionTimeout());
-          //   }
-          // },
-          // sessionTimeoutState: (value) {
-          //   prefs.remove(accessToken);
-          //   context.go(RoutePaths.login);
-          // },
         );
       },
       builder: (context, state) {

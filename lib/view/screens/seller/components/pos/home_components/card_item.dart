@@ -49,18 +49,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                       ),
                     ),
                   )
-                :
-                // TOTClippedImageMolecule(
-                //     radius: 5,
-                //     totImage: TOTImageAtom.network(
-                //       mealImage,
-                //       boxFit: BoxFit.cover,
-                //       height: h * 0.2,
-                //       width: w * 0.3,
-
-                //     ),
-                //   ),
-                ClipRRect(
+                : ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Image.network(
                       height: h * 0.2,

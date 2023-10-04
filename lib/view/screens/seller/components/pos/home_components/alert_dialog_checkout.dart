@@ -8,8 +8,11 @@ import 'package:tot_pos/core/theme/pallete.dart';
 class POSCheckoutAlertDialog extends StatefulWidget {
   const POSCheckoutAlertDialog({
     super.key,
+      
+this.checkoutButtonColor
     //  required this.model
   });
+  final Color? checkoutButtonColor;
   // final TotCreateOrderResponse model;
   @override
   State<POSCheckoutAlertDialog> createState() => _POSCheckoutAlertDialogState();
@@ -33,7 +36,7 @@ class _POSCheckoutAlertDialogState extends State<POSCheckoutAlertDialog> {
               children: [
                 const TOTTextAtom.headLineMedium(
                   "Checkout",
-                  color: AppColors.black,
+                  color: AppColors.white,
                 ),
                 SizedBox(
                   height: 100.h,
@@ -74,7 +77,7 @@ class _POSCheckoutAlertDialogState extends State<POSCheckoutAlertDialog> {
                   text: "Checkout",
                   onPressed: () {},
                   textColor: AppColors.black,
-                  backgroundColor: AppColors.green,
+                  backgroundColor: widget.checkoutButtonColor ?? primary,
                 ),
               ),
             ),
