@@ -6,15 +6,18 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController emailController;
   final Color? buttonColor;
+  final Color? textColor;
 
   final VoidCallback onPressed;
 
-  const TOTAddCustomerAlertDialog(
-      {super.key,
-      required this.nameController,
-      required this.emailController,
-      required this.onPressed,
-      this.buttonColor});
+  const TOTAddCustomerAlertDialog({
+    super.key,
+    required this.nameController,
+    required this.emailController,
+    required this.onPressed,
+    this.buttonColor,
+    this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
         TOTButtonAtom.filledButton(
           text: "Add new customer",
           onPressed: onPressed,
-          textColor: AppColors.black,
+          textColor: textColor ?? AppColors.black,
           backgroundColor: buttonColor ?? primary,
         )
       ]),

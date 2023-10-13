@@ -77,25 +77,27 @@ class _TOTListViewWithHeaderOrganismState
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 12, vertical: 4),
                                   decoration: BoxDecoration(
-                                      color: AppColors.blue,
+                                      color: primary, // AppColors.blue,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: TOTTextAtom.labelLarge(statuses[index]
-                                              .toLowerCase() ==
-                                          "new"
-                                      ? value.newOrder!.length.toString()
-                                      : statuses[index].toLowerCase() ==
-                                              "accepted"
-                                          ? value.accepted!.length.toString()
-                                          : statuses[index].toLowerCase() ==
-                                                  "processing"
-                                              ? value.processing!.length
-                                                  .toString()
-                                              : statuses[index].toLowerCase() ==
-                                                      "completed"
-                                                  ? value.completed!.length
-                                                      .toString()
-                                                  : value.wrong!.length
-                                                      .toString()),
+                                  child: TOTTextAtom.labelLarge(
+                                    statuses[index].toLowerCase() == "new"
+                                        ? value.newOrder!.length.toString()
+                                        : statuses[index].toLowerCase() ==
+                                                "accepted"
+                                            ? value.accepted!.length.toString()
+                                            : statuses[index].toLowerCase() ==
+                                                    "processing"
+                                                ? value.processing!.length
+                                                    .toString()
+                                                : statuses[index]
+                                                            .toLowerCase() ==
+                                                        "completed"
+                                                    ? value.completed!.length
+                                                        .toString()
+                                                    : value.wrong!.length
+                                                        .toString(),
+                                    color: AppColors.white,
+                                  ),
                                 ),
                               ],
                             ),

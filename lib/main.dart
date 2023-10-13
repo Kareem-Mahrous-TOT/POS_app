@@ -55,10 +55,10 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => sl<AuthBloc>()),
         ],
         child: MaterialApp.router(
+          title: "TOT Pharmacy POS",
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,
           localizationsDelegates: AppLang.localizationsDelegates,
-          // ),
         ),
       ),
     );

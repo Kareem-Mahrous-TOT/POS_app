@@ -10,9 +10,9 @@ class AppColors {
   static const Color yellow = Colors.yellow;
   static const Color blueGrey = Colors.blueGrey;
   static const Color red = Colors.red;
-
 }
-const Color primary = Color(0xff2256a2);
+ 
+const Color primary = Color(0xFF59A29E); //Color(0xff2256a2);
 const Color secondary = Color(0xff557BC6);
 const Color benefits = Color(0xffAABDE3);
 const Color blue = Color(0xff2156A3);
@@ -23,4 +23,3 @@ const Color black = Color(0xff000000);
 const Color light = Color(0xffdedede);
 const Color danger = Color(0xffdc3545);
 const Color success = Color(0xff198754);
-

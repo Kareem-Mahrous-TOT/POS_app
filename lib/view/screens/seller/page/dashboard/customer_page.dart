@@ -72,6 +72,7 @@ class _CustomerPageState extends State<CustomerPage> {
                           context: context,
                           builder: (context) => SizedBox(
                               child: TOTAddCustomerAlertDialog(
+                            textColor: AppColors.white,
                             nameController: nameController,
                             emailController: emailController,
                             onPressed: () {
