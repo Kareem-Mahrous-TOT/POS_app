@@ -93,8 +93,9 @@ class _HomePageState extends State<HomePage> {
                             return const SizedBox();
                           },
                           failedLoadingData: (value) => const Center(
-                                child: CircularProgressIndicator(
-                                  color: primary,
+                                child: CircularProgressIndicator.adaptive(
+                                  valueColor:
+                                      AlwaysStoppedAnimation<Color>(primary),
                                 ),
                               ),
                           initial: (value) {
@@ -243,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                                 price: value.bag[i].itemPrice,
                                 productId: value.bag[i].id,
                                 catalogId:
-                                    "f5790b39-4fc8-4aad-8318-259d28595f05",
+                                    "0a841b7e-c732-4738-913d-9e43c054170e",
                                 name: value.bag[i].itemName,
                                 status: "New"),
                           );

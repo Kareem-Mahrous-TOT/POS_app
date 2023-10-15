@@ -1811,8 +1811,7 @@ mixin _$Property {
   List<DisplayName>? get displayNames => throw _privateConstructorUsedError;
   List<ValidationRules>? get validationRules =>
       throw _privateConstructorUsedError;
-  List<ValidationRule>? get validationRule =>
-      throw _privateConstructorUsedError;
+  ValidationRule? get validationRule => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1852,7 +1851,9 @@ abstract class $PropertyCopyWith<$Res> {
       List<Attribute>? attributes,
       List<DisplayName>? displayNames,
       List<ValidationRules>? validationRules,
-      List<ValidationRule>? validationRule});
+      ValidationRule? validationRule});
+
+  $ValidationRuleCopyWith<$Res>? get validationRule;
 }
 
 /// @nodoc
@@ -2004,8 +2005,20 @@ class _$PropertyCopyWithImpl<$Res, $Val extends Property>
       validationRule: freezed == validationRule
           ? _value.validationRule
           : validationRule // ignore: cast_nullable_to_non_nullable
-              as List<ValidationRule>?,
+              as ValidationRule?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ValidationRuleCopyWith<$Res>? get validationRule {
+    if (_value.validationRule == null) {
+      return null;
+    }
+
+    return $ValidationRuleCopyWith<$Res>(_value.validationRule!, (value) {
+      return _then(_value.copyWith(validationRule: value) as $Val);
+    });
   }
 }
 
@@ -2043,7 +2056,10 @@ abstract class _$$_PropertyCopyWith<$Res> implements $PropertyCopyWith<$Res> {
       List<Attribute>? attributes,
       List<DisplayName>? displayNames,
       List<ValidationRules>? validationRules,
-      List<ValidationRule>? validationRule});
+      ValidationRule? validationRule});
+
+  @override
+  $ValidationRuleCopyWith<$Res>? get validationRule;
 }
 
 /// @nodoc
@@ -2191,9 +2207,9 @@ class __$$_PropertyCopyWithImpl<$Res>
           : validationRules // ignore: cast_nullable_to_non_nullable
               as List<ValidationRules>?,
       validationRule: freezed == validationRule
-          ? _value._validationRule
+          ? _value.validationRule
           : validationRule // ignore: cast_nullable_to_non_nullable
-              as List<ValidationRule>?,
+              as ValidationRule?,
     ));
   }
 }
@@ -2228,12 +2244,11 @@ class _$_Property implements _Property {
       final List<Attribute>? attributes,
       final List<DisplayName>? displayNames,
       final List<ValidationRules>? validationRules,
-      final List<ValidationRule>? validationRule})
+      this.validationRule})
       : _values = values,
         _attributes = attributes,
         _displayNames = displayNames,
-        _validationRules = validationRules,
-        _validationRule = validationRule;
+        _validationRules = validationRules;
 
   factory _$_Property.fromJson(Map<String, dynamic> json) =>
       _$$_PropertyFromJson(json);
@@ -2322,15 +2337,8 @@ class _$_Property implements _Property {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<ValidationRule>? _validationRule;
   @override
-  List<ValidationRule>? get validationRule {
-    final value = _validationRule;
-    if (value == null) return null;
-    if (_validationRule is EqualUnmodifiableListView) return _validationRule;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ValidationRule? validationRule;
 
   @override
   String toString() {
@@ -2387,8 +2395,8 @@ class _$_Property implements _Property {
                 .equals(other._displayNames, _displayNames) &&
             const DeepCollectionEquality()
                 .equals(other._validationRules, _validationRules) &&
-            const DeepCollectionEquality()
-                .equals(other._validationRule, _validationRule));
+            (identical(other.validationRule, validationRule) ||
+                other.validationRule == validationRule));
   }
 
   @JsonKey(ignore: true)
@@ -2421,7 +2429,7 @@ class _$_Property implements _Property {
         const DeepCollectionEquality().hash(_attributes),
         const DeepCollectionEquality().hash(_displayNames),
         const DeepCollectionEquality().hash(_validationRules),
-        const DeepCollectionEquality().hash(_validationRule)
+        validationRule
       ]);
 
   @JsonKey(ignore: true)
@@ -2466,7 +2474,7 @@ abstract class _Property implements Property {
       final List<Attribute>? attributes,
       final List<DisplayName>? displayNames,
       final List<ValidationRules>? validationRules,
-      final List<ValidationRule>? validationRule}) = _$_Property;
+      final ValidationRule? validationRule}) = _$_Property;
 
   factory _Property.fromJson(Map<String, dynamic> json) = _$_Property.fromJson;
 
@@ -2523,7 +2531,7 @@ abstract class _Property implements Property {
   @override
   List<ValidationRules>? get validationRules;
   @override
-  List<ValidationRule>? get validationRule;
+  ValidationRule? get validationRule;
   @override
   @JsonKey(ignore: true)
   _$$_PropertyCopyWith<_$_Property> get copyWith =>

@@ -46,7 +46,7 @@ class RecentCustomersBloc
           addCustomer: (event) async {
             await state.maybeMap(
               loadedRecentCustomerData: (myState) async {
-                String firstName = event.customer.emails!.first;
+                String firstName = event.customer.emails!.first?? "Not Found";
                 String lastName = event.customer.name!;
                 TOTAddCustomerModelRequest addRequest =
                     TOTAddCustomerModelRequest(

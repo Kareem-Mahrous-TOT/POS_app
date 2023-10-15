@@ -30,14 +30,14 @@ _$_Member _$$_MemberFromJson(Map<String, dynamic> json) => _$_Member(
           ?.map((e) => Address.fromJson(e as Map<String, dynamic>))
           .toList(),
       phones:
-          (json['phones'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['phones'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       emails:
-          (json['emails'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['emails'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       notes: (json['notes'] as List<dynamic>?)
           ?.map((e) => Note.fromJson(e as Map<String, dynamic>))
           .toList(),
       groups:
-          (json['groups'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['groups'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       iconUrl: json['iconUrl'] as String?,
       objectType: json['objectType'] as String?,
       dynamicProperties: (json['dynamicProperties'] as List<dynamic>?)

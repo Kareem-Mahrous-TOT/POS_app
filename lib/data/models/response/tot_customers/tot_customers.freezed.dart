@@ -189,10 +189,10 @@ mixin _$Member {
   String? get outerId => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   List<Address>? get addresses => throw _privateConstructorUsedError;
-  List<String>? get phones => throw _privateConstructorUsedError;
-  List<String>? get emails => throw _privateConstructorUsedError;
+  List<String?>? get phones => throw _privateConstructorUsedError;
+  List<String?>? get emails => throw _privateConstructorUsedError;
   List<Note>? get notes => throw _privateConstructorUsedError;
-  List<String>? get groups => throw _privateConstructorUsedError;
+  List<String?>? get groups => throw _privateConstructorUsedError;
   String? get iconUrl => throw _privateConstructorUsedError;
   String? get objectType => throw _privateConstructorUsedError;
   List<DynamicProperty>? get dynamicProperties =>
@@ -221,10 +221,10 @@ abstract class $MemberCopyWith<$Res> {
       String? outerId,
       String? status,
       List<Address>? addresses,
-      List<String>? phones,
-      List<String>? emails,
+      List<String?>? phones,
+      List<String?>? emails,
       List<Note>? notes,
-      List<String>? groups,
+      List<String?>? groups,
       String? iconUrl,
       String? objectType,
       List<DynamicProperty>? dynamicProperties,
@@ -294,11 +294,11 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
       phones: freezed == phones
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       emails: freezed == emails
           ? _value.emails
           : emails // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       notes: freezed == notes
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -306,7 +306,7 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
       groups: freezed == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -363,10 +363,10 @@ abstract class _$$_MemberCopyWith<$Res> implements $MemberCopyWith<$Res> {
       String? outerId,
       String? status,
       List<Address>? addresses,
-      List<String>? phones,
-      List<String>? emails,
+      List<String?>? phones,
+      List<String?>? emails,
       List<Note>? notes,
-      List<String>? groups,
+      List<String?>? groups,
       String? iconUrl,
       String? objectType,
       List<DynamicProperty>? dynamicProperties,
@@ -433,11 +433,11 @@ class __$$_MemberCopyWithImpl<$Res>
       phones: freezed == phones
           ? _value._phones
           : phones // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       emails: freezed == emails
           ? _value._emails
           : emails // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       notes: freezed == notes
           ? _value._notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -445,7 +445,7 @@ class __$$_MemberCopyWithImpl<$Res>
       groups: freezed == groups
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       iconUrl: freezed == iconUrl
           ? _value.iconUrl
           : iconUrl // ignore: cast_nullable_to_non_nullable
@@ -499,10 +499,10 @@ class _$_Member implements _Member {
       this.outerId,
       this.status,
       final List<Address>? addresses,
-      final List<String>? phones,
-      final List<String>? emails,
+      final List<String?>? phones,
+      final List<String?>? emails,
       final List<Note>? notes,
-      final List<String>? groups,
+      final List<String?>? groups,
       this.iconUrl,
       this.objectType,
       final List<DynamicProperty>? dynamicProperties,
@@ -542,9 +542,9 @@ class _$_Member implements _Member {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _phones;
+  final List<String?>? _phones;
   @override
-  List<String>? get phones {
+  List<String?>? get phones {
     final value = _phones;
     if (value == null) return null;
     if (_phones is EqualUnmodifiableListView) return _phones;
@@ -552,9 +552,9 @@ class _$_Member implements _Member {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _emails;
+  final List<String?>? _emails;
   @override
-  List<String>? get emails {
+  List<String?>? get emails {
     final value = _emails;
     if (value == null) return null;
     if (_emails is EqualUnmodifiableListView) return _emails;
@@ -572,9 +572,9 @@ class _$_Member implements _Member {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _groups;
+  final List<String?>? _groups;
   @override
-  List<String>? get groups {
+  List<String?>? get groups {
     final value = _groups;
     if (value == null) return null;
     if (_groups is EqualUnmodifiableListView) return _groups;
@@ -706,10 +706,10 @@ abstract class _Member implements Member {
       final String? outerId,
       final String? status,
       final List<Address>? addresses,
-      final List<String>? phones,
-      final List<String>? emails,
+      final List<String?>? phones,
+      final List<String?>? emails,
       final List<Note>? notes,
-      final List<String>? groups,
+      final List<String?>? groups,
       final String? iconUrl,
       final String? objectType,
       final List<DynamicProperty>? dynamicProperties,
@@ -734,13 +734,13 @@ abstract class _Member implements Member {
   @override
   List<Address>? get addresses;
   @override
-  List<String>? get phones;
+  List<String?>? get phones;
   @override
-  List<String>? get emails;
+  List<String?>? get emails;
   @override
   List<Note>? get notes;
   @override
-  List<String>? get groups;
+  List<String?>? get groups;
   @override
   String? get iconUrl;
   @override
