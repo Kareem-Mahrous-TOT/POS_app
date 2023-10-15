@@ -119,7 +119,7 @@ class Property with _$Property {
     List<Attribute>? attributes,
     List<DisplayName>? displayNames,
     List<ValidationRules>? validationRules,
-    List<ValidationRule>? validationRule,
+     ValidationRule? validationRule,
   }) = _Property;
 
   factory Property.fromJson(Map<String, dynamic> json) =>

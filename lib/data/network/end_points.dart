@@ -1,4 +1,5 @@
-const baseUrl = 'http://20.163.148.155:8080/';
+const baseUrl8080 = 'http://20.163.148.155:8080/';
+const baseUrl = 'http://20.163.148.155:9070/';
 
 // End Points for Auth
 const loginEndPoint = 'api/platform/security/login';
@@ -18,5 +19,5 @@ const totSearchOrderEndPoint = "/api/order/customerOrders/search";
 const totCustomersEndPoint = "/api/members/search";
 const totAddCustomerEndPoint = "/api/members";
 
-const bakeryId = "f5790b39-4fc8-4aad-8318-259d28595f05";
+const bakeryId = "0a841b7e-c732-4738-913d-9e43c054170e";
 const storeId = "alkhbaz";

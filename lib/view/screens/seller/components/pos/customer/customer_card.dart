@@ -7,12 +7,17 @@ class TOTCustomerCardMolecule extends StatelessWidget {
   final String customerImage;
   final String email;
   final String code;
+  final double? width;
+  final double? height;
 
-  const TOTCustomerCardMolecule(
-      {super.key,
-      required this.customerImage,
-      required this.email,
-      required this.code});
+  const TOTCustomerCardMolecule({
+    super.key,
+    required this.customerImage,
+    required this.email,
+    required this.code,
+    this.width,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +30,8 @@ class TOTCustomerCardMolecule extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: AppColors.white,
         ),
-        width: w * 0.98,
-        height: h * 0.2,
+        width: width ?? w * 0.98,
+        height: height ?? h * 0.2,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

@@ -56,8 +56,9 @@ class CustomersListMolecule extends StatelessWidget {
                             color: AppColors.black,
                           ),
                           TOTTextAtom.labelMedium(
-                            model[index].emails!.isNotEmpty
-                                ? model[index].emails![0]
+                            model[index].emails!.isNotEmpty &&
+                                    model[index].emails![0] != null
+                                ? model[index].emails![0]!
                                 : "No emails found",
                             color: AppColors.grey,
                           ),

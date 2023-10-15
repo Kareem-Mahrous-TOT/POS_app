@@ -41,7 +41,8 @@ class TOTPOSAppBar extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Dialog(
-                                backgroundColor: Colors.amber,
+                                backgroundColor: Color.fromARGB(
+                                    255, 223, 248, 242), //Colors.amber,
                                 child: SizedBox(
                                   width: 600.w,
                                   height: 700.h,

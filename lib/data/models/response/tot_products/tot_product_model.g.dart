@@ -220,9 +220,10 @@ _$_Property _$$_PropertyFromJson(Map<String, dynamic> json) => _$_Property(
       validationRules: (json['validationRules'] as List<dynamic>?)
           ?.map((e) => ValidationRules.fromJson(e as Map<String, dynamic>))
           .toList(),
-      validationRule: (json['validationRule'] as List<dynamic>?)
-          ?.map((e) => ValidationRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      validationRule: json['validationRule'] == null
+          ? null
+          : ValidationRule.fromJson(
+              json['validationRule'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PropertyToJson(_$_Property instance) =>
