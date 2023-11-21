@@ -91,9 +91,8 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: h * 0.03),
-                child: Container(
-                  color: Colors.yellow,
-                  width: w * 0.15,
+                child: SizedBox(
+                   width: w * 0.15,
                   height: h * 0.06,
                   child: TOTButtonAtom.filledButton(
                     style: ElevatedButton.styleFrom(

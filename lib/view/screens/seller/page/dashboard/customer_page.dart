@@ -128,6 +128,7 @@ class _CustomerPageState extends State<CustomerPage> {
                     )),
                     loadedCurrentCustomerData: (value) =>
                         TOTCustomerCardMolecule(
+                      name: null,
                       code: value.data.code.toString(),
                       customerImage: value.data.customerImage.toString(),
                       email: value.data.email.toString(),

@@ -91,24 +91,47 @@ class _LayoutScreenState extends State<LayoutScreen> {
                         Expanded(
                           flex: 6,
                           child: NavigationRail(
-                            minWidth: 90,
+                            indicatorColor: Colors.transparent,
+                            minWidth: 60,
+                            
                             selectedIndex: selectedIndex,
                             backgroundColor: AppColors.white,
+                            useIndicator: false,
                             destinations: const [
                               NavigationRailDestination(
-                                  icon: Icon(Icons.ac_unit_sharp),
+                                  icon: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 20.0),
+                                    child: Icon(Icons.home),
+                                  ),
                                   label: Text('Dashboard')),
                               NavigationRailDestination(
-                                  icon: Icon(Icons.shopping_bag),
+                                  icon: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 20.0),
+                                    child: Icon(Icons.shopping_bag),
+                                  ),
                                   label: Text('Orders')),
                               NavigationRailDestination(
-                                  icon: Icon(Icons.man),
+                                  icon: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 20.0),
+                                    child: Icon(Icons.man),
+                                  ),
                                   label: Text('Customers')),
                               NavigationRailDestination(
-                                  icon: Icon(Icons.attach_money),
+                                  icon: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 20.0),
+                                    child: Icon(Icons.attach_money),
+                                  ),
                                   label: Text('Sales')),
                               NavigationRailDestination(
-                                  icon: Icon(Icons.add_chart),
+                                  icon: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 20.0),
+                                    child: Icon(Icons.add_chart),
+                                  ),
                                   label: Text('Reports')),
                             ],
                             selectedIconTheme:

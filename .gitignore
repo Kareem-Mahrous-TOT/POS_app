@@ -4,11 +4,13 @@
 *.pyc
 *.swp
 .DS_Store
+.pubspec.lock
 .atom/
 .buildlog/
 .history
 .svn/
 migrate_working_dir/
+
 
 # IntelliJ related
 *.iml

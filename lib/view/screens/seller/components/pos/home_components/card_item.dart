@@ -1,16 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/pallete.dart';
 
 class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final String? mealName;
-
   final String? mealDescription;
-
-  final String price;
-  final String mealImage;
+  final String? mealImage;
+  final String? price;
+  final Color? nameColor;
+  final Color? priceColor;
 
   final VoidCallback onTap;
 
@@ -20,7 +19,9 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
       required this.mealDescription,
       required this.price,
       required this.mealImage,
-      required this.onTap});
+      required this.onTap,
+      this.nameColor,
+      this.priceColor});
 
   @override
   Widget build(BuildContext context) {
@@ -34,40 +35,28 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
-            mealImage.toString() == "null"
-                ? SizedBox(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 150.h,
-                    child: Shimmer.fromColors(
-                      baseColor: Colors.grey.shade100,
-                      highlightColor: Colors.grey.shade300,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.grey,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  )
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Image.network(
+            // mealImage.toString() == "null"
+            ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: CachedNetworkImage(
+                height: h * 0.2,
+                width: w * 0.3,
+                imageUrl: mealImage ??
+                    "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                errorWidget: (context, error, stackTrace) {
+                  return CachedNetworkImage(
                       height: h * 0.2,
                       width: w * 0.3,
-                      mealImage,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.network(
-                            height: h * 0.2,
-                            width: w * 0.3,
-                            "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
-                      },
-                    ),
-                  ),
+                      imageUrl:
+                          "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
+                },
+              ),
+            ),
             Align(
                 alignment: Alignment.topLeft,
                 child: TOTTextAtom.titleMedium(
                   mealName!,
-                  color: AppColors.black,
+                  color: nameColor ?? AppColors.black,
                 )),
             Align(
                 alignment: Alignment.topLeft,
@@ -79,7 +68,10 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                 )),
             Align(
                 alignment: Alignment.topLeft,
-                child: TOTTextAtom.titleLarge("\$ $price"))
+                child: TOTTextAtom.titleLarge(
+                  "\$ $price",
+                  color: priceColor ?? black,
+                ))
           ]),
         ),
       ),

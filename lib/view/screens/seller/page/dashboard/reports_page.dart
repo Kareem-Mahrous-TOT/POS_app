@@ -72,13 +72,16 @@ class _ReportsPageState extends State<ReportsPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: white,
                       ),
-                      width: w * 0.7,
+                      width: w * 0.8,
                       child: TabBar(
-                        indicator: BoxDecoration(
-                          color: primary,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicatorColor: primary,
+                        indicator: ShapeDecoration(
+                            color: primary,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(color: primary),
+                              borderRadius: BorderRadius.circular(10),
+                            )),
                         tabs: tabs,
                       ),
                     ),

@@ -7,8 +7,12 @@ class TOTCustomerCardMolecule extends StatelessWidget {
   final String customerImage;
   final String email;
   final String code;
+  final String? name;
   final double? width;
   final double? height;
+  final Color? emailColor;
+  final Color? codeColor;
+  final Color? nameColor;
 
   const TOTCustomerCardMolecule({
     super.key,
@@ -17,6 +21,10 @@ class TOTCustomerCardMolecule extends StatelessWidget {
     required this.code,
     this.width,
     this.height,
+    this.emailColor,
+    this.codeColor,
+    this.nameColor,
+    required this.name,
   });
 
   @override
@@ -62,21 +70,21 @@ class TOTCustomerCardMolecule extends StatelessWidget {
                       Row(
                         children: [
                           TOTTextAtom.headLineMedium(
-                            email,
-                            color: AppColors.black,
+                            name ?? email,
+                            color: nameColor ?? AppColors.black,
                           ),
                           const SizedBox(
                             width: 10,
                           ),
                           TOTTextAtom.headLineSmall(
                             "#$code",
-                            color: AppColors.grey,
+                            color: codeColor ?? AppColors.grey,
                           )
                         ],
                       ),
                       TOTTextAtom.labelLarge(
                         email,
-                        color: AppColors.grey,
+                        color: emailColor ?? AppColors.grey,
                       ),
                     ]),
               )

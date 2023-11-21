@@ -70,10 +70,13 @@ class _SalesPageState extends State<SalesPage>
                 child: TabBar(
                   // unselectedLabelColor: AppColors.white,
                   // labelColor: Colors.greenAccent,
-                  indicator: BoxDecoration(
-                    shape: BoxShape.rectangle,
+                  indicatorColor: primary,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicator: ShapeDecoration(
                     color: primary,
-                    borderRadius: BorderRadius.circular(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
                   tabs: tabs,
                 ),
