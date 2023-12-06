@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTAddCustomerAlertDialog extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController emailController;
   final Color? buttonColor;
-  final Color? textColor;
+  final TextStyle? textStyle;
 
   final VoidCallback onPressed;
 
@@ -16,7 +17,7 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
     required this.emailController,
     required this.onPressed,
     this.buttonColor,
-    this.textColor,
+    this.textStyle,
   });
 
   @override
@@ -25,24 +26,24 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
       title: Column(children: [
         TextFormField(
           controller: emailController,
-          cursorColor: AppColors.black,
+          cursorColor: Palette.black,
           decoration: InputDecoration(
             hintText: "Email",
             disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.red)),
+                borderSide: const BorderSide(color: Palette.red)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
           ),
         ),
         const SizedBox(
@@ -50,34 +51,35 @@ class TOTAddCustomerAlertDialog extends StatelessWidget {
         ),
         TextFormField(
           controller: nameController,
-          cursorColor: AppColors.black,
+          cursorColor: Palette.black,
           decoration: InputDecoration(
             hintText: "Name",
             disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.red)),
+                borderSide: const BorderSide(color: Palette.red)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
           ),
         ),
         const SizedBox(
           height: 10,
         ),
-        TOTButtonAtom.filledButton(
+        TotButtonAtom(
           text: "Add new customer",
           onPressed: onPressed,
-          textColor: textColor ?? AppColors.black,
-          backgroundColor: buttonColor ?? primary,
+          textStyle:
+              textStyle ?? context.titleMedium.copyWith(color: Palette.black),
+          backgroundColor: buttonColor ?? Palette.primary,
         )
       ]),
     );

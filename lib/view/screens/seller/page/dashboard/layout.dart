@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tot_pos/core/routes/route_paths.dart';
+import 'package:tot_pos/core/routes/routes.dart';
 import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
@@ -9,7 +9,7 @@ import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
 
-import '../../../../../core/theme/pallete.dart';
+import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import 'customer_page.dart';
 import 'home_page.dart';
@@ -46,10 +46,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
         state.maybeMap(
           orElse: () {},
           logoutSuccess: (value) {
-            context.go(RoutePaths.login);
+            context.goNamed(Routes.login);
           },
           logoutFailed: (value) {
-            context.go(RoutePaths.login);
+            context.goNamed(Routes.login);
           },
         );
       },
@@ -85,7 +85,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
               child: Row(
                 children: [
                   Container(
-                    color: AppColors.white,
+                    color: Palette.white,
                     child: Column(
                       children: [
                         Expanded(
@@ -93,9 +93,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                           child: NavigationRail(
                             indicatorColor: Colors.transparent,
                             minWidth: 60,
-                            
                             selectedIndex: selectedIndex,
-                            backgroundColor: AppColors.white,
+                            backgroundColor: Palette.white,
                             useIndicator: false,
                             destinations: const [
                               NavigationRailDestination(
@@ -135,7 +134,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   label: Text('Reports')),
                             ],
                             selectedIconTheme:
-                                const IconThemeData(color: primary),
+                                const IconThemeData(color: Palette.primary),
                             onDestinationSelected: (index) {
                               context
                                   .read<LayoutBloc>()
@@ -146,8 +145,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                         Expanded(
                             flex: 1,
                             child: IconButton(
-                              focusColor: primary,
-                              highlightColor: primary,
+                              focusColor: Palette.primary,
+                              highlightColor: Palette.primary,
                               icon: const Icon(Icons.exit_to_app_rounded),
                               onPressed: () {
                                 context

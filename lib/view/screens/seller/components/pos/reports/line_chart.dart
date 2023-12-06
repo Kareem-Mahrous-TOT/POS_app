@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTLineChartMolecule extends StatelessWidget {
   /// this is a package from pub.dev called fl_chart
@@ -82,7 +82,7 @@ class TOTLineChartMolecule extends StatelessWidget {
           ),
           spots: spots,
           isCurved: false,
-          color: primary,
+          color: Palette.primary,
           barWidth: 5,
           isStrokeCapRound: true,
           dotData: const FlDotData(
@@ -106,36 +106,36 @@ class TOTLineChartMolecule extends StatelessWidget {
   }
 }
 
-List<Color> gradientColors = [
-  Colors.cyan,
-  Colors.blue,
-];
+// List<Color> gradientColors = [
+//   Colors.cyan,
+//   Colors.blue,
+// ];
 
-final List<DateTime> times = [
-  DateTime.now().subtract(const Duration(days: 6)),
-  DateTime.now().subtract(const Duration(days: 5)),
-  DateTime.now().subtract(const Duration(days: 4)),
-  DateTime.now().subtract(const Duration(days: 3)),
-  DateTime.now().subtract(const Duration(days: 2)),
-  DateTime.now().subtract(const Duration(days: 1)),
-  DateTime.now(),
-];
+// final List<DateTime> times = [
+//   DateTime.now().subtract(const Duration(days: 6)),
+//   DateTime.now().subtract(const Duration(days: 5)),
+//   DateTime.now().subtract(const Duration(days: 4)),
+//   DateTime.now().subtract(const Duration(days: 3)),
+//   DateTime.now().subtract(const Duration(days: 2)),
+//   DateTime.now().subtract(const Duration(days: 1)),
+//   DateTime.now(),
+// ];
 
-final List<num> price = [
-  0.0,
-  7657.210883333333,
-  15314.421766666666,
-  22971.63265,
-  30628.843533333333,
-  38286.054416666666,
-  45943.2653,
-];
+// final List<num> price = [
+//   0.0,
+//   7657.210883333333,
+//   15314.421766666666,
+//   22971.63265,
+//   30628.843533333333,
+//   38286.054416666666,
+//   45943.2653,
+// ];
 
-final List<FlSpot> spots = [
-  const FlSpot(0, 1),
-  const FlSpot(1, 4),
-  const FlSpot(2, 4),
-  const FlSpot(3, 1),
-  const FlSpot(5, 6),
-  const FlSpot(6, 4),
-];
+// final List<FlSpot> spots = [
+//   const FlSpot(0, 1),
+//   const FlSpot(1, 4),
+//   const FlSpot(2, 4),
+//   const FlSpot(3, 1),
+//   const FlSpot(5, 6),
+//   const FlSpot(6, 4),
+// ];

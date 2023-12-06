@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/view/blocs/sales/sales_cubit.dart';
+
+import '../../components/pos/sales_card.dart';
 
 class SalesPage extends StatefulWidget {
   const SalesPage({super.key});
@@ -14,31 +16,30 @@ class SalesPage extends StatefulWidget {
 
 class _SalesPageState extends State<SalesPage>
     with SingleTickerProviderStateMixin {
-  final List<Tab> tabs = [
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Cash Drawer",
-        color: Colors.black,
-      ),
-    ),
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Today's Sale",
-        color: Colors.black,
-      ),
-    ),
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Sales History",
-        color: Colors.black,
-      ),
-    ),
-  ];
-
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Tab> tabs = [
+      Tab(
+        child: Text("Cash Drawer",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+      Tab(
+        child: Text("Today's Sale",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+      Tab(
+        child: Text("Sales History",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+    ];
     double w = MediaQuery.of(context).size.width;
 
     return Container(
@@ -48,12 +49,12 @@ class _SalesPageState extends State<SalesPage>
         initialIndex: 2,
         length: tabs.length,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: TOTTextAtom.headLineSmall(
-              "Sale History",
-              color: AppColors.black,
-            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Sale History",
+                style: context.titleMedium.copyWith(
+                  color: Palette.black,
+                )),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -68,12 +69,12 @@ class _SalesPageState extends State<SalesPage>
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
                 child: TabBar(
-                  // unselectedLabelColor: AppColors.white,
+                  // unselectedLabelColor: Palette.white,
                   // labelColor: Colors.greenAccent,
-                  indicatorColor: primary,
+                  indicatorColor: Palette.primary,
                   indicatorSize: TabBarIndicatorSize.tab,
                   indicator: ShapeDecoration(
-                    color: primary,
+                    color: Palette.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -127,7 +128,7 @@ class SalesTabs extends StatelessWidget {
                   const TOTSalesCardMolecule(
                       cost: "0.00",
                       iconData: Icons.credit_card_outlined,
-                      shadowColor: AppColors.blue,
+                      shadowColor: Palette.blue,
                       title: 'Other Payment Sale'),
                 ],
               ),
@@ -139,13 +140,13 @@ class SalesTabs extends StatelessWidget {
                   width: w * 0.9,
                   height: 520.h,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Palette.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: state.map(
                     initial: (value) => const Center(
                         child: CircularProgressIndicator(
-                      color: primary,
+                      color: Palette.primary,
                     )),
                     loadFailed: (value) =>
                         const Center(child: Text("No data found")),
@@ -157,22 +158,22 @@ class SalesTabs extends StatelessWidget {
                           child: DataTable(
                             columns: const [
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("ID"),
+                                label: Text("ID"),
                               ),
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("Client"),
+                                label: Text("Client"),
                               ),
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("Amount"),
+                                label: Text("Amount"),
                               ),
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("Payment"),
+                                label: Text("Payment"),
                               ),
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("Note"),
+                                label: Text("Note"),
                               ),
                               DataColumn(
-                                label: TOTTextAtom.headLineSmall("Date"),
+                                label: Text("Date"),
                               ),
                             ],
                             rows: List.generate(value.orders.results!.length,

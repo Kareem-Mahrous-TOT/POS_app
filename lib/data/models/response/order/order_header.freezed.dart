@@ -349,7 +349,7 @@ mixin _$CardOrder {
   String get amount => throw _privateConstructorUsedError;
   String get cardImage => throw _privateConstructorUsedError;
   String get cardUserCode => throw _privateConstructorUsedError;
-  String get cardUserName => throw _privateConstructorUsedError;
+  String get cardusername => throw _privateConstructorUsedError;
   @JsonKey(name: 'date')
   String get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'payment')
@@ -372,7 +372,7 @@ abstract class $CardOrderCopyWith<$Res> {
       {@JsonKey(name: 'amount') String amount,
       String cardImage,
       String cardUserCode,
-      String cardUserName,
+      String cardusername,
       @JsonKey(name: 'date') String date,
       @JsonKey(name: 'payment') String payment,
       @JsonKey(name: 'type') String type});
@@ -394,7 +394,7 @@ class _$CardOrderCopyWithImpl<$Res, $Val extends CardOrder>
     Object? amount = null,
     Object? cardImage = null,
     Object? cardUserCode = null,
-    Object? cardUserName = null,
+    Object? cardusername = null,
     Object? date = null,
     Object? payment = null,
     Object? type = null,
@@ -412,9 +412,9 @@ class _$CardOrderCopyWithImpl<$Res, $Val extends CardOrder>
           ? _value.cardUserCode
           : cardUserCode // ignore: cast_nullable_to_non_nullable
               as String,
-      cardUserName: null == cardUserName
-          ? _value.cardUserName
-          : cardUserName // ignore: cast_nullable_to_non_nullable
+      cardusername: null == cardusername
+          ? _value.cardusername
+          : cardusername // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -443,7 +443,7 @@ abstract class _$$_CardOrderCopyWith<$Res> implements $CardOrderCopyWith<$Res> {
       {@JsonKey(name: 'amount') String amount,
       String cardImage,
       String cardUserCode,
-      String cardUserName,
+      String cardusername,
       @JsonKey(name: 'date') String date,
       @JsonKey(name: 'payment') String payment,
       @JsonKey(name: 'type') String type});
@@ -463,7 +463,7 @@ class __$$_CardOrderCopyWithImpl<$Res>
     Object? amount = null,
     Object? cardImage = null,
     Object? cardUserCode = null,
-    Object? cardUserName = null,
+    Object? cardusername = null,
     Object? date = null,
     Object? payment = null,
     Object? type = null,
@@ -481,9 +481,9 @@ class __$$_CardOrderCopyWithImpl<$Res>
           ? _value.cardUserCode
           : cardUserCode // ignore: cast_nullable_to_non_nullable
               as String,
-      cardUserName: null == cardUserName
-          ? _value.cardUserName
-          : cardUserName // ignore: cast_nullable_to_non_nullable
+      cardusername: null == cardusername
+          ? _value.cardusername
+          : cardusername // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -508,7 +508,7 @@ class _$_CardOrder implements _CardOrder {
       {@JsonKey(name: 'amount') required this.amount,
       required this.cardImage,
       required this.cardUserCode,
-      required this.cardUserName,
+      required this.cardusername,
       @JsonKey(name: 'date') required this.date,
       @JsonKey(name: 'payment') required this.payment,
       @JsonKey(name: 'type') required this.type});
@@ -524,7 +524,7 @@ class _$_CardOrder implements _CardOrder {
   @override
   final String cardUserCode;
   @override
-  final String cardUserName;
+  final String cardusername;
   @override
   @JsonKey(name: 'date')
   final String date;
@@ -537,7 +537,7 @@ class _$_CardOrder implements _CardOrder {
 
   @override
   String toString() {
-    return 'CardOrder(amount: $amount, cardImage: $cardImage, cardUserCode: $cardUserCode, cardUserName: $cardUserName, date: $date, payment: $payment, type: $type)';
+    return 'CardOrder(amount: $amount, cardImage: $cardImage, cardUserCode: $cardUserCode, cardusername: $cardusername, date: $date, payment: $payment, type: $type)';
   }
 
   @override
@@ -550,8 +550,8 @@ class _$_CardOrder implements _CardOrder {
                 other.cardImage == cardImage) &&
             (identical(other.cardUserCode, cardUserCode) ||
                 other.cardUserCode == cardUserCode) &&
-            (identical(other.cardUserName, cardUserName) ||
-                other.cardUserName == cardUserName) &&
+            (identical(other.cardusername, cardusername) ||
+                other.cardusername == cardusername) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.payment, payment) || other.payment == payment) &&
             (identical(other.type, type) || other.type == type));
@@ -560,7 +560,7 @@ class _$_CardOrder implements _CardOrder {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, amount, cardImage, cardUserCode,
-      cardUserName, date, payment, type);
+      cardusername, date, payment, type);
 
   @JsonKey(ignore: true)
   @override
@@ -581,7 +581,7 @@ abstract class _CardOrder implements CardOrder {
       {@JsonKey(name: 'amount') required final String amount,
       required final String cardImage,
       required final String cardUserCode,
-      required final String cardUserName,
+      required final String cardusername,
       @JsonKey(name: 'date') required final String date,
       @JsonKey(name: 'payment') required final String payment,
       @JsonKey(name: 'type') required final String type}) = _$_CardOrder;
@@ -597,7 +597,7 @@ abstract class _CardOrder implements CardOrder {
   @override
   String get cardUserCode;
   @override
-  String get cardUserName;
+  String get cardusername;
   @override
   @JsonKey(name: 'date')
   String get date;

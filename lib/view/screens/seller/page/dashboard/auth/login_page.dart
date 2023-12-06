@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/routes/route_paths.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
-import 'package:tot_pos/view/blocs/auth/auth_bloc.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/extensions/translate.dart';
+import 'package:tot_pos/core/routes/routes.dart';
+import 'package:tot_pos/core/theme/palette.dart';
+import 'package:tot_pos/view/blocs/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -53,39 +55,31 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Form(
                     key: formKey,
-                    child: BlocConsumer<AuthBloc, AuthState>(
+                    child: BlocConsumer<LoginBloc, LoginState>(
                       listener: (context, state) {
                         state.maybeWhen(
                           orElse: () {},
-                          successLoginState: (model) {
+                          loading: () => const Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                          success: () {
                             // if (context.mounted) {
                             //   context
                             //       .read<LayoutBloc>()
                             //       .add(const LayoutEvent.sessionStarted());
                             // }
-                            context.go(RoutePaths.layout);
+                            context.goNamed(Routes.layout);
                           },
-                          failedTokenState: (message) =>
+                          failure: () =>
                               ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
                                 child: Text(
-                                  message.toString(),
+                                  context.tr.somethingWentWrong,
                                 ),
                               ),
                             ),
                           ),
-                          failedLoginState: (message) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Center(
-                                  child: Text(
-                                    message.toString(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
                         );
                       },
                       builder: (context, state) {
@@ -136,28 +130,25 @@ class _LoginPageState extends State<LoginPage> {
                             // }
                             return null;
                           },
-                          textColor: AppColors.black,
+                          textColor: Palette.black,
                           signupColor: Colors.greenAccent,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              context.read<AuthBloc>().add(
-                                    AuthEvent.loadingLoginData(
-                                        username: usernameController.text,
+                              context.read<LoginBloc>().add(
+                                    LoginEvent.started(
+                                        email: usernameController.text,
                                         password: passwordController.text),
                                   );
                             }
                           },
                           buttonBackgroundColor: Colors.greenAccent,
-                          signUponPressed: () {
-                            context.push(RoutePaths.signUp);
-                          },
                           widget: state.maybeMap(
-                            loadingState: (value) {
+                            loading: (value) {
                               return Center(
                                 child: Transform.scale(
                                     scale: 0.5,
                                     child: const CircularProgressIndicator(
-                                      color: primary,
+                                      color: Palette.primary,
                                     )),
                               );
                             },
@@ -194,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class TOTLoginOrganismCustomWidget extends TOTWidget {
+class TOTLoginOrganismCustomWidget extends TotWidget {
   final String lowerText;
   final String upperText;
 
@@ -207,35 +198,35 @@ class TOTLoginOrganismCustomWidget extends TOTWidget {
   final TextEditingController passwordController;
 
   final VoidCallback onPressed;
-  final VoidCallback signUponPressed;
+  final VoidCallback? signUponPressed;
 
   final Color buttonBackgroundColor;
   final Color? textColor;
 
   final AlignmentGeometry? align;
 
-  final Color? lowerTextColor;
-  final Color? upperTextColor;
+  final TextStyle? lowerTextStyle;
+  final TextStyle? upperTextStyle;
   final Color? signupColor;
   final String? Function(String?)? validatorEmail;
   final String? Function(String?)? validatorPassword;
 
   const TOTLoginOrganismCustomWidget({
+    super.key,
     this.validatorEmail,
     this.validatorPassword,
     required this.widget,
-    super.key,
     required this.lowerText,
     required this.upperText,
     required this.emailController,
     required this.passwordController,
     required this.onPressed,
     required this.buttonBackgroundColor,
-    required this.signUponPressed,
+    this.signUponPressed,
     this.textColor,
     this.buttonWidth,
-    this.lowerTextColor,
-    this.upperTextColor,
+    this.lowerTextStyle,
+    this.upperTextStyle,
     this.signupColor,
     this.borderRadius,
     this.align,
@@ -246,13 +237,14 @@ class TOTLoginOrganismCustomWidget extends TOTWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TOTDuplexTextMolecule(
-            mainAlignment: MainAxisAlignment.start,
-            crossAlignment: CrossAxisAlignment.start,
-            upper: upperText,
-            lowerTextColor: lowerTextColor,
-            lower: lowerText,
-            upperTextColor: upperTextColor),
+        Text(
+          upperText,
+          style: lowerTextStyle,
+        ),
+        Text(
+          lowerText,
+          style: upperTextStyle,
+        ),
         const SizedBox(height: 10),
         TextFormField(
           controller: emailController,
@@ -260,19 +252,19 @@ class TOTLoginOrganismCustomWidget extends TOTWidget {
             hintText: "Email Address",
             disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.red)),
+                borderSide: const BorderSide(color: Palette.red)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
           ),
           validator: validatorEmail ??
               (value) {
@@ -288,19 +280,19 @@ class TOTLoginOrganismCustomWidget extends TOTWidget {
             hintText: "Password",
             disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.red)),
+                borderSide: const BorderSide(color: Palette.red)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppColors.grey)),
+                borderSide: const BorderSide(color: Palette.grey)),
           ),
           validator: validatorPassword ??
               (vlaue) {
@@ -335,16 +327,16 @@ class TOTLoginOrganismCustomWidget extends TOTWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TOTTextAtom.bodyMedium(
-              "Don't have an account?",
-              color: Colors.black,
-            ),
+            Text("Don't have an account?",
+                style: context.titleMedium.copyWith(
+                  color: Colors.black,
+                )),
             GestureDetector(
               onTap: signUponPressed,
-              child: TOTTextAtom.bodyMedium(
-                " Sign up",
-                color: signupColor,
-              ),
+              child: Text(" Sign up",
+                  style: context.titleMedium.copyWith(
+                    color: signupColor,
+                  )),
             ),
           ],
         )

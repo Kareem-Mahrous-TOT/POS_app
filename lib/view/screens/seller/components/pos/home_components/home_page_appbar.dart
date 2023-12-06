@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
-import 'package:tot_pos/view/blocs/products/products_cubit.dart';
+ import 'package:tot_pos/view/blocs/products/rest/products_cubit.dart';
 
 class TOTPOSHomePageAppBar extends StatefulWidget {
   final Color? filterColor;
@@ -56,14 +57,13 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                     Expanded(
                       flex: 1,
                       child: Card(
-                        color: AppColors.white,
+                        color: Palette.white,
                         child: SizedBox(
                           height: 40.h,
-                          child: const TOTIconWithTextMolecule(
-                              codePoint: 0xf37d,
-                              text: "Bag",
-                              color: AppColors.black,
-                              colorText: AppColors.black),
+                          child: Text("Bag",
+                              style: context.titleMedium.copyWith(
+                                color: Palette.black,
+                              )),
                         ),
                       ),
                     ),
@@ -75,7 +75,7 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 11.sp),
                           child: Card(
-                            color: AppColors.white,
+                            color: Palette.white,
                             child: DropdownButtonFormField<Map<String, String>>(
                               padding: const EdgeInsets.only(
                                 left: 5,
@@ -118,15 +118,15 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.white,
+      color: Palette.white,
       child: SizedBox(
         height: 40.h,
         child: const Row(
           children: [
             Padding(
               padding: EdgeInsets.only(right: 6),
-              child: TOTIconAtom.displayMedium(
-                  codePoint: 0xf755, color: AppColors.black),
+              child: TotIconAtom(
+                  iconData: IconData(0xf755), iconColor: Palette.black),
             ),
             Padding(
               padding: EdgeInsets.only(right: 16.0, left: 8.0),

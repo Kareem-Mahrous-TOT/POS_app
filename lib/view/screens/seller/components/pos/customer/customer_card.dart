@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTCustomerCardMolecule extends StatelessWidget {
   final String customerImage;
@@ -10,9 +10,9 @@ class TOTCustomerCardMolecule extends StatelessWidget {
   final String? name;
   final double? width;
   final double? height;
-  final Color? emailColor;
-  final Color? codeColor;
-  final Color? nameColor;
+  final TextStyle? emailStyle;
+  final TextStyle? codeColor;
+  final TextStyle? textStyleName;
 
   const TOTCustomerCardMolecule({
     super.key,
@@ -21,9 +21,9 @@ class TOTCustomerCardMolecule extends StatelessWidget {
     required this.code,
     this.width,
     this.height,
-    this.emailColor,
+    this.emailStyle,
     this.codeColor,
-    this.nameColor,
+    this.textStyleName,
     required this.name,
   });
 
@@ -36,7 +36,7 @@ class TOTCustomerCardMolecule extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: AppColors.white,
+          color: Palette.white,
         ),
         width: width ?? w * 0.98,
         height: height ?? h * 0.2,
@@ -51,7 +51,7 @@ class TOTCustomerCardMolecule extends StatelessWidget {
                   height: w * 0.12,
                   width: w * 0.12,
                   child: CircleAvatar(
-                    backgroundColor: AppColors.grey,
+                    backgroundColor: Palette.grey,
                     child: ClipRRect(
                       child: CachedNetworkImage(
                         imageUrl: customerImage,
@@ -69,22 +69,31 @@ class TOTCustomerCardMolecule extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          TOTTextAtom.headLineMedium(
+                          Text(
                             name ?? email,
-                            color: nameColor ?? AppColors.black,
+                            style: textStyleName ??
+                                context.titleMedium.copyWith(
+                                  color: Palette.black,
+                                ),
                           ),
                           const SizedBox(
                             width: 10,
                           ),
-                          TOTTextAtom.headLineSmall(
+                          Text(
                             "#$code",
-                            color: codeColor ?? AppColors.grey,
+                            style: codeColor ??
+                                context.titleMedium.copyWith(
+                                  color: Palette.grey,
+                                ),
                           )
                         ],
                       ),
-                      TOTTextAtom.labelLarge(
+                      Text(
                         email,
-                        color: emailColor ?? AppColors.grey,
+                        style: emailStyle ??
+                            context.titleMedium.copyWith(
+                              color: Palette.grey,
+                            ),
                       ),
                     ]),
               )

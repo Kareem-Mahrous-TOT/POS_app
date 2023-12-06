@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
 
-import '../../../../../../core/theme/pallete.dart';
+import '../../../../../../core/theme/palette.dart';
 
 class TOTOrderCardMolecule extends StatelessWidget {
   const TOTOrderCardMolecule({
@@ -31,7 +30,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Palette.white,
                     borderRadius: BorderRadius.circular(20)),
                 height: h * 0.4,
                 width: w * 0.2,
@@ -49,17 +48,18 @@ class TOTOrderCardMolecule extends StatelessWidget {
                               const SizedBox(
                                 width: 10,
                               ),
-                              TOTDuplexTextMolecule(
-                                upper:
-                                    orderModel![index].customerName.toString(),
-                                lower: orderModel![index].status ?? " Test",
+                              Text(
+                                orderModel![index].customerName.toString(),
+                              ),
+                              Text(
+                                orderModel![index].status ?? " Test",
                               ),
                             ],
                           ),
                         ),
-                        TOTIconButtonAtom.displayMedium(
-                            codePoint: 0xf8d9,
-                            iconColor: AppColors.black,
+                        IconButton(
+                            icon: const Icon(IconData(0xf8d9)),
+                            color: Palette.black,
                             onPressed: () {}),
                       ],
                     ),
@@ -68,15 +68,15 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       child: Divider(
                         thickness: 0.5,
                         height: 1,
-                        color: AppColors.grey,
+                        color: Palette.grey,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const TOTIconAtom.displayLarge(codePoint: 0xf051f),
-                          TOTTextAtom.headLineSmall(
+                          const Icon(IconData(0xf051f)),
+                          Text(
                               " Date: ${orderModel![index].createdDate!.substring(0, 10).toString()}")
                         ],
                       ),
@@ -85,9 +85,8 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const TOTIconAtom.displayLarge(codePoint: 0xe0b2),
-                          TOTTextAtom.headLineSmall(
-                              " Amount: ${orderModel![index].total}")
+                          const Icon(IconData(0xe0b2)),
+                          Text(" Amount: ${orderModel![index].total}")
                         ],
                       ),
                     ),
@@ -95,9 +94,8 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const TOTIconAtom.displayLarge(codePoint: 0xf266),
-                          TOTTextAtom.headLineSmall(
-                              " Payment: ${orderModel![index].currency}")
+                          const Icon(IconData(0xf266)),
+                          Text(" Payment: ${orderModel![index].currency}")
                         ],
                       ),
                     ),
@@ -108,9 +106,9 @@ class TOTOrderCardMolecule extends StatelessWidget {
                     //         padding: const EdgeInsets.all(8.0),
                     //         child: Row(
                     //           children: [
-                    //             const TOTIconAtom.displayLarge(
+                    //             const  Icon(IconData(_))
                     //                 codePoint: 0xf2a9),
-                    //             TOTTextAtom.headLineSmall(
+                    //             Text(
                     //                 " Address: ${orderModel![index].addresses!.first}")
                     //           ],
                     //         ),
@@ -131,16 +129,15 @@ class TOTOrderCardMolecule extends StatelessWidget {
                               children: [
                                 orderModel![index].operationType ==
                                         "CustomerOrder"
-                                    ? const TOTTextAtom.headLineSmall(
-                                        "Delivery")
+                                    ? const Text("Delivery")
                                     // : orderModel![index].objectType == "Pickup"
-                                    //     ? const TOTTextAtom.headLineSmall(
+                                    //     ? const Text(
                                     //         "Pickup")
                                     //     : orderModel![index]
                                     //                 .objectType
                                     //                 .toString() ==
                                     //             "CustomerOrder"
-                                    //         ? const TOTTextAtom.headLineSmall(
+                                    //         ? const Text(
                                     //             "Delivery")
                                     : const SizedBox.shrink(),
                                 Container(
@@ -152,19 +149,8 @@ class TOTOrderCardMolecule extends StatelessWidget {
                                           color: Colors.black, width: 1)),
                                   child: orderModel![index].operationType ==
                                           "CustomerOrder"
-                                      // ? const TOTIconAtom.displayMedium(
-                                      //     codePoint: 0xf0398,
-                                      //     color: AppColors.black)
-                                      // : orderModel![index].objectType ==
-                                      //         "Pickup"
-                                      //     ? const TOTIconAtom.displayMedium(
-                                      //         codePoint: 0xefd0,
-                                      //         color: AppColors.black)
-                                      //     : orderModel![index].objectType ==
-                                      //             "Delivery"
-                                      ? const TOTIconAtom.displayMedium(
-                                          codePoint: 0xf699,
-                                          color: AppColors.black)
+                                      ? const Icon(IconData(0xf699),
+                                          color: Palette.black)
                                       : const SizedBox.shrink(),
                                 )
                               ]),

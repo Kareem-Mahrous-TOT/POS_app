@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 // int counter = 1;
 
 class POSCheckoutAlertDialog extends StatefulWidget {
-  const POSCheckoutAlertDialog({
-    super.key,
-      
-this.checkoutButtonColor
-    //  required this.model
-  });
+  const POSCheckoutAlertDialog({super.key, this.checkoutButtonColor
+      //  required this.model
+      });
   final Color? checkoutButtonColor;
   // final TotCreateOrderResponse model;
   @override
@@ -34,10 +32,10 @@ class _POSCheckoutAlertDialogState extends State<POSCheckoutAlertDialog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TOTTextAtom.headLineMedium(
-                  "Checkout",
-                  color: AppColors.white,
-                ),
+                Text("Checkout",
+                    style: context.titleMedium.copyWith(
+                      color: Palette.white,
+                    )),
                 SizedBox(
                   height: 100.h,
                   child: ListView.builder(
@@ -49,18 +47,18 @@ class _POSCheckoutAlertDialogState extends State<POSCheckoutAlertDialog> {
                 ),
                 const Divider(
                   thickness: 20,
-                  color: AppColors.black,
+                  color: Palette.black,
                 ),
-                const TOTTextAtom.headLineMedium(
+                Text(
                   'Color',
-                  color: AppColors.black,
+                  style: context.titleMedium.copyWith(
+                    color: Palette.black,
+                  ),
                 ),
-                const TOTIconWithTextMolecule(
-                  text: 'black',
-                  codePoint: 0xf2e6,
-                  colorText: AppColors.grey,
-                  color: AppColors.black,
-                ),
+                Text('black',
+                    style: context.titleMedium.copyWith(
+                      color: Palette.black,
+                    )),
               ],
             ),
             const SizedBox(width: 30),
@@ -70,14 +68,16 @@ class _POSCheckoutAlertDialogState extends State<POSCheckoutAlertDialog> {
                 color: Colors.yellow,
                 width: w * 0.15,
                 height: h * 0.06,
-                child: TOTButtonAtom.filledButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
+                child: TotButtonAtom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
                   text: "Checkout",
                   onPressed: () {},
-                  textColor: AppColors.black,
-                  backgroundColor: widget.checkoutButtonColor ?? primary,
+                  textStyle: context.titleMedium.copyWith(
+                    color: Palette.black,
+                  ),
+                  backgroundColor:
+                      widget.checkoutButtonColor ?? Palette.primary,
                 ),
               ),
             ),

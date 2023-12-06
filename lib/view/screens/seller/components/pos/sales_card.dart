@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
-class TOTSalesCardMolecul extends StatelessWidget {
-  const TOTSalesCardMolecul({
+class TOTSalesCardMolecule extends StatelessWidget {
+  const TOTSalesCardMolecule({
     super.key,
     this.iconData,
     this.shadowColor,
@@ -48,9 +48,10 @@ class TOTSalesCardMolecul extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TOTTextAtom.headLineSmall(
+                    Text(
                       title,
-                      color: Colors.black87,
+                      style:
+                          context.titleMedium.copyWith(color: Colors.black87),
                     ),
                     hasPercentage
                         ? Row(
@@ -59,10 +60,11 @@ class TOTSalesCardMolecul extends StatelessWidget {
                                   plus!
                                       ? Icons.arrow_upward
                                       : Icons.arrow_downward,
-                                  color: success),
+                                  color: Palette.success),
                               Text(
                                 " $percentage%",
-                                style: const TextStyle(color: success),
+                                style: context.titleMedium
+                                    .copyWith(color: Palette.success),
                               ),
                             ],
                           )
@@ -80,14 +82,16 @@ class TOTSalesCardMolecul extends StatelessWidget {
                               child: Icon(
                                 leadingIcon,
                                 size: 24,
-                                color: AppColors.white,
+                                color: Palette.white,
                               ),
                             ),
                           )
                         : const SizedBox.shrink(),
-                    TOTTextAtom.headLineLarge(
+                    Text(
                       "\$$cost",
-                      color: AppColors.black,
+                      style: context.titleMedium.copyWith(
+                        color: Palette.black,
+                      ),
                     ),
                   ],
                 )
@@ -96,7 +100,7 @@ class TOTSalesCardMolecul extends StatelessWidget {
             hasTailingIcon
                 ? Icon(
                     iconData,
-                    color: AppColors.white,
+                    color: Palette.white,
                     size: 60,
                     shadows: [
                       BoxShadow(

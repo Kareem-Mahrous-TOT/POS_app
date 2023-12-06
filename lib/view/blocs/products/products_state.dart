@@ -1,11 +1,11 @@
-part of 'products_cubit.dart';
+part of 'products_bloc.dart';
 
 @unfreezed
 class ProductsState with _$ProductsState {
   factory ProductsState.initial() = _Initial;
-  factory ProductsState.empty({String? message}) = _EmptyState;
-
-  factory ProductsState.updateList({required List<BagModel> bag, double? totalPrice,String? message}) =
-      _UpdateListState;
-  // factory ProductsState.checkout(TotCreateOrderResponse model) = _CheckoutState;
+  factory ProductsState.loadingState() = _LoadingState;
+  factory ProductsState.fetchSuccessState(
+      {Products? products,
+      List<ProductCardRecord>? record}) = _FetchSuccessState;
+  factory ProductsState.fetchFailState(String message) = _FetchFailState;
 }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 
-import '../../../../../core/theme/pallete.dart';
+import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
@@ -14,14 +14,14 @@ class TOTPOSAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.white,
+      backgroundColor: Palette.white,
       automaticallyImplyLeading: false,
       elevation: 0.5,
       title: IntrinsicHeight(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TOTImageAtom.asset(
+            TotAssetImageAtom(assetName: 
               "assets/ic_launcher.png",
               width: 50.w,
               height: 50.h,
@@ -53,7 +53,7 @@ class TOTPOSAppBar extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.notification_add,
-                  color: AppColors.black,
+                  color: Palette.black,
                 )),
           ],
         ),
@@ -91,7 +91,7 @@ class _SearchWidgetState extends State<SearchWidget> {
         ? SearchBar(
             leading: const Icon(
               Icons.search,
-              color: AppColors.black,
+              color: Palette.black,
             ),
             elevation: const MaterialStatePropertyAll(0),
             controller: controller,
@@ -116,7 +116,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
             hintText: "Search",
             hintStyle: const MaterialStatePropertyAll(
-              TextStyle(color: AppColors.grey),
+              TextStyle(color: Palette.grey),
             ),
           )
         : const SizedBox();

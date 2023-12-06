@@ -1,0 +1,31 @@
+# # Make Build Runner generate code for some files
+
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true
+# targets:
+#   $default:
+#     builders:
+#       json_serializable:
+#         enabled: true
+#         generate_for:
+#           include:
+#             - lib/models/**.model.dart
+#             - lib/data/models/**.model.dart
+#             - lib/data/request/**.model.dart
+#             - lib/data/response/**.model.dart
+#             - lib/**_bloc.dart
+#             - lib/**_cubit.dart
+
+#         options:
+#           explicit_to_json: true
+#       freezed|freezed:
+#         enabled: true
+#         generate_for:
+#           include:
+#             - lib/**.model.dart
+#             - lib/**_bloc.dart
+#             - lib/**_cubit.dart

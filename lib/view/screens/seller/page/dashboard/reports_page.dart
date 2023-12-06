@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/reports/circular_indicator.dart';
+import 'package:tot_pos/view/screens/seller/components/pos/reports/line_chart.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
 
 import '../../components/pos/reports/pie_chart_api.dart';
@@ -16,29 +19,28 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
-  final List<Tab> tabs = [
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Day",
-        color: Colors.black,
-      ),
-    ),
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Week",
-        color: Colors.black,
-      ),
-    ),
-    const Tab(
-      child: TOTTextAtom.headLineSmall(
-        "Month",
-        color: Colors.black,
-      ),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Tab> tabs = [
+      Tab(
+        child: Text("Day",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+      Tab(
+        child: Text("Week",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+      Tab(
+        child: Text("Month",
+            style: context.titleMedium.copyWith(
+              color: Colors.black,
+            )),
+      ),
+    ];
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Container(
@@ -53,11 +55,13 @@ class _ReportsPageState extends State<ReportsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TOTTextAtom.headLineSmall(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
                     "Income",
-                    color: AppColors.black,
+                    style: context.titleMedium.copyWith(
+                      color: Palette.black,
+                    ),
                   ),
                 ),
                 Padding(
@@ -70,16 +74,16 @@ class _ReportsPageState extends State<ReportsPage> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: white,
+                        color: Palette.white,
                       ),
                       width: w * 0.8,
                       child: TabBar(
                         indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorColor: primary,
+                        indicatorColor: Palette.primary,
                         indicator: ShapeDecoration(
-                            color: primary,
+                            color: Palette.primary,
                             shape: RoundedRectangleBorder(
-                              side: const BorderSide(color: primary),
+                              side: const BorderSide(color: Palette.primary),
                               borderRadius: BorderRadius.circular(10),
                             )),
                         tabs: tabs,
@@ -121,14 +125,14 @@ class ReportTab extends StatelessWidget {
                 initial: (value) {
                   return const Center(
                     child: CircularProgressIndicator(
-                      color: primary,
+                      color: Palette.primary,
                     ),
                   );
                 },
                 loadSuccess: (value) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    TOTSalesCardMolecul(
+                    TOTSalesCardMolecule(
                         plus: value.model.revenuePercentType == "plus",
                         percentage: value.model.revenuePercent.ceilToDouble(),
                         cost: value.model.revenue.toString(),
@@ -137,16 +141,16 @@ class ReportTab extends StatelessWidget {
                         leadingColor: Colors.orange,
                         leadingIcon: Icons.account_balance_wallet_rounded,
                         title: 'Revenue'),
-                    TOTSalesCardMolecul(
+                    TOTSalesCardMolecule(
                         plus: value.model.ordersPercentType == "plus",
                         percentage: value.model.ordersPercent.ceilToDouble(),
                         cost: value.model.orders.toString(),
                         hasLeadingIcon: true,
                         hasPercentage: true,
-                        leadingColor: success,
+                        leadingColor: Palette.success,
                         leadingIcon: Icons.shopping_cart,
                         title: 'Orders'),
-                    TOTSalesCardMolecul(
+                    TOTSalesCardMolecule(
                         plus: value.model.averagePercentType == "plus",
                         percentage: value.model.averagePercent.ceilToDouble(),
                         cost: value.model.average.toString(),
@@ -167,7 +171,7 @@ class ReportTab extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
 
             decoration: BoxDecoration(
-              color: AppColors.white,
+              color: Palette.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: TOTLineChartMolecule(
@@ -185,7 +189,7 @@ class ReportTab extends StatelessWidget {
               return state.map(
                 initial: (value) => const Center(
                   child: CircularProgressIndicator(
-                    color: primary,
+                    color: Palette.primary,
                   ),
                 ),
                 loadSuccess: (value) => SizedBox(
@@ -198,7 +202,7 @@ class ReportTab extends StatelessWidget {
                         padding: const EdgeInsets.all(30),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: AppColors.white),
+                            color: Palette.white),
                         height: h * 0.55,
                         width: w * 0.25,
                         child: Column(
@@ -207,7 +211,7 @@ class ReportTab extends StatelessWidget {
                           children: [
                             const Align(
                               alignment: Alignment.topLeft,
-                              child: TOTTextAtom.headLineSmall("Statistics"),
+                              child: Text("Statistics"),
                             ),
                             SizedBox(
                               height: h * 0.35,
@@ -221,7 +225,7 @@ class ReportTab extends StatelessWidget {
                         padding: const EdgeInsets.all(30),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: AppColors.white),
+                            color: Palette.white),
                         height: h * 0.55,
                         width: w * 0.63,
                         child: Column(
@@ -229,7 +233,7 @@ class ReportTab extends StatelessWidget {
                           children: [
                             const Align(
                               alignment: Alignment.topLeft,
-                              child: TOTTextAtom.headLineSmall("Statistics"),
+                              child: Text("Statistics"),
                             ),
                             const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -238,7 +242,7 @@ class ReportTab extends StatelessWidget {
                                   children: [
                                     Icon(
                                       Icons.star,
-                                      color: AppColors.black,
+                                      color: Palette.black,
                                     ),
                                     Text("Ready")
                                   ],
@@ -279,13 +283,13 @@ class ReportTab extends StatelessWidget {
                                   width: w * 0.11,
                                   height: w * 0.11,
                                   child: TOTCircularProgressWithValueMolecule(
-                                      backgroundColor: AppColors.blueGrey,
+                                      backgroundColor: Palette.blueGrey,
                                       width: w * 0.11,
                                       height: w * 0.11,
                                       labelText: "Ready",
                                       value:
                                           value.model.ready.percent.toDouble(),
-                                      color: AppColors.black),
+                                      color: Palette.black),
                                 ),
                                 SizedBox(
                                   width: w * 0.11,

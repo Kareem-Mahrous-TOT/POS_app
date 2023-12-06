@@ -1,36 +1,87 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/constants.dart';
-import 'package:tot_pos/core/di/depency_manager.dart';
-import 'package:tot_pos/data/models/response/auth/login/login_model.dart';
-import 'package:tot_pos/data/models/response/auth/signup/sign_up_model.dart';
-import 'package:tot_pos/data/network/dio_helper.dart';
-import 'package:tot_pos/data/network/end_points.dart';
-import 'package:tot_pos/data/network/failure_exception.dart';
-import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:tot_pos/core/constants/constants.dart';
+import 'package:tot_pos/core/constants/local_keys.dart';
+import 'package:tot_pos/core/network/api_consumer.dart';
+import 'package:tot_pos/core/network/graph_config.dart';
+import 'package:tot_pos/data/models/response/graph/user_data_response_model.dart';
+import 'package:tot_pos/depency_injection.dart';
+
+import '../../../core/constants/end_points.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/services/cache_user.dart';
+import '../../models/response/auth/login/login_model.dart';
+import '../base/auth_repo_base.dart';
 
 class AuthRepoImpl implements AuthBaseRepo {
-  final DioHelper dioHelper;
+  final ApiConsumer apiConsumer;
+  final GraphService graphService;
 
-  AuthRepoImpl({required this.dioHelper});
+  AuthRepoImpl({
+    required this.apiConsumer,
+    required this.graphService,
+  });
   @override
-  Future<Either<FailureException, bool>> userToken({
+  Future<Either<Failure, bool>> userToken({
     String? grantType,
     required String username,
     required String password,
   }) async {
     try {
-      final response = await DioHelper.postData(
-          formUrlEncodedContentType: true,
-          url: tokenEndPoint,
-          data: {
-            "grant_type": grantType ?? "password",
-            "username": username,
-            "password": password,
-          });
-      prefs.setString(accessToken, response.data['access_token']);
-      return const Right(true);
+      final response = await apiConsumer.post(EndPoints.connectTokenUrl, data: {
+        "grant_type": grantType ?? "password",
+        "scope": "offline_access",
+        "username": username,
+        "password": password,
+      });
+      if (response.statusCode == 200 ||
+          response.statusCode == 201 ||
+          response.statusCode == 204) {
+        await CacheUser.tokens(
+          accessToken: response.data["access_token"],
+          refreshToken: response.data["refresh_token"],
+        ).saveTokens();
+        log(" LocalKeys.accessToken => ${preferences.getString(LocalKeys.accessToken)!}");
+
+        // replace with refreshToken
+        await Future.wait([
+          preferences.setString(LocalKeys.username, username),
+          preferences.setString(LocalKeys.password, password),
+        ]);
+        return const Right(true);
+      } else {
+        return const Left(NetworkFailure("Something went wrong"));
+      }
     } catch (e) {
-      return Left(FailureException(message: e.toString()));
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<bool> tokenByClientId({
+    String? grantType,
+  }) async {
+    try {
+      final res = await apiConsumer.post(EndPoints.connectTokenUrl, data: {
+        "grant_type": "client_credentials",
+        "client_id":
+            AppConstants.clientId, //"33bf4db2-ab9c-4757-8efe-0935b231edc8",
+        "client_secret":
+            AppConstants.clientSecret, //"a998e72a-fa4a-4ee9-b09c-81e2c2a8f4de"
+      });
+      if (res.statusCode == 200 ||
+          res.statusCode == 201 ||
+          res.statusCode == 204) {
+        await preferences.setString(
+            LocalKeys.tokenByClientId, res.data["access_token"]);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
     }
   }
 
@@ -42,70 +93,230 @@ class AuthRepoImpl implements AuthBaseRepo {
       bool? success}) async {
     LoginModel loginModel;
     try {
-      final response = await DioHelper.postData(url: loginEndPoint, data: {
-        "userName": username,
+      final response = await apiConsumer.post(EndPoints.loginUrl, data: {
+        "username": username,
         "password": password,
         "rememberMe": rememberMe
       });
-
       loginModel = LoginModel.fromJson(response.data);
       if (loginModel.succeeded) {
         userToken(password: password, username: username);
         success = true;
+        return Right(loginModel);
+      } else {
+        return const Left(ServerFailure("Something went wrong"));
       }
-
-      return Right(loginModel);
     } catch (e) {
-      return Left(FailureException(message: e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 
-  @override
-  userSignUp({
-    String? email,
+  Future<String?> _createContact({
+    required String firstName,
+    required String lastName,
+    required String name,
+  }) async {
+    final res = await graphService.client.mutate(
+      MutationOptions(
+        onError: (error) => log("::: contact error: $error :::"),
+        document: gql(r'''
+        mutation CreateContact($firstName: String!, $lastName: String!, $name: String!) {
+            createContact(
+                command: {
+                    firstName: $firstName
+                    lastName: $lastName
+                    name: $name
+                }
+            ) {
+                id    
+            }
+        }
+        '''),
+        variables: {
+          "firstName": firstName,
+          "lastName": lastName,
+          "name": name,
+        },
+      ),
+    );
+
+    final String? memberId = res.data?["createContact"]["id"];
+
+    return memberId;
+  }
+
+  Future<bool> _createCustomer({
+    required String email,
     required String username,
     required String password,
+    required String memberId,
+  }) async {
+    final res = await graphService.client.mutate(
+      MutationOptions(
+          onError: (error) => log("::: user error: $error :::"),
+          document: gql(r'''
+            mutation CreateUser(
+              $email: String!
+              $username: String!
+              $password: String!
+              $userType: String!
+              $storeId: String!
+              $memberId: String!
+          ) {
+              createUser(
+                  command: {
+                      applicationUser: {
+                          email: $email
+                          password: $password
+                          username: $username
+                          userType: $userType
+                          storeId: $storeId
+                          memberId: $memberId
+                      }
+                  }
+              ) {
+                  succeeded
+              }
+          }
+      '''),
+          variables: {
+            "email": email,
+            "username": username,
+            "password": password,
+            "userType": AppConstants.userType,
+            "storeId": AppConstants.storeId,
+            "memberId": memberId
+          }),
+    );
+
+    final bool succeeded = res.data?["createUser"]["succeeded"] ?? false;
+
+    return succeeded;
+  }
+
+  @override
+  Future<bool> userSignUp({
+    required String email,
+    required String username,
+    required String firstName,
+    required String password,
+    required String lastName,
     String? phoneNumber,
   }) async {
-    SignUpModel signUpModel;
     try {
-      var result = await DioHelper.postData(
-          url: createUserEndPoint,
-          data: {
-            "email": email,
-            "roles": [],
-            "userType": "Admin",
-            "userName": username,
-            "password": password,
-            "status": "New",
-          },
-          token:
-              "eyJhbGciOiJSUzI1NiIsImtpZCI6IkEwMEVENDQzM0JEQjQyRERCQkU4QjJFNEQ5NzkwQkE0OUNENjI5MzQiLCJ4NXQiOiJvQTdVUXp2YlF0Mjc2TExrMlhrTHBKeldLVFEiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYW1lIjoiNGZlOGZiMTAtZmRjOC00OTkwLThkNDEtOWY2OGVkOTBkNWE3Iiwic3ViIjoiZm9vZHlfZGVsaXZlcnkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhYnVhbGhhbWQubXVoYW1tYWRAdG90cGxhdGZvcm0uY29tIiwicm9sZSI6WyJkZWxpdmVyeSIsIl9fbWFuYWdlciJdLCJwZXJtaXNzaW9uIjpbIm9yZGVyOnJlYWQiLCJTaGlwU3RhdGlvbjpyZWFkIl0sIm1lbWJlcklkIjoiIiwib2lfdGtuX2lkIjoiYmVjYTU3NmItMjk4MS00NzNjLWEyOWItYjcyMzIwNjFiMDI4IiwiYXVkIjoicmVzb3VyY2Vfc2VydmVyIiwianRpIjoiYTM5NjJmMTAtNTY4Mi00OWVhLWExN2YtYzEzM2VmZjA5NGEzIiwiZXhwIjoxNjk1MDUyNTY1LCJpc3MiOiJodHRwOi8vMjAuMTYzLjE0OC4xNTU6ODA4MC8iLCJpYXQiOjE2OTQ5NTUzNjV9.qiNxpdQ2es61t7dvLDefBO2Ysl3dwT9ttPuzozp3X7RSfrj142QObKVJrBdoOxy2AX3g4WtlAmX8-tnKRLA6vnsePM4jK6sXiES4TKYVipt7ulSSLdoRZgFr1ufhPEmWE_O8UER3S0BtadHXOvJFkvqSNN3Lc-i0xx07MqAa2IsXfsITQnIjq7WpR48pN084hl46Yk1kz1t2pe9FDrIIWpEU3KXWx06IQvCw-xf6_zPjP9ChmSwxad-mTdlL254RYYOPPWe0IP5eECWTvzcPKDwR7BfTc7kPpKmHBxNnHMa9N0Fcg3nsC354kpj6F_ikD1o5tZsYig8HUwY_mdRizRyaiAaYgCwlmuEnT3aact04SHc7qIV3UNqWOvMab_dKvdAEx35jaA9I5iyfHjLWJaOqEfw63bdU0oGmLc-PPDFDnyijqD32R1oNVXipG1BhpALhWGSqR28mVqtJSCVaFgO0DMv8_IT5_LYqnU1iPe69wg3RUzVP8fir0InGFptwKJVc-5sx_vfplXWvZS4Y0t2t8XvyOJ6dHX6-FoZ1rKNWF47z0t7UBq84pjoogJxVpSLs-P4bRFDHH0e0sMVupRADXHTYC5LIJ3W9d40KHGbpJ539WA8T_KWvTnG9WY3NpwTjq2TgcXYjEhiQhypcXgmhF4QU59kfpB4dbWjPScc");
-
-      signUpModel = SignUpModel.fromJson(result.data);
-      if (signUpModel.succeeded) {
-        userToken(
-          username: username,
-          password: password,
-        );
+      final memberId = await _createContact(
+          firstName: firstName, lastName: lastName, name: username);
+      if (memberId == null) {
+        return false;
       }
-      return Right(signUpModel);
+
+      final succeeded = await _createCustomer(
+        email: email,
+        username: username,
+        password: password,
+        memberId: memberId,
+        // lastName: lastName,
+      );
+      log("::: before return :::");
+
+      return succeeded;
     } catch (e) {
-      return Left(FailureException(message: e.toString()));
+      log("::: creation exception: $e :::");
+      return false;
     }
   }
 
   @override
-  Future<Either<FailureException, bool>> userLogout() async {
+  Future<Either<Failure, bool>> userLogout() async {
+    // try {
+    //   var result = await dioClient.get(
+    //     Endpoints.logoutUrl,
+    //   );
+    //   if (result.statusCode == 204) {
+    //     // preferences.remove(accessToken);
+
+    //     return true;
+    //   }
+    //   return false;
+    //   //const Left(ServerFailure("Something went wrong"));
+    // } catch (error) {
+    //   return false;
+    //   //Left(ServerFailure(error.toString()));
+    // }
+
+    final result = await preferences.clear();
+    log("preferences::: -after3 clear $preferences ##");
+    return Right(result);
+  }
+
+  @override
+  Future<Either<Failure, UserDataModel>> getUser() async {
     try {
-      var result = await DioHelper.getData(
-          url: signoutEndPoint, token: prefs.getString(accessToken));
-      if (result.statusCode == 204) {
-        prefs.remove(accessToken);
+      final response = await graphService.client.mutate(
+        MutationOptions(
+            document:
+                gql(r'''query Me($after: String, $first: Int, $sort: String) {
+    me {
+        id
+        memberId
+        username
+        email
+        emailConfirmed
+        photoUrl
+        phoneNumber
+        permissions
+        isAdministrator
+        passwordExpired
+        forcePasswordChange
+        lockedState
+        contact {
+            firstName
+            lastName
+            fullName
+            addresses{
+                totalCount
+                items{
+                    id
+                    firstName
+                    lastName
+                    city
+                    line1
+                    name
+                    addressType
+                }
+            }
+            organizationId
+            organizations(after: $after, first: $first, sort: $sort) {
+                items {
+                    id
+                    name
+                }
+            }
+        }
+        operator {
+            username
+            contact {
+                fullName
+            }
+        }
+        normalizedusername
+    }
+}
+      '''),
+            variables: const {
+              "after": "",
+            }),
+      );
+
+      if (response.data == null) {
+        return const Left(ServerFailure("Something went wrong"));
+      } else {
+        final UserDataModel userData = UserDataModel.fromJson(response.data!);
+
+        return Right(userData);
       }
-      return const Right(true);
-    } catch (error) {
-      return Left(FailureException(message: error.toString()));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

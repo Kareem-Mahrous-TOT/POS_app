@@ -1,19 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 
 class CustomersListMolecule extends StatelessWidget {
   //Should be used in expanded or list
   final List<Member> model;
-  final Color? nameColor;
-  final Color? dateColor;
+  final TextStyle? nameStyle;
+  final TextStyle? dateStyle;
 
   const CustomersListMolecule({
     super.key,
     required this.model,
-    this.nameColor,
-    this.dateColor,
+    this.nameStyle,
+    this.dateStyle,
   });
 
   @override
@@ -37,12 +38,12 @@ class CustomersListMolecule extends StatelessWidget {
                       height: w * 0.08,
                       width: w * 0.08,
                       child: CircleAvatar(
-                        backgroundColor: AppColors.grey,
+                        backgroundColor: Palette.grey,
                         child: ClipRRect(
-                          child: TOTImageAtom.network(
-                            model[index].iconUrl ??
+                          child: CachedNetworkImage(
+                            imageUrl: model[index].iconUrl ??
                                 "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
-                            boxFit: BoxFit.cover,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -54,30 +55,36 @@ class CustomersListMolecule extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TOTTextAtom.headLineSmall(
+                          Text(
                             model[index].name == null ||
                                     model[index].name == "" ||
                                     model[index].name.toString() == "null"
                                 ? "No name found"
                                 : model[index].name.toString(),
-                            color: AppColors.black,
+                            style: nameStyle ?? context.titleMedium.copyWith(
+                              color: Palette.black,
+                            ),
                           ),
-                          TOTTextAtom.labelMedium(
-                            model[index].emails!.isNotEmpty &&
-                                    model[index].emails![0] != null
-                                ? model[index].emails![0]!
-                                : "No emails found",
-                            color: nameColor ?? AppColors.grey,
-                          ),
+                          Text(
+                              model[index].emails!.isNotEmpty &&
+                                      model[index].emails![0] != null
+                                  ? model[index].emails![0]!
+                                  : "No emails found",
+                              style: nameStyle ?? context.titleMedium.copyWith(
+                                color:  Palette.grey,
+                              )),
                         ]),
                   ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TOTTextAtom.labelMedium(
+                child: Text(
                   model[index].createdDate.toString().substring(0, 16),
-                  color: dateColor ?? AppColors.grey,
+                  style: dateStyle ??
+                      context.titleMedium.copyWith(
+                        color: Palette.grey,
+                      ),
                 ),
               ),
             ],
@@ -87,7 +94,7 @@ class CustomersListMolecule extends StatelessWidget {
       separatorBuilder: (context, index) => const Padding(
         padding: EdgeInsets.all(8.0),
         child: Divider(
-          color: AppColors.grey,
+          color: Palette.grey,
           thickness: 1,
         ),
       ),

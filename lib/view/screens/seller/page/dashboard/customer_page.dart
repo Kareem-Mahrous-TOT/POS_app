@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 
-import '../../../../../core/theme/pallete.dart';
+import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
@@ -57,12 +57,12 @@ class _CustomerPageState extends State<CustomerPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: TOTTextAtom.headLineSmall(
-                      "Customers",
-                      color: AppColors.black,
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Customers",
+                        style: context.titleMedium.copyWith(
+                          color: Palette.black,
+                        )),
                   ),
                   SizedBox(
                     height: h * 0.05,
@@ -72,7 +72,9 @@ class _CustomerPageState extends State<CustomerPage> {
                           context: context,
                           builder: (context) => SizedBox(
                               child: TOTAddCustomerAlertDialog(
-                            textColor: AppColors.white,
+                            textStyle: context.titleMedium.copyWith(
+                              color: Palette.white,
+                            ),
                             nameController: nameController,
                             emailController: emailController,
                             onPressed: () {
@@ -104,14 +106,12 @@ class _CustomerPageState extends State<CustomerPage> {
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        backgroundColor: primary,
+                        backgroundColor: Palette.primary,
                       ),
-                      child: const TOTIconWithTextMolecule(
-                        codePoint: 0xe047,
-                        text: "Add Customer",
-                        color: AppColors.white,
-                        colorText: AppColors.white,
-                      ),
+                      child: Text("Add Customer",
+                          style: context.titleMedium.copyWith(
+                            color: Palette.white,
+                          )),
                     ),
                   )
                 ],
@@ -124,7 +124,7 @@ class _CustomerPageState extends State<CustomerPage> {
                   return state.map(
                     initial: (value) => const Center(
                         child: CircularProgressIndicator(
-                      color: primary,
+                      color: Palette.primary,
                     )),
                     loadedCurrentCustomerData: (value) =>
                         TOTCustomerCardMolecule(
@@ -141,7 +141,7 @@ class _CustomerPageState extends State<CustomerPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: AppColors.white,
+                    color: Palette.white,
                   ),
                   width: w * 0.98,
                   child: Padding(
@@ -149,14 +149,14 @@ class _CustomerPageState extends State<CustomerPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const TOTTextAtom.headLineSmall(
-                          "Recent Customers",
-                          color: AppColors.black,
-                        ),
+                        Text("Recent Customers",
+                            style: context.titleMedium.copyWith(
+                              color: Palette.black,
+                            )),
                         const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Divider(
-                            color: AppColors.grey,
+                            color: Palette.grey,
                             thickness: 1,
                           ),
                         ),
@@ -165,11 +165,11 @@ class _CustomerPageState extends State<CustomerPage> {
                             return state.maybeMap(
                               orElse: () => const Center(
                                   child: CircularProgressIndicator(
-                                color: primary,
+                                color: Palette.primary,
                               )),
                               initial: (value) => const Center(
                                   child: CircularProgressIndicator(
-                                color: primary,
+                                color: Palette.primary,
                               )),
                               loadedRecentCustomerData: (value) {
                                 if (value.customers.isEmpty &&
@@ -186,7 +186,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                 if (value.isSearching == true) {
                                   return const Center(
                                     child: CircularProgressIndicator(
-                                      color: primary,
+                                      color: Palette.primary,
                                     ),
                                   );
                                 }

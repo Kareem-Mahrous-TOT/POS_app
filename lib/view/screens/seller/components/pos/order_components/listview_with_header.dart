@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/order_components/order_card.dart';
 
-import '../../../../../../core/theme/pallete.dart';
+import '../../../../../../core/theme/palette.dart';
 // import 'order_card.dart';
 
 class TOTListViewWithHeaderOrganism extends StatefulWidget {
@@ -42,7 +42,7 @@ class _TOTListViewWithHeaderOrganismState
           child: state.map(
             initial: (value) => const Center(
               child: CircularProgressIndicator(
-                color: primary,
+                color: Palette.primary,
               ),
             ),
             loadFailed: (value) => const Center(
@@ -57,7 +57,7 @@ class _TOTListViewWithHeaderOrganismState
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: Palette.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         width: w * 0.2,
@@ -70,16 +70,15 @@ class _TOTListViewWithHeaderOrganismState
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                TOTTextAtom.labelLarge(
-                                    statuses[index].toString()),
+                                Text(statuses[index].toString()),
                                 const SizedBox(width: 10),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 12, vertical: 4),
                                   decoration: BoxDecoration(
-                                      color: primary, // AppColors.blue,
+                                      color: Palette.primary, // Palette.blue,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: TOTTextAtom.labelLarge(
+                                  child: Text(
                                     statuses[index].toLowerCase() == "new"
                                         ? value.newOrder!.length.toString()
                                         : statuses[index].toLowerCase() ==
@@ -96,7 +95,9 @@ class _TOTListViewWithHeaderOrganismState
                                                         .toString()
                                                     : value.wrong!.length
                                                         .toString(),
-                                    color: AppColors.white,
+                                    style: context.titleMedium.copyWith(
+                                      color: Palette.white,
+                                    ),
                                   ),
                                 ),
                               ],

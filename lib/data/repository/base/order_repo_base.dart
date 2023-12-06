@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
 import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
-import 'package:tot_pos/data/network/failure_exception.dart';
 
 abstract class OrderRepoBase {
-  Future<Either<FailureException, TotCreateOrderResponse>> fetchResponse({
+  Future<Either<Failure, TotCreateOrderResponse>> fetchResponse({
     required String customerId,
     required String storeId,
     required String storeName,
@@ -16,6 +16,6 @@ abstract class OrderRepoBase {
     int? sum,
     required List<OrderItem> items,
   });
-  Future<Either<FailureException, CustomerOrderResponse>>
-      fetchCustomerOrders({int? take,int? skip});
+  Future<Either<Failure, CustomerOrderResponse>> fetchCustomerOrders(
+      {int? take, int? skip});
 }

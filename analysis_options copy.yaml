@@ -1,0 +1,21 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "lib/core/generated/l10n/langs/app_localizations_en.dart"
+    - "lib/core/generated/l10n/langs/app_localizations_ar.dart"
+  errors:
+    invalid_annotation_target: ignore
+linter:
+  rules:
+    - avoid_print
+    - avoid_relative_lib_imports
+    - avoid_types_as_parameter_names
+    - avoid_types_on_closure_parameters
+    - camel_case_extensions
+    - cancel_subscriptions
+    - close_sinks
+    - control_flow_in_finally

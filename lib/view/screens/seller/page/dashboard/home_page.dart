@@ -5,17 +5,19 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/constants.dart';
-import 'package:tot_pos/core/di/depency_manager.dart';
-import 'package:tot_pos/core/routes/route_paths.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/routes/routes.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
 import 'package:tot_pos/data/network/end_points.dart';
+import 'package:tot_pos/depency_injection.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 import 'package:tot_pos/view/blocs/layout/layout_bloc.dart';
 import 'package:tot_pos/view/blocs/order/order_cubit.dart';
-import 'package:tot_pos/view/blocs/products/products_cubit.dart';
 import 'package:tot_pos/view/screens/seller/components/pos/home_components/home_exp.dart';
+
+import '../../../../blocs/products/rest/products_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,12 +69,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         failedLoadingData: (message) {
                           if (message.contains("401")) {
-                            prefs.remove(accessToken);
+                            preferences.remove(accessToken);
                             context
                                 .read<LayoutBloc>()
                                 .add(const LayoutEvent.logout());
                             if (mounted) {
-                              context.go(RoutePaths.login);
+                              context.goNamed(Routes.login);
                             }
                           }
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -94,14 +96,14 @@ class _HomePageState extends State<HomePage> {
                           },
                           failedLoadingData: (value) => const Center(
                                 child: CircularProgressIndicator.adaptive(
-                                  valueColor:
-                                      AlwaysStoppedAnimation<Color>(primary),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Palette.primary),
                                 ),
                               ),
                           initial: (value) {
                             return const Center(
                               child: CircularProgressIndicator(
-                                color: primary,
+                                color: Palette.primary,
                               ),
                             );
                           },
@@ -119,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                             if (value.isSearching == true) {
                               return const Center(
                                 child: CircularProgressIndicator(
-                                  color: primary,
+                                  color: Palette.primary,
                                 ),
                               );
                             }
@@ -209,12 +211,14 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             width: 370.w,
-                            color: AppColors.white,
+                            color: Palette.white,
                             height: 500.h,
-                            child: const Center(
-                              child: TOTTextAtom.headLineMedium(
-                                  "The bag is empty",
-                                  color: AppColors.grey),
+                            child: Center(
+                              child: Text(
+                                "The bag is empty",
+                                style: context.titleMedium
+                                    .copyWith(color: Palette.grey),
+                              ),
                             ),
                           ),
                         );
@@ -224,11 +228,11 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             width: w * 0.31,
-                            color: AppColors.white,
+                            color: Palette.white,
                             height: h * 0.5,
                             child: const Center(
                               child: CircularProgressIndicator(
-                                color: primary,
+                                color: Palette.primary,
                               ),
                             ),
                           ),
@@ -253,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             width: 370.w,
-                            color: AppColors.white,
+                            color: Palette.white,
                             height: 500.h,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -307,29 +311,31 @@ class _HomePageState extends State<HomePage> {
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      TOTButtonAtom.filledButton(
-                                          backgroundColor: primary,
-                                          text: "Checkout",
-                                          onPressed: () {
-                                            if (formKey.currentState!
-                                                .validate()) {
+                                      TotButtonAtom(
+                                        backgroundColor: Palette.primary,
+                                        text: "Checkout",
+                                        onPressed: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            context
+                                                .read<ProductsCubit>()
+                                                .checkout(
+                                                    storeId: storeId,
+                                                    storeName: "alkhbaz",
+                                                    isApproved: false,
+                                                    status: "New",
+                                                    currency: "EGP",
+                                                    items: products);
+                                            if (context.mounted) {
                                               context
-                                                  .read<ProductsCubit>()
-                                                  .checkout(
-                                                      storeId: storeId,
-                                                      storeName: "alkhbaz",
-                                                      isApproved: false,
-                                                      status: "New",
-                                                      currency: "EGP",
-                                                      items: products);
-                                              if (context.mounted) {
-                                                context
-                                                    .read<OrderCubit>()
-                                                    .loadData();
-                                              }
+                                                  .read<OrderCubit>()
+                                                  .loadData();
                                             }
-                                          },
-                                          textColor: AppColors.white)
+                                          }
+                                        },
+                                        textStyle: context.titleMedium
+                                            .copyWith(color: Palette.white),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -337,15 +343,17 @@ class _HomePageState extends State<HomePage> {
                                   alignment: Alignment.centerLeft,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
-                                    child: TOTButtonAtom.filledButton(
-                                        backgroundColor: AppColors.orange,
-                                        text: "Clear list",
-                                        onPressed: () {
-                                          context
-                                              .read<ProductsCubit>()
-                                              .clearList();
-                                        },
-                                        textColor: AppColors.black),
+                                    child: TotButtonAtom(
+                                      backgroundColor: Palette.orange,
+                                      text: "Clear list",
+                                      onPressed: () {
+                                        context
+                                            .read<ProductsCubit>()
+                                            .clearList();
+                                      },
+                                      textStyle: context.titleMedium
+                                          .copyWith(color: Palette.black),
+                                    ),
                                   ),
                                 ),
                               ],

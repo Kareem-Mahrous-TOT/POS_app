@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
 import 'package:tot_pos/data/models/request/tot_customer_request/customers_search_model.dart';
 import 'package:tot_pos/data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
-import 'package:tot_pos/data/network/failure_exception.dart';
 import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
 
 part 'recent_customers_bloc.freezed.dart';
@@ -46,7 +46,7 @@ class RecentCustomersBloc
           addCustomer: (event) async {
             await state.maybeMap(
               loadedRecentCustomerData: (myState) async {
-                String firstName = event.customer.emails!.first?? "Not Found";
+                String firstName = event.customer.emails!.first ?? "Not Found";
                 String lastName = event.customer.name!;
                 TOTAddCustomerModelRequest addRequest =
                     TOTAddCustomerModelRequest(
@@ -65,9 +65,7 @@ class RecentCustomersBloc
                   // customers.add(event.customer);
                   listRecentCustomers = customers;
                   fetchNewdata.fold(
-                      (l) =>
-                          FailureException(message: "Fetching data went wrong"),
-                      (r) {
+                      (l) => ServerFailure("Fetching data went wrong"), (r) {
                     listRecentCustomers = r.results;
                     emit(_LoadedRecentCustomerData(r.results));
                     // homeBloc.add(const HomeEvent.getCustomers());

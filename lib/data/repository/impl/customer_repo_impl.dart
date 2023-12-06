@@ -1,16 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/constants.dart';
-import 'package:tot_pos/core/di/depency_manager.dart';
+import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/core/utils/json_decoder.dart';
 import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
 import 'package:tot_pos/data/models/request/tot_customer_request/customers_search_model.dart';
 import 'package:tot_pos/data/models/response/customer/current_customer.dart';
 import 'package:tot_pos/data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
-import 'package:tot_pos/data/network/dio_helper.dart';
 import 'package:tot_pos/data/network/end_points.dart';
-import 'package:tot_pos/data/network/failure_exception.dart';
 import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
+
+import '../../../core/network/api_consumer.dart';
 
 class CustomerRepo {
   Future<CurrentCustomer> fetchCurrentCustomer() async {
@@ -25,44 +24,45 @@ class CustomerRepo {
 }
 
 class CustomersRepoImpl implements CustomersRepoBase {
+  final ApiConsumer _apiConsumer;
+
+  CustomersRepoImpl({required ApiConsumer apiConsumer})
+      : _apiConsumer = apiConsumer;
+
   @override
-  Future<Either<FailureException, TOTCustomersModel>> fetch(
+  Future<Either<Failure, TOTCustomersModel>> fetch(
       TOTCustomersSearchRequest searchModel) async {
     try {
       late TOTCustomersModel customersModel;
       // Logger().d(searchModel.toJson());
-      final response = await DioHelper.postData(
-          token: prefs.getString(accessToken),
-          url: totCustomersEndPoint,
+      final response = await _apiConsumer.post(totCustomersEndPoint,
           data: searchModel.toJson());
       if (response.statusCode == 200) {
         customersModel = TOTCustomersModel.fromJson(response.data);
         return Right(customersModel);
       } else {
-        return Left(FailureException(message: "Something went wrong"));
+        return const Left(ServerFailure("Something went wrong"));
       }
     } catch (e) {
-      return Left(FailureException(message: e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<FailureException, TOTAddCustomerModelResponse>> addCustomer(
+  Future<Either<Failure, TOTAddCustomerModelResponse>> addCustomer(
       TOTAddCustomerModelRequest request) async {
     try {
       TOTAddCustomerModelResponse customersModel;
-      final response = await DioHelper.postData(
-          token: prefs.getString(accessToken),
-          url: totAddCustomerEndPoint,
+      final response = await _apiConsumer.post(totAddCustomerEndPoint,
           data: request.toJson());
       if (response.statusCode == 200) {
         customersModel = TOTAddCustomerModelResponse.fromJson(response.data);
         return Right(customersModel);
       } else {
-        return Left(FailureException(message: "Something went wrong"));
+        return const Left(ServerFailure("Something went wrong"));
       }
     } catch (e) {
-      return Left(FailureException(message: e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

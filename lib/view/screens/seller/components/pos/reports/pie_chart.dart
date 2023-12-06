@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:tot_pos/core/theme/pallete.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTPieChartFor3Molecule extends StatefulWidget {
   final double value1;
@@ -66,39 +66,39 @@ class _TOTPieChartFor3MoleculeState extends State<TOTPieChartFor3Molecule> {
           switch (i) {
             case 0:
               return PieChartSectionData(
-                color: widget.color1 ?? AppColors.green,
+                color: widget.color1 ?? Palette.green,
                 value: widget.value1,
                 title: widget.title1,
                 radius: radius.toDouble(),
                 titleStyle: TextStyle(
                     fontSize: fontSize.toDouble(),
                     fontWeight: FontWeight.bold,
-                    color: AppColors.black,
+                    color: Palette.black,
                     decoration: TextDecoration.none),
               );
             case 1:
               return PieChartSectionData(
-                color: widget.color2 ?? AppColors.orange,
+                color: widget.color2 ?? Palette.orange,
                 value: widget.value2,
                 title: widget.title2,
                 radius: radius.toDouble(),
                 titleStyle: TextStyle(
                   fontSize: fontSize.toDouble(),
                   fontWeight: FontWeight.bold,
-                  color: AppColors.black,
+                  color: Palette.black,
                   decoration: TextDecoration.none,
                 ),
               );
             case 2:
               return PieChartSectionData(
-                color: widget.color3 ?? AppColors.red,
+                color: widget.color3 ?? Palette.red,
                 value: widget.value3,
                 title: widget.title3,
                 radius: radius.toDouble(),
                 titleStyle: TextStyle(
                   fontSize: fontSize.toDouble(),
                   fontWeight: FontWeight.bold,
-                  color: AppColors.white,
+                  color: Palette.white,
                   decoration: TextDecoration.none,
                 ),
               );

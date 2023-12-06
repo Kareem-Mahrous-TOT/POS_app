@@ -1,26 +1,36 @@
 import "dart:async";
 
 import "package:dartz/dartz.dart";
-// import "package:dartz/dartz.dart";
+import "package:tot_pos/core/network/failure.dart";
 import "package:tot_pos/data/models/response/auth/login/login_model.dart";
-import 'package:tot_pos/data/models/response/auth/signup/sign_up_model.dart';
-import "package:tot_pos/data/network/failure_exception.dart";
+import "package:tot_pos/data/models/response/graph/user_data_response_model.dart";
+
+// import "package:dartz/dartz.dart";
 
 abstract class AuthBaseRepo {
-  Future<Either<FailureException, bool>> userLogout();
+  Future<Either<Failure, bool>> userLogout();
 
-  Future<Either<FailureException, bool>> userToken(
+  Future<Either<Failure, UserDataModel>> getUser();
+
+  Future<Either<Failure, bool>> userToken(
       {String? grantType, required String username, required String password});
+  Future<bool> tokenByClientId({
+    String? grantType,
+    // required String clientId,
+    // required String clientSecret,
+  });
 
-  Future<Either<FailureException, LoginModel>> userLogin(
+  Future<Either<Failure, LoginModel>> userLogin(
       {required String username,
       required String password,
       bool? rememberMe,
       bool? success});
 
-  Future<Either<FailureException, SignUpModel>> userSignUp({
+  Future<bool> userSignUp({
     required String email,
     required String password,
+    required String firstName,
+    required String lastName,
     required String username,
     String? phoneNumber,
   });
