@@ -24,4 +24,15 @@ abstract class EndPoints {
   /// Cart
   static const String cartUrl = "/api/carts";
   static const String searchCartUrl = "/api/carts/search";
+
+  //End Points for customers
+  static const totCustomers = "/api/members/search";
+  static const totAddCustomer = "/api/members";
+
+  // End points for Orders
+  static const totCreateOrder = "/api/order/customerOrders";
+  static const totSearchOrder = "/api/order/customerOrders/search";
+
+  // End Points for Products
+  static const totProducts = "/api/catalog/search/products";
 }

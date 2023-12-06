@@ -5,12 +5,12 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/constants.dart';
+import 'package:tot_pos/core/constants/store_config.dart';
 import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/routes/routes.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
-import 'package:tot_pos/data/network/end_points.dart';
 import 'package:tot_pos/depency_injection.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 import 'package:tot_pos/view/blocs/layout/layout_bloc.dart';
@@ -320,7 +320,8 @@ class _HomePageState extends State<HomePage> {
                                             context
                                                 .read<ProductsCubit>()
                                                 .checkout(
-                                                    storeId: storeId,
+                                                    storeId:
+                                                        StoreConfig.storeId,
                                                     storeName: "alkhbaz",
                                                     isApproved: false,
                                                     status: "New",

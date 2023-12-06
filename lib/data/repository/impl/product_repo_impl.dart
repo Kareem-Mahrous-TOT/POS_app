@@ -4,7 +4,7 @@ import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/data/repository/base/products_repo_base.dart';
 
-import '../../network/end_points.dart';
+import '../../../core/constants/end_points.dart';
 
 class ProductsRepoImpl implements ProductsRepoBase {
   final ApiConsumer _apiConsumer;
@@ -21,7 +21,7 @@ class ProductsRepoImpl implements ProductsRepoBase {
     TOTProductsModel productsModel;
 
     try {
-      final response = await _apiConsumer.post(totProductsEndPoint, data: {
+      final response = await _apiConsumer.post(EndPoints.totProducts, data: {
         // "productType": productType ?? "Physical",
         // "catalogId": catalogId ?? bakeryId,
         "skip": skip,

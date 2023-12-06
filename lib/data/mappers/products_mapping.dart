@@ -8,8 +8,6 @@ import '../models/response/graph/qraph_product_model.dart';
 
 extension ProductMapping on List<Item> {
   List<ProductCardRecord> toDomain() {
-    // final data = this;
-
     List<ProductCardRecord> records = [];
     final String? currentFulfillmentCenterItem =
         preferences.getString(LocalKeys.fulfillmentCenterId);

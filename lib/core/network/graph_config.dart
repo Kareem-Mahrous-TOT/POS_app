@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../depency_injection.dart';
-import '../constants/constants.dart';
 import '../constants/end_points.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
@@ -65,43 +64,25 @@ class MyHttpLink extends HttpLink {
 
           if (errorCode?.toLowerCase() == "unauthorized") {
             try {
-              final isAnonymous =
-                  preferences.getBool(LocalKeys.isUserAnonymous) ?? false;
-              if (isAnonymous) {
-                final response = await apiConsumer.post(
-                  EndPoints.connectTokenUrl,
-                  data: {
-                    "grant_type": "client_credentials",
-                    "client_id": AppConstants.clientId,
-                    "client_secret": AppConstants.clientSecret,
-                  },
-                );
+              final username = preferences.getString(LocalKeys.username);
+              final password = preferences.getString(LocalKeys.password);
 
-                log("::: graph auth response: $response :::");
+              final response = await apiConsumer.post(
+                EndPoints.connectTokenUrl,
+                data: {
+                  "grant_type": "password",
+                  "scope": "offline_access",
+                  "username": username,
+                  "password": password,
+                },
+              );
 
-                preferences.setString(
-                    LocalKeys.accessToken, response.data["access_token"]);
-              } else {
-                final username = preferences.getString(LocalKeys.username);
-                final password = preferences.getString(LocalKeys.password);
+              log("::: graph auth response: $response :::");
 
-                final response = await apiConsumer.post(
-                  EndPoints.connectTokenUrl,
-                  data: {
-                    "grant_type": "password",
-                    "scope": "offline_access",
-                    "username": username,
-                    "password": password,
-                  },
-                );
-
-                log("::: graph auth response: $response :::");
-
-                await CacheUser.tokens(
-                  accessToken: response.data["access_token"],
-                  refreshToken: response.data["refresh_token"],
-                ).saveTokens();
-              }
+              await CacheUser.tokens(
+                accessToken: response.data["access_token"],
+                refreshToken: response.data["refresh_token"],
+              ).saveTokens();
             } catch (e) {
               //? Logout
               final context = navigatorKey.currentState?.context;
