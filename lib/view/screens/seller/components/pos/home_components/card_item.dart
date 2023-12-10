@@ -34,45 +34,51 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
         color: Palette.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: [
-            // mealImage.toString() == "null"
-            ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: CachedNetworkImage(
-                height: h * 0.2,
-                width: w * 0.3,
-                imageUrl: productImage ??
-                    "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
-                errorWidget: (context, error, stackTrace) {
-                  return CachedNetworkImage(
-                      height: h * 0.2,
-                      width: w * 0.3,
-                      imageUrl:
-                          "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
-                },
+          child: Column(
+            children: [
+              // mealImage.toString() == "null"
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: CachedNetworkImage(
+                  height: h * 0.2,
+                  width: w * 0.3,
+                  imageUrl: productImage ??
+                      "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                  errorWidget: (context, error, stackTrace) {
+                    return CachedNetworkImage(
+                        height: h * 0.2,
+                        width: w * 0.3,
+                        imageUrl:
+                            "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
+                  },
+                ),
               ),
-            ),
-            Align(
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(productName!,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.titleMedium.copyWith(
+                        color: nameColor ?? Palette.black,
+                      ))),
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(prodcutDescription!,
+                      style: context.titleMedium.copyWith(
+                        color: prodcutDescription!.contains("In stock")
+                            ? Palette.green
+                            : Palette.red,
+                      ))),
+              Align(
                 alignment: Alignment.topLeft,
-                child: Text(productName!,
-                    style: context.titleMedium.copyWith(
-                      color: nameColor ?? Palette.black,
-                    ))),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Text(prodcutDescription!,
-                    style: context.titleMedium.copyWith(
-                      color: prodcutDescription!.contains("In stock")
-                          ? Palette.green
-                          : Palette.red,
-                    ))),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Text("$price",
-                    style: context.titleMedium.copyWith(
-                      color: priceColor ?? Palette.black,
-                    )))
-          ]),
+                child: Text(
+                  "$price",
+                  style: context.titleMedium.copyWith(
+                    color: priceColor ?? Palette.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

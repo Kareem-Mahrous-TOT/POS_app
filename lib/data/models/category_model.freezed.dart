@@ -170,6 +170,7 @@ mixin _$CategoryItem {
   String? get url => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   List<CategoryItem>? get children => throw _privateConstructorUsedError;
+  bool get isMaster => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -188,7 +189,8 @@ abstract class $CategoryItemCopyWith<$Res> {
       String? id,
       String? url,
       String? image,
-      List<CategoryItem>? children});
+      List<CategoryItem>? children,
+      bool isMaster});
 }
 
 /// @nodoc
@@ -209,6 +211,7 @@ class _$CategoryItemCopyWithImpl<$Res, $Val extends CategoryItem>
     Object? url = freezed,
     Object? image = freezed,
     Object? children = freezed,
+    Object? isMaster = null,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -231,6 +234,10 @@ class _$CategoryItemCopyWithImpl<$Res, $Val extends CategoryItem>
           ? _value.children
           : children // ignore: cast_nullable_to_non_nullable
               as List<CategoryItem>?,
+      isMaster: null == isMaster
+          ? _value.isMaster
+          : isMaster // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -248,7 +255,8 @@ abstract class _$$CategoryItemImplCopyWith<$Res>
       String? id,
       String? url,
       String? image,
-      List<CategoryItem>? children});
+      List<CategoryItem>? children,
+      bool isMaster});
 }
 
 /// @nodoc
@@ -267,6 +275,7 @@ class __$$CategoryItemImplCopyWithImpl<$Res>
     Object? url = freezed,
     Object? image = freezed,
     Object? children = freezed,
+    Object? isMaster = null,
   }) {
     return _then(_$CategoryItemImpl(
       name: freezed == name
@@ -289,6 +298,10 @@ class __$$CategoryItemImplCopyWithImpl<$Res>
           ? _value._children
           : children // ignore: cast_nullable_to_non_nullable
               as List<CategoryItem>?,
+      isMaster: null == isMaster
+          ? _value.isMaster
+          : isMaster // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -301,7 +314,8 @@ class _$CategoryItemImpl implements _CategoryItem {
       this.id,
       this.url,
       this.image,
-      final List<CategoryItem>? children})
+      final List<CategoryItem>? children,
+      this.isMaster = false})
       : _children = children;
 
   factory _$CategoryItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -326,8 +340,12 @@ class _$CategoryItemImpl implements _CategoryItem {
   }
 
   @override
+  @JsonKey()
+  final bool isMaster;
+
+  @override
   String toString() {
-    return 'CategoryItem(name: $name, id: $id, url: $url, image: $image, children: $children)';
+    return 'CategoryItem(name: $name, id: $id, url: $url, image: $image, children: $children, isMaster: $isMaster)';
   }
 
   @override
@@ -339,13 +357,15 @@ class _$CategoryItemImpl implements _CategoryItem {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other._children, _children));
+            const DeepCollectionEquality().equals(other._children, _children) &&
+            (identical(other.isMaster, isMaster) ||
+                other.isMaster == isMaster));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, id, url, image,
-      const DeepCollectionEquality().hash(_children));
+      const DeepCollectionEquality().hash(_children), isMaster);
 
   @JsonKey(ignore: true)
   @override
@@ -367,7 +387,8 @@ abstract class _CategoryItem implements CategoryItem {
       final String? id,
       final String? url,
       final String? image,
-      final List<CategoryItem>? children}) = _$CategoryItemImpl;
+      final List<CategoryItem>? children,
+      final bool isMaster}) = _$CategoryItemImpl;
 
   factory _CategoryItem.fromJson(Map<String, dynamic> json) =
       _$CategoryItemImpl.fromJson;
@@ -382,6 +403,8 @@ abstract class _CategoryItem implements CategoryItem {
   String? get image;
   @override
   List<CategoryItem>? get children;
+  @override
+  bool get isMaster;
   @override
   @JsonKey(ignore: true)
   _$$CategoryItemImplCopyWith<_$CategoryItemImpl> get copyWith =>

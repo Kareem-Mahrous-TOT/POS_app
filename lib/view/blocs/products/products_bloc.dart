@@ -13,37 +13,75 @@ part 'products_event.dart';
 part 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  final ProductRepoBase productRepo;
+  final ProductRepoBase productsRepo;
 
   ProductsBloc(
-    this.productRepo,
+    this.productsRepo,
   ) : super(_Initial()) {
     List<Item> productsList = [];
     on<ProductsEvent>((event, emit) async {
-      Future<void> fetchProducts(String storeId, {String? endCursor}) async {
+      // Future<void> fetchProducts(String storeId, {String? endCursor}) async {
+      //   try {
+      //     const String storeId = StoreConfig.storeId;
+
+      //     final String? branchId =
+      //         preferences.getString(LocalKeys.fulfillmentCenterId);
+      //     // const String catalogId = StoreConfig.catalogId;
+
+      //     //  Change this to the category id you want to fetch
+      //     // const String categoryId = StoreConfig.catalogId;
+
+      //     final response = await productRepo.getProducts(
+      //       storeId: storeId,
+      //       endCursor: endCursor,
+      //       branchId: branchId ?? '',
+      //       // catalogId: catalogId,
+      //       // categoryId: categoryId,
+      //     );
+      //     final products = response.fold((l) => null, (r) => r);
+      //     productsList = products!.items!;
+      //     List<ProductCardRecord>? record = products.items?.toDomain();
+      //     emit(
+      //       ProductsState.fetchSuccessState(
+      //           products: productsList, record: record),
+      //     );
+      //   } catch (e) {
+      //     emit(ProductsState.fetchFailState(e.toString()));
+      //   }
+      // }
+
+      Future<void> fetchProducts({
+        required String storeId,
+        String? categoryId,
+        String sort = "",
+        // bool isAggregate = false,
+      }) async {
+        emit(ProductsState.loadingState());
         try {
           const String storeId = StoreConfig.storeId;
 
-          final String? branchId =
+          final String? fulfillmentCenterId =
               preferences.getString(LocalKeys.fulfillmentCenterId);
-          // const String catalogId = StoreConfig.catalogId;
+          const String catalogId = StoreConfig.catalogId;
 
-          //  Change this to the category id you want to fetch
-          // const String categoryId = StoreConfig.catalogId;
-
-          final response = await productRepo.getProducts(
+          final response = await productsRepo.getProducts(
             storeId: storeId,
-            endCursor: endCursor,
-            branchId: branchId ?? '',
-            // catalogId: catalogId,
-            // categoryId: categoryId,
+            branchId: fulfillmentCenterId ?? '',
+            catalogId: catalogId,
+            categoryId: categoryId,
+            sort: sort,
           );
           final products = response.fold((l) => null, (r) => r);
-          productsList = products!.items!;
-          List<ProductCardRecord>? record = products.items?.toDomain();
+
+          List<ProductCardRecord> records = products?.items?.toDomain() ?? [];
+
+          // log("::: getProducts success isAggregate: $isAggregate :::");
           emit(
             ProductsState.fetchSuccessState(
-                products: productsList, record: record),
+              products: products?.items,
+              record: sort.isEmpty ? records : records.reversed.toList(),
+              // isAggregate: isAggregate
+            ),
           );
         } catch (e) {
           emit(ProductsState.fetchFailState(e.toString()));
@@ -52,15 +90,13 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
       await event.when(
           started: () {},
-          refresh: (storeId) async {
+          refresh: (storeId, categoryId) async {
             emit(ProductsState.loadingState());
-            await fetchProducts(storeId);
+            await fetchProducts(storeId: storeId);
           },
-          fetch: (
-            storeId,
-          ) async {
+          fetch: (storeId, categoryId) async {
             emit(ProductsState.loadingState());
-            await fetchProducts(storeId!);
+            await fetchProducts(storeId: storeId, categoryId: categoryId);
           },
           searchList: (query) async {
             if (query != null && query.isNotEmpty) {
@@ -81,7 +117,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
                     );
                   });
                 },
-              );  
+              );
             } else {
               emit(
                 _FetchSuccessState(products: productsList, isSearching: false),

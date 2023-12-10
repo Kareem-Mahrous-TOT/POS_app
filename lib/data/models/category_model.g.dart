@@ -27,6 +27,7 @@ _$CategoryItemImpl _$$CategoryItemImplFromJson(Map<String, dynamic> json) =>
       children: (json['children'] as List<dynamic>?)
           ?.map((e) => CategoryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
+      isMaster: json['isMaster'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$CategoryItemImplToJson(_$CategoryItemImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$CategoryItemImplToJson(_$CategoryItemImpl instance) =>
       'url': instance.url,
       'image': instance.image,
       'children': instance.children?.map((e) => e.toJson()).toList(),
+      'isMaster': instance.isMaster,
     };

@@ -6,6 +6,7 @@ class ProductsState with _$ProductsState {
   factory ProductsState.loadingState() = _LoadingState;
   factory ProductsState.fetchSuccessState(
       {List<Item>? products,
+      String? categoryId,
       bool? isSearching,
       List<ProductCardRecord>? record}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;

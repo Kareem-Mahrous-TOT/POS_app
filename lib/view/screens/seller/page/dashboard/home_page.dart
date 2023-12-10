@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +60,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 BlocConsumer<MenuCubit, MenuState>(listener: (context, state) {
                   state.maybeWhen(
-                    orElse: () {},
+                    orElse: () {
+                      ///TODO => on Category Selected
+                    },
                     fetchFail: () {
                       displaySnackBar(context,
                           content: const Text("Failed to load Categories"));
@@ -71,18 +75,32 @@ class _HomePageState extends State<HomePage> {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     },
-                    fetchSuccess: (model, record) => TOTPOSHomePageAppBar(
-                        onTap: (category) {
-                          ///TODO on Category Selected
-                        },
-                        categories: record,
-                        validator: (value) {
-                          //  validator
-                          if (value == null) {
-                            return 'Please select an item.';
-                          }
-                          return null;
-                        }),
+                    fetchSuccess: (model, records, record) =>
+                        TOTPOSHomePageAppBar(
+                            onTap: (selectedRecord) {
+                              context
+                                  .read<MenuCubit>()
+                                  .changeSelectedCategory(selectedRecord);
+                              if (context.mounted) {
+                                log("Selected variation: ${selectedRecord.title} ####### ");
+                                context.read<ProductsBloc>().add(
+                                    ProductsEvent.fetch(
+                                        storeId: StoreConfig.storeId,
+                                        categoryId: selectedRecord.categoryId));
+                              }
+                            },
+                            isSelected: model.categories.map((e) {
+                              log("${e.isMaster}");
+                              return e.isMaster;
+                            }).toList(),
+                            categories: records!,
+                            validator: (value) {
+                              //  validator
+                              if (value == null) {
+                                return 'Please select an item.';
+                              }
+                              return null;
+                            }),
                   );
                 }),
                 Row(
@@ -106,130 +124,108 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            // loadingState: () {
-                            //   // if (message.contains("401")) {
-                            //   //   preferences.remove(accessToken);
-                            //   //   context
-                            //   //       .read<LayoutBloc>()
-                            //   //       .add(const LayoutEvent.logout());
-                            //   //   if (mounted) {
-                            //   //     context.goNamed(Routes.login);
-                            //   //   }
-                            //   // }
-                            //   ScaffoldMessenger.of(context).showSnackBar(
-                            //     const SnackBar(
-                            //       content: Center(
-                            //         child: CircularProgressIndicator.adaptive(),
-                            //       ),
-                            //     ),
-                            //   );
-                            // },
                           );
                         },
                         builder: (context, state) {
                           return state.map(
-                              loadingState: (value) {
-                                return const Center(
-                                  child: CircularProgressIndicator.adaptive(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Palette.primary),
+                            loadingState: (value) {
+                              return const Center(
+                                child: CircularProgressIndicator.adaptive(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Palette.primary),
+                                ),
+                              );
+                            },
+                            fetchFailState: (value) => const Center(
+                              child: CircularProgressIndicator.adaptive(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Palette.primary),
+                              ),
+                            ),
+                            initial: (value) {
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  color: Palette.primary,
+                                ),
+                              );
+                            },
+                            fetchSuccessState: (value) {
+                              final List<Item>? products = value.products;
+                              if ((products ?? []).isEmpty &&
+                                  value.isSearching == false) {
+                                return Center(
+                                  child: Text(
+                                    "No items found!",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
                                   ),
                                 );
-                              },
-                              fetchFailState: (value) => const Center(
-                                    child: CircularProgressIndicator.adaptive(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                          Palette.primary),
-                                    ),
-                                  ),
-                              initial: (value) {
+                              }
+                              if (value.isSearching == true) {
                                 return const Center(
                                   child: CircularProgressIndicator(
                                     color: Palette.primary,
                                   ),
                                 );
-                              },
-                              fetchSuccessState: (value) {
-                                final List<Item>? products = value.products;
-                                if ((products ?? []).isEmpty &&
-                                    value.isSearching == false) {
-                                  return Center(
-                                    child: Text(
-                                      "No items found!",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall,
-                                    ),
-                                  );
-                                }
-                                if (value.isSearching == true) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(
-                                      color: Palette.primary,
-                                    ),
-                                  );
-                                }
-                                return GridView.builder(
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 4,
-                                          crossAxisSpacing: 20,
-                                          mainAxisSpacing: 0,
-                                          childAspectRatio: 0.7),
-                                  itemCount: value.products?.length,
-                                  itemBuilder: (context, index) =>
-                                      TOTPOSFoodCardItemMolecule(
-                                          onTap: () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                  icon: Align(
-                                                      alignment:
-                                                          Alignment.topRight,
-                                                      child: IconButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          icon: const Icon(
-                                                              Icons.close))),
-                                                  content: SizedBox(
-                                                    width: w * 0.6,
-                                                    height: h * 0.6,
-                                                    child:
-                                                        POSFoodItemAlertDialog(
-                                                      data: value
-                                                          .products![index],
-                                                    ),
+                              }
+                              return GridView.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 4,
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 0,
+                                        childAspectRatio: 0.7),
+                                itemCount: value.products?.length,
+                                itemBuilder: (context, index) =>
+                                    TOTPOSFoodCardItemMolecule(
+                                        onTap: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                icon: Align(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: IconButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.close))),
+                                                content: SizedBox(
+                                                  width: w * 0.6,
+                                                  height: h * 0.6,
+                                                  child: POSFoodItemAlertDialog(
+                                                    data:
+                                                        value.products![index],
                                                   ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                          productImage: value
-                                              .products![index].imgSrc
-                                              .toString(),
-                                          productName: value
-                                                      .products![index].name
-                                                      .toString() ==
-                                                  "null"
-                                              ? "Not found"
-                                              : value.products![index].name
-                                                  .toString(),
-                                          prodcutDescription:
-                                              "${value.products?[index].description?.content ?? ""} \n ${(value.products?[index].availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                          price: value
-                                                      .products?[index]
-                                                      .price
-                                                      ?.actual
-                                                      ?.formattedAmount !=
-                                                  null
-                                              ? value.products![index].price!
-                                                  .actual!.formattedAmount
-                                              : "N/A"),
-                                );
-                              });
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        productImage: value
+                                            .products![index].imgSrc
+                                            .toString(),
+                                        productName: value.products![index].name
+                                                    .toString() ==
+                                                "null"
+                                            ? "Not found"
+                                            : value.products![index].name
+                                                .toString(),
+                                        prodcutDescription:
+                                            "${value.products?[index].description?.content ?? ""} \n ${(value.products?[index].availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                        price: value.products?[index].price
+                                                    ?.actual?.formattedAmount !=
+                                                null
+                                            ? value.products![index].price!
+                                                .actual!.formattedAmount
+                                            : "N/A"),
+                              );
+                            },
+                          );
                         },
                       ),
                     ),

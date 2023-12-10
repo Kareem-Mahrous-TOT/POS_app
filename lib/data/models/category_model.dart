@@ -41,6 +41,7 @@ class CategoryItem with _$CategoryItem {
     String? url,
     String? image,
     List<CategoryItem>? children,
+    @Default(false)bool isMaster,
   }) = _CategoryItem;
 
   factory CategoryItem.fromJson(Map<String, dynamic> json) =>
