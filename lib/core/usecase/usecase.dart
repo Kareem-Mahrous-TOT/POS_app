@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../network/failure.dart';
 
-abstract class BaseUseCase<In, Ret> {
+abstract class BaseUsecase<In, Ret> {
   Ret call(In params);
 }
 
