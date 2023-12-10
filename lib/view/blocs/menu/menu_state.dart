@@ -6,6 +6,6 @@ class MenuState with _$MenuState {
   const factory MenuState.fetchSuccess(
       {required CategoryList model,
       List<CategoryRecord>? records,
-      CategoryRecord? record}) = _FetchSuccess;
+      }) = _FetchSuccess;
   const factory MenuState.fetchFail() = _FetchFail;
 }

@@ -24,15 +24,12 @@ class ProductRepoImpl implements ProductRepoBase {
   }) async {
     try {
       String filterByCategory = "";
-      if (catalogId != null && categoryId != null) {
+      if ((catalogId?.isNotEmpty ?? false) &&
+          (categoryId?.isNotEmpty ?? false)) {
         log("::: categroyId: $categoryId :::");
         filterByCategory = 'category.subtree:"$catalogId/$categoryId"';
       }
-      // final String filterByCategory =
-      //     'category.subtree:"$catalogId/$categoryId"';
-      // final String filterByBranchId = '${'available_in:"$branchId'}"';
-      // final String filterByCategoryAndBranchId =
-      //     "$filterByCategory $filterByBranchId";
+
       final response = await graphService.client.query(
         QueryOptions(
           document: gql(

@@ -77,30 +77,34 @@ class _HomePageState extends State<HomePage> {
                     },
                     fetchSuccess: (model, records, record) =>
                         TOTPOSHomePageAppBar(
-                            onTap: (selectedRecord) {
-                              context
-                                  .read<MenuCubit>()
-                                  .changeSelectedCategory(selectedRecord);
-                              if (context.mounted) {
-                                log("Selected variation: ${selectedRecord.title} ####### ");
-                                context.read<ProductsBloc>().add(
-                                    ProductsEvent.fetch(
-                                        storeId: StoreConfig.storeId,
-                                        categoryId: selectedRecord.categoryId));
-                              }
-                            },
-                            isSelected: model.categories.map((e) {
-                              log("${e.isMaster}");
-                              return e.isMaster;
-                            }).toList(),
-                            categories: records!,
-                            validator: (value) {
-                              //  validator
-                              if (value == null) {
-                                return 'Please select an item.';
-                              }
-                              return null;
-                            }),
+                      onTap: (selectedRecord) {
+                        context
+                            .read<MenuCubit>()
+                            .changeSelectedCategory(selectedRecord);
+                        if (context.mounted) {
+                          log("Selected variation: ${selectedRecord.title} ####### ");
+                          context.read<ProductsBloc>().add(
+                                ProductsEvent.fetch(
+                                    storeId: StoreConfig.storeId,
+                                    categoryId: selectedRecord.categoryId),
+                              );
+                        }
+                      },
+                      isSelected: model.categories.map(
+                        (e) {
+                          log("${e.isMaster}");
+                          return e.isMaster;
+                        },
+                      ).toList(),
+                      categories: records!,
+                      validator: (value) {
+                        //  validator
+                        if (value == null) {
+                          return 'Please select an item.';
+                        }
+                        return null;
+                      },
+                    ),
                   );
                 }),
                 Row(
