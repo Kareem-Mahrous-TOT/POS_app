@@ -18,6 +18,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc(
     this.productRepo,
   ) : super(_Initial()) {
+    List<Item> productsList = [];
     on<ProductsEvent>((event, emit) async {
       Future<void> fetchProducts(String storeId, {String? endCursor}) async {
         try {
@@ -38,9 +39,11 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             // categoryId: categoryId,
           );
           final products = response.fold((l) => null, (r) => r);
-          List<ProductCardRecord>? record = products?.items?.toDomain();
+          productsList = products!.items!;
+          List<ProductCardRecord>? record = products.items?.toDomain();
           emit(
-            ProductsState.fetchSuccessState(products: products, record: record),
+            ProductsState.fetchSuccessState(
+                products: productsList, record: record),
           );
         } catch (e) {
           emit(ProductsState.fetchFailState(e.toString()));
@@ -58,6 +61,32 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
           ) async {
             emit(ProductsState.loadingState());
             await fetchProducts(storeId!);
+          },
+          searchList: (query) async {
+            if (query != null && query.isNotEmpty) {
+              await state.maybeMap(
+                orElse: () {},
+                fetchSuccessState: (value) async {
+                  emit(value.copyWith(
+                      products: productsList, isSearching: true));
+                  final productsAfterSearch = productsList
+                      .where((element) => element.name!
+                          .toLowerCase()
+                          .contains(query.toLowerCase()))
+                      .toList();
+                  await Future.delayed(const Duration(seconds: 1), () {
+                    emit(
+                      _FetchSuccessState(
+                          products: productsAfterSearch, isSearching: false),
+                    );
+                  });
+                },
+              );  
+            } else {
+              emit(
+                _FetchSuccessState(products: productsList, isSearching: false),
+              );
+            }
           });
     });
   }

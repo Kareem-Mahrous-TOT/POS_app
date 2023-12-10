@@ -130,12 +130,12 @@ class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TOTAddCustomerModelRequestCopyWith<$Res>
+abstract class _$$TOTAddCustomerModelRequestImplCopyWith<$Res>
     implements $TOTAddCustomerModelRequestCopyWith<$Res> {
-  factory _$$_TOTAddCustomerModelRequestCopyWith(
-          _$_TOTAddCustomerModelRequest value,
-          $Res Function(_$_TOTAddCustomerModelRequest) then) =
-      __$$_TOTAddCustomerModelRequestCopyWithImpl<$Res>;
+  factory _$$TOTAddCustomerModelRequestImplCopyWith(
+          _$TOTAddCustomerModelRequestImpl value,
+          $Res Function(_$TOTAddCustomerModelRequestImpl) then) =
+      __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -152,13 +152,13 @@ abstract class _$$_TOTAddCustomerModelRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TOTAddCustomerModelRequestCopyWithImpl<$Res>
+class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
     extends _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
-        _$_TOTAddCustomerModelRequest>
-    implements _$$_TOTAddCustomerModelRequestCopyWith<$Res> {
-  __$$_TOTAddCustomerModelRequestCopyWithImpl(
-      _$_TOTAddCustomerModelRequest _value,
-      $Res Function(_$_TOTAddCustomerModelRequest) _then)
+        _$TOTAddCustomerModelRequestImpl>
+    implements _$$TOTAddCustomerModelRequestImplCopyWith<$Res> {
+  __$$TOTAddCustomerModelRequestImplCopyWithImpl(
+      _$TOTAddCustomerModelRequestImpl _value,
+      $Res Function(_$TOTAddCustomerModelRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -175,7 +175,7 @@ class __$$_TOTAddCustomerModelRequestCopyWithImpl<$Res>
     Object? organizations = freezed,
     Object? dynamicProperties = freezed,
   }) {
-    return _then(_$_TOTAddCustomerModelRequest(
+    return _then(_$TOTAddCustomerModelRequestImpl(
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -222,8 +222,8 @@ class __$$_TOTAddCustomerModelRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TOTAddCustomerModelRequest implements _TOTAddCustomerModelRequest {
-  const _$_TOTAddCustomerModelRequest(
+class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
+  const _$TOTAddCustomerModelRequestImpl(
       {this.firstName,
       this.lastName,
       this.fullName,
@@ -239,8 +239,9 @@ class _$_TOTAddCustomerModelRequest implements _TOTAddCustomerModelRequest {
         _emails = emails,
         _dynamicProperties = dynamicProperties;
 
-  factory _$_TOTAddCustomerModelRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_TOTAddCustomerModelRequestFromJson(json);
+  factory _$TOTAddCustomerModelRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$TOTAddCustomerModelRequestImplFromJson(json);
 
   @override
   final String? firstName;
@@ -304,7 +305,7 @@ class _$_TOTAddCustomerModelRequest implements _TOTAddCustomerModelRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TOTAddCustomerModelRequest &&
+            other is _$TOTAddCustomerModelRequestImpl &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -342,13 +343,13 @@ class _$_TOTAddCustomerModelRequest implements _TOTAddCustomerModelRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TOTAddCustomerModelRequestCopyWith<_$_TOTAddCustomerModelRequest>
-      get copyWith => __$$_TOTAddCustomerModelRequestCopyWithImpl<
-          _$_TOTAddCustomerModelRequest>(this, _$identity);
+  _$$TOTAddCustomerModelRequestImplCopyWith<_$TOTAddCustomerModelRequestImpl>
+      get copyWith => __$$TOTAddCustomerModelRequestImplCopyWithImpl<
+          _$TOTAddCustomerModelRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TOTAddCustomerModelRequestToJson(
+    return _$$TOTAddCustomerModelRequestImplToJson(
       this,
     );
   }
@@ -367,10 +368,10 @@ abstract class _TOTAddCustomerModelRequest
           final List<String>? emails,
           final dynamic organizations,
           final List<DynamicProperty>? dynamicProperties}) =
-      _$_TOTAddCustomerModelRequest;
+      _$TOTAddCustomerModelRequestImpl;
 
   factory _TOTAddCustomerModelRequest.fromJson(Map<String, dynamic> json) =
-      _$_TOTAddCustomerModelRequest.fromJson;
+      _$TOTAddCustomerModelRequestImpl.fromJson;
 
   @override
   String? get firstName;
@@ -394,7 +395,7 @@ abstract class _TOTAddCustomerModelRequest
   List<DynamicProperty>? get dynamicProperties;
   @override
   @JsonKey(ignore: true)
-  _$$_TOTAddCustomerModelRequestCopyWith<_$_TOTAddCustomerModelRequest>
+  _$$TOTAddCustomerModelRequestImplCopyWith<_$TOTAddCustomerModelRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -585,10 +586,10 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
 }
 
 /// @nodoc
-abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
-  factory _$$_AddressCopyWith(
-          _$_Address value, $Res Function(_$_Address) then) =
-      __$$_AddressCopyWithImpl<$Res>;
+abstract class _$$AddressImplCopyWith<$Res> implements $AddressCopyWith<$Res> {
+  factory _$$AddressImplCopyWith(
+          _$AddressImpl value, $Res Function(_$AddressImpl) then) =
+      __$$AddressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -616,10 +617,11 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddressCopyWithImpl<$Res>
-    extends _$AddressCopyWithImpl<$Res, _$_Address>
-    implements _$$_AddressCopyWith<$Res> {
-  __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then)
+class __$$AddressImplCopyWithImpl<$Res>
+    extends _$AddressCopyWithImpl<$Res, _$AddressImpl>
+    implements _$$AddressImplCopyWith<$Res> {
+  __$$AddressImplCopyWithImpl(
+      _$AddressImpl _value, $Res Function(_$AddressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -647,7 +649,7 @@ class __$$_AddressCopyWithImpl<$Res>
     Object? isDefault = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$_Address(
+    return _then(_$AddressImpl(
       addressType: freezed == addressType
           ? _value.addressType
           : addressType // ignore: cast_nullable_to_non_nullable
@@ -738,8 +740,8 @@ class __$$_AddressCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Address implements _Address {
-  const _$_Address(
+class _$AddressImpl implements _Address {
+  const _$AddressImpl(
       {this.addressType,
       this.key,
       this.name,
@@ -762,8 +764,8 @@ class _$_Address implements _Address {
       this.isDefault,
       this.description});
 
-  factory _$_Address.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressFromJson(json);
+  factory _$AddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressImplFromJson(json);
 
   @override
   final String? addressType;
@@ -817,7 +819,7 @@ class _$_Address implements _Address {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Address &&
+            other is _$AddressImpl &&
             (identical(other.addressType, addressType) ||
                 other.addressType == addressType) &&
             (identical(other.key, key) || other.key == key) &&
@@ -883,12 +885,12 @@ class _$_Address implements _Address {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
-      __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
+  _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
+      __$$AddressImplCopyWithImpl<_$AddressImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(
+    return _$$AddressImplToJson(
       this,
     );
   }
@@ -916,9 +918,9 @@ abstract class _Address implements Address {
       final String? email,
       final String? outerId,
       final bool? isDefault,
-      final String? description}) = _$_Address;
+      final String? description}) = _$AddressImpl;
 
-  factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
+  factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 
   @override
   String? get addressType;
@@ -964,7 +966,7 @@ abstract class _Address implements Address {
   String? get description;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
+  _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1117,11 +1119,11 @@ class _$DynamicPropertyCopyWithImpl<$Res, $Val extends DynamicProperty>
 }
 
 /// @nodoc
-abstract class _$$_DynamicPropertyCopyWith<$Res>
+abstract class _$$DynamicPropertyImplCopyWith<$Res>
     implements $DynamicPropertyCopyWith<$Res> {
-  factory _$$_DynamicPropertyCopyWith(
-          _$_DynamicProperty value, $Res Function(_$_DynamicProperty) then) =
-      __$$_DynamicPropertyCopyWithImpl<$Res>;
+  factory _$$DynamicPropertyImplCopyWith(_$DynamicPropertyImpl value,
+          $Res Function(_$DynamicPropertyImpl) then) =
+      __$$DynamicPropertyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1143,11 +1145,11 @@ abstract class _$$_DynamicPropertyCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DynamicPropertyCopyWithImpl<$Res>
-    extends _$DynamicPropertyCopyWithImpl<$Res, _$_DynamicProperty>
-    implements _$$_DynamicPropertyCopyWith<$Res> {
-  __$$_DynamicPropertyCopyWithImpl(
-      _$_DynamicProperty _value, $Res Function(_$_DynamicProperty) _then)
+class __$$DynamicPropertyImplCopyWithImpl<$Res>
+    extends _$DynamicPropertyCopyWithImpl<$Res, _$DynamicPropertyImpl>
+    implements _$$DynamicPropertyImplCopyWith<$Res> {
+  __$$DynamicPropertyImplCopyWithImpl(
+      _$DynamicPropertyImpl _value, $Res Function(_$DynamicPropertyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1169,7 +1171,7 @@ class __$$_DynamicPropertyCopyWithImpl<$Res>
     Object? modifiedBy = freezed,
     Object? id = freezed,
   }) {
-    return _then(_$_DynamicProperty(
+    return _then(_$DynamicPropertyImpl(
       objectId: freezed == objectId
           ? _value.objectId
           : objectId // ignore: cast_nullable_to_non_nullable
@@ -1236,8 +1238,8 @@ class __$$_DynamicPropertyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DynamicProperty implements _DynamicProperty {
-  const _$_DynamicProperty(
+class _$DynamicPropertyImpl implements _DynamicProperty {
+  const _$DynamicPropertyImpl(
       {this.objectId,
       this.name,
       this.description,
@@ -1254,8 +1256,8 @@ class _$_DynamicProperty implements _DynamicProperty {
       this.modifiedBy,
       this.id});
 
-  factory _$_DynamicProperty.fromJson(Map<String, dynamic> json) =>
-      _$$_DynamicPropertyFromJson(json);
+  factory _$DynamicPropertyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DynamicPropertyImplFromJson(json);
 
   @override
   final String? objectId;
@@ -1299,7 +1301,7 @@ class _$_DynamicProperty implements _DynamicProperty {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DynamicProperty &&
+            other is _$DynamicPropertyImpl &&
             (identical(other.objectId, objectId) ||
                 other.objectId == objectId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -1352,12 +1354,13 @@ class _$_DynamicProperty implements _DynamicProperty {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DynamicPropertyCopyWith<_$_DynamicProperty> get copyWith =>
-      __$$_DynamicPropertyCopyWithImpl<_$_DynamicProperty>(this, _$identity);
+  _$$DynamicPropertyImplCopyWith<_$DynamicPropertyImpl> get copyWith =>
+      __$$DynamicPropertyImplCopyWithImpl<_$DynamicPropertyImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DynamicPropertyToJson(
+    return _$$DynamicPropertyImplToJson(
       this,
     );
   }
@@ -1379,10 +1382,10 @@ abstract class _DynamicProperty implements DynamicProperty {
       final DateTime? modifiedDate,
       final String? createdBy,
       final String? modifiedBy,
-      final String? id}) = _$_DynamicProperty;
+      final String? id}) = _$DynamicPropertyImpl;
 
   factory _DynamicProperty.fromJson(Map<String, dynamic> json) =
-      _$_DynamicProperty.fromJson;
+      _$DynamicPropertyImpl.fromJson;
 
   @override
   String? get objectId;
@@ -1416,6 +1419,6 @@ abstract class _DynamicProperty implements DynamicProperty {
   String? get id;
   @override
   @JsonKey(ignore: true)
-  _$$_DynamicPropertyCopyWith<_$_DynamicProperty> get copyWith =>
+  _$$DynamicPropertyImplCopyWith<_$DynamicPropertyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

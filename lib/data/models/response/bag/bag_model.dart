@@ -1,8 +1,8 @@
 class BagModel {
   final String itemName;
-  final double itemPrice;
-  final double itemQuantity;
-  final double totalprice;
+  final String itemPrice;
+  final String itemQuantity;
+  final String totalprice;
   final String id;
   final String code;
 
@@ -12,5 +12,5 @@ class BagModel {
       required this.code,
       required this.itemPrice,
       required this.itemQuantity,
-      this.totalprice = 0});
+      this.totalprice = "0"});
 }

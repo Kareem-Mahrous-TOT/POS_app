@@ -69,22 +69,22 @@ class _$SignUpModelCopyWithImpl<$Res, $Val extends SignUpModel>
 }
 
 /// @nodoc
-abstract class _$$_SignUpModelCopyWith<$Res>
+abstract class _$$SignUpModelImplCopyWith<$Res>
     implements $SignUpModelCopyWith<$Res> {
-  factory _$$_SignUpModelCopyWith(
-          _$_SignUpModel value, $Res Function(_$_SignUpModel) then) =
-      __$$_SignUpModelCopyWithImpl<$Res>;
+  factory _$$SignUpModelImplCopyWith(
+          _$SignUpModelImpl value, $Res Function(_$SignUpModelImpl) then) =
+      __$$SignUpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool succeeded, @JsonKey(name: "errors") List<String> errors});
 }
 
 /// @nodoc
-class __$$_SignUpModelCopyWithImpl<$Res>
-    extends _$SignUpModelCopyWithImpl<$Res, _$_SignUpModel>
-    implements _$$_SignUpModelCopyWith<$Res> {
-  __$$_SignUpModelCopyWithImpl(
-      _$_SignUpModel _value, $Res Function(_$_SignUpModel) _then)
+class __$$SignUpModelImplCopyWithImpl<$Res>
+    extends _$SignUpModelCopyWithImpl<$Res, _$SignUpModelImpl>
+    implements _$$SignUpModelImplCopyWith<$Res> {
+  __$$SignUpModelImplCopyWithImpl(
+      _$SignUpModelImpl _value, $Res Function(_$SignUpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_SignUpModelCopyWithImpl<$Res>
     Object? succeeded = null,
     Object? errors = null,
   }) {
-    return _then(_$_SignUpModel(
+    return _then(_$SignUpModelImpl(
       succeeded: null == succeeded
           ? _value.succeeded
           : succeeded // ignore: cast_nullable_to_non_nullable
@@ -108,14 +108,14 @@ class __$$_SignUpModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SignUpModel implements _SignUpModel {
-  const _$_SignUpModel(
+class _$SignUpModelImpl implements _SignUpModel {
+  const _$SignUpModelImpl(
       {required this.succeeded,
       @JsonKey(name: "errors") required final List<String> errors})
       : _errors = errors;
 
-  factory _$_SignUpModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SignUpModelFromJson(json);
+  factory _$SignUpModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SignUpModelImplFromJson(json);
 
   @override
   final bool succeeded;
@@ -137,7 +137,7 @@ class _$_SignUpModel implements _SignUpModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignUpModel &&
+            other is _$SignUpModelImpl &&
             (identical(other.succeeded, succeeded) ||
                 other.succeeded == succeeded) &&
             const DeepCollectionEquality().equals(other._errors, _errors));
@@ -151,12 +151,12 @@ class _$_SignUpModel implements _SignUpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignUpModelCopyWith<_$_SignUpModel> get copyWith =>
-      __$$_SignUpModelCopyWithImpl<_$_SignUpModel>(this, _$identity);
+  _$$SignUpModelImplCopyWith<_$SignUpModelImpl> get copyWith =>
+      __$$SignUpModelImplCopyWithImpl<_$SignUpModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SignUpModelToJson(
+    return _$$SignUpModelImplToJson(
       this,
     );
   }
@@ -166,10 +166,10 @@ abstract class _SignUpModel implements SignUpModel {
   const factory _SignUpModel(
           {required final bool succeeded,
           @JsonKey(name: "errors") required final List<String> errors}) =
-      _$_SignUpModel;
+      _$SignUpModelImpl;
 
   factory _SignUpModel.fromJson(Map<String, dynamic> json) =
-      _$_SignUpModel.fromJson;
+      _$SignUpModelImpl.fromJson;
 
   @override
   bool get succeeded;
@@ -178,6 +178,6 @@ abstract class _SignUpModel implements SignUpModel {
   List<String> get errors;
   @override
   @JsonKey(ignore: true)
-  _$$_SignUpModelCopyWith<_$_SignUpModel> get copyWith =>
+  _$$SignUpModelImplCopyWith<_$SignUpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

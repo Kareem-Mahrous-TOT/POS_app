@@ -99,24 +99,25 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  _$_Initial();
+class _$InitialImpl implements _Initial {
+  _$InitialImpl();
 
   @override
   String toString() {
@@ -211,14 +212,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements OrderState {
-  factory _Initial() = _$_Initial;
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadSuccessCopyWith<$Res> {
-  factory _$$_LoadSuccessCopyWith(
-          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
-      __$$_LoadSuccessCopyWithImpl<$Res>;
+abstract class _$$LoadSuccessImplCopyWith<$Res> {
+  factory _$$LoadSuccessImplCopyWith(
+          _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
+      __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<CustomerOrderResult>? newOrder,
@@ -229,11 +230,11 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_LoadSuccess>
-    implements _$$_LoadSuccessCopyWith<$Res> {
-  __$$_LoadSuccessCopyWithImpl(
-      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+class __$$LoadSuccessImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$LoadSuccessImpl>
+    implements _$$LoadSuccessImplCopyWith<$Res> {
+  __$$LoadSuccessImplCopyWithImpl(
+      _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -245,7 +246,7 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
     Object? wrong = freezed,
     Object? accepted = freezed,
   }) {
-    return _then(_$_LoadSuccess(
+    return _then(_$LoadSuccessImpl(
       newOrder: freezed == newOrder
           ? _value.newOrder
           : newOrder // ignore: cast_nullable_to_non_nullable
@@ -272,8 +273,8 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadSuccess implements _LoadSuccess {
-  _$_LoadSuccess(
+class _$LoadSuccessImpl implements _LoadSuccess {
+  _$LoadSuccessImpl(
       {this.newOrder,
       this.processing,
       this.completed,
@@ -299,8 +300,8 @@ class _$_LoadSuccess implements _LoadSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
-      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+      __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -395,7 +396,7 @@ abstract class _LoadSuccess implements OrderState {
       List<CustomerOrderResult>? processing,
       List<CustomerOrderResult>? completed,
       List<CustomerOrderResult>? wrong,
-      List<CustomerOrderResult>? accepted}) = _$_LoadSuccess;
+      List<CustomerOrderResult>? accepted}) = _$LoadSuccessImpl;
 
   List<CustomerOrderResult>? get newOrder;
   set newOrder(List<CustomerOrderResult>? value);
@@ -408,25 +409,25 @@ abstract class _LoadSuccess implements OrderState {
   List<CustomerOrderResult>? get accepted;
   set accepted(List<CustomerOrderResult>? value);
   @JsonKey(ignore: true)
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailedCopyWith<$Res> {
-  factory _$$_LoadFailedCopyWith(
-          _$_LoadFailed value, $Res Function(_$_LoadFailed) then) =
-      __$$_LoadFailedCopyWithImpl<$Res>;
+abstract class _$$LoadFailedImplCopyWith<$Res> {
+  factory _$$LoadFailedImplCopyWith(
+          _$LoadFailedImpl value, $Res Function(_$LoadFailedImpl) then) =
+      __$$LoadFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_LoadFailedCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$_LoadFailed>
-    implements _$$_LoadFailedCopyWith<$Res> {
-  __$$_LoadFailedCopyWithImpl(
-      _$_LoadFailed _value, $Res Function(_$_LoadFailed) _then)
+class __$$LoadFailedImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$LoadFailedImpl>
+    implements _$$LoadFailedImplCopyWith<$Res> {
+  __$$LoadFailedImplCopyWithImpl(
+      _$LoadFailedImpl _value, $Res Function(_$LoadFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -434,7 +435,7 @@ class __$$_LoadFailedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_LoadFailed(
+    return _then(_$LoadFailedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -445,8 +446,8 @@ class __$$_LoadFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadFailed implements _LoadFailed {
-  _$_LoadFailed(this.message);
+class _$LoadFailedImpl implements _LoadFailed {
+  _$LoadFailedImpl(this.message);
 
   @override
   String message;
@@ -459,8 +460,8 @@ class _$_LoadFailed implements _LoadFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
-      __$$_LoadFailedCopyWithImpl<_$_LoadFailed>(this, _$identity);
+  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
+      __$$LoadFailedImplCopyWithImpl<_$LoadFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -550,11 +551,11 @@ class _$_LoadFailed implements _LoadFailed {
 }
 
 abstract class _LoadFailed implements OrderState {
-  factory _LoadFailed(String message) = _$_LoadFailed;
+  factory _LoadFailed(String message) = _$LoadFailedImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
+  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

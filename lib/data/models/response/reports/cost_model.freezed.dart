@@ -124,10 +124,11 @@ class _$CostModelCopyWithImpl<$Res, $Val extends CostModel>
 }
 
 /// @nodoc
-abstract class _$$_CostModelCopyWith<$Res> implements $CostModelCopyWith<$Res> {
-  factory _$$_CostModelCopyWith(
-          _$_CostModel value, $Res Function(_$_CostModel) then) =
-      __$$_CostModelCopyWithImpl<$Res>;
+abstract class _$$CostModelImplCopyWith<$Res>
+    implements $CostModelCopyWith<$Res> {
+  factory _$$CostModelImplCopyWith(
+          _$CostModelImpl value, $Res Function(_$CostModelImpl) then) =
+      __$$CostModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,11 +144,11 @@ abstract class _$$_CostModelCopyWith<$Res> implements $CostModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CostModelCopyWithImpl<$Res>
-    extends _$CostModelCopyWithImpl<$Res, _$_CostModel>
-    implements _$$_CostModelCopyWith<$Res> {
-  __$$_CostModelCopyWithImpl(
-      _$_CostModel _value, $Res Function(_$_CostModel) _then)
+class __$$CostModelImplCopyWithImpl<$Res>
+    extends _$CostModelCopyWithImpl<$Res, _$CostModelImpl>
+    implements _$$CostModelImplCopyWith<$Res> {
+  __$$CostModelImplCopyWithImpl(
+      _$CostModelImpl _value, $Res Function(_$CostModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +164,7 @@ class __$$_CostModelCopyWithImpl<$Res>
     Object? averagePercent = null,
     Object? averagePercentType = null,
   }) {
-    return _then(_$_CostModel(
+    return _then(_$CostModelImpl(
       revenue: null == revenue
           ? _value.revenue
           : revenue // ignore: cast_nullable_to_non_nullable
@@ -206,8 +207,8 @@ class __$$_CostModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CostModel implements _CostModel {
-  const _$_CostModel(
+class _$CostModelImpl implements _CostModel {
+  const _$CostModelImpl(
       {required this.revenue,
       @JsonKey(name: 'revenue_percent') required this.revenuePercent,
       @JsonKey(name: 'revenue_percent_type') required this.revenuePercentType,
@@ -218,8 +219,8 @@ class _$_CostModel implements _CostModel {
       @JsonKey(name: 'average_percent') required this.averagePercent,
       @JsonKey(name: 'average_percent_type') required this.averagePercentType});
 
-  factory _$_CostModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CostModelFromJson(json);
+  factory _$CostModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CostModelImplFromJson(json);
 
   @override
   final int revenue;
@@ -255,7 +256,7 @@ class _$_CostModel implements _CostModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CostModel &&
+            other is _$CostModelImpl &&
             (identical(other.revenue, revenue) || other.revenue == revenue) &&
             (identical(other.revenuePercent, revenuePercent) ||
                 other.revenuePercent == revenuePercent) &&
@@ -290,12 +291,12 @@ class _$_CostModel implements _CostModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CostModelCopyWith<_$_CostModel> get copyWith =>
-      __$$_CostModelCopyWithImpl<_$_CostModel>(this, _$identity);
+  _$$CostModelImplCopyWith<_$CostModelImpl> get copyWith =>
+      __$$CostModelImplCopyWithImpl<_$CostModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CostModelToJson(
+    return _$$CostModelImplToJson(
       this,
     );
   }
@@ -314,10 +315,10 @@ abstract class _CostModel implements CostModel {
       required final int average,
       @JsonKey(name: 'average_percent') required final double averagePercent,
       @JsonKey(name: 'average_percent_type')
-      required final String averagePercentType}) = _$_CostModel;
+      required final String averagePercentType}) = _$CostModelImpl;
 
   factory _CostModel.fromJson(Map<String, dynamic> json) =
-      _$_CostModel.fromJson;
+      _$CostModelImpl.fromJson;
 
   @override
   int get revenue;
@@ -345,6 +346,6 @@ abstract class _CostModel implements CostModel {
   String get averagePercentType;
   @override
   @JsonKey(ignore: true)
-  _$$_CostModelCopyWith<_$_CostModel> get copyWith =>
+  _$$CostModelImplCopyWith<_$CostModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'tot_create_order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateOrderRequest _$$_CreateOrderRequestFromJson(
+_$CreateOrderRequestImpl _$$CreateOrderRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateOrderRequest(
+    _$CreateOrderRequestImpl(
       customerId: json['customerId'] as String,
       storeId: json['storeId'] as String,
       storeName: json['storeName'] as String,
@@ -23,8 +23,8 @@ _$_CreateOrderRequest _$$_CreateOrderRequestFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_CreateOrderRequestToJson(
-        _$_CreateOrderRequest instance) =>
+Map<String, dynamic> _$$CreateOrderRequestImplToJson(
+        _$CreateOrderRequestImpl instance) =>
     <String, dynamic>{
       'customerId': instance.customerId,
       'storeId': instance.storeId,
@@ -35,10 +35,10 @@ Map<String, dynamic> _$$_CreateOrderRequestToJson(
       'status': instance.status,
       'currency': instance.currency,
       'sum': instance.sum,
-      'items': instance.items,
+      'items': instance.items.map((e) => e.toJson()).toList(),
     };
 
-_$_Items _$$_ItemsFromJson(Map<String, dynamic> json) => _$_Items(
+_$ItemsImpl _$$ItemsImplFromJson(Map<String, dynamic> json) => _$ItemsImpl(
       productId: json['productId'] as String,
       catalogId: json['catalogId'] as String,
       currency: json['currency'] as String,
@@ -47,7 +47,8 @@ _$_Items _$$_ItemsFromJson(Map<String, dynamic> json) => _$_Items(
       price: json['price'] as int,
     );
 
-Map<String, dynamic> _$$_ItemsToJson(_$_Items instance) => <String, dynamic>{
+Map<String, dynamic> _$$ItemsImplToJson(_$ItemsImpl instance) =>
+    <String, dynamic>{
       'productId': instance.productId,
       'catalogId': instance.catalogId,
       'currency': instance.currency,

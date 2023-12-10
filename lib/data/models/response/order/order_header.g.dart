@@ -6,33 +6,34 @@ part of 'order_header.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderHeader _$$_OrderHeaderFromJson(Map<String, dynamic> json) =>
-    _$_OrderHeader(
+_$OrderHeaderImpl _$$OrderHeaderImplFromJson(Map<String, dynamic> json) =>
+    _$OrderHeaderImpl(
       header: (json['header'] as List<dynamic>)
           .map((e) => HeaderItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_OrderHeaderToJson(_$_OrderHeader instance) =>
+Map<String, dynamic> _$$OrderHeaderImplToJson(_$OrderHeaderImpl instance) =>
     <String, dynamic>{
-      'header': instance.header,
+      'header': instance.header.map((e) => e.toJson()).toList(),
     };
 
-_$_HeaderItem _$$_HeaderItemFromJson(Map<String, dynamic> json) =>
-    _$_HeaderItem(
+_$HeaderItemImpl _$$HeaderItemImplFromJson(Map<String, dynamic> json) =>
+    _$HeaderItemImpl(
       labelName: json['labelName'] as String,
       cardOrder: (json['cardOrder'] as List<dynamic>)
           .map((e) => CardOrder.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_HeaderItemToJson(_$_HeaderItem instance) =>
+Map<String, dynamic> _$$HeaderItemImplToJson(_$HeaderItemImpl instance) =>
     <String, dynamic>{
       'labelName': instance.labelName,
-      'cardOrder': instance.cardOrder,
+      'cardOrder': instance.cardOrder.map((e) => e.toJson()).toList(),
     };
 
-_$_CardOrder _$$_CardOrderFromJson(Map<String, dynamic> json) => _$_CardOrder(
+_$CardOrderImpl _$$CardOrderImplFromJson(Map<String, dynamic> json) =>
+    _$CardOrderImpl(
       amount: json['amount'] as String,
       cardImage: json['cardImage'] as String,
       cardUserCode: json['cardUserCode'] as String,
@@ -42,7 +43,7 @@ _$_CardOrder _$$_CardOrderFromJson(Map<String, dynamic> json) => _$_CardOrder(
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$_CardOrderToJson(_$_CardOrder instance) =>
+Map<String, dynamic> _$$CardOrderImplToJson(_$CardOrderImpl instance) =>
     <String, dynamic>{
       'amount': instance.amount,
       'cardImage': instance.cardImage,

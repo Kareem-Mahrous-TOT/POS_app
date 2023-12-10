@@ -6,14 +6,14 @@ part of 'sign_up_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SignUpModel _$$_SignUpModelFromJson(Map<String, dynamic> json) =>
-    _$_SignUpModel(
+_$SignUpModelImpl _$$SignUpModelImplFromJson(Map<String, dynamic> json) =>
+    _$SignUpModelImpl(
       succeeded: json['succeeded'] as bool,
       errors:
           (json['errors'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$_SignUpModelToJson(_$_SignUpModel instance) =>
+Map<String, dynamic> _$$SignUpModelImplToJson(_$SignUpModelImpl instance) =>
     <String, dynamic>{
       'succeeded': instance.succeeded,
       'errors': instance.errors,

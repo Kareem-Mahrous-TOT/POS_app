@@ -177,12 +177,12 @@ class _$TOTCustomersSearchRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TOTCustomersSearchRequestCopyWith<$Res>
+abstract class _$$TOTCustomersSearchRequestImplCopyWith<$Res>
     implements $TOTCustomersSearchRequestCopyWith<$Res> {
-  factory _$$_TOTCustomersSearchRequestCopyWith(
-          _$_TOTCustomersSearchRequest value,
-          $Res Function(_$_TOTCustomersSearchRequest) then) =
-      __$$_TOTCustomersSearchRequestCopyWithImpl<$Res>;
+  factory _$$TOTCustomersSearchRequestImplCopyWith(
+          _$TOTCustomersSearchRequestImpl value,
+          $Res Function(_$TOTCustomersSearchRequestImpl) then) =
+      __$$TOTCustomersSearchRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -206,13 +206,13 @@ abstract class _$$_TOTCustomersSearchRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TOTCustomersSearchRequestCopyWithImpl<$Res>
+class __$$TOTCustomersSearchRequestImplCopyWithImpl<$Res>
     extends _$TOTCustomersSearchRequestCopyWithImpl<$Res,
-        _$_TOTCustomersSearchRequest>
-    implements _$$_TOTCustomersSearchRequestCopyWith<$Res> {
-  __$$_TOTCustomersSearchRequestCopyWithImpl(
-      _$_TOTCustomersSearchRequest _value,
-      $Res Function(_$_TOTCustomersSearchRequest) _then)
+        _$TOTCustomersSearchRequestImpl>
+    implements _$$TOTCustomersSearchRequestImplCopyWith<$Res> {
+  __$$TOTCustomersSearchRequestImplCopyWithImpl(
+      _$TOTCustomersSearchRequestImpl _value,
+      $Res Function(_$TOTCustomersSearchRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -236,7 +236,7 @@ class __$$_TOTCustomersSearchRequestCopyWithImpl<$Res>
     Object? skip = freezed,
     Object? take = freezed,
   }) {
-    return _then(_$_TOTCustomersSearchRequest(
+    return _then(_$TOTCustomersSearchRequestImpl(
       memberType: freezed == memberType
           ? _value.memberType
           : memberType // ignore: cast_nullable_to_non_nullable
@@ -311,8 +311,8 @@ class __$$_TOTCustomersSearchRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TOTCustomersSearchRequest implements _TOTCustomersSearchRequest {
-  const _$_TOTCustomersSearchRequest(
+class _$TOTCustomersSearchRequestImpl implements _TOTCustomersSearchRequest {
+  const _$TOTCustomersSearchRequestImpl(
       {this.memberType,
       final List<String>? memberTypes,
       this.group,
@@ -336,8 +336,8 @@ class _$_TOTCustomersSearchRequest implements _TOTCustomersSearchRequest {
         _objectTypes = objectTypes,
         _objectIds = objectIds;
 
-  factory _$_TOTCustomersSearchRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_TOTCustomersSearchRequestFromJson(json);
+  factory _$TOTCustomersSearchRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TOTCustomersSearchRequestImplFromJson(json);
 
   @override
   final String? memberType;
@@ -423,7 +423,7 @@ class _$_TOTCustomersSearchRequest implements _TOTCustomersSearchRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TOTCustomersSearchRequest &&
+            other is _$TOTCustomersSearchRequestImpl &&
             (identical(other.memberType, memberType) ||
                 other.memberType == memberType) &&
             const DeepCollectionEquality()
@@ -478,13 +478,13 @@ class _$_TOTCustomersSearchRequest implements _TOTCustomersSearchRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TOTCustomersSearchRequestCopyWith<_$_TOTCustomersSearchRequest>
-      get copyWith => __$$_TOTCustomersSearchRequestCopyWithImpl<
-          _$_TOTCustomersSearchRequest>(this, _$identity);
+  _$$TOTCustomersSearchRequestImplCopyWith<_$TOTCustomersSearchRequestImpl>
+      get copyWith => __$$TOTCustomersSearchRequestImplCopyWithImpl<
+          _$TOTCustomersSearchRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TOTCustomersSearchRequestToJson(
+    return _$$TOTCustomersSearchRequestImplToJson(
       this,
     );
   }
@@ -508,10 +508,10 @@ abstract class _TOTCustomersSearchRequest implements TOTCustomersSearchRequest {
       final String? languageCode,
       final String? sort,
       final int? skip,
-      final int? take}) = _$_TOTCustomersSearchRequest;
+      final int? take}) = _$TOTCustomersSearchRequestImpl;
 
   factory _TOTCustomersSearchRequest.fromJson(Map<String, dynamic> json) =
-      _$_TOTCustomersSearchRequest.fromJson;
+      _$TOTCustomersSearchRequestImpl.fromJson;
 
   @override
   String? get memberType;
@@ -549,6 +549,6 @@ abstract class _TOTCustomersSearchRequest implements TOTCustomersSearchRequest {
   int? get take;
   @override
   @JsonKey(ignore: true)
-  _$$_TOTCustomersSearchRequestCopyWith<_$_TOTCustomersSearchRequest>
+  _$$TOTCustomersSearchRequestImplCopyWith<_$TOTCustomersSearchRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

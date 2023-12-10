@@ -110,12 +110,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'FetchCartEvent.started'));
   }
 
   @override
@@ -250,7 +256,7 @@ class __$$CreateCartImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateCartImpl implements _CreateCart {
+class _$CreateCartImpl with DiagnosticableTreeMixin implements _CreateCart {
   const _$CreateCartImpl({required this.storeId, required this.currencyCode});
 
   @override
@@ -259,8 +265,17 @@ class _$CreateCartImpl implements _CreateCart {
   final String currencyCode;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartEvent.fetchCart(storeId: $storeId, currencyCode: $currencyCode)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartEvent.fetchCart'))
+      ..add(DiagnosticsProperty('storeId', storeId))
+      ..add(DiagnosticsProperty('currencyCode', currencyCode));
   }
 
   @override
@@ -418,15 +433,23 @@ class __$$OnIncrementImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnIncrementImpl implements _OnIncrement {
+class _$OnIncrementImpl with DiagnosticableTreeMixin implements _OnIncrement {
   const _$OnIncrementImpl(this.cartItem);
 
   @override
   final CartItem cartItem;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartEvent.onIncrement(cartItem: $cartItem)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartEvent.onIncrement'))
+      ..add(DiagnosticsProperty('cartItem', cartItem));
   }
 
   @override
@@ -580,15 +603,23 @@ class __$$OnDecrementImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnDecrementImpl implements _OnDecrement {
+class _$OnDecrementImpl with DiagnosticableTreeMixin implements _OnDecrement {
   const _$OnDecrementImpl(this.cartItem);
 
   @override
   final CartItem cartItem;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartEvent.onDecrement(cartItem: $cartItem)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartEvent.onDecrement'))
+      ..add(DiagnosticsProperty('cartItem', cartItem));
   }
 
   @override
@@ -742,15 +773,23 @@ class __$$DeleteItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteItemImpl implements _DeleteItem {
+class _$DeleteItemImpl with DiagnosticableTreeMixin implements _DeleteItem {
   const _$DeleteItemImpl(this.cartItem);
 
   @override
   final CartItem cartItem;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartEvent.deleteItem(cartItem: $cartItem)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartEvent.deleteItem'))
+      ..add(DiagnosticsProperty('cartItem', cartItem));
   }
 
   @override
@@ -969,12 +1008,18 @@ class __$$InitialStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialStateImpl implements _InitialState {
+class _$InitialStateImpl with DiagnosticableTreeMixin implements _InitialState {
   _$InitialStateImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'FetchCartState.initial'));
   }
 
   @override
@@ -1137,7 +1182,9 @@ class __$$FetchCartSuccessStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchCartSuccessStateImpl implements _FetchCartSuccessState {
+class _$FetchCartSuccessStateImpl
+    with DiagnosticableTreeMixin
+    implements _FetchCartSuccessState {
   _$FetchCartSuccessStateImpl(this.model,
       {this.isUpdating = false,
       this.isNotAvailableQuantity = false,
@@ -1155,8 +1202,20 @@ class _$FetchCartSuccessStateImpl implements _FetchCartSuccessState {
   int itemCount;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.fetchCartSuccess(model: $model, isUpdating: $isUpdating, isNotAvailableQuantity: $isNotAvailableQuantity, itemCount: $itemCount)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartState.fetchCartSuccess'))
+      ..add(DiagnosticsProperty('model', model))
+      ..add(DiagnosticsProperty('isUpdating', isUpdating))
+      ..add(
+          DiagnosticsProperty('isNotAvailableQuantity', isNotAvailableQuantity))
+      ..add(DiagnosticsProperty('itemCount', itemCount));
   }
 
   @JsonKey(ignore: true)
@@ -1314,15 +1373,25 @@ class __$$FetchCartFailStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchCartFailStateImpl implements _FetchCartFailState {
+class _$FetchCartFailStateImpl
+    with DiagnosticableTreeMixin
+    implements _FetchCartFailState {
   _$FetchCartFailStateImpl(this.message);
 
   @override
   String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.fetchCartFail(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartState.fetchCartFail'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @JsonKey(ignore: true)
@@ -1468,15 +1537,25 @@ class __$$UpdateCartFailStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdateCartFailStateImpl implements _UpdateCartFailState {
+class _$UpdateCartFailStateImpl
+    with DiagnosticableTreeMixin
+    implements _UpdateCartFailState {
   _$UpdateCartFailStateImpl(this.message);
 
   @override
   String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.updateCartFail(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartState.updateCartFail'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @JsonKey(ignore: true)
@@ -1622,15 +1701,25 @@ class __$$RemoveItemFailStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemoveItemFailStateImpl implements _RemoveItemFailState {
+class _$RemoveItemFailStateImpl
+    with DiagnosticableTreeMixin
+    implements _RemoveItemFailState {
   _$RemoveItemFailStateImpl(this.message);
 
   @override
   String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.removeItemFail(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchCartState.removeItemFail'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @JsonKey(ignore: true)
@@ -1761,12 +1850,18 @@ class __$$LoadingStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingStateImpl implements _LoadingState {
+class _$LoadingStateImpl with DiagnosticableTreeMixin implements _LoadingState {
   _$LoadingStateImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FetchCartState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'FetchCartState.loading'));
   }
 
   @override

@@ -1,7 +1,7 @@
-import 'package:tot_pos/data/models/response/graph/graph_category_model.dart';
-import 'package:tot_pos/data/repository/base/category_repo_base.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tot_pos/data/models/response/graph/graph_category_model.dart';
+import 'package:tot_pos/data/repository/base/category_repo_base.dart';
 
 part 'categories_bloc.freezed.dart';
 part 'categories_event.dart';
@@ -24,7 +24,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
         }
       }
 
-      event.when(
+      await event.when(
           started: () {},
           fetch: (storeId) async {
             await fetch(storeId);

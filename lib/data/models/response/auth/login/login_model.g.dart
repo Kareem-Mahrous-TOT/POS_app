@@ -6,15 +6,15 @@ part of 'login_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LoginModel _$$_LoginModelFromJson(Map<String, dynamic> json) =>
-    _$_LoginModel(
+_$LoginModelImpl _$$LoginModelImplFromJson(Map<String, dynamic> json) =>
+    _$LoginModelImpl(
       succeeded: json['succeeded'] as bool,
       isLockedOut: json['isLockedOut'] as bool?,
       isNotAllowed: json['isNotAllowed'] as bool?,
       requiresTwoFactor: json['requiresTwoFactor'] as bool?,
     );
 
-Map<String, dynamic> _$$_LoginModelToJson(_$_LoginModel instance) =>
+Map<String, dynamic> _$$LoginModelImplToJson(_$LoginModelImpl instance) =>
     <String, dynamic>{
       'succeeded': instance.succeeded,
       'isLockedOut': instance.isLockedOut,

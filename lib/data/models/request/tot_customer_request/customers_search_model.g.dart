@@ -6,9 +6,9 @@ part of 'customers_search_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TOTCustomersSearchRequest _$$_TOTCustomersSearchRequestFromJson(
+_$TOTCustomersSearchRequestImpl _$$TOTCustomersSearchRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TOTCustomersSearchRequest(
+    _$TOTCustomersSearchRequestImpl(
       memberType: json['memberType'] as String?,
       memberTypes: (json['memberTypes'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -37,8 +37,8 @@ _$_TOTCustomersSearchRequest _$$_TOTCustomersSearchRequestFromJson(
       take: json['take'] as int?,
     );
 
-Map<String, dynamic> _$$_TOTCustomersSearchRequestToJson(
-        _$_TOTCustomersSearchRequest instance) =>
+Map<String, dynamic> _$$TOTCustomersSearchRequestImplToJson(
+        _$TOTCustomersSearchRequestImpl instance) =>
     <String, dynamic>{
       'memberType': instance.memberType,
       'memberTypes': instance.memberTypes,

@@ -1,35 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
-  const TOTPOSAppBar({super.key, required this.selectedIndex});
+  const TOTPOSAppBar(
+      {super.key,
+      required this.selectedIndex,
+      this.searchWidth,
+      this.backgroudColor});
   final int selectedIndex;
+  final double? searchWidth;
+  final Color? backgroudColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Palette.white,
+      backgroundColor: Palette.grey300,
       automaticallyImplyLeading: false,
       elevation: 0.5,
       title: IntrinsicHeight(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TotAssetImageAtom(assetName: 
-              "assets/ic_launcher.png",
-              width: 50.w,
-              height: 50.h,
-            ),
-            const VerticalDivider(thickness: 1),
+            // TotAssetImageAtom(assetName:
+            //   "assets/ic_launcher.png",
+            //   width: 50.w,
+            //   height: 50.h,
+            // ),
+            // const VerticalDivider(thickness: 1),
             SizedBox(
-                width: 1000.w,
+                width: searchWidth ?? 1000.w,
                 child: SearchWidget(
+                  backgroudColor: backgroudColor,
                   selectedIndex: selectedIndex,
                 )),
             IconButton(
@@ -63,8 +69,13 @@ class TOTPOSAppBar extends StatelessWidget {
 }
 
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({super.key, required this.selectedIndex});
+  const SearchWidget({
+    super.key,
+    required this.selectedIndex,
+    this.backgroudColor,
+  });
   final int selectedIndex;
+  final Color? backgroudColor;
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
@@ -89,6 +100,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   Widget build(BuildContext context) {
     return widget.selectedIndex == 0 || widget.selectedIndex == 2
         ? SearchBar(
+            constraints: const BoxConstraints.expand(),
             leading: const Icon(
               Icons.search,
               color: Palette.black,
@@ -113,7 +125,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       );
               }
             },
-            backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+            backgroundColor: MaterialStatePropertyAll(widget.backgroudColor),
             hintText: "Search",
             hintStyle: const MaterialStatePropertyAll(
               TextStyle(color: Palette.grey),

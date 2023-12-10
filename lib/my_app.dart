@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tot_pos/core/constants/store_config.dart';
+import 'package:tot_pos/view/blocs/categories/categories_bloc.dart';
 import 'package:tot_pos/view/blocs/login/login_bloc.dart';
+import 'package:tot_pos/view/blocs/menu/menu_cubit.dart';
+import 'package:tot_pos/view/blocs/products/products_bloc.dart';
 
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
@@ -11,7 +15,7 @@ import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/home/home_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/order/order_cubit.dart';
-import 'view/blocs/products/rest/products_cubit.dart';
+import 'view/blocs/products/rest/bag_cubit.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
@@ -30,7 +34,7 @@ class MainApp extends StatelessWidget {
               ..add(const HomeEvent.loadProducts())
               ..add(const HomeEvent.getCustomers()),
           ),
-          BlocProvider(create: (context) => getIt<ProductsCubit>()..fetch()),
+          BlocProvider(create: (context) => getIt<BagCubit>()..fetch()),
           BlocProvider(create: (context) => getIt<LayoutBloc>()),
           BlocProvider(
               create: (context) =>
@@ -39,14 +43,22 @@ class MainApp extends StatelessWidget {
               create: (context) => getIt<RecentCustomersBloc>()
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
+          BlocProvider(
+              create: (context) => getIt<ProductsBloc>()
+                ..add(ProductsEvent.fetch(storeId: StoreConfig.storeId))),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
+          BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
+          BlocProvider(
+              create: (context) => getIt<CategoriesBloc>()
+                ..add(const CategoriesEvent.fetch(StoreConfig.storeId))),
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),
           BlocProvider(
               create: (context) => getIt<ReportCostCubit>()..loadData()),
         ],
         child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           title: "TOT POS",
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,

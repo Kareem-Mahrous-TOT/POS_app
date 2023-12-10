@@ -6,14 +6,21 @@ import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
 import 'package:tot_pos/view/blocs/home/home_bloc.dart';
- import 'package:tot_pos/view/blocs/products/rest/products_cubit.dart';
+import 'package:tot_pos/view/blocs/products/rest/bag_cubit.dart';
 
 class TOTPOSHomePageAppBar extends StatefulWidget {
   final Color? filterColor;
-  const TOTPOSHomePageAppBar({super.key, this.filterColor, this.validator});
+  const TOTPOSHomePageAppBar({
+    super.key,
+    this.filterColor,
+    this.validator,
+    required this.categories,
+    required this.onTap,
+  });
   final String? Function(Map<String, String>?)?
       validator; //change the initialized data
-
+  final void Function(CategoryRecord) onTap;
+  final List<CategoryRecord>? categories;
   @override
   State<TOTPOSHomePageAppBar> createState() => _TOTPOSHomePageAppBarState();
 }
@@ -45,28 +52,18 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
 
           return Row(
             children: [
-              const Expanded(
+              Expanded(
                 flex: 8,
-                child: TOTFilterCategoriesOrganism(),
+                child: TOTFilterCategoriesOrganism(
+                  categories: widget.categories,
+                  onTap: widget.onTap,
+                ),
               ),
               Expanded(
                 flex: 5,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Card(
-                        color: Palette.white,
-                        child: SizedBox(
-                          height: 40.h,
-                          child: Text("Bag",
-                              style: context.titleMedium.copyWith(
-                                color: Palette.black,
-                              )),
-                        ),
-                      ),
-                    ),
                     Expanded(
                       flex: 3,
                       child: Container(
@@ -92,7 +89,7 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                               }).toList(),
                               onChanged: (changedValue) {
                                 context
-                                    .read<ProductsCubit>()
+                                    .read<BagCubit>()
                                     .updateCustomer(changedValue!);
                               },
                               validator: widget.validator,
@@ -113,7 +110,10 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
 }
 
 class TOTFilterCategoriesOrganism extends StatelessWidget {
-  const TOTFilterCategoriesOrganism({super.key});
+  const TOTFilterCategoriesOrganism(
+      {super.key, required this.categories, required this.onTap});
+  final List<CategoryRecord>? categories;
+  final void Function(CategoryRecord cateogry) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -121,19 +121,31 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
       color: Palette.white,
       child: SizedBox(
         height: 40.h,
-        child: const Row(
+        child: Row(
           children: [
-            Padding(
-              padding: EdgeInsets.only(right: 6),
-              child: TotIconAtom(
-                  iconData: IconData(0xf755), iconColor: Palette.black),
+            const Padding(
+              padding: EdgeInsets.only(right: 6, left: 6),
+              child: Icon(Icons.filter_alt, color: Palette.black),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 16.0, left: 8.0),
-              child: Text(
-                "All",
-                style: TextStyle(fontSize: 30),
-              ),
+              padding: const EdgeInsets.only(right: 16.0, left: 8.0),
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) =>
+                      const VerticalDivider(thickness: 1),
+                  itemCount: categories!.length,
+                  itemBuilder: (context, index) {
+                    return Center(
+                      child: InkWell(
+                        onTap: () => onTap.call(categories![index]),
+                        child: Text(
+                          categories![index].title.toString(),
+                          style: context.titleMedium.copyWith(fontWeight: FontWeight.bold,),
+                        ),
+                      ),
+                    );
+                  },),
             ),
           ],
         ),

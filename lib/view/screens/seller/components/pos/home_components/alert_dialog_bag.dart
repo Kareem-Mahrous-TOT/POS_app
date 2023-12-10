@@ -2,15 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/models/response/bag/bag_model.dart';
-import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
+import 'package:tot_pos/data/models/response/graph/qraph_product_model.dart';
 
-import '../../../../../blocs/products/rest/products_cubit.dart';
+import '../../../../../blocs/products/rest/bag_cubit.dart';
 import 'pos_counter.dart';
 
 // int counter = 1;
@@ -22,7 +23,7 @@ class POSFoodItemAlertDialog extends StatefulWidget {
     this.addTextStyle,
   });
 
-  final TOTProduct data;
+  final Item data;
   final TextStyle? addTextStyle;
 
   @override
@@ -104,23 +105,21 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                         ? () {}
                         : () async {
                             final product = BagModel(
-                                code: widget.data.code,
-                                id: widget.data.id,
-                                totalprice: 100,
-                                itemName: widget.data.name,
-                                itemPrice:
-                                    widget.data.minQuantity!.toDouble() > 0
-                                        ? 120
-                                        : 0,
-                                itemQuantity:
-                                    widget.data.minQuantity!.toDouble() > 0
-                                        ? counter.toDouble()
-                                        : 0);
-                            await context
-                                .read<ProductsCubit>()
-                                .updatedList(product);
+                                code: widget.data.code.toString(),
+                                id: widget.data.id.toString(),
+                                totalprice: widget
+                                    .data.price!.actual!.formattedAmount
+                                    .toString(),
+                                itemName: widget.data.name.toString(),
+                                itemPrice: widget
+                                    .data.price!.actual!.formattedAmount
+                                    .toString(),
+                                itemQuantity: widget
+                                    .data.availabilityData!.availableQuantity
+                                    .toString());
+                            await context.read<BagCubit>().updatedList(product);
                             if (mounted) {
-                              Navigator.pop(
+                              context.pop(
                                   context); // context.read<ProductsCubit>().calculateTotalPrice();
                             }
                           },

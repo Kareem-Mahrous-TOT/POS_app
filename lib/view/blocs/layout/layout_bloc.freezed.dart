@@ -81,24 +81,25 @@ class _$LayoutEventCopyWithImpl<$Res, $Val extends LayoutEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$LayoutEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$LayoutEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
-  const _$_Started();
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -114,7 +115,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -190,24 +191,24 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 }
 
 abstract class _Started implements LayoutEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateIndexCopyWith<$Res> {
-  factory _$$_UpdateIndexCopyWith(
-          _$_UpdateIndex value, $Res Function(_$_UpdateIndex) then) =
-      __$$_UpdateIndexCopyWithImpl<$Res>;
+abstract class _$$UpdateIndexImplCopyWith<$Res> {
+  factory _$$UpdateIndexImplCopyWith(
+          _$UpdateIndexImpl value, $Res Function(_$UpdateIndexImpl) then) =
+      __$$UpdateIndexImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$_UpdateIndexCopyWithImpl<$Res>
-    extends _$LayoutEventCopyWithImpl<$Res, _$_UpdateIndex>
-    implements _$$_UpdateIndexCopyWith<$Res> {
-  __$$_UpdateIndexCopyWithImpl(
-      _$_UpdateIndex _value, $Res Function(_$_UpdateIndex) _then)
+class __$$UpdateIndexImplCopyWithImpl<$Res>
+    extends _$LayoutEventCopyWithImpl<$Res, _$UpdateIndexImpl>
+    implements _$$UpdateIndexImplCopyWith<$Res> {
+  __$$UpdateIndexImplCopyWithImpl(
+      _$UpdateIndexImpl _value, $Res Function(_$UpdateIndexImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -215,7 +216,7 @@ class __$$_UpdateIndexCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$_UpdateIndex(
+    return _then(_$UpdateIndexImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -226,8 +227,8 @@ class __$$_UpdateIndexCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateIndex with DiagnosticableTreeMixin implements _UpdateIndex {
-  const _$_UpdateIndex(this.index);
+class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
+  const _$UpdateIndexImpl(this.index);
 
   @override
   final int index;
@@ -249,7 +250,7 @@ class _$_UpdateIndex with DiagnosticableTreeMixin implements _UpdateIndex {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateIndex &&
+            other is _$UpdateIndexImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -259,8 +260,8 @@ class _$_UpdateIndex with DiagnosticableTreeMixin implements _UpdateIndex {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateIndexCopyWith<_$_UpdateIndex> get copyWith =>
-      __$$_UpdateIndexCopyWithImpl<_$_UpdateIndex>(this, _$identity);
+  _$$UpdateIndexImplCopyWith<_$UpdateIndexImpl> get copyWith =>
+      __$$UpdateIndexImplCopyWithImpl<_$UpdateIndexImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -332,32 +333,34 @@ class _$_UpdateIndex with DiagnosticableTreeMixin implements _UpdateIndex {
 }
 
 abstract class _UpdateIndex implements LayoutEvent {
-  const factory _UpdateIndex(final int index) = _$_UpdateIndex;
+  const factory _UpdateIndex(final int index) = _$UpdateIndexImpl;
 
   int get index;
   @JsonKey(ignore: true)
-  _$$_UpdateIndexCopyWith<_$_UpdateIndex> get copyWith =>
+  _$$UpdateIndexImplCopyWith<_$UpdateIndexImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LogoutCopyWith<$Res> {
-  factory _$$_LogoutCopyWith(_$_Logout value, $Res Function(_$_Logout) then) =
-      __$$_LogoutCopyWithImpl<$Res>;
+abstract class _$$LogoutImplCopyWith<$Res> {
+  factory _$$LogoutImplCopyWith(
+          _$LogoutImpl value, $Res Function(_$LogoutImpl) then) =
+      __$$LogoutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LogoutCopyWithImpl<$Res>
-    extends _$LayoutEventCopyWithImpl<$Res, _$_Logout>
-    implements _$$_LogoutCopyWith<$Res> {
-  __$$_LogoutCopyWithImpl(_$_Logout _value, $Res Function(_$_Logout) _then)
+class __$$LogoutImplCopyWithImpl<$Res>
+    extends _$LayoutEventCopyWithImpl<$Res, _$LogoutImpl>
+    implements _$$LogoutImplCopyWith<$Res> {
+  __$$LogoutImplCopyWithImpl(
+      _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Logout with DiagnosticableTreeMixin implements _Logout {
-  const _$_Logout();
+class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
+  const _$LogoutImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -373,7 +376,7 @@ class _$_Logout with DiagnosticableTreeMixin implements _Logout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Logout);
+        (other.runtimeType == runtimeType && other is _$LogoutImpl);
   }
 
   @override
@@ -449,7 +452,7 @@ class _$_Logout with DiagnosticableTreeMixin implements _Logout {
 }
 
 abstract class _Logout implements LayoutEvent {
-  const factory _Logout() = _$_Logout;
+  const factory _Logout() = _$LogoutImpl;
 }
 
 /// @nodoc
@@ -525,24 +528,25 @@ class _$LayoutStateCopyWithImpl<$Res, $Val extends LayoutState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$LayoutStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  _$_Initial();
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  _$InitialImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -631,24 +635,24 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 }
 
 abstract class _Initial implements LayoutState {
-  factory _Initial() = _$_Initial;
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateIndexStateCopyWith<$Res> {
-  factory _$$_UpdateIndexStateCopyWith(
-          _$_UpdateIndexState value, $Res Function(_$_UpdateIndexState) then) =
-      __$$_UpdateIndexStateCopyWithImpl<$Res>;
+abstract class _$$UpdateIndexStateImplCopyWith<$Res> {
+  factory _$$UpdateIndexStateImplCopyWith(_$UpdateIndexStateImpl value,
+          $Res Function(_$UpdateIndexStateImpl) then) =
+      __$$UpdateIndexStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$_UpdateIndexStateCopyWithImpl<$Res>
-    extends _$LayoutStateCopyWithImpl<$Res, _$_UpdateIndexState>
-    implements _$$_UpdateIndexStateCopyWith<$Res> {
-  __$$_UpdateIndexStateCopyWithImpl(
-      _$_UpdateIndexState _value, $Res Function(_$_UpdateIndexState) _then)
+class __$$UpdateIndexStateImplCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$UpdateIndexStateImpl>
+    implements _$$UpdateIndexStateImplCopyWith<$Res> {
+  __$$UpdateIndexStateImplCopyWithImpl(_$UpdateIndexStateImpl _value,
+      $Res Function(_$UpdateIndexStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -656,7 +660,7 @@ class __$$_UpdateIndexStateCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$_UpdateIndexState(
+    return _then(_$UpdateIndexStateImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -667,10 +671,10 @@ class __$$_UpdateIndexStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateIndexState
+class _$UpdateIndexStateImpl
     with DiagnosticableTreeMixin
     implements _UpdateIndexState {
-  _$_UpdateIndexState(this.index);
+  _$UpdateIndexStateImpl(this.index);
 
   @override
   int index;
@@ -691,8 +695,9 @@ class _$_UpdateIndexState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateIndexStateCopyWith<_$_UpdateIndexState> get copyWith =>
-      __$$_UpdateIndexStateCopyWithImpl<_$_UpdateIndexState>(this, _$identity);
+  _$$UpdateIndexStateImplCopyWith<_$UpdateIndexStateImpl> get copyWith =>
+      __$$UpdateIndexStateImplCopyWithImpl<_$UpdateIndexStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -770,35 +775,37 @@ class _$_UpdateIndexState
 }
 
 abstract class _UpdateIndexState implements LayoutState {
-  factory _UpdateIndexState(int index) = _$_UpdateIndexState;
+  factory _UpdateIndexState(int index) = _$UpdateIndexStateImpl;
 
   int get index;
   set index(int value);
   @JsonKey(ignore: true)
-  _$$_UpdateIndexStateCopyWith<_$_UpdateIndexState> get copyWith =>
+  _$$UpdateIndexStateImplCopyWith<_$UpdateIndexStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LogoutSuccessCopyWith<$Res> {
-  factory _$$_LogoutSuccessCopyWith(
-          _$_LogoutSuccess value, $Res Function(_$_LogoutSuccess) then) =
-      __$$_LogoutSuccessCopyWithImpl<$Res>;
+abstract class _$$LogoutSuccessImplCopyWith<$Res> {
+  factory _$$LogoutSuccessImplCopyWith(
+          _$LogoutSuccessImpl value, $Res Function(_$LogoutSuccessImpl) then) =
+      __$$LogoutSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LogoutSuccessCopyWithImpl<$Res>
-    extends _$LayoutStateCopyWithImpl<$Res, _$_LogoutSuccess>
-    implements _$$_LogoutSuccessCopyWith<$Res> {
-  __$$_LogoutSuccessCopyWithImpl(
-      _$_LogoutSuccess _value, $Res Function(_$_LogoutSuccess) _then)
+class __$$LogoutSuccessImplCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$LogoutSuccessImpl>
+    implements _$$LogoutSuccessImplCopyWith<$Res> {
+  __$$LogoutSuccessImplCopyWithImpl(
+      _$LogoutSuccessImpl _value, $Res Function(_$LogoutSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LogoutSuccess with DiagnosticableTreeMixin implements _LogoutSuccess {
-  _$_LogoutSuccess();
+class _$LogoutSuccessImpl
+    with DiagnosticableTreeMixin
+    implements _LogoutSuccess {
+  _$LogoutSuccessImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -887,24 +894,24 @@ class _$_LogoutSuccess with DiagnosticableTreeMixin implements _LogoutSuccess {
 }
 
 abstract class _LogoutSuccess implements LayoutState {
-  factory _LogoutSuccess() = _$_LogoutSuccess;
+  factory _LogoutSuccess() = _$LogoutSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_LogoutFailedCopyWith<$Res> {
-  factory _$$_LogoutFailedCopyWith(
-          _$_LogoutFailed value, $Res Function(_$_LogoutFailed) then) =
-      __$$_LogoutFailedCopyWithImpl<$Res>;
+abstract class _$$LogoutFailedImplCopyWith<$Res> {
+  factory _$$LogoutFailedImplCopyWith(
+          _$LogoutFailedImpl value, $Res Function(_$LogoutFailedImpl) then) =
+      __$$LogoutFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_LogoutFailedCopyWithImpl<$Res>
-    extends _$LayoutStateCopyWithImpl<$Res, _$_LogoutFailed>
-    implements _$$_LogoutFailedCopyWith<$Res> {
-  __$$_LogoutFailedCopyWithImpl(
-      _$_LogoutFailed _value, $Res Function(_$_LogoutFailed) _then)
+class __$$LogoutFailedImplCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$LogoutFailedImpl>
+    implements _$$LogoutFailedImplCopyWith<$Res> {
+  __$$LogoutFailedImplCopyWithImpl(
+      _$LogoutFailedImpl _value, $Res Function(_$LogoutFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -912,7 +919,7 @@ class __$$_LogoutFailedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_LogoutFailed(
+    return _then(_$LogoutFailedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -923,8 +930,8 @@ class __$$_LogoutFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LogoutFailed with DiagnosticableTreeMixin implements _LogoutFailed {
-  _$_LogoutFailed(this.message);
+class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
+  _$LogoutFailedImpl(this.message);
 
   @override
   String message;
@@ -945,8 +952,8 @@ class _$_LogoutFailed with DiagnosticableTreeMixin implements _LogoutFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LogoutFailedCopyWith<_$_LogoutFailed> get copyWith =>
-      __$$_LogoutFailedCopyWithImpl<_$_LogoutFailed>(this, _$identity);
+  _$$LogoutFailedImplCopyWith<_$LogoutFailedImpl> get copyWith =>
+      __$$LogoutFailedImplCopyWithImpl<_$LogoutFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1024,11 +1031,11 @@ class _$_LogoutFailed with DiagnosticableTreeMixin implements _LogoutFailed {
 }
 
 abstract class _LogoutFailed implements LayoutState {
-  factory _LogoutFailed(String message) = _$_LogoutFailed;
+  factory _LogoutFailed(String message) = _$LogoutFailedImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_LogoutFailedCopyWith<_$_LogoutFailed> get copyWith =>
+  _$$LogoutFailedImplCopyWith<_$LogoutFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

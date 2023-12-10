@@ -4,9 +4,9 @@ import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTPOSFoodCardItemMolecule extends StatelessWidget {
-  final String? mealName;
-  final String? mealDescription;
-  final String? mealImage;
+  final String? productName;
+  final String? prodcutDescription;
+  final String? productImage;
   final String? price;
   final Color? nameColor;
   final Color? priceColor;
@@ -15,10 +15,10 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
 
   const TOTPOSFoodCardItemMolecule(
       {super.key,
-      required this.mealName,
-      required this.mealDescription,
+      required this.productName,
+      required this.prodcutDescription,
       required this.price,
-      required this.mealImage,
+      required this.productImage,
       required this.onTap,
       this.nameColor,
       this.priceColor});
@@ -41,7 +41,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
               child: CachedNetworkImage(
                 height: h * 0.2,
                 width: w * 0.3,
-                imageUrl: mealImage ??
+                imageUrl: productImage ??
                     "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
                 errorWidget: (context, error, stackTrace) {
                   return CachedNetworkImage(
@@ -54,21 +54,21 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
             ),
             Align(
                 alignment: Alignment.topLeft,
-                child: Text(mealName!,
+                child: Text(productName!,
                     style: context.titleMedium.copyWith(
                       color: nameColor ?? Palette.black,
                     ))),
             Align(
                 alignment: Alignment.topLeft,
-                child: Text(mealDescription!,
+                child: Text(prodcutDescription!,
                     style: context.titleMedium.copyWith(
-                      color: mealDescription == "In stock"
+                      color: prodcutDescription!.contains("In stock")
                           ? Palette.green
                           : Palette.red,
                     ))),
             Align(
                 alignment: Alignment.topLeft,
-                child: Text("\$ $price",
+                child: Text("$price",
                     style: context.titleMedium.copyWith(
                       color: priceColor ?? Palette.black,
                     )))

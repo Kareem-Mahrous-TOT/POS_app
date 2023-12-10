@@ -219,8 +219,8 @@ class InPayment with _$InPayment {
 class OrderItem with _$OrderItem {
   factory OrderItem({
     String? priceId,
-    required String currency,
-    required double price,
+     String? currency,
+     String? price,
     double? priceWithTax,
     double? placedPrice,
     double? placedPriceWithTax,

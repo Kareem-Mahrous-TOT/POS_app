@@ -6,25 +6,25 @@ part of 'customer_order_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CustomerOrderResponse _$$_CustomerOrderResponseFromJson(
+_$CustomerOrderResponseImpl _$$CustomerOrderResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CustomerOrderResponse(
+    _$CustomerOrderResponseImpl(
       totalCount: json['totalCount'] as int?,
       results: (json['results'] as List<dynamic>?)
           ?.map((e) => CustomerOrderResult.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_CustomerOrderResponseToJson(
-        _$_CustomerOrderResponse instance) =>
+Map<String, dynamic> _$$CustomerOrderResponseImplToJson(
+        _$CustomerOrderResponseImpl instance) =>
     <String, dynamic>{
       'totalCount': instance.totalCount,
-      'results': instance.results,
+      'results': instance.results?.map((e) => e.toJson()).toList(),
     };
 
-_$_CustomerOrderResult _$$_CustomerOrderResultFromJson(
+_$CustomerOrderResultImpl _$$CustomerOrderResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CustomerOrderResult(
+    _$CustomerOrderResultImpl(
       rowVersion: json['rowVersion'] as String?,
       customerId: json['customerId'] as String?,
       customerName: json['customerName'] as String?,
@@ -115,8 +115,8 @@ _$_CustomerOrderResult _$$_CustomerOrderResultFromJson(
           $enumDecodeNullable(_$OrderStatusEnumMap, json['orderStatus']),
     );
 
-Map<String, dynamic> _$$_CustomerOrderResultToJson(
-        _$_CustomerOrderResult instance) =>
+Map<String, dynamic> _$$CustomerOrderResultImplToJson(
+        _$CustomerOrderResultImpl instance) =>
     <String, dynamic>{
       'rowVersion': instance.rowVersion,
       'customerId': instance.customerId,
@@ -136,7 +136,7 @@ Map<String, dynamic> _$$_CustomerOrderResultToJson(
       'objectType': instance.objectType,
       'addresses': instance.addresses,
       'inPayments': instance.inPayments,
-      'items': instance.items,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
       'shipments': instance.shipments,
       'feeDetails': instance.feeDetails,
       'discounts': instance.discounts,
@@ -206,7 +206,8 @@ const _$OrderStatusEnumMap = {
   OrderStatus.completedOrder: 'completedOrder',
 };
 
-_$_LineItem _$$_LineItemFromJson(Map<String, dynamic> json) => _$_LineItem(
+_$LineItemImpl _$$LineItemImplFromJson(Map<String, dynamic> json) =>
+    _$LineItemImpl(
       priceId: json['priceId'] as String?,
       currency: json['currency'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -264,7 +265,7 @@ _$_LineItem _$$_LineItemFromJson(Map<String, dynamic> json) => _$_LineItem(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
+Map<String, dynamic> _$$LineItemImplToJson(_$LineItemImpl instance) =>
     <String, dynamic>{
       'priceId': instance.priceId,
       'currency': instance.currency,

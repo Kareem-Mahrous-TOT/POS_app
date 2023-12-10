@@ -6,9 +6,9 @@ part of 'tot_add_new_customer_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TOTAddCustomerModelResponse _$$_TOTAddCustomerModelResponseFromJson(
+_$TOTAddCustomerModelResponseImpl _$$TOTAddCustomerModelResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TOTAddCustomerModelResponse(
+    _$TOTAddCustomerModelResponseImpl(
       name: json['name'] as String?,
       memberType: json['memberType'] as String?,
       outerId: json['outerId'] as String?,
@@ -44,22 +44,23 @@ _$_TOTAddCustomerModelResponse _$$_TOTAddCustomerModelResponseFromJson(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_TOTAddCustomerModelResponseToJson(
-        _$_TOTAddCustomerModelResponse instance) =>
+Map<String, dynamic> _$$TOTAddCustomerModelResponseImplToJson(
+        _$TOTAddCustomerModelResponseImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'memberType': instance.memberType,
       'outerId': instance.outerId,
       'status': instance.status,
-      'addresses': instance.addresses,
+      'addresses': instance.addresses?.map((e) => e.toJson()).toList(),
       'phones': instance.phones,
       'emails': instance.emails,
-      'notes': instance.notes,
+      'notes': instance.notes?.map((e) => e.toJson()).toList(),
       'groups': instance.groups,
       'iconUrl': instance.iconUrl,
-      'dynamicProperties': instance.dynamicProperties,
+      'dynamicProperties':
+          instance.dynamicProperties?.map((e) => e.toJson()).toList(),
       'seoObjectType': instance.seoObjectType,
-      'seoInfos': instance.seoInfos,
+      'seoInfos': instance.seoInfos?.map((e) => e.toJson()).toList(),
       'createdDate': instance.createdDate?.toIso8601String(),
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'createdBy': instance.createdBy,
@@ -67,7 +68,8 @@ Map<String, dynamic> _$$_TOTAddCustomerModelResponseToJson(
       'id': instance.id,
     };
 
-_$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
+_$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
+    _$AddressImpl(
       addressType: json['addressType'] as String?,
       key: json['key'] as String?,
       name: json['name'] as String?,
@@ -91,7 +93,7 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
+Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>
     <String, dynamic>{
       'addressType': instance.addressType,
       'key': instance.key,
@@ -116,8 +118,9 @@ Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
       'description': instance.description,
     };
 
-_$_DynamicProperty _$$_DynamicPropertyFromJson(Map<String, dynamic> json) =>
-    _$_DynamicProperty(
+_$DynamicPropertyImpl _$$DynamicPropertyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DynamicPropertyImpl(
       objectId: json['objectId'] as String?,
       values: (json['values'] as List<dynamic>?)
           ?.map((e) => Value.fromJson(e as Map<String, dynamic>))
@@ -145,10 +148,11 @@ _$_DynamicProperty _$$_DynamicPropertyFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_DynamicPropertyToJson(_$_DynamicProperty instance) =>
+Map<String, dynamic> _$$DynamicPropertyImplToJson(
+        _$DynamicPropertyImpl instance) =>
     <String, dynamic>{
       'objectId': instance.objectId,
-      'values': instance.values,
+      'values': instance.values?.map((e) => e.toJson()).toList(),
       'name': instance.name,
       'description': instance.description,
       'objectType': instance.objectType,
@@ -158,7 +162,7 @@ Map<String, dynamic> _$$_DynamicPropertyToJson(_$_DynamicProperty instance) =>
       'isRequired': instance.isRequired,
       'displayOrder': instance.displayOrder,
       'valueType': instance.valueType,
-      'displayNames': instance.displayNames,
+      'displayNames': instance.displayNames?.map((e) => e.toJson()).toList(),
       'createdDate': instance.createdDate?.toIso8601String(),
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'createdBy': instance.createdBy,
@@ -166,7 +170,7 @@ Map<String, dynamic> _$$_DynamicPropertyToJson(_$_DynamicProperty instance) =>
       'id': instance.id,
     };
 
-_$_Note _$$_NoteFromJson(Map<String, dynamic> json) => _$_Note(
+_$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       title: json['title'] as String?,
       body: json['body'] as String?,
       outerId: json['outerId'] as String?,
@@ -181,7 +185,8 @@ _$_Note _$$_NoteFromJson(Map<String, dynamic> json) => _$_Note(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_NoteToJson(_$_Note instance) => <String, dynamic>{
+Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
+    <String, dynamic>{
       'title': instance.title,
       'body': instance.body,
       'outerId': instance.outerId,
@@ -192,7 +197,7 @@ Map<String, dynamic> _$$_NoteToJson(_$_Note instance) => <String, dynamic>{
       'id': instance.id,
     };
 
-_$_Value _$$_ValueFromJson(Map<String, dynamic> json) => _$_Value(
+_$ValueImpl _$$ValueImplFromJson(Map<String, dynamic> json) => _$ValueImpl(
       objectType: json['objectType'] as String?,
       objectId: json['objectId'] as String?,
       locale: json['locale'] as String?,
@@ -203,7 +208,8 @@ _$_Value _$$_ValueFromJson(Map<String, dynamic> json) => _$_Value(
       propertyName: json['propertyName'] as String?,
     );
 
-Map<String, dynamic> _$$_ValueToJson(_$_Value instance) => <String, dynamic>{
+Map<String, dynamic> _$$ValueImplToJson(_$ValueImpl instance) =>
+    <String, dynamic>{
       'objectType': instance.objectType,
       'objectId': instance.objectId,
       'locale': instance.locale,
@@ -214,19 +220,20 @@ Map<String, dynamic> _$$_ValueToJson(_$_Value instance) => <String, dynamic>{
       'propertyName': instance.propertyName,
     };
 
-_$_DisplayName _$$_DisplayNameFromJson(Map<String, dynamic> json) =>
-    _$_DisplayName(
+_$DisplayNameImpl _$$DisplayNameImplFromJson(Map<String, dynamic> json) =>
+    _$DisplayNameImpl(
       locale: json['locale'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_DisplayNameToJson(_$_DisplayName instance) =>
+Map<String, dynamic> _$$DisplayNameImplToJson(_$DisplayNameImpl instance) =>
     <String, dynamic>{
       'locale': instance.locale,
       'name': instance.name,
     };
 
-_$_SeoInfo _$$_SeoInfoFromJson(Map<String, dynamic> json) => _$_SeoInfo(
+_$SeoInfoImpl _$$SeoInfoImplFromJson(Map<String, dynamic> json) =>
+    _$SeoInfoImpl(
       name: json['name'] as String?,
       semanticUrl: json['semanticUrl'] as String?,
       pageTitle: json['pageTitle'] as String?,
@@ -249,7 +256,7 @@ _$_SeoInfo _$$_SeoInfoFromJson(Map<String, dynamic> json) => _$_SeoInfo(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_SeoInfoToJson(_$_SeoInfo instance) =>
+Map<String, dynamic> _$$SeoInfoImplToJson(_$SeoInfoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'semanticUrl': instance.semanticUrl,

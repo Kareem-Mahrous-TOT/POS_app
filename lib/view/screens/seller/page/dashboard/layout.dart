@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/routes/routes.dart';
-import 'package:tot_pos/view/blocs/customer/recent_customers/recent_customers_bloc.dart';
-import 'package:tot_pos/view/blocs/home/home_bloc.dart';
-import 'package:tot_pos/view/blocs/order/order_cubit.dart';
-import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
-import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/custom_appbar.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
@@ -59,116 +55,86 @@ class _LayoutScreenState extends State<LayoutScreen> {
             initial: (value) => 0,
             updateIndex: (value) => value.index);
 
-        if (selectedIndex == 0) {
-          context.read<HomeBloc>()
-            ..add(const HomeEvent.loadProducts())
-            ..add(const HomeEvent.getCustomers());
-        } else if (selectedIndex == 1) {
-          context.read<OrderCubit>().loadData();
-        } else if (selectedIndex == 2) {
-          context
-              .read<RecentCustomersBloc>()
-              .add(RecentCustomersEvent.loadRecentCustomers());
-        } else if (selectedIndex == 4) {
-          context.read<ReportCostCubit>().loadData();
-          context.read<ReportChartPieCubit>().loadData();
-        }
+        // if (selectedIndex == 0) {
+        //   context.read<HomeBloc>()
+        //     ..add(const HomeEvent.loadProducts())
+        //     ..add(const HomeEvent.getCustomers());
+        // } else if (selectedIndex == 1) {
+        //   context.read<OrderCubit>().loadData();
+        // } else if (selectedIndex == 2) {
+        //   context
+        //       .read<RecentCustomersBloc>()
+        //       .add(RecentCustomersEvent.loadRecentCustomers());
+        // } else if (selectedIndex == 4) {
+        //   context.read<ReportCostCubit>().loadData();
+        //   context.read<ReportChartPieCubit>().loadData();
+        // }
         return Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: TOTPOSAppBar(
-                selectedIndex: selectedIndex,
+            appBar: AppBar(
+              centerTitle: true,
+              leading: TotAssetImageAtom(
+                assetName: "assets/ic_launcher.png",
+                width: 50.w,
+                height: 50.h,
               ),
-            ),
-            body: SafeArea(
-              child: Row(
-                children: [
-                  Container(
-                    color: Palette.white,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 6,
-                          child: NavigationRail(
-                            indicatorColor: Colors.transparent,
-                            minWidth: 60,
-                            selectedIndex: selectedIndex,
-                            backgroundColor: Palette.white,
-                            useIndicator: false,
-                            destinations: const [
-                              NavigationRailDestination(
-                                  icon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 20.0),
-                                    child: Icon(Icons.home),
-                                  ),
-                                  label: Text('Dashboard')),
-                              NavigationRailDestination(
-                                  icon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 20.0),
-                                    child: Icon(Icons.shopping_bag),
-                                  ),
-                                  label: Text('Orders')),
-                              NavigationRailDestination(
-                                  icon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 20.0),
-                                    child: Icon(Icons.man),
-                                  ),
-                                  label: Text('Customers')),
-                              NavigationRailDestination(
-                                  icon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 20.0),
-                                    child: Icon(Icons.attach_money),
-                                  ),
-                                  label: Text('Sales')),
-                              NavigationRailDestination(
-                                  icon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 20.0),
-                                    child: Icon(Icons.add_chart),
-                                  ),
-                                  label: Text('Reports')),
-                            ],
-                            selectedIconTheme:
-                                const IconThemeData(color: Palette.primary),
-                            onDestinationSelected: (index) {
-                              context
-                                  .read<LayoutBloc>()
-                                  .add(LayoutEvent.updateIndex(index));
-                            },
-                          ),
-                        ),
-                        Expanded(
-                            flex: 1,
-                            child: IconButton(
-                              focusColor: Palette.primary,
-                              highlightColor: Palette.primary,
-                              icon: const Icon(Icons.exit_to_app_rounded),
-                              onPressed: () {
-                                context
-                                    .read<LayoutBloc>()
-                                    .add(const LayoutEvent.logout());
-                              },
-                            ))
-                      ],
-                    ),
+              actions: [
+                TotAssetImageAtom(
+                  assetName: "assets/ic_launcher.png",
+                  width: 50.w,
+                  height: 50.h,
+                )
+              ],
+              title: BottomNavigationBar(
+                backgroundColor: Palette.white,
+                selectedItemColor: Palette.primary,
+                unselectedItemColor: Colors.grey,
+                currentIndex: selectedIndex,
+                onTap: (index) {
+                  context
+                      .read<LayoutBloc>()
+                      .add(LayoutEvent.updateIndex(index));
+                },
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Dashboard',
                   ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      child: Column(
-                        children: [screens[selectedIndex]],
-                      ),
-                    ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.shopping_bag),
+                    label: 'Orders',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.man),
+                    label: 'Customers',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.attach_money),
+                    label: 'Sales',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add_chart),
+                    label: 'Reports',
                   ),
                 ],
               ),
-            ));
+            ),
+            body: screens[selectedIndex]);
       },
     );
   }
 }
+
+/// Signout button REST [LayoutScreen]
+// Expanded(
+//                       flex: 1,
+//                       child: IconButton(
+//                         focusColor: Palette.primary,
+//                         highlightColor: Palette.primary,
+//                         icon: const Icon(Icons.exit_to_app_rounded),
+//                         onPressed: () {
+//                           context
+//                               .read<LayoutBloc>()
+//                               .add(const LayoutEvent.logout());
+//                         },
+//                       )),

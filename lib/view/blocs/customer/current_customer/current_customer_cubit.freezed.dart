@@ -79,24 +79,25 @@ class _$CurrentCustomerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CurrentCustomerStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CurrentCustomerStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -106,7 +107,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -179,15 +180,15 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CurrentCustomerState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCurrentCustomerDataCopyWith<$Res> {
-  factory _$$_LoadedCurrentCustomerDataCopyWith(
-          _$_LoadedCurrentCustomerData value,
-          $Res Function(_$_LoadedCurrentCustomerData) then) =
-      __$$_LoadedCurrentCustomerDataCopyWithImpl<$Res>;
+abstract class _$$LoadedCurrentCustomerDataImplCopyWith<$Res> {
+  factory _$$LoadedCurrentCustomerDataImplCopyWith(
+          _$LoadedCurrentCustomerDataImpl value,
+          $Res Function(_$LoadedCurrentCustomerDataImpl) then) =
+      __$$LoadedCurrentCustomerDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CurrentCustomer data});
 
@@ -195,13 +196,13 @@ abstract class _$$_LoadedCurrentCustomerDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedCurrentCustomerDataCopyWithImpl<$Res>
+class __$$LoadedCurrentCustomerDataImplCopyWithImpl<$Res>
     extends _$CurrentCustomerStateCopyWithImpl<$Res,
-        _$_LoadedCurrentCustomerData>
-    implements _$$_LoadedCurrentCustomerDataCopyWith<$Res> {
-  __$$_LoadedCurrentCustomerDataCopyWithImpl(
-      _$_LoadedCurrentCustomerData _value,
-      $Res Function(_$_LoadedCurrentCustomerData) _then)
+        _$LoadedCurrentCustomerDataImpl>
+    implements _$$LoadedCurrentCustomerDataImplCopyWith<$Res> {
+  __$$LoadedCurrentCustomerDataImplCopyWithImpl(
+      _$LoadedCurrentCustomerDataImpl _value,
+      $Res Function(_$LoadedCurrentCustomerDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +210,7 @@ class __$$_LoadedCurrentCustomerDataCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_LoadedCurrentCustomerData(
+    return _then(_$LoadedCurrentCustomerDataImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -228,8 +229,8 @@ class __$$_LoadedCurrentCustomerDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedCurrentCustomerData implements _LoadedCurrentCustomerData {
-  const _$_LoadedCurrentCustomerData(this.data);
+class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
+  const _$LoadedCurrentCustomerDataImpl(this.data);
 
   @override
   final CurrentCustomer data;
@@ -243,7 +244,7 @@ class _$_LoadedCurrentCustomerData implements _LoadedCurrentCustomerData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedCurrentCustomerData &&
+            other is _$LoadedCurrentCustomerDataImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -253,9 +254,9 @@ class _$_LoadedCurrentCustomerData implements _LoadedCurrentCustomerData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCurrentCustomerDataCopyWith<_$_LoadedCurrentCustomerData>
-      get copyWith => __$$_LoadedCurrentCustomerDataCopyWithImpl<
-          _$_LoadedCurrentCustomerData>(this, _$identity);
+  _$$LoadedCurrentCustomerDataImplCopyWith<_$LoadedCurrentCustomerDataImpl>
+      get copyWith => __$$LoadedCurrentCustomerDataImplCopyWithImpl<
+          _$LoadedCurrentCustomerDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -325,10 +326,10 @@ class _$_LoadedCurrentCustomerData implements _LoadedCurrentCustomerData {
 
 abstract class _LoadedCurrentCustomerData implements CurrentCustomerState {
   const factory _LoadedCurrentCustomerData(final CurrentCustomer data) =
-      _$_LoadedCurrentCustomerData;
+      _$LoadedCurrentCustomerDataImpl;
 
   CurrentCustomer get data;
   @JsonKey(ignore: true)
-  _$$_LoadedCurrentCustomerDataCopyWith<_$_LoadedCurrentCustomerData>
+  _$$LoadedCurrentCustomerDataImplCopyWith<_$LoadedCurrentCustomerDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

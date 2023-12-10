@@ -6,7 +6,8 @@ part of 'cost_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CostModel _$$_CostModelFromJson(Map<String, dynamic> json) => _$_CostModel(
+_$CostModelImpl _$$CostModelImplFromJson(Map<String, dynamic> json) =>
+    _$CostModelImpl(
       revenue: json['revenue'] as int,
       revenuePercent: (json['revenue_percent'] as num).toDouble(),
       revenuePercentType: json['revenue_percent_type'] as String,
@@ -18,7 +19,7 @@ _$_CostModel _$$_CostModelFromJson(Map<String, dynamic> json) => _$_CostModel(
       averagePercentType: json['average_percent_type'] as String,
     );
 
-Map<String, dynamic> _$$_CostModelToJson(_$_CostModel instance) =>
+Map<String, dynamic> _$$CostModelImplToJson(_$CostModelImpl instance) =>
     <String, dynamic>{
       'revenue': instance.revenue,
       'revenue_percent': instance.revenuePercent,

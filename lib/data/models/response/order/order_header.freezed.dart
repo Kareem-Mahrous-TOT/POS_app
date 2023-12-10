@@ -63,22 +63,22 @@ class _$OrderHeaderCopyWithImpl<$Res, $Val extends OrderHeader>
 }
 
 /// @nodoc
-abstract class _$$_OrderHeaderCopyWith<$Res>
+abstract class _$$OrderHeaderImplCopyWith<$Res>
     implements $OrderHeaderCopyWith<$Res> {
-  factory _$$_OrderHeaderCopyWith(
-          _$_OrderHeader value, $Res Function(_$_OrderHeader) then) =
-      __$$_OrderHeaderCopyWithImpl<$Res>;
+  factory _$$OrderHeaderImplCopyWith(
+          _$OrderHeaderImpl value, $Res Function(_$OrderHeaderImpl) then) =
+      __$$OrderHeaderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'header') List<HeaderItem> header});
 }
 
 /// @nodoc
-class __$$_OrderHeaderCopyWithImpl<$Res>
-    extends _$OrderHeaderCopyWithImpl<$Res, _$_OrderHeader>
-    implements _$$_OrderHeaderCopyWith<$Res> {
-  __$$_OrderHeaderCopyWithImpl(
-      _$_OrderHeader _value, $Res Function(_$_OrderHeader) _then)
+class __$$OrderHeaderImplCopyWithImpl<$Res>
+    extends _$OrderHeaderCopyWithImpl<$Res, _$OrderHeaderImpl>
+    implements _$$OrderHeaderImplCopyWith<$Res> {
+  __$$OrderHeaderImplCopyWithImpl(
+      _$OrderHeaderImpl _value, $Res Function(_$OrderHeaderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_OrderHeaderCopyWithImpl<$Res>
   $Res call({
     Object? header = null,
   }) {
-    return _then(_$_OrderHeader(
+    return _then(_$OrderHeaderImpl(
       header: null == header
           ? _value._header
           : header // ignore: cast_nullable_to_non_nullable
@@ -97,13 +97,13 @@ class __$$_OrderHeaderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderHeader implements _OrderHeader {
-  const _$_OrderHeader(
+class _$OrderHeaderImpl implements _OrderHeader {
+  const _$OrderHeaderImpl(
       {@JsonKey(name: 'header') required final List<HeaderItem> header})
       : _header = header;
 
-  factory _$_OrderHeader.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderHeaderFromJson(json);
+  factory _$OrderHeaderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderHeaderImplFromJson(json);
 
   final List<HeaderItem> _header;
   @override
@@ -123,7 +123,7 @@ class _$_OrderHeader implements _OrderHeader {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderHeader &&
+            other is _$OrderHeaderImpl &&
             const DeepCollectionEquality().equals(other._header, _header));
   }
 
@@ -135,12 +135,12 @@ class _$_OrderHeader implements _OrderHeader {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderHeaderCopyWith<_$_OrderHeader> get copyWith =>
-      __$$_OrderHeaderCopyWithImpl<_$_OrderHeader>(this, _$identity);
+  _$$OrderHeaderImplCopyWith<_$OrderHeaderImpl> get copyWith =>
+      __$$OrderHeaderImplCopyWithImpl<_$OrderHeaderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderHeaderToJson(
+    return _$$OrderHeaderImplToJson(
       this,
     );
   }
@@ -149,17 +149,17 @@ class _$_OrderHeader implements _OrderHeader {
 abstract class _OrderHeader implements OrderHeader {
   const factory _OrderHeader(
           {@JsonKey(name: 'header') required final List<HeaderItem> header}) =
-      _$_OrderHeader;
+      _$OrderHeaderImpl;
 
   factory _OrderHeader.fromJson(Map<String, dynamic> json) =
-      _$_OrderHeader.fromJson;
+      _$OrderHeaderImpl.fromJson;
 
   @override
   @JsonKey(name: 'header')
   List<HeaderItem> get header;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderHeaderCopyWith<_$_OrderHeader> get copyWith =>
+  _$$OrderHeaderImplCopyWith<_$OrderHeaderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -221,11 +221,11 @@ class _$HeaderItemCopyWithImpl<$Res, $Val extends HeaderItem>
 }
 
 /// @nodoc
-abstract class _$$_HeaderItemCopyWith<$Res>
+abstract class _$$HeaderItemImplCopyWith<$Res>
     implements $HeaderItemCopyWith<$Res> {
-  factory _$$_HeaderItemCopyWith(
-          _$_HeaderItem value, $Res Function(_$_HeaderItem) then) =
-      __$$_HeaderItemCopyWithImpl<$Res>;
+  factory _$$HeaderItemImplCopyWith(
+          _$HeaderItemImpl value, $Res Function(_$HeaderItemImpl) then) =
+      __$$HeaderItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -234,11 +234,11 @@ abstract class _$$_HeaderItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HeaderItemCopyWithImpl<$Res>
-    extends _$HeaderItemCopyWithImpl<$Res, _$_HeaderItem>
-    implements _$$_HeaderItemCopyWith<$Res> {
-  __$$_HeaderItemCopyWithImpl(
-      _$_HeaderItem _value, $Res Function(_$_HeaderItem) _then)
+class __$$HeaderItemImplCopyWithImpl<$Res>
+    extends _$HeaderItemCopyWithImpl<$Res, _$HeaderItemImpl>
+    implements _$$HeaderItemImplCopyWith<$Res> {
+  __$$HeaderItemImplCopyWithImpl(
+      _$HeaderItemImpl _value, $Res Function(_$HeaderItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -247,7 +247,7 @@ class __$$_HeaderItemCopyWithImpl<$Res>
     Object? labelName = null,
     Object? cardOrder = null,
   }) {
-    return _then(_$_HeaderItem(
+    return _then(_$HeaderItemImpl(
       labelName: null == labelName
           ? _value.labelName
           : labelName // ignore: cast_nullable_to_non_nullable
@@ -262,14 +262,14 @@ class __$$_HeaderItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HeaderItem implements _HeaderItem {
-  const _$_HeaderItem(
+class _$HeaderItemImpl implements _HeaderItem {
+  const _$HeaderItemImpl(
       {@JsonKey(name: 'labelName') required this.labelName,
       @JsonKey(name: 'cardOrder') required final List<CardOrder> cardOrder})
       : _cardOrder = cardOrder;
 
-  factory _$_HeaderItem.fromJson(Map<String, dynamic> json) =>
-      _$$_HeaderItemFromJson(json);
+  factory _$HeaderItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HeaderItemImplFromJson(json);
 
   @override
   @JsonKey(name: 'labelName')
@@ -292,7 +292,7 @@ class _$_HeaderItem implements _HeaderItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HeaderItem &&
+            other is _$HeaderItemImpl &&
             (identical(other.labelName, labelName) ||
                 other.labelName == labelName) &&
             const DeepCollectionEquality()
@@ -307,12 +307,12 @@ class _$_HeaderItem implements _HeaderItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HeaderItemCopyWith<_$_HeaderItem> get copyWith =>
-      __$$_HeaderItemCopyWithImpl<_$_HeaderItem>(this, _$identity);
+  _$$HeaderItemImplCopyWith<_$HeaderItemImpl> get copyWith =>
+      __$$HeaderItemImplCopyWithImpl<_$HeaderItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HeaderItemToJson(
+    return _$$HeaderItemImplToJson(
       this,
     );
   }
@@ -322,10 +322,10 @@ abstract class _HeaderItem implements HeaderItem {
   const factory _HeaderItem(
       {@JsonKey(name: 'labelName') required final String labelName,
       @JsonKey(name: 'cardOrder')
-      required final List<CardOrder> cardOrder}) = _$_HeaderItem;
+      required final List<CardOrder> cardOrder}) = _$HeaderItemImpl;
 
   factory _HeaderItem.fromJson(Map<String, dynamic> json) =
-      _$_HeaderItem.fromJson;
+      _$HeaderItemImpl.fromJson;
 
   @override
   @JsonKey(name: 'labelName')
@@ -335,7 +335,7 @@ abstract class _HeaderItem implements HeaderItem {
   List<CardOrder> get cardOrder;
   @override
   @JsonKey(ignore: true)
-  _$$_HeaderItemCopyWith<_$_HeaderItem> get copyWith =>
+  _$$HeaderItemImplCopyWith<_$HeaderItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -433,10 +433,11 @@ class _$CardOrderCopyWithImpl<$Res, $Val extends CardOrder>
 }
 
 /// @nodoc
-abstract class _$$_CardOrderCopyWith<$Res> implements $CardOrderCopyWith<$Res> {
-  factory _$$_CardOrderCopyWith(
-          _$_CardOrder value, $Res Function(_$_CardOrder) then) =
-      __$$_CardOrderCopyWithImpl<$Res>;
+abstract class _$$CardOrderImplCopyWith<$Res>
+    implements $CardOrderCopyWith<$Res> {
+  factory _$$CardOrderImplCopyWith(
+          _$CardOrderImpl value, $Res Function(_$CardOrderImpl) then) =
+      __$$CardOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -450,11 +451,11 @@ abstract class _$$_CardOrderCopyWith<$Res> implements $CardOrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CardOrderCopyWithImpl<$Res>
-    extends _$CardOrderCopyWithImpl<$Res, _$_CardOrder>
-    implements _$$_CardOrderCopyWith<$Res> {
-  __$$_CardOrderCopyWithImpl(
-      _$_CardOrder _value, $Res Function(_$_CardOrder) _then)
+class __$$CardOrderImplCopyWithImpl<$Res>
+    extends _$CardOrderCopyWithImpl<$Res, _$CardOrderImpl>
+    implements _$$CardOrderImplCopyWith<$Res> {
+  __$$CardOrderImplCopyWithImpl(
+      _$CardOrderImpl _value, $Res Function(_$CardOrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -468,7 +469,7 @@ class __$$_CardOrderCopyWithImpl<$Res>
     Object? payment = null,
     Object? type = null,
   }) {
-    return _then(_$_CardOrder(
+    return _then(_$CardOrderImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -503,8 +504,8 @@ class __$$_CardOrderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CardOrder implements _CardOrder {
-  const _$_CardOrder(
+class _$CardOrderImpl implements _CardOrder {
+  const _$CardOrderImpl(
       {@JsonKey(name: 'amount') required this.amount,
       required this.cardImage,
       required this.cardUserCode,
@@ -513,8 +514,8 @@ class _$_CardOrder implements _CardOrder {
       @JsonKey(name: 'payment') required this.payment,
       @JsonKey(name: 'type') required this.type});
 
-  factory _$_CardOrder.fromJson(Map<String, dynamic> json) =>
-      _$$_CardOrderFromJson(json);
+  factory _$CardOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CardOrderImplFromJson(json);
 
   @override
   @JsonKey(name: 'amount')
@@ -544,7 +545,7 @@ class _$_CardOrder implements _CardOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardOrder &&
+            other is _$CardOrderImpl &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.cardImage, cardImage) ||
                 other.cardImage == cardImage) &&
@@ -565,12 +566,12 @@ class _$_CardOrder implements _CardOrder {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CardOrderCopyWith<_$_CardOrder> get copyWith =>
-      __$$_CardOrderCopyWithImpl<_$_CardOrder>(this, _$identity);
+  _$$CardOrderImplCopyWith<_$CardOrderImpl> get copyWith =>
+      __$$CardOrderImplCopyWithImpl<_$CardOrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardOrderToJson(
+    return _$$CardOrderImplToJson(
       this,
     );
   }
@@ -584,10 +585,10 @@ abstract class _CardOrder implements CardOrder {
       required final String cardusername,
       @JsonKey(name: 'date') required final String date,
       @JsonKey(name: 'payment') required final String payment,
-      @JsonKey(name: 'type') required final String type}) = _$_CardOrder;
+      @JsonKey(name: 'type') required final String type}) = _$CardOrderImpl;
 
   factory _CardOrder.fromJson(Map<String, dynamic> json) =
-      _$_CardOrder.fromJson;
+      _$CardOrderImpl.fromJson;
 
   @override
   @JsonKey(name: 'amount')
@@ -609,6 +610,6 @@ abstract class _CardOrder implements CardOrder {
   String get type;
   @override
   @JsonKey(ignore: true)
-  _$$_CardOrderCopyWith<_$_CardOrder> get copyWith =>
+  _$$CardOrderImplCopyWith<_$CardOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

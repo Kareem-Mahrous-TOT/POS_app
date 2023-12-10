@@ -4,11 +4,11 @@ import 'package:tot_pos/data/models/response/bag/bag_model.dart';
 import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
 import 'package:tot_pos/data/repository/base/order_repo_base.dart';
 
-part 'products_cubit.freezed.dart';
-part 'products_state.dart';
+part 'bag_cubit.freezed.dart';
+part 'bag_state.dart';
 
-class ProductsCubit extends Cubit<ProductsState> {
-  ProductsCubit(this.repo) : super(_Initial());
+class BagCubit extends Cubit<BagState> {
+  BagCubit(this.repo) : super(_Initial());
 
   final OrderRepoBase repo;
 
@@ -68,7 +68,7 @@ class ProductsCubit extends Cubit<ProductsState> {
         initial: (value) {},
         empty: (value) {
           emit(_UpdateListState(bag: [product], totalPrice: 0.0));
-          calculateTotalPrice();
+          // calculateTotalPrice();
         },
         updateList: (value) {
           var list = value.bag;
@@ -76,7 +76,7 @@ class ProductsCubit extends Cubit<ProductsState> {
           list.add(product);
 
           emit(value.copyWith(bag: list));
-          calculateTotalPrice();
+          // calculateTotalPrice();
         });
   }
 
@@ -91,7 +91,7 @@ class ProductsCubit extends Cubit<ProductsState> {
           emit(_EmptyState());
         } else {
           emit(value.copyWith(bag: value.bag));
-          calculateTotalPrice();
+          // calculateTotalPrice();
         }
       },
     );
@@ -106,18 +106,18 @@ class ProductsCubit extends Cubit<ProductsState> {
     );
   }
 
-  void calculateTotalPrice() {
-    state.maybeMap(
-      orElse: () {},
-      updateList: (value) {
-        double totalPrice = 0;
-        if (value.bag.isNotEmpty) {
-          for (var item in value.bag) {
-            totalPrice += item.itemPrice * item.itemQuantity;
-          }
-        }
-        emit(value.copyWith(totalPrice: totalPrice));
-      },
-    );
-  }
+  // void calculateTotalPrice() {
+  //   state.maybeMap(
+  //     orElse: () {},
+  //     updateList: (value) {
+  //       String totalPrice = "0";
+  //       if (value.bag.isNotEmpty) {
+  //         for (var item in value.bag) {
+  //           totalPrice += item.itemPrice * item.itemQuantity;
+  //         }
+  //       }
+  //       emit(value.copyWith(totalPrice: totalPrice));
+  //     },
+  //   );
+  // }
 }

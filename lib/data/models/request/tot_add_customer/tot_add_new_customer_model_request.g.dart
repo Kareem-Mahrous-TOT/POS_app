@@ -6,9 +6,9 @@ part of 'tot_add_new_customer_model_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TOTAddCustomerModelRequest _$$_TOTAddCustomerModelRequestFromJson(
+_$TOTAddCustomerModelRequestImpl _$$TOTAddCustomerModelRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TOTAddCustomerModelRequest(
+    _$TOTAddCustomerModelRequestImpl(
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       fullName: json['fullName'] as String?,
@@ -27,22 +27,24 @@ _$_TOTAddCustomerModelRequest _$$_TOTAddCustomerModelRequestFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_TOTAddCustomerModelRequestToJson(
-        _$_TOTAddCustomerModelRequest instance) =>
+Map<String, dynamic> _$$TOTAddCustomerModelRequestImplToJson(
+        _$TOTAddCustomerModelRequestImpl instance) =>
     <String, dynamic>{
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'fullName': instance.fullName,
       'memberType': instance.memberType,
       'status': instance.status,
-      'addresses': instance.addresses,
+      'addresses': instance.addresses?.map((e) => e.toJson()).toList(),
       'phones': instance.phones,
       'emails': instance.emails,
       'organizations': instance.organizations,
-      'dynamicProperties': instance.dynamicProperties,
+      'dynamicProperties':
+          instance.dynamicProperties?.map((e) => e.toJson()).toList(),
     };
 
-_$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
+_$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
+    _$AddressImpl(
       addressType: json['addressType'] as String?,
       key: json['key'] as String?,
       name: json['name'] as String?,
@@ -66,7 +68,7 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
+Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>
     <String, dynamic>{
       'addressType': instance.addressType,
       'key': instance.key,
@@ -91,8 +93,9 @@ Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
       'description': instance.description,
     };
 
-_$_DynamicProperty _$$_DynamicPropertyFromJson(Map<String, dynamic> json) =>
-    _$_DynamicProperty(
+_$DynamicPropertyImpl _$$DynamicPropertyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DynamicPropertyImpl(
       objectId: json['objectId'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -114,7 +117,8 @@ _$_DynamicProperty _$$_DynamicPropertyFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_DynamicPropertyToJson(_$_DynamicProperty instance) =>
+Map<String, dynamic> _$$DynamicPropertyImplToJson(
+        _$DynamicPropertyImpl instance) =>
     <String, dynamic>{
       'objectId': instance.objectId,
       'name': instance.name,

@@ -6,14 +6,16 @@ part of 'current_customer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CurrentCustomer _$$_CurrentCustomerFromJson(Map<String, dynamic> json) =>
-    _$_CurrentCustomer(
+_$CurrentCustomerImpl _$$CurrentCustomerImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CurrentCustomerImpl(
       code: json['code'] as String,
       customerImage: json['customerImage'] as String,
       email: json['email'] as String,
     );
 
-Map<String, dynamic> _$$_CurrentCustomerToJson(_$_CurrentCustomer instance) =>
+Map<String, dynamic> _$$CurrentCustomerImplToJson(
+        _$CurrentCustomerImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'customerImage': instance.customerImage,

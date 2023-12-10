@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'products_cubit.dart';
+part of 'bag_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProductsState {
+mixin _$BagState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -67,16 +67,15 @@ mixin _$ProductsState {
 }
 
 /// @nodoc
-abstract class $ProductsStateCopyWith<$Res> {
-  factory $ProductsStateCopyWith(
-          ProductsState value, $Res Function(ProductsState) then) =
-      _$ProductsStateCopyWithImpl<$Res, ProductsState>;
+abstract class $BagStateCopyWith<$Res> {
+  factory $BagStateCopyWith(BagState value, $Res Function(BagState) then) =
+      _$BagStateCopyWithImpl<$Res, BagState>;
 }
 
 /// @nodoc
-class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
-    implements $ProductsStateCopyWith<$Res> {
-  _$ProductsStateCopyWithImpl(this._value, this._then);
+class _$BagStateCopyWithImpl<$Res, $Val extends BagState>
+    implements $BagStateCopyWith<$Res> {
+  _$BagStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -85,28 +84,29 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ProductsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$BagStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  _$_Initial();
+class _$InitialImpl implements _Initial {
+  _$InitialImpl();
 
   @override
   String toString() {
-    return 'ProductsState.initial()';
+    return 'BagState.initial()';
   }
 
   @override
@@ -182,25 +182,25 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ProductsState {
-  factory _Initial() = _$_Initial;
+abstract class _Initial implements BagState {
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_EmptyStateCopyWith<$Res> {
-  factory _$$_EmptyStateCopyWith(
-          _$_EmptyState value, $Res Function(_$_EmptyState) then) =
-      __$$_EmptyStateCopyWithImpl<$Res>;
+abstract class _$$EmptyStateImplCopyWith<$Res> {
+  factory _$$EmptyStateImplCopyWith(
+          _$EmptyStateImpl value, $Res Function(_$EmptyStateImpl) then) =
+      __$$EmptyStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_EmptyStateCopyWithImpl<$Res>
-    extends _$ProductsStateCopyWithImpl<$Res, _$_EmptyState>
-    implements _$$_EmptyStateCopyWith<$Res> {
-  __$$_EmptyStateCopyWithImpl(
-      _$_EmptyState _value, $Res Function(_$_EmptyState) _then)
+class __$$EmptyStateImplCopyWithImpl<$Res>
+    extends _$BagStateCopyWithImpl<$Res, _$EmptyStateImpl>
+    implements _$$EmptyStateImplCopyWith<$Res> {
+  __$$EmptyStateImplCopyWithImpl(
+      _$EmptyStateImpl _value, $Res Function(_$EmptyStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -208,7 +208,7 @@ class __$$_EmptyStateCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_EmptyState(
+    return _then(_$EmptyStateImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -219,22 +219,22 @@ class __$$_EmptyStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EmptyState implements _EmptyState {
-  _$_EmptyState({this.message});
+class _$EmptyStateImpl implements _EmptyState {
+  _$EmptyStateImpl({this.message});
 
   @override
   String? message;
 
   @override
   String toString() {
-    return 'ProductsState.empty(message: $message)';
+    return 'BagState.empty(message: $message)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmptyStateCopyWith<_$_EmptyState> get copyWith =>
-      __$$_EmptyStateCopyWithImpl<_$_EmptyState>(this, _$identity);
+  _$$EmptyStateImplCopyWith<_$EmptyStateImpl> get copyWith =>
+      __$$EmptyStateImplCopyWithImpl<_$EmptyStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -309,31 +309,31 @@ class _$_EmptyState implements _EmptyState {
   }
 }
 
-abstract class _EmptyState implements ProductsState {
-  factory _EmptyState({String? message}) = _$_EmptyState;
+abstract class _EmptyState implements BagState {
+  factory _EmptyState({String? message}) = _$EmptyStateImpl;
 
   String? get message;
   set message(String? value);
   @JsonKey(ignore: true)
-  _$$_EmptyStateCopyWith<_$_EmptyState> get copyWith =>
+  _$$EmptyStateImplCopyWith<_$EmptyStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateListStateCopyWith<$Res> {
-  factory _$$_UpdateListStateCopyWith(
-          _$_UpdateListState value, $Res Function(_$_UpdateListState) then) =
-      __$$_UpdateListStateCopyWithImpl<$Res>;
+abstract class _$$UpdateListStateImplCopyWith<$Res> {
+  factory _$$UpdateListStateImplCopyWith(_$UpdateListStateImpl value,
+          $Res Function(_$UpdateListStateImpl) then) =
+      __$$UpdateListStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<BagModel> bag, double? totalPrice, String? message});
 }
 
 /// @nodoc
-class __$$_UpdateListStateCopyWithImpl<$Res>
-    extends _$ProductsStateCopyWithImpl<$Res, _$_UpdateListState>
-    implements _$$_UpdateListStateCopyWith<$Res> {
-  __$$_UpdateListStateCopyWithImpl(
-      _$_UpdateListState _value, $Res Function(_$_UpdateListState) _then)
+class __$$UpdateListStateImplCopyWithImpl<$Res>
+    extends _$BagStateCopyWithImpl<$Res, _$UpdateListStateImpl>
+    implements _$$UpdateListStateImplCopyWith<$Res> {
+  __$$UpdateListStateImplCopyWithImpl(
+      _$UpdateListStateImpl _value, $Res Function(_$UpdateListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -343,7 +343,7 @@ class __$$_UpdateListStateCopyWithImpl<$Res>
     Object? totalPrice = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$_UpdateListState(
+    return _then(_$UpdateListStateImpl(
       bag: null == bag
           ? _value.bag
           : bag // ignore: cast_nullable_to_non_nullable
@@ -362,8 +362,8 @@ class __$$_UpdateListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateListState implements _UpdateListState {
-  _$_UpdateListState({required this.bag, this.totalPrice, this.message});
+class _$UpdateListStateImpl implements _UpdateListState {
+  _$UpdateListStateImpl({required this.bag, this.totalPrice, this.message});
 
   @override
   List<BagModel> bag;
@@ -374,14 +374,15 @@ class _$_UpdateListState implements _UpdateListState {
 
   @override
   String toString() {
-    return 'ProductsState.updateList(bag: $bag, totalPrice: $totalPrice, message: $message)';
+    return 'BagState.updateList(bag: $bag, totalPrice: $totalPrice, message: $message)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateListStateCopyWith<_$_UpdateListState> get copyWith =>
-      __$$_UpdateListStateCopyWithImpl<_$_UpdateListState>(this, _$identity);
+  _$$UpdateListStateImplCopyWith<_$UpdateListStateImpl> get copyWith =>
+      __$$UpdateListStateImplCopyWithImpl<_$UpdateListStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -456,11 +457,11 @@ class _$_UpdateListState implements _UpdateListState {
   }
 }
 
-abstract class _UpdateListState implements ProductsState {
+abstract class _UpdateListState implements BagState {
   factory _UpdateListState(
       {required List<BagModel> bag,
       double? totalPrice,
-      String? message}) = _$_UpdateListState;
+      String? message}) = _$UpdateListStateImpl;
 
   List<BagModel> get bag;
   set bag(List<BagModel> value);
@@ -469,6 +470,6 @@ abstract class _UpdateListState implements ProductsState {
   String? get message;
   set message(String? value);
   @JsonKey(ignore: true)
-  _$$_UpdateListStateCopyWith<_$_UpdateListState> get copyWith =>
+  _$$UpdateListStateImplCopyWith<_$UpdateListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

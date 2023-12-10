@@ -86,24 +86,25 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -113,7 +114,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -195,29 +196,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements HomeEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadProductsCopyWith<$Res> {
-  factory _$$_LoadProductsCopyWith(
-          _$_LoadProducts value, $Res Function(_$_LoadProducts) then) =
-      __$$_LoadProductsCopyWithImpl<$Res>;
+abstract class _$$LoadProductsImplCopyWith<$Res> {
+  factory _$$LoadProductsImplCopyWith(
+          _$LoadProductsImpl value, $Res Function(_$LoadProductsImpl) then) =
+      __$$LoadProductsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadProductsCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_LoadProducts>
-    implements _$$_LoadProductsCopyWith<$Res> {
-  __$$_LoadProductsCopyWithImpl(
-      _$_LoadProducts _value, $Res Function(_$_LoadProducts) _then)
+class __$$LoadProductsImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$LoadProductsImpl>
+    implements _$$LoadProductsImplCopyWith<$Res> {
+  __$$LoadProductsImplCopyWithImpl(
+      _$LoadProductsImpl _value, $Res Function(_$LoadProductsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadProducts implements _LoadProducts {
-  const _$_LoadProducts();
+class _$LoadProductsImpl implements _LoadProducts {
+  const _$LoadProductsImpl();
 
   @override
   String toString() {
@@ -227,7 +228,7 @@ class _$_LoadProducts implements _LoadProducts {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadProducts);
+        (other.runtimeType == runtimeType && other is _$LoadProductsImpl);
   }
 
   @override
@@ -309,24 +310,24 @@ class _$_LoadProducts implements _LoadProducts {
 }
 
 abstract class _LoadProducts implements HomeEvent {
-  const factory _LoadProducts() = _$_LoadProducts;
+  const factory _LoadProducts() = _$LoadProductsImpl;
 }
 
 /// @nodoc
-abstract class _$$_SearchListCopyWith<$Res> {
-  factory _$$_SearchListCopyWith(
-          _$_SearchList value, $Res Function(_$_SearchList) then) =
-      __$$_SearchListCopyWithImpl<$Res>;
+abstract class _$$SearchListImplCopyWith<$Res> {
+  factory _$$SearchListImplCopyWith(
+          _$SearchListImpl value, $Res Function(_$SearchListImpl) then) =
+      __$$SearchListImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? query});
 }
 
 /// @nodoc
-class __$$_SearchListCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_SearchList>
-    implements _$$_SearchListCopyWith<$Res> {
-  __$$_SearchListCopyWithImpl(
-      _$_SearchList _value, $Res Function(_$_SearchList) _then)
+class __$$SearchListImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$SearchListImpl>
+    implements _$$SearchListImplCopyWith<$Res> {
+  __$$SearchListImplCopyWithImpl(
+      _$SearchListImpl _value, $Res Function(_$SearchListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -334,7 +335,7 @@ class __$$_SearchListCopyWithImpl<$Res>
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_$_SearchList(
+    return _then(_$SearchListImpl(
       query: freezed == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -345,8 +346,8 @@ class __$$_SearchListCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchList implements _SearchList {
-  const _$_SearchList({this.query});
+class _$SearchListImpl implements _SearchList {
+  const _$SearchListImpl({this.query});
 
   @override
   final String? query;
@@ -360,7 +361,7 @@ class _$_SearchList implements _SearchList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchList &&
+            other is _$SearchListImpl &&
             (identical(other.query, query) || other.query == query));
   }
 
@@ -370,8 +371,8 @@ class _$_SearchList implements _SearchList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
-      __$$_SearchListCopyWithImpl<_$_SearchList>(this, _$identity);
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
+      __$$SearchListImplCopyWithImpl<_$SearchListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -449,34 +450,34 @@ class _$_SearchList implements _SearchList {
 }
 
 abstract class _SearchList implements HomeEvent {
-  const factory _SearchList({final String? query}) = _$_SearchList;
+  const factory _SearchList({final String? query}) = _$SearchListImpl;
 
   String? get query;
   @JsonKey(ignore: true)
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetCustomersCopyWith<$Res> {
-  factory _$$_GetCustomersCopyWith(
-          _$_GetCustomers value, $Res Function(_$_GetCustomers) then) =
-      __$$_GetCustomersCopyWithImpl<$Res>;
+abstract class _$$GetCustomersImplCopyWith<$Res> {
+  factory _$$GetCustomersImplCopyWith(
+          _$GetCustomersImpl value, $Res Function(_$GetCustomersImpl) then) =
+      __$$GetCustomersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GetCustomersCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_GetCustomers>
-    implements _$$_GetCustomersCopyWith<$Res> {
-  __$$_GetCustomersCopyWithImpl(
-      _$_GetCustomers _value, $Res Function(_$_GetCustomers) _then)
+class __$$GetCustomersImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GetCustomersImpl>
+    implements _$$GetCustomersImplCopyWith<$Res> {
+  __$$GetCustomersImplCopyWithImpl(
+      _$GetCustomersImpl _value, $Res Function(_$GetCustomersImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GetCustomers implements _GetCustomers {
-  const _$_GetCustomers();
+class _$GetCustomersImpl implements _GetCustomers {
+  const _$GetCustomersImpl();
 
   @override
   String toString() {
@@ -486,7 +487,7 @@ class _$_GetCustomers implements _GetCustomers {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetCustomers);
+        (other.runtimeType == runtimeType && other is _$GetCustomersImpl);
   }
 
   @override
@@ -568,7 +569,7 @@ class _$_GetCustomers implements _GetCustomers {
 }
 
 abstract class _GetCustomers implements HomeEvent {
-  const factory _GetCustomers() = _$_GetCustomers;
+  const factory _GetCustomers() = _$GetCustomersImpl;
 }
 
 /// @nodoc
@@ -658,24 +659,25 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  _$_Initial();
+class _$InitialImpl implements _Initial {
+  _$InitialImpl();
 
   @override
   String toString() {
@@ -773,25 +775,25 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements HomeState {
-  factory _Initial() = _$_Initial;
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedDataCopyWith<$Res> {
-  factory _$$_LoadedDataCopyWith(
-          _$_LoadedData value, $Res Function(_$_LoadedData) then) =
-      __$$_LoadedDataCopyWithImpl<$Res>;
+abstract class _$$LoadedDataImplCopyWith<$Res> {
+  factory _$$LoadedDataImplCopyWith(
+          _$LoadedDataImpl value, $Res Function(_$LoadedDataImpl) then) =
+      __$$LoadedDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<TOTProduct> products, bool? isSearching, List<Member>? customers});
 }
 
 /// @nodoc
-class __$$_LoadedDataCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_LoadedData>
-    implements _$$_LoadedDataCopyWith<$Res> {
-  __$$_LoadedDataCopyWithImpl(
-      _$_LoadedData _value, $Res Function(_$_LoadedData) _then)
+class __$$LoadedDataImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$LoadedDataImpl>
+    implements _$$LoadedDataImplCopyWith<$Res> {
+  __$$LoadedDataImplCopyWithImpl(
+      _$LoadedDataImpl _value, $Res Function(_$LoadedDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -801,7 +803,7 @@ class __$$_LoadedDataCopyWithImpl<$Res>
     Object? isSearching = freezed,
     Object? customers = freezed,
   }) {
-    return _then(_$_LoadedData(
+    return _then(_$LoadedDataImpl(
       null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -820,8 +822,8 @@ class __$$_LoadedDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedData implements _LoadedData {
-  _$_LoadedData(this.products, {this.isSearching, this.customers});
+class _$LoadedDataImpl implements _LoadedData {
+  _$LoadedDataImpl(this.products, {this.isSearching, this.customers});
 
   @override
   List<TOTProduct> products;
@@ -838,8 +840,8 @@ class _$_LoadedData implements _LoadedData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedDataCopyWith<_$_LoadedData> get copyWith =>
-      __$$_LoadedDataCopyWithImpl<_$_LoadedData>(this, _$identity);
+  _$$LoadedDataImplCopyWith<_$LoadedDataImpl> get copyWith =>
+      __$$LoadedDataImplCopyWithImpl<_$LoadedDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -933,7 +935,7 @@ class _$_LoadedData implements _LoadedData {
 
 abstract class _LoadedData implements HomeState {
   factory _LoadedData(List<TOTProduct> products,
-      {bool? isSearching, List<Member>? customers}) = _$_LoadedData;
+      {bool? isSearching, List<Member>? customers}) = _$LoadedDataImpl;
 
   List<TOTProduct> get products;
   set products(List<TOTProduct> value);
@@ -942,25 +944,25 @@ abstract class _LoadedData implements HomeState {
   List<Member>? get customers;
   set customers(List<Member>? value);
   @JsonKey(ignore: true)
-  _$$_LoadedDataCopyWith<_$_LoadedData> get copyWith =>
+  _$$LoadedDataImplCopyWith<_$LoadedDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailedLoadingDataCopyWith<$Res> {
-  factory _$$_FailedLoadingDataCopyWith(_$_FailedLoadingData value,
-          $Res Function(_$_FailedLoadingData) then) =
-      __$$_FailedLoadingDataCopyWithImpl<$Res>;
+abstract class _$$FailedLoadingDataImplCopyWith<$Res> {
+  factory _$$FailedLoadingDataImplCopyWith(_$FailedLoadingDataImpl value,
+          $Res Function(_$FailedLoadingDataImpl) then) =
+      __$$FailedLoadingDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_FailedLoadingDataCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_FailedLoadingData>
-    implements _$$_FailedLoadingDataCopyWith<$Res> {
-  __$$_FailedLoadingDataCopyWithImpl(
-      _$_FailedLoadingData _value, $Res Function(_$_FailedLoadingData) _then)
+class __$$FailedLoadingDataImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$FailedLoadingDataImpl>
+    implements _$$FailedLoadingDataImplCopyWith<$Res> {
+  __$$FailedLoadingDataImplCopyWithImpl(_$FailedLoadingDataImpl _value,
+      $Res Function(_$FailedLoadingDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -968,7 +970,7 @@ class __$$_FailedLoadingDataCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_FailedLoadingData(
+    return _then(_$FailedLoadingDataImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -979,8 +981,8 @@ class __$$_FailedLoadingDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailedLoadingData implements _FailedLoadingData {
-  _$_FailedLoadingData(this.message);
+class _$FailedLoadingDataImpl implements _FailedLoadingData {
+  _$FailedLoadingDataImpl(this.message);
 
   @override
   String message;
@@ -993,8 +995,8 @@ class _$_FailedLoadingData implements _FailedLoadingData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailedLoadingDataCopyWith<_$_FailedLoadingData> get copyWith =>
-      __$$_FailedLoadingDataCopyWithImpl<_$_FailedLoadingData>(
+  _$$FailedLoadingDataImplCopyWith<_$FailedLoadingDataImpl> get copyWith =>
+      __$$FailedLoadingDataImplCopyWithImpl<_$FailedLoadingDataImpl>(
           this, _$identity);
 
   @override
@@ -1088,31 +1090,32 @@ class _$_FailedLoadingData implements _FailedLoadingData {
 }
 
 abstract class _FailedLoadingData implements HomeState {
-  factory _FailedLoadingData(String message) = _$_FailedLoadingData;
+  factory _FailedLoadingData(String message) = _$FailedLoadingDataImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_FailedLoadingDataCopyWith<_$_FailedLoadingData> get copyWith =>
+  _$$FailedLoadingDataImplCopyWith<_$FailedLoadingDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FetchingCustomersSuccessCopyWith<$Res> {
-  factory _$$_FetchingCustomersSuccessCopyWith(
-          _$_FetchingCustomersSuccess value,
-          $Res Function(_$_FetchingCustomersSuccess) then) =
-      __$$_FetchingCustomersSuccessCopyWithImpl<$Res>;
+abstract class _$$FetchingCustomersSuccessImplCopyWith<$Res> {
+  factory _$$FetchingCustomersSuccessImplCopyWith(
+          _$FetchingCustomersSuccessImpl value,
+          $Res Function(_$FetchingCustomersSuccessImpl) then) =
+      __$$FetchingCustomersSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Member> customers});
 }
 
 /// @nodoc
-class __$$_FetchingCustomersSuccessCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_FetchingCustomersSuccess>
-    implements _$$_FetchingCustomersSuccessCopyWith<$Res> {
-  __$$_FetchingCustomersSuccessCopyWithImpl(_$_FetchingCustomersSuccess _value,
-      $Res Function(_$_FetchingCustomersSuccess) _then)
+class __$$FetchingCustomersSuccessImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$FetchingCustomersSuccessImpl>
+    implements _$$FetchingCustomersSuccessImplCopyWith<$Res> {
+  __$$FetchingCustomersSuccessImplCopyWithImpl(
+      _$FetchingCustomersSuccessImpl _value,
+      $Res Function(_$FetchingCustomersSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1120,7 +1123,7 @@ class __$$_FetchingCustomersSuccessCopyWithImpl<$Res>
   $Res call({
     Object? customers = null,
   }) {
-    return _then(_$_FetchingCustomersSuccess(
+    return _then(_$FetchingCustomersSuccessImpl(
       null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -1131,8 +1134,8 @@ class __$$_FetchingCustomersSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
-  _$_FetchingCustomersSuccess(this.customers);
+class _$FetchingCustomersSuccessImpl implements _FetchingCustomersSuccess {
+  _$FetchingCustomersSuccessImpl(this.customers);
 
   @override
   List<Member> customers;
@@ -1145,9 +1148,9 @@ class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchingCustomersSuccessCopyWith<_$_FetchingCustomersSuccess>
-      get copyWith => __$$_FetchingCustomersSuccessCopyWithImpl<
-          _$_FetchingCustomersSuccess>(this, _$identity);
+  _$$FetchingCustomersSuccessImplCopyWith<_$FetchingCustomersSuccessImpl>
+      get copyWith => __$$FetchingCustomersSuccessImplCopyWithImpl<
+          _$FetchingCustomersSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1241,30 +1244,32 @@ class _$_FetchingCustomersSuccess implements _FetchingCustomersSuccess {
 
 abstract class _FetchingCustomersSuccess implements HomeState {
   factory _FetchingCustomersSuccess(List<Member> customers) =
-      _$_FetchingCustomersSuccess;
+      _$FetchingCustomersSuccessImpl;
 
   List<Member> get customers;
   set customers(List<Member> value);
   @JsonKey(ignore: true)
-  _$$_FetchingCustomersSuccessCopyWith<_$_FetchingCustomersSuccess>
+  _$$FetchingCustomersSuccessImplCopyWith<_$FetchingCustomersSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FetchingCustomersFailedCopyWith<$Res> {
-  factory _$$_FetchingCustomersFailedCopyWith(_$_FetchingCustomersFailed value,
-          $Res Function(_$_FetchingCustomersFailed) then) =
-      __$$_FetchingCustomersFailedCopyWithImpl<$Res>;
+abstract class _$$FetchingCustomersFailedImplCopyWith<$Res> {
+  factory _$$FetchingCustomersFailedImplCopyWith(
+          _$FetchingCustomersFailedImpl value,
+          $Res Function(_$FetchingCustomersFailedImpl) then) =
+      __$$FetchingCustomersFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_FetchingCustomersFailedCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_FetchingCustomersFailed>
-    implements _$$_FetchingCustomersFailedCopyWith<$Res> {
-  __$$_FetchingCustomersFailedCopyWithImpl(_$_FetchingCustomersFailed _value,
-      $Res Function(_$_FetchingCustomersFailed) _then)
+class __$$FetchingCustomersFailedImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$FetchingCustomersFailedImpl>
+    implements _$$FetchingCustomersFailedImplCopyWith<$Res> {
+  __$$FetchingCustomersFailedImplCopyWithImpl(
+      _$FetchingCustomersFailedImpl _value,
+      $Res Function(_$FetchingCustomersFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1272,7 +1277,7 @@ class __$$_FetchingCustomersFailedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_FetchingCustomersFailed(
+    return _then(_$FetchingCustomersFailedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1283,8 +1288,8 @@ class __$$_FetchingCustomersFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
-  _$_FetchingCustomersFailed(this.message);
+class _$FetchingCustomersFailedImpl implements _FetchingCustomersFailed {
+  _$FetchingCustomersFailedImpl(this.message);
 
   @override
   String message;
@@ -1297,10 +1302,9 @@ class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchingCustomersFailedCopyWith<_$_FetchingCustomersFailed>
-      get copyWith =>
-          __$$_FetchingCustomersFailedCopyWithImpl<_$_FetchingCustomersFailed>(
-              this, _$identity);
+  _$$FetchingCustomersFailedImplCopyWith<_$FetchingCustomersFailedImpl>
+      get copyWith => __$$FetchingCustomersFailedImplCopyWithImpl<
+          _$FetchingCustomersFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1393,11 +1397,12 @@ class _$_FetchingCustomersFailed implements _FetchingCustomersFailed {
 }
 
 abstract class _FetchingCustomersFailed implements HomeState {
-  factory _FetchingCustomersFailed(String message) = _$_FetchingCustomersFailed;
+  factory _FetchingCustomersFailed(String message) =
+      _$FetchingCustomersFailedImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_FetchingCustomersFailedCopyWith<_$_FetchingCustomersFailed>
+  _$$FetchingCustomersFailedImplCopyWith<_$FetchingCustomersFailedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

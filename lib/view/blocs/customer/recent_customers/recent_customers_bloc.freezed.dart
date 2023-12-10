@@ -88,24 +88,25 @@ class _$RecentCustomersEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  _$_Started();
+class _$StartedImpl implements _Started {
+  _$StartedImpl();
 
   @override
   String toString() {
@@ -188,29 +189,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements RecentCustomersEvent {
-  factory _Started() = _$_Started;
+  factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadRecentCustomersCopyWith<$Res> {
-  factory _$$_LoadRecentCustomersCopyWith(_$_LoadRecentCustomers value,
-          $Res Function(_$_LoadRecentCustomers) then) =
-      __$$_LoadRecentCustomersCopyWithImpl<$Res>;
+abstract class _$$LoadRecentCustomersImplCopyWith<$Res> {
+  factory _$$LoadRecentCustomersImplCopyWith(_$LoadRecentCustomersImpl value,
+          $Res Function(_$LoadRecentCustomersImpl) then) =
+      __$$LoadRecentCustomersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadRecentCustomersCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_LoadRecentCustomers>
-    implements _$$_LoadRecentCustomersCopyWith<$Res> {
-  __$$_LoadRecentCustomersCopyWithImpl(_$_LoadRecentCustomers _value,
-      $Res Function(_$_LoadRecentCustomers) _then)
+class __$$LoadRecentCustomersImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$LoadRecentCustomersImpl>
+    implements _$$LoadRecentCustomersImplCopyWith<$Res> {
+  __$$LoadRecentCustomersImplCopyWithImpl(_$LoadRecentCustomersImpl _value,
+      $Res Function(_$LoadRecentCustomersImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadRecentCustomers implements _LoadRecentCustomers {
-  _$_LoadRecentCustomers();
+class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
+  _$LoadRecentCustomersImpl();
 
   @override
   String toString() {
@@ -293,14 +294,14 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
 }
 
 abstract class _LoadRecentCustomers implements RecentCustomersEvent {
-  factory _LoadRecentCustomers() = _$_LoadRecentCustomers;
+  factory _LoadRecentCustomers() = _$LoadRecentCustomersImpl;
 }
 
 /// @nodoc
-abstract class _$$_AddCustomerCopyWith<$Res> {
-  factory _$$_AddCustomerCopyWith(
-          _$_AddCustomer value, $Res Function(_$_AddCustomer) then) =
-      __$$_AddCustomerCopyWithImpl<$Res>;
+abstract class _$$AddCustomerImplCopyWith<$Res> {
+  factory _$$AddCustomerImplCopyWith(
+          _$AddCustomerImpl value, $Res Function(_$AddCustomerImpl) then) =
+      __$$AddCustomerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Member customer});
 
@@ -308,11 +309,11 @@ abstract class _$$_AddCustomerCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddCustomerCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_AddCustomer>
-    implements _$$_AddCustomerCopyWith<$Res> {
-  __$$_AddCustomerCopyWithImpl(
-      _$_AddCustomer _value, $Res Function(_$_AddCustomer) _then)
+class __$$AddCustomerImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$AddCustomerImpl>
+    implements _$$AddCustomerImplCopyWith<$Res> {
+  __$$AddCustomerImplCopyWithImpl(
+      _$AddCustomerImpl _value, $Res Function(_$AddCustomerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -320,7 +321,7 @@ class __$$_AddCustomerCopyWithImpl<$Res>
   $Res call({
     Object? customer = null,
   }) {
-    return _then(_$_AddCustomer(
+    return _then(_$AddCustomerImpl(
       null == customer
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
@@ -339,8 +340,8 @@ class __$$_AddCustomerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddCustomer implements _AddCustomer {
-  _$_AddCustomer(this.customer);
+class _$AddCustomerImpl implements _AddCustomer {
+  _$AddCustomerImpl(this.customer);
 
   @override
   Member customer;
@@ -353,8 +354,8 @@ class _$_AddCustomer implements _AddCustomer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddCustomerCopyWith<_$_AddCustomer> get copyWith =>
-      __$$_AddCustomerCopyWithImpl<_$_AddCustomer>(this, _$identity);
+  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
+      __$$AddCustomerImplCopyWithImpl<_$AddCustomerImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -432,30 +433,30 @@ class _$_AddCustomer implements _AddCustomer {
 }
 
 abstract class _AddCustomer implements RecentCustomersEvent {
-  factory _AddCustomer(Member customer) = _$_AddCustomer;
+  factory _AddCustomer(Member customer) = _$AddCustomerImpl;
 
   Member get customer;
   set customer(Member value);
   @JsonKey(ignore: true)
-  _$$_AddCustomerCopyWith<_$_AddCustomer> get copyWith =>
+  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SearchListCopyWith<$Res> {
-  factory _$$_SearchListCopyWith(
-          _$_SearchList value, $Res Function(_$_SearchList) then) =
-      __$$_SearchListCopyWithImpl<$Res>;
+abstract class _$$SearchListImplCopyWith<$Res> {
+  factory _$$SearchListImplCopyWith(
+          _$SearchListImpl value, $Res Function(_$SearchListImpl) then) =
+      __$$SearchListImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? query});
 }
 
 /// @nodoc
-class __$$_SearchListCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_SearchList>
-    implements _$$_SearchListCopyWith<$Res> {
-  __$$_SearchListCopyWithImpl(
-      _$_SearchList _value, $Res Function(_$_SearchList) _then)
+class __$$SearchListImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$SearchListImpl>
+    implements _$$SearchListImplCopyWith<$Res> {
+  __$$SearchListImplCopyWithImpl(
+      _$SearchListImpl _value, $Res Function(_$SearchListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -463,7 +464,7 @@ class __$$_SearchListCopyWithImpl<$Res>
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_$_SearchList(
+    return _then(_$SearchListImpl(
       query: freezed == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -474,8 +475,8 @@ class __$$_SearchListCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchList implements _SearchList {
-  _$_SearchList({this.query});
+class _$SearchListImpl implements _SearchList {
+  _$SearchListImpl({this.query});
 
   @override
   String? query;
@@ -488,8 +489,8 @@ class _$_SearchList implements _SearchList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
-      __$$_SearchListCopyWithImpl<_$_SearchList>(this, _$identity);
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
+      __$$SearchListImplCopyWithImpl<_$SearchListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -567,12 +568,12 @@ class _$_SearchList implements _SearchList {
 }
 
 abstract class _SearchList implements RecentCustomersEvent {
-  factory _SearchList({String? query}) = _$_SearchList;
+  factory _SearchList({String? query}) = _$SearchListImpl;
 
   String? get query;
   set query(String? value);
   @JsonKey(ignore: true)
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -665,24 +666,25 @@ class _$RecentCustomersStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  _$_Initial();
+class _$InitialImpl implements _Initial {
+  _$InitialImpl();
 
   @override
   String toString() {
@@ -780,26 +782,27 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements RecentCustomersState {
-  factory _Initial() = _$_Initial;
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedRecentCustomerDataCopyWith<$Res> {
-  factory _$$_LoadedRecentCustomerDataCopyWith(
-          _$_LoadedRecentCustomerData value,
-          $Res Function(_$_LoadedRecentCustomerData) then) =
-      __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>;
+abstract class _$$LoadedRecentCustomerDataImplCopyWith<$Res> {
+  factory _$$LoadedRecentCustomerDataImplCopyWith(
+          _$LoadedRecentCustomerDataImpl value,
+          $Res Function(_$LoadedRecentCustomerDataImpl) then) =
+      __$$LoadedRecentCustomerDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Member> customers, bool? isSearching});
 }
 
 /// @nodoc
-class __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>
+class __$$LoadedRecentCustomerDataImplCopyWithImpl<$Res>
     extends _$RecentCustomersStateCopyWithImpl<$Res,
-        _$_LoadedRecentCustomerData>
-    implements _$$_LoadedRecentCustomerDataCopyWith<$Res> {
-  __$$_LoadedRecentCustomerDataCopyWithImpl(_$_LoadedRecentCustomerData _value,
-      $Res Function(_$_LoadedRecentCustomerData) _then)
+        _$LoadedRecentCustomerDataImpl>
+    implements _$$LoadedRecentCustomerDataImplCopyWith<$Res> {
+  __$$LoadedRecentCustomerDataImplCopyWithImpl(
+      _$LoadedRecentCustomerDataImpl _value,
+      $Res Function(_$LoadedRecentCustomerDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -808,7 +811,7 @@ class __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>
     Object? customers = null,
     Object? isSearching = freezed,
   }) {
-    return _then(_$_LoadedRecentCustomerData(
+    return _then(_$LoadedRecentCustomerDataImpl(
       null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -823,8 +826,8 @@ class __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedRecentCustomerData implements _LoadedRecentCustomerData {
-  _$_LoadedRecentCustomerData(this.customers, {this.isSearching});
+class _$LoadedRecentCustomerDataImpl implements _LoadedRecentCustomerData {
+  _$LoadedRecentCustomerDataImpl(this.customers, {this.isSearching});
 
   @override
   List<Member> customers;
@@ -839,9 +842,9 @@ class _$_LoadedRecentCustomerData implements _LoadedRecentCustomerData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedRecentCustomerDataCopyWith<_$_LoadedRecentCustomerData>
-      get copyWith => __$$_LoadedRecentCustomerDataCopyWithImpl<
-          _$_LoadedRecentCustomerData>(this, _$identity);
+  _$$LoadedRecentCustomerDataImplCopyWith<_$LoadedRecentCustomerDataImpl>
+      get copyWith => __$$LoadedRecentCustomerDataImplCopyWithImpl<
+          _$LoadedRecentCustomerDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -935,35 +938,35 @@ class _$_LoadedRecentCustomerData implements _LoadedRecentCustomerData {
 
 abstract class _LoadedRecentCustomerData implements RecentCustomersState {
   factory _LoadedRecentCustomerData(List<Member> customers,
-      {bool? isSearching}) = _$_LoadedRecentCustomerData;
+      {bool? isSearching}) = _$LoadedRecentCustomerDataImpl;
 
   List<Member> get customers;
   set customers(List<Member> value);
   bool? get isSearching;
   set isSearching(bool? value);
   @JsonKey(ignore: true)
-  _$$_LoadedRecentCustomerDataCopyWith<_$_LoadedRecentCustomerData>
+  _$$LoadedRecentCustomerDataImplCopyWith<_$LoadedRecentCustomerDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailedLoadingRecentCustomerDataCopyWith<$Res> {
-  factory _$$_FailedLoadingRecentCustomerDataCopyWith(
-          _$_FailedLoadingRecentCustomerData value,
-          $Res Function(_$_FailedLoadingRecentCustomerData) then) =
-      __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>;
+abstract class _$$FailedLoadingRecentCustomerDataImplCopyWith<$Res> {
+  factory _$$FailedLoadingRecentCustomerDataImplCopyWith(
+          _$FailedLoadingRecentCustomerDataImpl value,
+          $Res Function(_$FailedLoadingRecentCustomerDataImpl) then) =
+      __$$FailedLoadingRecentCustomerDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>
+class __$$FailedLoadingRecentCustomerDataImplCopyWithImpl<$Res>
     extends _$RecentCustomersStateCopyWithImpl<$Res,
-        _$_FailedLoadingRecentCustomerData>
-    implements _$$_FailedLoadingRecentCustomerDataCopyWith<$Res> {
-  __$$_FailedLoadingRecentCustomerDataCopyWithImpl(
-      _$_FailedLoadingRecentCustomerData _value,
-      $Res Function(_$_FailedLoadingRecentCustomerData) _then)
+        _$FailedLoadingRecentCustomerDataImpl>
+    implements _$$FailedLoadingRecentCustomerDataImplCopyWith<$Res> {
+  __$$FailedLoadingRecentCustomerDataImplCopyWithImpl(
+      _$FailedLoadingRecentCustomerDataImpl _value,
+      $Res Function(_$FailedLoadingRecentCustomerDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -971,7 +974,7 @@ class __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_FailedLoadingRecentCustomerData(
+    return _then(_$FailedLoadingRecentCustomerDataImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -982,9 +985,9 @@ class __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailedLoadingRecentCustomerData
+class _$FailedLoadingRecentCustomerDataImpl
     implements _FailedLoadingRecentCustomerData {
-  _$_FailedLoadingRecentCustomerData(this.message);
+  _$FailedLoadingRecentCustomerDataImpl(this.message);
 
   @override
   String message;
@@ -997,10 +1000,10 @@ class _$_FailedLoadingRecentCustomerData
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailedLoadingRecentCustomerDataCopyWith<
-          _$_FailedLoadingRecentCustomerData>
-      get copyWith => __$$_FailedLoadingRecentCustomerDataCopyWithImpl<
-          _$_FailedLoadingRecentCustomerData>(this, _$identity);
+  _$$FailedLoadingRecentCustomerDataImplCopyWith<
+          _$FailedLoadingRecentCustomerDataImpl>
+      get copyWith => __$$FailedLoadingRecentCustomerDataImplCopyWithImpl<
+          _$FailedLoadingRecentCustomerDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1095,31 +1098,31 @@ class _$_FailedLoadingRecentCustomerData
 abstract class _FailedLoadingRecentCustomerData
     implements RecentCustomersState {
   factory _FailedLoadingRecentCustomerData(String message) =
-      _$_FailedLoadingRecentCustomerData;
+      _$FailedLoadingRecentCustomerDataImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_FailedLoadingRecentCustomerDataCopyWith<
-          _$_FailedLoadingRecentCustomerData>
+  _$$FailedLoadingRecentCustomerDataImplCopyWith<
+          _$FailedLoadingRecentCustomerDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddCustomerFailedCopyWith<$Res> {
-  factory _$$_AddCustomerFailedCopyWith(_$_AddCustomerFailed value,
-          $Res Function(_$_AddCustomerFailed) then) =
-      __$$_AddCustomerFailedCopyWithImpl<$Res>;
+abstract class _$$AddCustomerFailedImplCopyWith<$Res> {
+  factory _$$AddCustomerFailedImplCopyWith(_$AddCustomerFailedImpl value,
+          $Res Function(_$AddCustomerFailedImpl) then) =
+      __$$AddCustomerFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_AddCustomerFailedCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_AddCustomerFailed>
-    implements _$$_AddCustomerFailedCopyWith<$Res> {
-  __$$_AddCustomerFailedCopyWithImpl(
-      _$_AddCustomerFailed _value, $Res Function(_$_AddCustomerFailed) _then)
+class __$$AddCustomerFailedImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$AddCustomerFailedImpl>
+    implements _$$AddCustomerFailedImplCopyWith<$Res> {
+  __$$AddCustomerFailedImplCopyWithImpl(_$AddCustomerFailedImpl _value,
+      $Res Function(_$AddCustomerFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1127,7 +1130,7 @@ class __$$_AddCustomerFailedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_AddCustomerFailed(
+    return _then(_$AddCustomerFailedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1138,8 +1141,8 @@ class __$$_AddCustomerFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddCustomerFailed implements _AddCustomerFailed {
-  _$_AddCustomerFailed(this.message);
+class _$AddCustomerFailedImpl implements _AddCustomerFailed {
+  _$AddCustomerFailedImpl(this.message);
 
   @override
   String message;
@@ -1152,8 +1155,8 @@ class _$_AddCustomerFailed implements _AddCustomerFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddCustomerFailedCopyWith<_$_AddCustomerFailed> get copyWith =>
-      __$$_AddCustomerFailedCopyWithImpl<_$_AddCustomerFailed>(
+  _$$AddCustomerFailedImplCopyWith<_$AddCustomerFailedImpl> get copyWith =>
+      __$$AddCustomerFailedImplCopyWithImpl<_$AddCustomerFailedImpl>(
           this, _$identity);
 
   @override
@@ -1247,20 +1250,20 @@ class _$_AddCustomerFailed implements _AddCustomerFailed {
 }
 
 abstract class _AddCustomerFailed implements RecentCustomersState {
-  factory _AddCustomerFailed(String message) = _$_AddCustomerFailed;
+  factory _AddCustomerFailed(String message) = _$AddCustomerFailedImpl;
 
   String get message;
   set message(String value);
   @JsonKey(ignore: true)
-  _$$_AddCustomerFailedCopyWith<_$_AddCustomerFailed> get copyWith =>
+  _$$AddCustomerFailedImplCopyWith<_$AddCustomerFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddCustomerSuccessCopyWith<$Res> {
-  factory _$$_AddCustomerSuccessCopyWith(_$_AddCustomerSuccess value,
-          $Res Function(_$_AddCustomerSuccess) then) =
-      __$$_AddCustomerSuccessCopyWithImpl<$Res>;
+abstract class _$$AddCustomerSuccessImplCopyWith<$Res> {
+  factory _$$AddCustomerSuccessImplCopyWith(_$AddCustomerSuccessImpl value,
+          $Res Function(_$AddCustomerSuccessImpl) then) =
+      __$$AddCustomerSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TOTAddCustomerModelResponse response});
 
@@ -1268,11 +1271,11 @@ abstract class _$$_AddCustomerSuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddCustomerSuccessCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_AddCustomerSuccess>
-    implements _$$_AddCustomerSuccessCopyWith<$Res> {
-  __$$_AddCustomerSuccessCopyWithImpl(
-      _$_AddCustomerSuccess _value, $Res Function(_$_AddCustomerSuccess) _then)
+class __$$AddCustomerSuccessImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$AddCustomerSuccessImpl>
+    implements _$$AddCustomerSuccessImplCopyWith<$Res> {
+  __$$AddCustomerSuccessImplCopyWithImpl(_$AddCustomerSuccessImpl _value,
+      $Res Function(_$AddCustomerSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1280,7 +1283,7 @@ class __$$_AddCustomerSuccessCopyWithImpl<$Res>
   $Res call({
     Object? response = null,
   }) {
-    return _then(_$_AddCustomerSuccess(
+    return _then(_$AddCustomerSuccessImpl(
       null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -1299,8 +1302,8 @@ class __$$_AddCustomerSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddCustomerSuccess implements _AddCustomerSuccess {
-  _$_AddCustomerSuccess(this.response);
+class _$AddCustomerSuccessImpl implements _AddCustomerSuccess {
+  _$AddCustomerSuccessImpl(this.response);
 
   @override
   TOTAddCustomerModelResponse response;
@@ -1313,8 +1316,8 @@ class _$_AddCustomerSuccess implements _AddCustomerSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddCustomerSuccessCopyWith<_$_AddCustomerSuccess> get copyWith =>
-      __$$_AddCustomerSuccessCopyWithImpl<_$_AddCustomerSuccess>(
+  _$$AddCustomerSuccessImplCopyWith<_$AddCustomerSuccessImpl> get copyWith =>
+      __$$AddCustomerSuccessImplCopyWithImpl<_$AddCustomerSuccessImpl>(
           this, _$identity);
 
   @override
@@ -1409,11 +1412,11 @@ class _$_AddCustomerSuccess implements _AddCustomerSuccess {
 
 abstract class _AddCustomerSuccess implements RecentCustomersState {
   factory _AddCustomerSuccess(TOTAddCustomerModelResponse response) =
-      _$_AddCustomerSuccess;
+      _$AddCustomerSuccessImpl;
 
   TOTAddCustomerModelResponse get response;
   set response(TOTAddCustomerModelResponse value);
   @JsonKey(ignore: true)
-  _$$_AddCustomerSuccessCopyWith<_$_AddCustomerSuccess> get copyWith =>
+  _$$AddCustomerSuccessImplCopyWith<_$AddCustomerSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

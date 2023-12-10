@@ -6,9 +6,9 @@ part of 'tot_create_order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TotCreateOrderResponse _$$_TotCreateOrderResponseFromJson(
+_$TotCreateOrderResponseImpl _$$TotCreateOrderResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TotCreateOrderResponse(
+    _$TotCreateOrderResponseImpl(
       rowVersion: json['rowVersion'] as String?,
       customerId: json['customerId'] as String,
       customerName: json['customerName'] as String?,
@@ -118,8 +118,8 @@ _$_TotCreateOrderResponse _$$_TotCreateOrderResponseFromJson(
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$$_TotCreateOrderResponseToJson(
-        _$_TotCreateOrderResponse instance) =>
+Map<String, dynamic> _$$TotCreateOrderResponseImplToJson(
+        _$TotCreateOrderResponseImpl instance) =>
     <String, dynamic>{
       'rowVersion': instance.rowVersion,
       'customerId': instance.customerId,
@@ -137,14 +137,14 @@ Map<String, dynamic> _$$_TotCreateOrderResponseToJson(
       'subscriptionNumber': instance.subscriptionNumber,
       'subscriptionId': instance.subscriptionId,
       'objectType': instance.objectType,
-      'addresses': instance.addresses,
-      'inPayments': instance.inPayments,
-      'items': instance.items,
-      'shipments': instance.shipments,
-      'feeDetails': instance.feeDetails,
-      'discounts': instance.discounts,
+      'addresses': instance.addresses?.map((e) => e.toJson()).toList(),
+      'inPayments': instance.inPayments?.map((e) => e.toJson()).toList(),
+      'items': instance.items.map((e) => e.toJson()).toList(),
+      'shipments': instance.shipments?.map((e) => e.toJson()).toList(),
+      'feeDetails': instance.feeDetails?.map((e) => e.toJson()).toList(),
+      'discounts': instance.discounts?.map((e) => e.toJson()).toList(),
       'discountAmount': instance.discountAmount,
-      'taxDetails': instance.taxDetails,
+      'taxDetails': instance.taxDetails?.map((e) => e.toJson()).toList(),
       'scopes': instance.scopes,
       'total': instance.total,
       'subTotal': instance.subTotal,
@@ -191,9 +191,10 @@ Map<String, dynamic> _$$_TotCreateOrderResponseToJson(
       'isCancelled': instance.isCancelled,
       'cancelledDate': instance.cancelledDate?.toIso8601String(),
       'cancelReason': instance.cancelReason,
-      'packages': instance.packages,
-      'dynamicProperties': instance.dynamicProperties,
-      'operationsLog': instance.operationsLog,
+      'packages': instance.packages?.map((e) => e.toJson()).toList(),
+      'dynamicProperties':
+          instance.dynamicProperties?.map((e) => e.toJson()).toList(),
+      'operationsLog': instance.operationsLog?.map((e) => e.toJson()).toList(),
       'createdDate': instance.createdDate.toIso8601String(),
       'modifiedDate': instance.modifiedDate.toIso8601String(),
       'createdBy': instance.createdBy,
@@ -201,7 +202,8 @@ Map<String, dynamic> _$$_TotCreateOrderResponseToJson(
       'id': instance.id,
     };
 
-_$_Package _$$_PackageFromJson(Map<String, dynamic> json) => _$_Package(
+_$PackageImpl _$$PackageImplFromJson(Map<String, dynamic> json) =>
+    _$PackageImpl(
       items: (json['items'] as List<dynamic>?)
           ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -220,9 +222,9 @@ _$_Package _$$_PackageFromJson(Map<String, dynamic> json) => _$_Package(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_PackageToJson(_$_Package instance) =>
+Map<String, dynamic> _$$PackageImplToJson(_$PackageImpl instance) =>
     <String, dynamic>{
-      'items': instance.items,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
       'barCode': instance.barCode,
       'packageType': instance.packageType,
       'weightUnit': instance.weightUnit,
@@ -234,7 +236,8 @@ Map<String, dynamic> _$$_PackageToJson(_$_Package instance) =>
       'id': instance.id,
     };
 
-_$_Shipment _$$_ShipmentFromJson(Map<String, dynamic> json) => _$_Shipment(
+_$ShipmentImpl _$$ShipmentImplFromJson(Map<String, dynamic> json) =>
+    _$ShipmentImpl(
       organizationId: json['organizationId'] as String?,
       organizationName: json['organizationName'] as String?,
       fulfillmentCenterId: json['fulfillmentCenterId'] as String?,
@@ -290,7 +293,7 @@ _$_Shipment _$$_ShipmentFromJson(Map<String, dynamic> json) => _$_Shipment(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_ShipmentToJson(_$_Shipment instance) =>
+Map<String, dynamic> _$$ShipmentImplToJson(_$ShipmentImpl instance) =>
     <String, dynamic>{
       'organizationId': instance.organizationId,
       'organizationName': instance.organizationName,
@@ -302,7 +305,7 @@ Map<String, dynamic> _$$_ShipmentToJson(_$_Shipment instance) =>
       'shipmentMethodOption': instance.shipmentMethodOption,
       'customerOrderId': instance.customerOrderId,
       'customerOrder': instance.customerOrder,
-      'items': instance.items,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
       'weightUnit': instance.weightUnit,
       'weight': instance.weight,
       'measureUnit': instance.measureUnit,
@@ -345,7 +348,8 @@ Map<String, dynamic> _$$_ShipmentToJson(_$_Shipment instance) =>
       'id': instance.id,
     };
 
-_$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
+_$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
+    _$AddressImpl(
       id: json['id'] as String?,
       addressLine1: json['addressLine1'] as String?,
       addressLine2: json['addressLine2'] as String?,
@@ -363,7 +367,7 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       modifiedBy: json['modifiedBy'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
+Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'addressLine1': instance.addressLine1,
@@ -382,7 +386,8 @@ Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
       'modifiedBy': instance.modifiedBy,
     };
 
-_$_InPayment _$$_InPaymentFromJson(Map<String, dynamic> json) => _$_InPayment(
+_$InPaymentImpl _$$InPaymentImplFromJson(Map<String, dynamic> json) =>
+    _$InPaymentImpl(
       id: json['id'] as String?,
       paymentMethod: json['paymentMethod'] as String?,
       transactionId: json['transactionId'] as String?,
@@ -395,7 +400,7 @@ _$_InPayment _$$_InPaymentFromJson(Map<String, dynamic> json) => _$_InPayment(
       modifiedBy: json['modifiedBy'] as String?,
     );
 
-Map<String, dynamic> _$$_InPaymentToJson(_$_InPayment instance) =>
+Map<String, dynamic> _$$InPaymentImplToJson(_$InPaymentImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'paymentMethod': instance.paymentMethod,
@@ -409,10 +414,11 @@ Map<String, dynamic> _$$_InPaymentToJson(_$_InPayment instance) =>
       'modifiedBy': instance.modifiedBy,
     };
 
-_$_LineItem _$$_LineItemFromJson(Map<String, dynamic> json) => _$_LineItem(
+_$LineItemImpl _$$LineItemImplFromJson(Map<String, dynamic> json) =>
+    _$LineItemImpl(
       priceId: json['priceId'] as String?,
-      currency: json['currency'] as String,
-      price: (json['price'] as num).toDouble(),
+      currency: json['currency'] as String?,
+      price: json['price'] as String?,
       priceWithTax: (json['priceWithTax'] as num?)?.toDouble(),
       placedPrice: (json['placedPrice'] as num?)?.toDouble(),
       placedPriceWithTax: (json['placedPriceWithTax'] as num?)?.toDouble(),
@@ -481,7 +487,7 @@ _$_LineItem _$$_LineItemFromJson(Map<String, dynamic> json) => _$_LineItem(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
+Map<String, dynamic> _$$LineItemImplToJson(_$LineItemImpl instance) =>
     <String, dynamic>{
       'priceId': instance.priceId,
       'currency': instance.currency,
@@ -517,7 +523,7 @@ Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
       'fulfillmentCenterId': instance.fulfillmentCenterId,
       'fulfillmentCenterName': instance.fulfillmentCenterName,
       'outerId': instance.outerId,
-      'feeDetails': instance.feeDetails,
+      'feeDetails': instance.feeDetails?.map((e) => e.toJson()).toList(),
       'vendorId': instance.vendorId,
       'weightUnit': instance.weightUnit,
       'weight': instance.weight,
@@ -529,9 +535,10 @@ Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
       'cancelledDate': instance.cancelledDate?.toIso8601String(),
       'cancelReason': instance.cancelReason,
       'objectType': instance.objectType,
-      'dynamicProperties': instance.dynamicProperties,
-      'discounts': instance.discounts,
-      'taxDetails': instance.taxDetails,
+      'dynamicProperties':
+          instance.dynamicProperties?.map((e) => e.toJson()).toList(),
+      'discounts': instance.discounts?.map((e) => e.toJson()).toList(),
+      'taxDetails': instance.taxDetails?.map((e) => e.toJson()).toList(),
       'createdDate': instance.createdDate?.toIso8601String(),
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'createdBy': instance.createdBy,
@@ -539,15 +546,15 @@ Map<String, dynamic> _$$_LineItemToJson(_$_LineItem instance) =>
       'id': instance.id,
     };
 
-_$_FeeDetails _$$_FeeDetailsFromJson(Map<String, dynamic> json) =>
-    _$_FeeDetails(
+_$FeeDetailsImpl _$$FeeDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$FeeDetailsImpl(
       feeId: json['feeId'] as String?,
       currency: json['currency'] as String?,
       description: json['description'] as String?,
       amount: (json['amount'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_FeeDetailsToJson(_$_FeeDetails instance) =>
+Map<String, dynamic> _$$FeeDetailsImplToJson(_$FeeDetailsImpl instance) =>
     <String, dynamic>{
       'feeId': instance.feeId,
       'currency': instance.currency,
@@ -555,20 +562,22 @@ Map<String, dynamic> _$$_FeeDetailsToJson(_$_FeeDetails instance) =>
       'amount': instance.amount,
     };
 
-_$_TaxDetail _$$_TaxDetailFromJson(Map<String, dynamic> json) => _$_TaxDetail(
+_$TaxDetailImpl _$$TaxDetailImplFromJson(Map<String, dynamic> json) =>
+    _$TaxDetailImpl(
       rate: (json['rate'] as num?)?.toDouble(),
       amount: (json['amount'] as num?)?.toDouble(),
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_TaxDetailToJson(_$_TaxDetail instance) =>
+Map<String, dynamic> _$$TaxDetailImplToJson(_$TaxDetailImpl instance) =>
     <String, dynamic>{
       'rate': instance.rate,
       'amount': instance.amount,
       'name': instance.name,
     };
 
-_$_Discount _$$_DiscountFromJson(Map<String, dynamic> json) => _$_Discount(
+_$DiscountImpl _$$DiscountImplFromJson(Map<String, dynamic> json) =>
+    _$DiscountImpl(
       promotionId: json['promotionId'] as String?,
       currency: json['currency'] as String?,
       coupon: json['coupon'] as String?,
@@ -579,7 +588,7 @@ _$_Discount _$$_DiscountFromJson(Map<String, dynamic> json) => _$_Discount(
           (json['discountAmountWithTax'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_DiscountToJson(_$_Discount instance) =>
+Map<String, dynamic> _$$DiscountImplToJson(_$DiscountImpl instance) =>
     <String, dynamic>{
       'promotionId': instance.promotionId,
       'currency': instance.currency,
@@ -590,8 +599,8 @@ Map<String, dynamic> _$$_DiscountToJson(_$_Discount instance) =>
       'discountAmountWithTax': instance.discountAmountWithTax,
     };
 
-_$_OperationLog _$$_OperationLogFromJson(Map<String, dynamic> json) =>
-    _$_OperationLog(
+_$OperationLogImpl _$$OperationLogImplFromJson(Map<String, dynamic> json) =>
+    _$OperationLogImpl(
       objectType: json['objectType'] as String?,
       objectId: json['objectId'] as String?,
       operationType: json['operationType'] as String?,
@@ -607,7 +616,7 @@ _$_OperationLog _$$_OperationLogFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['modifiedDate'] as String),
     );
 
-Map<String, dynamic> _$$_OperationLogToJson(_$_OperationLog instance) =>
+Map<String, dynamic> _$$OperationLogImplToJson(_$OperationLogImpl instance) =>
     <String, dynamic>{
       'objectType': instance.objectType,
       'objectId': instance.objectId,

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:tot_pos/core/network/api_consumer.dart';
+import 'package:tot_pos/core/network/end_points.dart';
 import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
 import 'package:tot_pos/data/repository/base/products_repo_base.dart';
@@ -23,7 +24,7 @@ class ProductsRepoImpl implements ProductsRepoBase {
     try {
       final response = await _apiConsumer.post(EndPoints.totProducts, data: {
         // "productType": productType ?? "Physical",
-        // "catalogId": catalogId ?? bakeryId,
+        "catalogId": catalogId ?? bakeryId,
         "skip": skip,
         "take": take
       });

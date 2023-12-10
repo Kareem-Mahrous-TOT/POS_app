@@ -32,8 +32,7 @@ class RecentCustomersBloc
           started: (value) {},
           loadRecentCustomers: (value) async {
             final data = await customersRepoBase.fetch(request);
-            data.fold(
-                (l) => emit(_$_FailedLoadingRecentCustomerData(l.message)),
+            data.fold((l) => emit(_FailedLoadingRecentCustomerData(l.message)),
                 (r) {
               listRecentCustomers = r.results;
               emit(
@@ -65,7 +64,8 @@ class RecentCustomersBloc
                   // customers.add(event.customer);
                   listRecentCustomers = customers;
                   fetchNewdata.fold(
-                      (l) => ServerFailure("Fetching data went wrong"), (r) {
+                      (l) => const ServerFailure("Fetching data went wrong"),
+                      (r) {
                     listRecentCustomers = r.results;
                     emit(_LoadedRecentCustomerData(r.results));
                     // homeBloc.add(const HomeEvent.getCustomers());
@@ -76,7 +76,7 @@ class RecentCustomersBloc
               addCustomerFailed: (value) async {
                 final data = await customersRepoBase.fetch(request);
                 data.fold(
-                    (l) => emit(_$_FailedLoadingRecentCustomerData(l.message)),
+                    (l) => emit(_FailedLoadingRecentCustomerData(l.message)),
                     (r) {
                   listRecentCustomers = r.results;
                   emit(

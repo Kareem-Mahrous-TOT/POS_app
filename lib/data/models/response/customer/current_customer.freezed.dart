@@ -74,22 +74,22 @@ class _$CurrentCustomerCopyWithImpl<$Res, $Val extends CurrentCustomer>
 }
 
 /// @nodoc
-abstract class _$$_CurrentCustomerCopyWith<$Res>
+abstract class _$$CurrentCustomerImplCopyWith<$Res>
     implements $CurrentCustomerCopyWith<$Res> {
-  factory _$$_CurrentCustomerCopyWith(
-          _$_CurrentCustomer value, $Res Function(_$_CurrentCustomer) then) =
-      __$$_CurrentCustomerCopyWithImpl<$Res>;
+  factory _$$CurrentCustomerImplCopyWith(_$CurrentCustomerImpl value,
+          $Res Function(_$CurrentCustomerImpl) then) =
+      __$$CurrentCustomerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String code, String customerImage, String email});
 }
 
 /// @nodoc
-class __$$_CurrentCustomerCopyWithImpl<$Res>
-    extends _$CurrentCustomerCopyWithImpl<$Res, _$_CurrentCustomer>
-    implements _$$_CurrentCustomerCopyWith<$Res> {
-  __$$_CurrentCustomerCopyWithImpl(
-      _$_CurrentCustomer _value, $Res Function(_$_CurrentCustomer) _then)
+class __$$CurrentCustomerImplCopyWithImpl<$Res>
+    extends _$CurrentCustomerCopyWithImpl<$Res, _$CurrentCustomerImpl>
+    implements _$$CurrentCustomerImplCopyWith<$Res> {
+  __$$CurrentCustomerImplCopyWithImpl(
+      _$CurrentCustomerImpl _value, $Res Function(_$CurrentCustomerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_CurrentCustomerCopyWithImpl<$Res>
     Object? customerImage = null,
     Object? email = null,
   }) {
-    return _then(_$_CurrentCustomer(
+    return _then(_$CurrentCustomerImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,12 @@ class __$$_CurrentCustomerCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CurrentCustomer implements _CurrentCustomer {
-  const _$_CurrentCustomer(
+class _$CurrentCustomerImpl implements _CurrentCustomer {
+  const _$CurrentCustomerImpl(
       {required this.code, required this.customerImage, required this.email});
 
-  factory _$_CurrentCustomer.fromJson(Map<String, dynamic> json) =>
-      _$$_CurrentCustomerFromJson(json);
+  factory _$CurrentCustomerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CurrentCustomerImplFromJson(json);
 
   @override
   final String code;
@@ -141,7 +141,7 @@ class _$_CurrentCustomer implements _CurrentCustomer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentCustomer &&
+            other is _$CurrentCustomerImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.customerImage, customerImage) ||
                 other.customerImage == customerImage) &&
@@ -155,12 +155,13 @@ class _$_CurrentCustomer implements _CurrentCustomer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrentCustomerCopyWith<_$_CurrentCustomer> get copyWith =>
-      __$$_CurrentCustomerCopyWithImpl<_$_CurrentCustomer>(this, _$identity);
+  _$$CurrentCustomerImplCopyWith<_$CurrentCustomerImpl> get copyWith =>
+      __$$CurrentCustomerImplCopyWithImpl<_$CurrentCustomerImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CurrentCustomerToJson(
+    return _$$CurrentCustomerImplToJson(
       this,
     );
   }
@@ -170,10 +171,10 @@ abstract class _CurrentCustomer implements CurrentCustomer {
   const factory _CurrentCustomer(
       {required final String code,
       required final String customerImage,
-      required final String email}) = _$_CurrentCustomer;
+      required final String email}) = _$CurrentCustomerImpl;
 
   factory _CurrentCustomer.fromJson(Map<String, dynamic> json) =
-      _$_CurrentCustomer.fromJson;
+      _$CurrentCustomerImpl.fromJson;
 
   @override
   String get code;
@@ -183,6 +184,6 @@ abstract class _CurrentCustomer implements CurrentCustomer {
   String get email;
   @override
   @JsonKey(ignore: true)
-  _$$_CurrentCustomerCopyWith<_$_CurrentCustomer> get copyWith =>
+  _$$CurrentCustomerImplCopyWith<_$CurrentCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

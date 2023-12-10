@@ -6,8 +6,8 @@ part of 'statistic_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ReportPieChart _$$_ReportPieChartFromJson(Map<String, dynamic> json) =>
-    _$_ReportPieChart(
+_$ReportPieChartImpl _$$ReportPieChartImplFromJson(Map<String, dynamic> json) =>
+    _$ReportPieChartImpl(
       newData: StatisticsData.fromJson(json['new'] as Map<String, dynamic>),
       accepted:
           StatisticsData.fromJson(json['accepted'] as Map<String, dynamic>),
@@ -20,38 +20,41 @@ _$_ReportPieChart _$$_ReportPieChartFromJson(Map<String, dynamic> json) =>
       group: Group.fromJson(json['group'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ReportPieChartToJson(_$_ReportPieChart instance) =>
+Map<String, dynamic> _$$ReportPieChartImplToJson(
+        _$ReportPieChartImpl instance) =>
     <String, dynamic>{
-      'new': instance.newData,
-      'accepted': instance.accepted,
-      'ready': instance.ready,
-      'on_a_way': instance.onAWay,
-      'delivered': instance.delivered,
-      'canceled': instance.canceled,
-      'group': instance.group,
+      'new': instance.newData.toJson(),
+      'accepted': instance.accepted.toJson(),
+      'ready': instance.ready.toJson(),
+      'on_a_way': instance.onAWay.toJson(),
+      'delivered': instance.delivered.toJson(),
+      'canceled': instance.canceled.toJson(),
+      'group': instance.group.toJson(),
     };
 
-_$_StatisticsData _$$_StatisticsDataFromJson(Map<String, dynamic> json) =>
-    _$_StatisticsData(
+_$StatisticsDataImpl _$$StatisticsDataImplFromJson(Map<String, dynamic> json) =>
+    _$StatisticsDataImpl(
       sum: json['sum'] as int,
       percent: (json['percent'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_StatisticsDataToJson(_$_StatisticsData instance) =>
+Map<String, dynamic> _$$StatisticsDataImplToJson(
+        _$StatisticsDataImpl instance) =>
     <String, dynamic>{
       'sum': instance.sum,
       'percent': instance.percent,
     };
 
-_$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
+_$GroupImpl _$$GroupImplFromJson(Map<String, dynamic> json) => _$GroupImpl(
       active: StatisticsData.fromJson(json['active'] as Map<String, dynamic>),
       completed:
           StatisticsData.fromJson(json['completed'] as Map<String, dynamic>),
       ended: StatisticsData.fromJson(json['ended'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
-      'active': instance.active,
-      'completed': instance.completed,
-      'ended': instance.ended,
+Map<String, dynamic> _$$GroupImplToJson(_$GroupImpl instance) =>
+    <String, dynamic>{
+      'active': instance.active.toJson(),
+      'completed': instance.completed.toJson(),
+      'ended': instance.ended.toJson(),
     };

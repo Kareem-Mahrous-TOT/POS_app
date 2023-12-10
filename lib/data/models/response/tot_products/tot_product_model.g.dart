@@ -6,8 +6,9 @@ part of 'tot_product_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TOTProductsModel _$$_TOTProductsModelFromJson(Map<String, dynamic> json) =>
-    _$_TOTProductsModel(
+_$TOTProductsModelImpl _$$TOTProductsModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TOTProductsModelImpl(
       totalCount: json['totalCount'] as int,
       items: (json['items'] as List<dynamic>?)
           ?.map((e) => TOTProduct.fromJson(e as Map<String, dynamic>))
@@ -17,15 +18,16 @@ _$_TOTProductsModel _$$_TOTProductsModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_TOTProductsModelToJson(_$_TOTProductsModel instance) =>
+Map<String, dynamic> _$$TOTProductsModelImplToJson(
+        _$TOTProductsModelImpl instance) =>
     <String, dynamic>{
       'totalCount': instance.totalCount,
-      'items': instance.items,
-      'aggregations': instance.aggregations,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
+      'aggregations': instance.aggregations?.map((e) => e.toJson()).toList(),
     };
 
-_$_TOTProduct _$$_TOTProductFromJson(Map<String, dynamic> json) =>
-    _$_TOTProduct(
+_$TOTProductImpl _$$TOTProductImplFromJson(Map<String, dynamic> json) =>
+    _$TOTProductImpl(
       productType: json['productType'] as String?,
       code: json['code'] as String,
       manufacturerPartNumber: json['manufacturerPartNumber'] as String?,
@@ -108,7 +110,7 @@ _$_TOTProduct _$$_TOTProductFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$$_TOTProductToJson(_$_TOTProduct instance) =>
+Map<String, dynamic> _$$TOTProductImplToJson(_$TOTProductImpl instance) =>
     <String, dynamic>{
       'productType': instance.productType,
       'code': instance.code,
@@ -146,18 +148,20 @@ Map<String, dynamic> _$$_TOTProductToJson(_$_TOTProduct instance) =>
       'vendor': instance.vendor,
       'priority': instance.priority,
       'outerId': instance.outerId,
-      'properties': instance.properties,
-      'excludedProperties': instance.excludedProperties,
+      'properties': instance.properties?.map((e) => e.toJson()).toList(),
+      'excludedProperties':
+          instance.excludedProperties?.map((e) => e.toJson()).toList(),
       'imgSrc': instance.imgSrc,
-      'images': instance.images,
-      'assets': instance.assets,
-      'links': instance.links,
-      'variations': instance.variations,
+      'images': instance.images?.map((e) => e.toJson()).toList(),
+      'assets': instance.assets?.map((e) => e.toJson()).toList(),
+      'links': instance.links?.map((e) => e.toJson()).toList(),
+      'variations': instance.variations?.map((e) => e.toJson()).toList(),
       'seoObjectType': instance.seoObjectType,
-      'reviews': instance.reviews,
-      'associations': instance.associations,
-      'referencedAssociations': instance.referencedAssociations,
-      'outlines': instance.outlines,
+      'reviews': instance.reviews?.map((e) => e.toJson()).toList(),
+      'associations': instance.associations?.map((e) => e.toJson()).toList(),
+      'referencedAssociations':
+          instance.referencedAssociations?.map((e) => e.toJson()).toList(),
+      'outlines': instance.outlines?.map((e) => e.toJson()).toList(),
       'isInherited': instance.isInherited,
       'parentCategoryIsActive': instance.parentCategoryIsActive,
       'createdDate': instance.createdDate?.toIso8601String(),
@@ -167,21 +171,22 @@ Map<String, dynamic> _$$_TOTProductToJson(_$_TOTProduct instance) =>
       'id': instance.id,
     };
 
-_$_ExcluededProperties _$$_ExcluededPropertiesFromJson(
+_$ExcluededPropertiesImpl _$$ExcluededPropertiesImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ExcluededProperties(
+    _$ExcluededPropertiesImpl(
       name: json['name'] as String?,
       isInherited: json['isInherited'] as bool?,
     );
 
-Map<String, dynamic> _$$_ExcluededPropertiesToJson(
-        _$_ExcluededProperties instance) =>
+Map<String, dynamic> _$$ExcluededPropertiesImplToJson(
+        _$ExcluededPropertiesImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'isInherited': instance.isInherited,
     };
 
-_$_Property _$$_PropertyFromJson(Map<String, dynamic> json) => _$_Property(
+_$PropertyImpl _$$PropertyImplFromJson(Map<String, dynamic> json) =>
+    _$PropertyImpl(
       isReadOnly: json['isReadOnly'] as bool?,
       isManageable: json['isManageable'] as bool?,
       isNew: json['isNew'] as bool?,
@@ -226,7 +231,7 @@ _$_Property _$$_PropertyFromJson(Map<String, dynamic> json) => _$_Property(
               json['validationRule'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PropertyToJson(_$_Property instance) =>
+Map<String, dynamic> _$$PropertyImplToJson(_$PropertyImpl instance) =>
     <String, dynamic>{
       'isReadOnly': instance.isReadOnly,
       'isManageable': instance.isManageable,
@@ -250,15 +255,16 @@ Map<String, dynamic> _$$_PropertyToJson(_$_Property instance) =>
       'outerId': instance.outerId,
       'ownerName': instance.ownerName,
       'displayOrder': instance.displayOrder,
-      'values': instance.values,
-      'attributes': instance.attributes,
-      'displayNames': instance.displayNames,
-      'validationRules': instance.validationRules,
-      'validationRule': instance.validationRule,
+      'values': instance.values?.map((e) => e.toJson()).toList(),
+      'attributes': instance.attributes?.map((e) => e.toJson()).toList(),
+      'displayNames': instance.displayNames?.map((e) => e.toJson()).toList(),
+      'validationRules':
+          instance.validationRules?.map((e) => e.toJson()).toList(),
+      'validationRule': instance.validationRule?.toJson(),
     };
 
-_$_ValidationRule _$$_ValidationRuleFromJson(Map<String, dynamic> json) =>
-    _$_ValidationRule(
+_$ValidationRuleImpl _$$ValidationRuleImplFromJson(Map<String, dynamic> json) =>
+    _$ValidationRuleImpl(
       isUnique: json['isUnique'] as bool?,
       charCountMin: json['charCountMin'] as int?,
       charCountMax: json['charCountMax'] as int?,
@@ -267,7 +273,8 @@ _$_ValidationRule _$$_ValidationRuleFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_ValidationRuleToJson(_$_ValidationRule instance) =>
+Map<String, dynamic> _$$ValidationRuleImplToJson(
+        _$ValidationRuleImpl instance) =>
     <String, dynamic>{
       'isUnique': instance.isUnique,
       'charCountMin': instance.charCountMin,
@@ -277,8 +284,9 @@ Map<String, dynamic> _$$_ValidationRuleToJson(_$_ValidationRule instance) =>
       'id': instance.id,
     };
 
-_$_ValidationRules _$$_ValidationRulesFromJson(Map<String, dynamic> json) =>
-    _$_ValidationRules(
+_$ValidationRulesImpl _$$ValidationRulesImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ValidationRulesImpl(
       isUnique: json['isUnique'] as bool?,
       charCountMin: json['charCountMin'] as int?,
       charCountMax: json['charCountMax'] as int?,
@@ -287,7 +295,8 @@ _$_ValidationRules _$$_ValidationRulesFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_ValidationRulesToJson(_$_ValidationRules instance) =>
+Map<String, dynamic> _$$ValidationRulesImplToJson(
+        _$ValidationRulesImpl instance) =>
     <String, dynamic>{
       'isUnique': instance.isUnique,
       'charCountMin': instance.charCountMin,
@@ -297,19 +306,20 @@ Map<String, dynamic> _$$_ValidationRulesToJson(_$_ValidationRules instance) =>
       'id': instance.id,
     };
 
-_$_DisplayName _$$_DisplayNameFromJson(Map<String, dynamic> json) =>
-    _$_DisplayName(
+_$DisplayNameImpl _$$DisplayNameImplFromJson(Map<String, dynamic> json) =>
+    _$DisplayNameImpl(
       name: json['name'] as String?,
       languageCode: json['languageCode'] as String?,
     );
 
-Map<String, dynamic> _$$_DisplayNameToJson(_$_DisplayName instance) =>
+Map<String, dynamic> _$$DisplayNameImplToJson(_$DisplayNameImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'languageCode': instance.languageCode,
     };
 
-_$_Attribute _$$_AttributeFromJson(Map<String, dynamic> json) => _$_Attribute(
+_$AttributeImpl _$$AttributeImplFromJson(Map<String, dynamic> json) =>
+    _$AttributeImpl(
       propertyId: json['propertyId'] as String?,
       value: json['value'] as String?,
       name: json['name'] as String?,
@@ -324,7 +334,7 @@ _$_Attribute _$$_AttributeFromJson(Map<String, dynamic> json) => _$_Attribute(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_AttributeToJson(_$_Attribute instance) =>
+Map<String, dynamic> _$$AttributeImplToJson(_$AttributeImpl instance) =>
     <String, dynamic>{
       'propertyId': instance.propertyId,
       'value': instance.value,
@@ -336,7 +346,7 @@ Map<String, dynamic> _$$_AttributeToJson(_$_Attribute instance) =>
       'id': instance.id,
     };
 
-_$_Value _$$_ValueFromJson(Map<String, dynamic> json) => _$_Value(
+_$ValueImpl _$$ValueImplFromJson(Map<String, dynamic> json) => _$ValueImpl(
       propertyName: json['propertyName'] as String?,
       propertyId: json['propertyId'] as String?,
       languageCode: json['languageCode'] as String?,
@@ -358,7 +368,8 @@ _$_Value _$$_ValueFromJson(Map<String, dynamic> json) => _$_Value(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_ValueToJson(_$_Value instance) => <String, dynamic>{
+Map<String, dynamic> _$$ValueImplToJson(_$ValueImpl instance) =>
+    <String, dynamic>{
       'propertyName': instance.propertyName,
       'propertyId': instance.propertyId,
       'languageCode': instance.languageCode,
@@ -376,7 +387,7 @@ Map<String, dynamic> _$$_ValueToJson(_$_Value instance) => <String, dynamic>{
       'id': instance.id,
     };
 
-_$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
+_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
       url: json['url'] as String,
       relativeUrl: json['relativeUrl'] as String?,
       sortOrder: json['sortOrder'] as int?,
@@ -388,7 +399,8 @@ _$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
+Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
+    <String, dynamic>{
       'url': instance.url,
       'relativeUrl': instance.relativeUrl,
       'sortOrder': instance.sortOrder,
@@ -400,36 +412,39 @@ Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
       'id': instance.id,
     };
 
-_$_Asset _$$_AssetFromJson(Map<String, dynamic> json) => _$_Asset(
+_$AssetImpl _$$AssetImplFromJson(Map<String, dynamic> json) => _$AssetImpl(
       url: json['url'] as String?,
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_AssetToJson(_$_Asset instance) => <String, dynamic>{
+Map<String, dynamic> _$$AssetImplToJson(_$AssetImpl instance) =>
+    <String, dynamic>{
       'url': instance.url,
       'description': instance.description,
     };
 
-_$_Link _$$_LinkFromJson(Map<String, dynamic> json) => _$_Link(
+_$LinkImpl _$$LinkImplFromJson(Map<String, dynamic> json) => _$LinkImpl(
       type: json['type'] as String?,
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_LinkToJson(_$_Link instance) => <String, dynamic>{
+Map<String, dynamic> _$$LinkImplToJson(_$LinkImpl instance) =>
+    <String, dynamic>{
       'type': instance.type,
       'url': instance.url,
     };
 
-_$_Variation _$$_VariationFromJson(Map<String, dynamic> json) => _$_Variation(
+_$VariationImpl _$$VariationImplFromJson(Map<String, dynamic> json) =>
+    _$VariationImpl(
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_VariationToJson(_$_Variation instance) =>
+Map<String, dynamic> _$$VariationImplToJson(_$VariationImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
     };
 
-_$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
+_$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
       author: json['author'] as String?,
       rating: json['rating'] as String?,
       comment: json['comment'] as String?,
@@ -439,7 +454,8 @@ _$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
       id: json['id'] as String?,
     );
 
-Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
+Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
+    <String, dynamic>{
       'author': instance.author,
       'rating': instance.rating,
       'comment': instance.comment,
@@ -447,48 +463,49 @@ Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
       'id': instance.id,
     };
 
-_$_Association _$$_AssociationFromJson(Map<String, dynamic> json) =>
-    _$_Association(
+_$AssociationImpl _$$AssociationImplFromJson(Map<String, dynamic> json) =>
+    _$AssociationImpl(
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_AssociationToJson(_$_Association instance) =>
+Map<String, dynamic> _$$AssociationImplToJson(_$AssociationImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
     };
 
-_$_ReferencedAssociation _$$_ReferencedAssociationFromJson(
+_$ReferencedAssociationImpl _$$ReferencedAssociationImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ReferencedAssociation(
+    _$ReferencedAssociationImpl(
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_ReferencedAssociationToJson(
-        _$_ReferencedAssociation instance) =>
+Map<String, dynamic> _$$ReferencedAssociationImplToJson(
+        _$ReferencedAssociationImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
     };
 
-_$_Outline _$$_OutlineFromJson(Map<String, dynamic> json) => _$_Outline(
+_$OutlineImpl _$$OutlineImplFromJson(Map<String, dynamic> json) =>
+    _$OutlineImpl(
       items: (json['items'] as List<dynamic>?)
           ?.map((e) => OutlineItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_OutlineToJson(_$_Outline instance) =>
+Map<String, dynamic> _$$OutlineImplToJson(_$OutlineImpl instance) =>
     <String, dynamic>{
-      'items': instance.items,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
     };
 
-_$_OutlineItem _$$_OutlineItemFromJson(Map<String, dynamic> json) =>
-    _$_OutlineItem(
+_$OutlineItemImpl _$$OutlineItemImplFromJson(Map<String, dynamic> json) =>
+    _$OutlineItemImpl(
       id: json['id'] as String,
       seoObjectType: json['seoObjectType'] as String?,
       name: json['name'] as String,
       hasVirtualParent: json['hasVirtualParent'] as bool?,
     );
 
-Map<String, dynamic> _$$_OutlineItemToJson(_$_OutlineItem instance) =>
+Map<String, dynamic> _$$OutlineItemImplToJson(_$OutlineItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'seoObjectType': instance.seoObjectType,
@@ -496,8 +513,8 @@ Map<String, dynamic> _$$_OutlineItemToJson(_$_OutlineItem instance) =>
       'hasVirtualParent': instance.hasVirtualParent,
     };
 
-_$_Aggregation _$$_AggregationFromJson(Map<String, dynamic> json) =>
-    _$_Aggregation(
+_$AggregationImpl _$$AggregationImplFromJson(Map<String, dynamic> json) =>
+    _$AggregationImpl(
       field: json['field'] as String?,
       aggregationType: json['aggregationType'] as String?,
       items: (json['items'] as List<dynamic>?)
@@ -508,29 +525,31 @@ _$_Aggregation _$$_AggregationFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_AggregationToJson(_$_Aggregation instance) =>
+Map<String, dynamic> _$$AggregationImplToJson(_$AggregationImpl instance) =>
     <String, dynamic>{
       'field': instance.field,
       'aggregationType': instance.aggregationType,
-      'items': instance.items,
-      'labels': instance.labels,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
+      'labels': instance.labels?.map((e) => e.toJson()).toList(),
     };
 
-_$_AggregationLabels _$$_AggregationLabelsFromJson(Map<String, dynamic> json) =>
-    _$_AggregationLabels(
+_$AggregationLabelsImpl _$$AggregationLabelsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AggregationLabelsImpl(
       language: json['language'] as String?,
       label: json['label'] as String?,
     );
 
-Map<String, dynamic> _$$_AggregationLabelsToJson(
-        _$_AggregationLabels instance) =>
+Map<String, dynamic> _$$AggregationLabelsImplToJson(
+        _$AggregationLabelsImpl instance) =>
     <String, dynamic>{
       'language': instance.language,
       'label': instance.label,
     };
 
-_$_AggregationItem _$$_AggregationItemFromJson(Map<String, dynamic> json) =>
-    _$_AggregationItem(
+_$AggregationItemImpl _$$AggregationItemImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AggregationItemImpl(
       count: json['count'] as int?,
       isApplied: json['isApplied'] as bool?,
       labels: (json['labels'] as List<dynamic>?)
@@ -542,11 +561,12 @@ _$_AggregationItem _$$_AggregationItemFromJson(Map<String, dynamic> json) =>
       includeUpper: json['includeUpper'] as bool?,
     );
 
-Map<String, dynamic> _$$_AggregationItemToJson(_$_AggregationItem instance) =>
+Map<String, dynamic> _$$AggregationItemImplToJson(
+        _$AggregationItemImpl instance) =>
     <String, dynamic>{
       'count': instance.count,
       'isApplied': instance.isApplied,
-      'labels': instance.labels,
+      'labels': instance.labels?.map((e) => e.toJson()).toList(),
       'requestedLowerBound': instance.requestedLowerBound,
       'requestedUpperBound': instance.requestedUpperBound,
       'includeLower': instance.includeLower,

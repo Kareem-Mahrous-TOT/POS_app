@@ -171,11 +171,11 @@ class _$ReportPieChartCopyWithImpl<$Res, $Val extends ReportPieChart>
 }
 
 /// @nodoc
-abstract class _$$_ReportPieChartCopyWith<$Res>
+abstract class _$$ReportPieChartImplCopyWith<$Res>
     implements $ReportPieChartCopyWith<$Res> {
-  factory _$$_ReportPieChartCopyWith(
-          _$_ReportPieChart value, $Res Function(_$_ReportPieChart) then) =
-      __$$_ReportPieChartCopyWithImpl<$Res>;
+  factory _$$ReportPieChartImplCopyWith(_$ReportPieChartImpl value,
+          $Res Function(_$ReportPieChartImpl) then) =
+      __$$ReportPieChartImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -204,11 +204,11 @@ abstract class _$$_ReportPieChartCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ReportPieChartCopyWithImpl<$Res>
-    extends _$ReportPieChartCopyWithImpl<$Res, _$_ReportPieChart>
-    implements _$$_ReportPieChartCopyWith<$Res> {
-  __$$_ReportPieChartCopyWithImpl(
-      _$_ReportPieChart _value, $Res Function(_$_ReportPieChart) _then)
+class __$$ReportPieChartImplCopyWithImpl<$Res>
+    extends _$ReportPieChartCopyWithImpl<$Res, _$ReportPieChartImpl>
+    implements _$$ReportPieChartImplCopyWith<$Res> {
+  __$$ReportPieChartImplCopyWithImpl(
+      _$ReportPieChartImpl _value, $Res Function(_$ReportPieChartImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -222,7 +222,7 @@ class __$$_ReportPieChartCopyWithImpl<$Res>
     Object? canceled = null,
     Object? group = null,
   }) {
-    return _then(_$_ReportPieChart(
+    return _then(_$ReportPieChartImpl(
       newData: null == newData
           ? _value.newData
           : newData // ignore: cast_nullable_to_non_nullable
@@ -257,8 +257,8 @@ class __$$_ReportPieChartCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReportPieChart implements _ReportPieChart {
-  const _$_ReportPieChart(
+class _$ReportPieChartImpl implements _ReportPieChart {
+  const _$ReportPieChartImpl(
       {@JsonKey(name: "new") required this.newData,
       required this.accepted,
       required this.ready,
@@ -267,8 +267,8 @@ class _$_ReportPieChart implements _ReportPieChart {
       required this.canceled,
       required this.group});
 
-  factory _$_ReportPieChart.fromJson(Map<String, dynamic> json) =>
-      _$$_ReportPieChartFromJson(json);
+  factory _$ReportPieChartImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReportPieChartImplFromJson(json);
 
   @override
   @JsonKey(name: "new")
@@ -296,7 +296,7 @@ class _$_ReportPieChart implements _ReportPieChart {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReportPieChart &&
+            other is _$ReportPieChartImpl &&
             (identical(other.newData, newData) || other.newData == newData) &&
             (identical(other.accepted, accepted) ||
                 other.accepted == accepted) &&
@@ -317,12 +317,13 @@ class _$_ReportPieChart implements _ReportPieChart {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReportPieChartCopyWith<_$_ReportPieChart> get copyWith =>
-      __$$_ReportPieChartCopyWithImpl<_$_ReportPieChart>(this, _$identity);
+  _$$ReportPieChartImplCopyWith<_$ReportPieChartImpl> get copyWith =>
+      __$$ReportPieChartImplCopyWithImpl<_$ReportPieChartImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReportPieChartToJson(
+    return _$$ReportPieChartImplToJson(
       this,
     );
   }
@@ -336,10 +337,10 @@ abstract class _ReportPieChart implements ReportPieChart {
       @JsonKey(name: "on_a_way") required final StatisticsData onAWay,
       required final StatisticsData delivered,
       required final StatisticsData canceled,
-      required final Group group}) = _$_ReportPieChart;
+      required final Group group}) = _$ReportPieChartImpl;
 
   factory _ReportPieChart.fromJson(Map<String, dynamic> json) =
-      _$_ReportPieChart.fromJson;
+      _$ReportPieChartImpl.fromJson;
 
   @override
   @JsonKey(name: "new")
@@ -359,7 +360,7 @@ abstract class _ReportPieChart implements ReportPieChart {
   Group get group;
   @override
   @JsonKey(ignore: true)
-  _$$_ReportPieChartCopyWith<_$_ReportPieChart> get copyWith =>
+  _$$ReportPieChartImplCopyWith<_$ReportPieChartImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -417,22 +418,22 @@ class _$StatisticsDataCopyWithImpl<$Res, $Val extends StatisticsData>
 }
 
 /// @nodoc
-abstract class _$$_StatisticsDataCopyWith<$Res>
+abstract class _$$StatisticsDataImplCopyWith<$Res>
     implements $StatisticsDataCopyWith<$Res> {
-  factory _$$_StatisticsDataCopyWith(
-          _$_StatisticsData value, $Res Function(_$_StatisticsData) then) =
-      __$$_StatisticsDataCopyWithImpl<$Res>;
+  factory _$$StatisticsDataImplCopyWith(_$StatisticsDataImpl value,
+          $Res Function(_$StatisticsDataImpl) then) =
+      __$$StatisticsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int sum, double percent});
 }
 
 /// @nodoc
-class __$$_StatisticsDataCopyWithImpl<$Res>
-    extends _$StatisticsDataCopyWithImpl<$Res, _$_StatisticsData>
-    implements _$$_StatisticsDataCopyWith<$Res> {
-  __$$_StatisticsDataCopyWithImpl(
-      _$_StatisticsData _value, $Res Function(_$_StatisticsData) _then)
+class __$$StatisticsDataImplCopyWithImpl<$Res>
+    extends _$StatisticsDataCopyWithImpl<$Res, _$StatisticsDataImpl>
+    implements _$$StatisticsDataImplCopyWith<$Res> {
+  __$$StatisticsDataImplCopyWithImpl(
+      _$StatisticsDataImpl _value, $Res Function(_$StatisticsDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -441,7 +442,7 @@ class __$$_StatisticsDataCopyWithImpl<$Res>
     Object? sum = null,
     Object? percent = null,
   }) {
-    return _then(_$_StatisticsData(
+    return _then(_$StatisticsDataImpl(
       sum: null == sum
           ? _value.sum
           : sum // ignore: cast_nullable_to_non_nullable
@@ -456,11 +457,11 @@ class __$$_StatisticsDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StatisticsData implements _StatisticsData {
-  const _$_StatisticsData({required this.sum, required this.percent});
+class _$StatisticsDataImpl implements _StatisticsData {
+  const _$StatisticsDataImpl({required this.sum, required this.percent});
 
-  factory _$_StatisticsData.fromJson(Map<String, dynamic> json) =>
-      _$$_StatisticsDataFromJson(json);
+  factory _$StatisticsDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StatisticsDataImplFromJson(json);
 
   @override
   final int sum;
@@ -476,7 +477,7 @@ class _$_StatisticsData implements _StatisticsData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StatisticsData &&
+            other is _$StatisticsDataImpl &&
             (identical(other.sum, sum) || other.sum == sum) &&
             (identical(other.percent, percent) || other.percent == percent));
   }
@@ -488,12 +489,13 @@ class _$_StatisticsData implements _StatisticsData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StatisticsDataCopyWith<_$_StatisticsData> get copyWith =>
-      __$$_StatisticsDataCopyWithImpl<_$_StatisticsData>(this, _$identity);
+  _$$StatisticsDataImplCopyWith<_$StatisticsDataImpl> get copyWith =>
+      __$$StatisticsDataImplCopyWithImpl<_$StatisticsDataImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StatisticsDataToJson(
+    return _$$StatisticsDataImplToJson(
       this,
     );
   }
@@ -502,10 +504,10 @@ class _$_StatisticsData implements _StatisticsData {
 abstract class _StatisticsData implements StatisticsData {
   const factory _StatisticsData(
       {required final int sum,
-      required final double percent}) = _$_StatisticsData;
+      required final double percent}) = _$StatisticsDataImpl;
 
   factory _StatisticsData.fromJson(Map<String, dynamic> json) =
-      _$_StatisticsData.fromJson;
+      _$StatisticsDataImpl.fromJson;
 
   @override
   int get sum;
@@ -513,7 +515,7 @@ abstract class _StatisticsData implements StatisticsData {
   double get percent;
   @override
   @JsonKey(ignore: true)
-  _$$_StatisticsDataCopyWith<_$_StatisticsData> get copyWith =>
+  _$$StatisticsDataImplCopyWith<_$StatisticsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -604,9 +606,10 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
 }
 
 /// @nodoc
-abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
-  factory _$$_GroupCopyWith(_$_Group value, $Res Function(_$_Group) then) =
-      __$$_GroupCopyWithImpl<$Res>;
+abstract class _$$GroupImplCopyWith<$Res> implements $GroupCopyWith<$Res> {
+  factory _$$GroupImplCopyWith(
+          _$GroupImpl value, $Res Function(_$GroupImpl) then) =
+      __$$GroupImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -621,9 +624,11 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
-    implements _$$_GroupCopyWith<$Res> {
-  __$$_GroupCopyWithImpl(_$_Group _value, $Res Function(_$_Group) _then)
+class __$$GroupImplCopyWithImpl<$Res>
+    extends _$GroupCopyWithImpl<$Res, _$GroupImpl>
+    implements _$$GroupImplCopyWith<$Res> {
+  __$$GroupImplCopyWithImpl(
+      _$GroupImpl _value, $Res Function(_$GroupImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -633,7 +638,7 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
     Object? completed = null,
     Object? ended = null,
   }) {
-    return _then(_$_Group(
+    return _then(_$GroupImpl(
       active: null == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -652,12 +657,12 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Group implements _Group {
-  const _$_Group(
+class _$GroupImpl implements _Group {
+  const _$GroupImpl(
       {required this.active, required this.completed, required this.ended});
 
-  factory _$_Group.fromJson(Map<String, dynamic> json) =>
-      _$$_GroupFromJson(json);
+  factory _$GroupImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GroupImplFromJson(json);
 
   @override
   final StatisticsData active;
@@ -675,7 +680,7 @@ class _$_Group implements _Group {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Group &&
+            other is _$GroupImpl &&
             (identical(other.active, active) || other.active == active) &&
             (identical(other.completed, completed) ||
                 other.completed == completed) &&
@@ -689,12 +694,12 @@ class _$_Group implements _Group {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GroupCopyWith<_$_Group> get copyWith =>
-      __$$_GroupCopyWithImpl<_$_Group>(this, _$identity);
+  _$$GroupImplCopyWith<_$GroupImpl> get copyWith =>
+      __$$GroupImplCopyWithImpl<_$GroupImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GroupToJson(
+    return _$$GroupImplToJson(
       this,
     );
   }
@@ -704,9 +709,9 @@ abstract class _Group implements Group {
   const factory _Group(
       {required final StatisticsData active,
       required final StatisticsData completed,
-      required final StatisticsData ended}) = _$_Group;
+      required final StatisticsData ended}) = _$GroupImpl;
 
-  factory _Group.fromJson(Map<String, dynamic> json) = _$_Group.fromJson;
+  factory _Group.fromJson(Map<String, dynamic> json) = _$GroupImpl.fromJson;
 
   @override
   StatisticsData get active;
@@ -716,6 +721,6 @@ abstract class _Group implements Group {
   StatisticsData get ended;
   @override
   @JsonKey(ignore: true)
-  _$$_GroupCopyWith<_$_Group> get copyWith =>
+  _$$GroupImplCopyWith<_$GroupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
