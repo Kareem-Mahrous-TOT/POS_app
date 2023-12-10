@@ -75,9 +75,13 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                   height: h * 0.07,
                   child: TOTPOSItemCounterMolecule(
                     increment: () {
-                      setState(() {
-                        counter++;
-                      });
+                      if (counter <
+                          (widget.data.availabilityData?.availableQuantity ??
+                              0)) {
+                        setState(() {
+                          counter++;
+                        });
+                      }
                     },
                     decrement: () {
                       setState(() {
@@ -101,9 +105,13 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     text: context.tr.addToCart,
-                    onPressed: widget.data.minQuantity == 0
-                        ? () {}
+                    onPressed: (widget
+                                    .data.availabilityData?.availableQuantity ??
+                                0) ==
+                            0
+                        ? null
                         : () async {
+                            //TODO: Cart should be here
                             final product = BagModel(
                                 code: widget.data.code.toString(),
                                 id: widget.data.id.toString(),
@@ -140,7 +148,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                   style: context.titleMedium.copyWith(
                     color: Palette.black,
                   )),
-              Text(widget.data.catalogId.toString(),
+              Text(widget.data.description?.content ?? "",
                   style: context.titleMedium.copyWith(
                     color: Palette.grey,
                   )),
@@ -148,13 +156,17 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                 thickness: 20,
                 color: Palette.black,
               ),
-              Text('Color',
-                  style: context.titleMedium.copyWith(
-                    color: Palette.black,
-                  )),
-              const Text(
-                'black',
-              ),
+              // TotVariationCardMolecule(
+              //     textList: widget.data.variations!
+              //         .map((element) => element.name!)
+              //         .toList(),
+              //     itemOnTap: (variation) {
+              //       context.read<ProductDetailsBloc>().add(
+              //           ProductDetailsEvent.changeMasterVariation(variation));
+              //     },
+              //     height: 60,
+              //     variations: widget.data.variations,
+              //     isMasterList: const [false])
             ],
           ),
           const SizedBox(width: 10),

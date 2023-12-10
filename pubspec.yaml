@@ -51,6 +51,7 @@ dependencies:
   share_plus: ^7.2.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
+
   tot_atomic_design:
     git:
       url: https://github.com/TOTPLATFORM/flutter.git
@@ -69,13 +70,16 @@ dev_dependencies:
   json_serializable: ^6.7.1
 
 dependency_overrides:
-  ? intl
+#  feature/login
+#   ? intl
+#  feature/demo
+  intl:
 
 flutter:
   uses-material-design: true
   assets:
     - assets/
-    # - assets/images/
+    - assets/images/
     # - assets/fonts/
     # - assets/icons/global/
     # - assets/icons/

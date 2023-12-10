@@ -11,7 +11,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final Color? nameColor;
   final Color? priceColor;
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const TOTPOSFoodCardItemMolecule(
       {super.key,
@@ -42,14 +42,14 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                 child: CachedNetworkImage(
                   height: h * 0.2,
                   width: w * 0.3,
-                  imageUrl: productImage ??
-                      "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                  imageUrl: productImage!,
                   errorWidget: (context, error, stackTrace) {
                     return CachedNetworkImage(
-                        height: h * 0.2,
-                        width: w * 0.3,
-                        imageUrl:
-                            "https://ps.w.org/replace-broken-images/assets/icon-256x256.png");
+                      height: h * 0.2,
+                      width: w * 0.3,
+                      imageUrl:
+                          "http://20.163.148.155:9070/assets/tot-pos-dummy/dummyLogo.png",
+                    );
                   },
                 ),
               ),
