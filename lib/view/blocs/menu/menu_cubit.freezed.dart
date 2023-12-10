@@ -22,13 +22,7 @@ mixin _$MenuState {
     required TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)
+                records)
         fetchSuccess,
     required TResult Function() fetchFail,
   }) =>
@@ -39,13 +33,7 @@ mixin _$MenuState {
     TResult? Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult? Function()? fetchFail,
   }) =>
@@ -56,13 +44,7 @@ mixin _$MenuState {
     TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult Function()? fetchFail,
     required TResult orElse(),
@@ -151,13 +133,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)
+                records)
         fetchSuccess,
     required TResult Function() fetchFail,
   }) {
@@ -171,13 +147,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult? Function()? fetchFail,
   }) {
@@ -191,13 +161,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult Function()? fetchFail,
     required TResult orElse(),
@@ -256,8 +220,7 @@ abstract class _$$FetchSuccessImplCopyWith<$Res> {
   $Res call(
       {CategoryList model,
       List<({String? categoryId, String img, String title, String url})>?
-          records,
-      ({String? categoryId, String img, String title, String url})? record});
+          records});
 
   $CategoryListCopyWith<$Res> get model;
 }
@@ -275,7 +238,6 @@ class __$$FetchSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? model = null,
     Object? records = freezed,
-    Object? record = freezed,
   }) {
     return _then(_$FetchSuccessImpl(
       model: null == model
@@ -292,10 +254,6 @@ class __$$FetchSuccessImplCopyWithImpl<$Res>
                     String title,
                     String url
                   })>?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as ({String? categoryId, String img, String title, String url})?,
     ));
   }
 
@@ -314,8 +272,7 @@ class _$FetchSuccessImpl implements _FetchSuccess {
   const _$FetchSuccessImpl(
       {required this.model,
       final List<({String? categoryId, String img, String title, String url})>?
-          records,
-      this.record})
+          records})
       : _records = records;
 
   @override
@@ -333,11 +290,8 @@ class _$FetchSuccessImpl implements _FetchSuccess {
   }
 
   @override
-  final ({String? categoryId, String img, String title, String url})? record;
-
-  @override
   String toString() {
-    return 'MenuState.fetchSuccess(model: $model, records: $records, record: $record)';
+    return 'MenuState.fetchSuccess(model: $model, records: $records)';
   }
 
   @override
@@ -346,13 +300,12 @@ class _$FetchSuccessImpl implements _FetchSuccess {
         (other.runtimeType == runtimeType &&
             other is _$FetchSuccessImpl &&
             (identical(other.model, model) || other.model == model) &&
-            const DeepCollectionEquality().equals(other._records, _records) &&
-            (identical(other.record, record) || other.record == record));
+            const DeepCollectionEquality().equals(other._records, _records));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, model,
-      const DeepCollectionEquality().hash(_records), record);
+  int get hashCode => Object.hash(
+      runtimeType, model, const DeepCollectionEquality().hash(_records));
 
   @JsonKey(ignore: true)
   @override
@@ -367,17 +320,11 @@ class _$FetchSuccessImpl implements _FetchSuccess {
     required TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)
+                records)
         fetchSuccess,
     required TResult Function() fetchFail,
   }) {
-    return fetchSuccess(model, records, record);
+    return fetchSuccess(model, records);
   }
 
   @override
@@ -387,17 +334,11 @@ class _$FetchSuccessImpl implements _FetchSuccess {
     TResult? Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult? Function()? fetchFail,
   }) {
-    return fetchSuccess?.call(model, records, record);
+    return fetchSuccess?.call(model, records);
   }
 
   @override
@@ -407,19 +348,13 @@ class _$FetchSuccessImpl implements _FetchSuccess {
     TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult Function()? fetchFail,
     required TResult orElse(),
   }) {
     if (fetchSuccess != null) {
-      return fetchSuccess(model, records, record);
+      return fetchSuccess(model, records);
     }
     return orElse();
   }
@@ -463,18 +398,11 @@ abstract class _FetchSuccess implements MenuState {
   const factory _FetchSuccess(
       {required final CategoryList model,
       final List<({String? categoryId, String img, String title, String url})>?
-          records,
-      final ({
-        String? categoryId,
-        String img,
-        String title,
-        String url
-      })? record}) = _$FetchSuccessImpl;
+          records}) = _$FetchSuccessImpl;
 
   CategoryList get model;
   List<({String? categoryId, String img, String title, String url})>?
       get records;
-  ({String? categoryId, String img, String title, String url})? get record;
   @JsonKey(ignore: true)
   _$$FetchSuccessImplCopyWith<_$FetchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -522,13 +450,7 @@ class _$FetchFailImpl implements _FetchFail {
     required TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)
+                records)
         fetchSuccess,
     required TResult Function() fetchFail,
   }) {
@@ -542,13 +464,7 @@ class _$FetchFailImpl implements _FetchFail {
     TResult? Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult? Function()? fetchFail,
   }) {
@@ -562,13 +478,7 @@ class _$FetchFailImpl implements _FetchFail {
     TResult Function(
             CategoryList model,
             List<({String? categoryId, String img, String title, String url})>?
-                records,
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            })? record)?
+                records)?
         fetchSuccess,
     TResult Function()? fetchFail,
     required TResult orElse(),

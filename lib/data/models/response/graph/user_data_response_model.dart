@@ -28,7 +28,7 @@ abstract class Me with _$Me {
   factory Me({
     required String id,
     String? memberId,
-    required String username,
+    required String userName,
     String? email,
     bool? emailConfirmed,
     String? photoUrl,
@@ -53,7 +53,7 @@ abstract class Contact with _$Contact {
     required String lastName,
     required String fullName,
     required String? organizationId,
-    required Organizations organizations,
+    Organizations? organizations,
   }) = _Contact;
 
   factory Contact.fromJson(Map<String, dynamic> json) =>
@@ -63,7 +63,7 @@ abstract class Contact with _$Contact {
 @freezed
 abstract class Organizations with _$Organizations {
   factory Organizations({
-    required List<String> items,
+    List<String?>? items,
   }) = _Organizations;
 
   factory Organizations.fromJson(Map<String, dynamic> json) =>
