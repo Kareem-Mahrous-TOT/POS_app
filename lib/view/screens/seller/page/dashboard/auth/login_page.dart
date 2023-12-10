@@ -209,6 +209,7 @@ class TOTLoginOrganismCustomWidget extends TotWidget {
           ),
           SizedBox(height: gap),
           TextFormField(
+            autofocus: true,
             controller: emailController,
             decoration: InputDecoration(
               hintText: "Email Address",

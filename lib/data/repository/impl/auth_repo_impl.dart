@@ -43,7 +43,6 @@ class AuthRepoImpl implements AuthBaseRepo {
           accessToken: response.data["access_token"],
           refreshToken: response.data["refresh_token"],
         ).saveTokens();
-        log(" LocalKeys.accessToken => ${preferences.getString(LocalKeys.accessToken)!}");
 
         //TODO: replace with refreshToken
         await Future.wait([

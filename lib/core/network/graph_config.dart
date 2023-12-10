@@ -31,7 +31,7 @@ class GraphQLConfig {
 }
 
 class GraphService {
-  final GraphQLConfig graphQLConfig; // = GraphQLConfig();
+  final GraphQLConfig graphQLConfig;
 
   GraphService({required this.graphQLConfig});
 
@@ -42,14 +42,12 @@ class MyHttpLink extends HttpLink {
   final ApiConsumer apiConsumer;
   MyHttpLink({required this.apiConsumer})
       : super(EndPoints.graphQL, httpResponseDecoder: (httpResponse) async {
-          // httpResponse.body?['errors'];
           final responseMap = json.decode(
             utf8.decode(
               httpResponse.bodyBytes,
             ),
           ) as Map<String, dynamic>?;
 
-          // log("::: GRAPHQL: body:: ${httpResponse.body} :::");
           log("=================================================");
           log("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
           log("=================================================");
