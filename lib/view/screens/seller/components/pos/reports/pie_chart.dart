@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:tot_pos/core/theme/palette.dart';
