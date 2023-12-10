@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
@@ -19,21 +20,29 @@ class MenuCubit extends Cubit<MenuState> {
           await rootBundle.loadString("assets/jsons/categories.json");
 
       final jsonData = jsonDecode(response);
-
+      CategoryItem item = const CategoryItem(
+        name: "الكل",
+        id: "",
+        url: null,
+        image: null,
+        isMaster: true,
+      );
       model = CategoryList.fromJson(jsonData);
-      final List<CategoryRecord> records = model.categories.toDomain();
+      final categoryList =
+          model.copyWith(categories: [...model.categories, item]);
+      log("${categoryList.categories.length} categories count");
+      final List<CategoryRecord> records = categoryList.categories.toDomain();
       // final children = model.categories[0].children?.toDomain();
-      records!.add((categoryId: null, img: "", title: "الكل", url: ""));
       emit(MenuState.fetchSuccess(
-          model: model,
-          records: records,
-          record: (categoryId: "", img: "", title: "الكل", url: "")));
+        model: categoryList,
+        records: records,
+      ));
     } catch (e) {
       emit(const MenuState.fetchFail());
     }
   }
 
-  Future<void> changeSelectedCategory(CategoryRecord masterVariation) async {
+  Future<void> changeSelectedCategory(CategoryRecord selectedCategory) async {
     state.maybeMap(
         orElse: () {},
         fetchSuccess: (value) {
@@ -41,12 +50,13 @@ class MenuCubit extends Cubit<MenuState> {
               categories: value.model.categories.map((category) {
             // element.isMaster = false;
             return category.copyWith(
-                isMaster:
-                    (category.id == masterVariation.categoryId) ? true : false);
+                isMaster: (category.id == selectedCategory.categoryId)
+                    ? true
+                    : false);
           }).toList());
           emit(value.copyWith(
             model: records,
-            record: masterVariation,
+            record: selectedCategory,
           ));
         });
   }
