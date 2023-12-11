@@ -76,11 +76,9 @@ dev_dependencies:
   freezed: ^2.4.5
   json_serializable: ^6.7.1
 
-
 #  feature/login
 #   ? intl
 #  feature/demo
-
 
 flutter:
   uses-material-design: true
