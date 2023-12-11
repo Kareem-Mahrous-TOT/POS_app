@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     },
-                    fetchSuccess: (model, records) => TOTPOSHomePageAppBar(
+                    fetchSuccess: (model, records, record) => TOTPOSHomePageAppBar(
                       onTap: (selectedRecord) {
                         context
                             .read<MenuCubit>()
