@@ -32,6 +32,7 @@ import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
 import 'core/network/graph_config.dart';
 import 'data/repository/base/product_repo_base.dart';
+import 'domain/auth/usecases/login_usecase.dart';
 import 'view/blocs/products/rest/bag_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -64,11 +65,15 @@ Future<void> getItInit() async {
       CustomersRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
 
+  //usecase
+  getIt.registerLazySingleton<LoginUsecase>(
+      () => LoginUsecase(authRepo: getIt()));
+
   //cubits
   getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
   getIt.registerFactory<BagCubit>(() => BagCubit(getIt()));
-  getIt.registerFactory<LoginBloc>(() => LoginBloc(authRepo: getIt()));
+  getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getIt()));
   getIt.registerFactory<RecentCustomersBloc>(

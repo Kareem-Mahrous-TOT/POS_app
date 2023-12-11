@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/extensions/text_styles.dart';
 import '../../../../../data/models/response/tot_customers/tot_customers.dart';
@@ -10,38 +11,41 @@ import '../../../../blocs/customer/current_customer/current_customer_cubit.dart'
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
 
-class CustomerPage extends StatefulWidget {
-  const CustomerPage({
-    super.key,
-  });
+// class CustomerPage extends StatefulWidget {
+//   const CustomerPage({
+//     super.key,
+//   });
 
-  @override
-  State<CustomerPage> createState() => _CustomerPageState();
-}
+//   @override
+//   State<CustomerPage> createState() => _CustomerPageState();
+// }
 
-class _CustomerPageState extends State<CustomerPage> {
-  late TextEditingController emailController;
+class CustomerPage extends HookWidget {
+  const CustomerPage({super.key});
 
-  late TextEditingController nameController;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   emailController = TextEditingController();
+  //   nameController = TextEditingController();
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    emailController = TextEditingController();
-    nameController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    emailController.dispose();
-    nameController.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   emailController.dispose();
+  //   nameController.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
+    final emailController = useTextEditingController();
+    final nameController = useTextEditingController();
+
+    // late TextEditingController nameController;
 
     return Container(
       color: const Color.fromARGB(255, 229, 229, 229),

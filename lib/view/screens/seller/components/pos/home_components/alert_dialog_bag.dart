@@ -64,6 +64,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                 ),
             loadingState: () => const Center(
                   child: CircularProgressIndicator.adaptive(),
+
                 ),
             fetchProductByIdState: (
               product,

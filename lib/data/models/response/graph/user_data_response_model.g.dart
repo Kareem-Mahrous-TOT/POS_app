@@ -31,7 +31,7 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
 _$MeImpl _$$MeImplFromJson(Map<String, dynamic> json) => _$MeImpl(
       id: json['id'] as String,
       memberId: json['memberId'] as String?,
-      username: json['username'] as String,
+      userName: json['userName'] as String,
       email: json['email'] as String?,
       emailConfirmed: json['emailConfirmed'] as bool?,
       photoUrl: json['photoUrl'] as String?,
@@ -53,7 +53,7 @@ _$MeImpl _$$MeImplFromJson(Map<String, dynamic> json) => _$MeImpl(
 Map<String, dynamic> _$$MeImplToJson(_$MeImpl instance) => <String, dynamic>{
       'id': instance.id,
       'memberId': instance.memberId,
-      'username': instance.username,
+      'userName': instance.userName,
       'email': instance.email,
       'emailConfirmed': instance.emailConfirmed,
       'photoUrl': instance.photoUrl,
@@ -74,8 +74,10 @@ _$ContactImpl _$$ContactImplFromJson(Map<String, dynamic> json) =>
       lastName: json['lastName'] as String,
       fullName: json['fullName'] as String,
       organizationId: json['organizationId'] as String?,
-      organizations:
-          Organizations.fromJson(json['organizations'] as Map<String, dynamic>),
+      organizations: json['organizations'] == null
+          ? null
+          : Organizations.fromJson(
+              json['organizations'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ContactImplToJson(_$ContactImpl instance) =>
@@ -84,12 +86,13 @@ Map<String, dynamic> _$$ContactImplToJson(_$ContactImpl instance) =>
       'lastName': instance.lastName,
       'fullName': instance.fullName,
       'organizationId': instance.organizationId,
-      'organizations': instance.organizations.toJson(),
+      'organizations': instance.organizations?.toJson(),
     };
 
 _$OrganizationsImpl _$$OrganizationsImplFromJson(Map<String, dynamic> json) =>
     _$OrganizationsImpl(
-      items: (json['items'] as List<dynamic>).map((e) => e as String).toList(),
+      items:
+          (json['items'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     );
 
 Map<String, dynamic> _$$OrganizationsImplToJson(_$OrganizationsImpl instance) =>

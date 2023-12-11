@@ -5,7 +5,7 @@ import '../../../data/repository/base/cart/add_order_source_repo_base.dart';
 import '../../../data/repository/base/cart/add_payment_method_repo_base.dart';
 
 class PrepareCartUsecase
-    implements BaseUseCase<PrepareCartParams, Future<bool>> {
+    implements BaseUsecase<PrepareCartParams, Future<bool>> {
   final AddCartAddressUseCase _addCartAddressUsecase;
   final AddPaymentMethodRepoBase _addPaymentMethodRepo;
   final AddCartOrderSourceRepoBase _addCartOrderSourceRepoBase;

@@ -24,7 +24,7 @@ class AuthRepoImpl implements AuthBaseRepo {
     required this.graphService,
   });
   @override
-  Future<Either<Failure, bool>> userToken({
+  Future<bool> userToken({
     String? grantType,
     required String username,
     required String password,
@@ -43,16 +43,71 @@ class AuthRepoImpl implements AuthBaseRepo {
           accessToken: response.data["access_token"],
           refreshToken: response.data["refresh_token"],
         ).saveTokens();
-        log(" LocalKeys.accessToken => ${preferences.getString(LocalKeys.accessToken)!}");
 
-        // replace with refreshToken
+        //TODO: replace with refreshToken
         await Future.wait([
           preferences.setString(LocalKeys.username, username),
           preferences.setString(LocalKeys.password, password),
         ]);
-        return const Right(true);
+        return true;
       } else {
-        return const Left(NetworkFailure("Something went wrong"));
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserDataModel>> getUser() async {
+    try {
+      final response = await graphService.client.mutate(
+        MutationOptions(
+          document: gql(r'''query Me {
+    me {
+        id
+        memberId
+        userName
+        email
+        emailConfirmed
+        photoUrl
+        phoneNumber
+        permissions
+        isAdministrator
+        passwordExpired
+        forcePasswordChange
+        lockedState
+        contact {
+            firstName
+            lastName
+            fullName
+            addresses{
+                totalCount
+                items{
+                    id
+                    firstName
+                    lastName
+                    city
+                    line1
+                    name
+                    addressType
+                }
+            }
+            organizationId
+        }
+    }
+}
+      '''),
+        ),
+      );
+      log("::: getUser Response: $response");
+
+      if (response.data == null || response.hasException) {
+        return const Left(ServerFailure("Something went wrong"));
+      } else {
+        final UserDataModel userData = UserDataModel.fromJson(response.data!);
+
+        return Right(userData);
       }
     } catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -66,10 +121,8 @@ class AuthRepoImpl implements AuthBaseRepo {
     try {
       final res = await apiConsumer.post(EndPoints.connectTokenUrl, data: {
         "grant_type": "client_credentials",
-        "client_id":
-            AppConstants.clientId, //"33bf4db2-ab9c-4757-8efe-0935b231edc8",
-        "client_secret":
-            AppConstants.clientSecret, //"a998e72a-fa4a-4ee9-b09c-81e2c2a8f4de"
+        "client_id": AppConstants.clientId,
+        "client_secret": AppConstants.clientSecret,
       });
       if (res.statusCode == 200 ||
           res.statusCode == 201 ||
@@ -215,7 +268,6 @@ class AuthRepoImpl implements AuthBaseRepo {
         username: username,
         password: password,
         memberId: memberId,
-        // lastName: lastName,
       );
       log("::: before return :::");
 
@@ -228,95 +280,8 @@ class AuthRepoImpl implements AuthBaseRepo {
 
   @override
   Future<Either<Failure, bool>> userLogout() async {
-    // try {
-    //   var result = await dioClient.get(
-    //     Endpoints.logoutUrl,
-    //   );
-    //   if (result.statusCode == 204) {
-    //     // preferences.remove(accessToken);
-
-    //     return true;
-    //   }
-    //   return false;
-    //   //const Left(ServerFailure("Something went wrong"));
-    // } catch (error) {
-    //   return false;
-    //   //Left(ServerFailure(error.toString()));
-    // }
-
     final result = await preferences.clear();
     log("preferences::: -after3 clear $preferences ##");
     return Right(result);
-  }
-
-  @override
-  Future<Either<Failure, UserDataModel>> getUser() async {
-    try {
-      final response = await graphService.client.mutate(
-        MutationOptions(
-            document:
-                gql(r'''query Me($after: String, $first: Int, $sort: String) {
-    me {
-        id
-        memberId
-        username
-        email
-        emailConfirmed
-        photoUrl
-        phoneNumber
-        permissions
-        isAdministrator
-        passwordExpired
-        forcePasswordChange
-        lockedState
-        contact {
-            firstName
-            lastName
-            fullName
-            addresses{
-                totalCount
-                items{
-                    id
-                    firstName
-                    lastName
-                    city
-                    line1
-                    name
-                    addressType
-                }
-            }
-            organizationId
-            organizations(after: $after, first: $first, sort: $sort) {
-                items {
-                    id
-                    name
-                }
-            }
-        }
-        operator {
-            username
-            contact {
-                fullName
-            }
-        }
-        normalizedusername
-    }
-}
-      '''),
-            variables: const {
-              "after": "",
-            }),
-      );
-
-      if (response.data == null) {
-        return const Left(ServerFailure("Something went wrong"));
-      } else {
-        final UserDataModel userData = UserDataModel.fromJson(response.data!);
-
-        return Right(userData);
-      }
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
   }
 }

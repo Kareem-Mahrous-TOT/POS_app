@@ -12,7 +12,7 @@ abstract class AuthBaseRepo {
 
   Future<Either<Failure, UserDataModel>> getUser();
 
-  Future<Either<Failure, bool>> userToken(
+  Future<bool> userToken(
       {String? grantType, required String username, required String password});
   Future<bool> tokenByClientId({
     String? grantType,

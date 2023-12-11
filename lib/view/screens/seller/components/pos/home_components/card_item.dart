@@ -52,6 +52,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                       height: h * 0.2,
                       width: w * 0.3,
                       "http://20.163.148.155:9070/assets/tot-pos-dummy/dummyLogo.png",
+
                     );
                   },
                 ),

@@ -326,7 +326,7 @@ Me _$MeFromJson(Map<String, dynamic> json) {
 mixin _$Me {
   String get id => throw _privateConstructorUsedError;
   String? get memberId => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   bool? get emailConfirmed => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
@@ -353,7 +353,7 @@ abstract class $MeCopyWith<$Res> {
   $Res call(
       {String id,
       String? memberId,
-      String username,
+      String userName,
       String? email,
       bool? emailConfirmed,
       String? photoUrl,
@@ -384,7 +384,7 @@ class _$MeCopyWithImpl<$Res, $Val extends Me> implements $MeCopyWith<$Res> {
   $Res call({
     Object? id = null,
     Object? memberId = freezed,
-    Object? username = null,
+    Object? userName = null,
     Object? email = freezed,
     Object? emailConfirmed = freezed,
     Object? photoUrl = freezed,
@@ -407,9 +407,9 @@ class _$MeCopyWithImpl<$Res, $Val extends Me> implements $MeCopyWith<$Res> {
           ? _value.memberId
           : memberId // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       email: freezed == email
           ? _value.email
@@ -484,7 +484,7 @@ abstract class _$$MeImplCopyWith<$Res> implements $MeCopyWith<$Res> {
   $Res call(
       {String id,
       String? memberId,
-      String username,
+      String userName,
       String? email,
       bool? emailConfirmed,
       String? photoUrl,
@@ -513,7 +513,7 @@ class __$$MeImplCopyWithImpl<$Res> extends _$MeCopyWithImpl<$Res, _$MeImpl>
   $Res call({
     Object? id = null,
     Object? memberId = freezed,
-    Object? username = null,
+    Object? userName = null,
     Object? email = freezed,
     Object? emailConfirmed = freezed,
     Object? photoUrl = freezed,
@@ -536,9 +536,9 @@ class __$$MeImplCopyWithImpl<$Res> extends _$MeCopyWithImpl<$Res, _$MeImpl>
           ? _value.memberId
           : memberId // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       email: freezed == email
           ? _value.email
@@ -598,7 +598,7 @@ class _$MeImpl implements _Me {
   _$MeImpl(
       {required this.id,
       this.memberId,
-      required this.username,
+      required this.userName,
       this.email,
       this.emailConfirmed,
       this.photoUrl,
@@ -621,7 +621,7 @@ class _$MeImpl implements _Me {
   @override
   final String? memberId;
   @override
-  final String username;
+  final String userName;
   @override
   final String? email;
   @override
@@ -657,7 +657,7 @@ class _$MeImpl implements _Me {
 
   @override
   String toString() {
-    return 'Me(id: $id, memberId: $memberId, username: $username, email: $email, emailConfirmed: $emailConfirmed, photoUrl: $photoUrl, phoneNumber: $phoneNumber, permissions: $permissions, isAdministrator: $isAdministrator, passwordExpired: $passwordExpired, forcePasswordChange: $forcePasswordChange, lockedState: $lockedState, contact: $contact, operator: $operator, normalizedusername: $normalizedusername)';
+    return 'Me(id: $id, memberId: $memberId, userName: $userName, email: $email, emailConfirmed: $emailConfirmed, photoUrl: $photoUrl, phoneNumber: $phoneNumber, permissions: $permissions, isAdministrator: $isAdministrator, passwordExpired: $passwordExpired, forcePasswordChange: $forcePasswordChange, lockedState: $lockedState, contact: $contact, operator: $operator, normalizedusername: $normalizedusername)';
   }
 
   @override
@@ -668,8 +668,8 @@ class _$MeImpl implements _Me {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.memberId, memberId) ||
                 other.memberId == memberId) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.emailConfirmed, emailConfirmed) ||
                 other.emailConfirmed == emailConfirmed) &&
@@ -700,7 +700,7 @@ class _$MeImpl implements _Me {
       runtimeType,
       id,
       memberId,
-      username,
+      userName,
       email,
       emailConfirmed,
       photoUrl,
@@ -732,7 +732,7 @@ abstract class _Me implements Me {
   factory _Me(
       {required final String id,
       final String? memberId,
-      required final String username,
+      required final String userName,
       final String? email,
       final bool? emailConfirmed,
       final String? photoUrl,
@@ -753,7 +753,7 @@ abstract class _Me implements Me {
   @override
   String? get memberId;
   @override
-  String get username;
+  String get userName;
   @override
   String? get email;
   @override
@@ -794,7 +794,7 @@ mixin _$Contact {
   String get lastName => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String? get organizationId => throw _privateConstructorUsedError;
-  Organizations get organizations => throw _privateConstructorUsedError;
+  Organizations? get organizations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -811,9 +811,9 @@ abstract class $ContactCopyWith<$Res> {
       String lastName,
       String fullName,
       String? organizationId,
-      Organizations organizations});
+      Organizations? organizations});
 
-  $OrganizationsCopyWith<$Res> get organizations;
+  $OrganizationsCopyWith<$Res>? get organizations;
 }
 
 /// @nodoc
@@ -833,7 +833,7 @@ class _$ContactCopyWithImpl<$Res, $Val extends Contact>
     Object? lastName = null,
     Object? fullName = null,
     Object? organizationId = freezed,
-    Object? organizations = null,
+    Object? organizations = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -852,17 +852,21 @@ class _$ContactCopyWithImpl<$Res, $Val extends Contact>
           ? _value.organizationId
           : organizationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      organizations: null == organizations
+      organizations: freezed == organizations
           ? _value.organizations
           : organizations // ignore: cast_nullable_to_non_nullable
-              as Organizations,
+              as Organizations?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $OrganizationsCopyWith<$Res> get organizations {
-    return $OrganizationsCopyWith<$Res>(_value.organizations, (value) {
+  $OrganizationsCopyWith<$Res>? get organizations {
+    if (_value.organizations == null) {
+      return null;
+    }
+
+    return $OrganizationsCopyWith<$Res>(_value.organizations!, (value) {
       return _then(_value.copyWith(organizations: value) as $Val);
     });
   }
@@ -880,10 +884,10 @@ abstract class _$$ContactImplCopyWith<$Res> implements $ContactCopyWith<$Res> {
       String lastName,
       String fullName,
       String? organizationId,
-      Organizations organizations});
+      Organizations? organizations});
 
   @override
-  $OrganizationsCopyWith<$Res> get organizations;
+  $OrganizationsCopyWith<$Res>? get organizations;
 }
 
 /// @nodoc
@@ -901,7 +905,7 @@ class __$$ContactImplCopyWithImpl<$Res>
     Object? lastName = null,
     Object? fullName = null,
     Object? organizationId = freezed,
-    Object? organizations = null,
+    Object? organizations = freezed,
   }) {
     return _then(_$ContactImpl(
       firstName: null == firstName
@@ -920,10 +924,10 @@ class __$$ContactImplCopyWithImpl<$Res>
           ? _value.organizationId
           : organizationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      organizations: null == organizations
+      organizations: freezed == organizations
           ? _value.organizations
           : organizations // ignore: cast_nullable_to_non_nullable
-              as Organizations,
+              as Organizations?,
     ));
   }
 }
@@ -936,7 +940,7 @@ class _$ContactImpl implements _Contact {
       required this.lastName,
       required this.fullName,
       required this.organizationId,
-      required this.organizations});
+      this.organizations});
 
   factory _$ContactImpl.fromJson(Map<String, dynamic> json) =>
       _$$ContactImplFromJson(json);
@@ -950,7 +954,7 @@ class _$ContactImpl implements _Contact {
   @override
   final String? organizationId;
   @override
-  final Organizations organizations;
+  final Organizations? organizations;
 
   @override
   String toString() {
@@ -999,7 +1003,7 @@ abstract class _Contact implements Contact {
       required final String lastName,
       required final String fullName,
       required final String? organizationId,
-      required final Organizations organizations}) = _$ContactImpl;
+      final Organizations? organizations}) = _$ContactImpl;
 
   factory _Contact.fromJson(Map<String, dynamic> json) = _$ContactImpl.fromJson;
 
@@ -1012,7 +1016,7 @@ abstract class _Contact implements Contact {
   @override
   String? get organizationId;
   @override
-  Organizations get organizations;
+  Organizations? get organizations;
   @override
   @JsonKey(ignore: true)
   _$$ContactImplCopyWith<_$ContactImpl> get copyWith =>
@@ -1025,7 +1029,7 @@ Organizations _$OrganizationsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Organizations {
-  List<String> get items => throw _privateConstructorUsedError;
+  List<String?>? get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1039,7 +1043,7 @@ abstract class $OrganizationsCopyWith<$Res> {
           Organizations value, $Res Function(Organizations) then) =
       _$OrganizationsCopyWithImpl<$Res, Organizations>;
   @useResult
-  $Res call({List<String> items});
+  $Res call({List<String?>? items});
 }
 
 /// @nodoc
@@ -1055,13 +1059,13 @@ class _$OrganizationsCopyWithImpl<$Res, $Val extends Organizations>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
+    Object? items = freezed,
   }) {
     return _then(_value.copyWith(
-      items: null == items
+      items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String?>?,
     ) as $Val);
   }
 }
@@ -1074,7 +1078,7 @@ abstract class _$$OrganizationsImplCopyWith<$Res>
       __$$OrganizationsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> items});
+  $Res call({List<String?>? items});
 }
 
 /// @nodoc
@@ -1088,13 +1092,13 @@ class __$$OrganizationsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
+    Object? items = freezed,
   }) {
     return _then(_$OrganizationsImpl(
-      items: null == items
+      items: freezed == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String?>?,
     ));
   }
 }
@@ -1102,17 +1106,19 @@ class __$$OrganizationsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OrganizationsImpl implements _Organizations {
-  _$OrganizationsImpl({required final List<String> items}) : _items = items;
+  _$OrganizationsImpl({final List<String?>? items}) : _items = items;
 
   factory _$OrganizationsImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrganizationsImplFromJson(json);
 
-  final List<String> _items;
+  final List<String?>? _items;
   @override
-  List<String> get items {
+  List<String?>? get items {
+    final value = _items;
+    if (value == null) return null;
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -1148,14 +1154,13 @@ class _$OrganizationsImpl implements _Organizations {
 }
 
 abstract class _Organizations implements Organizations {
-  factory _Organizations({required final List<String> items}) =
-      _$OrganizationsImpl;
+  factory _Organizations({final List<String?>? items}) = _$OrganizationsImpl;
 
   factory _Organizations.fromJson(Map<String, dynamic> json) =
       _$OrganizationsImpl.fromJson;
 
   @override
-  List<String> get items;
+  List<String?>? get items;
   @override
   @JsonKey(ignore: true)
   _$$OrganizationsImplCopyWith<_$OrganizationsImpl> get copyWith =>

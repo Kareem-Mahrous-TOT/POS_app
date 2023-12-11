@@ -503,7 +503,7 @@ packages:
     source: hosted
     version: "3.3.1"
   flutter_hooks:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_hooks
       sha256: "7c8db779c2d1010aa7f9ea3fbefe8f86524fcb87b69e8b0af31e1a4b55422dec"
@@ -1501,9 +1501,11 @@ packages:
   tot_atomic_design:
     dependency: "direct main"
     description:
-      path: "flutter/packages/atomic_design"
-      relative: true
-    source: path
+      path: "packages/atomic_design"
+      ref: tablet-beta
+      resolved-ref: "20275544363823618b5d52ade44126cc5ac04f3f"
+      url: "https://github.com/TOTPLATFORM/flutter.git"
+    source: git
     version: "0.0.1+1"
   typed_data:
     dependency: transitive

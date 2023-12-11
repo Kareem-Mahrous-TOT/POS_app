@@ -57,7 +57,9 @@ class MenuCubit extends Cubit<MenuState> {
           }).toList());
           emit(value.copyWith(
             model: records,
-            record: selectedCategory,
+            records: records.categories.toDomain(),
+            // selectedCategory: selectedCategory
+            // record: selectedCategory,
           ));
         });
   }

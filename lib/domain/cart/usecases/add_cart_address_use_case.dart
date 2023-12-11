@@ -7,7 +7,7 @@ import '../../../core/usecase/usecase.dart';
 import '../../../data/repository/base/cart/add_address_repo_base.dart';
 import '../../../data/repository/base/user_address_repo_base.dart';
 
-class AddCartAddressUseCase implements BaseUseCase<String, Future<bool>> {
+class AddCartAddressUseCase implements BaseUsecase<String, Future<bool>> {
   final UserAddressRepoBase userAddressRepo;
   final AddCartAddressRepoBase addCartAddressRepo;
 

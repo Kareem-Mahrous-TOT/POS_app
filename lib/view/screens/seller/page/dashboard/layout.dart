@@ -79,10 +79,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 height: 50.h,
               ),
               actions: [
-                TotAssetImageAtom(
-                  assetName: "assets/ic_launcher.png",
-                  width: 50.w,
-                  height: 50.h,
+                IconButton(
+                  focusColor: Palette.primary,
+                  highlightColor: Palette.primary,
+                  icon: const Icon(Icons.exit_to_app_rounded),
+                  onPressed: () {
+                    context.read<LayoutBloc>().add(const LayoutEvent.logout());
+                  },
                 )
               ],
               title: BottomNavigationBar(
@@ -128,7 +131,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
 /// Signout button REST [LayoutScreen]
 // Expanded(
 //                       flex: 1,
-//                       child: IconButton(
+//                       child:
+// IconButton(
 //                         focusColor: Palette.primary,
 //                         highlightColor: Palette.primary,
 //                         icon: const Icon(Icons.exit_to_app_rounded),
@@ -137,4 +141,5 @@ class _LayoutScreenState extends State<LayoutScreen> {
 //                               .read<LayoutBloc>()
 //                               .add(const LayoutEvent.logout());
 //                         },
-//                       )),
+//                       )
+// ),
