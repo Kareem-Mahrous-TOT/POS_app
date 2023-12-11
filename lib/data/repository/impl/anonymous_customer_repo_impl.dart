@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/response/graph/user_data_response_model.dart';
-import 'package:tot_pos/data/repository/base/anonymous_customer_repo_base.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/user_data_response_model.dart';
+import '../base/anonymous_customer_repo_base.dart';
+import '../../../depency_injection.dart';
 
 import '../../../core/constants/local_keys.dart';
 

@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../../core/constants/local_keys.dart';
+import '../../../../depency_injection.dart';
 
 import '../../../../data/repository/base/cart/remove_cart_repo_base.dart';
 

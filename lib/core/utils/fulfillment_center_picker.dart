@@ -5,15 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
-import 'package:tot_pos/core/extensions/translate.dart';
-import 'package:tot_pos/view/blocs/fulfillment_centers/fulfillment_center_bloc.dart';
-import 'package:tot_pos/view/blocs/products/products_bloc.dart';
-import 'package:tot_pos/view/blocs/user_address/user_address_bloc.dart';
 
 import '../../depency_injection.dart';
+import '../../view/blocs/fulfillment_centers/fulfillment_center_bloc.dart';
+import '../../view/blocs/products/products_bloc.dart';
+import '../../view/blocs/user_address/user_address_bloc.dart';
 import '../constants/local_keys.dart';
+import '../constants/store_config.dart';
+import '../extensions/text_styles.dart';
+import '../extensions/translate.dart';
 import '../theme/palette.dart';
 import 'dialog_utils.dart';
 

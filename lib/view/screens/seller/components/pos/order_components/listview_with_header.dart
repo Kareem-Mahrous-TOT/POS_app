@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
-import 'package:tot_pos/view/blocs/order/order_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/order_components/order_card.dart';
+import '../../../../../../core/extensions/text_styles.dart';
+import '../../../../../blocs/order/order_cubit.dart';
+import 'order_card.dart';
 
 import '../../../../../../core/theme/palette.dart';
 // import 'order_card.dart';

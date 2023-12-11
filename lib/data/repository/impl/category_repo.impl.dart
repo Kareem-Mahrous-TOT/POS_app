@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/response/graph/graph_category_model.dart';
-import 'package:tot_pos/data/repository/base/category_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/graph_category_model.dart';
+import '../base/category_repo_base.dart';
 
 class CategoryRepoImpl implements CategoryRepoBase {
   final GraphService graphService;

@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/utils/json_decoder.dart';
-import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
-import 'package:tot_pos/data/models/request/tot_customer_request/customers_search_model.dart';
-import 'package:tot_pos/data/models/response/customer/current_customer.dart';
-import 'package:tot_pos/data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
-import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
-import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/utils/json_decoder.dart';
+import '../../models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import '../../models/request/tot_customer_request/customers_search_model.dart';
+import '../../models/response/customer/current_customer.dart';
+import '../../models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
+import '../../models/response/tot_customers/tot_customers.dart';
+import '../base/customers_rep_base.dart';
 
 import '../../../core/constants/end_points.dart';
 import '../../../core/network/api_consumer.dart';

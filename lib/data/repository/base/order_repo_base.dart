@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
-import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
+import '../../../core/network/failure.dart';
+import '../../models/response/tot_products/create_order/tot_create_order.dart';
+import '../../models/response/tot_products/customer_order/customer_order_models.dart';
 
 abstract class OrderRepoBase {
   Future<Either<Failure, TotCreateOrderResponse>> fetchResponse({

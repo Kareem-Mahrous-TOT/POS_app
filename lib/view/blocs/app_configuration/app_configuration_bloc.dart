@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/data/models/app_configuration_model.dart';
-import 'package:tot_pos/data/models/response/graph/user_data_response_model.dart';
-import 'package:tot_pos/data/repository/base/app_configuration_repository.dart';
-import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../core/constants/local_keys.dart';
+import '../../../data/models/app_configuration_model.dart';
+import '../../../data/models/response/graph/user_data_response_model.dart';
+import '../../../data/repository/base/app_configuration_repository.dart';
+import '../../../data/repository/base/auth_repo_base.dart';
+import '../../../depency_injection.dart';
  import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

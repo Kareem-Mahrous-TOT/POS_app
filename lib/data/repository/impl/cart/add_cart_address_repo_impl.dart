@@ -1,7 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/data/repository/base/cart/add_address_repo_base.dart';
 
 import '../../../../core/network/graph_config.dart';
+import '../../base/cart/add_address_repo_base.dart';
 
 class AddCartAddressRepoImpl implements AddCartAddressRepoBase {
   final GraphService graphService;

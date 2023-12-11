@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
-import 'package:tot_pos/core/theme/palette.dart';
+import '../../../../../../core/extensions/text_styles.dart';
+import '../../../../../../core/theme/palette.dart';
 
 class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final String? productName;

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:tot_pos/data/models/response/graph/graph_create_order_model.dart';
+import '../../../data/models/response/graph/graph_create_order_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

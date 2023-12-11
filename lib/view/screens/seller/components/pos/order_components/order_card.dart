@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
+import '../../../../../../data/models/response/tot_products/customer_order/customer_order_models.dart';
 
 import '../../../../../../core/theme/palette.dart';
 

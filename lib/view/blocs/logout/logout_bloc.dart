@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../data/repository/base/auth_repo_base.dart';
+import '../../../depency_injection.dart';
 
 part 'logout_bloc.freezed.dart';
 part 'logout_event.dart';

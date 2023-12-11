@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/view/blocs/categories/categories_bloc.dart';
-import 'package:tot_pos/view/blocs/login/login_bloc.dart';
-import 'package:tot_pos/view/blocs/menu/menu_cubit.dart';
-import 'package:tot_pos/view/blocs/products/products_bloc.dart';
+import 'core/constants/store_config.dart';
+import 'view/blocs/categories/categories_bloc.dart';
+import 'view/blocs/login/login_bloc.dart';
+import 'view/blocs/menu/menu_cubit.dart';
+import 'view/blocs/products/products_bloc.dart';
 
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
@@ -60,6 +60,7 @@ class MainApp extends StatelessWidget {
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: "TOT POS",
+          locale: const Locale("ar"),
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,
           localizationsDelegates: AppLang.localizationsDelegates,

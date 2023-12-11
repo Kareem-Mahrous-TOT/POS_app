@@ -5,8 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/mappers/category_mapping.dart';
-import 'package:tot_pos/data/models/category_model.dart';
+import '../../../data/mappers/category_mapping.dart';
+import '../../../data/models/category_model.dart';
 
 part 'menu_cubit.freezed.dart';
 part 'menu_state.dart';

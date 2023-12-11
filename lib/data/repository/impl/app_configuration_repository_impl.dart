@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 
-import 'package:tot_pos/data/repository/base/app_configuration_repository.dart';
+import '../base/app_configuration_repository.dart';
 
 import '../../models/app_configuration_model.dart';
 

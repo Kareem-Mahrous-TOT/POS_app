@@ -1,7 +1,7 @@
-import 'package:tot_pos/depency_injection.dart';
+import '../../../../depency_injection.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/domain/cart/usecases/prepare_cart_usecase.dart';
+import '../../../../domain/cart/usecases/prepare_cart_usecase.dart';
 
 part 'add_address_bloc.freezed.dart';
 part 'add_address_event.dart';

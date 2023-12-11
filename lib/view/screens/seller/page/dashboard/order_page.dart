@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
-import 'package:tot_pos/core/theme/palette.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/order_components/listview_with_header.dart';
+import '../../../../../core/extensions/text_styles.dart';
+import '../../../../../core/theme/palette.dart';
+import '../../components/pos/order_components/listview_with_header.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:tot_pos/data/models/banners_model.dart';
+import '../../../data/models/banners_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

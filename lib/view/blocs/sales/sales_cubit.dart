@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
-import 'package:tot_pos/data/repository/base/order_repo_base.dart';
+import '../../../data/models/response/tot_products/customer_order/customer_order_models.dart';
+import '../../../data/repository/base/order_repo_base.dart';
 
 part 'sales_cubit.freezed.dart';
 part 'sales_state.dart';

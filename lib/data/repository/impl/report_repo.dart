@@ -1,6 +1,6 @@
-import 'package:tot_pos/core/utils/json_decoder.dart';
-import 'package:tot_pos/data/models/response/reports/cost_model.dart';
-import 'package:tot_pos/data/models/response/reports/statistic_model.dart';
+import '../../../core/utils/json_decoder.dart';
+import '../../models/response/reports/cost_model.dart';
+import '../../models/response/reports/statistic_model.dart';
 
 class ReportRepo {
   fetchPieChart() async {

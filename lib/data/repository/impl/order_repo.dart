@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
-import 'package:tot_pos/data/models/response/tot_products/customer_order/customer_order_models.dart';
-import 'package:tot_pos/data/repository/base/order_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../../models/response/tot_products/create_order/tot_create_order.dart';
+import '../../models/response/tot_products/customer_order/customer_order_models.dart';
+import '../base/order_repo_base.dart';
 
 import '../../../core/constants/end_points.dart';
 import '../../../core/network/api_consumer.dart';

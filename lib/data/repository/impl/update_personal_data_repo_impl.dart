@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/repository/base/update_personal_data_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../base/update_personal_data_repo_base.dart';
 
 class UpDatePersonalDataRepoImpl implements UpdatePersonalDataRepoBase {
   final GraphService graphService;
