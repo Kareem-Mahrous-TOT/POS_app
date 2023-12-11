@@ -36,6 +36,7 @@ class MenuCubit extends Cubit<MenuState> {
       emit(MenuState.fetchSuccess(
         model: categoryList,
         records: records,
+        record: records.last
       ));
     } catch (e) {
       emit(const MenuState.fetchFail());

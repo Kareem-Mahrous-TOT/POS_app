@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tot_pos/core/extensions/text_styles.dart';
+import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTPOSItemCounterMolecule extends StatelessWidget {
   const TOTPOSItemCounterMolecule({
@@ -23,20 +25,30 @@ class TOTPOSItemCounterMolecule extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        IconButton(
-            icon: Icon(Icons.add_circle_outline_rounded,
-                color: addIconColor ?? Colors.black),
-            onPressed: increment),
+        GestureDetector(
+          onTap: increment,
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5), color: Palette.primary),
+            child: Icon(Icons.add, color: addIconColor ?? Colors.black),
+          ),
+        ),
         Text(
           value,
-          style: TextStyle(
+          style: context.titleMedium.copyWith(
             color: counterColor ?? Colors.black,
           ),
         ),
-        IconButton(
-            icon: Icon(Icons.remove_circle_outline_rounded,
-                color: removeIconColor ?? Colors.black),
-            onPressed: decrement),
+        GestureDetector(
+          onTap: decrement,
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5), color: Palette.primary),
+            child: Icon(Icons.remove, color: removeIconColor ?? Colors.black),
+          ),
+        ),
       ],
     );
   }

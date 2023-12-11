@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../../core/extensions/text_styles.dart';
 import '../../../../../../core/theme/palette.dart';
 
@@ -8,6 +9,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final String? prodcutDescription;
   final String? productImage;
   final String? price;
+  final String? inStock;
   final Color? nameColor;
   final Color? priceColor;
 
@@ -20,6 +22,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
       required this.price,
       required this.productImage,
       required this.onTap,
+      required this.inStock,
       this.nameColor,
       this.priceColor});
 
@@ -35,6 +38,7 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // mealImage.toString() == "null"
               ClipRRect(
@@ -44,37 +48,32 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                   width: w * 0.3,
                   imageUrl: productImage!,
                   errorWidget: (context, error, stackTrace) {
-                    return CachedNetworkImage(
+                    return Image.network(
                       height: h * 0.2,
                       width: w * 0.3,
-                      imageUrl:
-                          "http://20.163.148.155:9070/assets/tot-pos-dummy/dummyLogo.png",
+                      "http://20.163.148.155:9070/assets/tot-pos-dummy/dummyLogo.png",
                     );
                   },
                 ),
               ),
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(productName!,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.titleMedium.copyWith(
-                        color: nameColor ?? Palette.black,
-                      ))),
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(prodcutDescription!,
-                      style: context.titleMedium.copyWith(
-                        color: prodcutDescription!.contains("In stock")
-                            ? Palette.green
-                            : Palette.red,
-                      ))),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "$price",
+              Text(productName!,
+                  overflow: TextOverflow.ellipsis,
                   style: context.titleMedium.copyWith(
-                    color: priceColor ?? Palette.black,
-                  ),
+                    color: nameColor ?? Palette.black,
+                  )),
+              if (prodcutDescription != null)
+                Text(prodcutDescription!,
+                    style: context.titleMedium.copyWith(color: Palette.grey)),
+              Text(inStock!,
+                  style: context.titleMedium.copyWith(
+                    color: inStock!.contains("In stock")
+                        ? Palette.green
+                        : Palette.red,
+                  )),
+              Text(
+                price ?? "0",
+                style: context.titleMedium.copyWith(
+                  color: priceColor ?? Palette.black,
                 ),
               ),
             ],

@@ -88,7 +88,7 @@ _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
           : Associations.fromJson(json['associations'] as Map<String, dynamic>),
       vendor: json['vendor'],
       images: (json['images'] as List<dynamic>?)
-          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
           .toList(),
       availabilityData: json['availabilityData'] == null
           ? null
@@ -177,7 +177,8 @@ Map<String, dynamic> _$$VariationImplToJson(_$VariationImpl instance) =>
       'price': instance.price?.toJson(),
     };
 
-_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
+_$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>
+    _$ProductImageImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
       group: json['group'] as String?,
@@ -187,7 +188,7 @@ _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
       cultureName: json['cultureName'] as String?,
     );
 
-Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
+Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

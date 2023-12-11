@@ -57,7 +57,7 @@ class Item with _$Item {
     Videos? videos, // Add the "videos" field here
     Associations? associations,
     dynamic vendor,
-    List<Image>? images, // Add the "images" field here
+    List<ProductImage>? images, // Add the "images" field here
     AvailabilityData? availabilityData, // Add the "availabilityData" field here
     bool? hasVariations,
     List<Variation>? variations, // Add the "variations" field here
@@ -91,8 +91,8 @@ class Variation with _$Variation {
 }
 
 @freezed
-class Image with _$Image {
-  const factory Image({
+class ProductImage with _$ProductImage {
+  const factory ProductImage({
     String? id,
     String? name,
     String? group,
@@ -100,9 +100,9 @@ class Image with _$Image {
     String? relativeUrl,
     num? sortOrder,
     String? cultureName,
-  }) = _Image;
+  }) = _ProductImage;
 
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  factory ProductImage.fromJson(Map<String, dynamic> json) => _$ProductImageFromJson(json);
 }
 
 @freezed

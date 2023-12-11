@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 import 'data/repository/base/auth_repo_base.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/layout_repo_base.dart';
@@ -54,7 +55,6 @@ Future<void> getItInit() async {
   getIt.registerSingleton<CustomerRepo>(CustomerRepo());
   getIt.registerSingleton<AuthBaseRepo>(
       AuthRepoImpl(apiConsumer: getIt(), graphService: getIt()));
-  // sl.registerSingleton<OrderRepo>(OrderRepo());
   getIt.registerSingleton<SalesRepo>(SalesRepo());
   getIt.registerSingleton<ReportRepo>(ReportRepo());
   getIt.registerSingleton<ProductRepoBase>(ProductRepoImpl(getIt()));
@@ -82,4 +82,5 @@ Future<void> getItInit() async {
   getIt.registerFactory<ReportCostCubit>(() => ReportCostCubit());
   getIt.registerFactory<MenuCubit>(() => MenuCubit());
   getIt.registerFactory<ProductsBloc>(() => ProductsBloc(getIt()));
+  getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(getIt()));
 }

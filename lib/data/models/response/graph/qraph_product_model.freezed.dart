@@ -667,7 +667,7 @@ mixin _$Item {
       throw _privateConstructorUsedError; // Add the "videos" field here
   Associations? get associations => throw _privateConstructorUsedError;
   dynamic get vendor => throw _privateConstructorUsedError;
-  List<Image>? get images =>
+  List<ProductImage>? get images =>
       throw _privateConstructorUsedError; // Add the "images" field here
   AvailabilityData? get availabilityData =>
       throw _privateConstructorUsedError; // Add the "availabilityData" field here
@@ -710,7 +710,7 @@ abstract class $ItemCopyWith<$Res> {
       Videos? videos,
       Associations? associations,
       dynamic vendor,
-      List<Image>? images,
+      List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
       List<Variation>? variations,
@@ -833,7 +833,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Image>?,
+              as List<ProductImage>?,
       availabilityData: freezed == availabilityData
           ? _value.availabilityData
           : availabilityData // ignore: cast_nullable_to_non_nullable
@@ -980,7 +980,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       Videos? videos,
       Associations? associations,
       dynamic vendor,
-      List<Image>? images,
+      List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
       List<Variation>? variations,
@@ -1106,7 +1106,7 @@ class __$$ItemImplCopyWithImpl<$Res>
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Image>?,
+              as List<ProductImage>?,
       availabilityData: freezed == availabilityData
           ? _value.availabilityData
           : availabilityData // ignore: cast_nullable_to_non_nullable
@@ -1177,7 +1177,7 @@ class _$ItemImpl implements _Item {
       this.videos,
       this.associations,
       this.vendor,
-      final List<Image>? images,
+      final List<ProductImage>? images,
       this.availabilityData,
       this.hasVariations,
       final List<Variation>? variations,
@@ -1256,9 +1256,9 @@ class _$ItemImpl implements _Item {
   final Associations? associations;
   @override
   final dynamic vendor;
-  final List<Image>? _images;
+  final List<ProductImage>? _images;
   @override
-  List<Image>? get images {
+  List<ProductImage>? get images {
     final value = _images;
     if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
@@ -1429,7 +1429,7 @@ abstract class _Item implements Item {
       final Videos? videos,
       final Associations? associations,
       final dynamic vendor,
-      final List<Image>? images,
+      final List<ProductImage>? images,
       final AvailabilityData? availabilityData,
       final bool? hasVariations,
       final List<Variation>? variations,
@@ -1474,7 +1474,7 @@ abstract class _Item implements Item {
   @override
   dynamic get vendor;
   @override
-  List<Image>? get images;
+  List<ProductImage>? get images;
   @override // Add the "images" field here
   AvailabilityData? get availabilityData;
   @override // Add the "availabilityData" field here
@@ -1839,12 +1839,12 @@ abstract class _Variation implements Variation {
       throw _privateConstructorUsedError;
 }
 
-Image _$ImageFromJson(Map<String, dynamic> json) {
-  return _Image.fromJson(json);
+ProductImage _$ProductImageFromJson(Map<String, dynamic> json) {
+  return _ProductImage.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Image {
+mixin _$ProductImage {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get group => throw _privateConstructorUsedError;
@@ -1855,13 +1855,15 @@ mixin _$Image {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ImageCopyWith<Image> get copyWith => throw _privateConstructorUsedError;
+  $ProductImageCopyWith<ProductImage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImageCopyWith<$Res> {
-  factory $ImageCopyWith(Image value, $Res Function(Image) then) =
-      _$ImageCopyWithImpl<$Res, Image>;
+abstract class $ProductImageCopyWith<$Res> {
+  factory $ProductImageCopyWith(
+          ProductImage value, $Res Function(ProductImage) then) =
+      _$ProductImageCopyWithImpl<$Res, ProductImage>;
   @useResult
   $Res call(
       {String? id,
@@ -1874,9 +1876,9 @@ abstract class $ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImageCopyWithImpl<$Res, $Val extends Image>
-    implements $ImageCopyWith<$Res> {
-  _$ImageCopyWithImpl(this._value, this._then);
+class _$ProductImageCopyWithImpl<$Res, $Val extends ProductImage>
+    implements $ProductImageCopyWith<$Res> {
+  _$ProductImageCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1928,10 +1930,11 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
 }
 
 /// @nodoc
-abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$$ImageImplCopyWith(
-          _$ImageImpl value, $Res Function(_$ImageImpl) then) =
-      __$$ImageImplCopyWithImpl<$Res>;
+abstract class _$$ProductImageImplCopyWith<$Res>
+    implements $ProductImageCopyWith<$Res> {
+  factory _$$ProductImageImplCopyWith(
+          _$ProductImageImpl value, $Res Function(_$ProductImageImpl) then) =
+      __$$ProductImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1945,11 +1948,11 @@ abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ImageImplCopyWithImpl<$Res>
-    extends _$ImageCopyWithImpl<$Res, _$ImageImpl>
-    implements _$$ImageImplCopyWith<$Res> {
-  __$$ImageImplCopyWithImpl(
-      _$ImageImpl _value, $Res Function(_$ImageImpl) _then)
+class __$$ProductImageImplCopyWithImpl<$Res>
+    extends _$ProductImageCopyWithImpl<$Res, _$ProductImageImpl>
+    implements _$$ProductImageImplCopyWith<$Res> {
+  __$$ProductImageImplCopyWithImpl(
+      _$ProductImageImpl _value, $Res Function(_$ProductImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1963,7 +1966,7 @@ class __$$ImageImplCopyWithImpl<$Res>
     Object? sortOrder = freezed,
     Object? cultureName = freezed,
   }) {
-    return _then(_$ImageImpl(
+    return _then(_$ProductImageImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1998,8 +2001,8 @@ class __$$ImageImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ImageImpl implements _Image {
-  const _$ImageImpl(
+class _$ProductImageImpl implements _ProductImage {
+  const _$ProductImageImpl(
       {this.id,
       this.name,
       this.group,
@@ -2008,8 +2011,8 @@ class _$ImageImpl implements _Image {
       this.sortOrder,
       this.cultureName});
 
-  factory _$ImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ImageImplFromJson(json);
+  factory _$ProductImageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageImplFromJson(json);
 
   @override
   final String? id;
@@ -2028,14 +2031,14 @@ class _$ImageImpl implements _Image {
 
   @override
   String toString() {
-    return 'Image(id: $id, name: $name, group: $group, url: $url, relativeUrl: $relativeUrl, sortOrder: $sortOrder, cultureName: $cultureName)';
+    return 'ProductImage(id: $id, name: $name, group: $group, url: $url, relativeUrl: $relativeUrl, sortOrder: $sortOrder, cultureName: $cultureName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ImageImpl &&
+            other is _$ProductImageImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.group, group) || other.group == group) &&
@@ -2056,28 +2059,29 @@ class _$ImageImpl implements _Image {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
-      __$$ImageImplCopyWithImpl<_$ImageImpl>(this, _$identity);
+  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
+      __$$ProductImageImplCopyWithImpl<_$ProductImageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageImplToJson(
+    return _$$ProductImageImplToJson(
       this,
     );
   }
 }
 
-abstract class _Image implements Image {
-  const factory _Image(
+abstract class _ProductImage implements ProductImage {
+  const factory _ProductImage(
       {final String? id,
       final String? name,
       final String? group,
       final String? url,
       final String? relativeUrl,
       final num? sortOrder,
-      final String? cultureName}) = _$ImageImpl;
+      final String? cultureName}) = _$ProductImageImpl;
 
-  factory _Image.fromJson(Map<String, dynamic> json) = _$ImageImpl.fromJson;
+  factory _ProductImage.fromJson(Map<String, dynamic> json) =
+      _$ProductImageImpl.fromJson;
 
   @override
   String? get id;
@@ -2095,7 +2099,7 @@ abstract class _Image implements Image {
   String? get cultureName;
   @override
   @JsonKey(ignore: true)
-  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
+  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+
 import '../../../../../core/constants/store_config.dart';
 import '../../../../../core/extensions/text_styles.dart';
 import '../../../../../core/theme/palette.dart';
@@ -172,66 +173,77 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 );
                               }
-                              return GridView.builder(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 4,
-                                        crossAxisSpacing: 20,
-                                        mainAxisSpacing: 0,
-                                        childAspectRatio: 0.7),
-                                itemCount: value.products?.length,
-                                itemBuilder: (context, index) =>
-                                    TOTPOSFoodCardItemMolecule(
-                                        onTap: (value.products?[index]
-                                                    .variations?.isNotEmpty ??
-                                                false)
-                                            ? () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return AlertDialog(
-                                                      icon: Align(
-                                                          alignment: Alignment
-                                                              .topRight,
-                                                          child: IconButton(
-                                                              onPressed: () {
-                                                                context.pop();
-                                                              },
-                                                              icon: const Icon(
-                                                                  Icons
-                                                                      .close))),
-                                                      content: SizedBox(
-                                                        width: w * 0.6,
-                                                        height: h * 0.6,
-                                                        child:
-                                                            POSFoodItemAlertDialog(
-                                                          data: value
-                                                              .products![index],
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 50.0),
+                                child: GridView.builder(
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 4,
+                                          crossAxisSpacing: 20,
+                                          mainAxisSpacing: 0,
+                                          childAspectRatio: 0.7),
+                                  shrinkWrap: true,
+                                  itemCount: value.products?.length,
+                                  itemBuilder: (context, index) =>
+                                      TOTPOSFoodCardItemMolecule(
+                                          onTap: (value.products?[index]
+                                                      .variations?.isNotEmpty ??
+                                                  false)
+                                              ? () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                        icon: Align(
+                                                            alignment: Alignment
+                                                                .topRight,
+                                                            child: IconButton(
+                                                                onPressed: () {
+                                                                  context.pop();
+                                                                },
+                                                                icon: const Icon(
+                                                                    Icons
+                                                                        .close))),
+                                                        content: SizedBox(
+                                                          width: w * 0.5,
+                                                          height: h * 0.6,
+                                                          child:
+                                                              POSFoodItemAlertDialog(
+                                                            id: value
+                                                                .products!
+                                                                [
+                                                                    index]
+                                                                .id!,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              }
-                                            : null,
-                                        productImage: value.products![index].imgSrc
-                                            .toString(),
-                                        productName:
-                                            value.products![index].name.toString() ==
-                                                    "null"
-                                                ? "Not found"
-                                                : value
-                                                    .products![index].name
-                                                    .toString(),
-                                        prodcutDescription:
-                                            "${value.products?[index].description?.content ?? ""} \n ${(value.products?[index].availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                        price: value.products?[index].price
-                                                    ?.actual?.formattedAmount !=
-                                                null
-                                            ? value.products![index].price!
-                                                .actual!.formattedAmount
-                                            : "N/A"),
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              : null,
+                                          productImage: value.products![index].imgSrc
+                                              .toString(),
+                                          productName:
+                                              value.products![index].name.toString() ==
+                                                      "null"
+                                                  ? "Not found"
+                                                  : value.products![index].name
+                                                      .toString(),
+                                          inStock:
+                                              " ${(value.products?[index].availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                          prodcutDescription:
+                                              "${value.products?[index].descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
+                                          price: value
+                                                      .products?[index]
+                                                      .price
+                                                      ?.actual
+                                                      ?.formattedAmount !=
+                                                  null
+                                              ? value.products![index].price!
+                                                  .actual!.formattedAmount
+                                              : "N/A"),
+                                ),
                               );
                             },
                           );
