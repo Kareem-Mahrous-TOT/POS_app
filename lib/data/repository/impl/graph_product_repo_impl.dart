@@ -215,7 +215,6 @@ class ProductRepoImpl implements ProductRepoBase {
       if (response.data != null) {
         // log("******** response.data - products :: ${response.data} ********");
         Products products = Products.fromJson(response.data!["products"]);
-        print("$products   products ####");
 
         // products.items!.toDomain();
         return Right(products);
