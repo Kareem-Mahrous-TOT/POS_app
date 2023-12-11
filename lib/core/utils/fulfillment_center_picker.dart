@@ -90,7 +90,7 @@ Future<void> showFulfillmentCenterPicker(
                                   .map((element) => element.name)
                                   .toList(),
                               items: branches.fulfillmentCenters.items,
-                              selectedBranch: branchName,
+                              selectedFulfillmentCenter: branchName,
                               onTap: (currentItem) {
                                 log("SELECT BRANCH::-currentItem-- $currentItem #");
                                 if (currentItem != null) {
