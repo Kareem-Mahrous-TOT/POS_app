@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import '../../../request/tot_add_customer/tot_add_new_customer_model_request.dart';
 
 import '../customer_order/customer_order_models.dart';
 

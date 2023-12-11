@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/core/constants/strings.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../core/constants/local_keys.dart';
+import '../../core/constants/strings.dart';
+import '../../depency_injection.dart';
 
 import '../models/response/graph/qraph_product_model.dart';
 

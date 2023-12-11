@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/json_models/area_regions_model.dart';
-import 'package:tot_pos/data/repository/base/address/area_regions_repo_base.dart';
+import '../../../../core/network/failure.dart';
+import '../../../models/json_models/area_regions_model.dart';
+import '../../base/address/area_regions_repo_base.dart';
 
 class AreaRegionsRepoImpl implements AreaRegionsRepoBase {
   @override

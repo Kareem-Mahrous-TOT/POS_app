@@ -1,5 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../../depency_injection.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/constants/local_keys.dart';

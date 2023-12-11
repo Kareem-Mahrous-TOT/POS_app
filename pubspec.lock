@@ -466,7 +466,7 @@ packages:
     source: hosted
     version: "1.1.0"
   fl_chart:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: fl_chart
       sha256: "6b9eb2b3017241d05c482c01f668dd05cc909ec9a0114fdd49acd958ff2432fa"

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/response/graph/graph_create_cart_model.dart';
+import 'graph_create_cart_model.dart';
 
 import 'qraph_product_model.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_pos/view/blocs/home/home_bloc.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
+import '../../../../blocs/home/home_bloc.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
   const TOTPOSAppBar(

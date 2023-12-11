@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tot_pos/data/models/response/reports/statistic_model.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/pie_chart.dart';
+import '../../../../../../data/models/response/reports/statistic_model.dart';
+import 'pie_chart.dart';
 
 class POSPieChart extends StatefulWidget {
   const POSPieChart({super.key, required this.reportPieModel});

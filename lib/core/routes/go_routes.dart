@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tot_pos/core/constants.dart';
-import 'package:tot_pos/depency_injection.dart';
-import 'package:tot_pos/view/screens/seller/page/dashboard/auth/login_page.dart';
+import '../constants.dart';
+import '../../depency_injection.dart';
+import '../../view/screens/seller/page/dashboard/auth/login_page.dart';
 
 import '../../view/screens/seller/page/dashboard/layout.dart';
 import 'routes.dart';

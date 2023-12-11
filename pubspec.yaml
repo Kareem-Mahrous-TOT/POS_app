@@ -49,6 +49,15 @@ dependencies:
   lottie: ^2.7.0
   mockito: ^5.4.3
   share_plus: ^7.2.1
+  connectivity_plus: ^5.0.2
+  # internet_connection_checker: ^1.0.0+1
+  internet_connection_checker_plus: ^2.1.0
+
+  # tot_atomic_design:
+  #   git:
+  #     url: https://github.com/TOTPLATFORM/flutter.git
+  #     path: packages/atomic_design
+  #     ref: tablet-beta
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
 
@@ -70,10 +79,11 @@ dev_dependencies:
   json_serializable: ^6.7.1
 
 dependency_overrides:
+
 #  feature/login
 #   ? intl
 #  feature/demo
-  intl:
+
 
 flutter:
   uses-material-design: true

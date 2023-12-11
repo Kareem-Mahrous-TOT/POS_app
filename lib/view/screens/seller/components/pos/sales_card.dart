@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/palette.dart';
+
+import '../../../../../core/theme/palette.dart';
 
 class TOTSalesCardMolecule extends StatelessWidget {
   const TOTSalesCardMolecule({

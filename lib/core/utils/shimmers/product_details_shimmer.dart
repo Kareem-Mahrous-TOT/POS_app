@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
-import 'package:tot_pos/core/theme/palette.dart';
+
+import '../../theme/palette.dart';
 
 class ProductDetailsShimmer extends StatelessWidget {
   const ProductDetailsShimmer({

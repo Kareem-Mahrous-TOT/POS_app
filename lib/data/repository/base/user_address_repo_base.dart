@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/address_data_model.dart';
-import 'package:tot_pos/data/models/response/graph/addresses_model.dart';
+import '../../../core/network/failure.dart';
+import '../../models/address_data_model.dart';
+import '../../models/response/graph/addresses_model.dart';
 
 abstract class UserAddressRepoBase {
   Future<Either<Failure, List<AddressItem>>> getAddresses({

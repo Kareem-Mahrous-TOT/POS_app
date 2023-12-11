@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/data/models/response/graph/graph_create_order_model.dart';
+import '../../models/response/graph/graph_create_order_model.dart';
 
 import '../../../core/network/failure.dart';
 

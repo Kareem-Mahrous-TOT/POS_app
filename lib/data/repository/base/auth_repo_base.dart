@@ -1,9 +1,9 @@
 import "dart:async";
 
 import "package:dartz/dartz.dart";
-import "package:tot_pos/core/network/failure.dart";
-import "package:tot_pos/data/models/response/auth/login/login_model.dart";
-import "package:tot_pos/data/models/response/graph/user_data_response_model.dart";
+import "../../../core/network/failure.dart";
+import "../../models/response/auth/login/login_model.dart";
+import "../../models/response/graph/user_data_response_model.dart";
 
 // import "package:dartz/dartz.dart";
 

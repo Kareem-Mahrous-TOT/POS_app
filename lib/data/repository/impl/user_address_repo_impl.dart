@@ -2,12 +2,12 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/constants/constants.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/address_data_model.dart';
-import 'package:tot_pos/data/models/response/graph/addresses_model.dart';
-import 'package:tot_pos/data/repository/base/user_address_repo_base.dart';
+import '../../../core/constants/constants.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/address_data_model.dart';
+import '../../models/response/graph/addresses_model.dart';
+import '../base/user_address_repo_base.dart';
 
 class UserAddressRepoImpl implements UserAddressRepoBase {
   final GraphService graphService;

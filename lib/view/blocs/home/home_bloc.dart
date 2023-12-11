@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/request/tot_customer_request/customers_search_model.dart';
-import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
-import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
-import 'package:tot_pos/data/repository/base/customers_rep_base.dart';
-import 'package:tot_pos/data/repository/base/products_repo_base.dart';
+
+import '../../../data/models/request/tot_customer_request/customers_search_model.dart';
+import '../../../data/models/response/tot_customers/tot_customers.dart';
+import '../../../data/models/response/tot_products/tot_product_model.dart';
+import '../../../data/repository/base/customers_rep_base.dart';
+import '../../../data/repository/base/products_repo_base.dart';
 
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';

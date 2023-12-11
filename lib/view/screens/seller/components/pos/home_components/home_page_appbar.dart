@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/theme/palette.dart';
-import 'package:tot_pos/data/models/response/tot_customers/tot_customers.dart';
-import 'package:tot_pos/view/blocs/home/home_bloc.dart';
-import 'package:tot_pos/view/blocs/products/rest/bag_cubit.dart';
+import '../../../../../../core/theme/palette.dart';
+import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
+import '../../../../../blocs/home/home_bloc.dart';
+import '../../../../../blocs/products/rest/bag_cubit.dart';
 
 class TOTPOSHomePageAppBar extends StatefulWidget {
   final Color? filterColor;

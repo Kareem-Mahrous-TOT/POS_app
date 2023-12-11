@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/response/reports/cost_model.dart';
-import 'package:tot_pos/data/repository/impl/report_repo.dart';
+import '../../../../data/models/response/reports/cost_model.dart';
+import '../../../../data/repository/impl/report_repo.dart';
 
 part 'report_cost_cubit.freezed.dart';
 part 'report_cost_state.dart';

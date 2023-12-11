@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/response/graph/qraph_product_model.dart';
+
+import 'qraph_product_model.dart';
 
 part 'graph_add_item_model.freezed.dart';
 part 'graph_add_item_model.g.dart';

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/repository/base/auth_repo_base.dart';
+import '../../../data/repository/base/auth_repo_base.dart';
 
 part 'layout_bloc.freezed.dart';
 part 'layout_event.dart';
