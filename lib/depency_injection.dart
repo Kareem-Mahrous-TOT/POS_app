@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
 import 'core/network/graph_config.dart';
+import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'data/repository/base/auth_repo_base.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/layout_repo_base.dart';
@@ -87,5 +88,6 @@ Future<void> getItInit() async {
   getIt.registerFactory<ReportCostCubit>(() => ReportCostCubit());
   getIt.registerFactory<MenuCubit>(() => MenuCubit());
   getIt.registerFactory<ProductsBloc>(() => ProductsBloc(getIt()));
+  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(ordersRepo: getIt()));
   getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(getIt()));
 }
