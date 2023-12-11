@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../../../../../core/extensions/text_styles.dart';
 import '../../../../../../core/theme/palette.dart';
 
 class TOTAddCustomerAlertDialog extends StatelessWidget {

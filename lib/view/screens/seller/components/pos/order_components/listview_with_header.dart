@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/extensions/text_styles.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../../../blocs/order/order_cubit.dart';
 import 'order_card.dart';
 

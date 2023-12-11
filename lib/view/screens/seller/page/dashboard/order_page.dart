@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/extensions/text_styles.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../components/pos/order_components/listview_with_header.dart';
 

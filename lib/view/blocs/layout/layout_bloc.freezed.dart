@@ -461,6 +461,7 @@ mixin _$LayoutState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailed,
   }) =>
@@ -469,6 +470,7 @@ mixin _$LayoutState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailed,
   }) =>
@@ -477,6 +479,7 @@ mixin _$LayoutState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailed,
     required TResult orElse(),
@@ -486,6 +489,7 @@ mixin _$LayoutState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
     required TResult Function(_LogoutSuccess value) logoutSuccess,
     required TResult Function(_LogoutFailed value) logoutFailed,
   }) =>
@@ -494,6 +498,7 @@ mixin _$LayoutState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
     TResult? Function(_LogoutSuccess value)? logoutSuccess,
     TResult? Function(_LogoutFailed value)? logoutFailed,
   }) =>
@@ -502,6 +507,7 @@ mixin _$LayoutState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
     TResult Function(_LogoutSuccess value)? logoutSuccess,
     TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
@@ -564,6 +570,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailed,
   }) {
@@ -575,6 +582,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailed,
   }) {
@@ -586,6 +594,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailed,
     required TResult orElse(),
@@ -601,6 +610,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
     required TResult Function(_LogoutSuccess value) logoutSuccess,
     required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
@@ -612,6 +622,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
     TResult? Function(_LogoutSuccess value)? logoutSuccess,
     TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
@@ -623,6 +634,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
     TResult Function(_LogoutSuccess value)? logoutSuccess,
     TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
@@ -704,6 +716,7 @@ class _$UpdateIndexStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailed,
   }) {
@@ -715,6 +728,7 @@ class _$UpdateIndexStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailed,
   }) {
@@ -726,6 +740,7 @@ class _$UpdateIndexStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailed,
     required TResult orElse(),
@@ -741,6 +756,7 @@ class _$UpdateIndexStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
     required TResult Function(_LogoutSuccess value) logoutSuccess,
     required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
@@ -752,6 +768,7 @@ class _$UpdateIndexStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
     TResult? Function(_LogoutSuccess value)? logoutSuccess,
     TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
@@ -763,6 +780,7 @@ class _$UpdateIndexStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
     TResult Function(_LogoutSuccess value)? logoutSuccess,
     TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
@@ -782,6 +800,125 @@ abstract class _UpdateIndexState implements LayoutState {
   @JsonKey(ignore: true)
   _$$UpdateIndexStateImplCopyWith<_$UpdateIndexStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LogoutLoadingImplCopyWith<$Res> {
+  factory _$$LogoutLoadingImplCopyWith(
+          _$LogoutLoadingImpl value, $Res Function(_$LogoutLoadingImpl) then) =
+      __$$LogoutLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutLoadingImplCopyWithImpl<$Res>
+    extends _$LayoutStateCopyWithImpl<$Res, _$LogoutLoadingImpl>
+    implements _$$LogoutLoadingImplCopyWith<$Res> {
+  __$$LogoutLoadingImplCopyWithImpl(
+      _$LogoutLoadingImpl _value, $Res Function(_$LogoutLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogoutLoadingImpl
+    with DiagnosticableTreeMixin
+    implements _LogoutLoading {
+  _$LogoutLoadingImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LayoutState.logoutLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LayoutState.logoutLoading'));
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailed,
+  }) {
+    return logoutLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailed,
+  }) {
+    return logoutLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutLoading != null) {
+      return logoutLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
+    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_LogoutFailed value) logoutFailed,
+  }) {
+    return logoutLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
+    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_LogoutFailed value)? logoutFailed,
+  }) {
+    return logoutLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
+    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_LogoutFailed value)? logoutFailed,
+    required TResult orElse(),
+  }) {
+    if (logoutLoading != null) {
+      return logoutLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogoutLoading implements LayoutState {
+  factory _LogoutLoading() = _$LogoutLoadingImpl;
 }
 
 /// @nodoc
@@ -823,6 +960,7 @@ class _$LogoutSuccessImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailed,
   }) {
@@ -834,6 +972,7 @@ class _$LogoutSuccessImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailed,
   }) {
@@ -845,6 +984,7 @@ class _$LogoutSuccessImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailed,
     required TResult orElse(),
@@ -860,6 +1000,7 @@ class _$LogoutSuccessImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
     required TResult Function(_LogoutSuccess value) logoutSuccess,
     required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
@@ -871,6 +1012,7 @@ class _$LogoutSuccessImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
     TResult? Function(_LogoutSuccess value)? logoutSuccess,
     TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
@@ -882,6 +1024,7 @@ class _$LogoutSuccessImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
     TResult Function(_LogoutSuccess value)? logoutSuccess,
     TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),
@@ -960,6 +1103,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(int index) updateIndex,
+    required TResult Function() logoutLoading,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailed,
   }) {
@@ -971,6 +1115,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(int index)? updateIndex,
+    TResult? Function()? logoutLoading,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailed,
   }) {
@@ -982,6 +1127,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(int index)? updateIndex,
+    TResult Function()? logoutLoading,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailed,
     required TResult orElse(),
@@ -997,6 +1143,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateIndexState value) updateIndex,
+    required TResult Function(_LogoutLoading value) logoutLoading,
     required TResult Function(_LogoutSuccess value) logoutSuccess,
     required TResult Function(_LogoutFailed value) logoutFailed,
   }) {
@@ -1008,6 +1155,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateIndexState value)? updateIndex,
+    TResult? Function(_LogoutLoading value)? logoutLoading,
     TResult? Function(_LogoutSuccess value)? logoutSuccess,
     TResult? Function(_LogoutFailed value)? logoutFailed,
   }) {
@@ -1019,6 +1167,7 @@ class _$LogoutFailedImpl with DiagnosticableTreeMixin implements _LogoutFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateIndexState value)? updateIndex,
+    TResult Function(_LogoutLoading value)? logoutLoading,
     TResult Function(_LogoutSuccess value)? logoutSuccess,
     TResult Function(_LogoutFailed value)? logoutFailed,
     required TResult orElse(),

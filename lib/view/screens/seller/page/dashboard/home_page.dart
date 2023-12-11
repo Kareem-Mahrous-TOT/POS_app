@@ -7,8 +7,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
+
 import '../../../../../core/constants/store_config.dart';
-import '../../../../../core/extensions/text_styles.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/models/response/bag/bag_model.dart';

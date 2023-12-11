@@ -157,131 +157,19 @@ class AuthRepoImpl implements AuthBaseRepo {
         success = true;
         return Right(loginModel);
       } else {
-        return const Left(ServerFailure("Something went wrong"));
+        return const Left(ServerFailure("لقد حدث خطأ ما"));
       }
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }
 
-  Future<String?> _createContact({
-    required String firstName,
-    required String lastName,
-    required String name,
-  }) async {
-    final res = await graphService.client.mutate(
-      MutationOptions(
-        onError: (error) => log("::: contact error: $error :::"),
-        document: gql(r'''
-        mutation CreateContact($firstName: String!, $lastName: String!, $name: String!) {
-            createContact(
-                command: {
-                    firstName: $firstName
-                    lastName: $lastName
-                    name: $name
-                }
-            ) {
-                id    
-            }
-        }
-        '''),
-        variables: {
-          "firstName": firstName,
-          "lastName": lastName,
-          "name": name,
-        },
-      ),
-    );
-
-    final String? memberId = res.data?["createContact"]["id"];
-
-    return memberId;
-  }
-
-  Future<bool> _createCustomer({
-    required String email,
-    required String username,
-    required String password,
-    required String memberId,
-  }) async {
-    final res = await graphService.client.mutate(
-      MutationOptions(
-          onError: (error) => log("::: user error: $error :::"),
-          document: gql(r'''
-            mutation CreateUser(
-              $email: String!
-              $username: String!
-              $password: String!
-              $userType: String!
-              $storeId: String!
-              $memberId: String!
-          ) {
-              createUser(
-                  command: {
-                      applicationUser: {
-                          email: $email
-                          password: $password
-                          username: $username
-                          userType: $userType
-                          storeId: $storeId
-                          memberId: $memberId
-                      }
-                  }
-              ) {
-                  succeeded
-              }
-          }
-      '''),
-          variables: {
-            "email": email,
-            "username": username,
-            "password": password,
-            "userType": AppConstants.userType,
-            "storeId": AppConstants.storeId,
-            "memberId": memberId
-          }),
-    );
-
-    final bool succeeded = res.data?["createUser"]["succeeded"] ?? false;
-
-    return succeeded;
-  }
-
-  @override
-  Future<bool> userSignUp({
-    required String email,
-    required String username,
-    required String firstName,
-    required String password,
-    required String lastName,
-    String? phoneNumber,
-  }) async {
-    try {
-      final memberId = await _createContact(
-          firstName: firstName, lastName: lastName, name: username);
-      if (memberId == null) {
-        return false;
-      }
-
-      final succeeded = await _createCustomer(
-        email: email,
-        username: username,
-        password: password,
-        memberId: memberId,
-      );
-      log("::: before return :::");
-
-      return succeeded;
-    } catch (e) {
-      log("::: creation exception: $e :::");
-      return false;
-    }
-  }
-
   @override
   Future<Either<Failure, bool>> userLogout() async {
     final result = await preferences.clear();
-    log("preferences::: -after3 clear $preferences ##");
-    return Right(result);
+    return Future.delayed(
+      const Duration(milliseconds: 1500),
+      () => result ? Right(result) : const Left(CacheFailure("لقد حدث خطأ ما")),
+    );
   }
 }
