@@ -2,12 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'core/network/api_consumer.dart';
+import 'core/network/dio_consumer.dart';
+import 'core/network/graph_config.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
-import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 import 'data/repository/base/auth_repo_base.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/layout_repo_base.dart';
 import 'data/repository/base/order_repo_base.dart';
+import 'data/repository/base/product_repo_base.dart';
 import 'data/repository/base/products_repo_base.dart';
 import 'data/repository/impl/auth_repo_impl.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
@@ -17,6 +21,7 @@ import 'data/repository/impl/order_repo.dart';
 import 'data/repository/impl/products_repo_impl.dart';
 import 'data/repository/impl/report_repo.dart';
 import 'data/repository/impl/sales_repo.dart';
+import 'domain/auth/usecases/login_usecase.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/home/home_bloc.dart';
@@ -24,17 +29,12 @@ import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
 import 'view/blocs/order/order_cubit.dart';
+import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
+import 'view/blocs/products/rest/bag_cubit.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
-
-import 'core/network/api_consumer.dart';
-import 'core/network/dio_consumer.dart';
-import 'core/network/graph_config.dart';
-import 'data/repository/base/product_repo_base.dart';
-import 'domain/auth/usecases/login_usecase.dart';
-import 'view/blocs/products/rest/bag_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 

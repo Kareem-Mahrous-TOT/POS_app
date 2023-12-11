@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/extensions/translate.dart';
 
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/theme/palette.dart';
@@ -28,25 +29,41 @@ class LayoutScreen extends HookWidget {
           const ReportsPage(),
         ]);
 
-    // final List<String> headerName = [
-    //   "Home",
-    //   "Order",
-    //   "Customer",
-    //   "Sales",
-    //   "Reports",
-    // ];
+    final fToast = useFToast(context: context);
+
     return BlocConsumer<LayoutBloc, LayoutState>(
       listener: (context, state) {
         state.maybeMap(
           orElse: () {},
           logoutLoading: (_) {
-            showLoadingDialog(context);
+            LoadingDialog.show(context);
           },
-          logoutSuccess: (value) {
-            context.goNamed(Routes.login);
+          logoutSuccess: (value) async {
+            await LoadingDialog.dismiss(context);
+            if (context.mounted) {
+              context.goNamed(Routes.login);
+            }
           },
-          logoutFailed: (value) {
-            Fluttertoast.showToast(msg: "حدث خطأ ما، حاول مرة أخرى");
+          logoutFailed: (value) async {
+            await LoadingDialog.dismiss(context);
+            if (context.mounted) {
+              fToast.showToast(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Palette.red,
+                  ),
+                  child: Text(
+                    context.tr.somethingWentWrong,
+                    style: context.bodyLarge.copyWith(color: Palette.white),
+                  ),
+                ),
+                gravity: ToastGravity.BOTTOM,
+                toastDuration: const Duration(seconds: 2),
+              );
+            }
           },
         );
       },
