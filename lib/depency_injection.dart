@@ -59,7 +59,6 @@ Future<void> getItInit() async {
       AuthRepoImpl(apiConsumer: getIt(), graphService: getIt()));
   getIt.registerSingleton<SalesRepo>(SalesRepo());
   getIt.registerSingleton<ReportRepo>(ReportRepo());
-  getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<ProductRepoBase>(ProductRepoImpl(getIt()));
   getIt.registerSingleton<ProductsRepoBase>(
       ProductsRepoImpl(apiConsumer: getIt()));
