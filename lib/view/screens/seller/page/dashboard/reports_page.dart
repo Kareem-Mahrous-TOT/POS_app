@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';

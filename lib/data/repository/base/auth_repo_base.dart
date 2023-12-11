@@ -16,8 +16,6 @@ abstract class AuthBaseRepo {
       {String? grantType, required String username, required String password});
   Future<bool> tokenByClientId({
     String? grantType,
-    // required String clientId,
-    // required String clientSecret,
   });
 
   Future<Either<Failure, LoginModel>> userLogin(
@@ -25,13 +23,4 @@ abstract class AuthBaseRepo {
       required String password,
       bool? rememberMe,
       bool? success});
-
-  Future<bool> userSignUp({
-    required String email,
-    required String password,
-    required String firstName,
-    required String lastName,
-    required String username,
-    String? phoneNumber,
-  });
 }

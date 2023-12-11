@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 
 // int counter = 1;
