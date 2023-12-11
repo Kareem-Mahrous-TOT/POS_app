@@ -1,4 +1,4 @@
-import 'package:tot_pos/domain/cart/usecases/add_cart_address_use_case.dart';
+import 'add_cart_address_use_case.dart';
 
 import '../../../core/usecase/usecase.dart';
 import '../../../data/repository/base/cart/add_order_source_repo_base.dart';

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/models/response/bag/bag_model.dart';
-import 'package:tot_pos/data/models/response/tot_products/create_order/tot_create_order.dart';
-import 'package:tot_pos/data/repository/base/order_repo_base.dart';
+import '../../../../data/models/response/bag/bag_model.dart';
+import '../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
+import '../../../../data/repository/base/order_repo_base.dart';
 
 part 'bag_cubit.freezed.dart';
 part 'bag_state.dart';

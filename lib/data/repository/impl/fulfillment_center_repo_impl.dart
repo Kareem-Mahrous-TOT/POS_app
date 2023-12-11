@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/response/graph/graph_fulfillment_center_model.dart';
-import 'package:tot_pos/data/repository/base/fulfillment_center_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/graph_fulfillment_center_model.dart';
+import '../base/fulfillment_center_repo_base.dart';
 
 class FulfillmentCenterRepoImpl implements FulfillmentCenterRepoBase {
   final GraphService graphService;

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/network/api_consumer.dart';
-import 'package:tot_pos/core/network/end_points.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/response/tot_products/tot_product_model.dart';
-import 'package:tot_pos/data/repository/base/products_repo_base.dart';
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/end_points.dart';
+import '../../../core/network/failure.dart';
+import '../../models/response/tot_products/tot_product_model.dart';
+import '../base/products_repo_base.dart';
 
 import '../../../core/constants/end_points.dart';
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/extensions/text_styles.dart';
-import 'package:tot_pos/core/theme/palette.dart';
-import 'package:tot_pos/view/blocs/report/report_cost/report_cost_cubit.dart';
-import 'package:tot_pos/view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/circular_indicator.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/reports/line_chart.dart';
-import 'package:tot_pos/view/screens/seller/components/pos/sales_card.dart';
+import '../../../../../core/extensions/text_styles.dart';
+import '../../../../../core/theme/palette.dart';
+import '../../../../blocs/report/report_cost/report_cost_cubit.dart';
+import '../../../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
+import '../../components/pos/reports/circular_indicator.dart';
+import '../../components/pos/reports/line_chart.dart';
+import '../../components/pos/sales_card.dart';
 
 import '../../components/pos/reports/pie_chart_api.dart';
 

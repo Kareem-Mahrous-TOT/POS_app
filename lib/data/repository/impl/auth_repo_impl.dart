@@ -2,12 +2,12 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/constants/constants.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/core/network/api_consumer.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/response/graph/user_data_response_model.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../core/constants/constants.dart';
+import '../../../core/constants/local_keys.dart';
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/user_data_response_model.dart';
+import '../../../depency_injection.dart';
 
 import '../../../core/constants/end_points.dart';
 import '../../../core/network/failure.dart';

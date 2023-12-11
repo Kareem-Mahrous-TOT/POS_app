@@ -1,4 +1,3 @@
-import 'package:tot_pos/data/mappers/products_mapping.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
@@ -6,6 +5,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/local_keys.dart';
 import '../../../core/constants/store_config.dart';
+import '../../../data/mappers/products_mapping.dart';
 import '../../../data/repository/base/product_repo_base.dart';
 import '../../../depency_injection.dart';
 

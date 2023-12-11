@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tot_pos/core/theme/palette.dart';
+
+import '../../theme/palette.dart';
 
 class ProductListHorizontalShimmer extends StatelessWidget {
   const ProductListHorizontalShimmer({super.key});

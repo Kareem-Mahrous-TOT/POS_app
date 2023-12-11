@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/models/response/graph/graph_add_item_model.dart';
-import 'package:tot_pos/data/models/response/graph/graph_create_cart_model.dart';
+import '../../../../core/constants/local_keys.dart';
+import '../../../../core/network/failure.dart';
+import '../../../../data/models/response/graph/graph_add_item_model.dart';
+import '../../../../data/models/response/graph/graph_create_cart_model.dart';
 
 import '../../../../data/repository/base/cart/add_item_repo_base.dart';
 import '../../../../data/repository/base/cart/create_cart_repo_base.dart';

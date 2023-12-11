@@ -101,21 +101,12 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+  _$StartedImpl();
 
   @override
   String toString() {
     return 'ProductDetailsEvent.started()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -189,7 +180,7 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements ProductDetailsEvent {
-  const factory _Started() = _$StartedImpl;
+  factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -231,31 +222,17 @@ class __$$FetchProductByIdImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchProductByIdImpl implements _FetchProductById {
-  const _$FetchProductByIdImpl(
-      {required this.storeId, required this.productId});
+  _$FetchProductByIdImpl({required this.storeId, required this.productId});
 
   @override
-  final String? storeId;
+  String? storeId;
   @override
-  final String productId;
+  String productId;
 
   @override
   String toString() {
     return 'ProductDetailsEvent.fetchProductById(storeId: $storeId, productId: $productId)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FetchProductByIdImpl &&
-            (identical(other.storeId, storeId) || other.storeId == storeId) &&
-            (identical(other.productId, productId) ||
-                other.productId == productId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, storeId, productId);
 
   @JsonKey(ignore: true)
   @override
@@ -336,12 +313,14 @@ class _$FetchProductByIdImpl implements _FetchProductById {
 }
 
 abstract class _FetchProductById implements ProductDetailsEvent {
-  const factory _FetchProductById(
-      {required final String? storeId,
-      required final String productId}) = _$FetchProductByIdImpl;
+  factory _FetchProductById(
+      {required String? storeId,
+      required String productId}) = _$FetchProductByIdImpl;
 
   String? get storeId;
+  set storeId(String? value);
   String get productId;
+  set productId(String value);
   @JsonKey(ignore: true)
   _$$FetchProductByIdImplCopyWith<_$FetchProductByIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -392,27 +371,15 @@ class __$$ChangeMasterVariationImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
-  const _$ChangeMasterVariationImpl(this.variation);
+  _$ChangeMasterVariationImpl(this.variation);
 
   @override
-  final Variation variation;
+  Variation variation;
 
   @override
   String toString() {
     return 'ProductDetailsEvent.changeMasterVariation(variation: $variation)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeMasterVariationImpl &&
-            (identical(other.variation, variation) ||
-                other.variation == variation));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, variation);
 
   @JsonKey(ignore: true)
   @override
@@ -493,10 +460,11 @@ class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
 }
 
 abstract class _ChangeMasterVariation implements ProductDetailsEvent {
-  const factory _ChangeMasterVariation(final Variation variation) =
+  factory _ChangeMasterVariation(Variation variation) =
       _$ChangeMasterVariationImpl;
 
   Variation get variation;
+  set variation(Variation value);
   @JsonKey(ignore: true)
   _$$ChangeMasterVariationImplCopyWith<_$ChangeMasterVariationImpl>
       get copyWith => throw _privateConstructorUsedError;

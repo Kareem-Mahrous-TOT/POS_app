@@ -1,5 +1,5 @@
-import 'package:tot_pos/core/utils/json_decoder.dart';
-import 'package:tot_pos/data/models/response/sales/sales_model.dart';
+import '../../../core/utils/json_decoder.dart';
+import '../../models/response/sales/sales_model.dart';
 
 class SalesRepo {
   Future<SalesModel> fetch() async {

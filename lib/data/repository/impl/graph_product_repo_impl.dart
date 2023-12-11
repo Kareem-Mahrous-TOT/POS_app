@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/data/models/response/graph/qraph_product_model.dart';
-import 'package:tot_pos/data/repository/base/product_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/qraph_product_model.dart';
+import '../base/product_repo_base.dart';
 
 class ProductRepoImpl implements ProductRepoBase {
   final GraphService graphService;
@@ -186,7 +186,7 @@ class ProductRepoImpl implements ProductRepoBase {
                 label
                 valueType
             }
-            description {
+            descriptions {
                 id
                 reviewType
                 content
@@ -215,6 +215,7 @@ class ProductRepoImpl implements ProductRepoBase {
       if (response.data != null) {
         // log("******** response.data - products :: ${response.data} ********");
         Products products = Products.fromJson(response.data!["products"]);
+        print("$products   products ####");
 
         // products.items!.toDomain();
         return Right(products);

@@ -4,11 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/data/models/response/graph/graph_create_cart_model.dart';
-import 'package:tot_pos/data/repository/base/cart/remove_item_repo_base.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../../core/constants/local_keys.dart';
+import '../../../../core/constants/store_config.dart';
+import '../../../../data/models/response/graph/graph_create_cart_model.dart';
+import '../../../../data/repository/base/cart/remove_item_repo_base.dart';
+import '../../../../depency_injection.dart';
 
 import '../../../../data/models/response/graph/qraph_product_model.dart';
 import '../../../../data/repository/base/cart/change_item_quantity_repo_base.dart';

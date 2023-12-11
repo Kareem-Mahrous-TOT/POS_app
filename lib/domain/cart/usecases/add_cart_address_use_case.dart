@@ -1,5 +1,5 @@
-import 'package:tot_pos/data/models/response/graph/addresses_model.dart';
-import 'package:tot_pos/depency_injection.dart';
+import '../../../data/models/response/graph/addresses_model.dart';
+import '../../../depency_injection.dart';
 
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/local_keys.dart';
