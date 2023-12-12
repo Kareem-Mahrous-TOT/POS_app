@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../../../../../data/models/response/tot_products/customer_order/customer_order_models.dart';
+import 'package:intl/intl.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/data/repository/base/orders_repo_base.dart';
 
 import '../../../../../../core/theme/palette.dart';
 
 class TOTOrderCardMolecule extends StatelessWidget {
   const TOTOrderCardMolecule({
     super.key,
-    required this.orderModel,
+    required this.orderEntity,
     this.height,
     this.width,
   });
-  final List<CustomerOrderResult>? orderModel;
+  final List<OrderEntity>? orderEntity;
   final double? height;
   final double? width;
   @override
@@ -24,7 +26,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
         height: height ?? h * 0.75,
         width: width ?? w * 0.21,
         child: ListView.builder(
-          itemCount: orderModel!.length,
+          itemCount: orderEntity!.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -49,16 +51,17 @@ class TOTOrderCardMolecule extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                orderModel![index].customerName.toString(),
+                                orderEntity![index].orderNumber.toString(),
+                                style: context.titleLarge,
                               ),
-                              Text(
-                                orderModel![index].status ?? " Test",
-                              ),
+                              // Text(
+                              //   orderEntity![index].status,
+                              // ),
                             ],
                           ),
                         ),
                         IconButton(
-                            icon: const Icon(IconData(0xf8d9)),
+                            icon: const Icon(Icons.keyboard_control_rounded),
                             color: Palette.black,
                             onPressed: () {}),
                       ],
@@ -75,9 +78,13 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const Icon(IconData(0xf051f)),
+                          const Icon(Icons.calendar_month),
                           Text(
-                              " Date: ${orderModel![index].createdDate!.substring(0, 10).toString()}")
+                            "تاريخ العملية: ${DateFormat("yyyy dd MMM").format(DateTime.tryParse(
+                                  orderEntity![index].date,
+                                ) ?? DateTime.now())}",
+                            style: context.titleMedium,
+                          )
                         ],
                       ),
                     ),
@@ -85,8 +92,11 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const Icon(IconData(0xe0b2)),
-                          Text(" Amount: ${orderModel![index].total}")
+                          const Icon(Icons.payments_outlined),
+                          Text(
+                            "المجموع الكلي: ${orderEntity![index].price}",
+                            style: context.titleMedium,
+                          )
                         ],
                       ),
                     ),
@@ -94,13 +104,16 @@ class TOTOrderCardMolecule extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          const Icon(IconData(0xf266)),
-                          Text(" Payment: ${orderModel![index].currency}")
+                          const Icon(Icons.payment_outlined),
+                          Text(
+                            "طريقة الدفع: ${orderEntity![index].paymentMethodType}",
+                            style: context.titleMedium,
+                          )
                         ],
                       ),
                     ),
-                    // orderModel![index].addresses == null ||
-                    //         orderModel![index].addresses!.isEmpty
+                    // orderEntity![index].addresses == null ||
+                    //         orderEntity![index].addresses!.isEmpty
                     //     ? const SizedBox.shrink()
                     //     : Padding(
                     //         padding: const EdgeInsets.all(8.0),
@@ -109,7 +122,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                     //             const  Icon(IconData(_))
                     //                 codePoint: 0xf2a9),
                     //             Text(
-                    //                 " Address: ${orderModel![index].addresses!.first}")
+                    //                 " Address: ${orderEntity![index].addresses!.first}")
                     //           ],
                     //         ),
                     //       ),
@@ -127,13 +140,18 @@ class TOTOrderCardMolecule extends StatelessWidget {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                orderModel![index].operationType ==
-                                        "CustomerOrder"
-                                    ? const Text("Delivery")
-                                    // : orderModel![index].objectType == "Pickup"
+                                orderEntity![index]
+                                        .objectType
+                                        .toString()
+                                        .contains("CustomerOrder")
+                                    ? Text(
+                                        "Take away",
+                                        style: context.titleMedium,
+                                      )
+                                    // : orderEntity![index].objectType == "Pickup"
                                     //     ? const Text(
                                     //         "Pickup")
-                                    //     : orderModel![index]
+                                    //     : orderEntity![index]
                                     //                 .objectType
                                     //                 .toString() ==
                                     //             "CustomerOrder"
@@ -147,9 +165,10 @@ class TOTOrderCardMolecule extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                           color: Colors.black, width: 1)),
-                                  child: orderModel![index].operationType ==
-                                          "CustomerOrder"
-                                      ? const Icon(IconData(0xf699),
+                                  child: orderEntity![index]
+                                          .objectType
+                                          .contains("CustomerOrder")
+                                      ? const Icon(Icons.delivery_dining,
                                           color: Palette.black)
                                       : const SizedBox.shrink(),
                                 )

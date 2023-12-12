@@ -518,6 +518,12 @@ abstract class AppLang {
   /// In ar, this message translates to:
   /// **'يمكنك الآن تسجيل الدخول باستخدام بريدك الإلكتروني وكلمة السر الجديدة التي تم إنشاؤها'**
   String get resetPasswordDoneHint;
+
+  /// No description provided for @orders.
+  ///
+  /// In ar, this message translates to:
+  /// **'الطلبات'**
+  String get orders;
 }
 
 class _AppLangDelegate extends LocalizationsDelegate<AppLang> {
