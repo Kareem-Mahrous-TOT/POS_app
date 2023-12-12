@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-
 
 import '../../../../../core/constants/store_config.dart';
 import '../../../../../core/theme/palette.dart';
@@ -22,20 +22,16 @@ import '../../../../blocs/products/rest/bag_cubit.dart';
 import '../../components/pos/custom_appbar.dart';
 import '../../components/pos/home_components/home_exp.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends HookWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  @override
   Widget build(BuildContext context) {
+    final formKey = useMemoized(() => GlobalKey<FormState>());
+
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),

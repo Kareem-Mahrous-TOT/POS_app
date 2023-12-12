@@ -16,6 +16,7 @@ import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
 import 'view/blocs/order/order_cubit.dart';
+import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
 import 'view/blocs/products/rest/bag_cubit.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
@@ -54,6 +55,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
+          BlocProvider(create: (context) => getIt<OrdersBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           BlocProvider(
               create: (context) => getIt<CategoriesBloc>()
