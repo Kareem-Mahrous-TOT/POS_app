@@ -216,4 +216,7 @@ class AppLangAr extends AppLang {
 
   @override
   String get resetPasswordDoneHint => 'يمكنك الآن تسجيل الدخول باستخدام بريدك الإلكتروني وكلمة السر الجديدة التي تم إنشاؤها';
+
+  @override
+  String get orders => 'الطلبات';
 }

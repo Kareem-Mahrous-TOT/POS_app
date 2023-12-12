@@ -15,33 +15,53 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
 
   OrdersBloc({required this.ordersRepo}) : super(const _Initial()) {
     on<OrdersEvent>((event, emit) async {
-      Future<void> getOrderbyId(String orderId) async {
-        try {
-          final result = await ordersRepo.getOrderbyId(orderId: orderId);
-          final data = result.fold((l) => null, (r) => r);
+      // Future<void> getOrderbyId(String orderId) async {
+      //   try {
+      //     final result = await ordersRepo.getOrderbyId(orderId: orderId);
+      //     final data = result.fold((l) => null, (r) => r);
 
-          if (data != null) {
-            state.maybeMap(
-              orElse: () {},
-              getOrdersSuccess: (value) {
-                emit(
-                  value.copyWith(model: data),
-                );
-              },
-            );
-          } else {
-            emit(const OrdersState.getOrderbyIdFailed("data is null"));
-          }
-        } catch (e) {
-          emit(OrdersState.getOrderbyIdFailed(e.toString()));
-        }
-      }
+      //     if (data != null) {
+      //       state.maybeMap(
+      //         orElse: () {},
+      //         getOrdersSuccess: (value) {
+      //           emit(
+      //             value.copyWith(model: data),
+      //           );
+      //         },
+      //       );
+      //     } else {
+      //       emit(const OrdersState.getOrderbyIdFailed("data is null"));
+      //     }
+      //   } catch (e) {
+      //     emit(OrdersState.getOrderbyIdFailed(e.toString()));
+      //   }
+      // }
 
       await event.maybeMap(
-        orElse: () {},
-        getOrderbyId: (event) async {
-          await getOrderbyId(event.orderId);
+        orElse: () async {
+          emit(const OrdersState.getOrdersLoading());
+
+          final response = await ordersRepo.getOrders();
+
+          await response.fold(
+            (failure) async {
+              log("::: repoOrders failure :::");
+              emit(OrdersState.getOrderbyIdFailed(failure.message));
+            },
+            (myOrders) async {
+              log("::: repoOrders: $myOrders :::");
+
+              if (myOrders.isEmpty) {
+                emit(const OrdersState.getOrdersEmpty());
+              } else {
+                emit(OrdersState.getOrdersSuccess(orders: myOrders));
+              }
+            },
+          );
         },
+        // getOrderbyId: (event) async {
+        //   // await getOrderbyId(event.orderId);
+        // },
         getOrders: (event) async {
           emit(const OrdersState.getOrdersLoading());
 

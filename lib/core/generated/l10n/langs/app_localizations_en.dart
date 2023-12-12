@@ -140,52 +140,52 @@ class AppLangEn extends AppLang {
   String get username => 'username';
 
   @override
-  String get forgetPassword => 'ForgetPassword';
+  String get forgetPassword => 'Forget Password';
 
   @override
-  String get failureMsg => 'failureMsg';
+  String get failureMsg => 'failure Message';
 
   @override
   String get emailEmpty => 'emailEmpty';
 
   @override
-  String get passwordEmpty => 'passwordEmpty';
+  String get passwordEmpty => 'password Empty';
 
   @override
-  String get passwordShort => 'passwordShort';
+  String get passwordShort => 'password Short';
 
   @override
-  String get usernameInValid => 'usernameInValid';
+  String get usernameInValid => 'username Invalid';
 
   @override
-  String get emailNotValid => 'emailNotValid';
+  String get emailNotValid => 'email Not Valid';
 
   @override
-  String get forgetPasswordHint => 'ForgetPasswordHint';
+  String get forgetPasswordHint => 'Forget Password Hint';
 
   @override
   String get email => 'Email';
 
   @override
-  String get signupSuccess => 'signupSuccess';
+  String get signupSuccess => 'signup Success';
 
   @override
-  String get enterName => 'enterName';
+  String get enterName => 'enter Name';
 
   @override
-  String get addressEmpty => 'addressEmpty';
+  String get addressEmpty => 'address Empty';
 
   @override
-  String get enterPassword => 'enterPassword';
+  String get enterPassword => 'enter Password';
 
   @override
-  String get enterusername => 'enterusername';
+  String get enterusername => 'enter username';
 
   @override
-  String get enterConfirmPassword => 'enterConfirmPassword';
+  String get enterConfirmPassword => 'enter Confirm Password';
 
   @override
-  String get confirmPassNotMatch => 'confirmPassNotMatch';
+  String get confirmPassNotMatch => 'confirm Pass Not Match';
 
   @override
   String get enterEmail => 'enterEmail';
@@ -216,4 +216,7 @@ class AppLangEn extends AppLang {
 
   @override
   String get resetPasswordDoneHint => 'ResetPasswordDoneHint';
+
+  @override
+  String get orders => 'Orders';
 }

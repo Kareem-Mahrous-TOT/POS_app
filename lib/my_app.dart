@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 
 import 'core/constants/store_config.dart';
@@ -37,6 +38,9 @@ class MainApp extends StatelessWidget {
               ..add(const HomeEvent.getCustomers()),
           ),
           BlocProvider(create: (context) => getIt<BagCubit>()..fetch()),
+          BlocProvider(
+              create: (context) =>
+                  getIt<OrdersBloc>()..add(const OrdersEvent.getOrders())),
           BlocProvider(create: (context) => getIt<LayoutBloc>()),
           BlocProvider(
               create: (context) =>

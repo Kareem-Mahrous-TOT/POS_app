@@ -21,27 +21,33 @@ class OrderEntity {
   final String orderNumber;
   final String date;
   final String status;
-  final double price;
-  final String currency;
+  final String price;
   final String id;
+  final String objectType;
+  final String paymentMethodType;
 
   OrderEntity({
     required this.orderNumber,
     required this.date,
     required this.status,
     required this.price,
-    required this.currency,
     required this.id,
+    required this.objectType,
+    required this.paymentMethodType,
   });
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) {
+    
+    
     return OrderEntity(
       orderNumber: json['number'],
+      paymentMethodType: json['inPayments'][0]['paymentMethod']['description'],
       date: json['createdDate'],
+      objectType: json['objectType'],
       id: json['id'],
       status: json['status'],
-      price: json['total']['amount'],
-      currency: json['total']['currency']['symbol'] ?? "ج.م.",
+      price: json['total']['formattedAmount'],
     );
+
   }
 }

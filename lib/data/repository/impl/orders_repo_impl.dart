@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../../core/network/failure.dart';
-import '../../models/response/graph/graph_create_order_model.dart';
 
+import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
+import '../../models/response/graph/graph_create_order_model.dart';
 import '../base/orders_repo_base.dart';
 
 class OrdersRepoImpl implements OrdersRepoBase {
@@ -33,6 +33,7 @@ class OrdersRepoImpl implements OrdersRepoBase {
         }
         customerId
         customerName
+        objectType
         items {
             product {
                 description {
@@ -149,15 +150,26 @@ class OrdersRepoImpl implements OrdersRepoBase {
         QueryOptions(
             document: gql(r'''
       query Orders($userId: String, $cultureName: String) {
-        orders(userId: $userId, cultureName: $cultureName) {
+        orders(userId: $userId, cultureName: $cultureName,first: 100,sort: "createdDate:dasc" ) {
             totalCount
             items {
                 id
                 number
                 createdDate
                 status
+                objectType
+                inPayments {
+                  gatewayCode
+                  paymentMethod {
+                    typeName
+                    paymentMethodType
+                    paymentMethodGroupType
+                    description
+                    }
+                  }        
                 total {
                     amount
+                    formattedAmount
                     currency {
                         symbol
                         code
@@ -177,9 +189,11 @@ class OrdersRepoImpl implements OrdersRepoBase {
         return const Left(ServerFailure("Something went wrong"));
       } else {
         List<OrderEntity> orders = [];
+
         for (final order in res.data!["orders"]["items"]) {
           orders.add(OrderEntity.fromJson(order));
         }
+        log("OrderEntities :: ${orders.map((element) => "${element.status} & ${element.orderNumber} ").toList()}");
         return Right(orders);
       }
     } catch (e) {
