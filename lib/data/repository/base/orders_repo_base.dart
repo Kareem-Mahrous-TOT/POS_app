@@ -37,11 +37,14 @@ class OrderEntity {
   });
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) {
-    
-    
+    final inPayments = json['inPayments'] as List?;
+     String paymentDescription = "Cash on Delivery";
+    if(inPayments?.isNotEmpty?? false){
+      paymentDescription = inPayments?[0]['paymentMethod']['description'];
+    }
     return OrderEntity(
       orderNumber: json['number'],
-      paymentMethodType: json['inPayments'][0]['paymentMethod']['description'],
+      paymentMethodType: paymentDescription,
       date: json['createdDate'],
       objectType: json['objectType'],
       id: json['id'],

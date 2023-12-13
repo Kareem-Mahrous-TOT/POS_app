@@ -185,6 +185,7 @@ class OrdersRepoImpl implements OrdersRepoBase {
             },
             fetchPolicy: FetchPolicy.noCache),
       );
+
       if (res.hasException) {
         return const Left(ServerFailure("Something went wrong"));
       } else {
@@ -193,7 +194,6 @@ class OrdersRepoImpl implements OrdersRepoBase {
         for (final order in res.data!["orders"]["items"]) {
           orders.add(OrderEntity.fromJson(order));
         }
-        log("OrderEntities :: ${orders.map((element) => "${element.status} & ${element.orderNumber} ").toList()}");
         return Right(orders);
       }
     } catch (e) {
