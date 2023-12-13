@@ -24,7 +24,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: SizedBox(
         height: height ?? h * 0.75,
-        width: width ?? w * 0.21,
+        width: width ?? w * 0.25,
         child: ListView.builder(
           itemCount: orderEntity!.length,
           itemBuilder: (context, index) {
@@ -35,7 +35,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                     color: Palette.white,
                     borderRadius: BorderRadius.circular(20)),
                 height: h * 0.4,
-                width: w * 0.2,
+                width: w * 0.3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,10 +47,8 @@ class TOTOrderCardMolecule extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
                               Text(
+                                overflow: TextOverflow.ellipsis,
                                 orderEntity![index].orderNumber.toString(),
                                 style: context.titleLarge,
                               ),

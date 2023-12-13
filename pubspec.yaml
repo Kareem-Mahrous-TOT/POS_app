@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   custom_keyboard: ^1.0.2
   dartz: ^0.10.1
+  device_preview: ^1.1.0
   dio: ^5.3.4
   equatable: ^2.0.5
   firebase_auth: ^4.14.1
@@ -49,16 +50,8 @@ dependencies:
   lottie: ^2.7.0
   mockito: ^5.4.3
   share_plus: ^7.2.1
-  # internet_connection_checker: ^1.0.0+1
-
-  # tot_atomic_design:
-  #   git:
-  #     url: https://github.com/TOTPLATFORM/flutter.git
-  #     path: packages/atomic_design
-  #     ref: tablet-beta
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
-
   tot_atomic_design:
     git:
       url: https://github.com/TOTPLATFORM/flutter.git
@@ -79,7 +72,6 @@ dev_dependencies:
 #  feature/login
 #   ? intl
 #  feature/demo
-
 flutter:
   uses-material-design: true
   assets:

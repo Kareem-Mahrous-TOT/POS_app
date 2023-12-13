@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 
@@ -46,23 +45,24 @@ class _TOTListViewWithHeaderOrganismState
     double h = MediaQuery.of(context).size.height;
     return BlocBuilder<OrdersBloc, OrdersState>(
       builder: (context, state) {
-        return SizedBox(
-          height: 713.h,
-          child: state.maybeMap(
-            orElse: () => const Center(
-              child: CircularProgressIndicator(
-                color: Palette.primary,
-              ),
+        return state.maybeMap(
+          orElse: () => const Center(
+            child: CircularProgressIndicator(
+              color: Palette.primary,
             ),
-            getOrdersLoading: (value) => const Center(
-              child: CircularProgressIndicator(
-                color: Palette.primary,
-              ),
+          ),
+          getOrdersLoading: (value) => const Center(
+            child: CircularProgressIndicator(
+              color: Palette.primary,
             ),
-            getOrdersEmpty: (value) => const Center(
-              child: Text("No Data found"),
-            ),
-            getOrdersSuccess: (value) => ListView.builder(
+          ),
+          getOrdersEmpty: (value) => const Center(
+            child: Text("No Data found"),
+          ),
+          getOrdersSuccess: (value) => SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.84,
+            child: ListView.builder(
+              shrinkWrap: true,
               itemCount: statuses.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Column(
@@ -74,7 +74,7 @@ class _TOTListViewWithHeaderOrganismState
                           color: statusesColors[index],
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        width: w * 0.2,
+                        width: w * 0.25,
                         height: h * 0.05,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -109,7 +109,7 @@ class _TOTListViewWithHeaderOrganismState
                         ),
                       )),
                   TOTOrderCardMolecule(
-                    height: 645.h,
+                    height: MediaQuery.sizeOf(context).height * 0.76,
                     orderEntity: value.orders
                         .where((order) =>
                             order.status.toLowerCase() ==

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
@@ -71,7 +72,8 @@ class HomePage extends HookWidget {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     },
-                    fetchSuccess: (model, records, record) => TOTPOSHomePageAppBar(
+                    fetchSuccess: (model, records, record) =>
+                        TOTPOSHomePageAppBar(
                       onTap: (selectedRecord) {
                         context
                             .read<MenuCubit>()
@@ -170,13 +172,10 @@ class HomePage extends HookWidget {
                               }
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 50.0),
-                                child: GridView.builder(
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 4,
-                                          crossAxisSpacing: 20,
-                                          mainAxisSpacing: 0,
-                                          childAspectRatio: 0.7),
+                                child: AlignedGridView.count(
+                                  crossAxisCount: 4,
+                                  crossAxisSpacing: 20,
+                                  mainAxisSpacing: 0,
                                   shrinkWrap: true,
                                   itemCount: value.products?.length,
                                   itemBuilder: (context, index) =>
@@ -206,8 +205,7 @@ class HomePage extends HookWidget {
                                                           child:
                                                               POSFoodItemAlertDialog(
                                                             id: value
-                                                                .products!
-                                                                [
+                                                                .products![
                                                                     index]
                                                                 .id!,
                                                           ),
@@ -239,7 +237,6 @@ class HomePage extends HookWidget {
                                                   .actual!.formattedAmount
                                               : "N/A"),
                                 ),
-
                               );
                             },
                           );

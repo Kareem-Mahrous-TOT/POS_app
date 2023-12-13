@@ -92,6 +92,5 @@ Future<void> getItInit() async {
   getIt.registerFactory<MenuCubit>(() => MenuCubit());
   getIt.registerFactory<OrdersBloc>(() => OrdersBloc(ordersRepo: getIt()));
   getIt.registerFactory<ProductsBloc>(() => ProductsBloc(getIt()));
-  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(ordersRepo: getIt()));
   getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(getIt()));
 }

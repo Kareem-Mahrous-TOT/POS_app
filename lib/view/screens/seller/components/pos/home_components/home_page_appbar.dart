@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+
 import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
 import '../../../../../blocs/home/home_bloc.dart';
@@ -63,7 +64,7 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
                 ),
               ),
               Expanded(
-                flex: 5,
+                flex: 4,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -137,7 +138,8 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
               variations: categories,
               shrinkWrap: true,
               isMasterList: isSelected,
-              height: 40,
+              height: 40.h,
+              padding: const EdgeInsets.symmetric(horizontal: 1),
               falseColor: Palette.white,
               successColor: Palette.primary,
               itemBorderColor: Colors.white,

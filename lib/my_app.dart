@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 
 import 'core/constants/store_config.dart';
@@ -55,7 +54,6 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
-          BlocProvider(create: (context) => getIt<OrdersBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           BlocProvider(
               create: (context) => getIt<CategoriesBloc>()

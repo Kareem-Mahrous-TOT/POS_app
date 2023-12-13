@@ -66,6 +66,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
           emit(const OrdersState.getOrdersLoading());
 
           final response = await ordersRepo.getOrders();
+          log("::: orders response $response :::");
 
           await response.fold(
             (failure) async {
