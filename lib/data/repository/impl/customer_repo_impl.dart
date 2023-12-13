@@ -8,7 +8,7 @@ import '../../models/response/tot_add_new_customer/tot_add_new_customer_model.da
 import '../../models/response/tot_customers/tot_customers.dart';
 import '../base/customers_rep_base.dart';
 
-import '../../../core/constants/end_points.dart';
+import '../../../core/network/end_points.dart';
 import '../../../core/network/api_consumer.dart';
 
 class CustomerRepo {

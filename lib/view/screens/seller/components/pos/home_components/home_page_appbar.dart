@@ -5,7 +5,6 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
-import '../../../../../blocs/home/home_bloc.dart';
 import '../../../../../blocs/products/rest/bag_cubit.dart';
 
 class TOTPOSHomePageAppBar extends StatefulWidget {
@@ -39,77 +38,61 @@ class _TOTPOSHomePageAppBarState extends State<TOTPOSHomePageAppBar> {
     // double w = MediaQuery.of(context).size.width;
     // double h = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          state.maybeMap(
-            orElse: () {},
-            loadedData: (value) {
-              customers = value.customers == null ? [] : value.customers!;
-              for (int i = 0; i < customers.length; i++) {
-                names.add({customers[i].id.toString(): customers[i].name!});
-              }
-              return customers;
-            },
-          );
-
-          return Row(
-            children: [
-              Expanded(
-                flex: 8,
-                child: TOTFilterCategoriesOrganism(
-                  isSelected: widget.isSelected,
-                  categories: widget.categories,
-                  onTap: widget.onTap,
-                ),
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 8,
+              child: TOTFilterCategoriesOrganism(
+                isSelected: widget.isSelected,
+                categories: widget.categories,
+                onTap: widget.onTap,
               ),
-              Expanded(
-                flex: 4,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        height: 80.h,
-                        color: Colors.transparent,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 11.sp),
-                          child: Card(
-                            color: Palette.white,
-                            child: DropdownButtonFormField<Map<String, String>>(
-                              padding: const EdgeInsets.only(
-                                left: 5,
-                              ),
-                              decoration: const InputDecoration(
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                              ),
-                              hint: const Text("Select a customer"),
-                              items: names.map((e) {
-                                return DropdownMenuItem<Map<String, String>>(
-                                    value: e,
-                                    child: Text(e.values.first.toString()));
-                              }).toList(),
-                              onChanged: (changedValue) {
-                                context
-                                    .read<BagCubit>()
-                                    .updateCustomer(changedValue!);
-                              },
-                              validator: widget.validator,
+            ),
+            Expanded(
+              flex: 4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      height: 80.h,
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 11.sp),
+                        child: Card(
+                          color: Palette.white,
+                          child: DropdownButtonFormField<Map<String, String>>(
+                            padding: const EdgeInsets.only(
+                              left: 5,
                             ),
+                            decoration: const InputDecoration(
+                              border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none),
+                            ),
+                            hint: const Text("Select a customer"),
+                            items: names.map((e) {
+                              return DropdownMenuItem<Map<String, String>>(
+                                  value: e,
+                                  child: Text(e.values.first.toString()));
+                            }).toList(),
+                            onChanged: (changedValue) {
+                              context
+                                  .read<BagCubit>()
+                                  .updateCustomer(changedValue!);
+                            },
+                            validator: widget.validator,
                           ),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
-            ],
-          );
-        },
-      ),
-    );
+            ),
+          ],
+        ));
   }
 }
 

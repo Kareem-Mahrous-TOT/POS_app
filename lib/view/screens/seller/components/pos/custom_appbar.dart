@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theme/palette.dart';
-import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
-import '../../../../blocs/home/home_bloc.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
   const TOTPOSAppBar(
@@ -107,24 +104,25 @@ class _SearchWidgetState extends State<SearchWidget> {
             ),
             elevation: const MaterialStatePropertyAll(0),
             controller: controller,
-            onChanged: (onChangedValue) {
-              // if(widget.selectedIndex == 0){
+            onChanged: (_) {},
+            // (onChangedValue) {
+            //   // if(widget.selectedIndex == 0){
 
-              switch (widget.selectedIndex) {
-                case 0:
-                  context.read<HomeBloc>().add(
-                        HomeEvent.searchList(
-                          query: controller.text.trim(),
-                        ),
-                      );
-                case 2:
-                  context.read<RecentCustomersBloc>().add(
-                        RecentCustomersEvent.searchList(
-                          query: controller.text.trim(),
-                        ),
-                      );
-              }
-            },
+            //   switch (widget.selectedIndex) {
+            //     case 0:
+            //       context.read<HomeBloc>().add(
+            //             HomeEvent.searchList(
+            //               query: controller.text.trim(),
+            //             ),
+            //           );
+            //     case 2:
+            //       context.read<RecentCustomersBloc>().add(
+            //             RecentCustomersEvent.searchList(
+            //               query: controller.text.trim(),
+            //             ),
+            //           );
+            //   }
+            // },
             backgroundColor: MaterialStatePropertyAll(widget.backgroudColor),
             hintText: "Search",
             hintStyle: const MaterialStatePropertyAll(

@@ -4,7 +4,7 @@ import '../../../core/constants/local_keys.dart';
 import '../../../data/models/app_configuration_model.dart';
 import '../../../data/models/response/graph/user_data_response_model.dart';
 import '../../../data/repository/base/app_configuration_repository.dart';
-import '../../../data/repository/base/auth_repo_base.dart';
+import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../../../depency_injection.dart';
  import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -47,13 +47,13 @@ class AppConfigurationBloc
           final userResponse = await authRepository.getUser();
 
           AppConfigurationModel? config;
-          UserDataModel? user;
+          // UserDataModel? user;
 
           await configResponse.fold(
               (message) async => message, (r) async => config = r);
 
-          await userResponse.fold(
-              (l) async => l.message, (myUser) async => user = myUser);
+          // await userResponse.fold(
+          //     (l) async => l.message, (myUser) async => user = myUser);
 
           emit(
             AppConfigurationState.fetch(
@@ -61,7 +61,7 @@ class AppConfigurationBloc
               branchSelected: _isUserSelectedBranch,
               isUserLoggedIn: (isUserLoggedIn && userId != null),
               isUserAnonymous: isUserAnonymous,
-              user: user,
+              user: userResponse,
             ),
           );
         },

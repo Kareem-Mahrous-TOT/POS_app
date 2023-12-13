@@ -10,7 +10,6 @@ import 'depency_injection.dart';
 import 'view/blocs/categories/categories_bloc.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
-import 'view/blocs/home/home_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
@@ -31,11 +30,11 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) => MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (context) => getIt<HomeBloc>()
-              ..add(const HomeEvent.loadProducts())
-              ..add(const HomeEvent.getCustomers()),
-          ),
+          // BlocProvider(
+          //   create: (context) => getIt<HomeBloc>()
+          //     ..add(const HomeEvent.loadProducts())
+          //     ..add(const HomeEvent.getCustomers()),
+          // ),
           BlocProvider(create: (context) => getIt<BagCubit>()..fetch()),
           BlocProvider(
               create: (context) =>
@@ -55,9 +54,9 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
-          BlocProvider(
-              create: (context) => getIt<CategoriesBloc>()
-                ..add(const CategoriesEvent.fetch(StoreConfig.storeId))),
+          // BlocProvider(
+          //     create: (context) => getIt<CategoriesBloc>()
+          //       ..add(const CategoriesEvent.fetch(StoreConfig.storeId))),
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),
           BlocProvider(

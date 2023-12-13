@@ -17,7 +17,6 @@ import '../../../../../data/models/response/graph/qraph_product_model.dart';
 import '../../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
-import '../../../../blocs/order/order_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../blocs/products/rest/bag_cubit.dart';
 import '../../components/pos/custom_appbar.dart';
@@ -393,9 +392,9 @@ class HomePage extends HookWidget {
                                                         currency: "EGP",
                                                         items: products);
                                                 if (context.mounted) {
-                                                  context
-                                                      .read<OrderCubit>()
-                                                      .loadData();
+                                                  // context
+                                                  // .read<OrderCubit>()
+                                                  // .loadData();
                                                 }
                                               }
                                             },

@@ -10,7 +10,8 @@ extension CategoryMapping on List<CategoryItem> {
       records.add(
         (
           categoryId: model.id.toString(),
-          img: model.image ?? "http://20.163.148.155:9070/assets/alkhbaz-dummy/category/bakery.png",
+          img: model.image ??
+              "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png",
           title: model.name.toString(),
           url: model.url.toString(),
         ),

@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../depency_injection.dart';
-import '../constants/end_points.dart';
+import 'end_points.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
 import '../routes/routes.dart';

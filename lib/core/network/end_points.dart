@@ -1,23 +1,38 @@
-const baseUrl8080 = 'http://20.163.148.155:8080/';
-const baseUrl = 'http://20.163.148.155:9070/';
+abstract class EndPoints {
+  /// Base url
+  static const String baseUrl = "https://dev.alkhbaz.totplatform.net";
+  static const String graphQL = "$baseUrl/graphql";
 
-// End Points for Auth
-const loginEndPoint = 'api/platform/security/login';
-const logoutEndPoint = 'api/platform/security/logout';
-const createUserEndPoint = 'api/platform/security/users/create';
-const tokenEndPoint = 'connect/token';
-const signoutEndPoint = '/api/platform/security/logout';
+  /// Products endpoints
+  static const String catalogSearchUrl = "/api/catalog/catalogs/search";
+  // static const String searchCategoriesUrl = "/api/catalog/search/categories";
+  static const String searchCategoriesUrl = "/api/catalog/listentries";
+  static const String searchProductsUrl = "/api/catalog/search/products";
+  static const String catalogProductsUrl = '/api/catalog/products';
+  static const String listentriesCatalogUrl = '/api/catalog/listentries';
 
-// End Points for Products
-const totProductsEndPoint = "/api/catalog/search/products";
+  /// Authenticated endpoints
+  static const String createUser = 'api/platform/security/users/create';
+  static const String loginUrl = "/api/platform/security/login";
+  static const String logoutUrl = "/api/platform/security/logout";
+  static const String connectTokenUrl = "/connect/token";
 
-// End points for Orders
-const totCreateOrderEndPoint = "/api/order/customerOrders";
-const totSearchOrderEndPoint = "/api/order/customerOrders/search";
+  /// User endpoints
+  static const String userAddressUrl = "/api/platform/security";
+  static const String userInfoByNameUrl = "/api/platform/security/users";
 
-//End Points for customers
-const totCustomersEndPoint = "/api/members/search";
-const totAddCustomerEndPoint = "/api/members";
+  /// Cart
+  static const String cartUrl = "/api/carts";
+  static const String searchCartUrl = "/api/carts/search";
 
-const bakeryId = "0a841b7e-c732-4738-913d-9e43c054170e";
-const storeId = "alkhbaz";
+  //End Points for customers
+  static const totCustomers = "/api/members/search";
+  static const totAddCustomer = "/api/members";
+
+  // End points for Orders
+  static const totCreateOrder = "/api/order/customerOrders";
+  static const totSearchOrder = "/api/order/customerOrders/search";
+
+  // End Points for Products
+  static const totProducts = "/api/catalog/search/products";
+}

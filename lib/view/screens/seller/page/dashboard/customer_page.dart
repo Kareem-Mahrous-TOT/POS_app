@@ -3,39 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../../../../data/models/response/tot_customers/tot_customers.dart';
-import '../../../../blocs/home/home_bloc.dart';
 
 import '../../../../../core/theme/palette.dart';
+import '../../../../../data/models/response/tot_customers/tot_customers.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
 
-// class CustomerPage extends StatefulWidget {
-//   const CustomerPage({
-//     super.key,
-//   });
 
-//   @override
-//   State<CustomerPage> createState() => _CustomerPageState();
-// }
 
 class CustomerPage extends HookWidget {
   const CustomerPage({super.key});
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   emailController = TextEditingController();
-  //   nameController = TextEditingController();
-  // }
-
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   emailController.dispose();
-  //   nameController.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +23,6 @@ class CustomerPage extends HookWidget {
 
     final emailController = useTextEditingController();
     final nameController = useTextEditingController();
-
-    // late TextEditingController nameController;
 
     return Container(
       color: const Color.fromARGB(255, 229, 229, 229),
@@ -94,9 +71,9 @@ class CustomerPage extends HookWidget {
                                         newCustomer),
                                   );
                               if (context.mounted) {
-                                context
-                                    .read<HomeBloc>()
-                                    .add(const HomeEvent.getCustomers());
+                                // context
+                                //     .read<HomeBloc>()
+                                //     .add(const HomeEvent.getCustomers());
                               }
 
                               Navigator.pop(context);

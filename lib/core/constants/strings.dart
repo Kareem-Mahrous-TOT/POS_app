@@ -1,6 +1,6 @@
 abstract class Photos {
   static const String alkhbazDefaultImage =
-      "http://20.163.148.155:9070/assets/alkhbaz-dummy/alkhbaz.png";
+      "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/alkhbaz.png";
 }
 
 abstract class SvgIcons {

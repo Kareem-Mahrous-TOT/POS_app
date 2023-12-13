@@ -6,7 +6,7 @@ import '../../../core/constants/local_keys.dart';
 import '../../../data/models/response/graph/user_data_response_model.dart';
 import '../../../data/repository/base/anonymous_customer_repo_base.dart';
 
-import '../../../data/repository/base/auth_repo_base.dart';
+import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../../../depency_injection.dart';
 
 part 'user_data_bloc.freezed.dart';
