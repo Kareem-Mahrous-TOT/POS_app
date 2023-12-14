@@ -264,7 +264,7 @@ mixin _$TOTProduct {
   List<ExcluededProperties>? get excludedProperties =>
       throw _privateConstructorUsedError;
   String? get imgSrc => throw _privateConstructorUsedError;
-  List<Image>? get images => throw _privateConstructorUsedError;
+  List<ProductImage>? get images => throw _privateConstructorUsedError;
   List<Asset>? get assets => throw _privateConstructorUsedError;
   List<Link>? get links => throw _privateConstructorUsedError;
   List<Variation>? get variations => throw _privateConstructorUsedError;
@@ -334,7 +334,7 @@ abstract class $TOTProductCopyWith<$Res> {
       List<Property>? properties,
       List<ExcluededProperties>? excludedProperties,
       String? imgSrc,
-      List<Image>? images,
+      List<ProductImage>? images,
       List<Asset>? assets,
       List<Link>? links,
       List<Variation>? variations,
@@ -581,7 +581,7 @@ class _$TOTProductCopyWithImpl<$Res, $Val extends TOTProduct>
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Image>?,
+              as List<ProductImage>?,
       assets: freezed == assets
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
@@ -694,7 +694,7 @@ abstract class _$$TOTProductImplCopyWith<$Res>
       List<Property>? properties,
       List<ExcluededProperties>? excludedProperties,
       String? imgSrc,
-      List<Image>? images,
+      List<ProductImage>? images,
       List<Asset>? assets,
       List<Link>? links,
       List<Variation>? variations,
@@ -939,7 +939,7 @@ class __$$TOTProductImplCopyWithImpl<$Res>
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Image>?,
+              as List<ProductImage>?,
       assets: freezed == assets
           ? _value._assets
           : assets // ignore: cast_nullable_to_non_nullable
@@ -1047,7 +1047,7 @@ class _$TOTProductImpl implements _TOTProduct {
       final List<Property>? properties,
       final List<ExcluededProperties>? excludedProperties,
       this.imgSrc,
-      final List<Image>? images,
+      final List<ProductImage>? images,
       final List<Asset>? assets,
       final List<Link>? links,
       final List<Variation>? variations,
@@ -1172,9 +1172,9 @@ class _$TOTProductImpl implements _TOTProduct {
 
   @override
   final String? imgSrc;
-  final List<Image>? _images;
+  final List<ProductImage>? _images;
   @override
-  List<Image>? get images {
+  List<ProductImage>? get images {
     final value = _images;
     if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
@@ -1488,7 +1488,7 @@ abstract class _TOTProduct implements TOTProduct {
       final List<Property>? properties,
       final List<ExcluededProperties>? excludedProperties,
       final String? imgSrc,
-      final List<Image>? images,
+      final List<ProductImage>? images,
       final List<Asset>? assets,
       final List<Link>? links,
       final List<Variation>? variations,
@@ -1587,7 +1587,7 @@ abstract class _TOTProduct implements TOTProduct {
   @override
   String? get imgSrc;
   @override
-  List<Image>? get images;
+  List<ProductImage>? get images;
   @override
   List<Asset>? get assets;
   @override
@@ -3915,12 +3915,12 @@ abstract class _Value implements Value {
       throw _privateConstructorUsedError;
 }
 
-Image _$ImageFromJson(Map<String, dynamic> json) {
-  return _Image.fromJson(json);
+ProductImage _$ProductImageFromJson(Map<String, dynamic> json) {
+  return _ProductImage.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Image {
+mixin _$ProductImage {
   String get url => throw _privateConstructorUsedError;
   String? get relativeUrl => throw _privateConstructorUsedError;
   int? get sortOrder => throw _privateConstructorUsedError;
@@ -3933,13 +3933,15 @@ mixin _$Image {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ImageCopyWith<Image> get copyWith => throw _privateConstructorUsedError;
+  $ProductImageCopyWith<ProductImage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImageCopyWith<$Res> {
-  factory $ImageCopyWith(Image value, $Res Function(Image) then) =
-      _$ImageCopyWithImpl<$Res, Image>;
+abstract class $ProductImageCopyWith<$Res> {
+  factory $ProductImageCopyWith(
+          ProductImage value, $Res Function(ProductImage) then) =
+      _$ProductImageCopyWithImpl<$Res, ProductImage>;
   @useResult
   $Res call(
       {String url,
@@ -3954,9 +3956,9 @@ abstract class $ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImageCopyWithImpl<$Res, $Val extends Image>
-    implements $ImageCopyWith<$Res> {
-  _$ImageCopyWithImpl(this._value, this._then);
+class _$ProductImageCopyWithImpl<$Res, $Val extends ProductImage>
+    implements $ProductImageCopyWith<$Res> {
+  _$ProductImageCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -4018,10 +4020,11 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
 }
 
 /// @nodoc
-abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$$ImageImplCopyWith(
-          _$ImageImpl value, $Res Function(_$ImageImpl) then) =
-      __$$ImageImplCopyWithImpl<$Res>;
+abstract class _$$ProductImageImplCopyWith<$Res>
+    implements $ProductImageCopyWith<$Res> {
+  factory _$$ProductImageImplCopyWith(
+          _$ProductImageImpl value, $Res Function(_$ProductImageImpl) then) =
+      __$$ProductImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -4037,11 +4040,11 @@ abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ImageImplCopyWithImpl<$Res>
-    extends _$ImageCopyWithImpl<$Res, _$ImageImpl>
-    implements _$$ImageImplCopyWith<$Res> {
-  __$$ImageImplCopyWithImpl(
-      _$ImageImpl _value, $Res Function(_$ImageImpl) _then)
+class __$$ProductImageImplCopyWithImpl<$Res>
+    extends _$ProductImageCopyWithImpl<$Res, _$ProductImageImpl>
+    implements _$$ProductImageImplCopyWith<$Res> {
+  __$$ProductImageImplCopyWithImpl(
+      _$ProductImageImpl _value, $Res Function(_$ProductImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4057,7 +4060,7 @@ class __$$ImageImplCopyWithImpl<$Res>
     Object? seoObjectType = freezed,
     Object? id = null,
   }) {
-    return _then(_$ImageImpl(
+    return _then(_$ProductImageImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -4100,8 +4103,8 @@ class __$$ImageImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ImageImpl implements _Image {
-  const _$ImageImpl(
+class _$ProductImageImpl implements _ProductImage {
+  const _$ProductImageImpl(
       {required this.url,
       this.relativeUrl,
       this.sortOrder,
@@ -4112,8 +4115,8 @@ class _$ImageImpl implements _Image {
       this.seoObjectType,
       required this.id});
 
-  factory _$ImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ImageImplFromJson(json);
+  factory _$ProductImageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductImageImplFromJson(json);
 
   @override
   final String url;
@@ -4136,14 +4139,14 @@ class _$ImageImpl implements _Image {
 
   @override
   String toString() {
-    return 'Image(url: $url, relativeUrl: $relativeUrl, sortOrder: $sortOrder, typeId: $typeId, group: $group, name: $name, isInherited: $isInherited, seoObjectType: $seoObjectType, id: $id)';
+    return 'ProductImage(url: $url, relativeUrl: $relativeUrl, sortOrder: $sortOrder, typeId: $typeId, group: $group, name: $name, isInherited: $isInherited, seoObjectType: $seoObjectType, id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ImageImpl &&
+            other is _$ProductImageImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.relativeUrl, relativeUrl) ||
                 other.relativeUrl == relativeUrl) &&
@@ -4167,19 +4170,19 @@ class _$ImageImpl implements _Image {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
-      __$$ImageImplCopyWithImpl<_$ImageImpl>(this, _$identity);
+  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
+      __$$ProductImageImplCopyWithImpl<_$ProductImageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageImplToJson(
+    return _$$ProductImageImplToJson(
       this,
     );
   }
 }
 
-abstract class _Image implements Image {
-  const factory _Image(
+abstract class _ProductImage implements ProductImage {
+  const factory _ProductImage(
       {required final String url,
       final String? relativeUrl,
       final int? sortOrder,
@@ -4188,9 +4191,10 @@ abstract class _Image implements Image {
       final String? name,
       final bool? isInherited,
       final String? seoObjectType,
-      required final String id}) = _$ImageImpl;
+      required final String id}) = _$ProductImageImpl;
 
-  factory _Image.fromJson(Map<String, dynamic> json) = _$ImageImpl.fromJson;
+  factory _ProductImage.fromJson(Map<String, dynamic> json) =
+      _$ProductImageImpl.fromJson;
 
   @override
   String get url;
@@ -4212,7 +4216,7 @@ abstract class _Image implements Image {
   String get id;
   @override
   @JsonKey(ignore: true)
-  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
+  _$$ProductImageImplCopyWith<_$ProductImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

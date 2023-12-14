@@ -10,7 +10,7 @@ import '../../../../data/models/response/graph/graph_create_cart_model.dart';
 import '../../../../data/repository/base/cart/remove_item_repo_base.dart';
 import '../../../../depency_injection.dart';
 
-import '../../../../data/models/response/graph/qraph_product_model.dart';
+import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import '../../../../data/repository/base/cart/change_item_quantity_repo_base.dart';
 import '../../../../data/repository/base/cart/create_cart_repo_base.dart';
 

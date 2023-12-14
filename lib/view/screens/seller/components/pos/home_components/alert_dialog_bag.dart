@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/constants/store_config.dart';
 import 'package:tot_pos/core/theme/palette.dart';
-import 'package:tot_pos/data/models/response/graph/qraph_product_model.dart';
+import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
 import '../../../../../../core/extensions/translate.dart';
 import '../../../../../../data/models/response/bag/bag_model.dart';

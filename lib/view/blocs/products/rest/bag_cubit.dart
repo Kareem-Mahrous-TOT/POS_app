@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../data/models/response/bag/bag_model.dart';
 import '../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
 import '../../../../data/repository/base/order_repo_base.dart';
@@ -105,19 +106,4 @@ class BagCubit extends Cubit<BagState> {
       },
     );
   }
-
-  // void calculateTotalPrice() {
-  //   state.maybeMap(
-  //     orElse: () {},
-  //     updateList: (value) {
-  //       String totalPrice = "0";
-  //       if (value.bag.isNotEmpty) {
-  //         for (var item in value.bag) {
-  //           totalPrice += item.itemPrice * item.itemQuantity;
-  //         }
-  //       }
-  //       emit(value.copyWith(totalPrice: totalPrice));
-  //     },
-  //   );
-  // }
 }

@@ -8,6 +8,6 @@ class ProductsState with _$ProductsState {
       {List<Item>? products,
       String? categoryId,
       bool? isSearching,
-      List<ProductCardRecord>? record}) = _FetchSuccessState;
+      List<ProductCardRecord>? records}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;
 }

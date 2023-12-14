@@ -7,14 +7,12 @@ class ProductDetailsState with _$ProductDetailsState {
   const factory ProductDetailsState.fetchFailState(String message) =
       _FetchFailState;
   const factory ProductDetailsState.fetchProductByIdState(
-    Item product, 
-    {
+    Item product, {
     Variation? masterVariation,
-    List<Variation>? variations,
-    List<Property?>? ingredients,
+    @Default([]) List<Variation> variations,
     Property? enoughFor,
     Property? numberOfPieces,
-    List<Property?>? size,
-  }
-  ) = _fetchProductByIdState;
+    @Default([]) List<Property> ingredients,
+    @Default([]) List<Property> size,
+  }) = _fetchProductByIdState;
 }

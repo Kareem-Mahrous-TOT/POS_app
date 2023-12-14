@@ -13,7 +13,7 @@ import '../../../../../core/constants/store_config.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/models/response/bag/bag_model.dart';
-import '../../../../../data/models/response/graph/qraph_product_model.dart';
+import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import '../../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
@@ -78,10 +78,8 @@ class HomePage extends HookWidget {
                             .read<MenuCubit>()
                             .changeSelectedCategory(selectedRecord);
                         if (context.mounted) {
-                          log("Selected variation: ${selectedRecord.title} ####### ");
                           context.read<ProductsBloc>().add(
                                 ProductsEvent.fetch(
-                                    storeId: StoreConfig.storeId,
                                     categoryId: selectedRecord.categoryId),
                               );
                         }
@@ -172,15 +170,16 @@ class HomePage extends HookWidget {
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 50.0),
                                 child: AlignedGridView.count(
-                                  crossAxisCount: 4,
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 0,
-                                  shrinkWrap: true,
-                                  itemCount: value.products?.length,
-                                  itemBuilder: (context, index) =>
-                                      TOTPOSFoodCardItemMolecule(
-                                          onTap: (value.products?[index]
-                                                      .variations?.isNotEmpty ??
+                                    crossAxisCount: 4,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 0,
+                                    shrinkWrap: true,
+                                    itemCount: value.products?.length,
+                                    itemBuilder: (context, index) {
+                                      final product = value.products?[index];
+                                      return TOTPOSFoodCardItemMolecule(
+                                          onTap: (product?.variations
+                                                      ?.isNotEmpty ??
                                                   false)
                                               ? () {
                                                   showDialog(
@@ -203,10 +202,7 @@ class HomePage extends HookWidget {
                                                           height: h * 0.6,
                                                           child:
                                                               POSFoodItemAlertDialog(
-                                                            id: value
-                                                                .products![
-                                                                    index]
-                                                                .id!,
+                                                            id: product!.id!,
                                                           ),
                                                         ),
                                                       );
@@ -214,28 +210,27 @@ class HomePage extends HookWidget {
                                                   );
                                                 }
                                               : null,
-                                          productImage: value.products![index].imgSrc
+                                          productImage: product?.imgSrc
                                               .toString(),
-                                          productName:
-                                              value.products![index].name.toString() ==
-                                                      "null"
-                                                  ? "Not found"
-                                                  : value.products![index].name
-                                                      .toString(),
+                                          productName: product?.name
+                                                      .toString() ==
+                                                  "null"
+                                              ? "Not found"
+                                              :product!.name
+                                                  .toString(),
                                           inStock:
-                                              " ${(value.products?[index].availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                              " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
                                           prodcutDescription:
-                                              "${value.products?[index].descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
-                                          price: value
-                                                      .products?[index]
-                                                      .price
+                                              "${product?.descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
+                                          price: product
+                                                      ?.price
                                                       ?.actual
                                                       ?.formattedAmount !=
                                                   null
-                                              ? value.products![index].price!
+                                              ? product!.price!
                                                   .actual!.formattedAmount
-                                              : "N/A"),
-                                ),
+                                              : "N/A");
+                                    }),
                               );
                             },
                           );

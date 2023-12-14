@@ -19,24 +19,24 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String storeId, String? categoryId) fetch,
-    required TResult Function(String storeId, String? categoryId) refresh,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String storeId, String? categoryId)? fetch,
-    TResult? Function(String storeId, String? categoryId)? refresh,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String storeId, String? categoryId)? fetch,
-    TResult Function(String storeId, String? categoryId)? refresh,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) =>
@@ -116,8 +116,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String storeId, String? categoryId) fetch,
-    required TResult Function(String storeId, String? categoryId) refresh,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
   }) {
     return started();
@@ -127,8 +127,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String storeId, String? categoryId)? fetch,
-    TResult? Function(String storeId, String? categoryId)? refresh,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
   }) {
     return started?.call();
@@ -138,8 +138,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String storeId, String? categoryId)? fetch,
-    TResult Function(String storeId, String? categoryId)? refresh,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -197,7 +197,7 @@ abstract class _$$FetchImplCopyWith<$Res> {
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String storeId, String? categoryId});
+  $Res call({String? categoryId});
 }
 
 /// @nodoc
@@ -211,14 +211,9 @@ class __$$FetchImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storeId = null,
     Object? categoryId = freezed,
   }) {
     return _then(_$FetchImpl(
-      storeId: null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -230,16 +225,14 @@ class __$$FetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  _$FetchImpl({required this.storeId, this.categoryId});
+  _$FetchImpl({this.categoryId});
 
-  @override
-  String storeId;
   @override
   String? categoryId;
 
   @override
   String toString() {
-    return 'ProductsEvent.fetch(storeId: $storeId, categoryId: $categoryId)';
+    return 'ProductsEvent.fetch(categoryId: $categoryId)';
   }
 
   @JsonKey(ignore: true)
@@ -252,35 +245,35 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String storeId, String? categoryId) fetch,
-    required TResult Function(String storeId, String? categoryId) refresh,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
   }) {
-    return fetch(storeId, categoryId);
+    return fetch(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String storeId, String? categoryId)? fetch,
-    TResult? Function(String storeId, String? categoryId)? refresh,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
   }) {
-    return fetch?.call(storeId, categoryId);
+    return fetch?.call(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String storeId, String? categoryId)? fetch,
-    TResult Function(String storeId, String? categoryId)? refresh,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(storeId, categoryId);
+      return fetch(categoryId);
     }
     return orElse();
   }
@@ -324,10 +317,8 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements ProductsEvent {
-  factory _Fetch({required String storeId, String? categoryId}) = _$FetchImpl;
+  factory _Fetch({String? categoryId}) = _$FetchImpl;
 
-  String get storeId;
-  set storeId(String value);
   String? get categoryId;
   set categoryId(String? value);
   @JsonKey(ignore: true)
@@ -341,7 +332,7 @@ abstract class _$$RefreshImplCopyWith<$Res> {
           _$RefreshImpl value, $Res Function(_$RefreshImpl) then) =
       __$$RefreshImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String storeId, String? categoryId});
+  $Res call({String? categoryId});
 }
 
 /// @nodoc
@@ -355,14 +346,9 @@ class __$$RefreshImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storeId = null,
     Object? categoryId = freezed,
   }) {
     return _then(_$RefreshImpl(
-      storeId: null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -374,16 +360,14 @@ class __$$RefreshImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RefreshImpl implements _Refresh {
-  _$RefreshImpl({required this.storeId, this.categoryId});
+  _$RefreshImpl({this.categoryId});
 
-  @override
-  String storeId;
   @override
   String? categoryId;
 
   @override
   String toString() {
-    return 'ProductsEvent.refresh(storeId: $storeId, categoryId: $categoryId)';
+    return 'ProductsEvent.refresh(categoryId: $categoryId)';
   }
 
   @JsonKey(ignore: true)
@@ -396,35 +380,35 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String storeId, String? categoryId) fetch,
-    required TResult Function(String storeId, String? categoryId) refresh,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
   }) {
-    return refresh(storeId, categoryId);
+    return refresh(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String storeId, String? categoryId)? fetch,
-    TResult? Function(String storeId, String? categoryId)? refresh,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
   }) {
-    return refresh?.call(storeId, categoryId);
+    return refresh?.call(categoryId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String storeId, String? categoryId)? fetch,
-    TResult Function(String storeId, String? categoryId)? refresh,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
     if (refresh != null) {
-      return refresh(storeId, categoryId);
+      return refresh(categoryId);
     }
     return orElse();
   }
@@ -468,11 +452,8 @@ class _$RefreshImpl implements _Refresh {
 }
 
 abstract class _Refresh implements ProductsEvent {
-  factory _Refresh({required String storeId, String? categoryId}) =
-      _$RefreshImpl;
+  factory _Refresh({String? categoryId}) = _$RefreshImpl;
 
-  String get storeId;
-  set storeId(String value);
   String? get categoryId;
   set categoryId(String? value);
   @JsonKey(ignore: true)
@@ -534,8 +515,8 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String storeId, String? categoryId) fetch,
-    required TResult Function(String storeId, String? categoryId) refresh,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
   }) {
     return searchList(query);
@@ -545,8 +526,8 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String storeId, String? categoryId)? fetch,
-    TResult? Function(String storeId, String? categoryId)? refresh,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
   }) {
     return searchList?.call(query);
@@ -556,8 +537,8 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String storeId, String? categoryId)? fetch,
-    TResult Function(String storeId, String? categoryId)? refresh,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -638,7 +619,7 @@ mixin _$ProductsState {
                       num? quantity,
                       double rating
                     })>?
-                record)
+                records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) =>
@@ -664,7 +645,7 @@ mixin _$ProductsState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) =>
@@ -690,7 +671,7 @@ mixin _$ProductsState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
     required TResult orElse(),
@@ -789,7 +770,7 @@ class _$InitialImpl implements _Initial {
                       num? quantity,
                       double rating
                     })>?
-                record)
+                records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) {
@@ -818,7 +799,7 @@ class _$InitialImpl implements _Initial {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) {
@@ -847,7 +828,7 @@ class _$InitialImpl implements _Initial {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
     required TResult orElse(),
@@ -948,7 +929,7 @@ class _$LoadingStateImpl implements _LoadingState {
                       num? quantity,
                       double rating
                     })>?
-                record)
+                records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) {
@@ -977,7 +958,7 @@ class _$LoadingStateImpl implements _LoadingState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) {
@@ -1006,7 +987,7 @@ class _$LoadingStateImpl implements _LoadingState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
     required TResult orElse(),
@@ -1082,7 +1063,7 @@ abstract class _$$FetchSuccessStateImplCopyWith<$Res> {
                 num? quantity,
                 double rating
               })>?
-          record});
+          records});
 }
 
 /// @nodoc
@@ -1099,7 +1080,7 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
     Object? products = freezed,
     Object? categoryId = freezed,
     Object? isSearching = freezed,
-    Object? record = freezed,
+    Object? records = freezed,
   }) {
     return _then(_$FetchSuccessStateImpl(
       products: freezed == products
@@ -1114,9 +1095,9 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
           ? _value.isSearching
           : isSearching // ignore: cast_nullable_to_non_nullable
               as bool?,
-      record: freezed == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
+      records: freezed == records
+          ? _value.records
+          : records // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
                     String? discount,
@@ -1138,7 +1119,7 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
 
 class _$FetchSuccessStateImpl implements _FetchSuccessState {
   _$FetchSuccessStateImpl(
-      {this.products, this.categoryId, this.isSearching, this.record});
+      {this.products, this.categoryId, this.isSearching, this.records});
 
   @override
   List<Item>? products;
@@ -1159,11 +1140,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
         String price,
         num? quantity,
         double rating
-      })>? record;
+      })>? records;
 
   @override
   String toString() {
-    return 'ProductsState.fetchSuccessState(products: $products, categoryId: $categoryId, isSearching: $isSearching, record: $record)';
+    return 'ProductsState.fetchSuccessState(products: $products, categoryId: $categoryId, isSearching: $isSearching, records: $records)';
   }
 
   @JsonKey(ignore: true)
@@ -1195,11 +1176,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       num? quantity,
                       double rating
                     })>?
-                record)
+                records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) {
-    return fetchSuccessState(products, categoryId, isSearching, record);
+    return fetchSuccessState(products, categoryId, isSearching, records);
   }
 
   @override
@@ -1224,11 +1205,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) {
-    return fetchSuccessState?.call(products, categoryId, isSearching, record);
+    return fetchSuccessState?.call(products, categoryId, isSearching, records);
   }
 
   @override
@@ -1253,13 +1234,13 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
-      return fetchSuccessState(products, categoryId, isSearching, record);
+      return fetchSuccessState(products, categoryId, isSearching, records);
     }
     return orElse();
   }
@@ -1320,7 +1301,7 @@ abstract class _FetchSuccessState implements ProductsState {
                 num? quantity,
                 double rating
               })>?
-          record}) = _$FetchSuccessStateImpl;
+          records}) = _$FetchSuccessStateImpl;
 
   List<Item>? get products;
   set products(List<Item>? value);
@@ -1340,8 +1321,8 @@ abstract class _FetchSuccessState implements ProductsState {
         String price,
         num? quantity,
         double rating
-      })>? get record;
-  set record(
+      })>? get records;
+  set records(
       List<
               ({
                 String? discount,
@@ -1434,7 +1415,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       num? quantity,
                       double rating
                     })>?
-                record)
+                records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) {
@@ -1463,7 +1444,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) {
@@ -1492,7 +1473,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       num? quantity,
                       double rating
                     })>?
-                record)?
+                records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
     required TResult orElse(),

@@ -72,7 +72,7 @@ _$TOTProductImpl _$$TOTProductImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       imgSrc: json['imgSrc'] as String?,
       images: (json['images'] as List<dynamic>?)
-          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
           .toList(),
       assets: (json['assets'] as List<dynamic>?)
           ?.map((e) => Asset.fromJson(e as Map<String, dynamic>))
@@ -387,7 +387,8 @@ Map<String, dynamic> _$$ValueImplToJson(_$ValueImpl instance) =>
       'id': instance.id,
     };
 
-_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
+_$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>
+    _$ProductImageImpl(
       url: json['url'] as String,
       relativeUrl: json['relativeUrl'] as String?,
       sortOrder: json['sortOrder'] as int?,
@@ -399,7 +400,7 @@ _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
       id: json['id'] as String,
     );
 
-Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
+Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) =>
     <String, dynamic>{
       'url': instance.url,
       'relativeUrl': instance.relativeUrl,

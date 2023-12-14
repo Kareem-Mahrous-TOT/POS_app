@@ -6,15 +6,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../extensions/translate.dart';
 import '../../view/blocs/fulfillment_centers/fulfillment_center_bloc.dart';
 import '../../view/blocs/products/products_bloc.dart';
 import '../../view/blocs/user_address/user_address_bloc.dart';
-
-
-import '../../depency_injection.dart';
-import '../constants/local_keys.dart';
-import '../constants/store_config.dart';
+import '../extensions/translate.dart';
 import '../theme/palette.dart';
 
 Future<void> showFulfillmentCenterPicker(
@@ -23,8 +18,6 @@ Future<void> showFulfillmentCenterPicker(
   bool isDismissible = false,
 }) async {
   if (context.mounted) {
-    final name = preferences.getString(LocalKeys.fulfillmentCenterName);
-    log("NAME OF FULFILLMENT CENTER:: $name #");
     final height = MediaQuery.sizeOf(context).height;
     await showModalBottomSheet(
       context: context,
@@ -104,13 +97,12 @@ Future<void> showFulfillmentCenterPicker(
                                           .getAllAreaRegions());
 
                                   /// Refresh products
-                                  context.read<ProductsBloc>().add(
-                                      ProductsEvent.refresh(
-                                          storeId: StoreConfig.storeId));
+                                  context
+                                      .read<ProductsBloc>()
+                                      .add(ProductsEvent.refresh());
                                 }
                               },
                               onChanged: (value) {
-                                log("SELECT BRANCH:: $value #");
                                 if (value != null) {
                                   context.pop();
                                   context.read<FulfillmentCenterBloc>().add(
@@ -118,9 +110,9 @@ Future<void> showFulfillmentCenterPicker(
                                           .changedSuccessfully(value));
 
                                   /// Refresh products
-                                  context.read<ProductsBloc>().add(
-                                      ProductsEvent.refresh(
-                                          storeId: StoreConfig.storeId));
+                                  context
+                                      .read<ProductsBloc>()
+                                      .add(ProductsEvent.refresh());
                                 } else {
                                   context.pop();
                                 }

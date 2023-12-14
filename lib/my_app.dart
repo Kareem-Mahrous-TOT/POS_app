@@ -7,7 +7,6 @@ import 'core/constants/store_config.dart';
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
 import 'depency_injection.dart';
-import 'view/blocs/categories/categories_bloc.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
@@ -49,7 +48,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
           BlocProvider(
               create: (context) => getIt<ProductsBloc>()
-                ..add(ProductsEvent.fetch(storeId: StoreConfig.storeId))),
+                ..add(ProductsEvent.fetch())),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),

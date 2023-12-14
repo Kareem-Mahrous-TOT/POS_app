@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../core/constants/local_keys.dart';
-import '../../core/constants/strings.dart';
-import '../../depency_injection.dart';
-
-import '../models/response/graph/qraph_product_model.dart';
+import '../../../core/constants/local_keys.dart';
+import '../../../core/constants/strings.dart';
+import '../../../depency_injection.dart';
+import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
 extension ProductMapping on List<Item> {
   List<ProductCardRecord> toDomain() {

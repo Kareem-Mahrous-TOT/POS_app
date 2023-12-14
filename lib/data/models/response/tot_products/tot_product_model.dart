@@ -57,7 +57,7 @@ class TOTProduct with _$TOTProduct {
     List<Property>? properties,
     List<ExcluededProperties>? excludedProperties,
     String? imgSrc,
-    List<Image>? images,
+    List<ProductImage>? images,
     List<Asset>? assets,
     List<Link>? links,
     List<Variation>? variations,
@@ -205,8 +205,8 @@ class Value with _$Value {
 }
 
 @freezed
-class Image with _$Image {
-  const factory Image({
+class ProductImage with _$ProductImage {
+  const factory ProductImage({
     required String url,
     String? relativeUrl,
     int? sortOrder,
@@ -216,9 +216,9 @@ class Image with _$Image {
     bool? isInherited,
     String? seoObjectType,
     required String id,
-  }) = _Image;
+  }) = _ProductImage;
 
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  factory ProductImage.fromJson(Map<String, dynamic> json) => _$ProductImageFromJson(json);
 }
 
 @freezed

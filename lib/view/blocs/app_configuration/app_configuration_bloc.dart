@@ -71,7 +71,6 @@ class AppConfigurationBloc
 
   bool get _isUserSelectedBranch {
     final branchId = preferences.getString(LocalKeys.fulfillmentCenterId);
-    log("branchId:::-_isUserSelectedBranch $branchId ####");
     return branchId != null;
   }
 }
