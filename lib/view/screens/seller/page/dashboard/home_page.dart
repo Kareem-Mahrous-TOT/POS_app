@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,12 +11,13 @@ import '../../../../../core/constants/store_config.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/models/response/bag/bag_model.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import '../../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
+import '../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../blocs/products/rest/bag_cubit.dart';
+import '../../../../ui_mappers/to_category_record.dart';
 import '../../components/pos/custom_appbar.dart';
 import '../../components/pos/home_components/home_exp.dart';
 
@@ -71,8 +70,7 @@ class HomePage extends HookWidget {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     },
-                    fetchSuccess: (model, records, record) =>
-                        TOTPOSHomePageAppBar(
+                    fetchSuccess: (records) => TOTPOSHomePageAppBar(
                       onTap: (selectedRecord) {
                         context
                             .read<MenuCubit>()
@@ -84,13 +82,13 @@ class HomePage extends HookWidget {
                               );
                         }
                       },
-                      isSelected: model.categories.map(
-                        (e) {
-                          log("${e.isMaster}");
-                          return e.isMaster;
-                        },
-                      ).toList(),
-                      categories: records!,
+                      isSelected: records
+                          .map(
+                            (categoryItem) => categoryItem.isSelected,
+                          )
+                          .toList(),
+                      categories:
+                          records.map((e) => e.toCategoryRecord()).toList(),
                       validator: (value) {
                         //  validator
                         if (value == null) {
@@ -210,25 +208,21 @@ class HomePage extends HookWidget {
                                                   );
                                                 }
                                               : null,
-                                          productImage: product?.imgSrc
-                                              .toString(),
-                                          productName: product?.name
-                                                      .toString() ==
-                                                  "null"
-                                              ? "Not found"
-                                              :product!.name
-                                                  .toString(),
+                                          productImage:
+                                              product?.imgSrc.toString(),
+                                          productName:
+                                              product?.name.toString() == "null"
+                                                  ? "Not found"
+                                                  : product!.name.toString(),
                                           inStock:
                                               " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
                                           prodcutDescription:
                                               "${product?.descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
-                                          price: product
-                                                      ?.price
-                                                      ?.actual
+                                          price: product?.price?.actual
                                                       ?.formattedAmount !=
                                                   null
-                                              ? product!.price!
-                                                  .actual!.formattedAmount
+                                              ? product!.price!.actual!
+                                                  .formattedAmount
                                               : "N/A");
                                     }),
                               );

@@ -1,10 +1,10 @@
-import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/types/types.dart';
 
 import '../models/category_model.dart';
 
-extension CategoryMapping on List<CategoryItem> {
-  List<CategoryRecord> toDomain() {
-    List<CategoryRecord> records = [];
+extension MenuMapping on List<CategoryItem> {
+  List<PosCategoryRecord> toDomain() {
+    List<PosCategoryRecord> records = [];
 
     for (final model in this) {
       records.add(
@@ -14,6 +14,7 @@ extension CategoryMapping on List<CategoryItem> {
               "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png",
           title: model.name.toString(),
           url: model.url.toString(),
+          isSelected: model.isMaster,
         ),
       );
     }

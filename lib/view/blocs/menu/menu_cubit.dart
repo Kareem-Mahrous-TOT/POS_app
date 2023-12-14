@@ -1,65 +1,46 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../../data/mappers/category_mapping.dart';
-import '../../../data/models/category_model.dart';
+
+import '../../../core/types/types.dart';
+import '../../../core/usecase/usecase.dart';
+import '../../../domain/menu/usecases/fetch_menu_categories.dart';
 
 part 'menu_cubit.freezed.dart';
 part 'menu_state.dart';
 
 class MenuCubit extends Cubit<MenuState> {
-  MenuCubit() : super(const MenuState.initial());
-  Future<void> loadMenu() async {
-    CategoryList model;
-    try {
-      final response =
-          await rootBundle.loadString("assets/jsons/categories.json");
+  FetchMenuCategoriesUsecase fetchMenuCategoriesUsecase;
 
-      final jsonData = jsonDecode(response);
-      CategoryItem item = const CategoryItem(
-        name: "الكل",
-        id: "",
-        url: null,
-        image: null,
-        isMaster: true,
-      );
-      model = CategoryList.fromJson(jsonData);
-      final categoryList =
-          model.copyWith(categories: [...model.categories, item]);
-      log("${categoryList.categories.length} categories count");
-      final List<CategoryRecord> records = categoryList.categories.toDomain();
-      // final children = model.categories[0].children?.toDomain();
-      emit(MenuState.fetchSuccess(
-        model: categoryList,
-        records: records,
-        record: records.last
-      ));
-    } catch (e) {
+  MenuCubit({required this.fetchMenuCategoriesUsecase})
+      : super(const MenuState.initial());
+  Future<void> loadMenu() async {
+    final result = await fetchMenuCategoriesUsecase.call(NoParams());
+
+    result.fold((failure) {
       emit(const MenuState.fetchFail());
-    }
+    }, (posCategoriesRecords) {
+      emit(MenuState.fetchSuccess(records: posCategoriesRecords));
+    });
   }
 
   Future<void> changeSelectedCategory(CategoryRecord selectedCategory) async {
     state.maybeMap(
         orElse: () {},
         fetchSuccess: (value) {
-          final CategoryList records = value.model.copyWith(
-              categories: value.model.categories.map((category) {
-            // element.isMaster = false;
-            return category.copyWith(
-                isMaster: (category.id == selectedCategory.categoryId)
-                    ? true
-                    : false);
-          }).toList());
+          final records = value.records
+              .map((record) => (
+                    categoryId: record.categoryId,
+                    img: record.img,
+                    title: record.title,
+                    url: record.url,
+                    isSelected:
+                        record.categoryId == selectedCategory.categoryId,
+                  ))
+              .toList();
+
           emit(value.copyWith(
-            model: records,
-            records: records.categories.toDomain(),
-            // selectedCategory: selectedCategory
-            // record: selectedCategory,
+            records: records,
           ));
         });
   }

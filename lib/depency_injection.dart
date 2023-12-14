@@ -2,11 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tot_pos/data/products/data_sources/remote_data_source.dart';
-import 'package:tot_pos/data/products/repo/products_repo_impl.dart';
-import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
-import 'package:tot_pos/domain/products/usecases/get_product_by_id_usecase.dart';
-import 'package:tot_pos/domain/products/usecases/get_products_usecase.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -14,6 +9,10 @@ import 'core/network/graph_config.dart';
 import 'data/auth/data_sources/local_data_source.dart';
 import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';
+import 'data/menu/data_sources/menu_data_source.dart';
+import 'data/menu/repo/repo_impl.dart';
+import 'data/products/data_sources/remote_data_source.dart';
+import 'data/products/repo/products_repo_impl.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/order_repo_base.dart';
 import 'data/repository/base/orders_repo_base.dart';
@@ -24,6 +23,11 @@ import 'data/repository/impl/report_repo.dart';
 import 'data/repository/impl/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/login_usecase.dart';
+import 'domain/menu/repo/repo.dart';
+import 'domain/menu/usecases/fetch_menu_categories.dart';
+import 'domain/products/repo/products_repo_base.dart';
+import 'domain/products/usecases/get_product_by_id_usecase.dart';
+import 'domain/products/usecases/get_products_usecase.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
@@ -65,6 +69,7 @@ Future<void> getItInit() async {
       .registerSingleton<ProductsRemoteDataSource>(ProductsRemoteDataSourceImpl(
     graphService: getIt(),
   ));
+  getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
 
   //repo
   // sl.registerSingleton<HomeRepo>(HomeRepo());
@@ -83,6 +88,7 @@ Future<void> getItInit() async {
   getIt.registerSingleton<CustomersRepoBase>(
       CustomersRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
+  getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
 
   //usecase
   getIt.registerLazySingleton<LoginUsecase>(
@@ -91,6 +97,8 @@ Future<void> getItInit() async {
       () => GetProductsUsecase(productsRepo: getIt()));
   getIt.registerLazySingleton<GetProductByIdUsecase>(
       () => GetProductByIdUsecase(productsRepo: getIt()));
+  getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
+      () => FetchMenuCategoriesUsecase(menuRepo: getIt()));
 
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
@@ -108,7 +116,8 @@ Future<void> getItInit() async {
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
   getIt.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());
   getIt.registerFactory<ReportCostCubit>(() => ReportCostCubit());
-  getIt.registerFactory<MenuCubit>(() => MenuCubit());
+  getIt.registerFactory<MenuCubit>(
+      () => MenuCubit(fetchMenuCategoriesUsecase: getIt()));
   getIt.registerFactory<OrdersBloc>(() => OrdersBloc(ordersRepo: getIt()));
   getIt.registerFactory<ProductsBloc>(
       () => ProductsBloc(getProductsUsecase: getIt()));

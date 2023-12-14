@@ -9,3 +9,11 @@ typedef ProdyctByIdRecord = ({
   List<Property> ingredients,
   List<Property> size,
 });
+
+typedef PosCategoryRecord = ({
+  String? categoryId,
+  String title,
+  String img,
+  String url,
+  bool isSelected,
+});

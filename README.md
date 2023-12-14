@@ -4,9 +4,9 @@
 - [ ] refactor
   - [ ] repos-usecases-blocs
     - [x] auth
-    - [ ] Menu
-    - [ ] category
-    - [ ] products
+    - [x] Menu
+    <!-- - [ ] category -->
+    - [x] products
     - [ ] orders
   - [ ] ui
     - [ ] add to package

@@ -4,9 +4,7 @@ part of 'menu_cubit.dart';
 class MenuState with _$MenuState {
   const factory MenuState.initial() = _Initial;
   const factory MenuState.fetchSuccess({
-    required CategoryList model,
-    List<CategoryRecord>? records,
-    CategoryRecord? record,
+    @Default([]) List<PosCategoryRecord> records,
   }) = _FetchSuccess;
   const factory MenuState.fetchFail() = _FetchFail;
 }
