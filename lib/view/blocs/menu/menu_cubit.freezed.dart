@@ -136,7 +136,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -309,7 +309,6 @@ class _$FetchSuccessImpl implements _FetchSuccess {
           records = const []})
       : _records = records;
 
-// required CategoryList model,
   final List<
       ({
         String? categoryId,
@@ -318,7 +317,6 @@ class _$FetchSuccessImpl implements _FetchSuccess {
         String title,
         String url
       })> _records;
-// required CategoryList model,
   @override
   @JsonKey()
   List<
@@ -340,7 +338,7 @@ class _$FetchSuccessImpl implements _FetchSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchSuccessImpl &&
@@ -468,7 +466,6 @@ abstract class _FetchSuccess implements MenuState {
               })>
           records}) = _$FetchSuccessImpl;
 
-// required CategoryList model,
   List<
       ({
         String? categoryId,
@@ -509,7 +506,7 @@ class _$FetchFailImpl implements _FetchFail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$FetchFailImpl);
   }

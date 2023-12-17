@@ -5,10 +5,10 @@ import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
 import '../base/update_personal_data_repo_base.dart';
 
-class UpDatePersonalDataRepoImpl implements UpdatePersonalDataRepoBase {
+class UpdatePersonalDataRepoImpl implements UpdatePersonalDataRepoBase {
   final GraphService graphService;
 
-  UpDatePersonalDataRepoImpl(this.graphService);
+  UpdatePersonalDataRepoImpl(this.graphService);
 
   @override
   Future<Either<Failure, bool>> updatePersonaldata({

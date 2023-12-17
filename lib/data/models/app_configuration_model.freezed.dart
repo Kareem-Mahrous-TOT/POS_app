@@ -133,7 +133,7 @@ class _$AppConfigurationModelImpl implements _AppConfigurationModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppConfigurationModelImpl &&
@@ -356,7 +356,7 @@ class _$AppConfigurationImpl implements _AppConfiguration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppConfigurationImpl &&
@@ -536,7 +536,7 @@ class _$ScreensConfigImpl implements _ScreensConfig {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScreensConfigImpl &&
@@ -1120,7 +1120,7 @@ class _$ProfileScreenConfigImpl implements _ProfileScreenConfig {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileScreenConfigImpl &&
@@ -1399,7 +1399,7 @@ class _$ThemeConfigImpl implements _ThemeConfig {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ThemeConfigImpl);
   }
@@ -1639,7 +1639,7 @@ class _$BottomNavigationBarConfigImpl implements _BottomNavigationBarConfig {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BottomNavigationBarConfigImpl &&

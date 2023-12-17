@@ -159,7 +159,7 @@ class _$ListEntriesProductsImpl implements _ListEntriesProducts {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListEntriesProductsImpl &&
@@ -630,7 +630,7 @@ class _$ListEntryImpl implements _ListEntry {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListEntryImpl &&
@@ -867,7 +867,7 @@ class _$OutlineImpl implements _Outline {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OutlineImpl &&
@@ -1078,7 +1078,7 @@ class _$OutlineItemImpl implements _OutlineItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OutlineItemImpl &&
@@ -1551,7 +1551,7 @@ class _$ResultImpl implements _Result {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResultImpl &&

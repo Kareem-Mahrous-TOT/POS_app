@@ -460,7 +460,7 @@ class _$TOTAddCustomerModelResponseImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TOTAddCustomerModelResponseImpl &&
@@ -1014,7 +1014,7 @@ class _$AddressImpl implements _Address {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressImpl &&
@@ -1542,7 +1542,7 @@ class _$DynamicPropertyImpl implements _DynamicProperty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DynamicPropertyImpl &&
@@ -1886,7 +1886,7 @@ class _$NoteImpl implements _Note {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoteImpl &&
@@ -2167,7 +2167,7 @@ class _$ValueImpl implements _Value {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ValueImpl &&
@@ -2358,7 +2358,7 @@ class _$DisplayNameImpl implements _DisplayName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DisplayNameImpl &&
@@ -2738,7 +2738,7 @@ class _$SeoInfoImpl implements _SeoInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SeoInfoImpl &&

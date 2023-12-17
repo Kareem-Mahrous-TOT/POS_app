@@ -3,25 +3,28 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/constants/local_keys.dart';
-import '../../../data/models/response/graph/graph_create_order_model.dart';
-import '../../../data/repository/base/orders_repo_base.dart';
-import '../../../depency_injection.dart';
+import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
+
+import '../../../data/orders/model/graph_create_order_model.dart';
 
 part 'create_order_bloc.freezed.dart';
 part 'create_order_event.dart';
 part 'create_order_state.dart';
 
 class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
-  final OrdersRepoBase repo;
-  CreateOrderBloc(this.repo) : super(const _Initial()) {
+  final CreateOrderFormCartUsecase _createOrderFormCartUsecase;
+  CreateOrderBloc(
+      {required CreateOrderFormCartUsecase createOrderFormCartUsecase})
+      : _createOrderFormCartUsecase = createOrderFormCartUsecase,
+        super(const _Initial()) {
     on<CreateOrderEvent>(
       (event, emit) async {
         await event.maybeMap(
           orElse: () {},
           createOrder: (event) async {
             emit(const _LoadInProgress());
-            final data = await repo.createOrderFromCart(cartId: event.cartId);
+            final data = await _createOrderFormCartUsecase
+                .call(CreateOrderFormCartParams(cartId: event.cartId));
             await data.fold(
               (l) async {
                 log("::::: $data CreateOrderBloc _Failure");
@@ -29,14 +32,11 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
                   const _FailureCreatedOrder(),
                 );
               },
-              (r) async {
-                bool? isAnonymous = preferences.getBool(
-                  LocalKeys.isUserAnonymous,
-                );
+              (record) async {
                 emit(
                   _SuccessCreatedOrder(
-                    model: r,
-                    isAnonymous: isAnonymous,
+                    model: record.createOrderModel,
+                    isAnonymous: record.isAnonymous,
                   ),
                 );
                 // await AuthRepoImpl(DioClient(),
