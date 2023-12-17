@@ -6,6 +6,8 @@ class OrdersState with _$OrdersState {
   const factory OrdersState.getOrdersLoading() = _GetOrdersLoading;
   const factory OrdersState.getOrderbyIdFailed(String message) =
       _GetOrderbyIdFailed;
+  const factory OrdersState.getOrderbyIdSuccess(GetOrderByIdModel order) =
+      _GetOrderbyIdSuccess;
   const factory OrdersState.getOrdersSuccess({
     required List<OrderEntity> orders,
     // GetOrderByIdModel? model,

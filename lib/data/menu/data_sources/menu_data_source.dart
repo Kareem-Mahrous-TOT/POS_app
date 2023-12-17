@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../../models/category_model.dart';
+import '../model/category_model.dart';
 
 abstract class MenuDataSource {
   Future<List<CategoryItem>> fetchMenuItems();

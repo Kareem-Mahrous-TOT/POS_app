@@ -2,6 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/data/orders/data_source/local_data_source.dart';
+import 'package:tot_pos/domain/orders/usecases/change_order_status_usecase.dart';
+import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
+import 'package:tot_pos/domain/orders/usecases/get_order_by_id_usecase.dart';
+import 'package:tot_pos/domain/orders/usecases/get_orders_usecase.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -11,20 +16,21 @@ import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
+import 'data/orders/data_source/remote_data_source.dart';
+import 'data/orders/repo/orders_repo_impl.dart';
 import 'data/products/data_sources/remote_data_source.dart';
 import 'data/products/repo/products_repo_impl.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/order_repo_base.dart';
-import 'data/repository/base/orders_repo_base.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
 import 'data/repository/impl/order_repo.dart';
-import 'data/repository/impl/orders_repo_impl.dart';
 import 'data/repository/impl/report_repo.dart';
 import 'data/repository/impl/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/login_usecase.dart';
 import 'domain/menu/repo/repo.dart';
 import 'domain/menu/usecases/fetch_menu_categories.dart';
+import 'domain/orders/repo/orders_repo_base.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
@@ -70,12 +76,20 @@ Future<void> getItInit() async {
     graphService: getIt(),
   ));
   getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
+  //? orders
+  getIt.registerSingleton<OrdersRemoteDataSource>(
+      OrdersRemoteDataSourceImpl(graphService: getIt()));
+  getIt.registerSingleton<OrdersLocalDataSource>(
+      OrdersLocalDataSourceImpl(preferences: getIt()));
 
   //repo
   // sl.registerSingleton<HomeRepo>(HomeRepo());
   // getIt.registerSingleton<LayoutRepoBase>(LayoutRepoImpl());
   getIt.registerSingleton<CustomerRepo>(CustomerRepo());
-  getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(getIt()));
+  getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
+    localDataSource: getIt(),
+    remotedataSource: getIt(),
+  ));
   getIt.registerSingleton<ProductsRepoBase>(
       ProductsRepoImpl(remoteDataSourceImpl: getIt()));
   getIt.registerSingleton<AuthBaseRepo>(AuthRepoImpl(
@@ -95,6 +109,14 @@ Future<void> getItInit() async {
       () => LoginUsecase(authRepo: getIt()));
   getIt.registerLazySingleton<GetProductsUsecase>(
       () => GetProductsUsecase(productsRepo: getIt()));
+  getIt.registerLazySingleton<GetOrdersUseCase>(
+      () => GetOrdersUseCase(ordersRepo: getIt()));
+  getIt.registerLazySingleton<GetOrderByIdUseCase>(
+      () => GetOrderByIdUseCase(ordersRepo: getIt()));
+  getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
+      () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
+  getIt.registerLazySingleton<CreateOrderFormCartUsecase>(
+      () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
   getIt.registerLazySingleton<GetProductByIdUsecase>(
       () => GetProductByIdUsecase(productsRepo: getIt()));
   getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
@@ -118,7 +140,7 @@ Future<void> getItInit() async {
   getIt.registerFactory<ReportCostCubit>(() => ReportCostCubit());
   getIt.registerFactory<MenuCubit>(
       () => MenuCubit(fetchMenuCategoriesUsecase: getIt()));
-  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(ordersRepo: getIt()));
+  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(getOrderUseCase: getIt()));
   getIt.registerFactory<ProductsBloc>(
       () => ProductsBloc(getProductsUsecase: getIt()));
   getIt.registerFactory<ProductDetailsBloc>(

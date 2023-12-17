@@ -1,21 +1,3 @@
-import 'package:dartz/dartz.dart';
-import '../../models/response/graph/graph_create_order_model.dart';
-
-import '../../../core/network/failure.dart';
-
-abstract class OrdersRepoBase {
-  Future<Either<Failure, CreateOrderModel>> createOrderFromCart(
-      {required String cartId});
-  Future<Either<Failure, GetOrderByIdModel>> getOrderbyId(
-      {required String orderId});
-  Future<Either<Failure, bool>> changeOrderStatus(
-      {required String ordreId, required String status});
-  Future<Either<Failure, List<OrderEntity>>> getOrders(
-      {String? userId, String? cultureName});
-  // Future<Order> getOrder(String id);
-  // Future<Order> updateOrder(Order order);
-  // Future<void> deleteOrder(String id);
-}
 
 class OrderEntity {
   final String orderNumber;
@@ -38,8 +20,8 @@ class OrderEntity {
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) {
     final inPayments = json['inPayments'] as List?;
-     String paymentDescription = "Cash on Delivery";
-    if(inPayments?.isNotEmpty?? false){
+    String paymentDescription = "Cash on Delivery";
+    if (inPayments?.isNotEmpty ?? false) {
       paymentDescription = inPayments?[0]['paymentMethod']['description'];
     }
     return OrderEntity(
@@ -51,6 +33,5 @@ class OrderEntity {
       status: json['status'],
       price: json['total']['formattedAmount'],
     );
-
   }
 }
