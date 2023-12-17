@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../base/cart/remove_cart_repo_base.dart';
+import '../../../../domain/cart/remove_cart_repo_base.dart';
 
 import '../../../../core/network/failure.dart';
 import '../../../../core/network/graph_config.dart';

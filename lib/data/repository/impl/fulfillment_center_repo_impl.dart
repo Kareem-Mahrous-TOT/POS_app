@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
 import '../../models/response/graph/graph_fulfillment_center_model.dart';

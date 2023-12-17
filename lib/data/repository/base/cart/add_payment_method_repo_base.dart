@@ -1,16 +1,4 @@
-enum PaymentMethodType {
-  cashOnDelivery;
-
-  // qnb;
-
-  @override
-  String toString() {
-    return switch (this) {
-      PaymentMethodType.cashOnDelivery => "DefaultManualPaymentMethod",
-      // PaymentMethodType.qnb => "QnbMethod",
-    };
-  }
-}
+import '../../../../core/enums/payment_method_type.dart';
 
 abstract class AddPaymentMethodRepoBase {
   Future<bool> addPaymentMethod({required PaymentMethodType paymentMethodType});

@@ -1,4 +1,7 @@
 import 'package:dartz/dartz.dart';
+
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/end_points.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/utils/json_decoder.dart';
 import '../../models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
@@ -7,9 +10,6 @@ import '../../models/response/customer/current_customer.dart';
 import '../../models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
 import '../../models/response/tot_customers/tot_customers.dart';
 import '../base/customers_rep_base.dart';
-
-import '../../../core/network/end_points.dart';
-import '../../../core/network/api_consumer.dart';
 
 class CustomerRepo {
   Future<CurrentCustomer> fetchCurrentCustomer() async {

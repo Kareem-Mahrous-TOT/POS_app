@@ -8,8 +8,8 @@ import '../../../../core/network/failure.dart';
 import '../../../../data/models/response/graph/graph_add_item_model.dart';
 import '../../../../data/models/response/graph/graph_create_cart_model.dart';
 
-import '../../../../data/repository/base/cart/add_item_repo_base.dart';
-import '../../../../data/repository/base/cart/create_cart_repo_base.dart';
+import '../../../../domain/cart/add_item_repo_base.dart';
+import '../../../../domain/cart/create_cart_repo_base.dart';
 import '../../../../depency_injection.dart';
 
 part 'add_item_bloc.freezed.dart';

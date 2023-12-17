@@ -1,11 +1,10 @@
-import '../../../data/models/response/graph/addresses_model.dart';
-import '../../../depency_injection.dart';
-
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/local_keys.dart';
 import '../../../core/usecase/usecase.dart';
+import '../../../data/models/response/graph/addresses_model.dart';
 import '../../../data/repository/base/cart/add_address_repo_base.dart';
 import '../../../data/repository/base/user_address_repo_base.dart';
+import '../../../depency_injection.dart';
 
 class AddCartAddressUseCase implements BaseUsecase<String, Future<bool>> {
   final UserAddressRepoBase userAddressRepo;

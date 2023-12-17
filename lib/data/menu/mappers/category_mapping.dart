@@ -1,6 +1,6 @@
-import 'package:tot_pos/core/types/types.dart';
+import '../../../core/types/types.dart';
 
-import '../models/category_model.dart';
+import '../../models/category_model.dart';
 
 extension MenuMapping on List<CategoryItem> {
   List<PosCategoryRecord> toDomain() {

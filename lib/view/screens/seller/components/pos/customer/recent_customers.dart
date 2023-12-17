@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+
 import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
 

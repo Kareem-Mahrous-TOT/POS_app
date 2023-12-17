@@ -1,6 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
+import '../../../core/constants/store_config.dart';
+import '../model/qraph_product_model.dart';
 
 import '../../../core/network/graph_config.dart';
 

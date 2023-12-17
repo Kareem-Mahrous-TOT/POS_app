@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_cart_model.freezed.dart';
-
 part 'search_cart_model.g.dart';
 
 @freezed

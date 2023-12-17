@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../../core/network/failure.dart';
-import '../../../core/network/graph_config.dart';
-import '../../models/response/graph/user_data_response_model.dart';
-import '../base/anonymous_customer_repo_base.dart';
-import '../../../depency_injection.dart';
 
 import '../../../core/constants/local_keys.dart';
+import '../../../core/network/failure.dart';
+import '../../../core/network/graph_config.dart';
+import '../../../depency_injection.dart';
+import '../../models/response/graph/user_data_response_model.dart';
+import '../base/anonymous_customer_repo_base.dart';
 
 class AnonymousCustomerRepoImpl implements AnonymousCustomerRepoBase {
   final GraphService graphService;
@@ -52,7 +52,6 @@ class AnonymousCustomerRepoImpl implements AnonymousCustomerRepoBase {
     }
 }
 '''),
-          // fetchPolicy: FetchPolicy.cacheFirst,
           fetchPolicy: FetchPolicy.noCache,
         ),
       );

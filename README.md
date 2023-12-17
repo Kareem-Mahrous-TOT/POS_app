@@ -1,12 +1,13 @@
-# tot_pos
+# TOT POS
 
 ## Todo
 - [ ] refactor
   - [ ] repos-usecases-blocs
     - [x] auth
     - [x] Menu
-    <!-- - [ ] category -->
+    - [x] categories
     - [x] products
+    - [ ] cart
     - [ ] orders
   - [ ] ui
     - [ ] add to package

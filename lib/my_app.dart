@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 
-import 'core/constants/store_config.dart';
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
 import 'depency_injection.dart';
@@ -47,8 +46,8 @@ class MainApp extends StatelessWidget {
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
           BlocProvider(
-              create: (context) => getIt<ProductsBloc>()
-                ..add(ProductsEvent.fetch())),
+              create: (context) =>
+                  getIt<ProductsBloc>()..add(ProductsEvent.fetch())),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),

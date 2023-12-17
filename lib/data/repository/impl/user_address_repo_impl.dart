@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import '../../../core/constants/constants.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
@@ -56,7 +57,6 @@ fragment memberAddressFields on MemberAddressType {
           fetchPolicy: FetchPolicy.noCache,
         ),
       );
-      // log("******** response.data - UserAddressModel757575 :: ${response.data} ********");
       // if (response.hasException) {
       //   throw Exception(response.exception);
       // }

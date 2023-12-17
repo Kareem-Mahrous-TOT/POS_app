@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../domain/products/repo/products_repo_base.dart';
+import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/products/usecases/get_products_usecase.dart';
 
 part 'products_bloc.freezed.dart';
@@ -15,9 +13,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   // final ProductsRepoBase productsRepo;
   final GetProductsUsecase _getProductsUsecase;
 
-  ProductsBloc(
-    {required GetProductsUsecase getProductsUsecase}
-  ) : _getProductsUsecase = getProductsUsecase, super(_Initial()) {
+  ProductsBloc({required GetProductsUsecase getProductsUsecase})
+      : _getProductsUsecase = getProductsUsecase,
+        super(_Initial()) {
     List<Item> productsList = [];
     on<ProductsEvent>((event, emit) async {
       Future<void> fetchProducts({
@@ -26,8 +24,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       }) async {
         emit(ProductsState.loadingState());
         try {
-          final response = await _getProductsUsecase.call(
-              GetProductsParams(categoryId: categoryId));
+          final response = await _getProductsUsecase
+              .call(GetProductsParams(categoryId: categoryId));
           response.fold(
               (failure) => emit(ProductsState.fetchFailState(failure.message)),
               (record) {

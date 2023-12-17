@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/extensions/translate.dart';
+import '../../../../../core/extensions/translate.dart';
 
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/theme/palette.dart';

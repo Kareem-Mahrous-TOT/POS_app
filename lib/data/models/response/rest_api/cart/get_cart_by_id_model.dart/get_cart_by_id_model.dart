@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../tot_customers/tot_customers.dart';
 import '../../tot_products/create_order/tot_create_order.dart';
 import '../../tot_products/customer_order/customer_order_models.dart';
+
 part 'get_cart_by_id_model.freezed.dart';
 part 'get_cart_by_id_model.g.dart';
 
