@@ -293,7 +293,7 @@ class _$ReportPieChartImpl implements _ReportPieChart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReportPieChartImpl &&
@@ -474,7 +474,7 @@ class _$StatisticsDataImpl implements _StatisticsData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StatisticsDataImpl &&
@@ -677,7 +677,7 @@ class _$GroupImpl implements _Group {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GroupImpl &&

@@ -130,7 +130,7 @@ class _$CreateOrderModelImpl implements _CreateOrderModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderModelImpl &&
@@ -287,7 +287,7 @@ class _$GetOrderByIdModelImpl implements _GetOrderByIdModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrderByIdModelImpl &&
@@ -768,7 +768,7 @@ class _$CreateOrderFromCartImpl implements _CreateOrderFromCart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderFromCartImpl &&

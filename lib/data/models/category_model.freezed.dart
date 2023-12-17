@@ -117,7 +117,7 @@ class _$CategoryListImpl implements _CategoryList {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryListImpl &&
@@ -349,7 +349,7 @@ class _$CategoryItemImpl implements _CategoryItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryItemImpl &&

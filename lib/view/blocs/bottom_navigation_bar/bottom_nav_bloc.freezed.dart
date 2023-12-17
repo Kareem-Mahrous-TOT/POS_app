@@ -135,7 +135,7 @@ class _$ChangeIndexEventImpl implements ChangeIndexEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeIndexEventImpl &&
@@ -346,7 +346,7 @@ class _$BottomNavBarUpdateIndexStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BottomNavBarUpdateIndexStateImpl &&

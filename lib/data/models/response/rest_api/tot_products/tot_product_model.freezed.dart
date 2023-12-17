@@ -163,7 +163,7 @@ class _$TOTProductsModelImpl implements _TOTProductsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TOTProductsModelImpl &&
@@ -1627,7 +1627,7 @@ class _$ExcluededPropertiesImpl implements _ExcluededProperties {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExcluededPropertiesImpl &&
@@ -2242,7 +2242,7 @@ class _$PropertyImpl implements _Property {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PropertyImpl &&
@@ -2615,7 +2615,7 @@ class _$ValidationRuleImpl implements _ValidationRule {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ValidationRuleImpl &&
@@ -2861,7 +2861,7 @@ class _$ValidationRulesImpl implements _ValidationRules {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ValidationRulesImpl &&
@@ -3037,7 +3037,7 @@ class _$DisplayNameImpl implements _DisplayName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DisplayNameImpl &&
@@ -3292,7 +3292,7 @@ class _$AttributeImpl implements _Attribute {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AttributeImpl &&
@@ -3687,7 +3687,7 @@ class _$ValueImpl implements _Value {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ValueImpl &&
@@ -4035,7 +4035,7 @@ class _$ImageItemImpl implements _ImageItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageItemImpl &&
@@ -4219,7 +4219,7 @@ class _$AssetImpl implements _Asset {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AssetImpl &&
@@ -4372,7 +4372,7 @@ class _$ProductLinkImpl implements _ProductLink {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductLinkImpl &&
@@ -4511,7 +4511,7 @@ class _$VariationImpl implements _Variation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VariationImpl &&
@@ -4707,7 +4707,7 @@ class _$ReviewImpl implements _Review {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReviewImpl &&
@@ -4861,7 +4861,7 @@ class _$AssociationImpl implements _Association {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AssociationImpl &&
@@ -5001,7 +5001,7 @@ class _$ReferencedAssociationImpl implements _ReferencedAssociation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReferencedAssociationImpl &&
@@ -5143,7 +5143,7 @@ class _$OutlineImpl implements _Outline {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OutlineImpl &&
@@ -5324,7 +5324,7 @@ class _$OutlineItemImpl implements _OutlineItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OutlineItemImpl &&
@@ -5544,7 +5544,7 @@ class _$AggregationImpl implements _Aggregation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AggregationImpl &&
@@ -5712,7 +5712,7 @@ class _$AggregationLabelsImpl implements _AggregationLabels {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AggregationLabelsImpl &&
@@ -5962,7 +5962,7 @@ class _$AggregationItemImpl implements _AggregationItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AggregationItemImpl &&

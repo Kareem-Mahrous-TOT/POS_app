@@ -125,7 +125,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -279,7 +279,7 @@ class _$CreateCartImpl with DiagnosticableTreeMixin implements _CreateCart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateCartImpl &&
@@ -453,7 +453,7 @@ class _$OnIncrementImpl with DiagnosticableTreeMixin implements _OnIncrement {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnIncrementImpl &&
@@ -623,7 +623,7 @@ class _$OnDecrementImpl with DiagnosticableTreeMixin implements _OnDecrement {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnDecrementImpl &&
@@ -793,7 +793,7 @@ class _$DeleteItemImpl with DiagnosticableTreeMixin implements _DeleteItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteItemImpl &&

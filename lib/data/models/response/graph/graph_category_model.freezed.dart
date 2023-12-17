@@ -128,7 +128,7 @@ class _$CategoryGraphModelImpl implements _CategoryGraphModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryGraphModelImpl &&
@@ -289,7 +289,7 @@ class _$CategoriesGraphImpl implements _CategoriesGraph {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoriesGraphImpl &&
@@ -566,7 +566,7 @@ class _$CategoryGraphItemImpl implements _CategoryGraphItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryGraphItemImpl &&

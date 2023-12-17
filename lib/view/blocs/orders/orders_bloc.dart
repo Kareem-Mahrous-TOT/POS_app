@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import '../../../data/models/response/graph/graph_create_order_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,12 +20,9 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
 
           await response.fold(
             (failure) async {
-              log("::: repoOrders failure :::");
               emit(OrdersState.getOrderbyIdFailed(failure.message));
             },
             (myOrders) async {
-              log("::: repoOrders: $myOrders :::");
-
               if (myOrders.isEmpty) {
                 emit(const OrdersState.getOrdersEmpty());
               } else {
@@ -41,16 +35,12 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
           emit(const OrdersState.getOrdersLoading());
 
           final response = await ordersRepo.getOrders();
-          log("::: orders response $response :::");
 
           await response.fold(
             (failure) async {
-              log("::: repoOrders failure :::");
               emit(OrdersState.getOrderbyIdFailed(failure.message));
             },
             (myOrders) async {
-              log("::: repoOrders: $myOrders :::");
-
               if (myOrders.isEmpty) {
                 emit(const OrdersState.getOrdersEmpty());
               } else {

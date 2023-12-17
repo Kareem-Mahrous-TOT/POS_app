@@ -8,7 +8,7 @@ class OrdersState with _$OrdersState {
       _GetOrderbyIdFailed;
   const factory OrdersState.getOrdersSuccess({
     required List<OrderEntity> orders,
-    GetOrderByIdModel? model,
+    // GetOrderByIdModel? model,
   }) = _GetOrdersSuccess;
   const factory OrdersState.getOrdersEmpty() = _GetOrdersEmpty;
 }

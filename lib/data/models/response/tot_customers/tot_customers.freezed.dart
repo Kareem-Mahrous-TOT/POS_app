@@ -131,7 +131,7 @@ class _$TOTCustomersModelImpl implements _TOTCustomersModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TOTCustomersModelImpl &&
@@ -628,7 +628,7 @@ class _$MemberImpl implements _Member {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MemberImpl &&
@@ -1186,7 +1186,7 @@ class _$AddressImpl implements _Address {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressImpl &&
@@ -1548,7 +1548,7 @@ class _$NoteImpl implements _Note {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoteImpl &&
@@ -1994,7 +1994,7 @@ class _$DynamicPropertyImpl implements _DynamicProperty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DynamicPropertyImpl &&
@@ -2339,7 +2339,7 @@ class _$ValueImpl implements _Value {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ValueImpl &&
@@ -2757,7 +2757,7 @@ class _$SeoInfoImpl implements _SeoInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SeoInfoImpl &&
@@ -2996,7 +2996,7 @@ class _$DisplayNameImpl implements _DisplayName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DisplayNameImpl &&

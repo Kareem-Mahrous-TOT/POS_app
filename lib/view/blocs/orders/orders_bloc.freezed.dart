@@ -101,7 +101,7 @@ class _$GetOrdersImpl implements _GetOrders {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
   }
@@ -221,7 +221,7 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrderbyIdImpl &&
@@ -316,9 +316,7 @@ mixin _$OrdersState {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) =>
       throw _privateConstructorUsedError;
@@ -327,8 +325,7 @@ mixin _$OrdersState {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) =>
       throw _privateConstructorUsedError;
@@ -337,8 +334,7 @@ mixin _$OrdersState {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) =>
@@ -418,7 +414,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -432,9 +428,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
     return initial();
@@ -446,8 +440,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
     return initial?.call();
@@ -459,8 +452,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
@@ -542,7 +534,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetOrdersLoadingImpl);
   }
@@ -556,9 +548,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
     return getOrdersLoading();
@@ -570,8 +560,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
     return getOrdersLoading?.call();
@@ -583,8 +572,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
@@ -684,7 +672,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrderbyIdFailedImpl &&
@@ -707,9 +695,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
     return getOrderbyIdFailed(message);
@@ -721,8 +707,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
     return getOrderbyIdFailed?.call(message);
@@ -734,8 +719,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
@@ -802,9 +786,7 @@ abstract class _$$GetOrdersSuccessImplCopyWith<$Res> {
           $Res Function(_$GetOrdersSuccessImpl) then) =
       __$$GetOrdersSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<OrderEntity> orders, GetOrderByIdModel? model});
-
-  $GetOrderByIdModelCopyWith<$Res>? get model;
+  $Res call({List<OrderEntity> orders});
 }
 
 /// @nodoc
@@ -819,38 +801,20 @@ class __$$GetOrdersSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orders = null,
-    Object? model = freezed,
   }) {
     return _then(_$GetOrdersSuccessImpl(
       orders: null == orders
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderEntity>,
-      model: freezed == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as GetOrderByIdModel?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GetOrderByIdModelCopyWith<$Res>? get model {
-    if (_value.model == null) {
-      return null;
-    }
-
-    return $GetOrderByIdModelCopyWith<$Res>(_value.model!, (value) {
-      return _then(_value.copyWith(model: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
-  const _$GetOrdersSuccessImpl(
-      {required final List<OrderEntity> orders, this.model})
+  const _$GetOrdersSuccessImpl({required final List<OrderEntity> orders})
       : _orders = orders;
 
   final List<OrderEntity> _orders;
@@ -862,25 +826,21 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   }
 
   @override
-  final GetOrderByIdModel? model;
-
-  @override
   String toString() {
-    return 'OrdersState.getOrdersSuccess(orders: $orders, model: $model)';
+    return 'OrdersState.getOrdersSuccess(orders: $orders)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrdersSuccessImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders) &&
-            (identical(other.model, model) || other.model == model));
+            const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_orders), model);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
   @override
@@ -895,12 +855,10 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
-    return getOrdersSuccess(orders, model);
+    return getOrdersSuccess(orders);
   }
 
   @override
@@ -909,11 +867,10 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
-    return getOrdersSuccess?.call(orders, model);
+    return getOrdersSuccess?.call(orders);
   }
 
   @override
@@ -922,13 +879,12 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
     if (getOrdersSuccess != null) {
-      return getOrdersSuccess(orders, model);
+      return getOrdersSuccess(orders);
     }
     return orElse();
   }
@@ -975,12 +931,10 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
 }
 
 abstract class _GetOrdersSuccess implements OrdersState {
-  const factory _GetOrdersSuccess(
-      {required final List<OrderEntity> orders,
-      final GetOrderByIdModel? model}) = _$GetOrdersSuccessImpl;
+  const factory _GetOrdersSuccess({required final List<OrderEntity> orders}) =
+      _$GetOrdersSuccessImpl;
 
   List<OrderEntity> get orders;
-  GetOrderByIdModel? get model;
   @JsonKey(ignore: true)
   _$$GetOrdersSuccessImplCopyWith<_$GetOrdersSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1013,7 +967,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetOrdersEmptyImpl);
   }
@@ -1027,9 +981,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
     required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(
-            List<OrderEntity> orders, GetOrderByIdModel? model)
-        getOrdersSuccess,
+    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
     return getOrdersEmpty();
@@ -1041,8 +993,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
     TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
     return getOrdersEmpty?.call();
@@ -1054,8 +1005,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
     TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(List<OrderEntity> orders, GetOrderByIdModel? model)?
-        getOrdersSuccess,
+    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
