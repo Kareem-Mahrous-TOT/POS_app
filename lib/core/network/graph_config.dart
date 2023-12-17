@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../depency_injection.dart';
-import 'end_points.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
 import '../routes/routes.dart';
 import '../services/cache_user.dart';
 import 'api_consumer.dart';
+import 'end_points.dart';
 
 class GraphQLConfig {
   GraphQLConfig({required HttpLink httpLink}) : _httpLink = httpLink;

@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
 import '../base/update_personal_data_repo_base.dart';
@@ -47,9 +46,8 @@ class UpdatePersonalDataRepoImpl implements UpdatePersonalDataRepoBase {
         return const Left(ServerFailure(''));
       }
       if (res.data != null) {
-        bool isSucceeded = res.data!['updatePersonalData']['succeeded'];
-        log('gggggggggggg$isSucceeded');
-        return Right(isSucceeded);
+        bool didSucceed = res.data!['updatePersonalData']['succeeded'];
+        return Right(didSucceed);
       } else {
         return const Left(
             ServerFailure('someThings failed in updatePersonalData'));

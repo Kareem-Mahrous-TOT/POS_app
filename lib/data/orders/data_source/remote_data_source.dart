@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/network/graph_config.dart';
 import 'package:tot_pos/domain/orders/entities/order_entity.dart';
@@ -402,11 +404,10 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
     '''),
           variables: {
             "userId": userId,
-            // "cultureName": cultureName,
+            "cultureName": cultureName,
           },
           fetchPolicy: FetchPolicy.noCache),
     );
-
     List<OrderEntity> orders = [];
 
     for (final order in res.data!["orders"]["items"]) {

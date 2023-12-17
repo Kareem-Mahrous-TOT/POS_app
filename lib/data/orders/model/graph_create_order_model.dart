@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
  
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
+import '../../products/model/qraph_product_model.dart';
 
 import '../../models/response/graph/graph_create_cart_model.dart';
 

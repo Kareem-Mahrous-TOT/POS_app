@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/data/products/data_sources/remote_data_source.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
-import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
+import '../../../core/network/failure.dart';
+import '../data_sources/remote_data_source.dart';
+import '../model/qraph_product_model.dart';
+import '../../../domain/products/repo/products_repo_base.dart';
 
 import '../../../core/usecase/usecase.dart';
 import '../mapper/products_mapping.dart';

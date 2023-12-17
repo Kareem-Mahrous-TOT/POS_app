@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
-import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
+import '../../../core/usecase/usecase.dart';
+import '../repo/products_repo_base.dart';
 
 import '../../../core/types/types.dart';
 import '../../../data/products/model/qraph_product_model.dart';

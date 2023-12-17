@@ -1,6 +1,6 @@
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
-import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
+import '../../../core/usecase/usecase.dart';
+import '../repo/products_repo_base.dart';
 
 import '../../../core/constants/store_config.dart';
 import '../../../data/products/model/qraph_product_model.dart';

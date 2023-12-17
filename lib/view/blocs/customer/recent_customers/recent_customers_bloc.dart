@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/network/failure.dart';
 import '../../../../data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
 import '../../../../data/models/request/tot_customer_request/customers_search_model.dart';

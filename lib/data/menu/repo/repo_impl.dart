@@ -4,8 +4,8 @@ import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../domain/menu/repo/repo.dart';
-import '../../mappers/category_mapping.dart';
 import '../data_sources/menu_data_source.dart';
+import '../mappers/category_mapping.dart';
 
 class MenuRepoImpl implements MenuRepo {
   final MenuDataSource _menuDataSource;

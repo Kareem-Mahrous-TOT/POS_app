@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/core/theme/palette.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
+import '../../../../../../core/constants/store_config.dart';
 import '../../../../../../core/extensions/translate.dart';
+import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/models/response/bag/bag_model.dart';
+import '../../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../../blocs/product_details/product_details_bloc.dart';
 import '../../../../../blocs/products/rest/bag_cubit.dart';
 import 'pos_counter.dart';

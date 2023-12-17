@@ -1,4 +1,3 @@
-
 class OrderEntity {
   final String orderNumber;
   final String date;

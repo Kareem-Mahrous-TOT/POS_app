@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import '../../../../data/models/response/graph/graph_create_cart_model.dart';
-import '../../../../data/repository/base/cart/add_coupon_repo_base.dart';
+import '../../../../domain/cart/add_coupon_repo_base.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

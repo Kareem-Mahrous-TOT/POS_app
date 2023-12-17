@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../../core/network/failure.dart';
 import '../../../../core/network/graph_config.dart';
+import '../../../../domain/cart/add_coupon_repo_base.dart';
 import '../../../models/response/graph/graph_create_cart_model.dart';
-import '../../base/cart/add_coupon_repo_base.dart';
 
 class AddCouponRepoImpl implements AddCouponBaseRepo {
   final GraphService graphService;
@@ -356,7 +354,6 @@ class AddCouponRepoImpl implements AddCouponBaseRepo {
         "couponCode": couponCode,
       }));
 
-      log("::: add coupon repo $res :::");
       if (res.data != null) {
         CreateCartModel cart = CreateCartModel.fromJson(res.data!);
         return Right(cart);

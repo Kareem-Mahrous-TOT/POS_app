@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
+import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/products/usecases/get_product_by_id_usecase.dart';
 
 part 'product_details_bloc.freezed.dart';

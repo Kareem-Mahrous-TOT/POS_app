@@ -1,16 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
+import '../../../core/constants/store_config.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
-import '../../models/response/graph/graph_category_model.dart';
-import '../base/category_repo_base.dart';
+import '../../../domain/category/repo/category_repo_base.dart';
+import '../models/graph_category_model.dart';
 
-class CategoryRepoImpl implements CategoryRepoBase {
+class CategoryRepoImpl implements CategoriesRepoBase {
   final GraphService graphService;
   CategoryRepoImpl(this.graphService);
   @override
-  Future<Either<Failure, CategoryGraphModel>> fetchCategories(
-      String storeId) async {
+  Future<Either<Failure, CategoryGraphModel>> fetchCategories() async {
     try {
       final response = await graphService.client.query(
         QueryOptions(
@@ -47,8 +48,8 @@ class CategoryRepoImpl implements CategoryRepoBase {
 }
 
 '''),
-          variables: {
-            "storeId": storeId,
+          variables: const {
+            "storeId": StoreConfig.storeId,
           },
           fetchPolicy: FetchPolicy.cacheFirst,
         ),
