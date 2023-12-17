@@ -137,7 +137,7 @@ class _$CustomerOrderResponseImpl implements _CustomerOrderResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerOrderResponseImpl &&
@@ -1616,7 +1616,7 @@ class _$CustomerOrderResultImpl implements _CustomerOrderResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerOrderResultImpl &&
@@ -3074,7 +3074,7 @@ class _$LineItemImpl implements _LineItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LineItemImpl &&

@@ -135,7 +135,7 @@ class _$FulfillmentCentersDataModelImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FulfillmentCentersDataModelImpl &&
@@ -297,7 +297,7 @@ class _$FulfillmentCentersImpl implements _FulfillmentCenters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FulfillmentCentersImpl &&
@@ -543,7 +543,7 @@ class _$FulfillmentCenterItemImpl implements _FulfillmentCenterItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FulfillmentCenterItemImpl &&
@@ -793,7 +793,7 @@ class _$FulfillmentCenterAddressImpl implements _FulfillmentCenterAddress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FulfillmentCenterAddressImpl &&

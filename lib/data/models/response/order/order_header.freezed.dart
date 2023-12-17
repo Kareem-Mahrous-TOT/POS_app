@@ -120,7 +120,7 @@ class _$OrderHeaderImpl implements _OrderHeader {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderHeaderImpl &&
@@ -289,7 +289,7 @@ class _$HeaderItemImpl implements _HeaderItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HeaderItemImpl &&
@@ -542,7 +542,7 @@ class _$CardOrderImpl implements _CardOrder {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardOrderImpl &&

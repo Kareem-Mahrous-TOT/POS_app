@@ -1,23 +1,47 @@
-import 'dart:developer';
-
-import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:tot_pos/core/network/graph_config.dart';
+import 'package:tot_pos/domain/orders/entities/order_entity.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/network/graph_config.dart';
-import '../../models/response/graph/graph_create_order_model.dart';
-import '../base/orders_repo_base.dart';
+import '../model/graph_create_order_model.dart';
 
-class OrdersRepoImpl implements OrdersRepoBase {
-  final GraphService graphService;
-  OrdersRepoImpl(this.graphService);
+abstract class OrdersRemoteDataSource {
+  Future<List<OrderEntity>> getOrders({
+    String? userId,
+    String? cultureName,
+  });
+  Future<CreateOrderModel> createOrderFromCart({required String cartId});
+  Future<GetOrderByIdModel> getOrderbyId({required String orderId});
+  Future<bool> changeOrderStatus(
+      {required String ordreId, required String status});
+}
+
+class OrdersRemoteDataSourceImpl extends OrdersRemoteDataSource {
+  final GraphService _graphService;
+
+  OrdersRemoteDataSourceImpl({required GraphService graphService})
+      : _graphService = graphService;
   @override
-  Future<Either<Failure, CreateOrderModel>> createOrderFromCart(
-      {required String cartId}) async {
-    try {
-      final res = await graphService.client.query(
-        QueryOptions(
-          document: gql(r'''mutation CreateOrderFromCart($cartId: String!) {
+  Future<bool> changeOrderStatus(
+      {required String ordreId, required String status}) async {
+    final res = await _graphService.client.query(
+      QueryOptions(
+          document: gql(r'''
+mutation ChangeOrderStatus($orderId: String!, $status: String!){
+    changeOrderStatus(command: { orderId: $orderId, status: $status })
+}
+'''),
+          variables: {"orderId": ordreId, "status": status},
+          fetchPolicy: FetchPolicy.noCache),
+    );
+    bool result = res.data!['changeOrderStatus'];
+    return result;
+  }
+
+  @override
+  Future<CreateOrderModel> createOrderFromCart({required String cartId}) async {
+    final res = await _graphService.client.query(
+      QueryOptions(
+        document: gql(r'''mutation CreateOrderFromCart($cartId: String!) {
     createOrderFromCart(command: { cartId: $cartId }) {
         id
         createdDate
@@ -120,126 +144,18 @@ class OrdersRepoImpl implements OrdersRepoBase {
 }
 
     '''),
-          variables: {"cartId": cartId},
-          fetchPolicy: FetchPolicy.noCache,
-        ),
-      );
-      final CreateOrderModel model;
-      log("::: create order response $res :::");
-      if (res.hasException) {
-        return Left(ServerFailure(res.exception.toString()));
-      } else {
-        if (res.data != null) {
-          model = CreateOrderModel.fromJson(res.data!);
-          log("::: create order model: $model :::");
-          return Right(model);
-        } else {
-          return Left(ServerFailure(res.exception.toString()));
-        }
-      }
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
+        variables: {"cartId": cartId},
+        fetchPolicy: FetchPolicy.noCache,
+      ),
+    );
+    return CreateOrderModel.fromJson(res.data!);
   }
 
   @override
-  Future<Either<Failure, List<OrderEntity>>> getOrders(
-      {String? userId, String? cultureName}) async {
-    try {
-      final res = await graphService.client.query(
-        QueryOptions(
-            document: gql(r'''
-      query Orders($userId: String, $cultureName: String) {
-        orders(userId: $userId, cultureName: $cultureName,first: 100,sort: "createdDate:dasc" ) {
-            totalCount
-            items {
-                id
-                number
-                createdDate
-                status
-                objectType
-                inPayments {
-                  gatewayCode
-                  paymentMethod {
-                    typeName
-                    paymentMethodType
-                    paymentMethodGroupType
-                    description
-                    }
-                  }        
-                total {
-                    amount
-                    formattedAmount
-                    currency {
-                        symbol
-                        code
-                    }
-                }
-            }
-        }
-    }
-    '''),
-            variables: {
-              "userId": userId,
-              "cultureName": cultureName,
-            },
-            fetchPolicy: FetchPolicy.noCache),
-      );
-
-      if (res.hasException) {
-        return const Left(ServerFailure("Something went wrong"));
-      } else {
-        List<OrderEntity> orders = [];
-
-        for (final order in res.data!["orders"]["items"]) {
-          orders.add(OrderEntity.fromJson(order));
-        }
-        return Right(orders);
-      }
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, bool>> changeOrderStatus(
-      {required String ordreId, required String status}) async {
-    try {
-      final res = await graphService.client.query(
-        QueryOptions(
-            document: gql(r'''
-mutation ChangeOrderStatus($orderId: String!, $status: String!){
-    changeOrderStatus(command: { orderId: $orderId, status: $status })
-}
- '''),
-            variables: {"orderId": ordreId, "status": status},
-            fetchPolicy: FetchPolicy.noCache),
-      );
-      if (res.hasException) {
-        return const Left(ServerFailure("Something went wrong"));
-      }
-      final Map<String, dynamic>? result = res.data;
-      if (result != null) {
-        bool changeOrderStatus = result['changeOrderStatus'];
-        log("changeOrderStatus::::::: $changeOrderStatus ***successfully");
-        return Right(changeOrderStatus);
-      } else {
-        return const Left(
-          ServerFailure('changeOrderStatus error'),
-        );
-      }
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, GetOrderByIdModel>> getOrderbyId(
-      {required String orderId}) async {
-    try {
-      final res = await graphService.client.query(
-        QueryOptions(
-            document: gql(r'''query Order($orderId: String!) {
+  Future<GetOrderByIdModel> getOrderbyId({required String orderId}) async {
+    final res = await _graphService.client.query(
+      QueryOptions(
+          document: gql(r'''query Order($orderId: String!) {
     order(id: $orderId) {
         id
         operationType
@@ -440,24 +356,62 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
     }
 }
 '''),
-            variables: {
-              "orderId": orderId,
-            },
-            fetchPolicy: FetchPolicy.noCache),
-      );
+          variables: {
+            "orderId": orderId,
+          },
+          fetchPolicy: FetchPolicy.noCache),
+    );
+    return GetOrderByIdModel.fromJson(res.data!);
+  }
 
-      if (res.data != null) {
-        GetOrderByIdModel model = GetOrderByIdModel.fromJson(res.data!);
-        log("getOrderById::::::: ${res.data} ***successfully");
-        log("getOrderByIdModel ::::::: $model ***successfully");
-        return Right(model);
-      } else {
-        return const Left(
-          ServerFailure('getOrderById has error'),
-        );
-      }
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
+  @override
+  Future<List<OrderEntity>> getOrders(
+      {String? userId, String? cultureName}) async {
+    final res = await _graphService.client.query(
+      QueryOptions(
+          document: gql(r'''
+      query Orders($userId: String, $cultureName: String) {
+        orders(userId: $userId, cultureName: $cultureName,first: 100,sort: "createdDate:dasc" ) {
+            totalCount
+            items {
+                id
+                number
+                createdDate
+                status
+                objectType
+                inPayments {
+                  gatewayCode
+                  paymentMethod {
+                    typeName
+                    paymentMethodType
+                    paymentMethodGroupType
+                    description
+                    }
+                  }        
+                total {
+                    amount
+                    formattedAmount
+                    currency {
+                        symbol
+                        code
+                    }
+                }
+            }
+        }
     }
+    '''),
+          variables: {
+            "userId": userId,
+            // "cultureName": cultureName,
+          },
+          fetchPolicy: FetchPolicy.noCache),
+    );
+
+    List<OrderEntity> orders = [];
+
+    for (final order in res.data!["orders"]["items"]) {
+      orders.add(OrderEntity.fromJson(order));
+    }
+    return orders;
   }
 }

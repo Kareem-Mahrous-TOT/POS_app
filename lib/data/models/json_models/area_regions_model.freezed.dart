@@ -146,7 +146,7 @@ class _$AreaRegionsModelImpl implements _AreaRegionsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AreaRegionsModelImpl &&
@@ -334,7 +334,7 @@ class _$RegionImpl implements _Region {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegionImpl &&

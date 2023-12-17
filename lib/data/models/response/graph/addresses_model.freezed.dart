@@ -117,7 +117,7 @@ class _$AddressesModelImpl implements _AddressesModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressesModelImpl &&
@@ -532,7 +532,7 @@ class _$AddressItemImpl implements _AddressItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressItemImpl &&

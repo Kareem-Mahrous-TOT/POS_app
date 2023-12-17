@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/data/repository/base/orders_repo_base.dart';
 
 import '../../../../../../core/theme/palette.dart';
+import '../../../../../../domain/orders/entities/order_entity.dart';
 
 class TOTOrderCardMolecule extends StatelessWidget {
   const TOTOrderCardMolecule({

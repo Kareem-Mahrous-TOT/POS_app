@@ -131,7 +131,7 @@ class _$ChangeItemQuantityModelImpl implements _ChangeItemQuantityModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeItemQuantityModelImpl &&
@@ -659,7 +659,7 @@ class _$ChangeCartItemQuantityImpl implements _ChangeCartItemQuantity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeCartItemQuantityImpl &&

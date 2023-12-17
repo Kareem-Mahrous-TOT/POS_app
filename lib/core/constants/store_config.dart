@@ -6,4 +6,6 @@ abstract class StoreConfig {
   static const String currencyCode = 'EGP';
   static const String catalogId = '0a841b7e-c732-4738-913d-9e43c054170e';
   static const String octoberBranchId = "140301000000";
+
+  static const String cultureName = "ar-EG";
 }

@@ -108,7 +108,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -235,7 +235,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderImpl &&
@@ -384,7 +384,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeOrderStatusImpl &&
@@ -588,7 +588,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -705,7 +705,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadInProgressImpl);
   }
@@ -857,7 +857,7 @@ class _$SuccessCreatedOrderImpl implements _SuccessCreatedOrder {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessCreatedOrderImpl &&
@@ -993,7 +993,7 @@ class _$FailureCreatedOrderImpl implements _FailureCreatedOrder {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureCreatedOrderImpl);

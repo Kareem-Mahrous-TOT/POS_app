@@ -124,7 +124,7 @@ class _$AddItemModelImpl implements _AddItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddItemModelImpl &&
@@ -382,7 +382,7 @@ class _$AddItemImpl implements _AddItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddItemImpl &&
@@ -688,7 +688,7 @@ class _$ItemImpl implements _Item {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ItemImpl &&

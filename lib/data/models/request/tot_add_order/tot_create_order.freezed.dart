@@ -264,7 +264,7 @@ class _$CreateOrderRequestImpl implements _CreateOrderRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderRequestImpl &&
@@ -534,7 +534,7 @@ class _$ItemsImpl implements _Items {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ItemsImpl &&

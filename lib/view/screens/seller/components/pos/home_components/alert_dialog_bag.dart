@@ -219,7 +219,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                               height: 50,
                               shadow: 0.0,
                               variations: variations,
-                              textList: variations!
+                              textList: variations
                                   .map(
                                     (e) => e.properties!
                                         .firstWhere(

@@ -159,7 +159,7 @@ class _$CategoryResponseModelImpl implements _CategoryResponseModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryResponseModelImpl &&
@@ -685,7 +685,7 @@ class _$CategoryItemImpl implements _CategoryItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryItemImpl &&
@@ -1022,7 +1022,7 @@ class _$SeoInfoImpl implements _SeoInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SeoInfoImpl &&
@@ -1229,7 +1229,7 @@ class _$OutlineImpl implements _Outline {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OutlineImpl &&

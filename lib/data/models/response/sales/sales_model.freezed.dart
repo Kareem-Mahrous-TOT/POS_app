@@ -167,7 +167,7 @@ class _$SalesModelImpl implements _SalesModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SalesModelImpl &&
@@ -377,7 +377,7 @@ class _$SalesDataImpl implements _SalesData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SalesDataImpl &&
@@ -762,7 +762,7 @@ class _$StatisticImpl implements _Statistic {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StatisticImpl &&
@@ -1502,7 +1502,7 @@ class _$OrderImpl implements _Order {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderImpl &&
@@ -1804,7 +1804,7 @@ class _$LocationImpl implements _Location {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationImpl &&
@@ -1983,7 +1983,7 @@ class _$AddressImpl implements _Address {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressImpl &&
@@ -2288,7 +2288,7 @@ class _$ShopImpl implements _Shop {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShopImpl &&
@@ -2501,7 +2501,7 @@ class _$TranslationImpl implements _Translation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TranslationImpl &&
@@ -2782,7 +2782,7 @@ class _$CurrencyImpl implements _Currency {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrencyImpl &&
@@ -3056,7 +3056,7 @@ class _$UserImpl implements _User {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
@@ -3412,7 +3412,7 @@ class _$TransactionImpl implements _Transaction {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TransactionImpl &&
@@ -3702,7 +3702,7 @@ class _$PaymentSystemImpl implements _PaymentSystem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSystemImpl &&
@@ -3918,7 +3918,7 @@ class _$MetaImpl implements _Meta {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MetaImpl &&

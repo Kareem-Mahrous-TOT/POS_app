@@ -55,7 +55,7 @@ class ProductDetailsBloc
                     // for(final variation in value.variations ?? []){
                     //   (variation.id == masterVariation.id)
                     // }
-                    final variations = value.variations!.map((variation) {
+                    final variations = value.variations.map((variation) {
                       // element.isMaster = false;
                       return variation.copyWith(
                           isMaster: (variation.id == masterVariation.id)
