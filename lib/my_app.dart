@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 
-import 'core/constants/store_config.dart';
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
 import 'depency_injection.dart';
