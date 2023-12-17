@@ -46,8 +46,8 @@ class MainApp extends StatelessWidget {
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
           BlocProvider(
-              create: (context) => getIt<ProductsBloc>()
-                ..add(ProductsEvent.fetch())),
+              create: (context) =>
+                  getIt<ProductsBloc>()..add(ProductsEvent.fetch())),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
