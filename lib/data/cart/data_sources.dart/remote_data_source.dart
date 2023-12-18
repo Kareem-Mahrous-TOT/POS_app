@@ -2,10 +2,10 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../core/enums/payment_method_type.dart';
 import '../../../core/network/graph_config.dart';
-import '../../models/response/graph/graph_add_item_model.dart';
-import '../../models/response/graph/graph_change_item_quantity.dart';
-import '../../models/response/graph/graph_create_cart_model.dart';
-import '../../models/response/graph/graph_remove_item_model.dart';
+import '../models/graph_add_item_model.dart';
+import '../models/graph_change_item_quantity.dart';
+import '../models/graph_create_cart_model.dart';
+import '../models/graph_remove_item_model.dart';
 
 abstract class CartRemoteDataSource {
   Future<CreateCartModel> addCart(
@@ -1160,7 +1160,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         },
       ),
     );
-    final bool isRemoved = response.data!['removeCart'];
+    final bool isRemoved = response.data?['removeCart'] ?? false;
 
     return isRemoved;
   }

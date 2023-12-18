@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
  
+import '../../cart/models/graph_create_cart_model.dart';
 import '../../products/model/qraph_product_model.dart';
 
-import '../../models/response/graph/graph_create_cart_model.dart';
 
 part 'graph_create_order_model.freezed.dart';
 part 'graph_create_order_model.g.dart';

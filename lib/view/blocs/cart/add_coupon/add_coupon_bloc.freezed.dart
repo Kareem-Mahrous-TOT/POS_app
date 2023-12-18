@@ -16,23 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddCouponEvent {
-  String get cartId => throw _privateConstructorUsedError;
   String get couponCode => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cartId, String couponCode, String userId)
-        started,
+    required TResult Function(String couponCode) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cartId, String couponCode, String userId)? started,
+    TResult? Function(String couponCode)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cartId, String couponCode, String userId)? started,
+    TResult Function(String couponCode)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +61,7 @@ abstract class $AddCouponEventCopyWith<$Res> {
           AddCouponEvent value, $Res Function(AddCouponEvent) then) =
       _$AddCouponEventCopyWithImpl<$Res, AddCouponEvent>;
   @useResult
-  $Res call({String cartId, String couponCode, String userId});
+  $Res call({String couponCode});
 }
 
 /// @nodoc
@@ -80,22 +77,12 @@ class _$AddCouponEventCopyWithImpl<$Res, $Val extends AddCouponEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartId = null,
     Object? couponCode = null,
-    Object? userId = null,
   }) {
     return _then(_value.copyWith(
-      cartId: null == cartId
-          ? _value.cartId
-          : cartId // ignore: cast_nullable_to_non_nullable
-              as String,
       couponCode: null == couponCode
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -109,7 +96,7 @@ abstract class _$$StartedImplCopyWith<$Res>
       __$$StartedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String cartId, String couponCode, String userId});
+  $Res call({String couponCode});
 }
 
 /// @nodoc
@@ -123,22 +110,12 @@ class __$$StartedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartId = null,
     Object? couponCode = null,
-    Object? userId = null,
   }) {
     return _then(_$StartedImpl(
-      cartId: null == cartId
-          ? _value.cartId
-          : cartId // ignore: cast_nullable_to_non_nullable
-              as String,
       couponCode: null == couponCode
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -147,19 +124,14 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl(
-      {required this.cartId, required this.couponCode, required this.userId});
+  const _$StartedImpl({required this.couponCode});
 
   @override
-  final String cartId;
-  @override
   final String couponCode;
-  @override
-  final String userId;
 
   @override
   String toString() {
-    return 'AddCouponEvent.started(cartId: $cartId, couponCode: $couponCode, userId: $userId)';
+    return 'AddCouponEvent.started(couponCode: $couponCode)';
   }
 
   @override
@@ -167,14 +139,12 @@ class _$StartedImpl implements _Started {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
-            (identical(other.cartId, cartId) || other.cartId == cartId) &&
             (identical(other.couponCode, couponCode) ||
-                other.couponCode == couponCode) &&
-            (identical(other.userId, userId) || other.userId == userId));
+                other.couponCode == couponCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cartId, couponCode, userId);
+  int get hashCode => Object.hash(runtimeType, couponCode);
 
   @JsonKey(ignore: true)
   @override
@@ -185,28 +155,27 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cartId, String couponCode, String userId)
-        started,
+    required TResult Function(String couponCode) started,
   }) {
-    return started(cartId, couponCode, userId);
+    return started(couponCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cartId, String couponCode, String userId)? started,
+    TResult? Function(String couponCode)? started,
   }) {
-    return started?.call(cartId, couponCode, userId);
+    return started?.call(couponCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cartId, String couponCode, String userId)? started,
+    TResult Function(String couponCode)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(cartId, couponCode, userId);
+      return started(couponCode);
     }
     return orElse();
   }
@@ -241,17 +210,10 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements AddCouponEvent {
-  const factory _Started(
-      {required final String cartId,
-      required final String couponCode,
-      required final String userId}) = _$StartedImpl;
+  const factory _Started({required final String couponCode}) = _$StartedImpl;
 
   @override
-  String get cartId;
-  @override
   String get couponCode;
-  @override
-  String get userId;
   @override
   @JsonKey(ignore: true)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>

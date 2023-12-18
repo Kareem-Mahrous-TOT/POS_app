@@ -1,22 +1,24 @@
-import '../../../core/constants/constants.dart';
 import '../../../core/constants/local_keys.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../data/models/response/graph/addresses_model.dart';
-import '../../../data/repository/base/cart/add_address_repo_base.dart';
 import '../../../data/repository/base/user_address_repo_base.dart';
 import '../../../depency_injection.dart';
+import '../repo/cart_repo.dart';
 
 class AddCartAddressUseCase implements BaseUsecase<String, Future<bool>> {
-  final UserAddressRepoBase userAddressRepo;
-  final AddCartAddressRepoBase addCartAddressRepo;
+  final UserAddressRepoBase _userAddressRepo;
+  final CartRepo _cartRepo;
 
-  AddCartAddressUseCase(
-      {required this.userAddressRepo, required this.addCartAddressRepo});
+  AddCartAddressUseCase({
+    required UserAddressRepoBase userAddressRepo,
+    required CartRepo cartRepo,
+  })  : _cartRepo = cartRepo,
+        _userAddressRepo = userAddressRepo;
 
   Future<AddressItem?> _getDefaultAddressModel(
       {required String defaultAddressId}) async {
     final userId = preferences.getString(LocalKeys.userId) ?? "";
-    final response = await userAddressRepo.getAddresses(userId: userId);
+    final response = await _userAddressRepo.getAddresses(userId: userId);
 
     final addressModel = response.fold((failure) => null, (addressesModel) {
       return addressesModel
@@ -27,10 +29,7 @@ class AddCartAddressUseCase implements BaseUsecase<String, Future<bool>> {
   }
 
   Future<bool> _addCartAddress({required AddressItem addressModel}) async {
-    final userId = preferences.getString(LocalKeys.userId) ?? "";
-    return await addCartAddressRepo.addCartAddress(
-      storeId: AppConstants.storeId,
-      userId: userId,
+    return await _cartRepo.addCartAddress(
       countryName: addressModel.countryName ?? "",
       city: addressModel.city ?? "",
       line1: addressModel.line1 ?? "",

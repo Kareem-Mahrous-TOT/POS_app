@@ -4,91 +4,48 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/constants/local_keys.dart';
 import '../../../../core/constants/store_config.dart';
-import '../../../../data/models/response/graph/graph_create_cart_model.dart';
-import '../../../../data/repository/base/cart/remove_item_repo_base.dart';
-import '../../../../depency_injection.dart';
-
+import '../../../../data/cart/models/graph_create_cart_model.dart';
 import '../../../../data/products/model/qraph_product_model.dart';
-import '../../../../data/repository/base/cart/change_item_quantity_repo_base.dart';
-import '../../../../data/repository/base/cart/create_cart_repo_base.dart';
+import '../../../../depency_injection.dart';
+import '../../../../domain/cart/repo/cart_repo.dart';
+import '../../../../domain/cart/usecases/change_item_quantity_usecase.dart';
+import '../../../../domain/cart/usecases/remove_items_usecase.dart';
 
 part 'fetch_cart_bloc.freezed.dart';
 part 'fetch_cart_event.dart';
 part 'fetch_cart_state.dart';
 
 class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
-  final CreateCartRepoBase cartRepository;
-  final ChangeItemQuantityRepoBase changeItemQuantityRepo;
-  final RemoveCartItemsRepoBase removeCartItemRepo;
-  FetchCartBloc(
-    this.cartRepository,
-    this.changeItemQuantityRepo,
-    this.removeCartItemRepo,
-  ) : super(_InitialState()) {
+  final CartRepo _cartRepo;
+  final ChangeCartItemQuantityUsecase _changeItemQuantityUsecase;
+  final RemoveCartItemsUsecase _removeCartItemsUsecase;
+  FetchCartBloc({
+    required CartRepo cartRepo,
+    required ChangeCartItemQuantityUsecase changeItemQuantityUsecase,
+    required RemoveCartItemsUsecase removeCartItemsUsecase,
+  })  : _removeCartItemsUsecase = removeCartItemsUsecase,
+        _changeItemQuantityUsecase = changeItemQuantityUsecase,
+        _cartRepo = cartRepo,
+        super(_InitialState()) {
     on<FetchCartEvent>(
       (event, emit) async {
-        Future<void> fetchFullCart({
-          required String storeId,
-          required String currencyCode,
-        }) async {
-          try {
-            final userId = preferences.getString(LocalKeys.userId);
-            if (userId != null && userId.isNotEmpty) {
-              final response = await cartRepository.addCart(
-                  storeId: storeId, currencyCode: currencyCode, userId: userId);
-              final data = response.fold((l) => null, (r) => r);
-              if (data != null) {
-                preferences.setString(LocalKeys.cartId, data.cart.id!);
-                log("cart details => \n cartId : ${data.cart.id}, \n userId : ${data.cart.customerId},");
-                emit(
-                  FetchCartState.fetchCartSuccess(
-                    data,
-                    isUpdating: false,
-                    itemCount: data.cart.itemsCount!,
-                  ),
-                );
-              } else {
-                emit(FetchCartState.fetchCartFail("Something went wrong"));
-              }
-            } else {
-              emit(FetchCartState.fetchCartFail("Something went wrong"));
-            }
-          } catch (e) {
-            emit(FetchCartState.fetchCartFail(e.toString()));
-          }
-        }
-
         Future<void> addCart({
           required String storeId,
           required String currencyCode,
         }) async {
-          try {
-            final userId = preferences.getString(LocalKeys.userId);
-            if (userId != null && userId.isNotEmpty) {
-              final response = await cartRepository.addCart(
-                  storeId: storeId, currencyCode: currencyCode, userId: userId);
-              final data = response.fold((l) => null, (r) => r);
-              if (data != null) {
-                preferences.setString(LocalKeys.cartId, data.cart.id!);
-                log("cart details => \n cartId : ${data.cart.id}, \n userId : ${data.cart.customerId},");
-                emit(
-                  FetchCartState.fetchCartSuccess(
-                    data,
+          final result = await _cartRepo.fetchCart();
+          final state = result.fold(
+              (failure) => FetchCartState.fetchCartFail(failure.message),
+              (createCartModel) => FetchCartState.fetchCartSuccess(
+                    createCartModel,
                     isUpdating: false,
-                    itemCount: data.cart.itemsCount!,
-                  ),
-                );
-              } else {
-                emit(FetchCartState.fetchCartFail("Something went wrong"));
-              }
-            } else {
-              emit(FetchCartState.fetchCartFail("Something went wrong"));
-            }
-          } catch (e) {
-            emit(FetchCartState.fetchCartFail(e.toString()));
-          }
+                    itemCount: createCartModel.cart.itemsCount ?? 0,
+                  ));
+
+          emit(state);
         }
 
         Future<void> changeItemQuantity({
@@ -99,50 +56,37 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
           required int quantity,
         }) async {
           try {
-            final response =
-                await changeItemQuantityRepo.changeCartItemQuantity(
-              storeId: storeId,
-              userId: userId,
-              cartId: cartId,
-              lineItemId: lineItemId,
-              quantity: quantity,
-            );
-            final data = response.fold((l) {
-              log("response.fold error => $l <========");
-              return null;
-            }, (r) => r);
+            final response = await _changeItemQuantityUsecase.call(
+                ChangeCartItemParams(
+                    lineItemId: lineItemId, quantity: quantity));
+            final state = response.fold(
+                (failure) => FetchCartState.updateCartFail(failure.message),
+                (model) => model);
 
-            if (data != null) {
-              log("item Quantity Changed");
+            // if (data != null) {
+            //   log("item Quantity Changed");
 
-              await addCart(
-                storeId: storeId,
-                currencyCode: "EGP",
-              );
-            } else {
-              emit(FetchCartState.updateCartFail("Something went wrong"));
-            }
+            //   await addCart(
+            //     storeId: storeId,
+            //     currencyCode: "EGP",
+            //   );
+            // } else {
+            //   emit(FetchCartState.updateCartFail("Something went wrong"));
+            // }
           } catch (e) {
             emit(FetchCartState.updateCartFail(e.toString()));
           }
         }
 
         Future<void> removeItems({
-          required String storeId,
-          required String userId,
-          required String cartId,
           required List<String> lineItemIds,
         }) async {
           try {
-            final response = await removeCartItemRepo.removeCartItems(
-                storeId: storeId,
-                userId: userId,
-                cartId: cartId,
-                lineItemIds: lineItemIds);
+            final response = await _removeCartItemsUsecase
+                .call(RemoveCartItemsParams(lineItemId: lineItemIds));
 
-            final data = response.fold((l) => null, (r) => r);
+            final data = response.fold((l) => null, (model) => model);
             if (data != null) {
-              log("items removed ${data.data?.removeCartItems?.items}");
               await addCart(
                 storeId: StoreConfig.storeId,
                 currencyCode: StoreConfig.currencyCode,
@@ -170,10 +114,10 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
               fetchCartSuccess: (value) async {
                 // emit(value.copyWith(isUpdating: true));
 
-                await fetchFullCart(
-                  storeId: storeId,
-                  currencyCode: currencyCode,
-                );
+                // await fetchFullCart(
+                //   storeId: storeId,
+                //   currencyCode: currencyCode,
+                // );
               },
             );
           },
@@ -194,7 +138,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                       0.0;
                   if (kDebugMode) {
                     print(
-                      "${cartItem.quantity} => item quantity --------- /n $stockInInventory => quantity in Repo");
+                        "${cartItem.quantity} => item quantity --------- /n $stockInInventory => quantity in Repo");
                   }
 
                   if (stockInInventory > cartItem.quantity!) {
@@ -251,9 +195,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
               fetchCartSuccess: (value) async {
                 emit(value.copyWith(isUpdating: true));
                 await removeItems(
-                  storeId: StoreConfig.storeId,
-                  userId: value.model.cart.customerId!,
-                  cartId: value.model.cart.id!,
                   lineItemIds: [cartItem.id!],
                 );
               },

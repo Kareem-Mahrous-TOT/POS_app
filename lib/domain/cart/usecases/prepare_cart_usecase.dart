@@ -1,41 +1,31 @@
 import '../../../core/enums/payment_method_type.dart';
 import '../../../core/usecase/usecase.dart';
-import '../../../data/repository/base/cart/add_order_source_repo_base.dart';
-import '../../../data/repository/base/cart/add_payment_method_repo_base.dart';
-import 'add_cart_address_use_case.dart';
+import '../repo/cart_repo.dart';
 
 class PrepareCartUsecase
     implements BaseUsecase<PrepareCartParams, Future<bool>> {
-  final AddCartAddressUseCase _addCartAddressUsecase;
-  final AddPaymentMethodRepoBase _addPaymentMethodRepo;
-  final AddCartOrderSourceRepoBase _addCartOrderSourceRepoBase;
+  final CartRepo _cartRepo;
 
   PrepareCartUsecase({
-    required AddCartAddressUseCase addCartAddressUsecase,
-    required AddPaymentMethodRepoBase addPaymentMethodRepo,
-    required AddCartOrderSourceRepoBase addCartOrderSourceRepo,
-  })  : _addCartAddressUsecase = addCartAddressUsecase,
-        _addPaymentMethodRepo = addPaymentMethodRepo,
-        _addCartOrderSourceRepoBase = addCartOrderSourceRepo;
+    required CartRepo cartRepo,
+  }) : _cartRepo = cartRepo;
 
   @override
   Future<bool> call(PrepareCartParams params) async {
-    final bool didAddAddress;
     final bool didAddPayment;
     final bool didAddOrderSource;
 
     // final conditions = await Future.wait([
-    didAddAddress = await _addCartAddressUsecase.call(params.defaultAddressId);
-    didAddPayment = await _addPaymentMethodRepo.addPaymentMethod(
+    didAddPayment = await _cartRepo.addPaymentMethod(
         paymentMethodType: params.paymentMethodType);
-    didAddOrderSource = await _addCartOrderSourceRepoBase.addOrderSource();
+    didAddOrderSource = await _cartRepo.addOrderSource();
     // ]);
 
     // final didFail = conditions.firstWhere((condition) => condition == false);
     // final didSucceed = conditions.fold(
     //     true, (previousValue, element) => previousValue && element);
 
-    return didAddOrderSource && didAddAddress && didAddPayment;
+    return didAddOrderSource && didAddPayment;
   }
 }
 
