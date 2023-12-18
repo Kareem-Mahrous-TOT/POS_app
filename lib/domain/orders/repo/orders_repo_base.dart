@@ -14,5 +14,5 @@ abstract class OrdersRepoBase {
       {required String orderId});
   Future<bool> changeOrderStatus(
       {required String orderId, required String status});
-  Future<Either<Failure, List<OrderEntity>>> getOrders();
+  Future<Either<Failure, List<OrderEntity>>> getOrders({int? first, String? sort});
 }

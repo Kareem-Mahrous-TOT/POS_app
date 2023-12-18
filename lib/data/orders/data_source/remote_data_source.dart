@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/network/graph_config.dart';
 import 'package:tot_pos/domain/orders/entities/order_entity.dart';
@@ -10,6 +8,8 @@ abstract class OrdersRemoteDataSource {
   Future<List<OrderEntity>> getOrders({
     String? userId,
     String? cultureName,
+    int? first,
+    String? sort,
   });
   Future<CreateOrderModel> createOrderFromCart({required String cartId});
   Future<GetOrderByIdModel> getOrderbyId({required String orderId});
@@ -368,14 +368,14 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
 
   @override
   Future<List<OrderEntity>> getOrders(
-      {String? userId, String? cultureName}) async {
+      {String? userId, String? cultureName, int? first, String? sort}) async {
     final res = await _graphService.client.query(
       QueryOptions(
           document: gql(r'''
-      query Orders($userId: String, $cultureName: String) {
-        orders(userId: $userId, cultureName: $cultureName,first: 100,sort: "createdDate:dasc" ) {
+      query Orders($userId: String, $cultureName: String,$first: Int,$sort: String) {
+        orders(userId: $userId, cultureName: $cultureName,first: $first,sort: $sort ) {
             totalCount
-            items {
+            items { 
                 id
                 number
                 createdDate
@@ -405,6 +405,8 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
           variables: {
             "userId": userId,
             "cultureName": cultureName,
+            "first": first ?? 100,
+            "sort": sort ?? "createdDate:dasc",
           },
           fetchPolicy: FetchPolicy.noCache),
     );

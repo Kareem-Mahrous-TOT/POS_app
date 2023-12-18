@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrdersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOrders,
+    required TResult Function(int? first, String? sort) getOrders,
     required TResult Function(String orderId) getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOrders,
+    TResult? Function(int? first, String? sort)? getOrders,
     TResult? Function(String orderId)? getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOrders,
+    TResult Function(int? first, String? sort)? getOrders,
     TResult Function(String orderId)? getOrderbyId,
     required TResult orElse(),
   }) =>
@@ -79,6 +79,8 @@ abstract class _$$GetOrdersImplCopyWith<$Res> {
   factory _$$GetOrdersImplCopyWith(
           _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
       __$$GetOrdersImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? first, String? sort});
 }
 
 /// @nodoc
@@ -88,54 +90,86 @@ class __$$GetOrdersImplCopyWithImpl<$Res>
   __$$GetOrdersImplCopyWithImpl(
       _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? first = freezed,
+    Object? sort = freezed,
+  }) {
+    return _then(_$GetOrdersImpl(
+      first: freezed == first
+          ? _value.first
+          : first // ignore: cast_nullable_to_non_nullable
+              as int?,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetOrdersImpl implements _GetOrders {
-  const _$GetOrdersImpl();
+  const _$GetOrdersImpl({this.first, this.sort});
+
+  @override
+  final int? first;
+  @override
+  final String? sort;
 
   @override
   String toString() {
-    return 'OrdersEvent.getOrders()';
+    return 'OrdersEvent.getOrders(first: $first, sort: $sort)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetOrdersImpl &&
+            (identical(other.first, first) || other.first == first) &&
+            (identical(other.sort, sort) || other.sort == sort));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, first, sort);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOrdersImplCopyWith<_$GetOrdersImpl> get copyWith =>
+      __$$GetOrdersImplCopyWithImpl<_$GetOrdersImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOrders,
+    required TResult Function(int? first, String? sort) getOrders,
     required TResult Function(String orderId) getOrderbyId,
   }) {
-    return getOrders();
+    return getOrders(first, sort);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOrders,
+    TResult? Function(int? first, String? sort)? getOrders,
     TResult? Function(String orderId)? getOrderbyId,
   }) {
-    return getOrders?.call();
+    return getOrders?.call(first, sort);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOrders,
+    TResult Function(int? first, String? sort)? getOrders,
     TResult Function(String orderId)? getOrderbyId,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
-      return getOrders();
+      return getOrders(first, sort);
     }
     return orElse();
   }
@@ -173,7 +207,14 @@ class _$GetOrdersImpl implements _GetOrders {
 }
 
 abstract class _GetOrders implements OrdersEvent {
-  const factory _GetOrders() = _$GetOrdersImpl;
+  const factory _GetOrders({final int? first, final String? sort}) =
+      _$GetOrdersImpl;
+
+  int? get first;
+  String? get sort;
+  @JsonKey(ignore: true)
+  _$$GetOrdersImplCopyWith<_$GetOrdersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -240,7 +281,7 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOrders,
+    required TResult Function(int? first, String? sort) getOrders,
     required TResult Function(String orderId) getOrderbyId,
   }) {
     return getOrderbyId(orderId);
@@ -249,7 +290,7 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOrders,
+    TResult? Function(int? first, String? sort)? getOrders,
     TResult? Function(String orderId)? getOrderbyId,
   }) {
     return getOrderbyId?.call(orderId);
@@ -258,7 +299,7 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOrders,
+    TResult Function(int? first, String? sort)? getOrders,
     TResult Function(String orderId)? getOrderbyId,
     required TResult orElse(),
   }) {

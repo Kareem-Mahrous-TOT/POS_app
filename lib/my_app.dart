@@ -63,7 +63,7 @@ class MainApp extends StatelessWidget {
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: "TOT POS",
-          locale: const Locale("ar"),
+          locale: const Locale("en"),
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,
           localizationsDelegates: AppLang.localizationsDelegates,

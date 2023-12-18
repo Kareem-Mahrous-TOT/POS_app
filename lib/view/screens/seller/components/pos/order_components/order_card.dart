@@ -78,7 +78,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                         children: [
                           const Icon(Icons.calendar_month),
                           Text(
-                            "تاريخ العملية: ${DateFormat("yyyy dd MMM").format(DateTime.tryParse(
+                            "تاريخ العملية: ${DateFormat("dd-MM-yyyy ").format(DateTime.tryParse(
                                   orderEntity![index].date,
                                 ) ?? DateTime.now())}",
                             style: context.titleMedium,

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:tot_pos/data/models/response/sales/sales_model.dart';
+
+import '../model/sales_model.dart';
 
 abstract class SalesDataSource {
   Future<SalesModel> fetchSales();

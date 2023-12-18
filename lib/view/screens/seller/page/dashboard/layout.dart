@@ -5,11 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../../../../core/extensions/translate.dart';
+import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
+import 'package:tot_pos/view/blocs/products/products_bloc.dart';
 
+import '../../../../../core/extensions/translate.dart';
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/theme/palette.dart';
+import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
+import '../../../../blocs/report/report_cost/report_cost_cubit.dart';
+import '../../../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'customer_page.dart';
 import 'home_page.dart';
 import 'order_page.dart';
@@ -73,20 +78,24 @@ class LayoutScreen extends HookWidget {
             initial: (value) => 0,
             updateIndex: (value) => value.index);
 
-        // if (selectedIndex == 0) {
-        //   context.read<HomeBloc>()
-        //     ..add(const HomeEvent.loadProducts())
-        //     ..add(const HomeEvent.getCustomers());
-        // } else if (selectedIndex == 1) {
-        //   context.read<OrderCubit>().loadData();
-        // } else if (selectedIndex == 2) {
-        //   context
-        //       .read<RecentCustomersBloc>()
-        //       .add(RecentCustomersEvent.loadRecentCustomers());
-        // } else if (selectedIndex == 4) {
-        //   context.read<ReportCostCubit>().loadData();
-        //   context.read<ReportChartPieCubit>().loadData();
-        // }
+        switch (selectedIndex) {
+          case 0:
+            context.read<ProductsBloc>().add(ProductsEvent.fetch());
+          case 1:
+            context.read<OrdersBloc>().add(const OrdersEvent.getOrders(
+                  first: 100,
+                ));
+          case 2:
+            context
+                .read<RecentCustomersBloc>()
+                .add(RecentCustomersEvent.loadRecentCustomers());
+          case 3:
+            context.read<OrdersBloc>().add(const OrdersEvent.getOrders());
+
+          case 4:
+            context.read<ReportCostCubit>().loadData();
+            context.read<ReportChartPieCubit>().loadData();
+        }
         return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(

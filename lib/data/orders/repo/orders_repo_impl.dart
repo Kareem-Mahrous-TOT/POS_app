@@ -32,9 +32,14 @@ class OrdersRepoImpl implements OrdersRepoBase {
   }
 
   @override
-  Future<Either<Failure, List<OrderEntity>>> getOrders() async {
+  Future<Either<Failure, List<OrderEntity>>> getOrders({
+    int? first,
+    String? sort,
+  }) async {
     try {
       final model = await _remotedataSource.getOrders(
+          first: first,
+          sort: sort,
           userId: _localDataSource.getUserId(),
           cultureName: StoreConfig.cultureName);
       return Right(model);

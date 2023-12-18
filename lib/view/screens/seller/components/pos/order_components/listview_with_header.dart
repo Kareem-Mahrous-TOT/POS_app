@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import '../../../../../blocs/orders/orders_bloc.dart';
 
 import '../../../../../../core/theme/palette.dart';
+import '../../../../../blocs/orders/orders_bloc.dart';
 import 'order_card.dart';
 
 class TOTListViewWithHeaderOrganism extends StatefulWidget {
@@ -60,7 +60,7 @@ class _TOTListViewWithHeaderOrganismState
             child: Text("No Data found"),
           ),
           getOrdersSuccess: (value) => SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.84,
+            height: MediaQuery.sizeOf(context).height * 0.94,
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: statuses.length,
@@ -109,7 +109,7 @@ class _TOTListViewWithHeaderOrganismState
                         ),
                       )),
                   TOTOrderCardMolecule(
-                    height: MediaQuery.sizeOf(context).height * 0.76,
+                    height: MediaQuery.sizeOf(context).height * 0.81,
                     orderEntity: value.orders
                         .where((order) =>
                             order.status.toLowerCase() ==
