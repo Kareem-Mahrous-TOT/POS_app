@@ -4,12 +4,12 @@ import '../../../core/constants/store_config.dart';
 import '../../../core/enums/payment_method_type.dart';
 import '../../../core/network/failure.dart';
 import '../../../domain/cart/repo/cart_repo.dart';
-import '../../models/response/graph/graph_add_item_model.dart';
-import '../../models/response/graph/graph_change_item_quantity.dart';
-import '../../models/response/graph/graph_create_cart_model.dart';
-import '../../models/response/graph/graph_remove_item_model.dart';
 import '../data_sources.dart/local_data_source.dart';
 import '../data_sources.dart/remote_data_source.dart';
+import '../models/graph_add_item_model.dart';
+import '../models/graph_change_item_quantity.dart';
+import '../models/graph_create_cart_model.dart';
+import '../models/graph_remove_item_model.dart';
 
 class CartRepoImpl implements CartRepo {
   final CartLocalDataSource _cartLocalDataSource;
@@ -31,7 +31,12 @@ class CartRepoImpl implements CartRepo {
         userId: userId,
       );
 
-      return Right(cartModel);
+      final didSetCartId =
+          await _cartLocalDataSource.setCartId(cartId: cartModel.cart.id);
+
+      return didSetCartId
+          ? Right(cartModel)
+          : const Left(CacheFailure("لقد حدث خطأ ما."));
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
@@ -174,10 +179,22 @@ class CartRepoImpl implements CartRepo {
       final cartId = _cartLocalDataSource.getCartId();
       final userId = _cartLocalDataSource.getUserId();
 
-      return _cartremoteDataSource.removeCart(
+      final didRemoveLocally = await _cartLocalDataSource.removeCartId();
+
+      if (!didRemoveLocally) {
+        return false;
+      }
+
+      final didRemoveRemotely = await _cartremoteDataSource.removeCart(
         cartId: cartId,
         userId: userId,
       );
+
+      if (!didRemoveRemotely) {
+        await _cartLocalDataSource.setCartId(cartId: cartId);
+      }
+
+      return didRemoveRemotely;
     } catch (e) {
       return false;
     }
@@ -200,5 +217,11 @@ class CartRepoImpl implements CartRepo {
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
+  }
+
+  @override
+  bool hasCart() {
+    final cartId = _cartLocalDataSource.getCartId();
+    return cartId.isNotEmpty;
   }
 }

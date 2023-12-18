@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/data/sales/data_source/sales_data_source.dart';
 
 import '../../../core/network/failure.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../domain/sales/repo/repo.dart';
+import '../data_source/sales_data_source.dart';
 import '../model/sales_model.dart';
 
 class SalesRepoImpl implements SalesRepo {

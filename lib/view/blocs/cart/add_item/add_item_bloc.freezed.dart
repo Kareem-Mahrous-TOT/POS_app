@@ -19,25 +19,19 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String storeId, String productId, int quantity, String userId)
-        addItem,
+    required TResult Function(String productId, int quantity) addItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult? Function(String productId, int quantity)? addItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult Function(String productId, int quantity)? addItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,9 +104,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String storeId, String productId, int quantity, String userId)
-        addItem,
+    required TResult Function(String productId, int quantity) addItem,
   }) {
     return started();
   }
@@ -121,9 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult? Function(String productId, int quantity)? addItem,
   }) {
     return started?.call();
   }
@@ -132,9 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult Function(String productId, int quantity)? addItem,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -185,7 +173,7 @@ abstract class _$$AddItemImplCopyWith<$Res> {
           _$AddItemImpl value, $Res Function(_$AddItemImpl) then) =
       __$$AddItemImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String storeId, String productId, int quantity, String userId});
+  $Res call({String productId, int quantity});
 }
 
 /// @nodoc
@@ -199,16 +187,10 @@ class __$$AddItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storeId = null,
     Object? productId = null,
     Object? quantity = null,
-    Object? userId = null,
   }) {
     return _then(_$AddItemImpl(
-      storeId: null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -217,10 +199,6 @@ class __$$AddItemImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -228,24 +206,17 @@ class __$$AddItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddItemImpl implements _AddItem {
-  _$AddItemImpl(
-      {required this.storeId,
-      required this.productId,
-      required this.quantity,
-      required this.userId});
+  _$AddItemImpl({required this.productId, required this.quantity});
 
-  @override
-  String storeId;
+// required String storeId,
   @override
   String productId;
   @override
   int quantity;
-  @override
-  String userId;
 
   @override
   String toString() {
-    return 'AddItemEvent.addItem(storeId: $storeId, productId: $productId, quantity: $quantity, userId: $userId)';
+    return 'AddItemEvent.addItem(productId: $productId, quantity: $quantity)';
   }
 
   @JsonKey(ignore: true)
@@ -258,35 +229,29 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String storeId, String productId, int quantity, String userId)
-        addItem,
+    required TResult Function(String productId, int quantity) addItem,
   }) {
-    return addItem(storeId, productId, quantity, userId);
+    return addItem(productId, quantity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult? Function(String productId, int quantity)? addItem,
   }) {
-    return addItem?.call(storeId, productId, quantity, userId);
+    return addItem?.call(productId, quantity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String storeId, String productId, int quantity, String userId)?
-        addItem,
+    TResult Function(String productId, int quantity)? addItem,
     required TResult orElse(),
   }) {
     if (addItem != null) {
-      return addItem(storeId, productId, quantity, userId);
+      return addItem(productId, quantity);
     }
     return orElse();
   }
@@ -324,20 +289,14 @@ class _$AddItemImpl implements _AddItem {
 }
 
 abstract class _AddItem implements AddItemEvent {
-  factory _AddItem(
-      {required String storeId,
-      required String productId,
-      required int quantity,
-      required String userId}) = _$AddItemImpl;
+  factory _AddItem({required String productId, required int quantity}) =
+      _$AddItemImpl;
 
-  String get storeId;
-  set storeId(String value);
-  String get productId;
+// required String storeId,
+  String get productId; // required String storeId,
   set productId(String value);
   int get quantity;
   set quantity(int value);
-  String get userId;
-  set userId(String value);
   @JsonKey(ignore: true)
   _$$AddItemImplCopyWith<_$AddItemImpl> get copyWith =>
       throw _privateConstructorUsedError;

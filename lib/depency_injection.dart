@@ -2,13 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tot_pos/data/orders/data_source/local_data_source.dart';
-import 'package:tot_pos/data/sales/data_source/sales_data_source.dart';
-import 'package:tot_pos/data/sales/repo/sales_repo.dart';
-import 'package:tot_pos/domain/orders/usecases/change_order_status_usecase.dart';
-import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
-import 'package:tot_pos/domain/orders/usecases/get_order_by_id_usecase.dart';
-import 'package:tot_pos/domain/orders/usecases/get_orders_usecase.dart';
+import 'package:tot_pos/domain/cart/usecases/remove_cart_usecase.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -16,22 +10,42 @@ import 'core/network/graph_config.dart';
 import 'data/auth/data_sources/local_data_source.dart';
 import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';
+import 'data/cart/data_sources.dart/local_data_source.dart';
+import 'data/cart/data_sources.dart/remote_data_source.dart';
+import 'data/cart/repo/cart_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
+import 'data/orders/data_source/local_data_source.dart';
 import 'data/orders/data_source/remote_data_source.dart';
 import 'data/orders/repo/orders_repo_impl.dart';
 import 'data/products/data_sources/remote_data_source.dart';
 import 'data/products/repo/products_repo_impl.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/order_repo_base.dart';
+import 'data/repository/base/user_address_repo_base.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
 import 'data/repository/impl/order_repo.dart';
 import 'data/repository/impl/report_repo.dart';
+import 'data/repository/impl/user_address_repo_impl.dart';
+import 'data/sales/data_source/sales_data_source.dart';
+import 'data/sales/repo/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/login_usecase.dart';
+import 'domain/cart/repo/cart_repo.dart';
+import 'domain/cart/usecases/add_cart_address_use_case.dart';
+import 'domain/cart/usecases/add_copoun_usecase.dart';
+import 'domain/cart/usecases/add_item_usecase.dart';
+import 'domain/cart/usecases/change_item_quantity_usecase.dart';
+import 'domain/cart/usecases/fetch_cart_usecase.dart';
+import 'domain/cart/usecases/prepare_cart_usecase.dart';
+import 'domain/cart/usecases/remove_items_usecase.dart';
 import 'domain/menu/repo/repo.dart';
 import 'domain/menu/usecases/fetch_menu_categories.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
+import 'domain/orders/usecases/change_order_status_usecase.dart';
+import 'domain/orders/usecases/create_order_from_cart_usecase.dart';
+import 'domain/orders/usecases/get_order_by_id_usecase.dart';
+import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
@@ -85,10 +99,13 @@ Future<void> getItInit() async {
       OrdersLocalDataSourceImpl(preferences: getIt()));
   //? sales
   getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
+  //? cart
+  getIt.registerSingleton<CartLocalDataSource>(
+      CartLocalDataSourceImpl(sharedPrefs: getIt()));
+  getIt.registerSingleton<CartRemoteDataSource>(
+      CartRemoteDataSourceImpl(graphService: getIt()));
 
-  //repo
-  // sl.registerSingleton<HomeRepo>(HomeRepo());
-  // getIt.registerSingleton<LayoutRepoBase>(LayoutRepoImpl());
+  //repos
   getIt.registerSingleton<CustomerRepo>(CustomerRepo());
   getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
     localDataSource: getIt(),
@@ -107,12 +124,24 @@ Future<void> getItInit() async {
       CustomersRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
+  getIt.registerSingleton<UserAddressRepoBase>(
+      UserAddressRepoImpl(graphService: getIt()));
+  getIt.registerSingleton<CartRepo>(CartRepoImpl(
+    cartLocalDataSource: getIt(),
+    cartremoteDataSource: getIt(),
+  ));
 
   //usecase
   getIt.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(authRepo: getIt()));
+  getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
+      () => FetchMenuCategoriesUsecase(menuRepo: getIt()));
+  //? products
   getIt.registerLazySingleton<GetProductsUsecase>(
       () => GetProductsUsecase(productsRepo: getIt()));
+  getIt.registerLazySingleton<GetProductByIdUsecase>(
+      () => GetProductByIdUsecase(productsRepo: getIt()));
+  //? orders
   getIt.registerLazySingleton<GetOrdersUseCase>(
       () => GetOrdersUseCase(ordersRepo: getIt()));
   getIt.registerLazySingleton<GetOrderByIdUseCase>(
@@ -121,10 +150,26 @@ Future<void> getItInit() async {
       () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
   getIt.registerLazySingleton<CreateOrderFormCartUsecase>(
       () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
-  getIt.registerLazySingleton<GetProductByIdUsecase>(
-      () => GetProductByIdUsecase(productsRepo: getIt()));
-  getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
-      () => FetchMenuCategoriesUsecase(menuRepo: getIt()));
+  //? cart
+  getIt
+      .registerLazySingleton<AddCartAddressUseCase>(() => AddCartAddressUseCase(
+            cartRepo: getIt(),
+            userAddressRepo: getIt(),
+          ));
+  getIt.registerLazySingleton<FetchCartUsecase>(
+      () => FetchCartUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<AddCartCopounUsecase>(
+      () => AddCartCopounUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<AddCartItemUsecase>(
+      () => AddCartItemUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<PrepareCartUsecase>(
+      () => PrepareCartUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<ChangeCartItemQuantityUsecase>(
+      () => ChangeCartItemQuantityUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<RemoveCartItemsUsecase>(
+      () => RemoveCartItemsUsecase(cartRepo: getIt()));
+  getIt.registerLazySingleton<RemoveCartUsecase>(
+      () => RemoveCartUsecase(cartRepo: getIt()));
 
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));

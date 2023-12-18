@@ -11,14 +11,15 @@ import '../../models/response/graph/addresses_model.dart';
 import '../base/user_address_repo_base.dart';
 
 class UserAddressRepoImpl implements UserAddressRepoBase {
-  final GraphService graphService;
-  UserAddressRepoImpl(this.graphService);
+  final GraphService _graphService;
+  UserAddressRepoImpl({required GraphService graphService})
+      : _graphService = graphService;
 
   @override
   Future<Either<Failure, List<AddressItem>>> getAddresses(
       {required String userId}) async {
     try {
-      final response = await graphService.client.query(
+      final response = await _graphService.client.query(
         QueryOptions(
           document: gql(
               r''' query GetMyAddresses($after: String, $first: Int, $sort: String) {
@@ -82,7 +83,7 @@ fragment memberAddressFields on MemberAddressType {
       {required AddressDataModel addressDataModel,
       required String memberId}) async {
     try {
-      final response = await graphService.client.query(
+      final response = await _graphService.client.query(
         QueryOptions(
           onError: (error) {
             log("::: add address error: $error :::");
@@ -163,7 +164,7 @@ fragment memberAddressFields on MemberAddressType {
   Future<Either<Failure, AddressItem?>> deleteAddress(
       {required AddressItem addressItem, required String memberId}) async {
     try {
-      final response = await graphService.client.query(
+      final response = await _graphService.client.query(
         QueryOptions(
           onError: (error) {
             log("::: add address error: $error :::");

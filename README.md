@@ -9,6 +9,7 @@
     - [x] products
     - [x] cart
     - [x] orders
+    - [x] sales
   - [ ] ui
     - [ ] add to package
 - [ ] orders
