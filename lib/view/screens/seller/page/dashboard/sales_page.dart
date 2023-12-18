@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-
-
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/sales/sales_cubit.dart';
@@ -160,10 +159,10 @@ class SalesTabs extends StatelessWidget {
                           child: DataTable(
                             columns: const [
                               DataColumn(
-                                label: Text("ID"),
+                                label: Text("Order Number"),
                               ),
                               DataColumn(
-                                label: Text("Client"),
+                                label: Text("Status"),
                               ),
                               DataColumn(
                                 label: Text("Amount"),
@@ -172,66 +171,36 @@ class SalesTabs extends StatelessWidget {
                                 label: Text("Payment"),
                               ),
                               DataColumn(
-                                label: Text("Note"),
-                              ),
-                              DataColumn(
                                 label: Text("Date"),
                               ),
                             ],
-                            rows: List.generate(value.orders.results!.length,
-                                (rowsIndex) {
+                            rows:
+                                List.generate(value.orders.length, (rowsIndex) {
                               return DataRow(
                                 cells: [
                                   DataCell(
                                     Text(
-                                      value
-                                          .orders.results![rowsIndex].customerId
-                                          .toString()
-                                          .substring(0, 6),
+                                      value.orders[rowsIndex].orderNumber
+                                          .toString(),
                                     ),
                                   ),
                                   DataCell(
                                     Text(
-                                      value.orders.results![rowsIndex]
-                                                  .customerName ==
-                                              null
-                                          ? "Not found"
-                                          : value.orders.results![rowsIndex]
-                                              .customerName
-                                              .toString(),
+                                      value.orders[rowsIndex].status.toString(),
                                     ),
                                   ),
                                   DataCell(
                                     Text(
-                                      value.orders.results![rowsIndex].sum ==
-                                              null
-                                          ? "N/A"
-                                          : value.orders.results![rowsIndex].sum
-                                              .toString(),
+                                      value.orders[rowsIndex].price.toString(),
                                     ),
                                   ),
+                                  DataCell(Text(value
+                                      .orders[rowsIndex].paymentMethodType
+                                      .toString())),
                                   DataCell(
-                                    Text(
-                                      value.orders.results![rowsIndex]
-                                                  .currency ==
-                                              null
-                                          ? "N/A"
-                                          : value.orders.results![rowsIndex]
-                                              .currency!,
-                                    ),
-                                  ),
-                                  DataCell(Text(value.orders.results![rowsIndex]
-                                          .items!.isEmpty
-                                      ? "N/A"
-                                      : value.orders.results![rowsIndex].items!
-                                          .length
-                                          .toString())),
-                                  DataCell(
-                                    Text(value.orders.results![rowsIndex]
-                                                .createdDate ==
-                                            null
-                                        ? "N/A"
-                                        : "${value.orders.results![rowsIndex].createdDate.toString().substring(0, 10)} ${value.orders.results![rowsIndex].createdDate.toString().substring(11, 19)}"),
+                                    Text(DateFormat('dd-MM-yyyy HH:mm').format(
+                                        DateTime.parse(
+                                            value.orders[rowsIndex].date))),
                                   ),
                                 ],
                               );

@@ -1,6 +1,5 @@
-import 'package:tot_pos/data/models/response/sales/sales_model.dart';
-
 import '../../../../core/usecase/usecase.dart';
+import '../../../data/sales/model/sales_model.dart';
 
 abstract class SalesRepo {
   FutureEitherFailureOrType<SalesModel> fetchSalesData();

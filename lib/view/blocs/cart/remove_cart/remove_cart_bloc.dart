@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/constants/local_keys.dart';
+import '../../../../data/repository/base/cart/remove_cart_repo_base.dart';
 import '../../../../depency_injection.dart';
 
-import '../../../../domain/cart/remove_cart_repo_base.dart';
 
 part 'remove_cart_bloc.freezed.dart';
 part 'remove_cart_event.dart';

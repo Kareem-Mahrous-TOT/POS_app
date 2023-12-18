@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/get_orders_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';
@@ -48,7 +47,8 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
         getOrders: (event) async {
           emit(const OrdersState.getOrdersLoading());
 
-          final response = await _getOrderUseCase.call(NoParams());
+          final response = await _getOrderUseCase
+              .call(GetOrdersParams(first: event.first, sort: event.sort));
 
           await response.fold(
             (failure) async {

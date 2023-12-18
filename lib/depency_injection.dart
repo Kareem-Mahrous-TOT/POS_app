@@ -3,6 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/orders/data_source/local_data_source.dart';
+import 'package:tot_pos/data/sales/data_source/sales_data_source.dart';
+import 'package:tot_pos/data/sales/repo/sales_repo.dart';
 import 'package:tot_pos/domain/orders/usecases/change_order_status_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/get_order_by_id_usecase.dart';
@@ -25,7 +27,6 @@ import 'data/repository/base/order_repo_base.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
 import 'data/repository/impl/order_repo.dart';
 import 'data/repository/impl/report_repo.dart';
-import 'data/repository/impl/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/login_usecase.dart';
 import 'domain/menu/repo/repo.dart';
@@ -34,6 +35,7 @@ import 'domain/orders/repo/orders_repo_base.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
+import 'domain/sales/repo/repo.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
@@ -81,6 +83,8 @@ Future<void> getItInit() async {
       OrdersRemoteDataSourceImpl(graphService: getIt()));
   getIt.registerSingleton<OrdersLocalDataSource>(
       OrdersLocalDataSourceImpl(preferences: getIt()));
+  //? sales
+  getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
 
   //repo
   // sl.registerSingleton<HomeRepo>(HomeRepo());
@@ -97,7 +101,7 @@ Future<void> getItInit() async {
     remoteDataSource: getIt(),
     localDataSource: getIt(),
   ));
-  getIt.registerSingleton<SalesRepo>(SalesRepo());
+  getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
   getIt.registerSingleton<ReportRepo>(ReportRepo());
   getIt.registerSingleton<CustomersRepoBase>(
       CustomersRepoImpl(apiConsumer: getIt()));

@@ -12,9 +12,9 @@
   - [ ] ui
     - [ ] add to package
 - [ ] orders
-  - [ ] create order
+  - [x] create order
   - [ ] fix bag ui
-  - [ ] change order status
+  - [x] change order status
 - [ ] discounts
   - [ ] display products discount(ui)
   - [ ] add discount to order
