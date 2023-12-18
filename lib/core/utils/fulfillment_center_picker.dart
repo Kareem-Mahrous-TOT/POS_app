@@ -88,8 +88,8 @@ Future<void> showFulfillmentCenterPicker(
                                 log("SELECT BRANCH::-currentItem-- $currentItem #");
                                 if (currentItem != null) {
                                   context.read<FulfillmentCenterBloc>().add(
-                                        FulfillmentCenterEvent
-                                            .changedSuccessfully(currentItem),
+                                        FulfillmentCenterEvent.changedBranch(
+                                            currentItem),
                                       );
 
                                   context.read<UserAddressBloc>().add(
@@ -106,8 +106,8 @@ Future<void> showFulfillmentCenterPicker(
                                 if (value != null) {
                                   context.pop();
                                   context.read<FulfillmentCenterBloc>().add(
-                                      FulfillmentCenterEvent
-                                          .changedSuccessfully(value));
+                                      FulfillmentCenterEvent.changedBranch(
+                                          value));
 
                                   /// Refresh products
                                   context

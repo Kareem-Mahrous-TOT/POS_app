@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/constants/local_keys.dart';
-import '../../../data/models/response/graph/graph_fulfillment_center_model.dart';
-import '../../../data/repository/base/fulfillment_center_repo_base.dart';
-import '../../../depency_injection.dart';
+import '../../../core/usecase/usecase.dart';
+import '../../../data/fulfillment_center/model/graph_fulfillment_center_model.dart';
+import '../../../domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
+import '../../../domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
 
 part 'fulfillment_center_bloc.freezed.dart';
 part 'fulfillment_center_event.dart';
@@ -14,141 +12,46 @@ part 'fulfillment_center_state.dart';
 
 class FulfillmentCenterBloc
     extends Bloc<FulfillmentCenterEvent, FulfillmentCenterState> {
-  final FulfillmentCenterRepoBase repo;
-  // FulfillmentCenterItem? selectedBranch;
-  FulfillmentCenterBloc(this.repo) : super(_Initial()) {
+  final GetFulfillmentCentersUseCase _getFulfillmentUseCase;
+  final ChangeFulfillmentCentersUseCase _changeFulfillmentUseCase;
+  FulfillmentCenterBloc({
+    required GetFulfillmentCentersUseCase getFulfillmentUseCase,
+    required ChangeFulfillmentCentersUseCase changeFulfillmentUseCase,
+  })  : _getFulfillmentUseCase = getFulfillmentUseCase,
+        _changeFulfillmentUseCase = changeFulfillmentUseCase,
+        super(_Initial()) {
     on<FulfillmentCenterEvent>((event, emit) async {
-      FulfillmentCenterItem? selectedBranch;
-      Future<void> fetchBranches(String storeId) async {
-        final response = await repo.fetchFulfillmentCenters(storeId);
-        final fulfillmentCenterData = response.fold((l) => null, (r) => r);
-        final branchId = preferences.getString(LocalKeys.fulfillmentCenterId);
-
-        if (fulfillmentCenterData != null) {
-          /// Check if there is selected branch in preferences
-          ///
-          List<FulfillmentCenterItem> newCenters = [];
-          for (final fulfillment
-              in fulfillmentCenterData.fulfillmentCenters.items) {
-            final isSelected = fulfillment.id == branchId;
-            if (isSelected) {
-              await preferences.setString(
-                  LocalKeys.fulfillmentCenterId, fulfillment.id);
-              selectedBranch = fulfillment.copyWith(isSelected: true);
-            }
-
-            newCenters.add(fulfillment.copyWith(isSelected: isSelected));
-          }
-          // final newCenters = fulfillmentCenterData.fulfillmentCenters.items
-          //     .map((fulfillment) async {
-          // final isSelected = fulfillment.id == branchId;
-          // if (isSelected) {
-          //   await preferences.setString(
-          //       LocalKeys.fulfillmentCenterId, fulfillment.id);
-          //   selectedBranch = fulfillment.copyWith(isSelected: true);
-          // }
-
-          //   return fulfillment.copyWith(isSelected: isSelected);
-          // }).toList();
-
-          if (selectedBranch == null || branchId == null) {
-            selectedBranch =
-                fulfillmentCenterData.fulfillmentCenters.items.first;
-            await preferences.setString(
-                LocalKeys.fulfillmentCenterId, selectedBranch!.id);
-          }
-
-          emit(
+      Future<void> fetchBranches() async {
+        final fulfillmentCenters =
+            await _getFulfillmentUseCase.call(NoParams());
+        fulfillmentCenters.fold(
+          (failure) => emit(FulfillmentCenterState.failure(failure.message)),
+          (model) => emit(
             FulfillmentCenterState.fetchState(
-              fulfillmentCenterData.copyWith(
-                fulfillmentCenters: fulfillmentCenterData.fulfillmentCenters
-                    .copyWith(items: newCenters),
-              ),
-              selectedBranch!,
-            ),
-          );
-        }
-      }
-
-      Future<void> handleFetchState(
-          _FetchState value, FulfillmentCenterItem branchData) async {
-        /// Update is selected by id
-        ///
-        List<FulfillmentCenterItem> newCenters = [];
-        for (final center
-            in value.fulfillmentCenters.fulfillmentCenters.items) {
-          final isSelected = center.id == branchData.id;
-
-          if (isSelected) {
-            log("message::-isSelected * $isSelected #");
-            log("message::-isSelected ** ${center.id} #");
-            log("message::-isSelected *** ${center.isSelected} #");
-
-            await Future.wait([
-              preferences.setString(LocalKeys.fulfillmentCenterId, center.id),
-              preferences.setString(
-                  LocalKeys.fulfillmentCenterName, center.name),
-            ]);
-          }
-
-          newCenters.add(center.copyWith(isSelected: isSelected));
-
-          // log("item::::: $item ***** ${item.isSelected} #");
-
-          // return item;
-        }
-        // final List<FulfillmentCenterItem> newCenters =
-        //     value.fulfillmentCenters.fulfillmentCenters.items.map((center) {
-        //   final isSelected = center.id == branchData.id;
-
-        //   if (isSelected) {
-        //     log("message::-isSelected * $isSelected #");
-        //     log("message::-isSelected ** ${center.id} #");
-        //     log("message::-isSelected *** ${center.isSelected} #");
-
-        //     /// SAVE LOCAL
-        //     await Future.wait([
-
-        //     preferences.setString(LocalKeys.fulfillmentCenterId, center.id);
-        //     preferences.setString(LocalKeys.fulfillmentCenterName, center.name);
-        //     ]);
-        //   }
-        // final item = center.copyWith(isSelected: isSelected);
-
-        // log("item::::: $item ***** ${item.isSelected} #");
-
-        // return item;
-        // }).toList();
-
-        selectedBranch = newCenters.firstWhere((element) => element.isSelected);
-
-        emit(
-          value.copyWith(
-            fulfillmentCenters: value.fulfillmentCenters.copyWith(
-              fulfillmentCenters: value.fulfillmentCenters.fulfillmentCenters
-                  .copyWith(items: newCenters),
-            ),
-            fulfillmentCenterItem: selectedBranch!,
+                model,
+                model.fulfillmentCenters.items
+                    .firstWhere((element) => element.isSelected == true)),
           ),
         );
       }
 
       await event.when(
           started: () {},
-          changedSuccessfully: (branchData) async {
+          changedBranch: (branchData) async {
             await state.map(
               initial: (value) {},
               empty: (value) {},
+              failure: (value) {},
               fetchState: (value) async {
-                log("SELECT BRANCH::-currentItem $branchData #");
-                await handleFetchState(value, branchData);
-
-                log("SELECT BRANCH::-currentItem222 $branchData #");
+                await _changeFulfillmentUseCase.call(
+                    ChangeFulfillmentCentersParams(
+                        model: value.fulfillmentCenters,
+                        branchId: value.fulfillmentCenterItem.id));
               },
             );
           },
-          fetch: (storeId) async {
-            await fetchBranches(storeId);
+          fetch: () async {
+            await fetchBranches();
           });
     });
   }

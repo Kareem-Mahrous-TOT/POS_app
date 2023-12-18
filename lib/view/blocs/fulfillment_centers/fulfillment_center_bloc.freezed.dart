@@ -19,43 +19,43 @@ mixin _$FulfillmentCenterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(FulfillmentCenterItem branch) changedSuccessfully,
-    required TResult Function(String storeId) fetch,
+    required TResult Function(FulfillmentCenterItem branch) changedBranch,
+    required TResult Function() fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult? Function(String storeId)? fetch,
+    TResult? Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult? Function()? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult Function(String storeId)? fetch,
+    TResult Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_ChangedSuccessfully value) changedSuccessfully,
+    required TResult Function(_ChangedBranch value) changedBranch,
     required TResult Function(_Fetch value) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult? Function(_ChangedBranch value)? changedBranch,
     TResult? Function(_Fetch value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult Function(_ChangedBranch value)? changedBranch,
     TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) =>
@@ -111,8 +111,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(FulfillmentCenterItem branch) changedSuccessfully,
-    required TResult Function(String storeId) fetch,
+    required TResult Function(FulfillmentCenterItem branch) changedBranch,
+    required TResult Function() fetch,
   }) {
     return started();
   }
@@ -121,8 +121,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult? Function(String storeId)? fetch,
+    TResult? Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult? Function()? fetch,
   }) {
     return started?.call();
   }
@@ -131,8 +131,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult Function(String storeId)? fetch,
+    TResult Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,7 +145,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_ChangedSuccessfully value) changedSuccessfully,
+    required TResult Function(_ChangedBranch value) changedBranch,
     required TResult Function(_Fetch value) fetch,
   }) {
     return started(this);
@@ -155,7 +155,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult? Function(_ChangedBranch value)? changedBranch,
     TResult? Function(_Fetch value)? fetch,
   }) {
     return started?.call(this);
@@ -165,7 +165,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult Function(_ChangedBranch value)? changedBranch,
     TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) {
@@ -181,10 +181,10 @@ abstract class _Started implements FulfillmentCenterEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangedSuccessfullyImplCopyWith<$Res> {
-  factory _$$ChangedSuccessfullyImplCopyWith(_$ChangedSuccessfullyImpl value,
-          $Res Function(_$ChangedSuccessfullyImpl) then) =
-      __$$ChangedSuccessfullyImplCopyWithImpl<$Res>;
+abstract class _$$ChangedBranchImplCopyWith<$Res> {
+  factory _$$ChangedBranchImplCopyWith(
+          _$ChangedBranchImpl value, $Res Function(_$ChangedBranchImpl) then) =
+      __$$ChangedBranchImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FulfillmentCenterItem branch});
 
@@ -192,12 +192,11 @@ abstract class _$$ChangedSuccessfullyImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChangedSuccessfullyImplCopyWithImpl<$Res>
-    extends _$FulfillmentCenterEventCopyWithImpl<$Res,
-        _$ChangedSuccessfullyImpl>
-    implements _$$ChangedSuccessfullyImplCopyWith<$Res> {
-  __$$ChangedSuccessfullyImplCopyWithImpl(_$ChangedSuccessfullyImpl _value,
-      $Res Function(_$ChangedSuccessfullyImpl) _then)
+class __$$ChangedBranchImplCopyWithImpl<$Res>
+    extends _$FulfillmentCenterEventCopyWithImpl<$Res, _$ChangedBranchImpl>
+    implements _$$ChangedBranchImplCopyWith<$Res> {
+  __$$ChangedBranchImplCopyWithImpl(
+      _$ChangedBranchImpl _value, $Res Function(_$ChangedBranchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -205,7 +204,7 @@ class __$$ChangedSuccessfullyImplCopyWithImpl<$Res>
   $Res call({
     Object? branch = null,
   }) {
-    return _then(_$ChangedSuccessfullyImpl(
+    return _then(_$ChangedBranchImpl(
       null == branch
           ? _value.branch
           : branch // ignore: cast_nullable_to_non_nullable
@@ -224,54 +223,53 @@ class __$$ChangedSuccessfullyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangedSuccessfullyImpl implements _ChangedSuccessfully {
-  _$ChangedSuccessfullyImpl(this.branch);
+class _$ChangedBranchImpl implements _ChangedBranch {
+  _$ChangedBranchImpl(this.branch);
 
   @override
   FulfillmentCenterItem branch;
 
   @override
   String toString() {
-    return 'FulfillmentCenterEvent.changedSuccessfully(branch: $branch)';
+    return 'FulfillmentCenterEvent.changedBranch(branch: $branch)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangedSuccessfullyImplCopyWith<_$ChangedSuccessfullyImpl> get copyWith =>
-      __$$ChangedSuccessfullyImplCopyWithImpl<_$ChangedSuccessfullyImpl>(
-          this, _$identity);
+  _$$ChangedBranchImplCopyWith<_$ChangedBranchImpl> get copyWith =>
+      __$$ChangedBranchImplCopyWithImpl<_$ChangedBranchImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(FulfillmentCenterItem branch) changedSuccessfully,
-    required TResult Function(String storeId) fetch,
+    required TResult Function(FulfillmentCenterItem branch) changedBranch,
+    required TResult Function() fetch,
   }) {
-    return changedSuccessfully(branch);
+    return changedBranch(branch);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult? Function(String storeId)? fetch,
+    TResult? Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult? Function()? fetch,
   }) {
-    return changedSuccessfully?.call(branch);
+    return changedBranch?.call(branch);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult Function(String storeId)? fetch,
+    TResult Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) {
-    if (changedSuccessfully != null) {
-      return changedSuccessfully(branch);
+    if (changedBranch != null) {
+      return changedBranch(branch);
     }
     return orElse();
   }
@@ -280,45 +278,44 @@ class _$ChangedSuccessfullyImpl implements _ChangedSuccessfully {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_ChangedSuccessfully value) changedSuccessfully,
+    required TResult Function(_ChangedBranch value) changedBranch,
     required TResult Function(_Fetch value) fetch,
   }) {
-    return changedSuccessfully(this);
+    return changedBranch(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult? Function(_ChangedBranch value)? changedBranch,
     TResult? Function(_Fetch value)? fetch,
   }) {
-    return changedSuccessfully?.call(this);
+    return changedBranch?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult Function(_ChangedBranch value)? changedBranch,
     TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) {
-    if (changedSuccessfully != null) {
-      return changedSuccessfully(this);
+    if (changedBranch != null) {
+      return changedBranch(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangedSuccessfully implements FulfillmentCenterEvent {
-  factory _ChangedSuccessfully(FulfillmentCenterItem branch) =
-      _$ChangedSuccessfullyImpl;
+abstract class _ChangedBranch implements FulfillmentCenterEvent {
+  factory _ChangedBranch(FulfillmentCenterItem branch) = _$ChangedBranchImpl;
 
   FulfillmentCenterItem get branch;
   set branch(FulfillmentCenterItem value);
   @JsonKey(ignore: true)
-  _$$ChangedSuccessfullyImplCopyWith<_$ChangedSuccessfullyImpl> get copyWith =>
+  _$$ChangedBranchImplCopyWith<_$ChangedBranchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -327,8 +324,6 @@ abstract class _$$FetchImplCopyWith<$Res> {
   factory _$$FetchImplCopyWith(
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String storeId});
 }
 
 /// @nodoc
@@ -338,70 +333,48 @@ class __$$FetchImplCopyWithImpl<$Res>
   __$$FetchImplCopyWithImpl(
       _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? storeId = null,
-  }) {
-    return _then(_$FetchImpl(
-      null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  _$FetchImpl(this.storeId);
-
-  @override
-  String storeId;
+  _$FetchImpl();
 
   @override
   String toString() {
-    return 'FulfillmentCenterEvent.fetch(storeId: $storeId)';
+    return 'FulfillmentCenterEvent.fetch()';
   }
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      __$$FetchImplCopyWithImpl<_$FetchImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(FulfillmentCenterItem branch) changedSuccessfully,
-    required TResult Function(String storeId) fetch,
+    required TResult Function(FulfillmentCenterItem branch) changedBranch,
+    required TResult Function() fetch,
   }) {
-    return fetch(storeId);
+    return fetch();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult? Function(String storeId)? fetch,
+    TResult? Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult? Function()? fetch,
   }) {
-    return fetch?.call(storeId);
+    return fetch?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(FulfillmentCenterItem branch)? changedSuccessfully,
-    TResult Function(String storeId)? fetch,
+    TResult Function(FulfillmentCenterItem branch)? changedBranch,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(storeId);
+      return fetch();
     }
     return orElse();
   }
@@ -410,7 +383,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_ChangedSuccessfully value) changedSuccessfully,
+    required TResult Function(_ChangedBranch value) changedBranch,
     required TResult Function(_Fetch value) fetch,
   }) {
     return fetch(this);
@@ -420,7 +393,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult? Function(_ChangedBranch value)? changedBranch,
     TResult? Function(_Fetch value)? fetch,
   }) {
     return fetch?.call(this);
@@ -430,7 +403,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_ChangedSuccessfully value)? changedSuccessfully,
+    TResult Function(_ChangedBranch value)? changedBranch,
     TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) {
@@ -442,13 +415,7 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements FulfillmentCenterEvent {
-  factory _Fetch(String storeId) = _$FetchImpl;
-
-  String get storeId;
-  set storeId(String value);
-  @JsonKey(ignore: true)
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory _Fetch() = _$FetchImpl;
 }
 
 /// @nodoc
@@ -457,6 +424,7 @@ mixin _$FulfillmentCenterState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() empty,
+    required TResult Function(String message) failure,
     required TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)
         fetchState,
@@ -466,6 +434,7 @@ mixin _$FulfillmentCenterState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? empty,
+    TResult? Function(String message)? failure,
     TResult? Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -475,6 +444,7 @@ mixin _$FulfillmentCenterState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? empty,
+    TResult Function(String message)? failure,
     TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -485,6 +455,7 @@ mixin _$FulfillmentCenterState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_FetchState value) fetchState,
   }) =>
       throw _privateConstructorUsedError;
@@ -492,6 +463,7 @@ mixin _$FulfillmentCenterState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_FetchState value)? fetchState,
   }) =>
       throw _privateConstructorUsedError;
@@ -499,6 +471,7 @@ mixin _$FulfillmentCenterState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
+    TResult Function(_Failure value)? failure,
     TResult Function(_FetchState value)? fetchState,
     required TResult orElse(),
   }) =>
@@ -555,6 +528,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() empty,
+    required TResult Function(String message) failure,
     required TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)
         fetchState,
@@ -567,6 +541,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? empty,
+    TResult? Function(String message)? failure,
     TResult? Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -579,6 +554,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? empty,
+    TResult Function(String message)? failure,
     TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -595,6 +571,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_FetchState value) fetchState,
   }) {
     return initial(this);
@@ -605,6 +582,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_FetchState value)? fetchState,
   }) {
     return initial?.call(this);
@@ -615,6 +593,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
+    TResult Function(_Failure value)? failure,
     TResult Function(_FetchState value)? fetchState,
     required TResult orElse(),
   }) {
@@ -660,6 +639,7 @@ class _$EmptyImpl implements _Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() empty,
+    required TResult Function(String message) failure,
     required TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)
         fetchState,
@@ -672,6 +652,7 @@ class _$EmptyImpl implements _Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? empty,
+    TResult? Function(String message)? failure,
     TResult? Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -684,6 +665,7 @@ class _$EmptyImpl implements _Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? empty,
+    TResult Function(String message)? failure,
     TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -700,6 +682,7 @@ class _$EmptyImpl implements _Empty {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_FetchState value) fetchState,
   }) {
     return empty(this);
@@ -710,6 +693,7 @@ class _$EmptyImpl implements _Empty {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_FetchState value)? fetchState,
   }) {
     return empty?.call(this);
@@ -720,6 +704,7 @@ class _$EmptyImpl implements _Empty {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
+    TResult Function(_Failure value)? failure,
     TResult Function(_FetchState value)? fetchState,
     required TResult orElse(),
   }) {
@@ -732,6 +717,147 @@ class _$EmptyImpl implements _Empty {
 
 abstract class _Empty implements FulfillmentCenterState {
   factory _Empty() = _$EmptyImpl;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$FulfillmentCenterStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$FailureImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl implements _Failure {
+  _$FailureImpl(this.message);
+
+  @override
+  String message;
+
+  @override
+  String toString() {
+    return 'FulfillmentCenterState.failure(message: $message)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() empty,
+    required TResult Function(String message) failure,
+    required TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
+            FulfillmentCenterItem fulfillmentCenterItem)
+        fetchState,
+  }) {
+    return failure(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? empty,
+    TResult? Function(String message)? failure,
+    TResult? Function(FulfillmentCentersDataModel fulfillmentCenters,
+            FulfillmentCenterItem fulfillmentCenterItem)?
+        fetchState,
+  }) {
+    return failure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? empty,
+    TResult Function(String message)? failure,
+    TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
+            FulfillmentCenterItem fulfillmentCenterItem)?
+        fetchState,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Empty value) empty,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_FetchState value) fetchState,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_FetchState value)? fetchState,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Empty value)? empty,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_FetchState value)? fetchState,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure implements FulfillmentCenterState {
+  factory _Failure(String message) = _$FailureImpl;
+
+  String get message;
+  set message(String value);
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -819,6 +945,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() empty,
+    required TResult Function(String message) failure,
     required TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)
         fetchState,
@@ -831,6 +958,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? empty,
+    TResult? Function(String message)? failure,
     TResult? Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -843,6 +971,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? empty,
+    TResult Function(String message)? failure,
     TResult Function(FulfillmentCentersDataModel fulfillmentCenters,
             FulfillmentCenterItem fulfillmentCenterItem)?
         fetchState,
@@ -859,6 +988,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
+    required TResult Function(_Failure value) failure,
     required TResult Function(_FetchState value) fetchState,
   }) {
     return fetchState(this);
@@ -869,6 +999,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
+    TResult? Function(_Failure value)? failure,
     TResult? Function(_FetchState value)? fetchState,
   }) {
     return fetchState?.call(this);
@@ -879,6 +1010,7 @@ class _$FetchStateImpl implements _FetchState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
+    TResult Function(_Failure value)? failure,
     TResult Function(_FetchState value)? fetchState,
     required TResult orElse(),
   }) {

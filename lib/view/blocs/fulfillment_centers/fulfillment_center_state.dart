@@ -4,6 +4,7 @@ part of 'fulfillment_center_bloc.dart';
 class FulfillmentCenterState with _$FulfillmentCenterState {
   factory FulfillmentCenterState.initial() = _Initial;
   factory FulfillmentCenterState.empty() = _Empty;
+  factory FulfillmentCenterState.failure(String message) = _Failure;
   factory FulfillmentCenterState.fetchState(
     FulfillmentCentersDataModel fulfillmentCenters,
     FulfillmentCenterItem fulfillmentCenterItem,
