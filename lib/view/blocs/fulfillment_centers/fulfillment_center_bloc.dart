@@ -20,22 +20,23 @@ class FulfillmentCenterBloc
   })  : _getFulfillmentUseCase = getFulfillmentUseCase,
         _changeFulfillmentUseCase = changeFulfillmentUseCase,
         super(_Initial()) {
-    on<FulfillmentCenterEvent>((event, emit) async {
-      Future<void> fetchBranches() async {
-        final fulfillmentCenters =
-            await _getFulfillmentUseCase.call(NoParams());
-        fulfillmentCenters.fold(
-          (failure) => emit(FulfillmentCenterState.failure(failure.message)),
-          (model) => emit(
-            FulfillmentCenterState.fetchState(
-                model,
-                model.fulfillmentCenters.items
-                    .firstWhere((element) => element.isSelected == true)),
-          ),
-        );
-      }
+    on<FulfillmentCenterEvent>(
+      (event, emit) async {
+        Future<void> fetchBranches() async {
+          final fulfillmentCenters =
+              await _getFulfillmentUseCase.call(NoParams());
+          fulfillmentCenters.fold(
+            (failure) => emit(FulfillmentCenterState.failure(failure.message)),
+            (model) => emit(
+              FulfillmentCenterState.fetchState(
+                  model,
+                  model.fulfillmentCenters.items
+                      .firstWhere((element) => element.isSelected == true)),
+            ),
+          );
+        }
 
-      await event.when(
+        await event.when(
           started: () {},
           changedBranch: (branchData) async {
             await state.map(
@@ -44,15 +45,19 @@ class FulfillmentCenterBloc
               failure: (value) {},
               fetchState: (value) async {
                 await _changeFulfillmentUseCase.call(
-                    ChangeFulfillmentCentersParams(
-                        model: value.fulfillmentCenters,
-                        branchId: value.fulfillmentCenterItem.id));
+                  ChangeFulfillmentCentersParams(
+                    model: value.fulfillmentCenters,
+                    branchId: value.fulfillmentCenterItem.id,
+                  ),
+                );
               },
             );
           },
           fetch: () async {
             await fetchBranches();
-          });
-    });
+          },
+        );
+      },
+    );
   }
 }

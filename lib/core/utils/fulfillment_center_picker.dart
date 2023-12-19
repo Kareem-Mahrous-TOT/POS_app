@@ -36,9 +36,13 @@ Future<void> showFulfillmentCenterPicker(
       builder: (context) {
         return BlocConsumer<FulfillmentCenterBloc, FulfillmentCenterState>(
           listener: (context, state) {
-            state.map(
-              initial: (value) {},
+            state.maybeMap(
+              orElse: () {},
               empty: (value) {
+                context.pop();
+                Fluttertoast.showToast(msg: "حدث خطأ ما، حاول مرة أخرى");
+              },
+              failure: (value) {
                 context.pop();
                 Fluttertoast.showToast(msg: "حدث خطأ ما، حاول مرة أخرى");
               },
@@ -53,6 +57,11 @@ Future<void> showFulfillmentCenterPicker(
               empty: () {
                 return Center(
                   child: Text(context.tr.noBranchesAvailable),
+                );
+              },
+              failure: (message) {
+                return Center(
+                  child: Text(context.tr.somethingWentWrong),
                 );
               },
               fetchState: (branches, branchName) {

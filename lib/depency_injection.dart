@@ -39,6 +39,8 @@ import 'domain/cart/usecases/change_item_quantity_usecase.dart';
 import 'domain/cart/usecases/fetch_cart_usecase.dart';
 import 'domain/cart/usecases/prepare_cart_usecase.dart';
 import 'domain/cart/usecases/remove_items_usecase.dart';
+import 'domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
+import 'domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
 import 'domain/menu/repo/repo.dart';
 import 'domain/menu/usecases/fetch_menu_categories.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
@@ -170,6 +172,11 @@ Future<void> getItInit() async {
       () => RemoveCartItemsUsecase(cartRepo: getIt()));
   getIt.registerLazySingleton<RemoveCartUsecase>(
       () => RemoveCartUsecase(cartRepo: getIt()));
+  //? fulfillment
+  getIt.registerLazySingleton<GetFulfillmentCentersUseCase>(
+      () => GetFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
+  getIt.registerLazySingleton<ChangeFulfillmentCentersUseCase>(
+      () => ChangeFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
 
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
@@ -178,11 +185,8 @@ Future<void> getItInit() async {
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getIt()));
-  getIt.registerFactory<RecentCustomersBloc>(
-    () => RecentCustomersBloc(
-      getIt(),
-    ),
-  );
+  getIt
+      .registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(getIt()));
   getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
   getIt.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());
