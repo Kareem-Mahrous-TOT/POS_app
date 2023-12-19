@@ -208,7 +208,6 @@ class __$$AddItemImplCopyWithImpl<$Res>
 class _$AddItemImpl implements _AddItem {
   _$AddItemImpl({required this.productId, required this.quantity});
 
-// required String storeId,
   @override
   String productId;
   @override
@@ -292,8 +291,7 @@ abstract class _AddItem implements AddItemEvent {
   factory _AddItem({required String productId, required int quantity}) =
       _$AddItemImpl;
 
-// required String storeId,
-  String get productId; // required String storeId,
+  String get productId;
   set productId(String value);
   int get quantity;
   set quantity(int value);

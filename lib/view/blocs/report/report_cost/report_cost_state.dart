@@ -4,4 +4,5 @@ part of 'report_cost_cubit.dart';
 class ReportCostState with _$ReportCostState {
   const factory ReportCostState.initial() = _Initial;
   const factory ReportCostState.loadSuccess(CostModel model) = _LoadSuccess;
+  const factory ReportCostState.loadFailed(String message) = _LoadFailed;
 }

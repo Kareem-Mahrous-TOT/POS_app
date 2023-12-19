@@ -10,11 +10,8 @@ import '../../../../blocs/customer/current_customer/current_customer_cubit.dart'
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
 
-
-
 class CustomerPage extends HookWidget {
   const CustomerPage({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +23,25 @@ class CustomerPage extends HookWidget {
 
     return Container(
       color: const Color.fromARGB(255, 229, 229, 229),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          width: 1100.w,
-          height: 800.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Customers",
-                        style: context.titleMedium.copyWith(
-                          color: Palette.black,
-                        )),
-                  ),
-                  SizedBox(
+      child: SizedBox(
+        height: 800.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Customers",
+                      style: context.titleMedium.copyWith(
+                        color: Palette.black,
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
                     height: h * 0.05,
                     child: ElevatedButton(
                       onPressed: () {
@@ -94,98 +90,97 @@ class CustomerPage extends HookWidget {
                             color: Palette.white,
                           )),
                     ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: h * 0.01,
-              ),
-              BlocBuilder<CurrentCustomerCubit, CurrentCustomerState>(
-                builder: (context, state) {
-                  return state.map(
-                    initial: (value) => const Center(
-                        child: CircularProgressIndicator(
-                      color: Palette.primary,
-                    )),
-                    loadedCurrentCustomerData: (value) =>
-                        TOTCustomerCardMolecule(
-                      name: null,
-                      code: value.data.code.toString(),
-                      customerImage: value.data.customerImage.toString(),
-                      email: value.data.email.toString(),
-                    ),
-                  );
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Palette.white,
                   ),
-                  width: w * 0.98,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Recent Customers",
-                            style: context.titleMedium.copyWith(
-                              color: Palette.black,
-                            )),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Divider(
-                            color: Palette.grey,
-                            thickness: 1,
-                          ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: h * 0.01,
+            ),
+            BlocBuilder<CurrentCustomerCubit, CurrentCustomerState>(
+              builder: (context, state) {
+                return state.map(
+                  initial: (value) => const Center(
+                      child: CircularProgressIndicator(
+                    color: Palette.primary,
+                  )),
+                  loadedCurrentCustomerData: (value) => TOTCustomerCardMolecule(
+                    name: null,
+                    code: value.data.code.toString(),
+                    customerImage: value.data.customerImage.toString(),
+                    email: value.data.email.toString(),
+                  ),
+                );
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Palette.white,
+                ),
+                width: w * 0.98,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Recent Customers",
+                          style: context.titleMedium.copyWith(
+                            color: Palette.black,
+                          )),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Divider(
+                          color: Palette.grey,
+                          thickness: 1,
                         ),
-                        BlocBuilder<RecentCustomersBloc, RecentCustomersState>(
-                          builder: (context, state) {
-                            return state.maybeMap(
-                              orElse: () => const Center(
+                      ),
+                      BlocBuilder<RecentCustomersBloc, RecentCustomersState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            orElse: () => const Center(
+                                child: CircularProgressIndicator(
+                              color: Palette.primary,
+                            )),
+                            initial: (value) => const Center(
+                                child: CircularProgressIndicator(
+                              color: Palette.primary,
+                            )),
+                            loadedRecentCustomerData: (value) {
+                              if (value.customers.isEmpty &&
+                                  value.isSearching == false) {
+                                return Center(
+                                  child: Text(
+                                    "No customers found!",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
+                                  ),
+                                );
+                              }
+                              if (value.isSearching == true) {
+                                return const Center(
                                   child: CircularProgressIndicator(
-                                color: Palette.primary,
-                              )),
-                              initial: (value) => const Center(
-                                  child: CircularProgressIndicator(
-                                color: Palette.primary,
-                              )),
-                              loadedRecentCustomerData: (value) {
-                                if (value.customers.isEmpty &&
-                                    value.isSearching == false) {
-                                  return Center(
-                                    child: Text(
-                                      "No customers found!",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall,
-                                    ),
-                                  );
-                                }
-                                if (value.isSearching == true) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(
-                                      color: Palette.primary,
-                                    ),
-                                  );
-                                }
-                                return SizedBox(
-                                    height: h * 0.487,
-                                    child: CustomersListMolecule(
-                                        model: value.customers));
-                              },
-                            );
-                          },
-                        )
-                      ],
-                    ),
+                                    color: Palette.primary,
+                                  ),
+                                );
+                              }
+                              return SizedBox(
+                                  height: h * 0.487,
+                                  child: CustomersListMolecule(
+                                      model: value.customers));
+                            },
+                          );
+                        },
+                      )
+                    ],
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../../data/models/response/reports/statistic_model.dart';
+import '../../../../../../data/report/model/statistic_model.dart';
 import 'pie_chart.dart';
 
 class POSPieChart extends StatefulWidget {

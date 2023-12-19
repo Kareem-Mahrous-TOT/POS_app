@@ -20,18 +20,21 @@ mixin _$ReportCostState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
+    required TResult Function(String model) loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
+    TResult? Function(String model)? loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
+    TResult Function(String model)? loadFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ReportCostState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
+    required TResult Function(String model) loadFailed,
   }) {
     return initial();
   }
@@ -123,6 +130,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
+    TResult? Function(String model)? loadFailed,
   }) {
     return initial?.call();
   }
@@ -132,6 +140,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
+    TResult Function(String model)? loadFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,6 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) {
     return initial(this);
   }
@@ -154,6 +164,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +174,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,6 +264,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
+    required TResult Function(String model) loadFailed,
   }) {
     return loadSuccess(model);
   }
@@ -261,6 +274,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
+    TResult? Function(String model)? loadFailed,
   }) {
     return loadSuccess?.call(model);
   }
@@ -270,6 +284,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
+    TResult Function(String model)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -283,6 +298,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
   }) {
     return loadSuccess(this);
   }
@@ -292,6 +308,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
   }) {
     return loadSuccess?.call(this);
   }
@@ -301,6 +318,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -316,5 +334,144 @@ abstract class _LoadSuccess implements ReportCostState {
   CostModel get model;
   @JsonKey(ignore: true)
   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadFailedImplCopyWith<$Res> {
+  factory _$$LoadFailedImplCopyWith(
+          _$LoadFailedImpl value, $Res Function(_$LoadFailedImpl) then) =
+      __$$LoadFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String model});
+}
+
+/// @nodoc
+class __$$LoadFailedImplCopyWithImpl<$Res>
+    extends _$ReportCostStateCopyWithImpl<$Res, _$LoadFailedImpl>
+    implements _$$LoadFailedImplCopyWith<$Res> {
+  __$$LoadFailedImplCopyWithImpl(
+      _$LoadFailedImpl _value, $Res Function(_$LoadFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$LoadFailedImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadFailedImpl implements _LoadFailed {
+  const _$LoadFailedImpl(this.model);
+
+  @override
+  final String model;
+
+  @override
+  String toString() {
+    return 'ReportCostState.loadFailed(model: $model)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadFailedImpl &&
+            (identical(other.model, model) || other.model == model));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, model);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
+      __$$LoadFailedImplCopyWithImpl<_$LoadFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(CostModel model) loadSuccess,
+    required TResult Function(String model) loadFailed,
+  }) {
+    return loadFailed(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(CostModel model)? loadSuccess,
+    TResult? Function(String model)? loadFailed,
+  }) {
+    return loadFailed?.call(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(CostModel model)? loadSuccess,
+    TResult Function(String model)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return loadFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return loadFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadFailed implements ReportCostState {
+  const factory _LoadFailed(final String model) = _$LoadFailedImpl;
+
+  String get model;
+  @JsonKey(ignore: true)
+  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
