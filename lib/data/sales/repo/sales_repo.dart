@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/network/failure.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../core/types/types.dart';
 import '../../../domain/sales/repo/repo.dart';
 import '../data_source/sales_data_source.dart';
 import '../model/sales_model.dart';

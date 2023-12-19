@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:tot_pos/core/usecase/usecase.dart';
 import 'package:tot_pos/domain/orders/repo/orders_repo_base.dart';
 
+import '../../../core/types/types.dart';
 import '../entities/order_entity.dart';
 
 class GetOrdersUseCase
