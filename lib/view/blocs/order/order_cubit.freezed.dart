@@ -1,561 +1,561 @@
-// coverage:ignore-file
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// // coverage:ignore-file
+// // GENERATED CODE - DO NOT MODIFY BY HAND
+// // ignore_for_file: type=lint
+// // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'order_cubit.dart';
+// part of 'order_cubit.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
+// // **************************************************************************
+// // FreezedGenerator
+// // **************************************************************************
 
-T _$identity<T>(T value) => value;
+// T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+// final _privateConstructorUsedError = UnsupportedError(
+//     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/// @nodoc
-mixin _$OrderState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)
-        loadSuccess,
-    required TResult Function(String message) loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult? Function(String message)? loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult Function(String message)? loadFailed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
+// /// @nodoc
+// mixin _$OrderState {
+//   @optionalTypeArgs
+//   TResult when<TResult extends Object?>({
+//     required TResult Function() initial,
+//     required TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)
+//         loadSuccess,
+//     required TResult Function(String message) loadFailed,
+//   }) =>
+//       throw _privateConstructorUsedError;
+//   @optionalTypeArgs
+//   TResult? whenOrNull<TResult extends Object?>({
+//     TResult? Function()? initial,
+//     TResult? Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult? Function(String message)? loadFailed,
+//   }) =>
+//       throw _privateConstructorUsedError;
+//   @optionalTypeArgs
+//   TResult maybeWhen<TResult extends Object?>({
+//     TResult Function()? initial,
+//     TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult Function(String message)? loadFailed,
+//     required TResult orElse(),
+//   }) =>
+//       throw _privateConstructorUsedError;
+//   @optionalTypeArgs
+//   TResult map<TResult extends Object?>({
+//     required TResult Function(_Initial value) initial,
+//     required TResult Function(_LoadSuccess value) loadSuccess,
+//     required TResult Function(_LoadFailed value) loadFailed,
+//   }) =>
+//       throw _privateConstructorUsedError;
+//   @optionalTypeArgs
+//   TResult? mapOrNull<TResult extends Object?>({
+//     TResult? Function(_Initial value)? initial,
+//     TResult? Function(_LoadSuccess value)? loadSuccess,
+//     TResult? Function(_LoadFailed value)? loadFailed,
+//   }) =>
+//       throw _privateConstructorUsedError;
+//   @optionalTypeArgs
+//   TResult maybeMap<TResult extends Object?>({
+//     TResult Function(_Initial value)? initial,
+//     TResult Function(_LoadSuccess value)? loadSuccess,
+//     TResult Function(_LoadFailed value)? loadFailed,
+//     required TResult orElse(),
+//   }) =>
+//       throw _privateConstructorUsedError;
+// }
 
-/// @nodoc
-abstract class $OrderStateCopyWith<$Res> {
-  factory $OrderStateCopyWith(
-          OrderState value, $Res Function(OrderState) then) =
-      _$OrderStateCopyWithImpl<$Res, OrderState>;
-}
+// /// @nodoc
+// abstract class $OrderStateCopyWith<$Res> {
+//   factory $OrderStateCopyWith(
+//           OrderState value, $Res Function(OrderState) then) =
+//       _$OrderStateCopyWithImpl<$Res, OrderState>;
+// }
 
-/// @nodoc
-class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
-    implements $OrderStateCopyWith<$Res> {
-  _$OrderStateCopyWithImpl(this._value, this._then);
+// /// @nodoc
+// class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
+//     implements $OrderStateCopyWith<$Res> {
+//   _$OrderStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
+//   // ignore: unused_field
+//   final $Val _value;
+//   // ignore: unused_field
+//   final $Res Function($Val) _then;
+// }
 
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
+// /// @nodoc
+// abstract class _$$InitialImplCopyWith<$Res> {
+//   factory _$$InitialImplCopyWith(
+//           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+//       __$$InitialImplCopyWithImpl<$Res>;
+// }
 
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
+// /// @nodoc
+// class __$$InitialImplCopyWithImpl<$Res>
+//     extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
+//     implements _$$InitialImplCopyWith<$Res> {
+//   __$$InitialImplCopyWithImpl(
+//       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+//       : super(_value, _then);
+// }
 
-/// @nodoc
+// /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  _$InitialImpl();
+// class _$InitialImpl implements _Initial {
+//   _$InitialImpl();
 
-  @override
-  String toString() {
-    return 'OrderState.initial()';
-  }
+//   @override
+//   String toString() {
+//     return 'OrderState.initial()';
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)
-        loadSuccess,
-    required TResult Function(String message) loadFailed,
-  }) {
-    return initial();
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult when<TResult extends Object?>({
+//     required TResult Function() initial,
+//     required TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)
+//         loadSuccess,
+//     required TResult Function(String message) loadFailed,
+//   }) {
+//     return initial();
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult? Function(String message)? loadFailed,
-  }) {
-    return initial?.call();
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? whenOrNull<TResult extends Object?>({
+//     TResult? Function()? initial,
+//     TResult? Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult? Function(String message)? loadFailed,
+//   }) {
+//     return initial?.call();
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult Function(String message)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeWhen<TResult extends Object?>({
+//     TResult Function()? initial,
+//     TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult Function(String message)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (initial != null) {
+//       return initial();
+//     }
+//     return orElse();
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return initial(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult map<TResult extends Object?>({
+//     required TResult Function(_Initial value) initial,
+//     required TResult Function(_LoadSuccess value) loadSuccess,
+//     required TResult Function(_LoadFailed value) loadFailed,
+//   }) {
+//     return initial(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return initial?.call(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? mapOrNull<TResult extends Object?>({
+//     TResult? Function(_Initial value)? initial,
+//     TResult? Function(_LoadSuccess value)? loadSuccess,
+//     TResult? Function(_LoadFailed value)? loadFailed,
+//   }) {
+//     return initial?.call(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeMap<TResult extends Object?>({
+//     TResult Function(_Initial value)? initial,
+//     TResult Function(_LoadSuccess value)? loadSuccess,
+//     TResult Function(_LoadFailed value)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (initial != null) {
+//       return initial(this);
+//     }
+//     return orElse();
+//   }
+// }
 
-abstract class _Initial implements OrderState {
-  factory _Initial() = _$InitialImpl;
-}
+// abstract class _Initial implements OrderState {
+//   factory _Initial() = _$InitialImpl;
+// }
 
-/// @nodoc
-abstract class _$$LoadSuccessImplCopyWith<$Res> {
-  factory _$$LoadSuccessImplCopyWith(
-          _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
-      __$$LoadSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {List<CustomerOrderResult>? newOrder,
-      List<CustomerOrderResult>? processing,
-      List<CustomerOrderResult>? completed,
-      List<CustomerOrderResult>? wrong,
-      List<CustomerOrderResult>? accepted});
-}
+// /// @nodoc
+// abstract class _$$LoadSuccessImplCopyWith<$Res> {
+//   factory _$$LoadSuccessImplCopyWith(
+//           _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
+//       __$$LoadSuccessImplCopyWithImpl<$Res>;
+//   @useResult
+//   $Res call(
+//       {List<CustomerOrderResult>? newOrder,
+//       List<CustomerOrderResult>? processing,
+//       List<CustomerOrderResult>? completed,
+//       List<CustomerOrderResult>? wrong,
+//       List<CustomerOrderResult>? accepted});
+// }
 
-/// @nodoc
-class __$$LoadSuccessImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$LoadSuccessImpl>
-    implements _$$LoadSuccessImplCopyWith<$Res> {
-  __$$LoadSuccessImplCopyWithImpl(
-      _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
-      : super(_value, _then);
+// /// @nodoc
+// class __$$LoadSuccessImplCopyWithImpl<$Res>
+//     extends _$OrderStateCopyWithImpl<$Res, _$LoadSuccessImpl>
+//     implements _$$LoadSuccessImplCopyWith<$Res> {
+//   __$$LoadSuccessImplCopyWithImpl(
+//       _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
+//       : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? newOrder = freezed,
-    Object? processing = freezed,
-    Object? completed = freezed,
-    Object? wrong = freezed,
-    Object? accepted = freezed,
-  }) {
-    return _then(_$LoadSuccessImpl(
-      newOrder: freezed == newOrder
-          ? _value.newOrder
-          : newOrder // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOrderResult>?,
-      processing: freezed == processing
-          ? _value.processing
-          : processing // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOrderResult>?,
-      completed: freezed == completed
-          ? _value.completed
-          : completed // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOrderResult>?,
-      wrong: freezed == wrong
-          ? _value.wrong
-          : wrong // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOrderResult>?,
-      accepted: freezed == accepted
-          ? _value.accepted
-          : accepted // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOrderResult>?,
-    ));
-  }
-}
+//   @pragma('vm:prefer-inline')
+//   @override
+//   $Res call({
+//     Object? newOrder = freezed,
+//     Object? processing = freezed,
+//     Object? completed = freezed,
+//     Object? wrong = freezed,
+//     Object? accepted = freezed,
+//   }) {
+//     return _then(_$LoadSuccessImpl(
+//       newOrder: freezed == newOrder
+//           ? _value.newOrder
+//           : newOrder // ignore: cast_nullable_to_non_nullable
+//               as List<CustomerOrderResult>?,
+//       processing: freezed == processing
+//           ? _value.processing
+//           : processing // ignore: cast_nullable_to_non_nullable
+//               as List<CustomerOrderResult>?,
+//       completed: freezed == completed
+//           ? _value.completed
+//           : completed // ignore: cast_nullable_to_non_nullable
+//               as List<CustomerOrderResult>?,
+//       wrong: freezed == wrong
+//           ? _value.wrong
+//           : wrong // ignore: cast_nullable_to_non_nullable
+//               as List<CustomerOrderResult>?,
+//       accepted: freezed == accepted
+//           ? _value.accepted
+//           : accepted // ignore: cast_nullable_to_non_nullable
+//               as List<CustomerOrderResult>?,
+//     ));
+//   }
+// }
 
-/// @nodoc
+// /// @nodoc
 
-class _$LoadSuccessImpl implements _LoadSuccess {
-  _$LoadSuccessImpl(
-      {this.newOrder,
-      this.processing,
-      this.completed,
-      this.wrong,
-      this.accepted});
+// class _$LoadSuccessImpl implements _LoadSuccess {
+//   _$LoadSuccessImpl(
+//       {this.newOrder,
+//       this.processing,
+//       this.completed,
+//       this.wrong,
+//       this.accepted});
 
-  @override
-  List<CustomerOrderResult>? newOrder;
-  @override
-  List<CustomerOrderResult>? processing;
-  @override
-  List<CustomerOrderResult>? completed;
-  @override
-  List<CustomerOrderResult>? wrong;
-  @override
-  List<CustomerOrderResult>? accepted;
+//   @override
+//   List<CustomerOrderResult>? newOrder;
+//   @override
+//   List<CustomerOrderResult>? processing;
+//   @override
+//   List<CustomerOrderResult>? completed;
+//   @override
+//   List<CustomerOrderResult>? wrong;
+//   @override
+//   List<CustomerOrderResult>? accepted;
 
-  @override
-  String toString() {
-    return 'OrderState.loadSuccess(newOrder: $newOrder, processing: $processing, completed: $completed, wrong: $wrong, accepted: $accepted)';
-  }
+//   @override
+//   String toString() {
+//     return 'OrderState.loadSuccess(newOrder: $newOrder, processing: $processing, completed: $completed, wrong: $wrong, accepted: $accepted)';
+//   }
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
-      __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
+//   @JsonKey(ignore: true)
+//   @override
+//   @pragma('vm:prefer-inline')
+//   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+//       __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)
-        loadSuccess,
-    required TResult Function(String message) loadFailed,
-  }) {
-    return loadSuccess(newOrder, processing, completed, wrong, accepted);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult when<TResult extends Object?>({
+//     required TResult Function() initial,
+//     required TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)
+//         loadSuccess,
+//     required TResult Function(String message) loadFailed,
+//   }) {
+//     return loadSuccess(newOrder, processing, completed, wrong, accepted);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult? Function(String message)? loadFailed,
-  }) {
-    return loadSuccess?.call(newOrder, processing, completed, wrong, accepted);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? whenOrNull<TResult extends Object?>({
+//     TResult? Function()? initial,
+//     TResult? Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult? Function(String message)? loadFailed,
+//   }) {
+//     return loadSuccess?.call(newOrder, processing, completed, wrong, accepted);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult Function(String message)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSuccess != null) {
-      return loadSuccess(newOrder, processing, completed, wrong, accepted);
-    }
-    return orElse();
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeWhen<TResult extends Object?>({
+//     TResult Function()? initial,
+//     TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult Function(String message)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (loadSuccess != null) {
+//       return loadSuccess(newOrder, processing, completed, wrong, accepted);
+//     }
+//     return orElse();
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return loadSuccess(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult map<TResult extends Object?>({
+//     required TResult Function(_Initial value) initial,
+//     required TResult Function(_LoadSuccess value) loadSuccess,
+//     required TResult Function(_LoadFailed value) loadFailed,
+//   }) {
+//     return loadSuccess(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return loadSuccess?.call(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? mapOrNull<TResult extends Object?>({
+//     TResult? Function(_Initial value)? initial,
+//     TResult? Function(_LoadSuccess value)? loadSuccess,
+//     TResult? Function(_LoadFailed value)? loadFailed,
+//   }) {
+//     return loadSuccess?.call(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSuccess != null) {
-      return loadSuccess(this);
-    }
-    return orElse();
-  }
-}
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeMap<TResult extends Object?>({
+//     TResult Function(_Initial value)? initial,
+//     TResult Function(_LoadSuccess value)? loadSuccess,
+//     TResult Function(_LoadFailed value)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (loadSuccess != null) {
+//       return loadSuccess(this);
+//     }
+//     return orElse();
+//   }
+// }
 
-abstract class _LoadSuccess implements OrderState {
-  factory _LoadSuccess(
-      {List<CustomerOrderResult>? newOrder,
-      List<CustomerOrderResult>? processing,
-      List<CustomerOrderResult>? completed,
-      List<CustomerOrderResult>? wrong,
-      List<CustomerOrderResult>? accepted}) = _$LoadSuccessImpl;
+// abstract class _LoadSuccess implements OrderState {
+//   factory _LoadSuccess(
+//       {List<CustomerOrderResult>? newOrder,
+//       List<CustomerOrderResult>? processing,
+//       List<CustomerOrderResult>? completed,
+//       List<CustomerOrderResult>? wrong,
+//       List<CustomerOrderResult>? accepted}) = _$LoadSuccessImpl;
 
-  List<CustomerOrderResult>? get newOrder;
-  set newOrder(List<CustomerOrderResult>? value);
-  List<CustomerOrderResult>? get processing;
-  set processing(List<CustomerOrderResult>? value);
-  List<CustomerOrderResult>? get completed;
-  set completed(List<CustomerOrderResult>? value);
-  List<CustomerOrderResult>? get wrong;
-  set wrong(List<CustomerOrderResult>? value);
-  List<CustomerOrderResult>? get accepted;
-  set accepted(List<CustomerOrderResult>? value);
-  @JsonKey(ignore: true)
-  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+//   List<CustomerOrderResult>? get newOrder;
+//   set newOrder(List<CustomerOrderResult>? value);
+//   List<CustomerOrderResult>? get processing;
+//   set processing(List<CustomerOrderResult>? value);
+//   List<CustomerOrderResult>? get completed;
+//   set completed(List<CustomerOrderResult>? value);
+//   List<CustomerOrderResult>? get wrong;
+//   set wrong(List<CustomerOrderResult>? value);
+//   List<CustomerOrderResult>? get accepted;
+//   set accepted(List<CustomerOrderResult>? value);
+//   @JsonKey(ignore: true)
+//   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+//       throw _privateConstructorUsedError;
+// }
 
-/// @nodoc
-abstract class _$$LoadFailedImplCopyWith<$Res> {
-  factory _$$LoadFailedImplCopyWith(
-          _$LoadFailedImpl value, $Res Function(_$LoadFailedImpl) then) =
-      __$$LoadFailedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
+// /// @nodoc
+// abstract class _$$LoadFailedImplCopyWith<$Res> {
+//   factory _$$LoadFailedImplCopyWith(
+//           _$LoadFailedImpl value, $Res Function(_$LoadFailedImpl) then) =
+//       __$$LoadFailedImplCopyWithImpl<$Res>;
+//   @useResult
+//   $Res call({String message});
+// }
 
-/// @nodoc
-class __$$LoadFailedImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$LoadFailedImpl>
-    implements _$$LoadFailedImplCopyWith<$Res> {
-  __$$LoadFailedImplCopyWithImpl(
-      _$LoadFailedImpl _value, $Res Function(_$LoadFailedImpl) _then)
-      : super(_value, _then);
+// /// @nodoc
+// class __$$LoadFailedImplCopyWithImpl<$Res>
+//     extends _$OrderStateCopyWithImpl<$Res, _$LoadFailedImpl>
+//     implements _$$LoadFailedImplCopyWith<$Res> {
+//   __$$LoadFailedImplCopyWithImpl(
+//       _$LoadFailedImpl _value, $Res Function(_$LoadFailedImpl) _then)
+//       : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$LoadFailedImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
+//   @pragma('vm:prefer-inline')
+//   @override
+//   $Res call({
+//     Object? message = null,
+//   }) {
+//     return _then(_$LoadFailedImpl(
+//       null == message
+//           ? _value.message
+//           : message // ignore: cast_nullable_to_non_nullable
+//               as String,
+//     ));
+//   }
+// }
 
-/// @nodoc
+// /// @nodoc
 
-class _$LoadFailedImpl implements _LoadFailed {
-  _$LoadFailedImpl(this.message);
+// class _$LoadFailedImpl implements _LoadFailed {
+//   _$LoadFailedImpl(this.message);
 
-  @override
-  String message;
+//   @override
+//   String message;
 
-  @override
-  String toString() {
-    return 'OrderState.loadFailed(message: $message)';
-  }
+//   @override
+//   String toString() {
+//     return 'OrderState.loadFailed(message: $message)';
+//   }
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
-      __$$LoadFailedImplCopyWithImpl<_$LoadFailedImpl>(this, _$identity);
+//   @JsonKey(ignore: true)
+//   @override
+//   @pragma('vm:prefer-inline')
+//   _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
+//       __$$LoadFailedImplCopyWithImpl<_$LoadFailedImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)
-        loadSuccess,
-    required TResult Function(String message) loadFailed,
-  }) {
-    return loadFailed(message);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult when<TResult extends Object?>({
+//     required TResult Function() initial,
+//     required TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)
+//         loadSuccess,
+//     required TResult Function(String message) loadFailed,
+//   }) {
+//     return loadFailed(message);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult? Function(String message)? loadFailed,
-  }) {
-    return loadFailed?.call(message);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? whenOrNull<TResult extends Object?>({
+//     TResult? Function()? initial,
+//     TResult? Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult? Function(String message)? loadFailed,
+//   }) {
+//     return loadFailed?.call(message);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(
-            List<CustomerOrderResult>? newOrder,
-            List<CustomerOrderResult>? processing,
-            List<CustomerOrderResult>? completed,
-            List<CustomerOrderResult>? wrong,
-            List<CustomerOrderResult>? accepted)?
-        loadSuccess,
-    TResult Function(String message)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadFailed != null) {
-      return loadFailed(message);
-    }
-    return orElse();
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeWhen<TResult extends Object?>({
+//     TResult Function()? initial,
+//     TResult Function(
+//             List<CustomerOrderResult>? newOrder,
+//             List<CustomerOrderResult>? processing,
+//             List<CustomerOrderResult>? completed,
+//             List<CustomerOrderResult>? wrong,
+//             List<CustomerOrderResult>? accepted)?
+//         loadSuccess,
+//     TResult Function(String message)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (loadFailed != null) {
+//       return loadFailed(message);
+//     }
+//     return orElse();
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return loadFailed(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult map<TResult extends Object?>({
+//     required TResult Function(_Initial value) initial,
+//     required TResult Function(_LoadSuccess value) loadSuccess,
+//     required TResult Function(_LoadFailed value) loadFailed,
+//   }) {
+//     return loadFailed(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return loadFailed?.call(this);
-  }
+//   @override
+//   @optionalTypeArgs
+//   TResult? mapOrNull<TResult extends Object?>({
+//     TResult? Function(_Initial value)? initial,
+//     TResult? Function(_LoadSuccess value)? loadSuccess,
+//     TResult? Function(_LoadFailed value)? loadFailed,
+//   }) {
+//     return loadFailed?.call(this);
+//   }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadFailed != null) {
-      return loadFailed(this);
-    }
-    return orElse();
-  }
-}
+//   @override
+//   @optionalTypeArgs
+//   TResult maybeMap<TResult extends Object?>({
+//     TResult Function(_Initial value)? initial,
+//     TResult Function(_LoadSuccess value)? loadSuccess,
+//     TResult Function(_LoadFailed value)? loadFailed,
+//     required TResult orElse(),
+//   }) {
+//     if (loadFailed != null) {
+//       return loadFailed(this);
+//     }
+//     return orElse();
+//   }
+// }
 
-abstract class _LoadFailed implements OrderState {
-  factory _LoadFailed(String message) = _$LoadFailedImpl;
+// abstract class _LoadFailed implements OrderState {
+//   factory _LoadFailed(String message) = _$LoadFailedImpl;
 
-  String get message;
-  set message(String value);
-  @JsonKey(ignore: true)
-  _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+//   String get message;
+//   set message(String value);
+//   @JsonKey(ignore: true)
+//   _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
+//       throw _privateConstructorUsedError;
+// }

@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
           //     ..add(const HomeEvent.loadProducts())
           //     ..add(const HomeEvent.getCustomers()),
           // ),
-          BlocProvider(create: (context) => getIt<BagCubit>()..fetch()),
+          // BlocProvider(create: (context) => getIt<BagCubit>()..fetch()),
           BlocProvider(
               create: (context) =>
                   getIt<OrdersBloc>()..add(const OrdersEvent.getOrders())),
@@ -44,7 +44,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(
               create: (context) => getIt<RecentCustomersBloc>()
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
-          BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
+          // BlocProvider(create: (context) => getIt<OrderCubit>()..loadData()),
           BlocProvider(
               create: (context) =>
                   getIt<ProductsBloc>()..add(ProductsEvent.fetch())),

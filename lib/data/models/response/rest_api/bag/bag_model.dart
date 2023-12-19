@@ -1,4 +1,4 @@
-class BagModel {
+class BagItemModel {
   final String itemName;
   final double itemPrice;
   final double itemQuantity;
@@ -6,11 +6,13 @@ class BagModel {
   final String id;
   final String code;
 
-  BagModel(
-      {required this.itemName,
-      required this.id,
-      required this.code,
-      required this.itemPrice,
-      required this.itemQuantity,
-      this.totalprice = 0});
+  BagItemModel({
+    required this.itemName,
+    required this.id,
+    required this.code,
+    required this.itemPrice,
+    required this.itemQuantity,
+    required this.totalprice,
+  });
 }
+ 

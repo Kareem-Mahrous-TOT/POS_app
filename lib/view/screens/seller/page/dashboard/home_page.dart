@@ -2,24 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../../../core/constants/store_config.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
-import '../../../../../data/models/response/bag/bag_model.dart';
-import '../../../../../data/models/response/tot_products/create_order/tot_create_order.dart';
 import '../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
-import '../../../../blocs/products/rest/bag_cubit.dart';
 import '../../../../ui_mappers/to_category_record.dart';
 import '../../components/pos/custom_appbar.dart';
-import '../../components/pos/home_components/home_exp.dart';
+import '../../components/pos/home_components/home_export.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -71,7 +66,7 @@ class HomePage extends HookWidget {
                       );
                     },
                     fetchSuccess: (records) => TOTPOSHomePageAppBar(
-                      onTap: (selectedRecord) {
+                      onCategoryChanged: (selectedRecord) {
                         context
                             .read<MenuCubit>()
                             .changeSelectedCategory(selectedRecord);
@@ -231,194 +226,209 @@ class HomePage extends HookWidget {
                         },
                       ),
                     ),
-                    // BlocConsumer<ProductsBloc, ProductsState>(
-                    BlocConsumer<BagCubit, BagState>(
-                      listener: (context, state) => state.maybeMap(
-                        orElse: () {
-                          return null;
-                        },
-                        empty: (value) =>
-                            ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Center(
-                              child: Text(
-                                value.message.toString(),
-                              ),
-                            ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 370.w,
+                        color: Palette.white,
+                        height: 500.h,
+                        child: Center(
+                          child: Text(
+                            "The bag is empty",
+                            style: context.titleMedium
+                                .copyWith(color: Palette.grey),
                           ),
                         ),
                       ),
-                      builder: (context, state) {
-                        return state.maybeMap(
-                          orElse: () {
-                            return Container(
-                              color: Colors.orange,
-                              width: 100,
-                              height: 100,
-                            );
-                          },
-                          empty: (value) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: 370.w,
-                                color: Palette.white,
-                                height: 500.h,
-                                child: Center(
-                                  child: Text(
-                                    "The bag is empty",
-                                    style: context.titleMedium
-                                        .copyWith(color: Palette.grey),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                          initial: (value) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: w * 0.31,
-                                color: Palette.white,
-                                height: h * 0.5,
-                                child: const Center(
-                                  child: CircularProgressIndicator(
-                                    color: Palette.primary,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                          updateList: (value) {
-                            List<OrderItem> products = [];
-                            for (int i = 0; i < value.bag.length; i++) {
-                              products.add(
-                                OrderItem(
-                                    sku: value.bag[i].code,
-                                    currency: "EGP",
-                                    price: value.bag[i].itemPrice,
-                                    productId: value.bag[i].id,
-                                    catalogId:
-                                        "0a841b7e-c732-4738-913d-9e43c054170e",
-                                    name: value.bag[i].itemName,
-                                    status: "New"),
-                              );
-                            }
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: 370.w,
-                                color: Palette.white,
-                                height: 500.h,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    SizedBox(
-                                      height: 350.h,
-                                      child: ListView.builder(
-                                        itemCount: value.bag.length,
-                                        itemBuilder: (context, index) {
-                                          BagModel item = value.bag[index];
-                                          return Slidable(
-                                            startActionPane: ActionPane(
-                                                motion: const ScrollMotion(),
-                                                extentRatio: 0.2,
-                                                children: [
-                                                  SlidableAction(
-                                                    autoClose: true,
-                                                    flex: 1,
-                                                    onPressed: (context) {
-                                                      context
-                                                          .read<BagCubit>()
-                                                          .clearItem(index);
-                                                    },
-                                                    backgroundColor:
-                                                        const Color(0xFFFE4A49),
-                                                    foregroundColor:
-                                                        Colors.white,
-                                                    icon: Icons.delete,
-                                                    label: 'Delete',
-                                                  ),
-                                                ]),
-                                            child: ListTile(
-                                              title: Text(item.itemName),
-                                              subtitle: Text(
-                                                  'Price: ${item.itemPrice}'),
-                                              trailing: Text(
-                                                  'Quantity: ${item.itemQuantity}'),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Total Price: ${value.totalPrice.toString()}',
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          TotButtonAtom(
-                                            backgroundColor: Palette.primary,
-                                            text: "Checkout",
-                                            onPressed: () {
-                                              if (formKey.currentState!
-                                                  .validate()) {
-                                                context
-                                                    .read<BagCubit>()
-                                                    .checkout(
-                                                        storeId:
-                                                            StoreConfig.storeId,
-                                                        storeName: "alkhbaz",
-                                                        isApproved: false,
-                                                        status: "New",
-                                                        currency: "EGP",
-                                                        items: products);
-                                                if (context.mounted) {
-                                                  // context
-                                                  // .read<OrderCubit>()
-                                                  // .loadData();
-                                                }
-                                              }
-                                            },
-                                            textStyle: context.titleMedium
-                                                .copyWith(color: Palette.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: TotButtonAtom(
-                                          backgroundColor: Palette.orange,
-                                          text: "Clear list",
-                                          onPressed: () {
-                                            context
-                                                .read<BagCubit>()
-                                                .clearList();
-                                          },
-                                          textStyle: context.titleMedium
-                                              .copyWith(color: Palette.black),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                    )
+                    // BlocConsumer<ProductsBloc, ProductsState>(
+                    // BlocConsumer<BagCubit, BagState>(
+                    //   listener: (context, state) => state.maybeMap(
+                    //     orElse: () {
+                    //       return null;
+                    //     },
+                    //     empty: (value) =>
+                    //         ScaffoldMessenger.of(context).showSnackBar(
+                    //       SnackBar(
+                    //         content: Center(
+                    //           child: Text(
+                    //             value.message.toString(),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   builder: (context, state) {
+                    //     return state.maybeMap(
+                    //       orElse: () {
+                    //         return Container(
+                    //           color: Colors.orange,
+                    //           width: 100,
+                    //           height: 100,
+                    //         );
+                    //       },
+                    //       empty: (value) {
+                    //         return Padding(
+                    //           padding: const EdgeInsets.all(8.0),
+                    //           child: Container(
+                    //             width: 370.w,
+                    //             color: Palette.white,
+                    //             height: 500.h,
+                    //             child: Center(
+                    //               child: Text(
+                    //                 "The bag is empty",
+                    //                 style: context.titleMedium
+                    //                     .copyWith(color: Palette.grey),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //       initial: (value) {
+                    //         return Padding(
+                    //           padding: const EdgeInsets.all(8.0),
+                    //           child: Container(
+                    //             width: w * 0.31,
+                    //             color: Palette.white,
+                    //             height: h * 0.5,
+                    //             child: const Center(
+                    //               child: CircularProgressIndicator(
+                    //                 color: Palette.primary,
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //       updateList: (value) {
+                    //         List<OrderItem> products = [];
+                    //         for (int i = 0; i < value.bag.length; i++) {
+                    //           products.add(
+                    //             OrderItem(
+                    //                 sku: value.bag[i].code,
+                    //                 currency: "EGP",
+                    //                 price: value.bag[i].itemPrice,
+                    //                 productId: value.bag[i].id,
+                    //                 catalogId:
+                    //                     "0a841b7e-c732-4738-913d-9e43c054170e",
+                    //                 name: value.bag[i].itemName,
+                    //                 status: "New"),
+                    //           );
+                    //         }
+                    //         return Padding(
+                    //           padding: const EdgeInsets.all(8.0),
+                    //           child: Container(
+                    //             width: 370.w,
+                    //             color: Palette.white,
+                    //             height: 500.h,
+                    //             child: Column(
+                    //               mainAxisAlignment:
+                    //                   MainAxisAlignment.spaceEvenly,
+                    //               children: [
+                    //                 SizedBox(
+                    //                   height: 350.h,
+                    //                   child: ListView.builder(
+                    //                     itemCount: value.bag.length,
+                    //                     itemBuilder: (context, index) {
+                    //                       BagModel item = value.bag[index];
+                    //                       return Slidable(
+                    //                         startActionPane: ActionPane(
+                    //                             motion: const ScrollMotion(),
+                    //                             extentRatio: 0.2,
+                    //                             children: [
+                    //                               SlidableAction(
+                    //                                 autoClose: true,
+                    //                                 flex: 1,
+                    //                                 onPressed: (context) {
+                    //                                   context
+                    //                                       .read<BagCubit>()
+                    //                                       .clearItem(index);
+                    //                                 },
+                    //                                 backgroundColor:
+                    //                                     const Color(0xFFFE4A49),
+                    //                                 foregroundColor:
+                    //                                     Colors.white,
+                    //                                 icon: Icons.delete,
+                    //                                 label: 'Delete',
+                    //                               ),
+                    //                             ]),
+                    //                         child: ListTile(
+                    //                           title: Text(item.itemName),
+                    //                           subtitle: Text(
+                    //                               'Price: ${item.itemPrice}'),
+                    //                           trailing: Text(
+                    //                               'Quantity: ${item.itemQuantity}'),
+                    //                         ),
+                    //                       );
+                    //                     },
+                    //                   ),
+                    //                 ),
+                    //                 Padding(
+                    //                   padding: const EdgeInsets.all(10.0),
+                    //                   child: Row(
+                    //                     mainAxisAlignment:
+                    //                         MainAxisAlignment.spaceBetween,
+                    //                     children: [
+                    //                       Text(
+                    //                         'Total Price: ${value.totalPrice.toString()}',
+                    //                         style: const TextStyle(
+                    //                             fontSize: 18,
+                    //                             fontWeight: FontWeight.bold),
+                    //                       ),
+                    //                       TotButtonAtom(
+                    //                         backgroundColor: Palette.primary,
+                    //                         text: "Checkout",
+                    //                         onPressed: () {
+                    //                           if (formKey.currentState!
+                    //                               .validate()) {
+                    //                             context
+                    //                                 .read<BagCubit>()
+                    //                                 .checkout(
+                    //                                     storeId:
+                    //                                         StoreConfig.storeId,
+                    //                                     storeName: "alkhbaz",
+                    //                                     isApproved: false,
+                    //                                     status: "New",
+                    //                                     currency: "EGP",
+                    //                                     items: products);
+                    //                             if (context.mounted) {
+                    //                               // context
+                    //                               // .read<OrderCubit>()
+                    //                               // .loadData();
+                    //                             }
+                    //                           }
+                    //                         },
+                    //                         textStyle: context.titleMedium
+                    //                             .copyWith(color: Palette.white),
+                    //                       ),
+                    //                     ],
+                    //                   ),
+                    //                 ),
+                    //                 Align(
+                    //                   alignment: Alignment.centerLeft,
+                    //                   child: Padding(
+                    //                     padding:
+                    //                         const EdgeInsets.only(left: 8.0),
+                    //                     child: TotButtonAtom(
+                    //                       backgroundColor: Palette.orange,
+                    //                       text: "Clear list",
+                    //                       onPressed: () {
+                    //                         context
+                    //                             .read<BagCubit>()
+                    //                             .clearList();
+                    //                       },
+                    //                       textStyle: context.titleMedium
+                    //                           .copyWith(color: Palette.black),
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //           ),
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    // ),
                   ],
                 ),
               ],
