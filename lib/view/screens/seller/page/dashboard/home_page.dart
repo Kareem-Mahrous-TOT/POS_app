@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
@@ -15,6 +14,7 @@ import '../../../../blocs/products/products_bloc.dart';
 import '../../../../ui_mappers/to_category_record.dart';
 import '../../components/pos/custom_appbar.dart';
 import '../../components/pos/home_components/home_export.dart';
+import '../../components/pos/home_components/src/bag_organism.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -226,21 +226,27 @@ class HomePage extends HookWidget {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 370.w,
-                        color: Palette.white,
-                        height: 500.h,
-                        child: Center(
-                          child: Text(
-                            "The bag is empty",
-                            style: context.titleMedium
-                                .copyWith(color: Palette.grey),
-                          ),
-                        ),
-                      ),
-                    )
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Container(
+                    //     width: 370.w,
+                    //     color: Palette.white,
+                    //     height: 500.h,
+                    //     child: Center(
+                    //       child: Text(
+                    //         "The bag is empty",
+                    //         style: context.titleMedium
+                    //             .copyWith(color: Palette.grey),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // )
+                    BagOrganism(
+                      items: const [],
+                      onCheckout: () {},
+                      onClearList: () {},
+                      onSlide: () {},
+                    ),
                     // BlocConsumer<ProductsBloc, ProductsState>(
                     // BlocConsumer<BagCubit, BagState>(
                     //   listener: (context, state) => state.maybeMap(

@@ -1,5 +1,5 @@
-import 'package:tot_pos/core/usecase/usecase.dart';
-
+import '../../../core/types/types.dart';
+import '../../../core/usecase/usecase.dart';
 import '../../../data/report/model/cost_model.dart';
 import '../repo/report_repo.dart';
 

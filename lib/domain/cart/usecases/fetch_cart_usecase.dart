@@ -1,6 +1,6 @@
-import 'package:tot_pos/core/usecase/usecase.dart';
-import 'package:tot_pos/data/cart/models/graph_create_cart_model.dart';
-
+import '../../../core/types/types.dart';
+import '../../../core/usecase/usecase.dart';
+import '../../../data/cart/models/graph_create_cart_model.dart';
 import '../repo/cart_repo.dart';
 
 class FetchCartUsecase
