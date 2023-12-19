@@ -13,8 +13,8 @@ class SalesDataSourceImpl implements SalesDataSource {
   Future<SalesModel> fetchSales() async {
     final response = await rootBundle.loadString("assets/sales_history.json");
 
-    final jsonData = jsonDecode(response);
+    final Map<String, dynamic> jsonData = jsonDecode(response);
 
-    return jsonData;
+    return SalesModel.fromJson(jsonData);
   }
 }

@@ -49,7 +49,6 @@ class _ReportsPageState extends State<ReportsPage> {
           initialIndex: 2,
           length: tabs.length,
           child: SizedBox(
-            width: w * 0.95,
             height: h * 0.93,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +74,7 @@ class _ReportsPageState extends State<ReportsPage> {
                         borderRadius: BorderRadius.circular(10),
                         color: Palette.white,
                       ),
-                      width: w * 0.8,
+                      width: w * 0.9,
                       child: TabBar(
                         indicatorSize: TabBarIndicatorSize.tab,
                         indicatorColor: Palette.primary,
@@ -127,6 +126,9 @@ class ReportTab extends StatelessWidget {
                       color: Palette.primary,
                     ),
                   );
+                },
+                loadFailed: (value) {
+                  return Center(child: Text(value.model));
                 },
                 loadSuccess: (value) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -191,6 +193,9 @@ class ReportTab extends StatelessWidget {
                     color: Palette.primary,
                   ),
                 ),
+                loadFailed: (value) {
+                  return Center(child: Text(value.message));
+                },
                 loadSuccess: (value) => SizedBox(
                   width: w * 0.9,
                   height: h * 0.55,

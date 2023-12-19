@@ -1,16 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../data/models/response/reports/cost_model.dart';
-import '../../../../data/repository/impl/report_repo.dart';
+import 'package:tot_pos/core/usecase/usecase.dart';
+
+import '../../../../data/report/model/cost_model.dart';
+import '../../../../domain/reports/usecase/report_cost_usecase.dart';
 
 part 'report_cost_cubit.freezed.dart';
 part 'report_cost_state.dart';
 
 class ReportCostCubit extends Cubit<ReportCostState> {
-  ReportCostCubit() : super(const _Initial());
-
+  ReportCostCubit({
+    required ReportCostUsecase costUsecase,
+  })  : _costUsecase = costUsecase,
+        super(const _Initial());
+  final ReportCostUsecase _costUsecase;
   loadData() async {
-    final data = await ReportRepo().fetchCost();
-    emit(_LoadSuccess(data));
+    final data = await _costUsecase.call(NoParams());
+    data.fold((failure) => emit(ReportCostState.loadFailed(failure.message)),
+        (model) => emit(ReportCostState.loadSuccess(model)));
   }
 }

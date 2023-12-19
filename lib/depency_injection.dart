@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/data/report/repo/report_repo_impl.dart';
 import 'package:tot_pos/domain/cart/usecases/remove_cart_usecase.dart';
+import 'package:tot_pos/domain/reports/usecase/report_cost_usecase.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -20,12 +22,12 @@ import 'data/orders/data_source/remote_data_source.dart';
 import 'data/orders/repo/orders_repo_impl.dart';
 import 'data/products/data_sources/remote_data_source.dart';
 import 'data/products/repo/products_repo_impl.dart';
+import 'data/report/data_source/local_data_source.dart';
 import 'data/repository/base/customers_rep_base.dart';
 import 'data/repository/base/order_repo_base.dart';
 import 'data/repository/base/user_address_repo_base.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
 import 'data/repository/impl/order_repo.dart';
-import 'data/repository/impl/report_repo.dart';
 import 'data/repository/impl/user_address_repo_impl.dart';
 import 'data/sales/data_source/sales_data_source.dart';
 import 'data/sales/repo/sales_repo.dart';
@@ -51,6 +53,8 @@ import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
+import 'domain/reports/repo/report_repo.dart';
+import 'domain/reports/usecase/pie_chart_usecase.dart';
 import 'domain/sales/repo/repo.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
@@ -101,6 +105,8 @@ Future<void> getItInit() async {
       OrdersLocalDataSourceImpl(preferences: getIt()));
   //? sales
   getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
+  //? report
+  getIt.registerSingleton<ReportLocalDataSource>(ReportLocalDataSourceImpl());
   //? cart
   getIt.registerSingleton<CartLocalDataSource>(
       CartLocalDataSourceImpl(sharedPrefs: getIt()));
@@ -121,7 +127,8 @@ Future<void> getItInit() async {
     localDataSource: getIt(),
   ));
   getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
-  getIt.registerSingleton<ReportRepo>(ReportRepo());
+  getIt.registerSingleton<ReportRepo>(
+      ReportRepoImpl(reportLocalDataSource: getIt()));
   getIt.registerSingleton<CustomersRepoBase>(
       CustomersRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
@@ -134,6 +141,7 @@ Future<void> getItInit() async {
   ));
 
   //usecase
+  //? auth
   getIt.registerLazySingleton<LoginUsecase>(
       () => LoginUsecase(authRepo: getIt()));
   getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
@@ -143,6 +151,11 @@ Future<void> getItInit() async {
       () => GetProductsUsecase(productsRepo: getIt()));
   getIt.registerLazySingleton<GetProductByIdUsecase>(
       () => GetProductByIdUsecase(productsRepo: getIt()));
+  //? reports
+  getIt.registerLazySingleton<PieChartUsecase>(
+      () => PieChartUsecase(reportRepo: getIt()));
+  getIt.registerLazySingleton<ReportCostUsecase>(
+      () => ReportCostUsecase(reportRepo: getIt()));
   //? orders
   getIt.registerLazySingleton<GetOrdersUseCase>(
       () => GetOrdersUseCase(ordersRepo: getIt()));
@@ -189,8 +202,10 @@ Future<void> getItInit() async {
       .registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(getIt()));
   getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
-  getIt.registerFactory<ReportChartPieCubit>(() => ReportChartPieCubit());
-  getIt.registerFactory<ReportCostCubit>(() => ReportCostCubit());
+  getIt.registerFactory<ReportChartPieCubit>(
+      () => ReportChartPieCubit(pieChartUsecase: getIt()));
+  getIt.registerFactory<ReportCostCubit>(
+      () => ReportCostCubit(costUsecase: getIt()));
   getIt.registerFactory<MenuCubit>(
       () => MenuCubit(fetchMenuCategoriesUsecase: getIt()));
   getIt.registerFactory<OrdersBloc>(() => OrdersBloc(getOrderUseCase: getIt()));
