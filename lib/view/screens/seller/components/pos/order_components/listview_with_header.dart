@@ -23,6 +23,7 @@ class _TOTListViewWithHeaderOrganismState
     extends State<TOTListViewWithHeaderOrganism> {
   List<String> statuses = [
     "New",
+    "Processing",
     "Accepted",
     "Prepared",
     "Completed",
@@ -33,6 +34,7 @@ class _TOTListViewWithHeaderOrganismState
   List<Color> statusesColors = [
     Palette.yellow,
     Palette.yellow,
+    Palette.green,
     Palette.green,
     Palette.green,
     Palette.green,

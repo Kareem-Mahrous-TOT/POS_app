@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,9 +27,25 @@ import '../../components/pos/home_components/home_exp.dart';
 class HomePage extends HookWidget {
   const HomePage({super.key});
 
+  // final ScrollController _scrollController = ScrollController();
+  // int currentPage = 1;
+  // int itemsPerPage = 8;
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
+    final controller = useTextEditingController();
+    final focusNode = useFocusNode();
+
+    useEffect(() {
+      focusNode.addListener(() {
+        if (!focusNode.hasFocus) {
+          print('TextField lost focus. Value: ${controller.text} ');
+        }
+        // print('TextField lost focus. Value: ${controller.text} ');
+      });
+      return null;
+      // return null;
+    }, [controller.text]);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -89,13 +108,6 @@ class HomePage extends HookWidget {
                           .toList(),
                       categories:
                           records.map((e) => e.toCategoryRecord()).toList(),
-                      validator: (value) {
-                        //  validator
-                        if (value == null) {
-                          return 'Please select an item.';
-                        }
-                        return null;
-                      },
                     ),
                   );
                 }),
@@ -124,6 +136,9 @@ class HomePage extends HookWidget {
                         },
                         builder: (context, state) {
                           return state.map(
+                            noItemFound: (value) => const Center(
+                              child: Text("No items found"),
+                            ),
                             loadingState: (value) {
                               return const Center(
                                 child: CircularProgressIndicator.adaptive(
@@ -176,54 +191,60 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                          onTap: (product?.variations
-                                                      ?.isNotEmpty ??
-                                                  false)
-                                              ? () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                        icon: Align(
-                                                            alignment: Alignment
-                                                                .topRight,
-                                                            child: IconButton(
-                                                                onPressed: () {
-                                                                  context.pop();
-                                                                },
-                                                                icon: const Icon(
-                                                                    Icons
-                                                                        .close))),
-                                                        content: SizedBox(
-                                                          width: w * 0.5,
-                                                          height: h * 0.6,
-                                                          child:
-                                                              POSFoodItemAlertDialog(
-                                                            id: product!.id!,
-                                                          ),
+                                        onTap: (product
+                                                    ?.variations?.isNotEmpty ??
+                                                false)
+                                            ? () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      icon: Align(
+                                                          alignment: Alignment
+                                                              .topRight,
+                                                          child: IconButton(
+                                                              onPressed: () {
+                                                                context.pop();
+                                                              },
+                                                              icon: const Icon(
+                                                                  Icons
+                                                                      .close))),
+                                                      content: SizedBox(
+                                                        width: w * 0.5,
+                                                        height: h * 0.6,
+                                                        child:
+                                                            POSFoodItemAlertDialog(
+                                                          id: product!.id!,
                                                         ),
-                                                      );
-                                                    },
-                                                  );
-                                                }
-                                              : null,
-                                          productImage:
-                                              product?.imgSrc.toString(),
-                                          productName:
-                                              product?.name.toString() == "null"
-                                                  ? "Not found"
-                                                  : product!.name.toString(),
-                                          inStock:
-                                              " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                          prodcutDescription:
-                                              "${product?.descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
-                                          price: product?.price?.actual
-                                                      ?.formattedAmount !=
-                                                  null
-                                              ? product!.price!.actual!
-                                                  .formattedAmount
-                                              : "N/A");
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            : null,
+                                        productImage:
+                                            product?.imgSrc.toString(),
+                                        productName: product?.name == null
+                                            ? "Not found"
+                                            : product!.name.toString(),
+                                        inStock:
+                                            " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                        oldPrice: (product?.price
+                                                        ?.discountPercent ??
+                                                    0) !=
+                                                0
+                                            ? product!.price!.list!
+                                                .formattedAmountWithoutPointAndCurrency
+                                            : null,
+                                        price: product?.price?.actual
+                                                    ?.formattedAmount !=
+                                                null
+                                            ? product!
+                                                .price!.actual!.formattedAmount
+                                                .toString()
+                                            : "",
+                                      );
                                     }),
                               );
                             },
@@ -290,6 +311,22 @@ class HomePage extends HookWidget {
                             );
                           },
                           updateList: (value) {
+                            List<String> discounts = [
+                              "0%",
+                              "5%",
+                              "10%",
+                              "15%",
+                              "20%",
+                              "25%",
+                            ];
+                            List<bool> selectedDiscounts = [
+                              true,
+                              false,
+                              false,
+                              false,
+                              false,
+                              false,
+                            ];
                             List<OrderItem> products = [];
                             for (int i = 0; i < value.bag.length; i++) {
                               products.add(
@@ -304,114 +341,202 @@ class HomePage extends HookWidget {
                                     status: "New"),
                               );
                             }
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: 370.w,
-                                color: Palette.white,
-                                height: 500.h,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    SizedBox(
-                                      height: 350.h,
-                                      child: ListView.builder(
-                                        itemCount: value.bag.length,
-                                        itemBuilder: (context, index) {
-                                          BagModel item = value.bag[index];
-                                          return Slidable(
-                                            startActionPane: ActionPane(
-                                                motion: const ScrollMotion(),
-                                                extentRatio: 0.2,
-                                                children: [
-                                                  SlidableAction(
-                                                    autoClose: true,
-                                                    flex: 1,
-                                                    onPressed: (context) {
-                                                      context
-                                                          .read<BagCubit>()
-                                                          .clearItem(index);
-                                                    },
-                                                    backgroundColor:
-                                                        const Color(0xFFFE4A49),
-                                                    foregroundColor:
-                                                        Colors.white,
-                                                    icon: Icons.delete,
-                                                    label: 'Delete',
-                                                  ),
-                                                ]),
-                                            child: ListTile(
-                                              title: Text(item.itemName),
-                                              subtitle: Text(
-                                                  'Price: ${item.itemPrice}'),
-                                              trailing: Text(
-                                                  'Quantity: ${item.itemQuantity}'),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Total Price: ${value.totalPrice.toString()}',
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          TotButtonAtom(
-                                            backgroundColor: Palette.primary,
-                                            text: "Checkout",
-                                            onPressed: () {
-                                              if (formKey.currentState!
-                                                  .validate()) {
-                                                context
-                                                    .read<BagCubit>()
-                                                    .checkout(
-                                                        storeId:
-                                                            StoreConfig.storeId,
-                                                        storeName: "alkhbaz",
-                                                        isApproved: false,
-                                                        status: "New",
-                                                        currency: "EGP",
-                                                        items: products);
-                                                if (context.mounted) {
-                                                  // context
-                                                  // .read<OrderCubit>()
-                                                  // .loadData();
-                                                }
-                                              }
-                                            },
-                                            textStyle: context.titleMedium
-                                                .copyWith(color: Palette.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: TotButtonAtom(
-                                          backgroundColor: Palette.orange,
-                                          text: "Clear list",
-                                          onPressed: () {
-                                            context
-                                                .read<BagCubit>()
-                                                .clearList();
+                            return SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: 370.w,
+                                  color: Palette.white,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(
+                                        height: 350.h,
+                                        child: ListView.builder(
+                                          itemCount: value.bag.length,
+                                          itemBuilder: (context, index) {
+                                            BagModel item = value.bag[index];
+                                            return Slidable(
+                                              startActionPane: ActionPane(
+                                                  motion: const ScrollMotion(),
+                                                  extentRatio: 0.2,
+                                                  children: [
+                                                    SlidableAction(
+                                                      autoClose: true,
+                                                      flex: 1,
+                                                      onPressed: (context) {
+                                                        context
+                                                            .read<BagCubit>()
+                                                            .clearItem(index);
+                                                      },
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0xFFFE4A49),
+                                                      foregroundColor:
+                                                          Colors.white,
+                                                      icon: Icons.delete,
+                                                      label: 'Delete',
+                                                    ),
+                                                  ]),
+                                              child: ListTile(
+                                                title: Text(item.itemName),
+                                                subtitle: Text(
+                                                    'Price: ${item.itemPrice}'),
+                                                trailing: Text(
+                                                    'Quantity: ${item.itemQuantity}'),
+                                              ),
+                                            );
                                           },
-                                          textStyle: context.titleMedium
-                                              .copyWith(color: Palette.black),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Center(
+                                              child: TotVariationCardMolecule<
+                                                  String>(
+                                                variations: discounts,
+                                                shrinkWrap: true,
+                                                isMasterList: selectedDiscounts,
+                                                height: 40.h,
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 1),
+                                                falseColor: Palette.white,
+                                                successColor: Palette.primary,
+                                                itemBorderColor: Colors.white,
+                                                itemOnTap: (value) {
+                                                  log("selected item is $value");
+                                                },
+                                                textList: discounts,
+                                              ),
+                                            ),
+                                            if (selectedDiscounts[0])
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  SizedBox(
+                                                    width: w * 0.1,
+                                                    child: const Divider(
+                                                      // height: 10,
+                                                      thickness: 1,
+                                                      color: Palette.black,
+                                                    ),
+                                                  ),
+                                                  const Text("Or"),
+                                                  SizedBox(
+                                                    width: w * 0.1,
+                                                    child: const Divider(
+                                                      // height: 10,
+                                                      thickness: 1,
+                                                      color: Palette.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            if (selectedDiscounts[0])
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                            if (selectedDiscounts[0])
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "Add custom discount: ",
+                                                    style: context.titleMedium,
+                                                  ),
+                                                  SizedBox(
+                                                    width: w * 0.04,
+                                                    height: h * 0.04,
+                                                    child: TextFormField(
+                                                      decoration:
+                                                          const InputDecoration(
+                                                              border:
+                                                                  OutlineInputBorder()),
+                                                      style:
+                                                          context.titleMedium,
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .digitsOnly,
+                                                        LengthLimitingTextInputFormatter(
+                                                            2),
+                                                      ],
+                                                      focusNode: focusNode,
+                                                      keyboardType:
+                                                          const TextInputType
+                                                              .numberWithOptions(
+                                                        decimal: false,
+                                                      ),
+                                                      controller: controller,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            Text(
+                                              'Total Price: ${value.totalPrice.toString()}',
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            TotButtonAtom(
+                                              backgroundColor: Palette.primary,
+                                              text: "Checkout",
+                                              onPressed: () {
+                                                if (formKey.currentState!
+                                                    .validate()) {
+                                                  context
+                                                      .read<BagCubit>()
+                                                      .checkout(
+                                                          storeId: StoreConfig
+                                                              .storeId,
+                                                          storeName: "alkhbaz",
+                                                          isApproved: false,
+                                                          status: "New",
+                                                          currency: "EGP",
+                                                          items: products);
+                                                  if (context.mounted) {
+                                                    // context
+                                                    // .read<OrderCubit>()
+                                                    // .loadData();
+                                                  }
+                                                }
+                                              },
+                                              textStyle: context.titleMedium
+                                                  .copyWith(
+                                                      color: Palette.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
+                                          child: TotButtonAtom(
+                                            backgroundColor: Palette.orange,
+                                            text: "Clear list",
+                                            onPressed: () {
+                                              context
+                                                  .read<BagCubit>()
+                                                  .clearList();
+                                            },
+                                            textStyle: context.titleMedium
+                                                .copyWith(color: Palette.black),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             );

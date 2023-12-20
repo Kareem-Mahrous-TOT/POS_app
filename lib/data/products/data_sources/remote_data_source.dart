@@ -1,8 +1,8 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../../core/constants/store_config.dart';
-import '../model/qraph_product_model.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/network/graph_config.dart';
+import '../model/qraph_product_model.dart';
 
 abstract class ProductsRemoteDataSource {
   Future<Products> getProducts({
@@ -115,15 +115,12 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     amountWithTax
                 }
-                listWithTax {
-                    amount
-                    formattedAmount
-                    formattedAmountWithoutCurrency
-                }
                 actual {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                    formattedAmountWithoutPoint
                 }
                 discountAmount {
                     amount
@@ -139,6 +136,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                    formattedAmountWithoutPoint
                 }
                 discountPercent
             }
@@ -202,7 +201,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
         fetchPolicy: FetchPolicy.noCache,
       ),
     );
-
     return Item.fromJson(response.data!["product"]);
   }
 
@@ -288,6 +286,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                         amount
                         formattedAmount
                         formattedAmountWithoutCurrency
+                        formattedAmountWithoutPointAndCurrency
+                        formattedAmountWithoutPoint
                         currency {
                             symbol
                         }
@@ -297,6 +297,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                         amount
                         formattedAmount
                         formattedAmountWithoutCurrency
+                        formattedAmountWithoutPointAndCurrency
+                        formattedAmountWithoutPoint
                         currency {
                             symbol
                         }
@@ -351,6 +353,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                    formattedAmountWithoutPoint
                     currency {
                         symbol
                     }
@@ -360,6 +364,8 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                    formattedAmountWithoutPoint
                     currency {
                         symbol
                     }

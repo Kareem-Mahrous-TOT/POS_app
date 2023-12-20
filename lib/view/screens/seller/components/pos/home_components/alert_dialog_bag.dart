@@ -153,10 +153,7 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                                             itemPrice: master
                                                 .price!.actual!.formattedAmount
                                                 .toString(),
-                                            itemQuantity: master
-                                                .availabilityData!
-                                                .availableQuantity
-                                                .toString());
+                                            itemQuantity: counter.toString());
                                         await context
                                             .read<BagCubit>()
                                             .updatedList(bag);

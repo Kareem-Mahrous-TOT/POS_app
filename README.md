@@ -10,6 +10,7 @@
     - [x] cart
     - [x] orders
     - [x] sales
+    - [x] reports
   - [ ] ui
     - [ ] add to package
 - [ ] orders

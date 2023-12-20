@@ -128,7 +128,7 @@ class ReportTab extends StatelessWidget {
                   );
                 },
                 loadFailed: (value) {
-                  return Center(child: Text(value.model));
+                  return Center(child: Text(value.message));
                 },
                 loadSuccess: (value) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

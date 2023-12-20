@@ -41,6 +41,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
       await event.when(
           started: () {},
+          fetchNextPage: () {},
           refresh: (categoryId) async {
             emit(ProductsState.loadingState());
             await fetchProducts();
