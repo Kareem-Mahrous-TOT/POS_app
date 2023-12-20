@@ -6,15 +6,14 @@ import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
 import 'depency_injection.dart';
+import 'view/blocs/bag/bag_bloc.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
-import 'view/blocs/order/order_cubit.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
-import 'view/blocs/products/rest/bag_cubit.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
@@ -38,6 +37,7 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   getIt<OrdersBloc>()..add(const OrdersEvent.getOrders())),
           BlocProvider(create: (context) => getIt<LayoutBloc>()),
+          BlocProvider(create: (context) => getIt<BagBloc>()),
           BlocProvider(
               create: (context) =>
                   getIt<CurrentCustomerCubit>()..loadCurrentCustomerData()),
