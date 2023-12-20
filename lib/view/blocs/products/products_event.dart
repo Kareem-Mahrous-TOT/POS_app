@@ -6,4 +6,5 @@ class ProductsEvent with _$ProductsEvent {
   factory ProductsEvent.fetch({String? categoryId}) = _Fetch;
   factory ProductsEvent.refresh({String? categoryId}) = _Refresh;
   factory ProductsEvent.searchList({String? query}) = _SearchList;
+    const factory ProductsEvent.fetchNextPage() = _FetchNextPage;
 }

@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +22,25 @@ import '../../components/pos/home_components/src/bag_organism.dart';
 class HomePage extends HookWidget {
   const HomePage({super.key});
 
+  // final ScrollController _scrollController = ScrollController();
+  // int currentPage = 1;
+  // int itemsPerPage = 8;
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
+    final controller = useTextEditingController();
+    final focusNode = useFocusNode();
+
+    useEffect(() {
+      focusNode.addListener(() {
+        if (!focusNode.hasFocus) {
+          print('TextField lost focus. Value: ${controller.text} ');
+        }
+        // print('TextField lost focus. Value: ${controller.text} ');
+      });
+      return null;
+      // return null;
+    }, [controller.text]);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -84,13 +103,6 @@ class HomePage extends HookWidget {
                           .toList(),
                       categories:
                           records.map((e) => e.toCategoryRecord()).toList(),
-                      validator: (value) {
-                        //  validator
-                        if (value == null) {
-                          return 'Please select an item.';
-                        }
-                        return null;
-                      },
                     ),
                   );
                 }),
@@ -119,6 +131,9 @@ class HomePage extends HookWidget {
                         },
                         builder: (context, state) {
                           return state.map(
+                            noItemFound: (value) => const Center(
+                              child: Text("No items found"),
+                            ),
                             loadingState: (value) {
                               return const Center(
                                 child: CircularProgressIndicator.adaptive(
@@ -171,54 +186,60 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                          onTap: (product?.variations
-                                                      ?.isNotEmpty ??
-                                                  false)
-                                              ? () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                        icon: Align(
-                                                            alignment: Alignment
-                                                                .topRight,
-                                                            child: IconButton(
-                                                                onPressed: () {
-                                                                  context.pop();
-                                                                },
-                                                                icon: const Icon(
-                                                                    Icons
-                                                                        .close))),
-                                                        content: SizedBox(
-                                                          width: w * 0.5,
-                                                          height: h * 0.6,
-                                                          child:
-                                                              POSFoodItemAlertDialog(
-                                                            id: product!.id!,
-                                                          ),
+                                        onTap: (product
+                                                    ?.variations?.isNotEmpty ??
+                                                false)
+                                            ? () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      icon: Align(
+                                                          alignment: Alignment
+                                                              .topRight,
+                                                          child: IconButton(
+                                                              onPressed: () {
+                                                                context.pop();
+                                                              },
+                                                              icon: const Icon(
+                                                                  Icons
+                                                                      .close))),
+                                                      content: SizedBox(
+                                                        width: w * 0.5,
+                                                        height: h * 0.6,
+                                                        child:
+                                                            POSFoodItemAlertDialog(
+                                                          id: product!.id!,
                                                         ),
-                                                      );
-                                                    },
-                                                  );
-                                                }
-                                              : null,
-                                          productImage:
-                                              product?.imgSrc.toString(),
-                                          productName:
-                                              product?.name.toString() == "null"
-                                                  ? "Not found"
-                                                  : product!.name.toString(),
-                                          inStock:
-                                              " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                          prodcutDescription:
-                                              "${product?.descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
-                                          price: product?.price?.actual
-                                                      ?.formattedAmount !=
-                                                  null
-                                              ? product!.price!.actual!
-                                                  .formattedAmount
-                                              : "N/A");
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            : null,
+                                        productImage:
+                                            product?.imgSrc.toString(),
+                                        productName: product?.name == null
+                                            ? "Not found"
+                                            : product!.name.toString(),
+                                        inStock:
+                                            " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                        oldPrice: (product?.price
+                                                        ?.discountPercent ??
+                                                    0) !=
+                                                0
+                                            ? product!.price!.list!
+                                                .formattedAmountWithoutPointAndCurrency
+                                            : null,
+                                        price: product?.price?.actual
+                                                    ?.formattedAmount !=
+                                                null
+                                            ? product!
+                                                .price!.actual!.formattedAmount
+                                                .toString()
+                                            : "",
+                                      );
                                     }),
                               );
                             },

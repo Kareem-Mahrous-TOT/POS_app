@@ -22,6 +22,7 @@ mixin _$ProductsEvent {
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ProductsEvent {
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ProductsEvent {
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ProductsEvent {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$ProductsEvent {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$ProductsEvent {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
   }) {
     return started();
   }
@@ -130,6 +137,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
   }) {
     return started?.call();
   }
@@ -141,6 +149,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -156,6 +165,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
   }) {
     return started(this);
   }
@@ -167,6 +177,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
   }) {
     return started?.call(this);
   }
@@ -178,6 +189,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -248,6 +260,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
   }) {
     return fetch(categoryId);
   }
@@ -259,6 +272,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
   }) {
     return fetch?.call(categoryId);
   }
@@ -270,6 +284,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -285,6 +300,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
   }) {
     return fetch(this);
   }
@@ -296,6 +312,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
   }) {
     return fetch?.call(this);
   }
@@ -307,6 +324,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -383,6 +401,7 @@ class _$RefreshImpl implements _Refresh {
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
   }) {
     return refresh(categoryId);
   }
@@ -394,6 +413,7 @@ class _$RefreshImpl implements _Refresh {
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
   }) {
     return refresh?.call(categoryId);
   }
@@ -405,6 +425,7 @@ class _$RefreshImpl implements _Refresh {
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -420,6 +441,7 @@ class _$RefreshImpl implements _Refresh {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
   }) {
     return refresh(this);
   }
@@ -431,6 +453,7 @@ class _$RefreshImpl implements _Refresh {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
   }) {
     return refresh?.call(this);
   }
@@ -442,6 +465,7 @@ class _$RefreshImpl implements _Refresh {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -518,6 +542,7 @@ class _$SearchListImpl implements _SearchList {
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
   }) {
     return searchList(query);
   }
@@ -529,6 +554,7 @@ class _$SearchListImpl implements _SearchList {
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
   }) {
     return searchList?.call(query);
   }
@@ -540,6 +566,7 @@ class _$SearchListImpl implements _SearchList {
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
     required TResult orElse(),
   }) {
     if (searchList != null) {
@@ -555,6 +582,7 @@ class _$SearchListImpl implements _SearchList {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
   }) {
     return searchList(this);
   }
@@ -566,6 +594,7 @@ class _$SearchListImpl implements _SearchList {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
   }) {
     return searchList?.call(this);
   }
@@ -577,6 +606,7 @@ class _$SearchListImpl implements _SearchList {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
     required TResult orElse(),
   }) {
     if (searchList != null) {
@@ -594,6 +624,117 @@ abstract class _SearchList implements ProductsEvent {
   @JsonKey(ignore: true)
   _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchNextPageImplCopyWith<$Res> {
+  factory _$$FetchNextPageImplCopyWith(
+          _$FetchNextPageImpl value, $Res Function(_$FetchNextPageImpl) then) =
+      __$$FetchNextPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchNextPageImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$FetchNextPageImpl>
+    implements _$$FetchNextPageImplCopyWith<$Res> {
+  __$$FetchNextPageImplCopyWithImpl(
+      _$FetchNextPageImpl _value, $Res Function(_$FetchNextPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchNextPageImpl implements _FetchNextPage {
+  const _$FetchNextPageImpl();
+
+  @override
+  String toString() {
+    return 'ProductsEvent.fetchNextPage()';
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
+    required TResult Function(String? query) searchList,
+    required TResult Function() fetchNextPage,
+  }) {
+    return fetchNextPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
+    TResult? Function(String? query)? searchList,
+    TResult? Function()? fetchNextPage,
+  }) {
+    return fetchNextPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
+    TResult Function(String? query)? searchList,
+    TResult Function()? fetchNextPage,
+    required TResult orElse(),
+  }) {
+    if (fetchNextPage != null) {
+      return fetchNextPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_SearchList value) searchList,
+    required TResult Function(_FetchNextPage value) fetchNextPage,
+  }) {
+    return fetchNextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_SearchList value)? searchList,
+    TResult? Function(_FetchNextPage value)? fetchNextPage,
+  }) {
+    return fetchNextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Refresh value)? refresh,
+    TResult Function(_SearchList value)? searchList,
+    TResult Function(_FetchNextPage value)? fetchNextPage,
+    required TResult orElse(),
+  }) {
+    if (fetchNextPage != null) {
+      return fetchNextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchNextPage implements ProductsEvent {
+  const factory _FetchNextPage() = _$FetchNextPageImpl;
 }
 
 /// @nodoc
@@ -622,6 +763,7 @@ mixin _$ProductsState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -648,6 +790,7 @@ mixin _$ProductsState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -674,6 +817,7 @@ mixin _$ProductsState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -683,6 +827,7 @@ mixin _$ProductsState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -691,6 +836,7 @@ mixin _$ProductsState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -699,6 +845,7 @@ mixin _$ProductsState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -773,6 +920,7 @@ class _$InitialImpl implements _Initial {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
   }) {
     return initial();
   }
@@ -802,6 +950,7 @@ class _$InitialImpl implements _Initial {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
   }) {
     return initial?.call();
   }
@@ -831,6 +980,7 @@ class _$InitialImpl implements _Initial {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -846,6 +996,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
   }) {
     return initial(this);
   }
@@ -857,6 +1008,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
   }) {
     return initial?.call(this);
   }
@@ -868,6 +1020,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -932,6 +1085,7 @@ class _$LoadingStateImpl implements _LoadingState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
   }) {
     return loadingState();
   }
@@ -961,6 +1115,7 @@ class _$LoadingStateImpl implements _LoadingState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
   }) {
     return loadingState?.call();
   }
@@ -990,6 +1145,7 @@ class _$LoadingStateImpl implements _LoadingState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
     required TResult orElse(),
   }) {
     if (loadingState != null) {
@@ -1005,6 +1161,7 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
   }) {
     return loadingState(this);
   }
@@ -1016,6 +1173,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
   }) {
     return loadingState?.call(this);
   }
@@ -1027,6 +1185,7 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
     required TResult orElse(),
   }) {
     if (loadingState != null) {
@@ -1179,6 +1338,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
   }) {
     return fetchSuccessState(products, categoryId, isSearching, records);
   }
@@ -1208,6 +1368,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
   }) {
     return fetchSuccessState?.call(products, categoryId, isSearching, records);
   }
@@ -1237,6 +1398,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
@@ -1252,6 +1414,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
   }) {
     return fetchSuccessState(this);
   }
@@ -1263,6 +1426,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
   }) {
     return fetchSuccessState?.call(this);
   }
@@ -1274,6 +1438,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
@@ -1418,6 +1583,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
   }) {
     return fetchFailState(message);
   }
@@ -1447,6 +1613,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
   }) {
     return fetchFailState?.call(message);
   }
@@ -1476,6 +1643,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
     required TResult orElse(),
   }) {
     if (fetchFailState != null) {
@@ -1491,6 +1659,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
   }) {
     return fetchFailState(this);
   }
@@ -1502,6 +1671,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
   }) {
     return fetchFailState?.call(this);
   }
@@ -1513,6 +1683,7 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
     required TResult orElse(),
   }) {
     if (fetchFailState != null) {
@@ -1530,4 +1701,169 @@ abstract class _FetchFailState implements ProductsState {
   @JsonKey(ignore: true)
   _$$FetchFailStateImplCopyWith<_$FetchFailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NoItemFoundImplCopyWith<$Res> {
+  factory _$$NoItemFoundImplCopyWith(
+          _$NoItemFoundImpl value, $Res Function(_$NoItemFoundImpl) then) =
+      __$$NoItemFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoItemFoundImplCopyWithImpl<$Res>
+    extends _$ProductsStateCopyWithImpl<$Res, _$NoItemFoundImpl>
+    implements _$$NoItemFoundImplCopyWith<$Res> {
+  __$$NoItemFoundImplCopyWithImpl(
+      _$NoItemFoundImpl _value, $Res Function(_$NoItemFoundImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoItemFoundImpl implements _NoItemFound {
+  _$NoItemFoundImpl();
+
+  @override
+  String toString() {
+    return 'ProductsState.noItemFound()';
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingState,
+    required TResult Function(
+            List<Item>? products,
+            String? categoryId,
+            bool? isSearching,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating
+                    })>?
+                records)
+        fetchSuccessState,
+    required TResult Function(String message) fetchFailState,
+    required TResult Function() noItemFound,
+  }) {
+    return noItemFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingState,
+    TResult? Function(
+            List<Item>? products,
+            String? categoryId,
+            bool? isSearching,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult? Function(String message)? fetchFailState,
+    TResult? Function()? noItemFound,
+  }) {
+    return noItemFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingState,
+    TResult Function(
+            List<Item>? products,
+            String? categoryId,
+            bool? isSearching,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult Function(String message)? fetchFailState,
+    TResult Function()? noItemFound,
+    required TResult orElse(),
+  }) {
+    if (noItemFound != null) {
+      return noItemFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_FetchSuccessState value) fetchSuccessState,
+    required TResult Function(_FetchFailState value) fetchFailState,
+    required TResult Function(_NoItemFound value) noItemFound,
+  }) {
+    return noItemFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult? Function(_FetchFailState value)? fetchFailState,
+    TResult? Function(_NoItemFound value)? noItemFound,
+  }) {
+    return noItemFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult Function(_FetchFailState value)? fetchFailState,
+    TResult Function(_NoItemFound value)? noItemFound,
+    required TResult orElse(),
+  }) {
+    if (noItemFound != null) {
+      return noItemFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoItemFound implements ProductsState {
+  factory _NoItemFound() = _$NoItemFoundImpl;
 }

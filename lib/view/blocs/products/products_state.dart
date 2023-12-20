@@ -10,4 +10,5 @@ class ProductsState with _$ProductsState {
       bool? isSearching,
       List<ProductCardRecord>? records}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;
+  factory ProductsState.noItemFound() = _NoItemFound;
 }
