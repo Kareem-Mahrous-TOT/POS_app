@@ -2,16 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../../../../core/constants/store_config.dart';
-import '../../../../../../core/extensions/translate.dart';
-import '../../../../../../core/theme/palette.dart';
-import '../../../../../../data/models/response/bag/bag_model.dart';
-import '../../../../../../data/products/model/qraph_product_model.dart';
-import '../../../../../blocs/product_details/product_details_bloc.dart';
-import '../../../../../blocs/products/rest/bag_cubit.dart';
+import '../../../../../../../core/constants/store_config.dart';
+import '../../../../../../../core/extensions/translate.dart';
+import '../../../../../../../core/theme/palette.dart';
+import '../../../../../../../data/products/model/qraph_product_model.dart';
+import '../../../../../../blocs/product_details/product_details_bloc.dart';
 import 'pos_counter.dart';
 
 // int counter = 1;
@@ -142,25 +139,28 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                                                 element.inStockQuantity != 0) ??
                                         false
                                     ? () async {
-                                        //TODO: Cart should be here
-                                        final bag = BagModel(
-                                            code: master!.code.toString(),
-                                            id: master.id.toString(),
-                                            totalprice: master
-                                                .price!.actual!.formattedAmount
-                                                .toString(),
-                                            itemName: master.name.toString(),
-                                            itemPrice: master
-                                                .price!.actual!.formattedAmount
-                                                .toString(),
-                                            itemQuantity: counter.toString());
-                                        await context
-                                            .read<BagCubit>()
-                                            .updatedList(bag);
-                                        if (mounted) {
-                                          context.pop(
-                                              context); // context.read<ProductsCubit>().calculateTotalPrice();
-                                        }
+                                        // //TODO: Cart should be here
+                                        // final bag = BagModel(
+                                        //     code: master!.code.toString(),
+                                        //     id: master.id.toString(),
+                                        //     totalprice: master
+                                        //         .price!.actual!.formattedAmount
+                                        //         .toString(),
+                                        //     itemName: master.name.toString(),
+                                        //     itemPrice: master
+                                        //         .price!.actual!.formattedAmount
+                                        //         .toString(),
+                                        //     itemQuantity: master
+                                        //         .availabilityData!
+                                        //         .availableQuantity
+                                        //         .toString());
+                                        // await context
+                                        //     .read<BagCubit>()
+                                        //     .updatedList(bag);
+                                        // if (mounted) {
+                                        //   context.pop(
+                                        //       context); // context.read<ProductsCubit>().calculateTotalPrice();
+                                        // }
                                       }
                                     : null,
                                 textStyle: context.titleMedium

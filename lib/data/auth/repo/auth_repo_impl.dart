@@ -1,5 +1,5 @@
-import '../../../core/constants/constants.dart';
 import '../../../core/constants/local_keys.dart';
+import '../../../core/constants/store_config.dart';
 import '../../../core/network/api_consumer.dart';
 import '../../../core/network/end_points.dart';
 import '../../../depency_injection.dart';
@@ -71,8 +71,8 @@ class AuthRepoImpl implements AuthBaseRepo {
     try {
       final res = await apiConsumer.post(EndPoints.connectTokenUrl, data: {
         "grant_type": "client_credentials",
-        "client_id": AppConstants.clientId,
-        "client_secret": AppConstants.clientSecret,
+        "client_id": StoreConfig.clientId,
+        "client_secret": StoreConfig.clientSecret,
       });
       if (res.statusCode == 200 ||
           res.statusCode == 201 ||

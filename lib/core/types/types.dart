@@ -1,4 +1,7 @@
+import 'package:dartz/dartz.dart';
+
 import '../../data/products/model/qraph_product_model.dart';
+import '../network/failure.dart';
 
 typedef ProdyctByIdRecord = ({
   Item product,
@@ -17,3 +20,6 @@ typedef PosCategoryRecord = ({
   String url,
   bool isSelected,
 });
+
+
+typedef FutureEitherFailureOrType<T> = Future<Either<Failure, T>>;

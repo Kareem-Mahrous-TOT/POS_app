@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:tot_pos/core/constants/store_config.dart';
 
-import '../../../core/constants/constants.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/network/graph_config.dart';
 import '../../models/address_data_model.dart';
@@ -183,7 +183,7 @@ fragment memberAddressFields on MemberAddressType {
                 {
                   "key": addressItem.id,
                   "city": "Cairo",
-                  "countryCode": AppConstants.countryCode,
+                  "countryCode": StoreConfig.countryCode,
                   "line1": addressItem.line1,
                   "postalCode": "00000",
                 }

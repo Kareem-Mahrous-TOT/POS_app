@@ -1,4 +1,4 @@
-import '../../../../core/usecase/usecase.dart';
+import '../../../core/types/types.dart';
 import '../../../data/sales/model/sales_model.dart';
 
 abstract class SalesRepo {
