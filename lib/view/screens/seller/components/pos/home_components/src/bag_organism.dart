@@ -4,18 +4,20 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../../core/theme/palette.dart';
-import '../../../../../../../data/products/model/qraph_product_model.dart';
+import '../../../../../../../domain/bag/entities/bag_item.dart';
 
 class BagOrganism extends StatelessWidget {
   const BagOrganism({
     super.key,
     required this.items,
+    required this.price,
     required this.onSlide,
     required this.onCheckout,
     required this.onClearList,
   });
 
-  final List<Item> items;
+  final List<BagItem> items;
+  final double price;
   final VoidCallback onSlide;
   final VoidCallback onCheckout;
   final VoidCallback onClearList;
@@ -66,11 +68,24 @@ class BagOrganism extends StatelessWidget {
                               ),
                             ]),
                         child: ListTile(
+                          leadingAndTrailingTextStyle: context.bodyMedium,
                           contentPadding: EdgeInsets.zero,
-                          title: Text(item.name!),
-                          subtitle: Text('Price: ${item.price}'),
-                          trailing: Text(
-                              'Quantity: ${item.availabilityData!.availableQuantity}'),
+                          leading: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(item.product.name!),
+                              Text(
+                                  'Available Quantity: ${(item.product.availabilityData!.inventories?.first.inStockQuantity ?? 0)}')
+                            ],
+                          ),
+                          trailing: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Count: ${item.count}'),
+                              Text(
+                                  'Unit Price: ${(item.product.price?.actual?.amount ?? 0)}')
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -89,10 +104,10 @@ class BagOrganism extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    const Text(
-                      'Total Price: 0',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    Text(
+                      'Total Price: $price',
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

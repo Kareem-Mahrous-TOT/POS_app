@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/products/model/qraph_product_model.dart';
+import '../../../../blocs/bag/bag_bloc.dart';
 import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
@@ -171,10 +172,15 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                          onTap: (product?.variations
-                                                      ?.isNotEmpty ??
-                                                  false)
+                                          onTap: (product
+                                                      ?.variations?.isEmpty ??
+                                                  true)
                                               ? () {
+                                                  context.read<BagBloc>().add(
+                                                      BagEvent.addItem(
+                                                          item: product!));
+                                                }
+                                              : () {
                                                   showDialog(
                                                     context: context,
                                                     builder:
@@ -201,8 +207,7 @@ class HomePage extends HookWidget {
                                                       );
                                                     },
                                                   );
-                                                }
-                                              : null,
+                                                },
                                           productImage:
                                               product?.imgSrc.toString(),
                                           productName:
@@ -226,215 +231,35 @@ class HomePage extends HookWidget {
                         },
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Container(
-                    //     width: 370.w,
-                    //     color: Palette.white,
-                    //     height: 500.h,
-                    //     child: Center(
-                    //       child: Text(
-                    //         "The bag is empty",
-                    //         style: context.titleMedium
-                    //             .copyWith(color: Palette.grey),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // )
-                    BagOrganism(
-                      items: const [],
-                      onCheckout: () {},
-                      onClearList: () {},
-                      onSlide: () {},
+                    BlocBuilder<BagBloc, BagState>(
+                      builder: (context, state) {
+                        return state.map(initial: (value) {
+                          return BagOrganism(
+                            items: const [],
+                            price: 0,
+                            onCheckout: () {},
+                            onClearList: () {
+                              context
+                                  .read<BagBloc>()
+                                  .add(const BagEvent.clearBag());
+                            },
+                            onSlide: () {},
+                          );
+                        }, getItems: (value) {
+                          return BagOrganism(
+                            items: value.bagEntity.items,
+                            price: value.bagEntity.price,
+                            onCheckout: () {},
+                            onClearList: () {
+                              context
+                                  .read<BagBloc>()
+                                  .add(const BagEvent.clearBag());
+                            },
+                            onSlide: () {},
+                          );
+                        });
+                      },
                     ),
-                    // BlocConsumer<ProductsBloc, ProductsState>(
-                    // BlocConsumer<BagCubit, BagState>(
-                    //   listener: (context, state) => state.maybeMap(
-                    //     orElse: () {
-                    //       return null;
-                    //     },
-                    //     empty: (value) =>
-                    //         ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(
-                    //         content: Center(
-                    //           child: Text(
-                    //             value.message.toString(),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    //   builder: (context, state) {
-                    //     return state.maybeMap(
-                    //       orElse: () {
-                    //         return Container(
-                    //           color: Colors.orange,
-                    //           width: 100,
-                    //           height: 100,
-                    //         );
-                    //       },
-                    //       empty: (value) {
-                    //         return Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: Container(
-                    //             width: 370.w,
-                    //             color: Palette.white,
-                    //             height: 500.h,
-                    //             child: Center(
-                    //               child: Text(
-                    //                 "The bag is empty",
-                    //                 style: context.titleMedium
-                    //                     .copyWith(color: Palette.grey),
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //       initial: (value) {
-                    //         return Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: Container(
-                    //             width: w * 0.31,
-                    //             color: Palette.white,
-                    //             height: h * 0.5,
-                    //             child: const Center(
-                    //               child: CircularProgressIndicator(
-                    //                 color: Palette.primary,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //       updateList: (value) {
-                    //         List<OrderItem> products = [];
-                    //         for (int i = 0; i < value.bag.length; i++) {
-                    //           products.add(
-                    //             OrderItem(
-                    //                 sku: value.bag[i].code,
-                    //                 currency: "EGP",
-                    //                 price: value.bag[i].itemPrice,
-                    //                 productId: value.bag[i].id,
-                    //                 catalogId:
-                    //                     "0a841b7e-c732-4738-913d-9e43c054170e",
-                    //                 name: value.bag[i].itemName,
-                    //                 status: "New"),
-                    //           );
-                    //         }
-                    //         return Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: Container(
-                    //             width: 370.w,
-                    //             color: Palette.white,
-                    //             height: 500.h,
-                    //             child: Column(
-                    //               mainAxisAlignment:
-                    //                   MainAxisAlignment.spaceEvenly,
-                    //               children: [
-                    //                 SizedBox(
-                    //                   height: 350.h,
-                    //                   child: ListView.builder(
-                    //                     itemCount: value.bag.length,
-                    //                     itemBuilder: (context, index) {
-                    //                       BagModel item = value.bag[index];
-                    //                       return Slidable(
-                    //                         startActionPane: ActionPane(
-                    //                             motion: const ScrollMotion(),
-                    //                             extentRatio: 0.2,
-                    //                             children: [
-                    //                               SlidableAction(
-                    //                                 autoClose: true,
-                    //                                 flex: 1,
-                    //                                 onPressed: (context) {
-                    //                                   context
-                    //                                       .read<BagCubit>()
-                    //                                       .clearItem(index);
-                    //                                 },
-                    //                                 backgroundColor:
-                    //                                     const Color(0xFFFE4A49),
-                    //                                 foregroundColor:
-                    //                                     Colors.white,
-                    //                                 icon: Icons.delete,
-                    //                                 label: 'Delete',
-                    //                               ),
-                    //                             ]),
-                    //                         child: ListTile(
-                    //                           title: Text(item.itemName),
-                    //                           subtitle: Text(
-                    //                               'Price: ${item.itemPrice}'),
-                    //                           trailing: Text(
-                    //                               'Quantity: ${item.itemQuantity}'),
-                    //                         ),
-                    //                       );
-                    //                     },
-                    //                   ),
-                    //                 ),
-                    //                 Padding(
-                    //                   padding: const EdgeInsets.all(10.0),
-                    //                   child: Row(
-                    //                     mainAxisAlignment:
-                    //                         MainAxisAlignment.spaceBetween,
-                    //                     children: [
-                    //                       Text(
-                    //                         'Total Price: ${value.totalPrice.toString()}',
-                    //                         style: const TextStyle(
-                    //                             fontSize: 18,
-                    //                             fontWeight: FontWeight.bold),
-                    //                       ),
-                    //                       TotButtonAtom(
-                    //                         backgroundColor: Palette.primary,
-                    //                         text: "Checkout",
-                    //                         onPressed: () {
-                    //                           if (formKey.currentState!
-                    //                               .validate()) {
-                    //                             context
-                    //                                 .read<BagCubit>()
-                    //                                 .checkout(
-                    //                                     storeId:
-                    //                                         StoreConfig.storeId,
-                    //                                     storeName: "alkhbaz",
-                    //                                     isApproved: false,
-                    //                                     status: "New",
-                    //                                     currency: "EGP",
-                    //                                     items: products);
-                    //                             if (context.mounted) {
-                    //                               // context
-                    //                               // .read<OrderCubit>()
-                    //                               // .loadData();
-                    //                             }
-                    //                           }
-                    //                         },
-                    //                         textStyle: context.titleMedium
-                    //                             .copyWith(color: Palette.white),
-                    //                       ),
-                    //                     ],
-                    //                   ),
-                    //                 ),
-                    //                 Align(
-                    //                   alignment: Alignment.centerLeft,
-                    //                   child: Padding(
-                    //                     padding:
-                    //                         const EdgeInsets.only(left: 8.0),
-                    //                     child: TotButtonAtom(
-                    //                       backgroundColor: Palette.orange,
-                    //                       text: "Clear list",
-                    //                       onPressed: () {
-                    //                         context
-                    //                             .read<BagCubit>()
-                    //                             .clearList();
-                    //                       },
-                    //                       textStyle: context.titleMedium
-                    //                           .copyWith(color: Palette.black),
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //     );
-                    //   },
-                    // ),
                   ],
                 ),
               ],

@@ -20,21 +20,21 @@ mixin _$ReportCostState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
-    required TResult Function(String model) loadFailed,
+    required TResult Function(String message) loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
-    TResult? Function(String model)? loadFailed,
+    TResult? Function(String message)? loadFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
-    TResult Function(String model)? loadFailed,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
-    required TResult Function(String model) loadFailed,
+    required TResult Function(String message) loadFailed,
   }) {
     return initial();
   }
@@ -130,7 +130,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
-    TResult? Function(String model)? loadFailed,
+    TResult? Function(String message)? loadFailed,
   }) {
     return initial?.call();
   }
@@ -140,7 +140,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
-    TResult Function(String model)? loadFailed,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,7 +264,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
-    required TResult Function(String model) loadFailed,
+    required TResult Function(String message) loadFailed,
   }) {
     return loadSuccess(model);
   }
@@ -274,7 +274,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
-    TResult? Function(String model)? loadFailed,
+    TResult? Function(String message)? loadFailed,
   }) {
     return loadSuccess?.call(model);
   }
@@ -284,7 +284,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
-    TResult Function(String model)? loadFailed,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -343,7 +343,7 @@ abstract class _$$LoadFailedImplCopyWith<$Res> {
           _$LoadFailedImpl value, $Res Function(_$LoadFailedImpl) then) =
       __$$LoadFailedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String model});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -357,12 +357,12 @@ class __$$LoadFailedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = null,
+    Object? message = null,
   }) {
     return _then(_$LoadFailedImpl(
-      null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -371,14 +371,14 @@ class __$$LoadFailedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadFailedImpl implements _LoadFailed {
-  const _$LoadFailedImpl(this.model);
+  const _$LoadFailedImpl(this.message);
 
   @override
-  final String model;
+  final String message;
 
   @override
   String toString() {
-    return 'ReportCostState.loadFailed(model: $model)';
+    return 'ReportCostState.loadFailed(message: $message)';
   }
 
   @override
@@ -386,11 +386,11 @@ class _$LoadFailedImpl implements _LoadFailed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadFailedImpl &&
-            (identical(other.model, model) || other.model == model));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, model);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -403,9 +403,9 @@ class _$LoadFailedImpl implements _LoadFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(CostModel model) loadSuccess,
-    required TResult Function(String model) loadFailed,
+    required TResult Function(String message) loadFailed,
   }) {
-    return loadFailed(model);
+    return loadFailed(message);
   }
 
   @override
@@ -413,9 +413,9 @@ class _$LoadFailedImpl implements _LoadFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(CostModel model)? loadSuccess,
-    TResult? Function(String model)? loadFailed,
+    TResult? Function(String message)? loadFailed,
   }) {
-    return loadFailed?.call(model);
+    return loadFailed?.call(message);
   }
 
   @override
@@ -423,11 +423,11 @@ class _$LoadFailedImpl implements _LoadFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(CostModel model)? loadSuccess,
-    TResult Function(String model)? loadFailed,
+    TResult Function(String message)? loadFailed,
     required TResult orElse(),
   }) {
     if (loadFailed != null) {
-      return loadFailed(model);
+      return loadFailed(message);
     }
     return orElse();
   }
@@ -468,9 +468,9 @@ class _$LoadFailedImpl implements _LoadFailed {
 }
 
 abstract class _LoadFailed implements ReportCostState {
-  const factory _LoadFailed(final String model) = _$LoadFailedImpl;
+  const factory _LoadFailed(final String message) = _$LoadFailedImpl;
 
-  String get model;
+  String get message;
   @JsonKey(ignore: true)
   _$$LoadFailedImplCopyWith<_$LoadFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;

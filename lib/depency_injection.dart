@@ -22,10 +22,8 @@ import 'data/products/repo/products_repo_impl.dart';
 import 'data/report/data_source/local_data_source.dart';
 import 'data/report/repo/report_repo_impl.dart';
 import 'data/repository/base/customers_rep_base.dart';
-import 'data/repository/base/order_repo_base.dart';
 import 'data/repository/base/user_address_repo_base.dart';
 import 'data/repository/impl/customer_repo_impl.dart';
-import 'data/repository/impl/order_repo.dart';
 import 'data/repository/impl/user_address_repo_impl.dart';
 import 'data/sales/data_source/sales_data_source.dart';
 import 'data/sales/repo/sales_repo.dart';
@@ -56,16 +54,15 @@ import 'domain/reports/repo/report_repo.dart';
 import 'domain/reports/usecase/pie_chart_usecase.dart';
 import 'domain/reports/usecase/report_cost_usecase.dart';
 import 'domain/sales/repo/repo.dart';
+import 'view/blocs/bag/bag_bloc.dart';
 import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
-import 'view/blocs/order/order_cubit.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
-import 'view/blocs/products/rest/bag_cubit.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
@@ -194,7 +191,7 @@ Future<void> getItInit() async {
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
-  // getIt.registerFactory<BagCubit>(() => BagCubit(getIt()));
+  getIt.registerFactory<BagBloc>(() => BagBloc());
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getIt()));

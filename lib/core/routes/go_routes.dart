@@ -10,6 +10,7 @@ import 'routes.dart';
 final navigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter allRoutes = GoRouter(
+  debugLogDiagnostics: true,
   initialLocation: Routes.login.withSlash,
   redirect: (context, state) async {
     if (preferences.getString(LocalKeys.accessToken) != null) {

@@ -1,23 +1,30 @@
 import '../../../data/products/model/qraph_product_model.dart';
+import 'bag_item.dart';
 
 class BagEntity {
-  final List<Item> _items;
+  final List<BagItem> _items;
   double _price;
 
   BagEntity()
       : _items = [],
         _price = 0;
 
-  List<Item> get items => _items;
-  double get price => _price;
+  List<BagItem> get items => _items.toList();
+  double get price => _price.toDouble();
 
-  void addItem({required Item item}) {
-    _items.add(item);
+  void addItem({required BagItem bagItem}) {
+    final index =
+        items.indexWhere((element) => element.product.id == bagItem.product.id);
+    if (index != -1) {
+      _items[index].count += bagItem.count;
+    } else {
+      _items.add(bagItem);
+    }
     _calcPrice();
   }
 
-  void removeItem({required Item item}) {
-    _items.removeWhere((element) => element == item);
+  void removeItem({required Item product}) {
+    _items.removeWhere((element) => element.product.id == product.id);
     _calcPrice();
   }
 
@@ -25,8 +32,9 @@ class BagEntity {
     _price = _items
         .fold(
             num.parse('0'),
-            (previousValue, element) =>
-                previousValue + (element.price?.actual?.amount ?? 0))
+            (previousValue, bagItem) =>
+                previousValue +
+                ((bagItem.product.price?.actual?.amount ?? 0) * bagItem.count))
         .toDouble();
   }
 }
