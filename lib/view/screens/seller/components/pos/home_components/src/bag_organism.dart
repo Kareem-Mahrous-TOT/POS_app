@@ -6,6 +6,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../../../../../core/theme/palette.dart';
 import '../../../../../../../domain/bag/entities/bag_item.dart';
 
+
 class BagOrganism extends StatelessWidget {
   const BagOrganism({
     super.key,

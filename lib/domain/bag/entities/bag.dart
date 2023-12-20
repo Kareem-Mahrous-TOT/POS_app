@@ -25,6 +25,7 @@ class BagEntity {
 
   void removeItem({required Item product}) {
     _items.removeWhere((element) => element.product.id == product.id);
+
     _calcPrice();
   }
 
