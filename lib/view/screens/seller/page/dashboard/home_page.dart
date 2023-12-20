@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,25 +20,9 @@ import '../../components/pos/home_components/src/bag_organism.dart';
 class HomePage extends HookWidget {
   const HomePage({super.key});
 
-  // final ScrollController _scrollController = ScrollController();
-  // int currentPage = 1;
-  // int itemsPerPage = 8;
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
-    final controller = useTextEditingController();
-    final focusNode = useFocusNode();
-
-    useEffect(() {
-      focusNode.addListener(() {
-        if (!focusNode.hasFocus) {
-          print('TextField lost focus. Value: ${controller.text} ');
-        }
-        // print('TextField lost focus. Value: ${controller.text} ');
-      });
-      return null;
-      // return null;
-    }, [controller.text]);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -104,6 +85,13 @@ class HomePage extends HookWidget {
                           .toList(),
                       categories:
                           records.map((e) => e.toCategoryRecord()).toList(),
+                      validator: (value) {
+                        //  validator
+                        if (value == null) {
+                          return 'Please select an item.';
+                        }
+                        return null;
+                      },
                     ),
                   );
                 }),
@@ -132,9 +120,6 @@ class HomePage extends HookWidget {
                         },
                         builder: (context, state) {
                           return state.map(
-                            noItemFound: (value) => const Center(
-                              child: Text("No items found"),
-                            ),
                             loadingState: (value) {
                               return const Center(
                                 child: CircularProgressIndicator.adaptive(

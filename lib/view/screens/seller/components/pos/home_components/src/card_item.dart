@@ -6,29 +6,25 @@ import '../../../../../../../core/theme/palette.dart';
 
 class TOTPOSFoodCardItemMolecule extends StatelessWidget {
   final String? productName;
-  final String? prodcutDiscountPercentage;
+  final String? prodcutDescription;
   final String? productImage;
   final String? price;
-  final String? oldPrice;
   final String? inStock;
   final Color? nameColor;
   final Color? priceColor;
-  final Color? oldPriceColor;
 
   final VoidCallback? onTap;
 
   const TOTPOSFoodCardItemMolecule(
       {super.key,
       required this.productName,
-      this.prodcutDiscountPercentage,
+      required this.prodcutDescription,
       required this.price,
       required this.productImage,
       required this.onTap,
       required this.inStock,
       this.nameColor,
-      this.priceColor,
-      required this.oldPrice,
-      this.oldPriceColor});
+      this.priceColor});
 
   @override
   Widget build(BuildContext context) {
@@ -65,29 +61,20 @@ class TOTPOSFoodCardItemMolecule extends StatelessWidget {
                   style: context.titleMedium.copyWith(
                     color: nameColor ?? Palette.black,
                   )),
+              if (prodcutDescription != null)
+                Text(prodcutDescription!,
+                    style: context.titleMedium.copyWith(color: Palette.grey)),
               Text(inStock!,
                   style: context.titleMedium.copyWith(
                     color: inStock!.contains("In stock")
                         ? Palette.green
                         : Palette.red,
                   )),
-              Row(
-                children: [
-                  if (oldPrice != null)
-                    Text(
-                      oldPrice!,
-                      style: context.titleMedium.copyWith(
-                        decoration: TextDecoration.lineThrough,
-                        color: oldPriceColor ?? Palette.black,
-                      ),
-                    ),
-                  Text(
-                    price ?? "",
-                    style: context.titleMedium.copyWith(
-                      color: priceColor ?? Palette.black,
-                    ),
-                  ),
-                ],
+              Text(
+                price ?? "0",
+                style: context.titleMedium.copyWith(
+                  color: priceColor ?? Palette.black,
+                ),
               ),
             ],
           ),
