@@ -1,7 +1,11 @@
+import 'dart:ffi';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../../core/constants/store_config.dart';
@@ -11,44 +15,39 @@ import '../../../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../../../blocs/product_details/product_details_bloc.dart';
 import 'pos_counter.dart';
 
-// int counter = 1;
-
-class POSFoodItemAlertDialog extends StatefulWidget {
+class POSFoodItemAlertDialog extends HookWidget {
   const POSFoodItemAlertDialog({
     super.key,
     required this.id,
+    required this.onAddToCart,
   });
 
   final String id;
-
-  @override
-  State<POSFoodItemAlertDialog> createState() => _POSFoodItemAlertDialogState();
-}
-
-class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
-  int counter = 1;
-
-  @override
-  void initState() {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback(
-      (timeStamp) {
-        if (context.mounted) {
-          context.read<ProductDetailsBloc>().add(
-                ProductDetailsEvent.fetchProductById(
-                  storeId: StoreConfig.storeId,
-                  productId: widget.id,
-                ),
-              );
-        }
-      },
-    );
-    super.initState();
-  }
+  final void Function(Item product, int count) onAddToCart;
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
+    final counter = useState(1);
+
+    useEffect(() {
+      // WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback(
+      // (timeStamp) {
+      if (context.mounted) {
+        context.read<ProductDetailsBloc>().add(
+              ProductDetailsEvent.fetchProductById(
+                storeId: StoreConfig.storeId,
+                productId: id,
+              ),
+            );
+      }
+      return null;
+      // },
+      // );
+    }, []);
+
     return BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
       builder: (context, state) {
         return state.when(
@@ -103,25 +102,21 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                                 addIconColor: Palette.white,
                                 removeIconColor: Palette.white,
                                 increment: () {
-                                  if (counter <
+                                  if (counter.value <
                                       (product.availabilityData
                                               ?.availableQuantity ??
                                           0)) {
-                                    setState(() {
-                                      counter++;
-                                    });
+                                    counter.value++;
                                   }
                                 },
                                 decrement: () {
-                                  setState(() {
-                                    if (counter > 1) {
-                                      counter--;
-                                    } else {
-                                      counter = 1;
-                                    }
-                                  });
+                                  if (counter.value > 1) {
+                                    counter.value--;
+                                  } else {
+                                    counter.value = 1;
+                                  }
                                 },
-                                value: counter.toString(),
+                                value: counter.value.toString(),
                               ),
                             ),
                           ),
@@ -140,6 +135,8 @@ class _POSFoodItemAlertDialogState extends State<POSFoodItemAlertDialog> {
                                         false
                                     ? () async {
                                         // //TODO: Cart should be here
+                                        onAddToCart(product, counter.value);
+                                        context.pop();
                                         // final bag = BagModel(
                                         //     code: master!.code.toString(),
                                         //     id: master.id.toString(),
