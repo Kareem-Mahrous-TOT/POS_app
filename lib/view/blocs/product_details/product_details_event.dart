@@ -4,7 +4,7 @@ part of 'product_details_bloc.dart';
 class ProductDetailsEvent with _$ProductDetailsEvent {
   factory ProductDetailsEvent.started() = _Started;
   factory ProductDetailsEvent.fetchProductById(
-      {required String? storeId,
+      {
       required String productId}) = _FetchProductById;
   factory ProductDetailsEvent.changeMasterVariation(Variation variation) =
       _ChangeMasterVariation;

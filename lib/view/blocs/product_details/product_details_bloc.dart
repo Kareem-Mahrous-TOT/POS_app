@@ -19,7 +19,7 @@ class ProductDetailsBloc
         super(const _Initial()) {
     on<ProductDetailsEvent>(
       (event, emit) async {
-        Future<void> fetchProductById(String storeId,
+        Future<void> fetchProductById(
             {String? endCursor, required String productId}) async {
           emit(const ProductDetailsState.loadingState());
           // try {
@@ -45,8 +45,8 @@ class ProductDetailsBloc
 
         await event.when(
             started: () {},
-            fetchProductById: (storeId, productId) async {
-              await fetchProductById(storeId!, productId: productId);
+            fetchProductById: (productId) async {
+              await fetchProductById( productId: productId);
             },
             changeMasterVariation: (masterVariation) async {
               state.maybeMap(

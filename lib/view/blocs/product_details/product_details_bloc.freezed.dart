@@ -19,22 +19,21 @@ mixin _$ProductDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? storeId, String productId)
-        fetchProductById,
+    required TResult Function(String productId) fetchProductById,
     required TResult Function(Variation variation) changeMasterVariation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? storeId, String productId)? fetchProductById,
+    TResult? Function(String productId)? fetchProductById,
     TResult? Function(Variation variation)? changeMasterVariation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? storeId, String productId)? fetchProductById,
+    TResult Function(String productId)? fetchProductById,
     TResult Function(Variation variation)? changeMasterVariation,
     required TResult orElse(),
   }) =>
@@ -112,8 +111,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? storeId, String productId)
-        fetchProductById,
+    required TResult Function(String productId) fetchProductById,
     required TResult Function(Variation variation) changeMasterVariation,
   }) {
     return started();
@@ -123,7 +121,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? storeId, String productId)? fetchProductById,
+    TResult? Function(String productId)? fetchProductById,
     TResult? Function(Variation variation)? changeMasterVariation,
   }) {
     return started?.call();
@@ -133,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? storeId, String productId)? fetchProductById,
+    TResult Function(String productId)? fetchProductById,
     TResult Function(Variation variation)? changeMasterVariation,
     required TResult orElse(),
   }) {
@@ -189,7 +187,7 @@ abstract class _$$FetchProductByIdImplCopyWith<$Res> {
           $Res Function(_$FetchProductByIdImpl) then) =
       __$$FetchProductByIdImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? storeId, String productId});
+  $Res call({String productId});
 }
 
 /// @nodoc
@@ -203,14 +201,9 @@ class __$$FetchProductByIdImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storeId = freezed,
     Object? productId = null,
   }) {
     return _then(_$FetchProductByIdImpl(
-      storeId: freezed == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String?,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -222,16 +215,14 @@ class __$$FetchProductByIdImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchProductByIdImpl implements _FetchProductById {
-  _$FetchProductByIdImpl({required this.storeId, required this.productId});
+  _$FetchProductByIdImpl({required this.productId});
 
-  @override
-  String? storeId;
   @override
   String productId;
 
   @override
   String toString() {
-    return 'ProductDetailsEvent.fetchProductById(storeId: $storeId, productId: $productId)';
+    return 'ProductDetailsEvent.fetchProductById(productId: $productId)';
   }
 
   @JsonKey(ignore: true)
@@ -245,33 +236,32 @@ class _$FetchProductByIdImpl implements _FetchProductById {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? storeId, String productId)
-        fetchProductById,
+    required TResult Function(String productId) fetchProductById,
     required TResult Function(Variation variation) changeMasterVariation,
   }) {
-    return fetchProductById(storeId, productId);
+    return fetchProductById(productId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? storeId, String productId)? fetchProductById,
+    TResult? Function(String productId)? fetchProductById,
     TResult? Function(Variation variation)? changeMasterVariation,
   }) {
-    return fetchProductById?.call(storeId, productId);
+    return fetchProductById?.call(productId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? storeId, String productId)? fetchProductById,
+    TResult Function(String productId)? fetchProductById,
     TResult Function(Variation variation)? changeMasterVariation,
     required TResult orElse(),
   }) {
     if (fetchProductById != null) {
-      return fetchProductById(storeId, productId);
+      return fetchProductById(productId);
     }
     return orElse();
   }
@@ -313,12 +303,9 @@ class _$FetchProductByIdImpl implements _FetchProductById {
 }
 
 abstract class _FetchProductById implements ProductDetailsEvent {
-  factory _FetchProductById(
-      {required String? storeId,
-      required String productId}) = _$FetchProductByIdImpl;
+  factory _FetchProductById({required String productId}) =
+      _$FetchProductByIdImpl;
 
-  String? get storeId;
-  set storeId(String? value);
   String get productId;
   set productId(String value);
   @JsonKey(ignore: true)
@@ -392,8 +379,7 @@ class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? storeId, String productId)
-        fetchProductById,
+    required TResult Function(String productId) fetchProductById,
     required TResult Function(Variation variation) changeMasterVariation,
   }) {
     return changeMasterVariation(variation);
@@ -403,7 +389,7 @@ class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? storeId, String productId)? fetchProductById,
+    TResult? Function(String productId)? fetchProductById,
     TResult? Function(Variation variation)? changeMasterVariation,
   }) {
     return changeMasterVariation?.call(variation);
@@ -413,7 +399,7 @@ class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? storeId, String productId)? fetchProductById,
+    TResult Function(String productId)? fetchProductById,
     TResult Function(Variation variation)? changeMasterVariation,
     required TResult orElse(),
   }) {

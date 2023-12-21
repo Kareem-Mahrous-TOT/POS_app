@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../../../../../core/constants/store_config.dart';
 import '../../../../../../../core/extensions/translate.dart';
 import '../../../../../../../core/theme/palette.dart';
 import '../../../../../../../data/products/model/qraph_product_model.dart';
@@ -33,19 +30,14 @@ class POSFoodItemAlertDialog extends HookWidget {
     final counter = useState(1);
 
     useEffect(() {
-      // WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback(
-      // (timeStamp) {
       if (context.mounted) {
         context.read<ProductDetailsBloc>().add(
               ProductDetailsEvent.fetchProductById(
-                storeId: StoreConfig.storeId,
                 productId: id,
               ),
             );
       }
       return null;
-      // },
-      // );
     }, []);
 
     return BlocBuilder<ProductDetailsBloc, ProductDetailsState>(

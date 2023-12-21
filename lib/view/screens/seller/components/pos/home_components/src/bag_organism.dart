@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,7 +20,7 @@ class BagOrganism<T> extends HookWidget {
     required this.discounts,
     required this.discountVariations,
     required this.selectedDiscounts,
-    this.isEmpty = false,
+    // this.isEmpty = false,
   });
 
   final List<BagItem> items;
@@ -30,7 +31,7 @@ class BagOrganism<T> extends HookWidget {
   final List<String> discounts;
   final List<T> discountVariations;
   final List<bool> selectedDiscounts;
-  final bool isEmpty;
+  // final bool isEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,9 @@ class BagOrganism<T> extends HookWidget {
     useEffect(() {
       focusNode.addListener(() {
         if (!focusNode.hasFocus) {
-          print('TextField lost focus. Value: ${controller.text} ');
+          if (kDebugMode) {
+            print('TextField lost focus. Value: ${controller.text} ');
+          }
         }
         // print('TextField lost focus. Value: ${controller.text} ');
       });
@@ -57,9 +60,9 @@ class BagOrganism<T> extends HookWidget {
           color: Palette.white,
           borderRadius: BorderRadius.circular(8),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         margin: const EdgeInsets.all(8.0),
-        height: isEmpty ? h * 0.7 : null,
+        height: h * 0.7,
         width: 370.w,
         child: items.isEmpty
             ? Center(
@@ -69,11 +72,12 @@ class BagOrganism<T> extends HookWidget {
                 ),
               )
             : Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    margin: EdgeInsetsDirectional.only(bottom: 20.h),
-                    height: 350.h,
+                  TotOutlinedCardAtom(
+                    cardColor: Colors.white,
+                    // margin: EdgeInsetsDirectional.only(bottom: 20.h),
+                    height: h * 0.38,
                     child: ListView.builder(
                       itemCount: items.length,
                       itemBuilder: (context, index) {
@@ -119,110 +123,119 @@ class BagOrganism<T> extends HookWidget {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(
-                          child: TotVariationCardMolecule<T>(
-                            variations: discountVariations,
-                            shrinkWrap: true,
-                            isMasterList: selectedDiscounts,
-                            height: 40.h,
-                            padding: const EdgeInsets.symmetric(horizontal: 1),
-                            falseColor: Palette.white,
-                            successColor: Palette.primary,
-                            itemBorderColor: Colors.white,
-                            itemOnTap: (value) {},
-                            textList: discounts,
-                          ),
-                        ),
-                        if (selectedDiscounts[0])
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                width: w * 0.1,
-                                child: const Divider(
-                                  // height: 10,
-                                  thickness: 1,
-                                  color: Palette.black,
-                                ),
-                              ),
-                              const Text("Or"),
-                              SizedBox(
-                                width: w * 0.1,
-                                child: const Divider(
-                                  // height: 10,
-                                  thickness: 1,
-                                  color: Palette.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        if (selectedDiscounts[0])
-                          const SizedBox(
-                            height: 5,
-                          ),
-                        if (selectedDiscounts[0])
-                          Row(
-                            children: [
-                              Text(
-                                "Add custom discount: ",
-                                style: context.titleMedium,
-                              ),
-                              SizedBox(
-                                width: w * 0.04,
-                                height: h * 0.04,
-                                child: TextFormField(
-                                  decoration: const InputDecoration(
-                                      border: OutlineInputBorder()),
-                                  style: context.titleMedium,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly,
-                                    LengthLimitingTextInputFormatter(2),
-                                  ],
-                                  focusNode: focusNode,
-                                  keyboardType:
-                                      const TextInputType.numberWithOptions(
-                                    decimal: false,
-                                  ),
-                                  controller: controller,
-                                ),
-                              ),
-                            ],
-                          ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
                     children: [
-                      Expanded(
-                        child: TotButtonAtom(
-                          backgroundColor: Palette.primary,
-                          text: "Checkout",
-                          onPressed: onCheckout,
-                          textStyle: context.titleMedium
-                              .copyWith(color: Palette.white),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                              child: TotVariationCardMolecule<T>(
+                                variations: discountVariations,
+                                shrinkWrap: true,
+                                isMasterList: selectedDiscounts,
+                                height: 40.h,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 1),
+                                falseColor: Palette.white,
+                                successColor: Palette.primary,
+                                itemBorderColor: Colors.white,
+                                itemOnTap: (value) {},
+                                textList: discounts,
+                              ),
+                            ),
+                            if (selectedDiscounts[0])
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  SizedBox(
+                                    width: w * 0.1,
+                                    child: const Divider(
+                                      // height: 10,
+                                      thickness: 1,
+                                      color: Palette.black,
+                                    ),
+                                  ),
+                                  const Text("Or"),
+                                  SizedBox(
+                                    width: w * 0.1,
+                                    child: const Divider(
+                                      // height: 10,
+                                      thickness: 1,
+                                      color: Palette.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            if (selectedDiscounts[0])
+                              const SizedBox(
+                                height: 5,
+                              ),
+                            if (selectedDiscounts[0])
+                              Row(
+                                children: [
+                                  Text(
+                                    "Add custom discount: ",
+                                    style: context.titleMedium,
+                                  ),
+                                  SizedBox(
+                                    width: w * 0.04,
+                                    height: h * 0.04,
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                          border: OutlineInputBorder()),
+                                      style: context.titleMedium,
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        LengthLimitingTextInputFormatter(2),
+                                      ],
+                                      focusNode: focusNode,
+                                      keyboardType:
+                                          const TextInputType.numberWithOptions(
+                                        decimal: false,
+                                      ),
+                                      controller: controller,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                          ],
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      Text(
-                        'Total Price: $price',
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: TotButtonAtom(
+                              backgroundColor: Palette.primary,
+                              text: "Checkout",
+                              onPressed: onCheckout,
+                              textStyle: context.titleMedium
+                                  .copyWith(color: Palette.white),
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Total Price: $price',
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TotButtonAtom(
+                        backgroundColor: Palette.orange,
+                        text: "Clear list",
+                        onPressed: onClearList,
+                        textStyle:
+                            context.titleMedium.copyWith(color: Palette.black),
                       ),
                     ],
-                  ),
-                  TotButtonAtom(
-                    backgroundColor: Palette.orange,
-                    text: "Clear list",
-                    onPressed: onClearList,
-                    textStyle:
-                        context.titleMedium.copyWith(color: Palette.black),
                   ),
                 ],
               ),

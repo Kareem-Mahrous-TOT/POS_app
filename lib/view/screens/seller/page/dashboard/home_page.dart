@@ -267,7 +267,6 @@ class HomePage extends HookWidget {
                           return BagOrganism(
                             items: const [],
                             price: 0,
-                            isEmpty: true,
                             onCheckout: () {},
                             onClearList: () {
                               context
