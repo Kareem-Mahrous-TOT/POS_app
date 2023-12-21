@@ -49,26 +49,29 @@ class _SalesPageState extends State<SalesPage>
       child: DefaultTabController(
         initialIndex: 2,
         length: tabs.length,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Sale History",
-                style: context.titleMedium.copyWith(
-                  color: Palette.black,
-                )),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: w * 0.95,
+              child: Text("Sale History",
+                  style: context.titleMedium.copyWith(
+                    color: Palette.black,
+                  )),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          Container(
+            width: w * 0.945,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Palette.white,
+            ),
             child: Row(children: [
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.sort),
               ),
-              Container(
-                width: w * 0.7,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
+              Expanded(
                 child: TabBar(
                   // unselectedLabelColor: Palette.white,
                   // labelColor: Colors.greenAccent,
@@ -103,113 +106,110 @@ class SalesTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.sizeOf(context).width;
+    double h = MediaQuery.sizeOf(context).height;
     return BlocBuilder<SalesCubit, SalesState>(
       builder: (context, state) {
         return SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const TOTSalesCardMolecule(
-                    cost: "0.00",
-                    iconData: Icons.account_balance_wallet_rounded,
-                    shadowColor: Colors.greenAccent,
-                    title: 'Opening Drawer Account',
-                    percentage: null,
-                  ),
-                  TOTSalesCardMolecule(
+              SizedBox(
+                width: w * 0.95,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TOTSalesCardMolecule(
                       cost: "0.00",
-                      iconData: Icons.attach_money_outlined,
-                      shadowColor: Colors.orange[600]!,
-                      title: 'Cash Payment Sale'),
-                  const TOTSalesCardMolecule(
-                      cost: "0.00",
-                      iconData: Icons.credit_card_outlined,
-                      shadowColor: Palette.blue,
-                      title: 'Other Payment Sale'),
-                ],
+                      iconData: Icons.account_balance_wallet_rounded,
+                      shadowColor: Colors.greenAccent,
+                      title: 'Opening Drawer Account',
+                      percentage: null,
+                    ),
+                    TOTSalesCardMolecule(
+                        cost: "0.00",
+                        iconData: Icons.attach_money_outlined,
+                        shadowColor: Colors.orange[600]!,
+                        title: 'Cash Payment Sale'),
+                    const TOTSalesCardMolecule(
+                        cost: "0.00",
+                        iconData: Icons.credit_card_outlined,
+                        shadowColor: Palette.blue,
+                        title: 'Other Payment Sale'),
+                  ],
+                ),
               ),
               SizedBox(
                 height: h * 0.01,
               ),
-              Center(
-                child: Container(
-                  width: w * 0.9,
-                  height: 520.h,
-                  decoration: BoxDecoration(
-                    color: Palette.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: state.map(
-                    initial: (value) => const Center(
-                        child: CircularProgressIndicator(
-                      color: Palette.primary,
-                    )),
-                    loadFailed: (value) =>
-                        const Center(child: Text("No data found")),
-                    loadSuccess: (value) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: DataTable(
-                            columns: const [
-                              DataColumn(
-                                label: Text("Order Number"),
+              Container(
+                width: w * 0.95,
+                height: 520.h,
+                decoration: BoxDecoration(
+                  color: Palette.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: state.map(
+                  initial: (value) => const Center(
+                      child: CircularProgressIndicator(
+                    color: Palette.primary,
+                  )),
+                  loadFailed: (value) =>
+                      const Center(child: Text("No data found")),
+                  loadSuccess: (value) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: DataTable(
+                        columns: const [
+                          DataColumn(
+                            label: Text("Order Number"),
+                          ),
+                          DataColumn(
+                            label: Text("Status"),
+                          ),
+                          DataColumn(
+                            label: Text("Amount"),
+                          ),
+                          DataColumn(
+                            label: Text("Payment"),
+                          ),
+                          DataColumn(
+                            label: Text("Date"),
+                          ),
+                        ],
+                        rows: List.generate(value.orders.length, (rowsIndex) {
+                          return DataRow(
+                            cells: [
+                              DataCell(
+                                Text(
+                                  value.orders[rowsIndex].orderNumber
+                                      .toString(),
+                                ),
                               ),
-                              DataColumn(
-                                label: Text("Status"),
+                              DataCell(
+                                Text(
+                                  value.orders[rowsIndex].status.toString(),
+                                ),
                               ),
-                              DataColumn(
-                                label: Text("Amount"),
+                              DataCell(
+                                Text(
+                                  value.orders[rowsIndex].price.toString(),
+                                ),
                               ),
-                              DataColumn(
-                                label: Text("Payment"),
-                              ),
-                              DataColumn(
-                                label: Text("Date"),
+                              DataCell(Text(value
+                                  .orders[rowsIndex].paymentMethodType
+                                  .toString())),
+                              DataCell(
+                                Text(DateFormat('dd-MM-yyyy HH:mm').format(
+                                    DateTime.parse(
+                                        value.orders[rowsIndex].date))),
                               ),
                             ],
-                            rows:
-                                List.generate(value.orders.length, (rowsIndex) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(
-                                    Text(
-                                      value.orders[rowsIndex].orderNumber
-                                          .toString(),
-                                    ),
-                                  ),
-                                  DataCell(
-                                    Text(
-                                      value.orders[rowsIndex].status.toString(),
-                                    ),
-                                  ),
-                                  DataCell(
-                                    Text(
-                                      value.orders[rowsIndex].price.toString(),
-                                    ),
-                                  ),
-                                  DataCell(Text(value
-                                      .orders[rowsIndex].paymentMethodType
-                                      .toString())),
-                                  DataCell(
-                                    Text(DateFormat('dd-MM-yyyy HH:mm').format(
-                                        DateTime.parse(
-                                            value.orders[rowsIndex].date))),
-                                  ),
-                                ],
-                              );
-                            }),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                          );
+                        }),
+                      ),
+                    );
+                  },
                 ),
               )
             ],

@@ -51,30 +51,32 @@ class _ReportsPageState extends State<ReportsPage> {
           child: SizedBox(
             height: h * 0.93,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Income",
-                    style: context.titleMedium.copyWith(
-                      color: Palette.black,
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: w * 0.95,
+                    child: Text(
+                      "Income",
+                      style: context.titleMedium.copyWith(
+                        color: Palette.black,
+                      ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                Container(
+                  width: w * 0.945,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Palette.white,
+                  ),
                   child: Row(children: [
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.sort),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Palette.white,
-                      ),
-                      width: w * 0.9,
+                    Expanded(
                       child: TabBar(
                         indicatorSize: TabBarIndicatorSize.tab,
                         indicatorColor: Palette.primary,
@@ -117,6 +119,9 @@ class ReportTab extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          const SizedBox(
+            height: 5,
+          ),
           BlocBuilder<ReportCostCubit, ReportCostState>(
             builder: (context, state) {
               return state.map(
@@ -130,37 +135,40 @@ class ReportTab extends StatelessWidget {
                 loadFailed: (value) {
                   return Center(child: Text(value.message));
                 },
-                loadSuccess: (value) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TOTSalesCardMolecule(
-                        plus: value.model.revenuePercentType == "plus",
-                        percentage: value.model.revenuePercent.ceilToDouble(),
-                        cost: value.model.revenue.toString(),
-                        hasLeadingIcon: true,
-                        hasPercentage: true,
-                        leadingColor: Colors.orange,
-                        leadingIcon: Icons.account_balance_wallet_rounded,
-                        title: 'Revenue'),
-                    TOTSalesCardMolecule(
-                        plus: value.model.ordersPercentType == "plus",
-                        percentage: value.model.ordersPercent.ceilToDouble(),
-                        cost: value.model.orders.toString(),
-                        hasLeadingIcon: true,
-                        hasPercentage: true,
-                        leadingColor: Palette.success,
-                        leadingIcon: Icons.shopping_cart,
-                        title: 'Orders'),
-                    TOTSalesCardMolecule(
-                        plus: value.model.averagePercentType == "plus",
-                        percentage: value.model.averagePercent.ceilToDouble(),
-                        cost: value.model.average.toString(),
-                        hasLeadingIcon: true,
-                        hasPercentage: true,
-                        leadingColor: Colors.black,
-                        leadingIcon: Icons.compare_arrows_rounded,
-                        title: 'Average'),
-                  ],
+                loadSuccess: (value) => SizedBox(
+                  width: w * 0.95,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TOTSalesCardMolecule(
+                          plus: value.model.revenuePercentType == "plus",
+                          percentage: value.model.revenuePercent.ceilToDouble(),
+                          cost: value.model.revenue.toString(),
+                          hasLeadingIcon: true,
+                          hasPercentage: true,
+                          leadingColor: Colors.orange,
+                          leadingIcon: Icons.account_balance_wallet_rounded,
+                          title: 'Revenue'),
+                      TOTSalesCardMolecule(
+                          plus: value.model.ordersPercentType == "plus",
+                          percentage: value.model.ordersPercent.ceilToDouble(),
+                          cost: value.model.orders.toString(),
+                          hasLeadingIcon: true,
+                          hasPercentage: true,
+                          leadingColor: Palette.success,
+                          leadingIcon: Icons.shopping_cart,
+                          title: 'Orders'),
+                      TOTSalesCardMolecule(
+                          plus: value.model.averagePercentType == "plus",
+                          percentage: value.model.averagePercent.ceilToDouble(),
+                          cost: value.model.average.toString(),
+                          hasLeadingIcon: true,
+                          hasPercentage: true,
+                          leadingColor: Colors.black,
+                          leadingIcon: Icons.compare_arrows_rounded,
+                          title: 'Average'),
+                    ],
+                  ),
                 ),
               );
             },
@@ -168,9 +176,8 @@ class ReportTab extends StatelessWidget {
           Container(
             height: h * 0.4,
             // width: double.infinity,
-            width: w * 0.90,
+            width: w * 0.95,
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-
             decoration: BoxDecoration(
               color: Palette.white,
               borderRadius: BorderRadius.circular(10),
@@ -197,7 +204,7 @@ class ReportTab extends StatelessWidget {
                   return Center(child: Text(value.message));
                 },
                 loadSuccess: (value) => SizedBox(
-                  width: w * 0.9,
+                  width: w * 0.95,
                   height: h * 0.55,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -208,14 +215,17 @@ class ReportTab extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Palette.white),
                         height: h * 0.55,
-                        width: w * 0.25,
+                        width: w * 0.3,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const Align(
+                            Align(
                               alignment: Alignment.topLeft,
-                              child: Text("Statistics"),
+                              child: Text(
+                                "Statistics",
+                                style: context.titleLarge,
+                              ),
                             ),
                             SizedBox(
                               height: h * 0.35,
@@ -235,9 +245,12 @@ class ReportTab extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            const Align(
+                            Align(
                               alignment: Alignment.topLeft,
-                              child: Text("Statistics"),
+                              child: Text(
+                                "Statistics",
+                                style: context.titleLarge,
+                              ),
                             ),
                             const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
