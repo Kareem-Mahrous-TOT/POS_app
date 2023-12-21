@@ -72,13 +72,11 @@ class BagOrganism<T> extends HookWidget {
                 ),
               )
             : Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TotOutlinedCardAtom(
-                    cardColor: Colors.white,
-                    // margin: EdgeInsetsDirectional.only(bottom: 20.h),
-                    height: h * 0.38,
+                  Expanded(
+                    flex: 4,
                     child: ListView.builder(
+                      shrinkWrap: true,
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
@@ -123,10 +121,15 @@ class BagOrganism<T> extends HookWidget {
                       },
                     ),
                   ),
-                  Column(
+                  const Divider(
+                    height: 1,
+                    thickness: 1,
+                  ),
+                  Wrap(
+                    runSpacing: 6,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,57 +150,77 @@ class BagOrganism<T> extends HookWidget {
                               ),
                             ),
                             if (selectedDiscounts[0])
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                              Column(
                                 children: [
-                                  SizedBox(
-                                    width: w * 0.1,
-                                    child: const Divider(
-                                      // height: 10,
-                                      thickness: 1,
-                                      color: Palette.black,
-                                    ),
-                                  ),
-                                  const Text("Or"),
-                                  SizedBox(
-                                    width: w * 0.1,
-                                    child: const Divider(
-                                      // height: 10,
-                                      thickness: 1,
-                                      color: Palette.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            if (selectedDiscounts[0])
-                              const SizedBox(
-                                height: 5,
-                              ),
-                            if (selectedDiscounts[0])
-                              Row(
-                                children: [
-                                  Text(
-                                    "Add custom discount: ",
-                                    style: context.titleMedium,
-                                  ),
-                                  SizedBox(
-                                    width: w * 0.04,
-                                    height: h * 0.04,
-                                    child: TextFormField(
-                                      decoration: const InputDecoration(
-                                          border: OutlineInputBorder()),
-                                      style: context.titleMedium,
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        LengthLimitingTextInputFormatter(2),
+                                  //? divider
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 24.0),
+                                    child: Row(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Expanded(
+                                          child: Divider(
+                                            height: 1,
+                                            thickness: 1,
+                                            color: Palette.black,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 16.0),
+                                          child: Text("Or"),
+                                        ),
+                                        Expanded(
+                                          child: Divider(
+                                            // height: 10,
+                                            thickness: 1,
+                                            color: Palette.black,
+                                          ),
+                                        ),
                                       ],
-                                      focusNode: focusNode,
-                                      keyboardType:
-                                          const TextInputType.numberWithOptions(
-                                        decimal: false,
-                                      ),
-                                      controller: controller,
+                                    ),
+                                  ),
+                                  //? Add custom discount
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 2.h),
+                                    child: Row(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            "Add custom discount: ",
+                                            style: context.titleMedium,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: w * 0.04,
+                                          height: h * 0.04,
+                                          child: TextFormField(
+                                            decoration: const InputDecoration(
+                                                border: OutlineInputBorder()),
+                                            style: context.titleMedium,
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter
+                                                  .digitsOnly,
+                                              LengthLimitingTextInputFormatter(
+                                                  2),
+                                            ],
+                                            focusNode: focusNode,
+                                            keyboardType: const TextInputType
+                                                .numberWithOptions(
+                                              decimal: false,
+                                            ),
+                                            controller: controller,
+                                          ),
+                                        ),
+                                        const Expanded(
+                                          child: SizedBox(),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -209,6 +232,7 @@ class BagOrganism<T> extends HookWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
+                            flex: 2,
                             child: TotButtonAtom(
                               backgroundColor: Palette.primary,
                               text: "Checkout",
@@ -217,16 +241,14 @@ class BagOrganism<T> extends HookWidget {
                                   .copyWith(color: Palette.white),
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          const Spacer(),
+                          // const SizedBox(width: 16),
                           Text(
                             'Total Price: $price',
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
-                      ),
-                      const SizedBox(
-                        height: 8,
                       ),
                       TotButtonAtom(
                         backgroundColor: Palette.orange,
