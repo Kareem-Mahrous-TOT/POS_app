@@ -247,20 +247,43 @@ class HomePage extends HookWidget {
                     ),
                     BlocBuilder<BagBloc, BagState>(
                       builder: (context, state) {
+                        List<String> discounts = [
+                          "0%",
+                          "5%",
+                          "10%",
+                          "15%",
+                          "20%",
+                          "25%",
+                        ];
+                        List<bool> selectedDiscount = [
+                          true,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                        ];
                         return state.map(initial: (value) {
                           return BagOrganism(
                             items: const [],
                             price: 0,
+                            isEmpty: true,
                             onCheckout: () {},
                             onClearList: () {
                               context
                                   .read<BagBloc>()
                                   .add(const BagEvent.clearBag());
                             },
-                            onSlide: () {},
+                            onSlide: (value) {},
+                            discounts: const [],
+                            discountVariations: const [],
+                            selectedDiscounts: const [],
                           );
                         }, getItems: (value) {
-                          return BagOrganism(
+                          return BagOrganism<String>(
+                            discountVariations: discounts,
+                            selectedDiscounts: selectedDiscount,
+                            discounts: discounts,
                             items: value.bagEntity.items,
                             price: value.bagEntity.price,
                             onCheckout: () {},
@@ -269,7 +292,12 @@ class HomePage extends HookWidget {
                                   .read<BagBloc>()
                                   .add(const BagEvent.clearBag());
                             },
-                            onSlide: () {},
+                            onSlide: (selectedItem) {
+                              
+                              context
+                                  .read<BagBloc>()
+                                  .add(BagEvent.removeItem(item: selectedItem));
+                            },
                           );
                         });
                       },

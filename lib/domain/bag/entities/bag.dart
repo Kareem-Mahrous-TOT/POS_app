@@ -1,4 +1,3 @@
-import '../../../data/products/model/qraph_product_model.dart';
 import 'bag_item.dart';
 
 class BagEntity {
@@ -23,8 +22,8 @@ class BagEntity {
     _calcPrice();
   }
 
-  void removeItem({required Item product}) {
-    _items.removeWhere((element) => element.product.id == product.id);
+  void removeItem({required BagItem item}) {
+    _items.removeWhere((element) => element.product.id == item.product.id);
     _calcPrice();
   }
 
