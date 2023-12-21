@@ -117,7 +117,7 @@ class TOTFilterCategoriesOrganism extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 1),
               falseColor: Palette.white,
               successColor: Palette.primary,
-              itemBorderColor: Colors.white,
+              itemBorderColor: Colors.transparent,
               itemOnTap: onTap,
               textList: categories.map((element) => element.title).toList(),
             ),
