@@ -247,13 +247,12 @@ class HomePage extends HookWidget {
                     ),
                     BlocBuilder<BagBloc, BagState>(
                       builder: (context, state) {
-                        List<String> discounts = [
-                          "0%",
-                          "5%",
-                          "10%",
-                          "15%",
-                          "20%",
-                          "25%",
+                        List<double> discounts = [
+                          5,
+                          10,
+                          15,
+                          20,
+                          25,
                         ];
                         List<bool> selectedDiscount = [
                           true,
@@ -279,7 +278,7 @@ class HomePage extends HookWidget {
                             selectedDiscounts: const [],
                           );
                         }, getItems: (value) {
-                          return BagOrganism<String>(
+                          return BagOrganism<double>(
                             discountVariations: discounts,
                             selectedDiscounts: selectedDiscount,
                             discounts: discounts,
@@ -292,7 +291,6 @@ class HomePage extends HookWidget {
                                   .add(const BagEvent.clearBag());
                             },
                             onSlide: (selectedItem) {
-                              
                               context
                                   .read<BagBloc>()
                                   .add(BagEvent.removeItem(item: selectedItem));
