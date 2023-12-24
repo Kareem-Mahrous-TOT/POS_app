@@ -1,7 +1,10 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/graph_config.dart';
-import 'package:tot_pos/domain/orders/entities/order_entity.dart';
+import 'package:tot_pos/core/network/end_points.dart';
 
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/graph_config.dart';
+import '../../../domain/bag/entities/bag.dart';
+import '../../../domain/orders/entities/order_entity.dart';
 import '../model/graph_create_order_model.dart';
 
 abstract class OrdersRemoteDataSource {
@@ -15,13 +18,17 @@ abstract class OrdersRemoteDataSource {
   Future<GetOrderByIdModel> getOrderbyId({required String orderId});
   Future<bool> changeOrderStatus(
       {required String ordreId, required String status});
+  Future<bool> createOrderFromBag({required BagEntity bagEntity});
 }
 
 class OrdersRemoteDataSourceImpl extends OrdersRemoteDataSource {
   final GraphService _graphService;
+  final ApiConsumer _apiConsumer;
 
-  OrdersRemoteDataSourceImpl({required GraphService graphService})
-      : _graphService = graphService;
+  OrdersRemoteDataSourceImpl(
+      {required ApiConsumer apiConsumer, required GraphService graphService})
+      : _apiConsumer = apiConsumer,
+        _graphService = graphService;
   @override
   Future<bool> changeOrderStatus(
       {required String ordreId, required String status}) async {
@@ -416,5 +423,16 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
       orders.add(OrderEntity.fromJson(order));
     }
     return orders;
+  }
+
+  @override
+  Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
+    final response = await _apiConsumer.post(
+      EndPoints.totCreateOrder,
+      data: bagEntity.toJson(),
+    );
+
+    return ((response.statusCode! >= 200 && response.statusCode! < 300) &&
+        response.data != null);
   }
 }

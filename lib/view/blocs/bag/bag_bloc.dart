@@ -2,17 +2,22 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/domain/bag/entities/bag_item.dart';
 
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/bag/entities/bag.dart';
+import '../../../domain/bag/entities/bag_item.dart';
+import '../../../domain/orders/usecases/create_order_from_bag.dart';
 
 part 'bag_bloc.freezed.dart';
 part 'bag_event.dart';
 part 'bag_state.dart';
 
 class BagBloc extends Bloc<BagEvent, BagState> {
-  BagBloc() : super(const BagState.initial()) {
+  final CreateOrderFromBagUsecase _createOrderFromBagUsecase;
+
+  BagBloc({required CreateOrderFromBagUsecase createOrderFromBagUsecase})
+      : _createOrderFromBagUsecase = createOrderFromBagUsecase,
+        super(const BagState.initial()) {
     on<BagEvent>((event, emit) {
       event.map(
         addItem: (addItemEvent) {
@@ -35,7 +40,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           emit(const BagState.initial());
         },
         removeItem: (eventItem) {
-          log("bagEvent removeItem:  ${eventItem.item}");
           state.maybeMap(
             orElse: () {},
             getItems: (items) {
@@ -45,6 +49,10 @@ class BagBloc extends Bloc<BagEvent, BagState> {
               emit(items.copyWith(bagEntity: newBagEntitiy));
             },
           );
+        },
+        createOrderFromBag: (_CreateOrderFromBag value) async {
+          final result = await _createOrderFromBagUsecase.call(value.bag);
+          log("::: did Create Order: $result :::");
         },
       );
     });

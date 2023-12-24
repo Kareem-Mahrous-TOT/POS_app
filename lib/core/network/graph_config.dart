@@ -17,7 +17,6 @@ class GraphQLConfig {
 
   final AuthLink _authLink = AuthLink(getToken: () async {
     String? token = preferences.getString(LocalKeys.accessToken);
-    log("ACCESS TOKEN FROM GraphQL:: $token ##");
     token = "Bearer $token";
 
     return token;

@@ -285,7 +285,10 @@ class HomePage extends HookWidget {
                             discounts: discounts,
                             items: value.bagEntity.items,
                             price: value.bagEntity.price,
-                            onCheckout: () {},
+                            onCheckout: () {
+                              context.read<BagBloc>().add(
+                                  BagEvent.createOrderFromBag(value.bagEntity));
+                            },
                             onClearList: () {
                               context
                                   .read<BagBloc>()

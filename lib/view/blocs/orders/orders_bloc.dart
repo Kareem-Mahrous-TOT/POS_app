@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_pos/domain/orders/usecases/get_orders_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';
+import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/orders/entities/order_entity.dart';
 
 part 'orders_bloc.freezed.dart';

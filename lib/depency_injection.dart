@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -98,7 +99,7 @@ Future<void> getItInit() async {
   getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
   //? orders
   getIt.registerSingleton<OrdersRemoteDataSource>(
-      OrdersRemoteDataSourceImpl(graphService: getIt()));
+      OrdersRemoteDataSourceImpl(graphService: getIt(), apiConsumer: getIt(),));
   getIt.registerSingleton<OrdersLocalDataSource>(
       OrdersLocalDataSourceImpl(preferences: getIt()));
   //? sales
@@ -163,6 +164,8 @@ Future<void> getItInit() async {
       () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
   getIt.registerLazySingleton<CreateOrderFormCartUsecase>(
       () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
+  getIt.registerLazySingleton<CreateOrderFromBagUsecase>(
+      () => CreateOrderFromBagUsecase(ordersRepo: getIt()));
   //? cart
   getIt
       .registerLazySingleton<AddCartAddressUseCase>(() => AddCartAddressUseCase(
@@ -195,7 +198,7 @@ Future<void> getItInit() async {
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
-  getIt.registerFactory<BagBloc>(() => BagBloc());
+  getIt.registerFactory<BagBloc>(() => BagBloc(createOrderFromBagUsecase: getIt()));
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
