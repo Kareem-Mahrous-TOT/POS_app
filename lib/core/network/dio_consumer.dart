@@ -19,9 +19,9 @@ class DioConsumer implements ApiConsumer {
   DioConsumer({required this.dio}) {
     dio.options =  BaseOptions(
       baseUrl: EndPoints.baseUrl,
-      headers: {
-        "Content-Type": Headers.formUrlEncodedContentType,
-      },
+      // headers: {
+      //   "Content-Type": Headers.formUrlEncodedContentType,
+      // },
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     );

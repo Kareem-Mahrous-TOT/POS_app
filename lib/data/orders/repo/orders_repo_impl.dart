@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos/data/orders/data_source/remote_data_source.dart';
 
 import '../../../core/constants/store_config.dart';
 import '../../../core/network/failure.dart';
+import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/orders/entities/order_entity.dart';
 import '../../../domain/orders/repo/orders_repo_base.dart';
 import '../data_source/local_data_source.dart';
+import '../data_source/remote_data_source.dart';
 import '../model/graph_create_order_model.dart';
 
 class OrdersRepoImpl implements OrdersRepoBase {
@@ -68,6 +69,15 @@ class OrdersRepoImpl implements OrdersRepoBase {
       return Right(model);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
+    try {
+      return _remotedataSource.createOrderFromBag(bagEntity: bagEntity);
+    } catch (e) {
+      return false;
     }
   }
 }

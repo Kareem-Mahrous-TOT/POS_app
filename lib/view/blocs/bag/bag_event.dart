@@ -6,4 +6,5 @@ class BagEvent with _$BagEvent {
       _AddItem;
   const factory BagEvent.removeItem({required BagItem item}) = _RemoveItem;
   const factory BagEvent.clearBag() = _ClearBag;
+  const factory BagEvent.createOrderFromBag(BagEntity bag) = _CreateOrderFromBag;
 }

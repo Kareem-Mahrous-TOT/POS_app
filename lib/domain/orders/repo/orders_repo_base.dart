@@ -1,18 +1,17 @@
-import 'package:dartz/dartz.dart';
-import 'package:tot_pos/domain/orders/entities/order_entity.dart';
-
-
-import '../../../core/network/failure.dart';
+import '../../../core/types/types.dart';
 import '../../../data/orders/model/graph_create_order_model.dart';
+import '../../bag/entities/bag.dart';
+import '../entities/order_entity.dart';
 
 abstract class OrdersRepoBase {
-  Future<
-          Either<Failure,
-              ({CreateOrderModel createOrderModel, bool isAnonymous})>>
+  FutureEitherFailureOrType<
+          ({CreateOrderModel createOrderModel, bool isAnonymous})>
       createOrderFromCart({required String cartId});
-  Future<Either<Failure, GetOrderByIdModel>> getOrderbyId(
+  FutureEitherFailureOrType<GetOrderByIdModel> getOrderbyId(
       {required String orderId});
   Future<bool> changeOrderStatus(
       {required String orderId, required String status});
-  Future<Either<Failure, List<OrderEntity>>> getOrders({int? first, String? sort});
+  FutureEitherFailureOrType<List<OrderEntity>> getOrders(
+      {int? first, String? sort});
+  Future<bool> createOrderFromBag({required BagEntity bagEntity});
 }

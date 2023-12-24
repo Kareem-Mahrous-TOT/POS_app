@@ -21,6 +21,7 @@ mixin _$BagEvent {
     required TResult Function(Item item, int count) addItem,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$BagEvent {
     TResult? Function(Item item, int count)? addItem,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$BagEvent {
     TResult Function(Item item, int count)? addItem,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$BagEvent {
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$BagEvent {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$BagEvent {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +171,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(Item item, int count) addItem,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
     return addItem(item, count);
   }
@@ -175,6 +182,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(Item item, int count)? addItem,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
     return addItem?.call(item, count);
   }
@@ -185,6 +193,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(Item item, int count)? addItem,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -199,6 +208,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
   }) {
     return addItem(this);
   }
@@ -209,6 +219,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
   }) {
     return addItem?.call(this);
   }
@@ -219,6 +230,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -306,6 +318,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(Item item, int count) addItem,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
     return removeItem(item);
   }
@@ -316,6 +329,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(Item item, int count)? addItem,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
     return removeItem?.call(item);
   }
@@ -326,6 +340,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(Item item, int count)? addItem,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -340,6 +355,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
   }) {
     return removeItem(this);
   }
@@ -350,6 +366,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
   }) {
     return removeItem?.call(this);
   }
@@ -360,6 +377,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -419,6 +437,7 @@ class _$ClearBagImpl implements _ClearBag {
     required TResult Function(Item item, int count) addItem,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
     return clearBag();
   }
@@ -429,6 +448,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult? Function(Item item, int count)? addItem,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
     return clearBag?.call();
   }
@@ -439,6 +459,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult Function(Item item, int count)? addItem,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (clearBag != null) {
@@ -453,6 +474,7 @@ class _$ClearBagImpl implements _ClearBag {
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
   }) {
     return clearBag(this);
   }
@@ -463,6 +485,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
   }) {
     return clearBag?.call(this);
   }
@@ -473,6 +496,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (clearBag != null) {
@@ -484,6 +508,153 @@ class _$ClearBagImpl implements _ClearBag {
 
 abstract class _ClearBag implements BagEvent {
   const factory _ClearBag() = _$ClearBagImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateOrderFromBagImplCopyWith<$Res> {
+  factory _$$CreateOrderFromBagImplCopyWith(_$CreateOrderFromBagImpl value,
+          $Res Function(_$CreateOrderFromBagImpl) then) =
+      __$$CreateOrderFromBagImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BagEntity bag});
+}
+
+/// @nodoc
+class __$$CreateOrderFromBagImplCopyWithImpl<$Res>
+    extends _$BagEventCopyWithImpl<$Res, _$CreateOrderFromBagImpl>
+    implements _$$CreateOrderFromBagImplCopyWith<$Res> {
+  __$$CreateOrderFromBagImplCopyWithImpl(_$CreateOrderFromBagImpl _value,
+      $Res Function(_$CreateOrderFromBagImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bag = null,
+  }) {
+    return _then(_$CreateOrderFromBagImpl(
+      null == bag
+          ? _value.bag
+          : bag // ignore: cast_nullable_to_non_nullable
+              as BagEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
+  const _$CreateOrderFromBagImpl(this.bag);
+
+  @override
+  final BagEntity bag;
+
+  @override
+  String toString() {
+    return 'BagEvent.createOrderFromBag(bag: $bag)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderFromBagImpl &&
+            (identical(other.bag, bag) || other.bag == bag));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, bag);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderFromBagImplCopyWith<_$CreateOrderFromBagImpl> get copyWith =>
+      __$$CreateOrderFromBagImplCopyWithImpl<_$CreateOrderFromBagImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Item item, int count) addItem,
+    required TResult Function(BagItem item) removeItem,
+    required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
+  }) {
+    return createOrderFromBag(bag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Item item, int count)? addItem,
+    TResult? Function(BagItem item)? removeItem,
+    TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
+  }) {
+    return createOrderFromBag?.call(bag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Item item, int count)? addItem,
+    TResult Function(BagItem item)? removeItem,
+    TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (createOrderFromBag != null) {
+      return createOrderFromBag(bag);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
+  }) {
+    return createOrderFromBag(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
+  }) {
+    return createOrderFromBag?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (createOrderFromBag != null) {
+      return createOrderFromBag(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateOrderFromBag implements BagEvent {
+  const factory _CreateOrderFromBag(final BagEntity bag) =
+      _$CreateOrderFromBagImpl;
+
+  BagEntity get bag;
+  @JsonKey(ignore: true)
+  _$$CreateOrderFromBagImplCopyWith<_$CreateOrderFromBagImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
