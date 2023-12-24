@@ -48,16 +48,17 @@ class TOTCustomerCardMolecule extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: w * 0.12,
-                  width: w * 0.12,
-                  child: CircleAvatar(
-                    backgroundColor: Palette.grey,
-                    child: ClipRRect(
-                      child: CachedNetworkImage(
-                        imageUrl: customerImage,
-                        fit: BoxFit.cover,
-                      ),
+                child: ClipOval(
+                  clipBehavior: Clip.hardEdge,
+                  child: Container(
+                    color: Palette.bgGrey,
+                    height: w * 0.12,
+                    width: w * 0.12,
+                    child: CachedNetworkImage(
+                      // height: w * 0.1,
+                      // width: w * 0.1,
+                      imageUrl: customerImage,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

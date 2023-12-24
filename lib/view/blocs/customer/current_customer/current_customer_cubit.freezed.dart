@@ -19,19 +19,19 @@ mixin _$CurrentCustomerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CurrentCustomer data) loadedCurrentCustomerData,
+    required TResult Function(UserDataModel data) loadedCurrentCustomerData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult? Function(UserDataModel data)? loadedCurrentCustomerData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult Function(UserDataModel data)? loadedCurrentCustomerData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,7 +117,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CurrentCustomer data) loadedCurrentCustomerData,
+    required TResult Function(UserDataModel data) loadedCurrentCustomerData,
   }) {
     return initial();
   }
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult? Function(UserDataModel data)? loadedCurrentCustomerData,
   }) {
     return initial?.call();
   }
@@ -135,7 +135,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult Function(UserDataModel data)? loadedCurrentCustomerData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -190,9 +190,9 @@ abstract class _$$LoadedCurrentCustomerDataImplCopyWith<$Res> {
           $Res Function(_$LoadedCurrentCustomerDataImpl) then) =
       __$$LoadedCurrentCustomerDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CurrentCustomer data});
+  $Res call({UserDataModel data});
 
-  $CurrentCustomerCopyWith<$Res> get data;
+  $UserDataModelCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -214,14 +214,14 @@ class __$$LoadedCurrentCustomerDataImplCopyWithImpl<$Res>
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as CurrentCustomer,
+              as UserDataModel,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CurrentCustomerCopyWith<$Res> get data {
-    return $CurrentCustomerCopyWith<$Res>(_value.data, (value) {
+  $UserDataModelCopyWith<$Res> get data {
+    return $UserDataModelCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value));
     });
   }
@@ -233,7 +233,7 @@ class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
   const _$LoadedCurrentCustomerDataImpl(this.data);
 
   @override
-  final CurrentCustomer data;
+  final UserDataModel data;
 
   @override
   String toString() {
@@ -262,7 +262,7 @@ class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CurrentCustomer data) loadedCurrentCustomerData,
+    required TResult Function(UserDataModel data) loadedCurrentCustomerData,
   }) {
     return loadedCurrentCustomerData(data);
   }
@@ -271,7 +271,7 @@ class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult? Function(UserDataModel data)? loadedCurrentCustomerData,
   }) {
     return loadedCurrentCustomerData?.call(data);
   }
@@ -280,7 +280,7 @@ class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CurrentCustomer data)? loadedCurrentCustomerData,
+    TResult Function(UserDataModel data)? loadedCurrentCustomerData,
     required TResult orElse(),
   }) {
     if (loadedCurrentCustomerData != null) {
@@ -325,10 +325,10 @@ class _$LoadedCurrentCustomerDataImpl implements _LoadedCurrentCustomerData {
 }
 
 abstract class _LoadedCurrentCustomerData implements CurrentCustomerState {
-  const factory _LoadedCurrentCustomerData(final CurrentCustomer data) =
+  const factory _LoadedCurrentCustomerData(final UserDataModel data) =
       _$LoadedCurrentCustomerDataImpl;
 
-  CurrentCustomer get data;
+  UserDataModel get data;
   @JsonKey(ignore: true)
   _$$LoadedCurrentCustomerDataImplCopyWith<_$LoadedCurrentCustomerDataImpl>
       get copyWith => throw _privateConstructorUsedError;

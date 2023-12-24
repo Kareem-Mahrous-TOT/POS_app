@@ -4,5 +4,5 @@ part of 'current_customer_cubit.dart';
 class CurrentCustomerState with _$CurrentCustomerState {
   const factory CurrentCustomerState.initial() = _Initial;
   const factory CurrentCustomerState.loadedCurrentCustomerData(
-      CurrentCustomer data) = _LoadedCurrentCustomerData;
+      UserDataModel data) = _LoadedCurrentCustomerData;
 }

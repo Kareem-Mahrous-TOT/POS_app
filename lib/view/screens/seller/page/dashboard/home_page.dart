@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
@@ -88,7 +89,7 @@ class HomePage extends HookWidget {
                       validator: (value) {
                         //  validator
                         if (value == null) {
-                          return 'Please select an item.';
+                          return 'Please select a customer.';
                         }
                         return null;
                       },
@@ -147,10 +148,8 @@ class HomePage extends HookWidget {
                                   value.isSearching == false) {
                                 return Center(
                                   child: Text(
-                                    "No items found!",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
+                                    "لا يوجد منتجات",
+                                    style: context.titleLarge,
                                   ),
                                 );
                               }
@@ -172,72 +171,74 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                          onTap: (product
-                                                      ?.variations?.isEmpty ??
-                                                  true)
-                                              ? () {
-                                                  context.read<BagBloc>().add(
-                                                      BagEvent.addItem(
-                                                          item: product!));
-                                                }
-                                              : () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                        icon: Align(
-                                                            alignment: Alignment
-                                                                .topRight,
-                                                            child: IconButton(
-                                                                onPressed: () {
-                                                                  context.pop();
-                                                                },
-                                                                icon: const Icon(
-                                                                    Icons
-                                                                        .close))),
-                                                        content: SizedBox(
-                                                          width: w * 0.5,
-                                                          height: h * 0.6,
-                                                          child:
-                                                              POSFoodItemAlertDialog(
-                                                            id: product!.id!,
-                                                            onAddToCart:
-                                                                (product,
-                                                                    count) {
-                                                              context
-                                                                  .read<
-                                                                      BagBloc>()
-                                                                  .add(BagEvent
-                                                                      .addItem(
-                                                                    item:
-                                                                        product,
-                                                                    count:
-                                                                        count,
-                                                                  ));
-                                                            },
-                                                          ),
+                                        onTap: (product?.variations?.isEmpty ??
+                                                true)
+                                            ? () {
+                                                context.read<BagBloc>().add(
+                                                    BagEvent.addItem(
+                                                        item: product!));
+                                              }
+                                            : () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      icon: Align(
+                                                          alignment: Alignment
+                                                              .topRight,
+                                                          child: IconButton(
+                                                              onPressed: () {
+                                                                context.pop();
+                                                              },
+                                                              icon: const Icon(
+                                                                  Icons
+                                                                      .close))),
+                                                      content: SizedBox(
+                                                        width: w * 0.5,
+                                                        height: h * 0.6,
+                                                        child:
+                                                            POSFoodItemAlertDialog(
+                                                          id: product!.id!,
+                                                          onAddToCart:
+                                                              (product, count) {
+                                                            context
+                                                                .read<BagBloc>()
+                                                                .add(BagEvent
+                                                                    .addItem(
+                                                                  item: product,
+                                                                  count: count,
+                                                                ));
+                                                          },
                                                         ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                          productImage:
-                                              product?.imgSrc.toString(),
-                                          productName:
-                                              product?.name.toString() == "null"
-                                                  ? "Not found"
-                                                  : product!.name.toString(),
-                                          inStock:
-                                              " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                          prodcutDescription:
-                                              "${product?.descriptions?.firstWhere(orElse: () => const Description(content: null), (element) => element.languageCode == "ar-EG").content ?? ""} ",
-                                          price: product?.price?.actual
-                                                      ?.formattedAmount !=
-                                                  null
-                                              ? product!.price!.actual!
-                                                  .formattedAmount
-                                              : "N/A");
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                        productImage:
+                                            product?.imgSrc.toString(),
+                                        productName:
+                                            product?.name.toString() == "null"
+                                                ? "Not found"
+                                                : product!.name.toString(),
+                                        inStock:
+                                            " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
+                                        oldPrice: (product?.price
+                                                        ?.discountPercent ??
+                                                    0) !=
+                                                0
+                                            ? product!.price!.list!
+                                                .formattedAmountWithoutPointAndCurrency
+                                            : null,
+                                        price: product?.price?.actual
+                                                    ?.formattedAmount !=
+                                                null
+                                            ? product!
+                                                .price!.actual!.formattedAmount
+                                                .toString()
+                                            : "",
+                                      );
                                     }),
                               );
                             },
