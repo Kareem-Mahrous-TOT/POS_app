@@ -61,7 +61,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                     lineItemId: lineItemId, quantity: quantity));
             final state = response.fold(
                 (failure) => FetchCartState.updateCartFail(failure.message),
-                (model) => model);
+                (model) => model); 
 
             // if (data != null) {
             //   log("item Quantity Changed");

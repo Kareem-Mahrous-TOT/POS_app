@@ -4,17 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/palette.dart';
 
 class TOTPOSAppBar extends StatelessWidget {
-  const TOTPOSAppBar(
-      {super.key,
-      required this.selectedIndex,
-      this.searchWidth,
-      this.backgroudColor});
   final int selectedIndex;
   final double? searchWidth;
   final Color? backgroudColor;
 
+  const TOTPOSAppBar({
+    super.key,
+    required this.selectedIndex,
+    this.searchWidth,
+    this.backgroudColor,
+  });
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.sizeOf(context).height;
     return AppBar(
       backgroundColor: Palette.grey300,
       automaticallyImplyLeading: false,
@@ -31,33 +33,34 @@ class TOTPOSAppBar extends StatelessWidget {
             // const VerticalDivider(thickness: 1),
             SizedBox(
                 width: searchWidth ?? 1000.w,
+                height: h * 0.05,
                 child: SearchWidget(
                   backgroudColor: backgroudColor,
                   selectedIndex: selectedIndex,
                 )),
-            IconButton(
-                onPressed: () {
-                  showDialog(
-                      barrierColor: Colors.transparent,
-                      context: context,
-                      builder: (_) => Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Dialog(
-                                backgroundColor: const Color.fromARGB(
-                                    255, 223, 248, 242), //Colors.amber,
-                                child: SizedBox(
-                                  width: 600.w,
-                                  height: 700.h,
-                                ),
-                              ),
-                            ],
-                          ));
-                },
-                icon: const Icon(
-                  Icons.notification_add,
-                  color: Palette.black,
-                )),
+            // IconButton(
+            //     onPressed: () {
+            //       showDialog(
+            //           barrierColor: Colors.transparent,
+            //           context: context,
+            //           builder: (_) => Row(
+            //                 mainAxisAlignment: MainAxisAlignment.end,
+            //                 children: [
+            //                   Dialog(
+            //                     backgroundColor: const Color.fromARGB(
+            //                         255, 223, 248, 242), //Colors.amber,
+            //                     child: SizedBox(
+            //                       width: 600.w,
+            //                       height: 700.h,
+            //                     ),
+            //                   ),
+            //                 ],
+            //               ));
+            //     },
+            //     icon: const Icon(
+            //       Icons.notification_add,
+            //       color: Palette.black,
+            //     )),
           ],
         ),
       ),
