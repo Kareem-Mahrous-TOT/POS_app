@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
- import '../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
@@ -105,10 +105,12 @@ class CustomerPage extends HookWidget {
                     color: Palette.primary,
                   )),
                   loadedCurrentCustomerData: (value) => TOTCustomerCardMolecule(
-                    name: null,
-                    code: value.data.code.toString(),
-                    customerImage: value.data.customerImage.toString(),
-                    email: value.data.email.toString(),
+                    name: value.data.me.contact!.fullName,
+                    code: value.data.me.memberId!
+                        .substring(value.data.me.memberId!.length - 5),
+                    customerImage: value.data.me.photoUrl ??
+                        "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
+                    email: value.data.me.email!,
                   ),
                 );
               },

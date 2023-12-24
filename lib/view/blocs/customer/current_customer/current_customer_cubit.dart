@@ -1,19 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tot_pos/domain/auth/usecases/get_user_usecase.dart';
 
-import '../../../../data/old_data/models/response/customer/current_customer.dart';
-import '../../../../data/old_data/repository/impl/customer_repo_impl.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../../../../data/auth/model/user_data_response_model.dart';
 
 part 'current_customer_cubit.freezed.dart';
 part 'current_customer_state.dart';
 
 class CurrentCustomerCubit extends Cubit<CurrentCustomerState> {
-  CurrentCustomerCubit(this.repo) : super(const _Initial());
-
-  CustomerRepo repo;
+  final GetUserUsecase _getUserUsecase;
+  CurrentCustomerCubit({
+    required GetUserUsecase getUserUsecase,
+  })  : _getUserUsecase = getUserUsecase,
+        super(const _Initial());
 
   loadCurrentCustomerData() async {
-    final data = await repo.fetchCurrentCustomer();
-    emit(_LoadedCurrentCustomerData(data));
+    final data = await _getUserUsecase.call(NoParams());
+    emit(_LoadedCurrentCustomerData(data!));
   }
 }

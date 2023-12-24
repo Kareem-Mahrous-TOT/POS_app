@@ -24,10 +24,11 @@ import 'data/orders/repo/orders_repo_impl.dart';
 import 'data/products/data_sources/remote_data_source.dart';
 import 'data/products/repo/products_repo_impl.dart';
 import 'data/report/data_source/local_data_source.dart';
-import 'data/report/repo/report_repo_impl.dart'; 
+import 'data/report/repo/report_repo_impl.dart';
 import 'data/sales/data_source/sales_data_source.dart';
 import 'data/sales/repo/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
+import 'domain/auth/usecases/get_user_usecase.dart';
 import 'domain/auth/usecases/login_usecase.dart';
 import 'domain/cart/repo/cart_repo.dart';
 import 'domain/cart/usecases/add_cart_address_use_case.dart';
@@ -187,6 +188,9 @@ Future<void> getItInit() async {
       () => GetFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
   getIt.registerLazySingleton<ChangeFulfillmentCentersUseCase>(
       () => ChangeFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
+  //?
+  getIt.registerLazySingleton<GetUserUsecase>(
+      () => GetUserUsecase(authBaseRepo: getIt()));
 
   //cubits
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
@@ -194,7 +198,7 @@ Future<void> getItInit() async {
   getIt.registerFactory<BagBloc>(() => BagBloc());
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
-      () => CurrentCustomerCubit(getIt()));
+      () => CurrentCustomerCubit(getUserUsecase: getIt()));
   getIt
       .registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(getIt()));
   // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
