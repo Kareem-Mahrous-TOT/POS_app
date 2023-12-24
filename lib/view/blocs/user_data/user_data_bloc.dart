@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/constants/local_keys.dart';
-import '../../../data/models/response/graph/user_data_response_model.dart';
-import '../../../data/repository/base/anonymous_customer_repo_base.dart';
+import '../../../data/auth/model/user_data_response_model.dart';
+import '../../../data/old_data/repository/base/anonymous_customer_repo_base.dart';
 import '../../../depency_injection.dart';
 import '../../../domain/auth/repo/auth_repo_base.dart';
 

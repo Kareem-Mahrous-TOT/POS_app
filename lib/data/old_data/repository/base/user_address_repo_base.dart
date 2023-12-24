@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import '../../../core/network/failure.dart';
+import '../../../../core/network/failure.dart';
 import '../../models/address_data_model.dart';
 import '../../models/response/graph/addresses_model.dart';
 

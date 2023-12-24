@@ -16,7 +16,7 @@ class TOTPOSAppBar extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.sizeOf(context).height;
+    // double h = MediaQuery.sizeOf(context).height;
     return AppBar(
       backgroundColor: Palette.grey300,
       automaticallyImplyLeading: false,
@@ -33,7 +33,7 @@ class TOTPOSAppBar extends StatelessWidget {
             // const VerticalDivider(thickness: 1),
             SizedBox(
                 width: searchWidth ?? 1000.w,
-                height: h * 0.05,
+                height: 40,
                 child: SearchWidget(
                   backgroudColor: backgroudColor,
                   selectedIndex: selectedIndex,

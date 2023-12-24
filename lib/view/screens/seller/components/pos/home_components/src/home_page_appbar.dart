@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../../core/theme/palette.dart';
-import '../../../../../../../data/models/response/tot_customers/tot_customers.dart';
+ import '../../../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 
 class TOTPOSHomePageAppBar extends HookWidget {
   const TOTPOSHomePageAppBar({

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
-import '../../../../../data/models/response/tot_customers/tot_customers.dart';
+ import '../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';

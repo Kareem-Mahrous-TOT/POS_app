@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../data/models/response/customer/current_customer.dart';
-import '../../../../data/repository/impl/customer_repo_impl.dart';
+import '../../../../data/old_data/models/response/customer/current_customer.dart';
+import '../../../../data/old_data/repository/impl/customer_repo_impl.dart';
 
 part 'current_customer_cubit.freezed.dart';
 part 'current_customer_state.dart';

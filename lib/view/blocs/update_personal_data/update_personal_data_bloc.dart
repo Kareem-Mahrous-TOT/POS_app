@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../data/repository/base/update_personal_data_repo_base.dart';
+import '../../../data/old_data/repository/base/update_personal_data_repo_base.dart';
 
 part 'update_personal_data_bloc.freezed.dart';
 part 'update_personal_data_event.dart';

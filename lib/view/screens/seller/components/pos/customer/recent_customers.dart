@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../core/theme/palette.dart';
-import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
+
+import '../../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 
 class CustomersListMolecule extends StatelessWidget {
   //Should be used in expanded or list
@@ -62,18 +63,20 @@ class CustomersListMolecule extends StatelessWidget {
                                     model[index].name.toString() == "null"
                                 ? "No name found"
                                 : model[index].name.toString(),
-                            style: nameStyle ?? context.titleMedium.copyWith(
-                              color: Palette.black,
-                            ),
+                            style: nameStyle ??
+                                context.titleMedium.copyWith(
+                                  color: Palette.black,
+                                ),
                           ),
                           Text(
                               model[index].emails!.isNotEmpty &&
                                       model[index].emails![0] != null
                                   ? model[index].emails![0]!
                                   : "No emails found",
-                              style: nameStyle ?? context.titleMedium.copyWith(
-                                color:  Palette.grey,
-                              )),
+                              style: nameStyle ??
+                                  context.titleMedium.copyWith(
+                                    color: Palette.grey,
+                                  )),
                         ]),
                   ),
                 ],

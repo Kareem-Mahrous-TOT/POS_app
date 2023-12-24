@@ -4,7 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../../../core/network/end_points.dart';
 import '../../../core/network/api_consumer.dart';
 import '../../../core/network/graph_config.dart';
-import '../../models/response/graph/user_data_response_model.dart';
+import '../model/user_data_response_model.dart';
 import '../responses/token_responses.dart';
 
 abstract class AuthRemoteDataSource {
