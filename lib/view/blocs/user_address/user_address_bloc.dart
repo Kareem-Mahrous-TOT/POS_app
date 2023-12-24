@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../core/constants/local_keys.dart';
-import '../../../data/models/address_data_model.dart';
-import '../../../data/models/json_models/area_regions_model.dart';
-import '../../../data/models/response/graph/addresses_model.dart';
-import '../../../data/repository/base/address/area_regions_repo_base.dart';
-import '../../../data/repository/base/user_address_repo_base.dart';
+import '../../../data/old_data/models/address_data_model.dart';
+import '../../../data/old_data/models/json_models/area_regions_model.dart';
+import '../../../data/old_data/models/response/graph/addresses_model.dart';
+import '../../../data/old_data/repository/base/address/area_regions_repo_base.dart';
+import '../../../data/old_data/repository/base/user_address_repo_base.dart';
 import '../../../depency_injection.dart';
 
 part 'user_address_bloc.freezed.dart';

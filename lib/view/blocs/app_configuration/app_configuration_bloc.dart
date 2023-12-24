@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import '../../../core/constants/local_keys.dart';
-import '../../../data/models/app_configuration_model.dart';
-import '../../../data/models/response/graph/user_data_response_model.dart';
-import '../../../data/repository/base/app_configuration_repository.dart';
+import '../../../data/auth/model/user_data_response_model.dart';
+import '../../../data/old_data/models/app_configuration_model.dart';
+import '../../../data/old_data/repository/base/app_configuration_repository.dart';
 import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../../../depency_injection.dart';
  import 'package:bloc/bloc.dart';

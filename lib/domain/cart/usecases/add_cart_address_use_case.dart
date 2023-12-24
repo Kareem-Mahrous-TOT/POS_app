@@ -1,7 +1,7 @@
 import '../../../core/constants/local_keys.dart';
-import '../../../core/usecase/usecase.dart';
-import '../../../data/models/response/graph/addresses_model.dart';
-import '../../../data/repository/base/user_address_repo_base.dart';
+import '../../../core/usecase/usecase.dart'; 
+import '../../../data/old_data/models/response/graph/addresses_model.dart';
+import '../../../data/old_data/repository/base/user_address_repo_base.dart';
 import '../../../depency_injection.dart';
 import '../repo/cart_repo.dart';
 

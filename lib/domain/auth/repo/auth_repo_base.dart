@@ -1,6 +1,6 @@
 import "dart:async";
 
-import '../../../data/models/response/graph/user_data_response_model.dart';
+import '../../../data/auth/model/user_data_response_model.dart';
 
 abstract class AuthBaseRepo {
   Future<UserDataModel?> getUser(); //Either<Failure, UserDataModel>

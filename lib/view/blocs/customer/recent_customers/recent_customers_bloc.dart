@@ -4,11 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/network/failure.dart';
-import '../../../../data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
-import '../../../../data/models/request/tot_customer_request/customers_search_model.dart';
-import '../../../../data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
-import '../../../../data/models/response/tot_customers/tot_customers.dart';
-import '../../../../data/repository/base/customers_rep_base.dart';
+import '../../../../data/old_data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import '../../../../data/old_data/models/request/tot_customer_request/customers_search_model.dart';
+import '../../../../data/old_data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
+import '../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../../data/old_data/repository/base/customers_rep_base.dart';
 
 part 'recent_customers_bloc.freezed.dart';
 part 'recent_customers_event.dart';
