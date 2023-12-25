@@ -104,10 +104,13 @@ class _SalesPageState extends State<SalesPage>
 class SalesTabs extends StatelessWidget {
   const SalesTabs({super.key});
 
-  @override
+  
+
+
+@override
   Widget build(BuildContext context) {
-    double w = MediaQuery.sizeOf(context).width;
-    double h = MediaQuery.sizeOf(context).height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return BlocBuilder<SalesCubit, SalesState>(
       builder: (context, state) {
         return SingleChildScrollView(
@@ -144,7 +147,7 @@ class SalesTabs extends StatelessWidget {
               ),
               Container(
                 width: w * 0.95,
-                height: 520.h,
+                height: h * 0.67,
                 decoration: BoxDecoration(
                   color: Palette.white,
                   borderRadius: BorderRadius.circular(10),
@@ -154,8 +157,11 @@ class SalesTabs extends StatelessWidget {
                       child: CircularProgressIndicator(
                     color: Palette.primary,
                   )),
-                  loadFailed: (value) =>
-                      const Center(child: Text("No data found")),
+                  loadFailed: (value) => const Center(
+                      child: Text(
+                    "No data found",
+                    //style: context.titleMedium,
+                  )),
                   loadSuccess: (value) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -218,4 +224,7 @@ class SalesTabs extends StatelessWidget {
       },
     );
   }
+
+
+
 }

@@ -18,9 +18,6 @@ dependencies:
   device_preview: ^1.1.0
   dio: ^5.3.4
   equatable: ^2.0.5
-  firebase_auth: ^4.14.1
-  firebase_core: ^2.23.0
-  firebase_messaging: ^14.7.5
   fl_chart: ^0.64.0
   fluentui_system_icons: ^1.1.222
   flutter:
@@ -79,7 +76,7 @@ flutter:
     - assets/images/
     # - assets/fonts/
     # - assets/icons/global/
-    # - assets/icons/
+    - assets/icons/
     # - assets/svg/
     - assets/jsons/
     # - assets/configuration/app_configuration.json

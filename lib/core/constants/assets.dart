@@ -10,4 +10,5 @@ class Assets {
   static const String appLogo = "assets/images/app_logo.png";
   static const String googleLogo = "https://companieslogo.com/img/orig/GOOG-0ed88f7c.png?t=1633218227";
   static const String faceBookLogo = "https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png";
+  static const String inventoryIcon = "assets/icons/warehouse-solid.svg";
 }
