@@ -19,7 +19,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
   });
 
   final String id;
-  final void Function(Item product, int count) onAddToCart;
+  final void Function(Item product, int count, List<Variation> variations) onAddToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -126,29 +126,8 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
                                         false
                                     ? () async {
                                         // //TODO: Cart should be here
-                                        onAddToCart(product, counter.value);
+                                        onAddToCart(product, counter.value, variations);
                                         context.pop();
-                                        // final bag = BagModel(
-                                        //     code: master!.code.toString(),
-                                        //     id: master.id.toString(),
-                                        //     totalprice: master
-                                        //         .price!.actual!.formattedAmount
-                                        //         .toString(),
-                                        //     itemName: master.name.toString(),
-                                        //     itemPrice: master
-                                        //         .price!.actual!.formattedAmount
-                                        //         .toString(),
-                                        //     itemQuantity: master
-                                        //         .availabilityData!
-                                        //         .availableQuantity
-                                        //         .toString());
-                                        // await context
-                                        //     .read<BagCubit>()
-                                        //     .updatedList(bag);
-                                        // if (mounted) {
-                                        //   context.pop(
-                                        //       context); // context.read<ProductsCubit>().calculateTotalPrice();
-                                        // }
                                       }
                                     : null,
                                 textStyle: context.titleMedium

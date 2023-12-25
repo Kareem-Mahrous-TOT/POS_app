@@ -19,7 +19,9 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) =>
@@ -27,7 +29,9 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) =>
@@ -35,7 +39,9 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -44,6 +50,8 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -52,6 +60,7 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -60,6 +69,7 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -169,7 +179,9 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -180,7 +192,9 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -191,7 +205,9 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -206,6 +222,8 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -217,6 +235,7 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -228,6 +247,7 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -252,12 +272,214 @@ abstract class _AddItem implements BagEvent {
 }
 
 /// @nodoc
+abstract class _$$AddItemWithVaritationsImplCopyWith<$Res> {
+  factory _$$AddItemWithVaritationsImplCopyWith(
+          _$AddItemWithVaritationsImpl value,
+          $Res Function(_$AddItemWithVaritationsImpl) then) =
+      __$$AddItemWithVaritationsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Item item, int count, List<Variation> variations});
+
+  $ItemCopyWith<$Res> get item;
+}
+
+/// @nodoc
+class __$$AddItemWithVaritationsImplCopyWithImpl<$Res>
+    extends _$BagEventCopyWithImpl<$Res, _$AddItemWithVaritationsImpl>
+    implements _$$AddItemWithVaritationsImplCopyWith<$Res> {
+  __$$AddItemWithVaritationsImplCopyWithImpl(
+      _$AddItemWithVaritationsImpl _value,
+      $Res Function(_$AddItemWithVaritationsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+    Object? count = null,
+    Object? variations = null,
+  }) {
+    return _then(_$AddItemWithVaritationsImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as Item,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      variations: null == variations
+          ? _value._variations
+          : variations // ignore: cast_nullable_to_non_nullable
+              as List<Variation>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ItemCopyWith<$Res> get item {
+    return $ItemCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
+  const _$AddItemWithVaritationsImpl(
+      {required this.item,
+      this.count = 1,
+      required final List<Variation> variations})
+      : _variations = variations;
+
+  @override
+  final Item item;
+  @override
+  @JsonKey()
+  final int count;
+  final List<Variation> _variations;
+  @override
+  List<Variation> get variations {
+    if (_variations is EqualUnmodifiableListView) return _variations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_variations);
+  }
+
+  @override
+  String toString() {
+    return 'BagEvent.addItemWithVaritations(item: $item, count: $count, variations: $variations)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddItemWithVaritationsImpl &&
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality()
+                .equals(other._variations, _variations));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item, count,
+      const DeepCollectionEquality().hash(_variations));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddItemWithVaritationsImplCopyWith<_$AddItemWithVaritationsImpl>
+      get copyWith => __$$AddItemWithVaritationsImplCopyWithImpl<
+          _$AddItemWithVaritationsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Item item, int count) addItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
+    required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
+  }) {
+    return addItemWithVaritations(item, count, variations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Item item, int count)? addItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
+    TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
+  }) {
+    return addItemWithVaritations?.call(item, count, variations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Item item, int count)? addItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
+    TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (addItemWithVaritations != null) {
+      return addItemWithVaritations(item, count, variations);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
+  }) {
+    return addItemWithVaritations(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
+  }) {
+    return addItemWithVaritations?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (addItemWithVaritations != null) {
+      return addItemWithVaritations(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddItemWithVaritations implements BagEvent {
+  const factory _AddItemWithVaritations(
+          {required final Item item,
+          final int count,
+          required final List<Variation> variations}) =
+      _$AddItemWithVaritationsImpl;
+
+  Item get item;
+  int get count;
+  List<Variation> get variations;
+  @JsonKey(ignore: true)
+  _$$AddItemWithVaritationsImplCopyWith<_$AddItemWithVaritationsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$RemoveItemImplCopyWith<$Res> {
   factory _$$RemoveItemImplCopyWith(
           _$RemoveItemImpl value, $Res Function(_$RemoveItemImpl) then) =
       __$$RemoveItemImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BagItem item});
+  $Res call({ModifiedBagItem item});
 }
 
 /// @nodoc
@@ -277,7 +499,7 @@ class __$$RemoveItemImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as BagItem,
+              as ModifiedBagItem,
     ));
   }
 }
@@ -288,7 +510,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   const _$RemoveItemImpl({required this.item});
 
   @override
-  final BagItem item;
+  final ModifiedBagItem item;
 
   @override
   String toString() {
@@ -316,7 +538,9 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -327,7 +551,9 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -338,7 +564,9 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -353,6 +581,8 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -364,6 +594,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -375,6 +606,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -388,9 +620,10 @@ class _$RemoveItemImpl implements _RemoveItem {
 }
 
 abstract class _RemoveItem implements BagEvent {
-  const factory _RemoveItem({required final BagItem item}) = _$RemoveItemImpl;
+  const factory _RemoveItem({required final ModifiedBagItem item}) =
+      _$RemoveItemImpl;
 
-  BagItem get item;
+  ModifiedBagItem get item;
   @JsonKey(ignore: true)
   _$$RemoveItemImplCopyWith<_$RemoveItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -435,7 +668,9 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -446,7 +681,9 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -457,7 +694,9 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -472,6 +711,8 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -483,6 +724,7 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -494,6 +736,7 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -576,7 +819,9 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(ModifiedBagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -587,7 +832,9 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(ModifiedBagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -598,7 +845,9 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(ModifiedBagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -613,6 +862,8 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -624,6 +875,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -635,6 +887,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -663,18 +916,21 @@ mixin _$BagState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -682,18 +938,21 @@ mixin _$BagState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -756,6 +1015,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) {
     return initial();
   }
@@ -765,6 +1025,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) {
     return initial?.call();
   }
@@ -774,6 +1035,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -787,6 +1049,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) {
     return initial(this);
   }
@@ -796,6 +1059,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -805,6 +1069,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -885,6 +1150,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) {
     return getItems(bagEntity);
   }
@@ -894,6 +1160,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) {
     return getItems?.call(bagEntity);
   }
@@ -903,6 +1170,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (getItems != null) {
@@ -916,6 +1184,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) {
     return getItems(this);
   }
@@ -925,6 +1194,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) {
     return getItems?.call(this);
   }
@@ -934,6 +1204,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (getItems != null) {
@@ -951,4 +1222,112 @@ abstract class _GetItems implements BagState {
   @JsonKey(ignore: true)
   _$$GetItemsImplCopyWith<_$GetItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$BagStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'BagState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements BagState {
+  const factory _Loading() = _$LoadingImpl;
 }

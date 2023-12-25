@@ -18,7 +18,6 @@ class BagOrganism<T> extends HookWidget {
     required this.onClearList,
     required this.discounts,
     required this.discountVariations,
-    required this.selectedDiscounts,
   });
 
   final List<BagItem> items;
@@ -28,7 +27,6 @@ class BagOrganism<T> extends HookWidget {
   final VoidCallback onClearList;
   final List<double> discounts;
   final List<T> discountVariations;
-  final List<bool> selectedDiscounts;
 
   @override
   Widget build(BuildContext context) {
@@ -87,17 +85,16 @@ class BagOrganism<T> extends HookWidget {
                             leading: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.product.name!),
+                                Text(item.name),
                                 Text(
-                                    'Available Quantity: ${(item.product.availabilityData!.inventories?.first.inStockQuantity ?? 0)}')
+                                    'Available Quantity: ${item.inStockQuantity}')
                               ],
                             ),
                             trailing: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Count: ${item.count}'),
-                                Text(
-                                    'Unit Price: ${(item.product.price?.actual?.amount ?? 0)}')
+                                Text('Count: ${item.quantity}'),
+                                Text('Unit Price: ${(item.price)}')
                               ],
                             ),
                           ),
