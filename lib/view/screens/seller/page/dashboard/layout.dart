@@ -105,7 +105,7 @@ class LayoutScreen extends HookWidget {
               leading: TotAssetImageAtom(
                 assetName: "assets/ic_launcher.png",
                 width: 50.w,
-                height: 50.h,
+                height: 40.h,
               ),
               actions: [
                 IconButton(

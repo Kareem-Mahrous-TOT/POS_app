@@ -1,8 +1,8 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../../core/constants/store_config.dart';
-import '../model/qraph_product_model.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/network/graph_config.dart';
+import '../model/qraph_product_model.dart';
 
 abstract class ProductsRemoteDataSource {
   Future<Products> getProducts({
@@ -288,6 +288,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                         amount
                         formattedAmount
                         formattedAmountWithoutCurrency
+                        formattedAmountWithoutPointAndCurrency
                         currency {
                             symbol
                         }
@@ -351,6 +352,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
                     currency {
                         symbol
                     }
@@ -360,6 +362,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
                     currency {
                         symbol
                     }
