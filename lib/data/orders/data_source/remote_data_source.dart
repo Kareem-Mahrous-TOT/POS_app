@@ -1,9 +1,8 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos/core/network/end_points.dart';
 
 import '../../../core/network/api_consumer.dart';
+import '../../../core/network/end_points.dart';
 import '../../../core/network/graph_config.dart';
-import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/orders/entities/order_entity.dart';
 import '../model/graph_create_order_model.dart';
 
@@ -18,7 +17,7 @@ abstract class OrdersRemoteDataSource {
   Future<GetOrderByIdModel> getOrderbyId({required String orderId});
   Future<bool> changeOrderStatus(
       {required String ordreId, required String status});
-  Future<bool> createOrderFromBag({required BagEntity bagEntity});
+  Future<bool> createOrderFromBag({required Map<String, dynamic> orderJson});
 }
 
 class OrdersRemoteDataSourceImpl extends OrdersRemoteDataSource {
@@ -426,10 +425,10 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
   }
 
   @override
-  Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
+  Future<bool> createOrderFromBag({required Map<String, dynamic> orderJson}) async {
     final response = await _apiConsumer.post(
       EndPoints.totCreateOrder,
-      data: bagEntity.toJson(),
+      data: orderJson,//bagEntity.toJson(),
     );
 
     return ((response.statusCode! >= 200 && response.statusCode! < 300) &&

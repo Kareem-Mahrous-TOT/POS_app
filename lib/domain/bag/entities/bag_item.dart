@@ -1,7 +1,7 @@
 import '../../../data/products/model/qraph_product_model.dart';
 
 class BagItem {
-  final Item _product;
+  final Item _product                                                                                                                                                                                                                                                 ;
   int _count;
   final String _createdDate;
   final String _modifiedDate;
@@ -39,12 +39,12 @@ class BagItem {
       'quantity': _count,
       'imageUrl': _product.imgSrc,
       'currency': _product.price?.actual?.currency?.code ?? "EGP",
-      'listPrice': _product.price?.actual?.amount,
-      'price': _product.price?.actual?.amount,
       'priceId':
           _product.price?.pricelistId ?? "83f0eea5-fccb-4420-a88d-19eb7aab8096",
-      'salePrice': _product.price?.actual?.amount,
-      'placedPrice': _product.price?.actual?.amount,
+      'listPrice': _product.price?.list?.amount,
+      'salePrice': _product.price?.sale?.amount,
+      'price': _product.price?.actual?.amount,  
+      // 'placedPrice': _product.price?.actual?.amount,
       'taxType': taxType.toString(),
       'objectType': "TotPlatform.CartModule.Core.Model.LineItem",
       'createdDate': _createdDate,

@@ -18,8 +18,8 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   BagBloc({required CreateOrderFromBagUsecase createOrderFromBagUsecase})
       : _createOrderFromBagUsecase = createOrderFromBagUsecase,
         super(const BagState.initial()) {
-    on<BagEvent>((event, emit) {
-      event.map(
+    on<BagEvent>((event, emit) async{
+      await event.map(
         addItem: (addItemEvent) {
           final bagItem =
               BagItem(product: addItemEvent.item, count: addItemEvent.count);
@@ -51,8 +51,14 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           );
         },
         createOrderFromBag: (_CreateOrderFromBag value) async {
-          final result = await _createOrderFromBagUsecase.call(value.bag);
-          log("::: did Create Order: $result :::");
+          await state.maybeMap(
+              orElse: () {},
+              getItems: (getItemsState) async {
+                emit(const BagState.loading());
+                final result = await _createOrderFromBagUsecase.call(value.bag);
+                emit(result ? const BagState.initial() : getItemsState);
+                log("::: did Create Order: $result :::");
+              });
         },
       );
     });

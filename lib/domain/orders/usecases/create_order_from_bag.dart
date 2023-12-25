@@ -1,6 +1,6 @@
-import 'package:tot_pos/core/usecase/usecase.dart';
-import 'package:tot_pos/domain/bag/entities/bag.dart';
-import 'package:tot_pos/domain/orders/repo/orders_repo_base.dart';
+import '../../../core/usecase/usecase.dart';
+import '../../bag/entities/bag.dart';
+import '../repo/orders_repo_base.dart';
 
 class CreateOrderFromBagUsecase implements BaseUsecase<BagEntity, Future<bool>>{
   final OrdersRepoBase _ordersRepo;

@@ -75,7 +75,14 @@ class OrdersRepoImpl implements OrdersRepoBase {
   @override
   Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
     try {
-      return _remotedataSource.createOrderFromBag(bagEntity: bagEntity);
+      return _remotedataSource.createOrderFromBag(
+          orderJson: bagEntity.toJson(
+        storeId: StoreConfig.storeId,
+        catalogId: StoreConfig.catalogId,
+        currencyCode: StoreConfig.currencyCode,
+        languageCode: StoreConfig.cultureName,
+        customerId: "1de52db2-1f95-4e60-ba04-e797a2d51146",
+      ));
     } catch (e) {
       return false;
     }

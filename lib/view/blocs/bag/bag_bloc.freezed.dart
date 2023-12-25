@@ -663,18 +663,21 @@ mixin _$BagState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -682,18 +685,21 @@ mixin _$BagState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -756,6 +762,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) {
     return initial();
   }
@@ -765,6 +772,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) {
     return initial?.call();
   }
@@ -774,6 +782,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -787,6 +796,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) {
     return initial(this);
   }
@@ -796,6 +806,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -805,6 +816,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -885,6 +897,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
   }) {
     return getItems(bagEntity);
   }
@@ -894,6 +907,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
   }) {
     return getItems?.call(bagEntity);
   }
@@ -903,6 +917,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (getItems != null) {
@@ -916,6 +931,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
   }) {
     return getItems(this);
   }
@@ -925,6 +941,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
   }) {
     return getItems?.call(this);
   }
@@ -934,6 +951,7 @@ class _$GetItemsImpl implements _GetItems {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (getItems != null) {
@@ -951,4 +969,112 @@ abstract class _GetItems implements BagState {
   @JsonKey(ignore: true)
   _$$GetItemsImplCopyWith<_$GetItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$BagStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'BagState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(BagEntity bagEntity) getItems,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(BagEntity bagEntity)? getItems,
+    TResult? Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(BagEntity bagEntity)? getItems,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_GetItems value) getItems,
+    required TResult Function(_Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GetItems value)? getItems,
+    TResult? Function(_Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_GetItems value)? getItems,
+    TResult Function(_Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements BagState {
+  const factory _Loading() = _$LoadingImpl;
 }

@@ -18,7 +18,6 @@ class BagOrganism<T> extends HookWidget {
     required this.onClearList,
     required this.discounts,
     required this.discountVariations,
-    required this.selectedDiscounts,
   });
 
   final List<BagItem> items;
@@ -28,7 +27,6 @@ class BagOrganism<T> extends HookWidget {
   final VoidCallback onClearList;
   final List<double> discounts;
   final List<T> discountVariations;
-  final List<bool> selectedDiscounts;
 
   @override
   Widget build(BuildContext context) {
