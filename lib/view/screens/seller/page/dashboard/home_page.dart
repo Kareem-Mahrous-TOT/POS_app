@@ -14,7 +14,6 @@ import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../ui_mappers/to_category_record.dart';
-import '../../components/pos/custom_appbar.dart';
 import '../../components/pos/home_components/home_export.dart';
 import '../../components/pos/home_components/src/bag_organism.dart';
 
@@ -24,7 +23,7 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
-
+    final controller = useTextEditingController();
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
@@ -37,8 +36,17 @@ class HomePage extends HookWidget {
               orElse: () => 0,
               updateIndex: (index) => index,
             );
-            return TOTPOSAppBar(
+            return TOTSearchAppBarOrganism(
+              controller: controller,
+              onChanged: (onChangedValue) {
+                context.read<ProductsBloc>().add(
+                      ProductsEvent.searchList(
+                        query: controller.text.trim(),
+                      ),
+                    );
+              },
               searchWidth: 650.w,
+              appBarBackgroundColor: Palette.grey300,
               selectedIndex: selectedIndex,
             );
           },
@@ -67,7 +75,8 @@ class HomePage extends HookWidget {
                         child: CircularProgressIndicator.adaptive(),
                       );
                     },
-                    fetchSuccess: (records) => TOTPOSHomePageAppBar(
+                    fetchSuccess: (records) => TotPosHomePageAppBarOrganism(
+                      
                       onCategoryChanged: (selectedRecord) {
                         context
                             .read<MenuCubit>()
@@ -198,7 +207,7 @@ class HomePage extends HookWidget {
                                                         width: w * 0.5,
                                                         height: h * 0.6,
                                                         child:
-                                                            POSFoodItemAlertDialog(
+                                                            TotPosFoodItemAlertDialogOrganism(
                                                           id: product!.id!,
                                                           onAddToCart:
                                                               (product, count) {
@@ -218,14 +227,15 @@ class HomePage extends HookWidget {
                                               },
                                         productImage:
                                             product?.imgSrc.toString(),
-                                        productName:
-                                            product?.name.toString() == "null"
-                                                ? "Not found"
-                                                : product!.name.toString(),
+                                        productName: product?.name == null
+                                            ? "Not found"
+                                            : product!.name,
                                         inStock:
                                             " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                        oldPrice: (product?.price
-                                                        ?.discountPercent ??
+                                        oldPrice: (product
+                                                        ?.price
+                                                        ?.discountAmount
+                                                        ?.amount ??
                                                     0) !=
                                                 0
                                             ? product!.price!.list!
@@ -236,7 +246,6 @@ class HomePage extends HookWidget {
                                                 null
                                             ? product!
                                                 .price!.actual!.formattedAmount
-                                                .toString()
                                             : "",
                                       );
                                     }),

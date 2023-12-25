@@ -10,10 +10,9 @@ import '../../../../../../../core/extensions/translate.dart';
 import '../../../../../../../core/theme/palette.dart';
 import '../../../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../../../blocs/product_details/product_details_bloc.dart';
-import 'pos_counter.dart';
 
-class POSFoodItemAlertDialog extends HookWidget {
-  const POSFoodItemAlertDialog({
+class TotPosFoodItemAlertDialogOrganism extends HookWidget {
+  const TotPosFoodItemAlertDialogOrganism({
     super.key,
     required this.id,
     required this.onAddToCart,
