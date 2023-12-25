@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_bloc.dart';
 
@@ -23,13 +25,13 @@ import 'sales_page.dart';
 
 class LayoutScreen extends HookWidget {
   const LayoutScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = useMemoized(() => [
           const HomePage(),
           const OrderPage(),
           const CustomerPage(),
+          const ReportsPage(),
           const SalesPage(),
           const ReportsPage(),
         ]);
@@ -125,24 +127,38 @@ class LayoutScreen extends HookWidget {
                       .read<LayoutBloc>()
                       .add(LayoutEvent.updateIndex(index));
                 },
-                items: const [
-                  BottomNavigationBarItem(
+                items: [
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.home),
                     label: 'Dashboard',
                   ),
-                  BottomNavigationBarItem(
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.shopping_bag),
                     label: 'Orders',
                   ),
-                  BottomNavigationBarItem(
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.man),
                     label: 'Customers',
                   ),
                   BottomNavigationBarItem(
+                    icon: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: SvgPicture.asset(
+                        Assets.inventoryIcon,
+                        fit: BoxFit.contain,
+                        colorFilter: ColorFilter.mode(
+                            selectedIndex == 3 ? Palette.primary : Colors.grey,
+                            BlendMode.srcIn),
+                      ),
+                    ),
+                    label: 'Inventory',
+                  ),
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.attach_money),
                     label: 'Sales',
                   ),
-                  BottomNavigationBarItem(
+                  const BottomNavigationBarItem(
                     icon: Icon(Icons.add_chart),
                     label: 'Reports',
                   ),
