@@ -85,17 +85,16 @@ class BagOrganism<T> extends HookWidget {
                             leading: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.product.name!),
+                                Text(item.name),
                                 Text(
-                                    'Available Quantity: ${(item.product.availabilityData!.inventories?.first.inStockQuantity ?? 0)}')
+                                    'Available Quantity: ${item.inStockQuantity}')
                               ],
                             ),
                             trailing: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Count: ${item.count}'),
-                                Text(
-                                    'Unit Price: ${(item.product.price?.actual?.amount ?? 0)}')
+                                Text('Count: ${item.quantity}'),
+                                Text('Unit Price: ${(item.price)}')
                               ],
                             ),
                           ),

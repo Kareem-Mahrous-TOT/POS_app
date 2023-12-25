@@ -201,13 +201,14 @@ class HomePage extends HookWidget {
                                                             POSFoodItemAlertDialog(
                                                           id: product!.id!,
                                                           onAddToCart:
-                                                              (product, count) {
+                                                              (product, count, variations) {
                                                             context
                                                                 .read<BagBloc>()
                                                                 .add(BagEvent
-                                                                    .addItem(
+                                                                    .addItemWithVaritations(
                                                                   item: product,
                                                                   count: count,
+                                                                  variations: variations,
                                                                 ));
                                                           },
                                                         ),

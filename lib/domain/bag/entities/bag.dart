@@ -21,17 +21,17 @@ class BagEntity {
 
   void addItem({required BagItem bagItem}) {
     final index =
-        items.indexWhere((element) => element.product.id == bagItem.product.id);
+        items.indexWhere((element) => element.productId == bagItem.productId);
     if (index != -1) {
-      _items[index].count += bagItem.count;
+      _items[index].quantity += bagItem.quantity;
     } else {
       _items.add(bagItem);
     }
     _calcPrice();
   }
 
-  void removeItem({required BagItem item}) {
-    _items.removeWhere((element) => element.product.id == item.product.id);
+  void removeItem({required BagItem bagItem}) {
+    _items.removeWhere((element) => element.productId == bagItem.productId);
     _calcPrice();
   }
 
@@ -40,8 +40,7 @@ class BagEntity {
         .fold(
             num.parse('0'),
             (previousValue, bagItem) =>
-                previousValue +
-                ((bagItem.product.price?.actual?.amount ?? 0) * bagItem.count))
+                previousValue + ((bagItem.price) * bagItem.quantity))
         .toDouble();
   }
 
