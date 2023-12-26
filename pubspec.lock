@@ -1447,7 +1447,7 @@ packages:
     description:
       path: "packages/atomic_design"
       ref: tablet-beta
-      resolved-ref: fdc739aab46869ca6cb98a88d57e0ea14a376367
+      resolved-ref: c868171fc2591279d5c832c96c7ee08525bdc7e6
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
