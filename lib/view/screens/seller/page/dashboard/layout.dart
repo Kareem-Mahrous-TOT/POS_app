@@ -9,6 +9,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'package:tot_pos/view/blocs/products/products_bloc.dart';
+import 'package:tot_pos/view/screens/seller/page/dashboard/inventory_page.dart';
 
 import '../../../../../core/extensions/translate.dart';
 import '../../../../../core/routes/routes.dart';
@@ -31,7 +32,7 @@ class LayoutScreen extends HookWidget {
           const HomePage(),
           const OrderPage(),
           const CustomerPage(),
-          const ReportsPage(),
+          const InventoryPage(),
           const SalesPage(),
           const ReportsPage(),
         ]);
@@ -142,8 +143,8 @@ class LayoutScreen extends HookWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: SizedBox(
-                      width: 30,
-                      height: 30,
+                      width: 25,
+                      height: 25,
                       child: SvgPicture.asset(
                         Assets.inventoryIcon,
                         fit: BoxFit.contain,

@@ -90,6 +90,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
                               width: w * 0.15,
                               height: h * 0.06,
                               child: TOTPOSItemCounterMolecule(
+                                borderColor: Palette.primary,
                                 addIconColor: Palette.white,
                                 removeIconColor: Palette.white,
                                 increment: () {

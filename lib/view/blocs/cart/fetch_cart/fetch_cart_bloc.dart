@@ -57,6 +57,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
             final response = await _changeItemQuantityUsecase.call(
                 ChangeCartItemParams(
                     lineItemId: lineItemId, quantity: quantity));
+            // ignore: unused_local_variable
             final state = response.fold(
                 (failure) => FetchCartState.updateCartFail(failure.message),
                 (model) => model);
