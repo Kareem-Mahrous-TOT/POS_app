@@ -210,15 +210,17 @@ class HomePage extends HookWidget {
                                                         child:
                                                             TotPosFoodItemAlertDialogOrganism(
                                                           id: product!.id!,
-                                                          onAddToCart:
-                                                              (product, count, variations) {
+                                                          onAddToCart: (product,
+                                                              count,
+                                                              variations) {
                                                             context
                                                                 .read<BagBloc>()
                                                                 .add(BagEvent
                                                                     .addItemWithVaritations(
                                                                   item: product,
                                                                   count: count,
-                                                                  variations: variations,
+                                                                  variations:
+                                                                      variations,
                                                                 ));
                                                           },
                                                         ),
@@ -261,7 +263,6 @@ class HomePage extends HookWidget {
                       listener: (context, state) {
                         state.maybeMap(
                           orElse: () {},
-                          
                         );
                       },
                       builder: (context, state) {
