@@ -76,7 +76,8 @@ class HomePage extends HookWidget {
                       );
                     },
                     fetchSuccess: (records) => TotPosHomePageAppBarOrganism(
-                      
+                      successColor: Palette.primary,
+                      falseColor: Palette.white,
                       onCategoryChanged: (selectedRecord) {
                         context
                             .read<MenuCubit>()
