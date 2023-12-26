@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';

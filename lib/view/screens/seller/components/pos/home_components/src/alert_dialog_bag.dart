@@ -125,14 +125,6 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
                                                 element.inStockQuantity != 0) ??
                                         false
                                     ? () async {
-                                        // //TODO: Cart should be here
-                                        // final selectedVariation = Item(
-                                        //     price: master!.price,
-                                        //     name: master.name ?? "",
-                                        //     id: master.id ?? "",
-                                        //     code: master.code ?? "",
-                                        //     availabilityData:
-                                        //         master.availabilityData);
                                         onAddToCart(
                                             product, counter.value, variations);
 

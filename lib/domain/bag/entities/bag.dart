@@ -30,6 +30,18 @@ class BagEntity {
     _calcPrice();
   }
 
+  void decreaseItemQuantity({required String productId}) {
+    final index = items.indexWhere((element) => element.productId == productId);
+    if (index != -1) {
+      if(_items[index].quantity > 1) {
+        _items[index].quantity--;
+      }else{
+        removeItem(bagItem: _items[index]);
+      }
+    }
+    _calcPrice();
+  }
+
   void removeItem({required BagItem bagItem}) {
     _items.removeWhere((element) => element.productId == bagItem.productId);
     _calcPrice();

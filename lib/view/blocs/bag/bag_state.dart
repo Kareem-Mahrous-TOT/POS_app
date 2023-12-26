@@ -1,9 +1,10 @@
 part of 'bag_bloc.dart';
 
-@freezed
+@unfreezed
 class BagState with _$BagState {
-  const factory BagState.initial() = _Initial;
-
-  const factory BagState.getItems({required BagEntity bagEntity}) = _GetItems;
-  const factory BagState.loading() = _Loading;
+  /// [fromSuccess] represents that the state is coming after a successful order creation
+  factory BagState.empty({@Default(false) bool fromSuccess}) = _Empty;
+  /// [fromFailure] represents that the state is coming after a failed order creation
+  factory BagState.getItems({required BagEntity bagEntity, @Default(false) bool fromFailure}) = _GetItems;
+  factory BagState.loading() = _Loading;
 }
