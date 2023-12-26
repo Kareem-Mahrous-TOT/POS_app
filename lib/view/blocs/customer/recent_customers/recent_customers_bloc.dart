@@ -70,7 +70,6 @@ class RecentCustomersBloc
                     listRecentCustomers = r.results;
                     emit(_LoadedRecentCustomerData(r.results));
                     // homeBloc.add(const HomeEvent.getCustomers());
-                    log("fetched Data Successfully");
                   });
                 });
               },
@@ -83,7 +82,6 @@ class RecentCustomersBloc
                   emit(
                       _LoadedRecentCustomerData(r.results, isSearching: false));
                 });
-                log("New data failed to be added");
               },
               orElse: () {},
             );

@@ -27,7 +27,6 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
                 .call(CreateOrderFormCartParams(cartId: event.cartId));
             await data.fold(
               (l) async {
-                log("::::: $data CreateOrderBloc _Failure");
                 emit(
                   const _FailureCreatedOrder(),
                 );
@@ -39,19 +38,6 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
                     isAnonymous: record.isAnonymous,
                   ),
                 );
-                // await AuthRepoImpl(DioClient(),
-                //         GraphService(graphQLConfig: getIt<GraphQLConfig>()))
-                //     .tokenByClientId();
-                // await UpdateCartRepoImpl(getIt()).updateCartStatus(
-                //   storeId: AppConstants.storeId,
-                //   customerId: preferences.getString(LocalKeys.userId)!,
-                //   cartId: preferences.getString(LocalKeys.cartId)!,
-                //   status: AppConstants.orderedStatus,
-                //   currency: AppConstants.currencyCode,
-                // );
-                // emit(
-                //   CreateOrderState.successChangeCartStatus(r),
-                // );
               },
             );
           },

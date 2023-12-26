@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../core/network/api_consumer.dart';
@@ -425,11 +427,14 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
   }
 
   @override
-  Future<bool> createOrderFromBag({required Map<String, dynamic> orderJson}) async {
+  Future<bool> createOrderFromBag(
+      {required Map<String, dynamic> orderJson}) async {
     final response = await _apiConsumer.post(
       EndPoints.totCreateOrder,
-      data: orderJson,//bagEntity.toJson(),
+      data: orderJson,
     );
+
+    log("::: create order from bag response: $response :::");
 
     return ((response.statusCode! >= 200 && response.statusCode! < 300) &&
         response.data != null);
