@@ -5,7 +5,6 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../blocs/report/report_cost/report_cost_cubit.dart';
 import '../../../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import '../../components/pos/reports/circular_indicator.dart';
 import '../../components/pos/reports/line_chart.dart';
 import '../../components/pos/reports/pie_chart_api.dart';
 import '../../components/pos/sales_card.dart';

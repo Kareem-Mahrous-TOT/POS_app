@@ -134,7 +134,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
                                         //     availabilityData:
                                         //         master.availabilityData);
                                         onAddToCart(
-                                            product, counter.value);
+                                            product, counter.value, variations);
 
                                         context.pop();
                                       }
