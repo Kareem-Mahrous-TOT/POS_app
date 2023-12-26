@@ -63,98 +63,9 @@ class InventoryPage extends HookWidget {
                           loadingState: (value) => const Center(
                                 child: CircularProgressIndicator.adaptive(),
                               ),
-                          fetchSuccessState: (value) => Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 18.0, right: 8),
-                                child: Column(
-                                  children: [
-                                    ExpansionTile(
-                                      trailing: const SizedBox.shrink(),
-                                      tilePadding: EdgeInsets.zero,
-                                      title: Row(children: [
-                                        Expanded(
-                                          child: Text(
-                                            "SKU",
-                                            style: context.titleMedium,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            "Name",
-                                            style: context.titleMedium,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            "Price",
-                                            style: context.titleMedium,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            "Quantity",
-                                            style: context.titleMedium,
-                                          ),
-                                        ),
-                                      ]),
-                                    ),
-                                    const Divider(color: Palette.grey),
-                                    ListView.builder(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: value.products!.length,
-                                      itemBuilder: (context, index) {
-                                        final product = value.products![index];
-                                        return ExpansionTile(
-                                          tilePadding: EdgeInsets.zero,
-                                          title: Row(children: [
-                                            Expanded(
-                                              child: Text(
-                                                product.code!,
-                                                style: context.titleMedium,
-                                              ),
-                                            ),
-                                            // const Spacer(),
-                                            Expanded(
-                                              child: Text(
-                                                product.name!,
-                                                style: context.titleMedium,
-                                              ),
-                                            ),
-                                            // const Spacer(),
-                                            Expanded(
-                                              child: Text(
-                                                product.price!.actual!
-                                                    .formattedAmount!,
-                                                style: context.titleMedium,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                product.availabilityData!
-                                                    .inventories!
-                                                    .firstWhere(
-                                                        orElse: () =>
-                                                            const Inventory(),
-                                                        (element) =>
-                                                            element
-                                                                .fulfillmentCenterId ==
-                                                            StoreConfig
-                                                                .octoberBranchId)
-                                                    .inStockQuantity
-                                                    .toString(),
-                                                overflow: TextOverflow.ellipsis,
-                                                style: context.titleMedium,
-                                              ),
-                                            ),
-                                          ]),
-                                          children: const [Icon(Icons.abc)],
-                                        );
-                                      },
-                                    )
-                                  ],
-                                ),
+                          fetchSuccessState: (value) =>
+                              TotInventoryListOrganism(
+                                value: value,
                               ),
                           fetchFailState: (value) =>
                               const Text("No data found"));
@@ -170,83 +81,97 @@ class InventoryPage extends HookWidget {
   }
 }
 
+class TotInventoryListOrganism extends StatelessWidget {
+  const TotInventoryListOrganism({super.key, this.value});
+  final dynamic value;
 
-// DataTable(
-                              //   border: const TableBorder(
-                              //       verticalInside:
-                              //           BorderSide(color: Palette.grey300)),
-                              //   // dataRowMinHeight: h * 0.1,
-                              //   dataRowMaxHeight: h * 0.08,
-                              //   columns: const [
-                              //     DataColumn(
-                              //       label: Text("#"),
-                              //     ),
-                              //     DataColumn(
-                              //       label: Text("SKU"),
-                              //     ),
-                              //     DataColumn(
-                              //       label: Text("Name"),
-                              //     ),
-                              //     DataColumn(
-                              //       label: Text("Price"),
-                              //     ),
-                              //     DataColumn(
-                              //       label: Text("Available Quantity"),
-                              //     ),
-                              //   ],
-                              //   rows: List.generate(value.products!.length,
-                              //       (rowsIndex) {
-                              //     final product = value.products![rowsIndex];
-                              //     return DataRow(
-                              //       cells: [
-                              //         DataCell(
-                              //           // Text("hey"),
-                              //           Checkbox(
-                              //             value: true,
-                              //             // value: products[rowsIndex].isSelected,
-                              //             onChanged: (bool? value) {},
-                              //           ),
-                              //         ),
-                              //         DataCell(
-                              //           Text(
-                              //             product.code!,
-                              //             overflow: TextOverflow.ellipsis,
-                              //           ),
-                              //         ),
-                              //         DataCell(
-                              //           Text(
-                              //             product.name!,
-                              //             // "value.orders[rowsIndex].price.toString()",
-                              //             overflow: TextOverflow.ellipsis,
-                              //           ),
-                              //         ),
-                              //         DataCell(Text(
-                              //           product.price!.actual!.formattedAmount!,
-                              //           overflow: TextOverflow.ellipsis,
-                              //         )),
-                              //         DataCell(ExpansionTile(
-                              //           title: Text(
-                              //             product.availabilityData!.inventories!
-                              //                 .firstWhere(
-                              //                     orElse: () =>
-                              //                         const Inventory(),
-                              //                     (element) =>
-                              //                         element
-                              //                             .fulfillmentCenterId ==
-                              //                         StoreConfig
-                              //                             .octoberBranchId)
-                              //                 .inStockQuantity
-                              //                 .toString(),
-                              //             // "value.orders[rowsIndex].paymentMethodType.toString()",
-                              //             overflow: TextOverflow.ellipsis,
-                              //           ),
-                              //           children: [
-                              //             TextButton(
-                              //                 onPressed: () {},
-                              //                 child: const Text("data"))
-                              //           ],
-                              //         )),
-                              //       ],
-                              //     );
-                              //   }),
-                              // ),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 18.0, right: 8),
+      child: Column(
+        children: [
+          ExpansionTile(
+            trailing: const SizedBox.shrink(),
+            tilePadding: EdgeInsets.zero,
+            title: Row(children: [
+              Expanded(
+                child: Text(
+                  "SKU",
+                  style: context.titleMedium,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  "Name",
+                  style: context.titleMedium,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  "Price",
+                  style: context.titleMedium,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  "Quantity",
+                  style: context.titleMedium,
+                ),
+              ),
+            ]),
+          ),
+          const Divider(color: Palette.grey),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: value.products!.length,
+            itemBuilder: (context, index) {
+              final product = value.products![index];
+              return ExpansionTile(
+                tilePadding: EdgeInsets.zero,
+                title: Row(children: [
+                  Expanded(
+                    child: Text(
+                      product.code!,
+                      style: context.titleMedium,
+                    ),
+                  ),
+                  // const Spacer(),
+                  Expanded(
+                    child: Text(
+                      product.name!,
+                      style: context.titleMedium,
+                    ),
+                  ),
+                  // const Spacer(),
+                  Expanded(
+                    child: Text(
+                      product.price!.actual!.formattedAmount!,
+                      style: context.titleMedium,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      product.availabilityData!.inventories!
+                          .firstWhere(
+                              orElse: () => const Inventory(),
+                              (element) =>
+                                  element.fulfillmentCenterId ==
+                                  StoreConfig.octoberBranchId)
+                          .inStockQuantity
+                          .toString(),
+                      overflow: TextOverflow.ellipsis,
+                      style: context.titleMedium,
+                    ),
+                  ),
+                ]),
+                children: const [Icon(Icons.abc)],
+              );
+            },
+          )
+        ],
+      ),
+    );
+  }
+}
