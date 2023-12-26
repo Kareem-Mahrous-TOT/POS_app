@@ -23,6 +23,8 @@ class HomePage extends HookWidget {
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
+    final fToast = useFToast(context: context);
+
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
@@ -253,6 +255,40 @@ class HomePage extends HookWidget {
                       listener: (context, state) {
                         state.maybeMap(
                           orElse: () {},
+                          empty: (emptyState) {
+                            if (emptyState.fromSuccess) {
+                              fToast.showToast(
+                                  child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 4),
+                                      decoration: BoxDecoration(
+                                          color: Palette.green,
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                      child: Text(
+                                        "تم الطلب بنجاح",
+                                        style: context.titleLarge
+                                            .copyWith(color: Palette.white),
+                                      )));
+                            }
+                          },
+                          getItems: (getItemsState) {
+                            if (getItemsState.fromFailure) {
+                              fToast.showToast(
+                                  child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 4),
+                                      decoration: BoxDecoration(
+                                          color: Palette.green,
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                      child: Text(
+                                        "فشل الطلب",
+                                        style: context.titleLarge
+                                            .copyWith(color: Palette.white),
+                                      )));
+                            }
+                          },
                         );
                       },
                       builder: (context, state) {
@@ -265,8 +301,9 @@ class HomePage extends HookWidget {
                         ];
                         return state.map(loading: (value) {
                           return const LoadingCircular();
-                        }, initial: (value) {
+                        }, empty: (value) {
                           return BagOrganism(
+                            onItemPressed: (_){},
                             items: const [],
                             price: 0,
                             onCheckout: () {},
@@ -285,6 +322,11 @@ class HomePage extends HookWidget {
                             discounts: discounts,
                             items: value.bagEntity.items,
                             price: value.bagEntity.price,
+                            onItemPressed: (productId){
+                              context
+                                  .read<BagBloc>()
+                                  .add(BagEvent.decreaseItemQuantity(productId: productId));
+                            },
                             onCheckout: () {
                               context.read<BagBloc>().add(
                                   BagEvent.createOrderFromBag(value.bagEntity));

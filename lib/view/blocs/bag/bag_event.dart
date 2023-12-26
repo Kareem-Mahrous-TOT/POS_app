@@ -8,6 +8,7 @@ class BagEvent with _$BagEvent {
       {required Item item,
       @Default(1) int count,
       required List<Variation> variations}) = _AddItemWithVaritations;
+  const factory BagEvent.decreaseItemQuantity({required String productId}) = _DecreaseItemQuantity;
   const factory BagEvent.removeItem({required BagItem item}) = _RemoveItem;
   const factory BagEvent.clearBag() = _ClearBag;
   const factory BagEvent.createOrderFromBag(BagEntity bag) =

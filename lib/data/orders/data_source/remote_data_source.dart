@@ -425,10 +425,11 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
   }
 
   @override
-  Future<bool> createOrderFromBag({required Map<String, dynamic> orderJson}) async {
+  Future<bool> createOrderFromBag(
+      {required Map<String, dynamic> orderJson}) async {
     final response = await _apiConsumer.post(
       EndPoints.totCreateOrder,
-      data: orderJson,//bagEntity.toJson(),
+      data: orderJson,
     );
 
     return ((response.statusCode! >= 200 && response.statusCode! < 300) &&

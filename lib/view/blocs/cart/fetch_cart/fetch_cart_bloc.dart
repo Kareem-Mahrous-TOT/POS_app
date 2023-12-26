@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
@@ -102,11 +100,9 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
           started: () {},
           fetchCart: (storeId, currencyCode) async {
             emit(FetchCartState.loading());
-            log("FROM FETCH CART BLOC => $storeId, $currencyCode #");
 
             await state.maybeMap(
               orElse: () async {
-                log("FROM FETCH CART BLOC => orElse: () async #");
                 await addCart(
                   storeId: storeId,
                   currencyCode: currencyCode,
@@ -137,11 +133,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                           )
                           .inStockQuantity ??
                       0.0;
-                  if (kDebugMode) {
-                    print(
-                        "${cartItem.quantity} => item quantity --------- /n $stockInInventory => quantity in Repo");
-                  }
-
                   if (stockInInventory > cartItem.quantity!) {
                     emit(value.copyWith(isUpdating: true));
                     if (cartItem.quantity != null && cartItem.quantity! >= 1) {

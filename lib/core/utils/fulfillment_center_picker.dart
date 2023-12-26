@@ -94,7 +94,6 @@ Future<void> showFulfillmentCenterPicker(
                               items: branches.fulfillmentCenters.items,
                               selectedFulfillmentCenter: branchName,
                               onTap: (currentItem) {
-                                log("SELECT BRANCH::-currentItem-- $currentItem #");
                                 if (currentItem != null) {
                                   context.read<FulfillmentCenterBloc>().add(
                                         FulfillmentCenterEvent.changedBranch(

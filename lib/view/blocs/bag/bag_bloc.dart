@@ -15,24 +15,23 @@ class BagBloc extends Bloc<BagEvent, BagState> {
 
   BagBloc({required CreateOrderFromBagUsecase createOrderFromBagUsecase})
       : _createOrderFromBagUsecase = createOrderFromBagUsecase,
-        super(const BagState.initial()) {
+        super(BagState.empty()) {
     on<BagEvent>((event, emit) async {
       await event.map(
         addItem: (addItemEvent) {
           final bagItem =
               BagItem.fromItem(addItemEvent.item, addItemEvent.count);
-          // BagItem(product: addItemEvent.item, count: addItemEvent.count);
           state.maybeMap(
               orElse: () {},
-              initial: (initialState) {
+              empty: (initialState) {
                 emit(BagState.getItems(
                     bagEntity: BagEntity()..addItem(bagItem: bagItem)));
               },
               getItems: (getItemsState) {
-                emit(const BagState.loading());
                 final newBagEntity = getItemsState.bagEntity;
                 newBagEntity.addItem(bagItem: bagItem);
-                emit(getItemsState.copyWith(bagEntity: newBagEntity));
+                emit(getItemsState.copyWith(
+                    bagEntity: newBagEntity, fromFailure: false));
               });
         },
         addItemWithVaritations: (_AddItemWithVaritations addItemEvent) {
@@ -42,28 +41,28 @@ class BagBloc extends Bloc<BagEvent, BagState> {
               variations: addItemEvent.variations);
           state.maybeMap(
               orElse: () {},
-              initial: (initialState) {
+              empty: (emptyState) {
                 emit(BagState.getItems(
                     bagEntity: BagEntity()..addItem(bagItem: bagItem)));
               },
               getItems: (getItemsState) {
-                emit(const BagState.loading());
                 final newBagEntity = getItemsState.bagEntity;
                 newBagEntity.addItem(bagItem: bagItem);
-                emit(getItemsState.copyWith(bagEntity: newBagEntity));
+                emit(getItemsState.copyWith(
+                    bagEntity: newBagEntity, fromFailure: false));
               });
         },
         clearBag: (_) {
-          emit(const BagState.initial());
+          emit(BagState.empty());
         },
         removeItem: (eventItem) {
           state.maybeMap(
             orElse: () {},
             getItems: (items) {
-              emit(const BagState.initial());
               final newBagEntitiy = items.bagEntity;
               newBagEntitiy.removeItem(bagItem: eventItem.item);
-              emit(items.copyWith(bagEntity: newBagEntitiy));
+              emit(
+                  items.copyWith(bagEntity: newBagEntitiy, fromFailure: false));
             },
           );
         },
@@ -71,9 +70,24 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           await state.maybeMap(
             orElse: () {},
             getItems: (getItemsState) async {
-              emit(const BagState.loading());
+              emit(BagState.loading());
+
               final result = await _createOrderFromBagUsecase.call(value.bag);
-              emit(result ? const BagState.initial() : getItemsState);
+
+              emit(result
+                  ? BagState.empty(fromSuccess: true)
+                  : getItemsState.copyWith(fromFailure: true));
+            },
+          );
+        },
+        decreaseItemQuantity: (_DecreaseItemQuantity value) {
+          state.maybeMap(
+            orElse: () {},
+            getItems: (getItemsState) {
+              final newBagEntitiy = getItemsState.bagEntity;
+              newBagEntitiy.decreaseItemQuantity(productId: value.productId);
+              emit(
+                  getItemsState.copyWith(bagEntity: newBagEntitiy, fromFailure: false));
             },
           );
         },
