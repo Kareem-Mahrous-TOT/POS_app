@@ -10,7 +10,6 @@ import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../blocs/bag/bag_bloc.dart';
-import '../../../../blocs/layout/layout_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../ui_mappers/to_category_record.dart';
@@ -30,26 +29,17 @@ class HomePage extends HookWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: BlocBuilder<LayoutBloc, LayoutState>(
-          builder: (context, state) {
-            final selectedIndex = state.maybeWhen(
-              orElse: () => 0,
-              updateIndex: (index) => index,
-            );
-            return TOTSearchAppBarOrganism(
-              controller: controller,
-              onChanged: (onChangedValue) {
-                context.read<ProductsBloc>().add(
-                      ProductsEvent.searchList(
-                        query: controller.text.trim(),
-                      ),
-                    );
-              },
-              searchWidth: 650.w,
-              appBarBackgroundColor: Palette.grey300,
-              selectedIndex: selectedIndex,
-            );
+        child: TOTSearchAppBarOrganism(
+          controller: controller,
+          onChanged: (onChangedValue) {
+            context.read<ProductsBloc>().add(
+                  ProductsEvent.searchList(
+                    query: controller.text.trim(),
+                  ),
+                );
           },
+          searchWidth: 650.w,
+          appBarBackgroundColor: Palette.grey300,
         ),
       ),
       body: Container(
