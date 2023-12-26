@@ -142,8 +142,8 @@ class LayoutScreen extends HookWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: SizedBox(
-                      width: 30,
-                      height: 30,
+                      width: 25,
+                      height: 25,
                       child: SvgPicture.asset(
                         Assets.inventoryIcon,
                         fit: BoxFit.contain,
