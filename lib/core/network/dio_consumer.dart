@@ -1,34 +1,25 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../depency_injection.dart';
-import 'end_points.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
 import '../routes/routes.dart';
 import '../services/cache_user.dart';
 import 'api_consumer.dart';
 import 'dio_exceptions_handler.dart';
+import 'end_points.dart';
 import 'network_interceptor.dart';
 
 class DioConsumer implements ApiConsumer {
   final Dio dio;
 
   DioConsumer({required this.dio}) {
-    dio.options =  BaseOptions(
+    dio.options = BaseOptions(
       baseUrl: EndPoints.baseUrl,
-      // headers: {
-      //   "Content-Type": Headers.formUrlEncodedContentType,
-      // },
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     );
-    // Logger().d(Endpoints.baseUrl);
-    // dio = Dio(options);
-
-    log("DioClient:: ${dio.options.headers}");
 
     dio.interceptors.add(NetworkInterceptor(handleError: (err, handler) async {
       if (err.response?.statusCode == 401) {
@@ -49,7 +40,7 @@ class DioConsumer implements ApiConsumer {
           ).saveTokens();
         } catch (e) {
           //  Logout
-          // await preferences.clear();
+          await preferences.clear();
           final context = navigatorKey.currentState?.context;
           if (context?.mounted ?? false) {
             context?.goNamed(Routes.login);

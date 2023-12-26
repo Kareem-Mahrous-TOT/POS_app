@@ -211,13 +211,14 @@ class HomePage extends HookWidget {
                                                             TotPosFoodItemAlertDialogOrganism(
                                                           id: product!.id!,
                                                           onAddToCart:
-                                                              (product, count) {
+                                                              (product, count, variations) {
                                                             context
                                                                 .read<BagBloc>()
                                                                 .add(BagEvent
-                                                                    .addItem(
+                                                                    .addItemWithVaritations(
                                                                   item: product,
                                                                   count: count,
+                                                                  variations: variations,
                                                                 ));
                                                           },
                                                         ),
@@ -256,7 +257,13 @@ class HomePage extends HookWidget {
                         },
                       ),
                     ),
-                    BlocBuilder<BagBloc, BagState>(
+                    BlocConsumer<BagBloc, BagState>(
+                      listener: (context, state) {
+                        state.maybeMap(
+                          orElse: () {},
+                          
+                        );
+                      },
                       builder: (context, state) {
                         List<double> discounts = [
                           5,
@@ -265,15 +272,9 @@ class HomePage extends HookWidget {
                           20,
                           25,
                         ];
-                        List<bool> selectedDiscount = [
-                          true,
-                          false,
-                          false,
-                          false,
-                          false,
-                          false,
-                        ];
-                        return state.map(initial: (value) {
+                        return state.map(loading: (value) {
+                          return const LoadingCircular();
+                        }, initial: (value) {
                           return BagOrganism(
                             items: const [],
                             price: 0,
@@ -286,12 +287,10 @@ class HomePage extends HookWidget {
                             onSlide: (value) {},
                             discounts: const [],
                             discountVariations: const [],
-                            selectedDiscounts: const [],
                           );
                         }, getItems: (value) {
                           return BagOrganism<double>(
                             discountVariations: discounts,
-                            selectedDiscounts: selectedDiscount,
                             discounts: discounts,
                             items: value.bagEntity.items,
                             price: value.bagEntity.price,

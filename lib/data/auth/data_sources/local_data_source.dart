@@ -36,11 +36,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       _sharedPreferences.setString(LocalKeys.password, password),
     ]);
 
-    if (caches.contains(false)) {
-      return false;
-    }
-
-    return true;
+    return caches.contains(false);
   }
 
   @override
@@ -75,11 +71,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       _sharedPreferences.setString(LocalKeys.lastName, lastName),
     ]);
 
-    if (caches.contains(false)) {
-      return false;
-    }
-
-    return true;
+    return caches.contains(false);
   }
 
   @override

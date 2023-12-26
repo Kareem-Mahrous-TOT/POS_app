@@ -11,7 +11,6 @@ part 'product_details_state.dart';
 
 class ProductDetailsBloc
     extends Bloc<ProductDetailsEvent, ProductDetailsState> {
-  // final ProductsRepoBase productRepo;
   final GetProductByIdUsecase _getProductByIdUsecase;
 
   ProductDetailsBloc({required GetProductByIdUsecase getProductByIdUsecase})
@@ -22,10 +21,8 @@ class ProductDetailsBloc
         Future<void> fetchProductById(
             {String? endCursor, required String productId}) async {
           emit(const ProductDetailsState.loadingState());
-          // try {
           final response = await _getProductByIdUsecase
               .call(GetProductByIdParams(productId: productId));
-          // final product =
           response.fold((failure) {
             emit(ProductDetailsState.fetchFailState(failure.message));
           }, (record) {
