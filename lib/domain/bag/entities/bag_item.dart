@@ -72,13 +72,15 @@ class BagItem {
         inStockQuantity: inStockQuantity);
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson({required String fulfillmentCenterId, required String fulfillmentCenterName}) {
     final taxRate = (listWithTax - listPrice) / listPrice;
     final taxType = (taxRate * 100).round();
 
     return <String, dynamic>{
       'catalogId': catalogId,
       'productId': productId,
+      'fulfillmentCenterId': fulfillmentCenterId,
+      'fulfillmentCenterName': fulfillmentCenterName,
       'sku': productId,
       'productType': productType,
       'name': name,
