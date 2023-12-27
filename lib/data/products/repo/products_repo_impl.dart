@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/data/products/mapper/products_pos_mapping.dart';
 
 import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
@@ -29,7 +30,8 @@ class ProductsRepoImpl implements ProductsRepoBase {
   FutureEitherFailureOrType<
       ({
         List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords
+        List<ProductCardRecord> proudctsRecords,
+        List<ProductPOSRecord> proudctsPosRecords
       })> getProducts({
     String? endCursor,
     required String branchId,
@@ -41,7 +43,8 @@ class ProductsRepoImpl implements ProductsRepoBase {
           branchId: branchId, categoryId: categoryId);
       return Right(((
         productsModels: products.items,
-        proudctsRecords: products.items!.toDomain()
+        proudctsRecords: products.items!.toDomain(),
+        proudctsPosRecords: products.items!.toDomainPOS(),
       )));
     } catch (e) {
       return Left(ServerFailure(e.toString()));

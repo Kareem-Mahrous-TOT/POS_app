@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
+import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -98,8 +99,10 @@ Future<void> getItInit() async {
   ));
   getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
   //? orders
-  getIt.registerSingleton<OrdersRemoteDataSource>(
-      OrdersRemoteDataSourceImpl(graphService: getIt(), apiConsumer: getIt(),));
+  getIt.registerSingleton<OrdersRemoteDataSource>(OrdersRemoteDataSourceImpl(
+    graphService: getIt(),
+    apiConsumer: getIt(),
+  ));
   getIt.registerSingleton<OrdersLocalDataSource>(
       OrdersLocalDataSourceImpl(preferences: getIt()));
   //? sales
@@ -195,11 +198,14 @@ Future<void> getItInit() async {
   getIt.registerLazySingleton<GetUserUsecase>(
       () => GetUserUsecase(authBaseRepo: getIt()));
 
-  //cubits
+  //blocs
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
-  getIt.registerFactory<BagBloc>(() => BagBloc(createOrderFromBagUsecase: getIt()));
+  getIt.registerFactory<BagBloc>(
+      () => BagBloc(createOrderFromBagUsecase: getIt()));
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
+  getIt.registerFactory<InventoryBloc>(
+      () => InventoryBloc(getProductsUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
   getIt
