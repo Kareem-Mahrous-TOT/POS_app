@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
+
 
 import '../../../../blocs/products/products_bloc.dart';
 
@@ -16,6 +18,7 @@ class InventoryPage extends HookWidget {
     final controller = useTextEditingController();
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
 
     return Scaffold(
       appBar: PreferredSize(

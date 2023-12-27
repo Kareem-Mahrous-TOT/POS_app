@@ -23,7 +23,6 @@ class UserAddressBloc extends Bloc<UserAddressEvent, UserAddressState> {
       (event, emit) async {
         final userId = preferences.getString(LocalKeys.userId);
         final memberId = preferences.getString(LocalKeys.memberId);
-        log("USER ADDRESS:: MEMBER ID:: $memberId ##");
         Future<void> fetchAreaRegions() async {
           try {
             final response = await areaRegionsRepo.getAllAreaRegions();
@@ -63,7 +62,6 @@ class UserAddressBloc extends Bloc<UserAddressEvent, UserAddressState> {
               emit(const _Failure("Try again later"));
             }
           } catch (error) {
-            log(error.toString());
             emit(const _Failure("Try again later"));
           }
         }
@@ -75,7 +73,6 @@ class UserAddressBloc extends Bloc<UserAddressEvent, UserAddressState> {
           } else {
             final data = await userAddressRepoBase.getAddresses(userId: userId);
 
-            log("User addresses:: $data ###");
             final String? defaultAddressId =
                 preferences.getString(LocalKeys.defaultAddressId);
             // final String? addressId =
@@ -86,7 +83,6 @@ class UserAddressBloc extends Bloc<UserAddressEvent, UserAddressState> {
               },
               (items) async {
                 final updatedAddresses = items.map((myAddress) {
-                  log("User addresses::-idFetch ${myAddress.id} ###");
                   return myAddress.copyWith(
                     isDefault: myAddress.id == defaultAddressId,
                   );
@@ -228,15 +224,6 @@ class UserAddressBloc extends Bloc<UserAddressEvent, UserAddressState> {
 
               final refreshedAddressesResponse =
                   await userAddressRepoBase.getAddresses(userId: userId);
-
-              result.fold((l) => null, (r) {
-                log("User addresses::-id ${r?.id} ###");
-              });
-              refreshedAddressesResponse.fold((l) => null, (r) {
-                for (var element in r) {
-                  log("User addresses::-id2 ${element.id} ###");
-                }
-              });
 
               await result.fold(
                 (l) async {

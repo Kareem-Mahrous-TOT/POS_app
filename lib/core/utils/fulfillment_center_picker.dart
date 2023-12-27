@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -94,7 +92,6 @@ Future<void> showFulfillmentCenterPicker(
                               items: branches.fulfillmentCenters.items,
                               selectedFulfillmentCenter: branchName,
                               onTap: (currentItem) {
-                                log("SELECT BRANCH::-currentItem-- $currentItem #");
                                 if (currentItem != null) {
                                   context.read<FulfillmentCenterBloc>().add(
                                         FulfillmentCenterEvent.changedBranch(

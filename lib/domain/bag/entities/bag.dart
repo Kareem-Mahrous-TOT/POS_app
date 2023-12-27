@@ -1,3 +1,4 @@
+import '../../../core/constants/store_config.dart';
 import 'bag_item.dart';
 
 class BagEntity {
@@ -30,6 +31,18 @@ class BagEntity {
     _calcPrice();
   }
 
+  void decreaseItemQuantity({required String productId}) {
+    final index = items.indexWhere((element) => element.productId == productId);
+    if (index != -1) {
+      if (_items[index].quantity > 1) {
+        _items[index].quantity--;
+      } else {
+        removeItem(bagItem: _items[index]);
+      }
+    }
+    _calcPrice();
+  }
+
   void removeItem({required BagItem bagItem}) {
     _items.removeWhere((element) => element.productId == bagItem.productId);
     _calcPrice();
@@ -54,22 +67,28 @@ class BagEntity {
     String paymentGatewayCode = "DefaultManualPaymentMethod",
   }) {
     return {
-      "storeId": storeId, //"alkhbaz",
-      "catalogId": catalogId, //"0a841b7e-c732-4738-913d-9e43c054170e",
-      "currency": currencyCode, //"EGP",
-      "languageCode": languageCode, //"ar-EG",
-      "customerId": customerId, //"1de52db2-1f95-4e60-ba04-e797a2d51146",
-      "customerName": customerName, //"Anonymous",
+      "status": "New",
+      "storeId": storeId,
+      "catalogId": catalogId,
+      "currency": currencyCode,
+      "languageCode": languageCode,
+      "customerId": customerId,
+      "customerName": customerName,
       "createdBy": _createdBy,
       "modifiedBy": _modifiedBy,
-      "items": _items.map((bagItem) => bagItem.toJson()).toList(),
+      "items": _items
+          .map((bagItem) => bagItem.toJson(
+                fulfillmentCenterId: StoreConfig.octoberBranchId,
+                fulfillmentCenterName: StoreConfig.octoberBranchName,
+              ))
+          .toList(),
       "price": _totalPrice,
       "inPayments": [
         {
-          "customerId": customerId, //"1de52db2-1f95-4e60-ba04-e797a2d51146",
-          "currency": currencyCode, //"EGP",
-          "paymentGatewayCode":
-              paymentGatewayCode, //"DefaultManualPaymentMethod"
+          "customerId": customerId,
+          "currency": currencyCode,
+          "gatewayCode":
+              paymentGatewayCode,
         }
       ],
       "dynamicProperties": [

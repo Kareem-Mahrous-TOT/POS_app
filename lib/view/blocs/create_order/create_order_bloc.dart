@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';
@@ -27,7 +24,6 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
                 .call(CreateOrderFormCartParams(cartId: event.cartId));
             await data.fold(
               (l) async {
-                log("::::: $data CreateOrderBloc _Failure");
                 emit(
                   const _FailureCreatedOrder(),
                 );
@@ -39,19 +35,6 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
                     isAnonymous: record.isAnonymous,
                   ),
                 );
-                // await AuthRepoImpl(DioClient(),
-                //         GraphService(graphQLConfig: getIt<GraphQLConfig>()))
-                //     .tokenByClientId();
-                // await UpdateCartRepoImpl(getIt()).updateCartStatus(
-                //   storeId: AppConstants.storeId,
-                //   customerId: preferences.getString(LocalKeys.userId)!,
-                //   cartId: preferences.getString(LocalKeys.cartId)!,
-                //   status: AppConstants.orderedStatus,
-                //   currency: AppConstants.currencyCode,
-                // );
-                // emit(
-                //   CreateOrderState.successChangeCartStatus(r),
-                // );
               },
             );
           },

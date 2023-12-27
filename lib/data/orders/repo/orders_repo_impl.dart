@@ -38,11 +38,14 @@ class OrdersRepoImpl implements OrdersRepoBase {
     String? sort,
   }) async {
     try {
+      final userId = _localDataSource.getUserId();
+
       final model = await _remotedataSource.getOrders(
           first: first,
           sort: sort,
-          userId: _localDataSource.getUserId(),
+          userId: userId,
           cultureName: StoreConfig.cultureName);
+
       return Right(model);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -75,14 +78,17 @@ class OrdersRepoImpl implements OrdersRepoBase {
   @override
   Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
     try {
-      return _remotedataSource.createOrderFromBag(
+      final employeeId = _localDataSource.getUserId();
+      final result = await _remotedataSource.createOrderFromBag(
           orderJson: bagEntity.toJson(
         storeId: StoreConfig.storeId,
         catalogId: StoreConfig.catalogId,
         currencyCode: StoreConfig.currencyCode,
         languageCode: StoreConfig.cultureName,
-        customerId: "1de52db2-1f95-4e60-ba04-e797a2d51146",
+        customerId: employeeId, //"1de52db2-1f95-4e60-ba04-e797a2d51146",
       ));
+
+      return result;
     } catch (e) {
       return false;
     }

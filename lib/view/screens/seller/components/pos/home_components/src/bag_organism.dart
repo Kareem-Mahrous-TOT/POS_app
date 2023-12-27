@@ -16,6 +16,7 @@ class BagOrganism<T> extends HookWidget {
     required this.onSlide,
     required this.onCheckout,
     required this.onClearList,
+    required this.onItemPressed,
     required this.discounts,
     required this.discountVariations,
   });
@@ -25,6 +26,7 @@ class BagOrganism<T> extends HookWidget {
   final void Function(BagItem) onSlide;
   final VoidCallback onCheckout;
   final VoidCallback onClearList;
+  final void Function(String itemId) onItemPressed;
   final List<double> discounts;
   final List<T> discountVariations;
 
@@ -80,6 +82,9 @@ class BagOrganism<T> extends HookWidget {
                                 ),
                               ]),
                           child: ListTile(
+                            onTap: () {
+                              onItemPressed(item.productId);
+                            },
                             leadingAndTrailingTextStyle: context.bodyMedium,
                             contentPadding: EdgeInsets.zero,
                             leading: Column(
