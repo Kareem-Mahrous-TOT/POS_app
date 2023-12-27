@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 import 'package:tot_pos/view/blocs/product_details/product_details_bloc.dart';
 
 import 'core/generated/l10n/langs/app_localizations.dart';
@@ -50,6 +51,9 @@ class MainApp extends StatelessWidget {
                   getIt<ProductsBloc>()..add(ProductsEvent.fetch())),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
+          BlocProvider(
+              create: (context) =>
+                  getIt<InventoryBloc>()..add(const InventoryEvent.fetch())),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           // BlocProvider(
@@ -61,6 +65,7 @@ class MainApp extends StatelessWidget {
               create: (context) => getIt<ReportCostCubit>()..loadData()),
         ],
         child: MaterialApp.router(
+          
           debugShowCheckedModeBanner: false,
           title: "TOT POS",
           locale: const Locale("en"),

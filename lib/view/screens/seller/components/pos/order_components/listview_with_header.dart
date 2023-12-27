@@ -115,39 +115,6 @@ class _TOTListViewWithHeaderOrganismState
                             order.status.toLowerCase() ==
                             statuses[index].toLowerCase())
                         .toList(),
-                    // orderEntity: statuses[index].toLowerCase() == "new"
-                    //     ? value.orders
-                    //         .where((element) => element.id == "new")
-                    //         .toList()
-                    //     : statuses[index].toLowerCase() == "created"
-                    //         ? value.orders
-                    //             .where((element) => element.id == "created")
-                    //             .toList()
-                    //         : statuses[index].toLowerCase() == "procesing"
-                    //             ? value.orders
-                    //                 .where((element) =>
-                    //                     element.id == "procesing")
-                    //                 .toList()
-                    //             : statuses[index].toLowerCase() == "completed"
-                    //                 ? value.orders
-                    //                     .where((element) =>
-                    //                         element.id == "completed")
-                    //                     .toList()
-                    //                 : value.orders
-                    //                     .takeWhile((value) =>
-                    //                         value.id != "new" &&
-                    //                         value.id != "created" &&
-                    //                         value.id != "processing" &&
-                    //                         value.id != "completed")
-                    //                     .toList()
-
-                    //     : statuses[index].toLowerCase() == "accepted"
-                    //         ? value.accepted
-                    //         : statuses[index].toLowerCase() == "processing"
-                    //             ? value.processing
-                    //             : statuses[index].toLowerCase() == "completed"
-                    //                 ? value.completed
-                    //                 : value.wrong!,
                   ),
                 ],
               ),

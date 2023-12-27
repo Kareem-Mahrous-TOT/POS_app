@@ -13,7 +13,8 @@ class GetProductsUsecase
             FutureEitherFailureOrType<
                 ({
                   List<Item>? productsModels,
-                  List<ProductCardRecord> proudctsRecords
+                  List<ProductCardRecord> proudctsRecords,
+                  List<ProductPOSRecord> proudctsPosRecords
                 })>> {
   final ProductsRepoBase _productsRepo;
 
@@ -24,7 +25,8 @@ class GetProductsUsecase
   FutureEitherFailureOrType<
       ({
         List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords
+        List<ProductCardRecord> proudctsRecords,
+        List<ProductPOSRecord> proudctsPosRecords
       })> call(GetProductsParams params) async {
     return await _productsRepo.getProducts(
       branchId: StoreConfig.octoberBranchId,
