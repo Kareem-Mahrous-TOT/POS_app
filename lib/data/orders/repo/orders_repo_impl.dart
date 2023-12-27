@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/constants/store_config.dart';
+import '../../../core/enums/payment_method_type.dart';
 import '../../../core/network/failure.dart';
 import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/orders/entities/order_entity.dart';
@@ -76,17 +77,43 @@ class OrdersRepoImpl implements OrdersRepoBase {
   }
 
   @override
-  Future<bool> createOrderFromBag({required BagEntity bagEntity}) async {
+  Future<bool> createOrderFromBag(
+      {required BagEntity bagEntity,
+      required PaymentMethodType paymentMethodType}) async {
     try {
       final employeeId = _localDataSource.getUserId();
-      final result = await _remotedataSource.createOrderFromBag(
-          orderJson: bagEntity.toJson(
-        storeId: StoreConfig.storeId,
-        catalogId: StoreConfig.catalogId,
-        currencyCode: StoreConfig.currencyCode,
-        languageCode: StoreConfig.cultureName,
-        customerId: employeeId, //"1de52db2-1f95-4e60-ba04-e797a2d51146",
-      ));
+      final bagJson = bagEntity.toJson();
+      final orderJson = {
+        "status": "New",
+        "storeId": StoreConfig.storeId,
+        "catalogId": StoreConfig.catalogId,
+        "currency": StoreConfig.currencyCode,
+        "languageCode": StoreConfig.cultureName,
+        "customerId": employeeId,
+        ...bagJson,
+        "inPayments": [
+          {
+            "customerId": employeeId,
+            "currency": StoreConfig.currencyCode,
+            "gatewayCode": paymentMethodType.toString(),
+          }
+        ],
+        "dynamicProperties": [
+          {
+            "values": [
+              {
+                "value": "POS",
+                "valueType": "ShortText",
+                "valueId": "060f19e9-7b23-4b3a-8b02-f7c459d53665",
+                "propertyId": "7f5d9247-714b-42a5-a98b-f0aba21bf45f",
+                "propertyName": "orderSource",
+              },
+            ],
+          },
+        ]
+      };
+      final result =
+          await _remotedataSource.createOrderFromBag(orderJson: orderJson);
 
       return result;
     } catch (e) {

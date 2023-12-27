@@ -4,18 +4,18 @@ import 'bag_item.dart';
 class BagEntity {
   final List<BagItem> _items;
   double _totalPrice;
-  // final String _createdDate;
-  // final String _modifiedDate;
+  final String _createdDate;
+  final String _modifiedDate;
   final String _createdBy;
   final String _modifiedBy;
 
-  BagEntity()
+  BagEntity({required String createdBy})
       : _items = [],
         _totalPrice = 0,
-        // _createdDate = DateTime.now().toString(),
-        // _modifiedDate = DateTime.now().toString(),
-        _createdBy = "73a40606-3f10-4ce7-bce8-023d02f97634",
-        _modifiedBy = "73a40606-3f10-4ce7-bce8-023d02f97634";
+        _createdDate = DateTime.now().toString(),
+        _modifiedDate = DateTime.now().toString(),
+        _createdBy = createdBy,//"73a40606-3f10-4ce7-bce8-023d02f97634",
+        _modifiedBy = createdBy;//"73a40606-3f10-4ce7-bce8-023d02f97634";
 
   List<BagItem> get items => _items.toList();
   double get price => _totalPrice.toDouble();
@@ -58,21 +58,9 @@ class BagEntity {
   }
 
   Map<String, dynamic> toJson({
-    required String storeId,
-    required String catalogId,
-    required String currencyCode,
-    required String languageCode,
-    required String customerId,
     String customerName = "Anonymous",
-    String paymentGatewayCode = "DefaultManualPaymentMethod",
   }) {
     return {
-      "status": "New",
-      "storeId": storeId,
-      "catalogId": catalogId,
-      "currency": currencyCode,
-      "languageCode": languageCode,
-      "customerId": customerId,
       "customerName": customerName,
       "createdBy": _createdBy,
       "modifiedBy": _modifiedBy,
@@ -83,27 +71,8 @@ class BagEntity {
               ))
           .toList(),
       "price": _totalPrice,
-      "inPayments": [
-        {
-          "customerId": customerId,
-          "currency": currencyCode,
-          "gatewayCode":
-              paymentGatewayCode,
-        }
-      ],
-      "dynamicProperties": [
-        {
-          "values": [
-            {
-              "value": "POS",
-              "valueType": "ShortText",
-              "valueId": "060f19e9-7b23-4b3a-8b02-f7c459d53665",
-              "propertyId": "7f5d9247-714b-42a5-a98b-f0aba21bf45f",
-              "propertyName": "orderSource",
-            },
-          ],
-        },
-      ]
+      "createdDate": _createdDate,
+      "modifiedDate": _modifiedDate,
     };
   }
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
@@ -11,6 +12,7 @@ import 'core/network/graph_config.dart';
 import 'data/auth/data_sources/local_data_source.dart';
 import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';
+import 'data/bag/repo/bag_repo.dart';
 import 'data/cart/data_sources.dart/local_data_source.dart';
 import 'data/cart/data_sources.dart/remote_data_source.dart';
 import 'data/cart/repo/cart_repo_impl.dart';
@@ -32,6 +34,8 @@ import 'data/sales/repo/sales_repo.dart';
 import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/get_user_usecase.dart';
 import 'domain/auth/usecases/login_usecase.dart';
+import 'domain/bag/repo/bag_order_repo.dart';
+import 'domain/bag/usecases/create_bag_usecase.dart';
 import 'domain/cart/repo/cart_repo.dart';
 import 'domain/cart/usecases/add_cart_address_use_case.dart';
 import 'domain/cart/usecases/add_copoun_usecase.dart';
@@ -114,6 +118,9 @@ Future<void> getItInit() async {
       CartLocalDataSourceImpl(sharedPrefs: getIt()));
   getIt.registerSingleton<CartRemoteDataSource>(
       CartRemoteDataSourceImpl(graphService: getIt()));
+  //? bag
+  getIt.registerSingleton<BagLocalDataSource>(
+      BagLocalDataSourceImpl(sharedPrefs: getIt()));
 
   //repos
   getIt.registerSingleton<CustomerRepo>(CustomerRepo());
@@ -141,6 +148,7 @@ Future<void> getItInit() async {
     cartLocalDataSource: getIt(),
     cartremoteDataSource: getIt(),
   ));
+  getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
 
   //usecase
   //? auth
@@ -169,6 +177,9 @@ Future<void> getItInit() async {
       () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
   getIt.registerLazySingleton<CreateOrderFromBagUsecase>(
       () => CreateOrderFromBagUsecase(ordersRepo: getIt()));
+  //? bag
+  getIt.registerLazySingleton<CreateBagUsecase>(
+      () => CreateBagUsecase(bagRepo: getIt()));
   //? cart
   getIt
       .registerLazySingleton<AddCartAddressUseCase>(() => AddCartAddressUseCase(
@@ -201,8 +212,10 @@ Future<void> getItInit() async {
   //blocs
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
-  getIt.registerFactory<BagBloc>(
-      () => BagBloc(createOrderFromBagUsecase: getIt()));
+  getIt.registerFactory<BagBloc>(() => BagBloc(
+        createOrderFromBagUsecase: getIt(),
+        createBagUsecase: getIt(),
+      ));
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
   getIt.registerFactory<InventoryBloc>(
       () => InventoryBloc(getProductsUsecase: getIt()));

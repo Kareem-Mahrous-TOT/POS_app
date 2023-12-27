@@ -1,3 +1,4 @@
+import '../../../core/enums/payment_method_type.dart';
 import '../../../core/types/types.dart';
 import '../../../data/orders/model/graph_create_order_model.dart';
 import '../../bag/entities/bag.dart';
@@ -13,5 +14,7 @@ abstract class OrdersRepoBase {
       {required String orderId, required String status});
   FutureEitherFailureOrType<List<OrderEntity>> getOrders(
       {int? first, String? sort});
-  Future<bool> createOrderFromBag({required BagEntity bagEntity});
+  Future<bool> createOrderFromBag(
+      {required BagEntity bagEntity,
+      required PaymentMethodType paymentMethodType});
 }
