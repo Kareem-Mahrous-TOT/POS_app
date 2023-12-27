@@ -9,7 +9,8 @@ abstract class ProductsRepoBase {
   FutureEitherFailureOrType<
       ({
         List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords
+        List<ProductCardRecord> proudctsRecords,
+        List<ProductPOSRecord> proudctsPosRecords
       })> getProducts({
     String? endCursor,
     required String branchId,

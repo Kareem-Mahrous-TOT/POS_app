@@ -4,6 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
+import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -208,7 +209,7 @@ Future<void> getItInit() async {
   getIt.registerLazySingleton<GetUserUsecase>(
       () => GetUserUsecase(authBaseRepo: getIt()));
 
-  //cubits
+  //blocs
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
   getIt.registerFactory<BagBloc>(() => BagBloc(
@@ -216,6 +217,8 @@ Future<void> getItInit() async {
         createBagUsecase: getIt(),
       ));
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
+  getIt.registerFactory<InventoryBloc>(
+      () => InventoryBloc(getProductsUsecase: getIt()));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
   getIt
