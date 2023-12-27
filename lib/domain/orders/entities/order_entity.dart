@@ -31,7 +31,7 @@ class OrderEntity {
       date: json['createdDate'],
       objectType: json['objectType'],
       id: json['id'],
-      status: json['status'] ?? "New dummy",
+      status: json['status'] ?? "New",
       price: json['total']['formattedAmount'],
     );
   }

@@ -1,13 +1,13 @@
 enum PaymentMethodType {
-  cashOnDelivery,
+  cashOnDelivery;
 
-  qnb;
+  // qnb;
 
   @override
   String toString() {
     return switch (this) {
       PaymentMethodType.cashOnDelivery => "DefaultManualPaymentMethod",
-      PaymentMethodType.qnb => "QnbMethod",
+      // PaymentMethodType.qnb => "QnbMethod",
     };
   }
 }
