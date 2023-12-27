@@ -412,7 +412,7 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
             "userId": userId,
             "cultureName": cultureName,
             "first": first ?? 100,
-            "sort": sort ?? "createdDate:dasc",
+            "sort": sort ?? "createdDate:desc",
           },
           fetchPolicy: FetchPolicy.noCache),
     );
