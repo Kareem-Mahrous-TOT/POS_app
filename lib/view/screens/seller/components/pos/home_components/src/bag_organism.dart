@@ -9,22 +9,24 @@ import '../../../../../../../core/theme/palette.dart';
 import '../../../../../../../domain/bag/entities/bag_item.dart';
 
 class BagOrganism<T> extends HookWidget {
-  const BagOrganism({
+  BagOrganism({
     super.key,
     required this.items,
     required this.price,
     required this.onSlide,
     required this.onCheckout,
+    required this.onDiscountChoosen,
     required this.onClearList,
     required this.onItemPressed,
     required this.discounts,
     required this.discountVariations,
-  });
+  }) : assert(!discounts.any((discount) => discount > 100 || discount < 0));
 
   final List<BagItem> items;
   final double price;
   final void Function(BagItem) onSlide;
   final VoidCallback onCheckout;
+  final void Function(double? discount) onDiscountChoosen;
   final VoidCallback onClearList;
   final void Function(String itemId) onItemPressed;
   final List<double> discounts;
@@ -33,7 +35,19 @@ class BagOrganism<T> extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController();
-    final selectedDiscountIndex = useState(-1);
+    final ValueNotifier<int?> selectedDiscountIndex = useState(null);
+    // double discountFactor = 1;
+    // double newPrice = price;
+
+    // useEffect(() {
+    //   final discountIndex = selectedDiscountIndex.value;
+    //   if (discountIndex != null) {
+    //     discountFactor = 1 - (discounts[discountIndex] / 100);
+    //   }
+
+    //   newPrice = price * discountFactor;
+    //   return null;
+    // }, [selectedDiscountIndex.value]);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -125,10 +139,10 @@ class BagOrganism<T> extends HookWidget {
                               shrinkWrap: true,
                               isMasterList: discountVariations
                                   .map((e) => (selectedDiscountIndex.value ==
-                                          -1)
+                                          null)
                                       ? false
                                       : discountVariations[
-                                              selectedDiscountIndex.value] ==
+                                              selectedDiscountIndex.value!] ==
                                           e)
                                   .toList(),
                               height: 32.h,
@@ -139,13 +153,16 @@ class BagOrganism<T> extends HookWidget {
                                 final index = discountVariations.indexOf(value);
 
                                 if (index == selectedDiscountIndex.value) {
-                                  selectedDiscountIndex.value = -1;
+                                  selectedDiscountIndex.value = null;
+                                  onDiscountChoosen(null);
                                   return;
                                 }
                                 if (controller.text.isNotEmpty) {
                                   controller.clear();
                                 }
                                 selectedDiscountIndex.value = index;
+                                final discount = discounts[index];
+                                onDiscountChoosen(discount);
                               },
                               textList: discounts
                                   .map((e) => "${e.toStringAsFixed(1)}%")
@@ -234,11 +251,13 @@ class BagOrganism<T> extends HookWidget {
                                 .copyWith(color: Palette.black),
                           ),
                           const Spacer(),
-                          Text(
-                            'Total Price: $price',
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                          Builder(builder: (context) {
+                            return Text(
+                              'Total Price: ${price.toStringAsFixed(2)}',
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            );
+                          }),
                         ],
                       ),
                       TotButtonAtom(

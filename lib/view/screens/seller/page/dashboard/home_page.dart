@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -297,13 +299,13 @@ class HomePage extends HookWidget {
                           10,
                           15,
                           20,
-                          25,
                         ];
                         return state.map(loading: (value) {
                           return const LoadingCircular();
                         }, empty: (value) {
                           return BagOrganism(
-                            onItemPressed: (_){},
+                            onDiscountChoosen: (_) {},
+                            onItemPressed: (_) {},
                             items: const [],
                             price: 0,
                             onCheckout: () {},
@@ -318,14 +320,20 @@ class HomePage extends HookWidget {
                           );
                         }, getItems: (value) {
                           return BagOrganism<double>(
+                            onDiscountChoosen: (discount) {
+                              log("::: discount: $discount :::");
+                              context.read<BagBloc>().add(
+                                  BagEvent.setDiscount(
+                                      discount: discount));
+                            },
                             discountVariations: discounts,
                             discounts: discounts,
                             items: value.bagEntity.items,
                             price: value.bagEntity.price,
-                            onItemPressed: (productId){
-                              context
-                                  .read<BagBloc>()
-                                  .add(BagEvent.decreaseItemQuantity(productId: productId));
+                            onItemPressed: (productId) {
+                              context.read<BagBloc>().add(
+                                  BagEvent.decreaseItemQuantity(
+                                      productId: productId));
                             },
                             onCheckout: () {
                               context.read<BagBloc>().add(
