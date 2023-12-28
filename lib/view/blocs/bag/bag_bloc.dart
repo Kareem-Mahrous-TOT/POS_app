@@ -114,6 +114,17 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             },
           );
         },
+        setDiscount: (_SetDiscount value) {
+          state.maybeMap(
+            orElse: () {},
+            getItems: (getItemsState) {
+              final newBagEntitiy = getItemsState.bagEntity;
+              newBagEntitiy.setDiscount(discount: value.discount);
+              emit(getItemsState.copyWith(
+                  bagEntity: newBagEntitiy, fromFailure: false));
+            },
+          );
+        },
       );
     });
   }

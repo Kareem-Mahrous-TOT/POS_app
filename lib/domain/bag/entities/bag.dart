@@ -3,19 +3,20 @@ import 'bag_item.dart';
 
 class BagEntity {
   final List<BagItem> _items;
-  double _totalPrice;
   final String _createdDate;
   final String _modifiedDate;
   final String _createdBy;
   final String _modifiedBy;
+  double _totalPrice;
+  double? _discount;
 
   BagEntity({required String createdBy})
       : _items = [],
         _totalPrice = 0,
         _createdDate = DateTime.now().toString(),
         _modifiedDate = DateTime.now().toString(),
-        _createdBy = createdBy,//"73a40606-3f10-4ce7-bce8-023d02f97634",
-        _modifiedBy = createdBy;//"73a40606-3f10-4ce7-bce8-023d02f97634";
+        _createdBy = createdBy,
+        _modifiedBy = createdBy;
 
   List<BagItem> get items => _items.toList();
   double get price => _totalPrice.toDouble();
@@ -49,12 +50,28 @@ class BagEntity {
   }
 
   void _calcPrice() {
-    _totalPrice = _items
+    final price = _items
         .fold(
             num.parse('0'),
             (previousValue, bagItem) =>
                 previousValue + ((bagItem.price) * bagItem.quantity))
         .toDouble();
+
+    double discountFactor = 1;
+
+    if (_discount != null) {
+      discountFactor = 1 - (_discount! / 100);
+    }
+
+    _totalPrice = price * discountFactor;
+  }
+
+  void setDiscount({double? discount}) {
+    if (discount != null && (discount > 100 || discount < 0)) return;
+
+    _discount = discount;
+    _calcPrice();
+    print("::: bag _totalPrice: $_totalPrice :::");
   }
 
   Map<String, dynamic> toJson({

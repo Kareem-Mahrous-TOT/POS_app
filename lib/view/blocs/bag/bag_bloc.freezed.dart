@@ -22,6 +22,7 @@ mixin _$BagEvent {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -33,6 +34,7 @@ mixin _$BagEvent {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -44,6 +46,7 @@ mixin _$BagEvent {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -56,6 +59,7 @@ mixin _$BagEvent {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -66,6 +70,7 @@ mixin _$BagEvent {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -76,6 +81,7 @@ mixin _$BagEvent {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -188,6 +194,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -202,6 +209,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -216,6 +224,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -234,6 +243,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -247,6 +257,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -260,6 +271,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -392,6 +404,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -406,6 +419,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -420,6 +434,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -438,6 +453,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -451,6 +467,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -464,6 +481,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -562,6 +580,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -576,6 +595,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -590,6 +610,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -608,6 +629,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -621,6 +643,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -634,6 +657,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -654,6 +678,174 @@ abstract class _DecreaseItemQuantity implements BagEvent {
   @JsonKey(ignore: true)
   _$$DecreaseItemQuantityImplCopyWith<_$DecreaseItemQuantityImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetDiscountImplCopyWith<$Res> {
+  factory _$$SetDiscountImplCopyWith(
+          _$SetDiscountImpl value, $Res Function(_$SetDiscountImpl) then) =
+      __$$SetDiscountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double? discount});
+}
+
+/// @nodoc
+class __$$SetDiscountImplCopyWithImpl<$Res>
+    extends _$BagEventCopyWithImpl<$Res, _$SetDiscountImpl>
+    implements _$$SetDiscountImplCopyWith<$Res> {
+  __$$SetDiscountImplCopyWithImpl(
+      _$SetDiscountImpl _value, $Res Function(_$SetDiscountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? discount = freezed,
+  }) {
+    return _then(_$SetDiscountImpl(
+      discount: freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetDiscountImpl implements _SetDiscount {
+  const _$SetDiscountImpl({this.discount});
+
+  @override
+  final double? discount;
+
+  @override
+  String toString() {
+    return 'BagEvent.setDiscount(discount: $discount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetDiscountImpl &&
+            (identical(other.discount, discount) ||
+                other.discount == discount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, discount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetDiscountImplCopyWith<_$SetDiscountImpl> get copyWith =>
+      __$$SetDiscountImplCopyWithImpl<_$SetDiscountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Item item, int count) addItem,
+    required TResult Function(Item item, int count, List<Variation> variations)
+        addItemWithVaritations,
+    required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
+    required TResult Function(BagItem item) removeItem,
+    required TResult Function() clearBag,
+    required TResult Function(BagEntity bag) createOrderFromBag,
+  }) {
+    return setDiscount(discount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Item item, int count)? addItem,
+    TResult? Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
+    TResult? Function(BagItem item)? removeItem,
+    TResult? Function()? clearBag,
+    TResult? Function(BagEntity bag)? createOrderFromBag,
+  }) {
+    return setDiscount?.call(discount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Item item, int count)? addItem,
+    TResult Function(Item item, int count, List<Variation> variations)?
+        addItemWithVaritations,
+    TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
+    TResult Function(BagItem item)? removeItem,
+    TResult Function()? clearBag,
+    TResult Function(BagEntity bag)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (setDiscount != null) {
+      return setDiscount(discount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddItemWithVaritations value)
+        addItemWithVaritations,
+    required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_ClearBag value) clearBag,
+    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
+  }) {
+    return setDiscount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
+    TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_ClearBag value)? clearBag,
+    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
+  }) {
+    return setDiscount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
+    TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_ClearBag value)? clearBag,
+    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
+    required TResult orElse(),
+  }) {
+    if (setDiscount != null) {
+      return setDiscount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetDiscount implements BagEvent {
+  const factory _SetDiscount({final double? discount}) = _$SetDiscountImpl;
+
+  double? get discount;
+  @JsonKey(ignore: true)
+  _$$SetDiscountImplCopyWith<_$SetDiscountImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -724,6 +916,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -738,6 +931,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -752,6 +946,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -770,6 +965,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -783,6 +979,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -796,6 +993,7 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -859,6 +1057,7 @@ class _$ClearBagImpl implements _ClearBag {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -873,6 +1072,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -887,6 +1087,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -905,6 +1106,7 @@ class _$ClearBagImpl implements _ClearBag {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -918,6 +1120,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -931,6 +1134,7 @@ class _$ClearBagImpl implements _ClearBag {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -1016,6 +1220,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     required TResult Function(Item item, int count, List<Variation> variations)
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
+    required TResult Function(double? discount) setDiscount,
     required TResult Function(BagItem item) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
@@ -1030,6 +1235,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     TResult? Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
+    TResult? Function(double? discount)? setDiscount,
     TResult? Function(BagItem item)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
@@ -1044,6 +1250,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     TResult Function(Item item, int count, List<Variation> variations)?
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
+    TResult Function(double? discount)? setDiscount,
     TResult Function(BagItem item)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
@@ -1062,6 +1269,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     required TResult Function(_AddItemWithVaritations value)
         addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
+    required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_ClearBag value) clearBag,
     required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
@@ -1075,6 +1283,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_ClearBag value)? clearBag,
     TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
@@ -1088,6 +1297,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
+    TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_ClearBag value)? clearBag,
     TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
