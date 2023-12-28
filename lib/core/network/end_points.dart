@@ -35,4 +35,7 @@ abstract class EndPoints {
 
   // End Points for Products
   static const totProducts = "/api/catalog/search/products";
+
+  // End Points for Inventory
+  static const totUpdateInventoryQuantity = "/api/inventory/products";
 }

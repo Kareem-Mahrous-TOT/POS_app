@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
+import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
@@ -16,6 +17,7 @@ import 'data/bag/repo/bag_repo.dart';
 import 'data/cart/data_sources.dart/local_data_source.dart';
 import 'data/cart/data_sources.dart/remote_data_source.dart';
 import 'data/cart/repo/cart_repo_impl.dart';
+import 'data/inventory/repo/inventory_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
 import 'data/old_data/repository/base/customers_rep_base.dart';
@@ -47,6 +49,8 @@ import 'domain/cart/usecases/remove_cart_usecase.dart';
 import 'domain/cart/usecases/remove_items_usecase.dart';
 import 'domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
 import 'domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
+import 'domain/inventory/repo/inventory_repo.dart';
+import 'domain/inventory/usecase/update_inventory_quantity_usecase.dart';
 import 'domain/menu/repo/repo.dart';
 import 'domain/menu/usecases/fetch_menu_categories.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
@@ -83,12 +87,15 @@ Future<void> getItInit() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(sharedPreferences);
   getIt.registerSingleton<Dio>(Dio());
+
+  //--------------------------------------------------------------------------
   //core
   getIt.registerSingleton<ApiConsumer>(DioConsumer(dio: getIt()));
   getIt.registerSingleton<HttpLink>(MyHttpLink(apiConsumer: getIt()));
   getIt.registerSingleton<GraphQLConfig>(GraphQLConfig(httpLink: getIt()));
   getIt.registerSingleton<GraphService>(GraphService(graphQLConfig: getIt()));
 
+  //--------------------------------------------------------------------------
   //data sources
   //? auth
   getIt.registerSingleton<AuthLocalDataSource>(
@@ -107,6 +114,10 @@ Future<void> getItInit() async {
     graphService: getIt(),
     apiConsumer: getIt(),
   ));
+  getIt.registerSingleton<InventoryRemoteDataSource>(
+      InventoryRemoteDataSourceImpl(
+    apiConsumer: getIt(),
+  ));
   getIt.registerSingleton<OrdersLocalDataSource>(
       OrdersLocalDataSourceImpl(preferences: getIt()));
   //? sales
@@ -122,6 +133,7 @@ Future<void> getItInit() async {
   getIt.registerSingleton<BagLocalDataSource>(
       BagLocalDataSourceImpl(sharedPrefs: getIt()));
 
+  //--------------------------------------------------------------------------
   //repos
   getIt.registerSingleton<CustomerRepo>(CustomerRepo());
   getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
@@ -148,8 +160,12 @@ Future<void> getItInit() async {
     cartLocalDataSource: getIt(),
     cartremoteDataSource: getIt(),
   ));
-  getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
 
+  getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
+  getIt.registerSingleton<InventoryRepo>(
+      InventoryRepoImpl(preferences: getIt(), remoteDataSource: getIt()));
+
+  //--------------------------------------------------------------------------
   //usecase
   //? auth
   getIt.registerLazySingleton<LoginUsecase>(
@@ -208,7 +224,11 @@ Future<void> getItInit() async {
   //?
   getIt.registerLazySingleton<GetUserUsecase>(
       () => GetUserUsecase(authBaseRepo: getIt()));
+  //? inventory
+  getIt.registerLazySingleton<UpdateInventoryQuantityUsecase>(
+      () => UpdateInventoryQuantityUsecase(inventoryRepo: getIt()));
 
+  //--------------------------------------------------------------------------
   //blocs
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
@@ -217,8 +237,10 @@ Future<void> getItInit() async {
         createBagUsecase: getIt(),
       ));
   getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
-  getIt.registerFactory<InventoryBloc>(
-      () => InventoryBloc(getProductsUsecase: getIt()));
+  getIt.registerFactory<InventoryBloc>(() => InventoryBloc(
+        updateInventoryUsecase: getIt(),
+        getProductsUsecase: getIt(),
+      ));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
   getIt
