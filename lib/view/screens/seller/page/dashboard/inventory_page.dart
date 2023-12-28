@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
@@ -51,6 +52,7 @@ class _InventoryPageState extends State<InventoryPage> {
               context.read<InventoryBloc>().add(
                     InventoryEvent.search(
                       searchController.text.trim(),
+
                     ),
                   );
             },
@@ -182,6 +184,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
       return useState((e.quantity?.toInt() ?? 0));
     }).toList();
 
+
     return Padding(
       padding: const EdgeInsets.only(left: 18.0, right: 8),
       child: Column(
@@ -200,6 +203,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   ),
                 ),
               )),
+
           const Divider(color: Palette.grey),
           ListView.builder(
             shrinkWrap: true,
@@ -213,11 +217,13 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
 
               return ExpansionTile(
                 shape: const RoundedRectangleBorder(side: BorderSide.none),
+
                 tilePadding: EdgeInsets.zero,
                 title: Row(children: [
                   Expanded(
                     child: Text(
                       record.sku,
+
                       style: context.titleMedium,
                     ),
                   ),
@@ -225,6 +231,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   Expanded(
                     child: Text(
                       record.name,
+
                       style: context.titleMedium,
                     ),
                   ),
@@ -232,12 +239,14 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   Expanded(
                     child: Text(
                       record.price,
+
                       style: context.titleMedium,
                     ),
                   ),
                   Expanded(
                     child: Text(
                       record.quantity.toString(),
+
                       overflow: TextOverflow.ellipsis,
                       style: context.titleMedium,
                     ),
@@ -346,6 +355,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                     ],
                   )
                 ],
+
               );
             },
           )
