@@ -110,7 +110,14 @@ class OrdersRepoImpl implements OrdersRepoBase {
               },
             ],
           },
-        ]
+        ],
+        "discounts": [
+          {
+            "currency": StoreConfig.currencyCode,
+            "discountAmount": 10,
+            "discountAmountWithTax": 10,
+          }
+        ],
       };
       final result =
           await _remotedataSource.createOrderFromBag(orderJson: orderJson);

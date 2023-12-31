@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -14,9 +12,9 @@ import '../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../blocs/bag/bag_bloc.dart';
 import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
+import '../../../../ui_mappers/bag_organism_item.dart';
 import '../../../../ui_mappers/to_category_record.dart';
 import '../../components/pos/home_components/home_export.dart';
-import '../../components/pos/home_components/src/bag_organism.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -277,18 +275,19 @@ class HomePage extends HookWidget {
                           getItems: (getItemsState) {
                             if (getItemsState.fromFailure) {
                               fToast.showToast(
-                                  child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 4),
-                                      decoration: BoxDecoration(
-                                          color: Palette.green,
-                                          borderRadius:
-                                              BorderRadius.circular(4)),
-                                      child: Text(
-                                        "فشل الطلب",
-                                        style: context.titleLarge
-                                            .copyWith(color: Palette.white),
-                                      )));
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      color: Palette.green,
+                                      borderRadius: BorderRadius.circular(4)),
+                                  child: Text(
+                                    "فشل الطلب",
+                                    style: context.titleLarge
+                                        .copyWith(color: Palette.white),
+                                  ),
+                                ),
+                              );
                             }
                           },
                         );
@@ -303,33 +302,39 @@ class HomePage extends HookWidget {
                         return state.map(loading: (value) {
                           return const LoadingCircular();
                         }, empty: (value) {
-                          return BagOrganism(
-                            onDiscountChoosen: (_) {},
-                            onItemPressed: (_) {},
-                            items: const [],
-                            price: 0,
-                            onCheckout: () {},
-                            onClearList: () {
-                              context
-                                  .read<BagBloc>()
-                                  .add(const BagEvent.clearBag());
-                            },
-                            onSlide: (value) {},
-                            discounts: const [],
-                            discountVariations: const [],
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Palette.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            margin: const EdgeInsets.all(8.0),
+                            height: h * 0.7,
+                            width: w * 0.33,
+                            child: Center(
+                              child: Text(
+                                "The bag is empty",
+                                style: context.titleMedium
+                                    .copyWith(color: Palette.grey),
+                              ),
+                            ),
                           );
                         }, getItems: (value) {
-                          return BagOrganism<double>(
-                            onDiscountChoosen: (discount) {
-                              log("::: discount: $discount :::");
-                              context.read<BagBloc>().add(
-                                  BagEvent.setDiscount(
-                                      discount: discount));
-                            },
+                          return TotBagOrganism<double>(
                             discountVariations: discounts,
                             discounts: discounts,
-                            items: value.bagEntity.items,
-                            price: value.bagEntity.price,
+                            items: value.bagEntity.items
+                                .map((bagItem) => bagItem.toBagOrgItem())
+                                .toList(),
+                            totalPrice: value.bagEntity.price,
+                            activeDiscountBackgroundColor: Palette.primary,
+                            orDividerColor: Palette.black,
+                            checkoutBackgroundColor: Palette.primary,
+                            onDiscountChoosen: (discount) {
+                              context.read<BagBloc>().add(
+                                  BagEvent.setDiscount(discount: discount));
+                            },
                             onItemPressed: (productId) {
                               context.read<BagBloc>().add(
                                   BagEvent.decreaseItemQuantity(
@@ -344,10 +349,9 @@ class HomePage extends HookWidget {
                                   .read<BagBloc>()
                                   .add(const BagEvent.clearBag());
                             },
-                            onSlide: (selectedItem) {
-                              context
-                                  .read<BagBloc>()
-                                  .add(BagEvent.removeItem(item: selectedItem));
+                            onSlide: (selectedProductId) {
+                              context.read<BagBloc>().add(BagEvent.removeItem(
+                                  productId: selectedProductId));
                             },
                           );
                         });
