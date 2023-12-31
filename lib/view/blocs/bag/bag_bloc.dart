@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/enums/payment_method_type.dart';
+import '../../../core/extensions/bag_item_extension.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/bag/entities/bag.dart';
-import '../../../domain/bag/entities/bag_item.dart';
 import '../../../domain/bag/usecases/create_bag_usecase.dart';
 import '../../../domain/orders/usecases/create_order_from_bag.dart';
 
@@ -27,7 +27,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
       await event.map(
         addItem: (addItemEvent) async {
           final bagItem =
-              BagItem.fromItem(addItemEvent.item, addItemEvent.count);
+              addItemEvent.item.toBagItem(quantity: addItemEvent.count);
           final bagResponse = await _createBagUsecase.call(NoParams());
 
           bagResponse.fold((failure) {
@@ -48,8 +48,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           });
         },
         addItemWithVaritations: (_AddItemWithVaritations addItemEvent) async {
-          final bagItem = BagItem.fromItemWithVariations(
-              item: addItemEvent.item,
+          final bagItem = addItemEvent.item.toBagItem(
               quantity: addItemEvent.count,
               variations: addItemEvent.variations);
 
@@ -80,7 +79,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             orElse: () {},
             getItems: (items) {
               final newBagEntitiy = items.bagEntity;
-              newBagEntitiy.removeItem(bagItem: eventItem.item);
+              newBagEntitiy.removeItem(productId: eventItem.productId);
               emit(
                   items.copyWith(bagEntity: newBagEntitiy, fromFailure: false));
             },

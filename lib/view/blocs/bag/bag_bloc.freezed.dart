@@ -23,7 +23,7 @@ mixin _$BagEvent {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) =>
@@ -35,7 +35,7 @@ mixin _$BagEvent {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) =>
@@ -47,7 +47,7 @@ mixin _$BagEvent {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -195,7 +195,7 @@ class _$AddItemImpl implements _AddItem {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -210,7 +210,7 @@ class _$AddItemImpl implements _AddItem {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -225,7 +225,7 @@ class _$AddItemImpl implements _AddItem {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -405,7 +405,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -420,7 +420,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -435,7 +435,7 @@ class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -581,7 +581,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -596,7 +596,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -611,7 +611,7 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -750,7 +750,7 @@ class _$SetDiscountImpl implements _SetDiscount {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -765,7 +765,7 @@ class _$SetDiscountImpl implements _SetDiscount {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -780,7 +780,7 @@ class _$SetDiscountImpl implements _SetDiscount {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -854,7 +854,7 @@ abstract class _$$RemoveItemImplCopyWith<$Res> {
           _$RemoveItemImpl value, $Res Function(_$RemoveItemImpl) then) =
       __$$RemoveItemImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BagItem item});
+  $Res call({String productId});
 }
 
 /// @nodoc
@@ -868,13 +868,13 @@ class __$$RemoveItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
+    Object? productId = null,
   }) {
     return _then(_$RemoveItemImpl(
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as BagItem,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -882,14 +882,14 @@ class __$$RemoveItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RemoveItemImpl implements _RemoveItem {
-  const _$RemoveItemImpl({required this.item});
+  const _$RemoveItemImpl({required this.productId});
 
   @override
-  final BagItem item;
+  final String productId;
 
   @override
   String toString() {
-    return 'BagEvent.removeItem(item: $item)';
+    return 'BagEvent.removeItem(productId: $productId)';
   }
 
   @override
@@ -897,11 +897,12 @@ class _$RemoveItemImpl implements _RemoveItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveItemImpl &&
-            (identical(other.item, item) || other.item == item));
+            (identical(other.productId, productId) ||
+                other.productId == productId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item);
+  int get hashCode => Object.hash(runtimeType, productId);
 
   @JsonKey(ignore: true)
   @override
@@ -917,11 +918,11 @@ class _$RemoveItemImpl implements _RemoveItem {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
-    return removeItem(item);
+    return removeItem(productId);
   }
 
   @override
@@ -932,11 +933,11 @@ class _$RemoveItemImpl implements _RemoveItem {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
-    return removeItem?.call(item);
+    return removeItem?.call(productId);
   }
 
   @override
@@ -947,13 +948,13 @@ class _$RemoveItemImpl implements _RemoveItem {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
-      return removeItem(item);
+      return removeItem(productId);
     }
     return orElse();
   }
@@ -1007,9 +1008,10 @@ class _$RemoveItemImpl implements _RemoveItem {
 }
 
 abstract class _RemoveItem implements BagEvent {
-  const factory _RemoveItem({required final BagItem item}) = _$RemoveItemImpl;
+  const factory _RemoveItem({required final String productId}) =
+      _$RemoveItemImpl;
 
-  BagItem get item;
+  String get productId;
   @JsonKey(ignore: true)
   _$$RemoveItemImplCopyWith<_$RemoveItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1058,7 +1060,7 @@ class _$ClearBagImpl implements _ClearBag {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -1073,7 +1075,7 @@ class _$ClearBagImpl implements _ClearBag {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -1088,7 +1090,7 @@ class _$ClearBagImpl implements _ClearBag {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),
@@ -1221,7 +1223,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
         addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
-    required TResult Function(BagItem item) removeItem,
+    required TResult Function(String productId) removeItem,
     required TResult Function() clearBag,
     required TResult Function(BagEntity bag) createOrderFromBag,
   }) {
@@ -1236,7 +1238,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
         addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
-    TResult? Function(BagItem item)? removeItem,
+    TResult? Function(String productId)? removeItem,
     TResult? Function()? clearBag,
     TResult? Function(BagEntity bag)? createOrderFromBag,
   }) {
@@ -1251,7 +1253,7 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
         addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
-    TResult Function(BagItem item)? removeItem,
+    TResult Function(String productId)? removeItem,
     TResult Function()? clearBag,
     TResult Function(BagEntity bag)? createOrderFromBag,
     required TResult orElse(),

@@ -25,7 +25,7 @@ class BagEntity {
     final index =
         items.indexWhere((element) => element.productId == bagItem.productId);
     if (index != -1) {
-      _items[index].quantity += bagItem.quantity;
+      _items[index].count += bagItem.count;
     } else {
       _items.add(bagItem);
     }
@@ -35,17 +35,17 @@ class BagEntity {
   void decreaseItemQuantity({required String productId}) {
     final index = items.indexWhere((element) => element.productId == productId);
     if (index != -1) {
-      if (_items[index].quantity > 1) {
-        _items[index].quantity--;
+      if (_items[index].count > 1) {
+        _items[index].count--;
       } else {
-        removeItem(bagItem: _items[index]);
+        removeItem(productId: _items[index].productId);
       }
     }
     _calcPrice();
   }
 
-  void removeItem({required BagItem bagItem}) {
-    _items.removeWhere((element) => element.productId == bagItem.productId);
+  void removeItem({required String productId}) {
+    _items.removeWhere((element) => element.productId == productId);
     _calcPrice();
   }
 
@@ -54,7 +54,7 @@ class BagEntity {
         .fold(
             num.parse('0'),
             (previousValue, bagItem) =>
-                previousValue + ((bagItem.price) * bagItem.quantity))
+                previousValue + ((bagItem.price) * bagItem.count))
         .toDouble();
 
     double discountFactor = 1;
@@ -71,7 +71,6 @@ class BagEntity {
 
     _discount = discount;
     _calcPrice();
-    print("::: bag _totalPrice: $_totalPrice :::");
   }
 
   Map<String, dynamic> toJson({

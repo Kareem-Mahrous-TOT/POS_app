@@ -1,8 +1,8 @@
 # TOT POS
 
 ## Todo
-- [ ] refactor
-  - [ ] repos-usecases-blocs
+- [x] refactor
+  - [x] repos-usecases-blocs
     - [x] auth
     - [x] Menu
     - [x] categories
@@ -11,15 +11,17 @@
     - [x] orders
     - [x] sales
     - [x] reports
-  - [ ] ui
-    - [ ] add to package
-- [ ] orders
+  - [ ] ui(add to package)
+      - [x] bag
+- [x] orders
   - [x] create order
-  - [ ] fix bag ui
+  - [x] fix bag ui
   - [x] change order status
 - [ ] discounts
-  - [ ] display products discount(ui)
+  - [x] display products discount(ui)
   - [ ] add discount to order
-    - [ ] ui
+    - [x] ui
     - [ ] usecase
+- [ ] products
+  - [ ] debounce event(request)
 - [ ] data syncing
