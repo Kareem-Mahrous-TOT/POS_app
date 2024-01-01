@@ -442,10 +442,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_hooks
-      sha256: "7c8db779c2d1010aa7f9ea3fbefe8f86524fcb87b69e8b0af31e1a4b55422dec"
+      sha256: "09f64db63fee3b2ab8b9038a1346be7d8986977fae3fec601275bf32455ccfc0"
       url: "https://pub.dev"
     source: hosted
-    version: "0.20.3"
+    version: "0.20.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -705,10 +705,10 @@ packages:
     dependency: transitive
     description:
       name: graphql
-      sha256: "4ac531068107dffef188c74e7ff662777b729e9d5e0686f71623d4af1e3751c8"
+      sha256: d066e53446166c12537458386b507f7426f2b8801ebafc184576aab3cbc64d56
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.0-beta.6"
+    version: "5.2.0-beta.7"
   graphql_flutter:
     dependency: "direct main"
     description:
@@ -1330,6 +1330,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  sprintf:
+    dependency: transitive
+    description:
+      name: sprintf
+      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   sqflite:
     dependency: transitive
     description:
@@ -1447,7 +1455,7 @@ packages:
     description:
       path: "packages/atomic_design"
       ref: tablet-beta
-      resolved-ref: "17fe8da7048207d9e2b2a46e232ec14a58dbb73d"
+      resolved-ref: "3552a6f898c54fafe6b029a51ca31d184478098b"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
@@ -1527,10 +1535,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      sha256: "22c94e5ad1e75f9934b766b53c742572ee2677c56bc871d850a57dad0f82127f"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.7"
+    version: "4.2.2"
   vector_graphics:
     dependency: transitive
     description:

@@ -684,6 +684,7 @@ mixin _$Item {
   Description? get description => throw _privateConstructorUsedError;
   Category? get category => throw _privateConstructorUsedError;
   dynamic get masterVariation => throw _privateConstructorUsedError;
+  int get selectedQuantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -722,7 +723,8 @@ abstract class $ItemCopyWith<$Res> {
       List<Description>? descriptions,
       Description? description,
       Category? category,
-      dynamic masterVariation});
+      dynamic masterVariation,
+      int selectedQuantity});
 
   $PriceCopyWith<$Res>? get price;
   $VideosCopyWith<$Res>? get videos;
@@ -772,6 +774,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? description = freezed,
     Object? category = freezed,
     Object? masterVariation = freezed,
+    Object? selectedQuantity = null,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -882,6 +885,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.masterVariation
           : masterVariation // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      selectedQuantity: null == selectedQuantity
+          ? _value.selectedQuantity
+          : selectedQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -992,7 +999,8 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       List<Description>? descriptions,
       Description? description,
       Category? category,
-      dynamic masterVariation});
+      dynamic masterVariation,
+      int selectedQuantity});
 
   @override
   $PriceCopyWith<$Res>? get price;
@@ -1045,6 +1053,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? category = freezed,
     Object? masterVariation = freezed,
+    Object? selectedQuantity = null,
   }) {
     return _then(_$ItemImpl(
       name: freezed == name
@@ -1155,6 +1164,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.masterVariation
           : masterVariation // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      selectedQuantity: null == selectedQuantity
+          ? _value.selectedQuantity
+          : selectedQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1189,7 +1202,8 @@ class _$ItemImpl implements _Item {
       final List<Description>? descriptions,
       this.description,
       this.category,
-      this.masterVariation})
+      this.masterVariation,
+      this.selectedQuantity = 0})
       : _breadcrumbs = breadcrumbs,
         _prices = prices,
         _properties = properties,
@@ -1310,10 +1324,13 @@ class _$ItemImpl implements _Item {
   final Category? category;
   @override
   final dynamic masterVariation;
+  @override
+  @JsonKey()
+  final int selectedQuantity;
 
   @override
   String toString() {
-    return 'Item(name: $name, id: $id, brandName: $brandName, imgSrc: $imgSrc, breadcrumbs: $breadcrumbs, outerId: $outerId, catalogId: $catalogId, price: $price, prices: $prices, minVariationPrice: $minVariationPrice, properties: $properties, videos: $videos, associations: $associations, vendor: $vendor, images: $images, availabilityData: $availabilityData, hasVariations: $hasVariations, variations: $variations, code: $code, productType: $productType, minQuantity: $minQuantity, maxQuantity: $maxQuantity, slug: $slug, descriptions: $descriptions, description: $description, category: $category, masterVariation: $masterVariation)';
+    return 'Item(name: $name, id: $id, brandName: $brandName, imgSrc: $imgSrc, breadcrumbs: $breadcrumbs, outerId: $outerId, catalogId: $catalogId, price: $price, prices: $prices, minVariationPrice: $minVariationPrice, properties: $properties, videos: $videos, associations: $associations, vendor: $vendor, images: $images, availabilityData: $availabilityData, hasVariations: $hasVariations, variations: $variations, code: $code, productType: $productType, minQuantity: $minQuantity, maxQuantity: $maxQuantity, slug: $slug, descriptions: $descriptions, description: $description, category: $category, masterVariation: $masterVariation, selectedQuantity: $selectedQuantity)';
   }
 
   @override
@@ -1363,7 +1380,9 @@ class _$ItemImpl implements _Item {
             (identical(other.category, category) ||
                 other.category == category) &&
             const DeepCollectionEquality()
-                .equals(other.masterVariation, masterVariation));
+                .equals(other.masterVariation, masterVariation) &&
+            (identical(other.selectedQuantity, selectedQuantity) ||
+                other.selectedQuantity == selectedQuantity));
   }
 
   @JsonKey(ignore: true)
@@ -1396,7 +1415,8 @@ class _$ItemImpl implements _Item {
         const DeepCollectionEquality().hash(_descriptions),
         description,
         category,
-        const DeepCollectionEquality().hash(masterVariation)
+        const DeepCollectionEquality().hash(masterVariation),
+        selectedQuantity
       ]);
 
   @JsonKey(ignore: true)
@@ -1441,7 +1461,8 @@ abstract class _Item implements Item {
       final List<Description>? descriptions,
       final Description? description,
       final Category? category,
-      final dynamic masterVariation}) = _$ItemImpl;
+      final dynamic masterVariation,
+      final int selectedQuantity}) = _$ItemImpl;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
 
@@ -1499,6 +1520,8 @@ abstract class _Item implements Item {
   Category? get category;
   @override
   dynamic get masterVariation;
+  @override
+  int get selectedQuantity;
   @override
   @JsonKey(ignore: true)
   _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>

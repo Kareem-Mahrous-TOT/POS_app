@@ -24,10 +24,12 @@ extension ProductMapping on List<Item> {
           name: model.name ?? "",
           quantity: model.availabilityData!.inventories!
               .firstWhere(
-                  orElse: () => const Inventory(inStockQuantity: 0),
-                  (element) =>
-                      element.fulfillmentCenterId ==
-                      StoreConfig.octoberBranchId)
+                orElse: () => const Inventory(inStockQuantity: 0),
+                (element) =>
+                    element.fulfillmentCenterId ==
+                    (preferences.getString(LocalKeys.fulfillmentCenterId) ??
+                        StoreConfig.octoberBranchId),
+              )
               .inStockQuantity,
         ),
       );

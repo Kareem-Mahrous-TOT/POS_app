@@ -24,7 +24,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
   })  : _getProductsUsecase = getProductsUsecase,
         _updateInventoryUsecase = updateInventoryUsecase,
         super(_Loading()) {
-    List<ProductPOSRecord> recordsList = [];
+    List<Item>? products = [];
     on<InventoryEvent>((event, emit) async {
       Future<void> fetchProducts() async {
         emit(InventoryState.loading());
@@ -32,7 +32,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
         response.fold(
             (failure) => emit(InventoryState.fetchFailState(failure.message)),
             (record) {
-          recordsList = record.proudctsPosRecords;
+          products = record.productsModels;
           emit(InventoryState.fetchSuccessState(
             products: record.productsModels,
             records: record.proudctsPosRecords,
@@ -44,85 +44,150 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
         fetch: () async {
           await fetchProducts();
         },
-
+        onIncrement: (product, counter) async {
+          await state.maybeMap(
+              orElse: () {},
+              fetchSuccessState: (value) async {
+                List<Item> updatedProduct = [];
+                if (counter >= 0) {
+                  final currentQuantity = counter + 1;
+                  for (final e in value.products!) {
+                    // for (final element in value.products!) {
+                    if (e.id == product.id) {
+                      final selectedProduct =
+                          e.copyWith(selectedQuantity: currentQuantity);
+                      updatedProduct.add(selectedProduct);
+                    } else {
+                      updatedProduct.add(e);
+                    }
+                  }
+                  // final upatedProduct = value.products!
+                  //     .where((element) => element.id == product.id)
+                  //     .map((e) => e.copyWith(
+                  //             availabilityData: product.availabilityData!
+                  //                 .copyWith(inventories: [
+                  //           product.availabilityData!.inventories!
+                  //               .firstWhere(
+                  //                 (element) =>
+                  //                     element.fulfillmentCenterId ==
+                  //                     (preferences.getString(
+                  //                             LocalKeys.fulfillmentCenterId) ??
+                  //                         StoreConfig.octoberBranchId),
+                  //                 orElse: () =>
+                  //                     const Inventory(inStockQuantity: 0),
+                  //               )
+                  //               .copyWith(inStockQuantity: currentQuantity)
+                  //         ])))
+                  //     .toList();
+                  // print("updatedProduct => $updatedProduct");
+                  emit(value.copyWith(
+                      records: updatedProduct.toDomainPOS(),
+                      products: updatedProduct));
+                }
+              });
+        },
+        onDecrement: (product, counter) async {
+          await state.maybeMap(
+              orElse: () {},
+              fetchSuccessState: (value) async {
+                List<Item> updatedProduct = [];
+                if (counter > 0) {
+                  final currentQuantity = counter - 1;
+                  for (final e in value.products!) {
+                    // for (final element in value.products!) {
+                    if (e.id == product.id) {
+                      final selectedProduct =
+                          e.copyWith(selectedQuantity: currentQuantity);
+                      updatedProduct.add(selectedProduct);
+                    } else {
+                      updatedProduct.add(e);
+                    }
+                  }
+                  emit(value.copyWith(
+                      records: updatedProduct.toDomainPOS(),
+                      products: updatedProduct));
+                }
+              });
+        },
         //--------------
         updateQuantity: (productId, inStockQuantity, reservedQuantity) async {
           await state.maybeMap(
               orElse: () async => state,
               fetchSuccessState: (value) async {
+                emit(value.copyWith(isUpdating: true));
                 final response = await _updateInventoryUsecase.call(
                     UpdateInventoryParams(
                         productId: productId,
                         inStockQuantity: inStockQuantity));
                 final bool result =
                     await response.fold((l) async => false, (r) async => r);
-
-                // emit(InventoryState.updateFailState(l.toString()));
-                // emit(InventoryState.fetchSuccessState(isUpdated: r));
-
                 if (result) {
                   List<Item> newProducts = [];
-                  emit(value.copyWith(isUpdating: true));
-                  print("update request is ${value.isUpdating}");
                   for (final product in value.products!) {
                     if (product.id == productId) {
                       newProducts.add(
                         product.copyWith(
-                          availabilityData:
-                              product.availabilityData!.copyWith(inventories: [
-                            Inventory(
-                                inStockQuantity: inStockQuantity,
-                                fulfillmentCenterId: preferences.getString(
+                          selectedQuantity: inStockQuantity,
+                          availabilityData: product.availabilityData!.copyWith(
+                              inventories: product
+                                  .availabilityData!.inventories!
+                                  .map((e) {
+                            if (e.fulfillmentCenterId ==
+                                (preferences.getString(
                                         LocalKeys.fulfillmentCenterId) ??
-                                    StoreConfig.octoberBranchId,
-                                reservedQuantity: reservedQuantity)
-                          ]),
+                                    StoreConfig.octoberBranchId)) {
+                              return e.copyWith(
+                                  inStockQuantity: inStockQuantity);
+                            } else {
+                              return e;
+                            }
+                          }).toList()),
                         ),
                       );
-                      emit(value.copyWith(records:newProducts.toDomainPOS(),isUpdating: false));
+                      // inStockQuantity: inStockQuantity,
+                      // fulfillmentCenterId: ,
+                      // reservedQuantity: reservedQuantity
+                      emit(value.copyWith(
+                          records: newProducts.toDomainPOS(),
+                          products: newProducts,
+                          isUpdating: false));
                     } else {
                       newProducts.add(product);
-                      emit(value.copyWith(records:newProducts.toDomainPOS(),isUpdating: false));
+                      emit(value.copyWith(
+                          records: newProducts.toDomainPOS(),
+                          products: newProducts,
+                          isUpdating: false));
                     }
                   }
                 }
-
-                ///// End
-                // return value.copyWith(
-                //     records: newProducts.toDomainPOS(), isUpdating: false);
-                //     })
-                // : InventoryState.updateFailState("Something went wrong");
-                // emit(newState);
               });
         },
         search: (query) async {
           if (query != null && query.isNotEmpty) {
             await state.maybeMap(
-              orElse: () {},
-              fetchSuccessState: (value) async {
-                emit(value.copyWith(
-                  records: recordsList,
-                  isSearching: true,
-                ));
-                final recordsAfterSearch = recordsList
-                    .where((element) => element.name
-                        .toLowerCase()
-                        .contains(query.toLowerCase()))
-                    .toList();
-                await Future.delayed(const Duration(seconds: 1), () {
-                  emit(
-                    _FetchSuccessState(
-                      records: recordsAfterSearch,
-                      isSearching: false,
-                    ),
-                  );
+                orElse: () {},
+                fetchSuccessState: (value) async {
+                  emit(value.copyWith(
+                    records: products!.toDomainPOS(),
+                    products: products,
+                    isSearching: true,
+                  ));
+                  final productsAfterSearch = products!
+                      .where((element) => element.name!
+                          .toLowerCase()
+                          .contains(query.toLowerCase()))
+                      .toList();
+                  emit(_FetchSuccessState(
+                    records: productsAfterSearch.toDomainPOS(),
+                    products: productsAfterSearch,
+                    isSearching: false,
+                  ));
                 });
-              },
-            );
           } else {
             emit(
               _FetchSuccessState(
-                records: recordsList,
+                records: products!.toDomainPOS(),
+                products: products,
                 isSearching: false,
               ),
             );

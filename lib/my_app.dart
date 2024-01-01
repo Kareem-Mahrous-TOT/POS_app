@@ -53,7 +53,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(
               create: (context) =>
-                  getIt<InventoryBloc>()..add(const InventoryEvent.fetch())),
+                  getIt<InventoryBloc>()..add(InventoryEvent.fetch())),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           // BlocProvider(
@@ -65,7 +65,6 @@ class MainApp extends StatelessWidget {
               create: (context) => getIt<ReportCostCubit>()..loadData()),
         ],
         child: MaterialApp.router(
-          
           debugShowCheckedModeBanner: false,
           title: "TOT POS",
           locale: const Locale("en"),

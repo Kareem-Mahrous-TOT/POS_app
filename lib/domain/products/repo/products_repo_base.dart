@@ -6,12 +6,7 @@ import '../../../core/types/types.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 abstract class ProductsRepoBase {
-  FutureEitherFailureOrType<
-      ({
-        List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords,
-        List<ProductPOSRecord> proudctsPosRecords
-      })> getProducts({
+  FutureEitherFailureOrType<List<Item>?> getProducts({
     String? endCursor,
     required String branchId,
     String? categoryId,

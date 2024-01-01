@@ -70,6 +70,7 @@ class Item with _$Item {
     Description? description,
     Category? category,
     dynamic masterVariation,
+    @Default(0) int selectedQuantity,
   }) = _Item;
 
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);

@@ -113,6 +113,7 @@ _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
           ? null
           : Category.fromJson(json['category'] as Map<String, dynamic>),
       masterVariation: json['masterVariation'],
+      selectedQuantity: json['selectedQuantity'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
@@ -144,6 +145,7 @@ Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
       'description': instance.description?.toJson(),
       'category': instance.category?.toJson(),
       'masterVariation': instance.masterVariation,
+      'selectedQuantity': instance.selectedQuantity,
     };
 
 _$VariationImpl _$$VariationImplFromJson(Map<String, dynamic> json) =>
