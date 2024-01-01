@@ -14,7 +14,7 @@ import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../ui_mappers/bag_organism_item.dart';
 import '../../../../ui_mappers/to_category_record.dart';
-import '../../components/pos/home_components/home_export.dart';
+import '../../components/pos/home_components/alert_dialog_bag.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -24,6 +24,15 @@ class HomePage extends HookWidget {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
     final fToast = useFToast(context: context);
+
+    final List<double> discounts = useMemoized(
+      () => [
+        5,
+        10,
+        15,
+        20,
+      ],
+    );
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -293,12 +302,6 @@ class HomePage extends HookWidget {
                         );
                       },
                       builder: (context, state) {
-                        List<double> discounts = [
-                          5,
-                          10,
-                          15,
-                          20,
-                        ];
                         return state.map(loading: (value) {
                           return const LoadingCircular();
                         }, empty: (value) {

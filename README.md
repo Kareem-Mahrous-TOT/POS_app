@@ -6,8 +6,10 @@
     - [x] auth
     - [x] Menu
     - [x] categories
-    - [x] products
-    - [x] cart
+    - [x] productsv
+    - [ ] cart
+      - [ ] blocs
+      - [x] repos-usecases
     - [x] orders
     - [x] sales
     - [x] reports
@@ -21,6 +23,7 @@
   - [x] display products discount(ui)
   - [ ] add discount to order
     - [x] ui
+    - [ ] add custom discount
     - [ ] usecase
 - [ ] products
   - [ ] debounce event(request)
