@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../core/network/failure.dart';
 import '../../../core/types/types.dart';

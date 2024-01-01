@@ -7,11 +7,13 @@ class BagEntity {
   final String _modifiedDate;
   final String _createdBy;
   final String _modifiedBy;
+  double _subTotalPrice;
   double _totalPrice;
   double? _discount;
 
   BagEntity({required String createdBy})
       : _items = [],
+        _subTotalPrice = 0,
         _totalPrice = 0,
         _createdDate = DateTime.now().toString(),
         _modifiedDate = DateTime.now().toString(),
@@ -19,7 +21,8 @@ class BagEntity {
         _modifiedBy = createdBy;
 
   List<BagItem> get items => _items.toList();
-  double get price => _totalPrice.toDouble();
+  double get subTotalPrice => _subTotalPrice.toDouble();
+  double get totalPrice => _totalPrice.toDouble();
 
   void addItem({required BagItem bagItem}) {
     final index =
@@ -29,7 +32,7 @@ class BagEntity {
     } else {
       _items.add(bagItem);
     }
-    _calcPrice();
+    _recalculate();
   }
 
   void decreaseItemQuantity({required String productId}) {
@@ -41,16 +44,16 @@ class BagEntity {
         removeItem(productId: _items[index].productId);
       }
     }
-    _calcPrice();
+    _recalculate();
   }
 
   void removeItem({required String productId}) {
     _items.removeWhere((element) => element.productId == productId);
-    _calcPrice();
+    _recalculate();
   }
 
-  void _calcPrice() {
-    final price = _items
+  void _recalculate() {
+    _subTotalPrice = _items
         .fold(
             num.parse('0'),
             (previousValue, bagItem) =>
@@ -63,19 +66,24 @@ class BagEntity {
       discountFactor = 1 - (_discount! / 100);
     }
 
-    _totalPrice = price * discountFactor;
+    _totalPrice = _subTotalPrice * discountFactor;
   }
 
   void setDiscount({double? discount}) {
     if (discount != null && (discount > 100 || discount < 0)) return;
 
     _discount = discount;
-    _calcPrice();
+    _recalculate();
   }
 
   Map<String, dynamic> toJson({
     String customerName = "Anonymous",
   }) {
+    double discountAmount = _subTotalPrice - _totalPrice;
+    if (discountAmount < 0) {
+      discountAmount = 0;
+    }
+
     return {
       "customerName": customerName,
       "createdBy": _createdBy,
@@ -87,6 +95,7 @@ class BagEntity {
               ))
           .toList(),
       "price": _totalPrice,
+      "discountAmount": discountAmount,
       "createdDate": _createdDate,
       "modifiedDate": _modifiedDate,
     };
