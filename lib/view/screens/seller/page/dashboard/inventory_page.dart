@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
@@ -40,9 +39,7 @@ class _InventoryPageState extends State<InventoryPage> {
             actions: [
               IconButton(
                   onPressed: () async {
-                    context
-                        .read<InventoryBloc>()
-                        .add(const InventoryEvent.fetch());
+                    context.read<InventoryBloc>().add(InventoryEvent.fetch());
                     searchController.clear();
                   },
                   icon: const Icon(Icons.refresh_rounded))
@@ -52,7 +49,6 @@ class _InventoryPageState extends State<InventoryPage> {
               context.read<InventoryBloc>().add(
                     InventoryEvent.search(
                       searchController.text.trim(),
-
                     ),
                   );
             },
@@ -62,7 +58,7 @@ class _InventoryPageState extends State<InventoryPage> {
       backgroundColor: const Color.fromARGB(255, 229, 229, 229),
       body: RefreshIndicator(
         onRefresh: () async =>
-            context.read<InventoryBloc>().add(const InventoryEvent.fetch()),
+            context.read<InventoryBloc>().add(InventoryEvent.fetch()),
         child: SingleChildScrollView(
           child: SizedBox(
             child: Center(
@@ -90,7 +86,7 @@ class _InventoryPageState extends State<InventoryPage> {
                             updateFailState: (value) {
                               context
                                   .read<InventoryBloc>()
-                                  .add(const InventoryEvent.fetch());
+                                  .add(InventoryEvent.fetch());
                               return SizedBox(
                                 height: h * 0.7,
                                 child: const Center(
@@ -106,6 +102,10 @@ class _InventoryPageState extends State<InventoryPage> {
                                 ),
                             fetchSuccessState: (value) =>
                                 TotInventoryListOrganism(
+                                  counters: value.products!
+                                      .map((e) => e.selectedQuantity)
+                                      .toList(),
+                                  products: value.products,
                                   headers: const [
                                     "SKU",
                                     "Name",
@@ -114,9 +114,9 @@ class _InventoryPageState extends State<InventoryPage> {
                                   ],
                                   isUpdating: value.isUpdating,
                                   records: value.records!,
-                                  controllers: value.records!
+                                  controllers: value.products!
                                       .map((e) => TextEditingController(
-                                          text: e.quantity.toString()))
+                                          text: e.selectedQuantity.toString()))
                                       .toList(),
                                 ),
                             fetchFailState: (value) =>
@@ -138,6 +138,8 @@ class TotInventoryListOrganism extends StatefulHookWidget {
   const TotInventoryListOrganism(
       {super.key,
       required this.isUpdating,
+      required this.products,
+      required this.counters,
       required this.records,
       required this.controllers,
       required this.headers});
@@ -145,6 +147,8 @@ class TotInventoryListOrganism extends StatefulHookWidget {
   final List<ProductPOSRecord> records;
   final List<TextEditingController> controllers;
   final List<String> headers;
+  final List<int> counters;
+  final dynamic products;
 
   @override
   State<TotInventoryListOrganism> createState() =>
@@ -152,22 +156,6 @@ class TotInventoryListOrganism extends StatefulHookWidget {
 }
 
 class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
-  // @override
-  // void initState() {
-  //   controllers = widget.records.map((e) {
-  //     return TextEditingController(text: e.quantity.toString());
-  //   }).toList();
-  //   super.initState();
-  // }
-
-  // @override
-  // void didChangeDependencies() {
-  //   controllers = widget.records.map((e) {
-  //     return TextEditingController(text: e.quantity.toString());
-  //   }).toList();
-  //   super.didChangeDependencies();
-  // }
-
   @override
   void dispose() {
     for (final controller in widget.controllers) {
@@ -180,10 +168,16 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    final counters = widget.records.map((e) {
-      return useState((e.quantity?.toInt() ?? 0));
-    }).toList();
-
+    // List<ValueNotifier<int>> counters = [];
+    // // widget.records.map((e) {
+    // //   return useState((e.quantity?.toInt() ?? 0));
+    // // }).toList();
+    // useEffect(() {
+    //   counters = widget.records.map((e) {
+    //     return useState((e.quantity?.toInt() ?? 0));
+    //   }).toList();
+    //   return null;
+    // }, [widget.records]);
 
     return Padding(
       padding: const EdgeInsets.only(left: 18.0, right: 8),
@@ -203,7 +197,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   ),
                 ),
               )),
-
           const Divider(color: Palette.grey),
           ListView.builder(
             shrinkWrap: true,
@@ -217,13 +210,11 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
 
               return ExpansionTile(
                 shape: const RoundedRectangleBorder(side: BorderSide.none),
-
                 tilePadding: EdgeInsets.zero,
                 title: Row(children: [
                   Expanded(
                     child: Text(
                       record.sku,
-
                       style: context.titleMedium,
                     ),
                   ),
@@ -231,7 +222,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   Expanded(
                     child: Text(
                       record.name,
-
                       style: context.titleMedium,
                     ),
                   ),
@@ -239,14 +229,12 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                   Expanded(
                     child: Text(
                       record.price,
-
                       style: context.titleMedium,
                     ),
                   ),
                   Expanded(
                     child: Text(
                       record.quantity.toString(),
-
                       overflow: TextOverflow.ellipsis,
                       style: context.titleMedium,
                     ),
@@ -258,17 +246,21 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          counters[index].value++;
+                          context.read<InventoryBloc>().add(
+                              InventoryEvent.onIncrement(
+                                  product: widget.products[index],
+                                  counter: widget.counters[index]));
+                          // counters[index].value++;
                           widget.controllers[index].text =
-                              counters[index].value.toString();
-                          print("update request is ${widget.isUpdating}");
+                              widget.counters[index].toString();
+                          // print("update request is ${widget.isUpdating}");
                         },
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.grey),
-                          child: const Icon(Icons.add, color: Colors.black),
+                              color: Palette.primary),
+                          child: const Icon(Icons.add, color: Palette.white),
                         ),
                       ),
                       Container(
@@ -286,8 +278,8 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           onChanged: (value) {
-                            counters[index].value =
-                                int.tryParse(value) ?? counters[index].value;
+                            widget.counters[index] =
+                                int.tryParse(value) ?? widget.counters[index];
                           },
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: false,
@@ -297,17 +289,21 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          if (counters[index].value <= 0) return;
-                          counters[index].value--;
+                          context.read<InventoryBloc>().add(
+                              InventoryEvent.onDecrement(
+                                  product: widget.products[index],
+                                  counter: widget.counters[index]));
+                          // if (counters[index].value <= 0) return;
+                          // counters[index].value--;
                           widget.controllers[index].text =
-                              counters[index].value.toString();
+                              widget.counters[index].toString();
                         },
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.grey),
-                          child: const Icon(Icons.remove, color: Colors.black),
+                              color: Palette.primary),
+                          child: const Icon(Icons.remove, color: Palette.white),
                         ),
                       ),
                     ],
@@ -331,9 +327,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                         InventoryEvent.updateQuantity(
                                             productId: record.id,
                                             inStockQuantity:
-                                                counters[index].value));
-                                    print(
-                                        "update request is ${widget.isUpdating}");
+                                                widget.counters[index]));
                                   },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Palette.primary,
@@ -355,7 +349,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                     ],
                   )
                 ],
-
               );
             },
           )

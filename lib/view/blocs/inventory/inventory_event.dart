@@ -1,10 +1,19 @@
 part of 'inventory_bloc.dart';
 
-@freezed
+@unfreezed
 class InventoryEvent with _$InventoryEvent {
-  const factory InventoryEvent.fetch() = _Fetch;
-  const factory InventoryEvent.search(String? query) = _Search;
-  const factory InventoryEvent.updateQuantity({required String productId,required int inStockQuantity,int? reservedQuantity}) =
-      _UpdateQuantity;
-  // const factory InventoryEvent.refresh() = _Refresh;
+  factory InventoryEvent.fetch() = _Fetch;
+  factory InventoryEvent.search(String? query) = _Search;
+  factory InventoryEvent.updateQuantity(
+      {required String productId,
+      required int inStockQuantity,
+      int? reservedQuantity}) = _UpdateQuantity;
+  factory InventoryEvent.onIncrement({
+    required Item product,
+    required int counter,
+  }) = _OnIncrement;
+  factory InventoryEvent.onDecrement({
+    required Item product,
+    required int counter,
+  }) = _OnDecrement;
 }
