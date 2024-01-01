@@ -330,7 +330,8 @@ class HomePage extends HookWidget {
                             items: value.bagEntity.items
                                 .map((bagItem) => bagItem.toBagOrgItem())
                                 .toList(),
-                            totalPrice: value.bagEntity.price,
+                            subTotalPrice: value.bagEntity.subTotalPrice,
+                            totalPrice: value.bagEntity.totalPrice,
                             activeDiscountBackgroundColor: Palette.primary,
                             orDividerColor: Palette.black,
                             checkoutBackgroundColor: Palette.primary,

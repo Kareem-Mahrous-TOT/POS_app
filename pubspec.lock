@@ -649,18 +649,18 @@ packages:
     dependency: transitive
     description:
       name: gql
-      sha256: aa3e0be4548353007b6e6fd24fcad0ce8c1179f9cb2ae5239d392fddb84a5ce5
+      sha256: f57eb635aa2f134ced585584f3d53006816f1fdd909480bb7626a1d41063ce25
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1-alpha+1700868214564"
+    version: "1.0.1-alpha+1704118137418"
   gql_dedupe_link:
     dependency: transitive
     description:
       name: gql_dedupe_link
-      sha256: e97e3f9490add43ba96cf5cc02d9d10a3723965c0bcc7bb1e04ef4f2e7a31a00
+      sha256: d0ba6388a52dab95e7e9a9fa3fec43c11172d3d3feda21bf88df39427c8e282f
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.4-alpha+1700868214643"
+    version: "2.0.4-alpha+1704118137496"
   gql_error_link:
     dependency: transitive
     description:
@@ -689,10 +689,10 @@ packages:
     dependency: transitive
     description:
       name: gql_link
-      sha256: "48dbf63b4831d800a2ce9675c9fecea3c9f2801de92072c7644a4bc52aa26c13"
+      sha256: "4cce5019a2ce727023a5e5f9763a9ff85b2770801b10a51738a10472ae779786"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1-alpha+1700868214578"
+    version: "1.0.1-alpha+1704118137432"
   gql_transform_link:
     dependency: transitive
     description:
@@ -1455,7 +1455,7 @@ packages:
     description:
       path: "packages/atomic_design"
       ref: tablet-beta
-      resolved-ref: "1315281eb9de13682c6d395bb725f5227904cca8"
+      resolved-ref: "94229ac32f56d32db589b54d447532010cf046c7"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
