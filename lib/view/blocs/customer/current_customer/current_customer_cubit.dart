@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/domain/auth/usecases/get_user_usecase.dart';
 
 import '../../../../core/usecase/usecase.dart';
 import '../../../../data/auth/model/user_data_response_model.dart';
+import '../../../../domain/auth/usecases/get_user_usecase.dart';
 
 part 'current_customer_cubit.freezed.dart';
 part 'current_customer_state.dart';
