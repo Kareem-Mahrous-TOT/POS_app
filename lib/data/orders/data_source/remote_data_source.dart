@@ -246,11 +246,8 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
             id
             productType
             name
-            comment
             imageUrl
-            isGift
             shippingMethodCode
-            fulfillmentLocationCode
             fulfillmentCenterId
             fulfillmentCenterName
             outerId
