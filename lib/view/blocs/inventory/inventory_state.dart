@@ -12,4 +12,9 @@ class InventoryState with _$InventoryState {
   }) = _FetchSuccessState;
   factory InventoryState.fetchFailState(String message) = _FetchFailState;
   factory InventoryState.updateFailState(String message) = _UpdateFailState;
+
+  @override
+  String toString(){
+    return "testing Inventory";
+  }
 }

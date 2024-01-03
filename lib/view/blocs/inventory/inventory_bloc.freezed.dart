@@ -20,33 +20,37 @@ mixin _$InventoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,8 @@ mixin _$InventoryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -63,6 +69,7 @@ mixin _$InventoryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -72,6 +79,7 @@ mixin _$InventoryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -129,11 +137,13 @@ class _$FetchImpl implements _Fetch {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) {
     return fetch();
   }
@@ -143,11 +153,12 @@ class _$FetchImpl implements _Fetch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) {
     return fetch?.call();
   }
@@ -157,11 +168,12 @@ class _$FetchImpl implements _Fetch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -175,6 +187,8 @@ class _$FetchImpl implements _Fetch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -187,6 +201,7 @@ class _$FetchImpl implements _Fetch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -199,6 +214,7 @@ class _$FetchImpl implements _Fetch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -270,11 +286,13 @@ class _$SearchImpl implements _Search {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) {
     return search(query);
   }
@@ -284,11 +302,12 @@ class _$SearchImpl implements _Search {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) {
     return search?.call(query);
   }
@@ -298,11 +317,12 @@ class _$SearchImpl implements _Search {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -316,6 +336,8 @@ class _$SearchImpl implements _Search {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -328,6 +350,7 @@ class _$SearchImpl implements _Search {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -340,6 +363,7 @@ class _$SearchImpl implements _Search {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -363,12 +387,181 @@ abstract class _Search implements InventoryEvent {
 }
 
 /// @nodoc
+abstract class _$$ChangeMasterVariationImplCopyWith<$Res> {
+  factory _$$ChangeMasterVariationImplCopyWith(
+          _$ChangeMasterVariationImpl value,
+          $Res Function(_$ChangeMasterVariationImpl) then) =
+      __$$ChangeMasterVariationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId, String masterVariationId});
+}
+
+/// @nodoc
+class __$$ChangeMasterVariationImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$ChangeMasterVariationImpl>
+    implements _$$ChangeMasterVariationImplCopyWith<$Res> {
+  __$$ChangeMasterVariationImplCopyWithImpl(_$ChangeMasterVariationImpl _value,
+      $Res Function(_$ChangeMasterVariationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+    Object? masterVariationId = null,
+  }) {
+    return _then(_$ChangeMasterVariationImpl(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      masterVariationId: null == masterVariationId
+          ? _value.masterVariationId
+          : masterVariationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
+  _$ChangeMasterVariationImpl(
+      {required this.productId, required this.masterVariationId});
+
+  @override
+  String productId;
+  @override
+  String masterVariationId;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.changeMasterVariation(productId: $productId, masterVariationId: $masterVariationId)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeMasterVariationImplCopyWith<_$ChangeMasterVariationImpl>
+      get copyWith => __$$ChangeMasterVariationImplCopyWithImpl<
+          _$ChangeMasterVariationImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return changeMasterVariation(productId, masterVariationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return changeMasterVariation?.call(productId, masterVariationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (changeMasterVariation != null) {
+      return changeMasterVariation(productId, masterVariationId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return changeMasterVariation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return changeMasterVariation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (changeMasterVariation != null) {
+      return changeMasterVariation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeMasterVariation implements InventoryEvent {
+  factory _ChangeMasterVariation(
+      {required String productId,
+      required String masterVariationId}) = _$ChangeMasterVariationImpl;
+
+  String get productId;
+  set productId(String value);
+  String get masterVariationId;
+  set masterVariationId(String value);
+  @JsonKey(ignore: true)
+  _$$ChangeMasterVariationImplCopyWith<_$ChangeMasterVariationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$UpdateQuantityImplCopyWith<$Res> {
   factory _$$UpdateQuantityImplCopyWith(_$UpdateQuantityImpl value,
           $Res Function(_$UpdateQuantityImpl) then) =
       __$$UpdateQuantityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String productId, int inStockQuantity, int? reservedQuantity});
+  $Res call({String id, int inStockQuantity, int? reservedQuantity});
 }
 
 /// @nodoc
@@ -382,14 +575,14 @@ class __$$UpdateQuantityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
+    Object? id = null,
     Object? inStockQuantity = null,
     Object? reservedQuantity = freezed,
   }) {
     return _then(_$UpdateQuantityImpl(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       inStockQuantity: null == inStockQuantity
           ? _value.inStockQuantity
@@ -407,12 +600,10 @@ class __$$UpdateQuantityImplCopyWithImpl<$Res>
 
 class _$UpdateQuantityImpl implements _UpdateQuantity {
   _$UpdateQuantityImpl(
-      {required this.productId,
-      required this.inStockQuantity,
-      this.reservedQuantity});
+      {required this.id, required this.inStockQuantity, this.reservedQuantity});
 
   @override
-  String productId;
+  String id;
   @override
   int inStockQuantity;
   @override
@@ -420,7 +611,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
 
   @override
   String toString() {
-    return 'InventoryEvent.updateQuantity(productId: $productId, inStockQuantity: $inStockQuantity, reservedQuantity: $reservedQuantity)';
+    return 'InventoryEvent.updateQuantity(id: $id, inStockQuantity: $inStockQuantity, reservedQuantity: $reservedQuantity)';
   }
 
   @JsonKey(ignore: true)
@@ -435,13 +626,15 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) {
-    return updateQuantity(productId, inStockQuantity, reservedQuantity);
+    return updateQuantity(id, inStockQuantity, reservedQuantity);
   }
 
   @override
@@ -449,13 +642,14 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) {
-    return updateQuantity?.call(productId, inStockQuantity, reservedQuantity);
+    return updateQuantity?.call(id, inStockQuantity, reservedQuantity);
   }
 
   @override
@@ -463,15 +657,16 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
-      return updateQuantity(productId, inStockQuantity, reservedQuantity);
+      return updateQuantity(id, inStockQuantity, reservedQuantity);
     }
     return orElse();
   }
@@ -481,6 +676,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -493,6 +690,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -505,6 +703,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -519,12 +718,12 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
 
 abstract class _UpdateQuantity implements InventoryEvent {
   factory _UpdateQuantity(
-      {required String productId,
+      {required String id,
       required int inStockQuantity,
       int? reservedQuantity}) = _$UpdateQuantityImpl;
 
-  String get productId;
-  set productId(String value);
+  String get id;
+  set id(String value);
   int get inStockQuantity;
   set inStockQuantity(int value);
   int? get reservedQuantity;
@@ -540,9 +739,7 @@ abstract class _$$OnIncrementImplCopyWith<$Res> {
           _$OnIncrementImpl value, $Res Function(_$OnIncrementImpl) then) =
       __$$OnIncrementImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Item product, int counter});
-
-  $ItemCopyWith<$Res> get product;
+  $Res call({String productId, int counter});
 }
 
 /// @nodoc
@@ -556,43 +753,35 @@ class __$$OnIncrementImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? product = null,
+    Object? productId = null,
     Object? counter = null,
   }) {
     return _then(_$OnIncrementImpl(
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Item,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
       counter: null == counter
           ? _value.counter
           : counter // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ItemCopyWith<$Res> get product {
-    return $ItemCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$OnIncrementImpl implements _OnIncrement {
-  _$OnIncrementImpl({required this.product, required this.counter});
+  _$OnIncrementImpl({required this.productId, required this.counter});
 
   @override
-  Item product;
+  String productId;
   @override
   int counter;
 
   @override
   String toString() {
-    return 'InventoryEvent.onIncrement(product: $product, counter: $counter)';
+    return 'InventoryEvent.onIncrement(productId: $productId, counter: $counter)';
   }
 
   @JsonKey(ignore: true)
@@ -606,13 +795,15 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) {
-    return onIncrement(product, counter);
+    return onIncrement(productId, counter);
   }
 
   @override
@@ -620,13 +811,14 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) {
-    return onIncrement?.call(product, counter);
+    return onIncrement?.call(productId, counter);
   }
 
   @override
@@ -634,15 +826,16 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) {
     if (onIncrement != null) {
-      return onIncrement(product, counter);
+      return onIncrement(productId, counter);
     }
     return orElse();
   }
@@ -652,6 +845,8 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -664,6 +859,7 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -676,6 +872,7 @@ class _$OnIncrementImpl implements _OnIncrement {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -689,11 +886,11 @@ class _$OnIncrementImpl implements _OnIncrement {
 }
 
 abstract class _OnIncrement implements InventoryEvent {
-  factory _OnIncrement({required Item product, required int counter}) =
+  factory _OnIncrement({required String productId, required int counter}) =
       _$OnIncrementImpl;
 
-  Item get product;
-  set product(Item value);
+  String get productId;
+  set productId(String value);
   int get counter;
   set counter(int value);
   @JsonKey(ignore: true)
@@ -707,9 +904,7 @@ abstract class _$$OnDecrementImplCopyWith<$Res> {
           _$OnDecrementImpl value, $Res Function(_$OnDecrementImpl) then) =
       __$$OnDecrementImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Item product, int counter});
-
-  $ItemCopyWith<$Res> get product;
+  $Res call({String productId, int counter});
 }
 
 /// @nodoc
@@ -723,43 +918,35 @@ class __$$OnDecrementImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? product = null,
+    Object? productId = null,
     Object? counter = null,
   }) {
     return _then(_$OnDecrementImpl(
-      product: null == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as Item,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
       counter: null == counter
           ? _value.counter
           : counter // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ItemCopyWith<$Res> get product {
-    return $ItemCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$OnDecrementImpl implements _OnDecrement {
-  _$OnDecrementImpl({required this.product, required this.counter});
+  _$OnDecrementImpl({required this.productId, required this.counter});
 
   @override
-  Item product;
+  String productId;
   @override
   int counter;
 
   @override
   String toString() {
-    return 'InventoryEvent.onDecrement(product: $product, counter: $counter)';
+    return 'InventoryEvent.onDecrement(productId: $productId, counter: $counter)';
   }
 
   @JsonKey(ignore: true)
@@ -773,13 +960,15 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
     required TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)
+            String id, int inStockQuantity, int? reservedQuantity)
         updateQuantity,
-    required TResult Function(Item product, int counter) onIncrement,
-    required TResult Function(Item product, int counter) onDecrement,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
   }) {
-    return onDecrement(product, counter);
+    return onDecrement(productId, counter);
   }
 
   @override
@@ -787,13 +976,14 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function(String? query)? search,
-    TResult? Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult? Function(Item product, int counter)? onIncrement,
-    TResult? Function(Item product, int counter)? onDecrement,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
   }) {
-    return onDecrement?.call(product, counter);
+    return onDecrement?.call(productId, counter);
   }
 
   @override
@@ -801,15 +991,16 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function(String? query)? search,
-    TResult Function(
-            String productId, int inStockQuantity, int? reservedQuantity)?
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
         updateQuantity,
-    TResult Function(Item product, int counter)? onIncrement,
-    TResult Function(Item product, int counter)? onDecrement,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
     required TResult orElse(),
   }) {
     if (onDecrement != null) {
-      return onDecrement(product, counter);
+      return onDecrement(productId, counter);
     }
     return orElse();
   }
@@ -819,6 +1010,8 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_OnIncrement value) onIncrement,
     required TResult Function(_OnDecrement value) onDecrement,
@@ -831,6 +1024,7 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_OnIncrement value)? onIncrement,
     TResult? Function(_OnDecrement value)? onDecrement,
@@ -843,6 +1037,7 @@ class _$OnDecrementImpl implements _OnDecrement {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_OnIncrement value)? onIncrement,
     TResult Function(_OnDecrement value)? onDecrement,
@@ -856,11 +1051,11 @@ class _$OnDecrementImpl implements _OnDecrement {
 }
 
 abstract class _OnDecrement implements InventoryEvent {
-  factory _OnDecrement({required Item product, required int counter}) =
+  factory _OnDecrement({required String productId, required int counter}) =
       _$OnDecrementImpl;
 
-  Item get product;
-  set product(Item value);
+  String get productId;
+  set productId(String value);
   int get counter;
   set counter(int value);
   @JsonKey(ignore: true)
@@ -1002,11 +1197,6 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 class _$LoadingImpl implements _Loading {
   _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'InventoryState.loading()';
-  }
 
   @override
   @optionalTypeArgs
@@ -1217,11 +1407,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   List<({String id, String name, String price, num? quantity, String sku})>?
       records;
 
-  @override
-  String toString() {
-    return 'InventoryState.fetchSuccessState(products: $products, isSearching: $isSearching, isUpdating: $isUpdating, isUpdated: $isUpdated, records: $records)';
-  }
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1415,11 +1600,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   String message;
 
-  @override
-  String toString() {
-    return 'InventoryState.fetchFailState(message: $message)';
-  }
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1592,11 +1772,6 @@ class _$UpdateFailStateImpl implements _UpdateFailState {
 
   @override
   String message;
-
-  @override
-  String toString() {
-    return 'InventoryState.updateFailState(message: $message)';
-  }
 
   @JsonKey(ignore: true)
   @override
