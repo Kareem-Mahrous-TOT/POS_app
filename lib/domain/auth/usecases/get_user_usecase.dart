@@ -1,7 +1,6 @@
 import '../../../core/usecase/usecase.dart';
-import '../repo/auth_repo_base.dart';
-
 import '../../../data/auth/model/user_data_response_model.dart';
+import '../repo/auth_repo_base.dart';
 
 class GetUserUsecase implements BaseUsecase<NoParams, Future<UserDataModel?>> {
   final AuthBaseRepo _authBaseRepo;

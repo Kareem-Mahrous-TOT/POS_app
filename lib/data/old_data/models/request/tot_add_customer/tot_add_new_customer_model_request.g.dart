@@ -11,8 +11,8 @@ _$TOTAddCustomerModelRequestImpl _$$TOTAddCustomerModelRequestImplFromJson(
     _$TOTAddCustomerModelRequestImpl(
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
-      fullName: json['fullName'] as String?,
-      memberType: json['memberType'] as String?,
+      fullName: json['fullName'] as String,
+      memberType: json['memberType'] as String,
       status: json['status'] as String?,
       addresses: (json['addresses'] as List<dynamic>?)
           ?.map((e) => Address.fromJson(e as Map<String, dynamic>))
@@ -20,7 +20,7 @@ _$TOTAddCustomerModelRequestImpl _$$TOTAddCustomerModelRequestImplFromJson(
       phones:
           (json['phones'] as List<dynamic>?)?.map((e) => e as String).toList(),
       emails:
-          (json['emails'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['emails'] as List<dynamic>).map((e) => e as String).toList(),
       organizations: json['organizations'],
       dynamicProperties: (json['dynamicProperties'] as List<dynamic>?)
           ?.map((e) => DynamicProperty.fromJson(e as Map<String, dynamic>))

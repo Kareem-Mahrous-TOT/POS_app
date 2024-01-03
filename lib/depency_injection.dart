@@ -3,7 +3,10 @@ import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
+import 'package:tot_pos/data/customers/data_sources/remote_data_source.dart';
 import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
+import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
+import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
@@ -18,12 +21,12 @@ import 'data/bag/repo/bag_repo.dart';
 import 'data/cart/data_sources.dart/local_data_source.dart';
 import 'data/cart/data_sources.dart/remote_data_source.dart';
 import 'data/cart/repo/cart_repo_impl.dart';
+import 'data/customers/repo/customers_repo_impl.dart';
 import 'data/inventory/repo/inventory_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
-import 'data/old_data/repository/base/customers_rep_base.dart';
 import 'data/old_data/repository/base/user_address_repo_base.dart';
-import 'data/old_data/repository/impl/customer_repo_impl.dart';
+// import 'data/old_data/repository/impl/customer_repo_impl.dart';
 import 'data/old_data/repository/impl/user_address_repo_impl.dart';
 import 'data/orders/data_source/local_data_source.dart';
 import 'data/orders/data_source/remote_data_source.dart';
@@ -48,6 +51,7 @@ import 'domain/cart/usecases/fetch_cart_usecase.dart';
 import 'domain/cart/usecases/prepare_cart_usecase.dart';
 import 'domain/cart/usecases/remove_cart_usecase.dart';
 import 'domain/cart/usecases/remove_items_usecase.dart';
+import 'domain/customers/usecases/add_customer_usecase.dart';
 import 'domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
 import 'domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
 import 'domain/inventory/repo/inventory_repo.dart';
@@ -133,10 +137,13 @@ Future<void> getItInit() async {
   //? bag
   getIt.registerSingleton<BagLocalDataSource>(
       BagLocalDataSourceImpl(sharedPrefs: getIt()));
+  //? contacts
+  getIt.registerSingleton<ContactsRemoteDataSource>(
+      ContactsRemoteDataSourceImpl(apiConsumer: getIt()));
 
   //--------------------------------------------------------------------------
   //repos
-  getIt.registerSingleton<CustomerRepo>(CustomerRepo());
+  // getIt.registerSingleton<CustomerRepo>(CustomerRepo());
   getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
     localDataSource: getIt(),
     remotedataSource: getIt(),
@@ -151,8 +158,8 @@ Future<void> getItInit() async {
   getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
   getIt.registerSingleton<ReportRepo>(
       ReportRepoImpl(reportLocalDataSource: getIt()));
-  getIt.registerSingleton<CustomersRepoBase>(
-      CustomersRepoImpl(apiConsumer: getIt()));
+  // getIt.registerSingleton<CustomersRepoBase>(
+  //     CustomersRepoImpl(apiConsumer: getIt()));
   // getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
   getIt.registerSingleton<UserAddressRepoBase>(
@@ -165,6 +172,8 @@ Future<void> getItInit() async {
   getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
   getIt.registerSingleton<InventoryRepo>(
       InventoryRepoImpl(preferences: getIt(), remoteDataSource: getIt()));
+  getIt.registerSingleton<CustomersRepo>(
+      CustomersRepoImpl(remoteDataSource: getIt()));
 
   //--------------------------------------------------------------------------
   //usecase
@@ -228,6 +237,11 @@ Future<void> getItInit() async {
   //? inventory
   getIt.registerLazySingleton<UpdateInventoryQuantityUsecase>(
       () => UpdateInventoryQuantityUsecase(inventoryRepo: getIt()));
+  //? customers
+  getIt.registerLazySingleton<FetchCustomersUsecase>(
+      () => FetchCustomersUsecase(customersRepo: getIt()));
+  getIt.registerLazySingleton<AddCustomersUsecase>(
+      () => AddCustomersUsecase(customersRepo: getIt()));
 
   //--------------------------------------------------------------------------
   //blocs
@@ -244,8 +258,8 @@ Future<void> getItInit() async {
       ));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
-  getIt
-      .registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(getIt()));
+  getIt.registerFactory<RecentCustomersBloc>(
+      () => RecentCustomersBloc(fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
   // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
   getIt.registerFactory<ReportChartPieCubit>(

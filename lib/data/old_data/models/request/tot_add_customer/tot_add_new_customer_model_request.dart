@@ -4,22 +4,22 @@ part 'tot_add_new_customer_model_request.freezed.dart';
 part 'tot_add_new_customer_model_request.g.dart';
 
 @freezed
-class TOTAddCustomerModelRequest with _$TOTAddCustomerModelRequest {
-  const factory TOTAddCustomerModelRequest({
+class TOTAddCustomerRequest with _$TOTAddCustomerRequest {
+  const factory TOTAddCustomerRequest({
     String? firstName,
     String? lastName,
-    String? fullName,
-    String? memberType,
+    required String fullName,
+    required String memberType,
     String? status,
     List<Address>? addresses,
     List<String>? phones,
-    List<String>? emails,
+    required List<String> emails,
     dynamic organizations,
     List<DynamicProperty>? dynamicProperties,
   }) = _TOTAddCustomerModelRequest;
 
-  factory TOTAddCustomerModelRequest.fromJson(Map<String, dynamic> json) =>
-      _$TOTAddCustomerModelRequestFromJson(json);
+  factory TOTAddCustomerRequest.fromJson(Map<String, dynamic> json) =>
+      _$TOTAddCustomerRequestFromJson(json);
 }
 
 @freezed

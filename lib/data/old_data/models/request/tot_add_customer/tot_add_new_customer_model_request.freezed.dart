@@ -14,56 +14,55 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TOTAddCustomerModelRequest _$TOTAddCustomerModelRequestFromJson(
+TOTAddCustomerRequest _$TOTAddCustomerRequestFromJson(
     Map<String, dynamic> json) {
   return _TOTAddCustomerModelRequest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TOTAddCustomerModelRequest {
+mixin _$TOTAddCustomerRequest {
   String? get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
-  String? get fullName => throw _privateConstructorUsedError;
-  String? get memberType => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
+  String get memberType => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   List<Address>? get addresses => throw _privateConstructorUsedError;
   List<String>? get phones => throw _privateConstructorUsedError;
-  List<String>? get emails => throw _privateConstructorUsedError;
+  List<String> get emails => throw _privateConstructorUsedError;
   dynamic get organizations => throw _privateConstructorUsedError;
   List<DynamicProperty>? get dynamicProperties =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TOTAddCustomerModelRequestCopyWith<TOTAddCustomerModelRequest>
-      get copyWith => throw _privateConstructorUsedError;
+  $TOTAddCustomerRequestCopyWith<TOTAddCustomerRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TOTAddCustomerModelRequestCopyWith<$Res> {
-  factory $TOTAddCustomerModelRequestCopyWith(TOTAddCustomerModelRequest value,
-          $Res Function(TOTAddCustomerModelRequest) then) =
-      _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
-          TOTAddCustomerModelRequest>;
+abstract class $TOTAddCustomerRequestCopyWith<$Res> {
+  factory $TOTAddCustomerRequestCopyWith(TOTAddCustomerRequest value,
+          $Res Function(TOTAddCustomerRequest) then) =
+      _$TOTAddCustomerRequestCopyWithImpl<$Res, TOTAddCustomerRequest>;
   @useResult
   $Res call(
       {String? firstName,
       String? lastName,
-      String? fullName,
-      String? memberType,
+      String fullName,
+      String memberType,
       String? status,
       List<Address>? addresses,
       List<String>? phones,
-      List<String>? emails,
+      List<String> emails,
       dynamic organizations,
       List<DynamicProperty>? dynamicProperties});
 }
 
 /// @nodoc
-class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
-        $Val extends TOTAddCustomerModelRequest>
-    implements $TOTAddCustomerModelRequestCopyWith<$Res> {
-  _$TOTAddCustomerModelRequestCopyWithImpl(this._value, this._then);
+class _$TOTAddCustomerRequestCopyWithImpl<$Res,
+        $Val extends TOTAddCustomerRequest>
+    implements $TOTAddCustomerRequestCopyWith<$Res> {
+  _$TOTAddCustomerRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,12 +74,12 @@ class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
   $Res call({
     Object? firstName = freezed,
     Object? lastName = freezed,
-    Object? fullName = freezed,
-    Object? memberType = freezed,
+    Object? fullName = null,
+    Object? memberType = null,
     Object? status = freezed,
     Object? addresses = freezed,
     Object? phones = freezed,
-    Object? emails = freezed,
+    Object? emails = null,
     Object? organizations = freezed,
     Object? dynamicProperties = freezed,
   }) {
@@ -93,14 +92,14 @@ class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: freezed == fullName
+      fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      memberType: freezed == memberType
+              as String,
+      memberType: null == memberType
           ? _value.memberType
           : memberType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -113,10 +112,10 @@ class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      emails: freezed == emails
+      emails: null == emails
           ? _value.emails
           : emails // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
       organizations: freezed == organizations
           ? _value.organizations
           : organizations // ignore: cast_nullable_to_non_nullable
@@ -131,7 +130,7 @@ class _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$TOTAddCustomerModelRequestImplCopyWith<$Res>
-    implements $TOTAddCustomerModelRequestCopyWith<$Res> {
+    implements $TOTAddCustomerRequestCopyWith<$Res> {
   factory _$$TOTAddCustomerModelRequestImplCopyWith(
           _$TOTAddCustomerModelRequestImpl value,
           $Res Function(_$TOTAddCustomerModelRequestImpl) then) =
@@ -141,19 +140,19 @@ abstract class _$$TOTAddCustomerModelRequestImplCopyWith<$Res>
   $Res call(
       {String? firstName,
       String? lastName,
-      String? fullName,
-      String? memberType,
+      String fullName,
+      String memberType,
       String? status,
       List<Address>? addresses,
       List<String>? phones,
-      List<String>? emails,
+      List<String> emails,
       dynamic organizations,
       List<DynamicProperty>? dynamicProperties});
 }
 
 /// @nodoc
 class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
-    extends _$TOTAddCustomerModelRequestCopyWithImpl<$Res,
+    extends _$TOTAddCustomerRequestCopyWithImpl<$Res,
         _$TOTAddCustomerModelRequestImpl>
     implements _$$TOTAddCustomerModelRequestImplCopyWith<$Res> {
   __$$TOTAddCustomerModelRequestImplCopyWithImpl(
@@ -166,12 +165,12 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? firstName = freezed,
     Object? lastName = freezed,
-    Object? fullName = freezed,
-    Object? memberType = freezed,
+    Object? fullName = null,
+    Object? memberType = null,
     Object? status = freezed,
     Object? addresses = freezed,
     Object? phones = freezed,
-    Object? emails = freezed,
+    Object? emails = null,
     Object? organizations = freezed,
     Object? dynamicProperties = freezed,
   }) {
@@ -184,14 +183,14 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: freezed == fullName
+      fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      memberType: freezed == memberType
+              as String,
+      memberType: null == memberType
           ? _value.memberType
           : memberType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -204,10 +203,10 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
           ? _value._phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      emails: freezed == emails
+      emails: null == emails
           ? _value._emails
           : emails // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
       organizations: freezed == organizations
           ? _value.organizations
           : organizations // ignore: cast_nullable_to_non_nullable
@@ -226,12 +225,12 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
   const _$TOTAddCustomerModelRequestImpl(
       {this.firstName,
       this.lastName,
-      this.fullName,
-      this.memberType,
+      required this.fullName,
+      required this.memberType,
       this.status,
       final List<Address>? addresses,
       final List<String>? phones,
-      final List<String>? emails,
+      required final List<String> emails,
       this.organizations,
       final List<DynamicProperty>? dynamicProperties})
       : _addresses = addresses,
@@ -248,9 +247,9 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
   @override
   final String? lastName;
   @override
-  final String? fullName;
+  final String fullName;
   @override
-  final String? memberType;
+  final String memberType;
   @override
   final String? status;
   final List<Address>? _addresses;
@@ -273,14 +272,12 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _emails;
+  final List<String> _emails;
   @override
-  List<String>? get emails {
-    final value = _emails;
-    if (value == null) return null;
+  List<String> get emails {
     if (_emails is EqualUnmodifiableListView) return _emails;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_emails);
   }
 
   @override
@@ -298,7 +295,7 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
 
   @override
   String toString() {
-    return 'TOTAddCustomerModelRequest(firstName: $firstName, lastName: $lastName, fullName: $fullName, memberType: $memberType, status: $status, addresses: $addresses, phones: $phones, emails: $emails, organizations: $organizations, dynamicProperties: $dynamicProperties)';
+    return 'TOTAddCustomerRequest(firstName: $firstName, lastName: $lastName, fullName: $fullName, memberType: $memberType, status: $status, addresses: $addresses, phones: $phones, emails: $emails, organizations: $organizations, dynamicProperties: $dynamicProperties)';
   }
 
   @override
@@ -355,17 +352,16 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
   }
 }
 
-abstract class _TOTAddCustomerModelRequest
-    implements TOTAddCustomerModelRequest {
+abstract class _TOTAddCustomerModelRequest implements TOTAddCustomerRequest {
   const factory _TOTAddCustomerModelRequest(
           {final String? firstName,
           final String? lastName,
-          final String? fullName,
-          final String? memberType,
+          required final String fullName,
+          required final String memberType,
           final String? status,
           final List<Address>? addresses,
           final List<String>? phones,
-          final List<String>? emails,
+          required final List<String> emails,
           final dynamic organizations,
           final List<DynamicProperty>? dynamicProperties}) =
       _$TOTAddCustomerModelRequestImpl;
@@ -378,9 +374,9 @@ abstract class _TOTAddCustomerModelRequest
   @override
   String? get lastName;
   @override
-  String? get fullName;
+  String get fullName;
   @override
-  String? get memberType;
+  String get memberType;
   @override
   String? get status;
   @override
@@ -388,7 +384,7 @@ abstract class _TOTAddCustomerModelRequest
   @override
   List<String>? get phones;
   @override
-  List<String>? get emails;
+  List<String> get emails;
   @override
   dynamic get organizations;
   @override

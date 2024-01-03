@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
-import '../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 import '../../../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/pos/customer/customer_exp.dart';
@@ -20,6 +19,7 @@ class CustomerPage extends HookWidget {
 
     final emailController = useTextEditingController();
     final nameController = useTextEditingController();
+    final fToast = useFToast(context: context);
 
     return Container(
       color: const Color.fromARGB(255, 229, 229, 229),
@@ -55,22 +55,23 @@ class CustomerPage extends HookWidget {
                             nameController: nameController,
                             emailController: emailController,
                             onPressed: () {
-                              final newCustomer = Member(
-                                emails: [emailController.text],
-                                iconUrl:
-                                    "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
-                                name: nameController.text,
-                              );
+                              // final newCustomer = Member(
+                              //   emails: [emailController.text],
+                              //   iconUrl:
+                              //       "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                              //   name: nameController.text,
+                              // );
 
                               context.read<RecentCustomersBloc>().add(
                                     RecentCustomersEvent.addCustomer(
-                                        newCustomer),
+                                        email: emailController.text,
+                                        name: nameController.text),
                                   );
-                              if (context.mounted) {
-                                // context
-                                //     .read<HomeBloc>()
-                                //     .add(const HomeEvent.getCustomers());
-                              }
+                              // if (context.mounted) {
+                              //   // context
+                              //   //     .read<HomeBloc>()
+                              //   //     .add(const HomeEvent.getCustomers());
+                              // }
 
                               Navigator.pop(context);
                               nameController.clear();
@@ -139,7 +140,24 @@ class CustomerPage extends HookWidget {
                           thickness: 1,
                         ),
                       ),
-                      BlocBuilder<RecentCustomersBloc, RecentCustomersState>(
+                      BlocConsumer<RecentCustomersBloc, RecentCustomersState>(
+                        listener: (_, state) {
+                          state.maybeMap(
+                            orElse: () {},
+                            loadedRecentCustomerData:
+                                (loadedRecentCustomestate) {
+                              if (loadedRecentCustomestate.didAddCustomer ==
+                                  true) {
+                                fToast.showToast(
+                                    child: Text("تمت الاضافة بنجاح"));
+                              } else if (loadedRecentCustomestate
+                                      .didAddCustomer ==
+                                  false) {
+                                fToast.showToast(child: Text("فشلت الاضافة"));
+                              }
+                            },
+                          );
+                        },
                         builder: (context, state) {
                           return state.maybeMap(
                             orElse: () => const Center(
@@ -172,7 +190,7 @@ class CustomerPage extends HookWidget {
                               return SizedBox(
                                   height: h * 0.487,
                                   child: CustomersListMolecule(
-                                      model: value.customers));
+                                      models: value.customers));
                             },
                           );
                         },

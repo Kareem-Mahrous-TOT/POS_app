@@ -217,7 +217,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
                       ),
                     ],
                   ),
-                ));
+                ),);
       },
     );
   }
