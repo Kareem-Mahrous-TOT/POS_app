@@ -1,5 +1,5 @@
-import 'package:tot_pos/core/usecase/usecase.dart';
-import 'package:tot_pos/domain/auth/repo/auth_repo_base.dart';
+import '../../../core/usecase/usecase.dart';
+import '../repo/auth_repo_base.dart';
 
 import '../../../data/auth/model/user_data_response_model.dart';
 

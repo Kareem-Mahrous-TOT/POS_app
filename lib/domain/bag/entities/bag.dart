@@ -70,7 +70,12 @@ class BagEntity {
   }
 
   void setDiscount({double? discount}) {
-    if (discount != null && (discount > 100 || discount < 0)) return;
+    final checkForNull = discount != null;
+    final checkForRange = checkForNull && (discount > 100 || discount < 0) ;
+    final checkForRepition = discount == _discount;
+
+
+    if (checkForRange || checkForRepition) return;
 
     _discount = discount;
     _recalculate();
