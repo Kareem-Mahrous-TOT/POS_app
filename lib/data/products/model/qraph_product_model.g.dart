@@ -165,6 +165,7 @@ _$VariationImpl _$$VariationImplFromJson(Map<String, dynamic> json) =>
       price: json['price'] == null
           ? null
           : Price.fromJson(json['price'] as Map<String, dynamic>),
+      selectedQuantity: json['selectedQuantity'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$VariationImplToJson(_$VariationImpl instance) =>
@@ -177,6 +178,7 @@ Map<String, dynamic> _$$VariationImplToJson(_$VariationImpl instance) =>
       'availabilityData': instance.availabilityData?.toJson(),
       'isMaster': instance.isMaster,
       'price': instance.price?.toJson(),
+      'selectedQuantity': instance.selectedQuantity,
     };
 
 _$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>

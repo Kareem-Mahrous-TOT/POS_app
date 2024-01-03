@@ -38,22 +38,58 @@ class GetProductsUsecase
       endCursor: params.endCursor,
     );
     return response.fold((fail) => Left(fail), (products) {
-      final productsModel = products!.map((e) {
-        final qunatity = e.availabilityData!.inventories!
-            .firstWhere(orElse: () {
-              return const Inventory(inStockQuantity: 0);
-            },
-                (inventory) =>
-                    inventory.fulfillmentCenterId ==
-                    StoreConfig.octoberBranchId)
-            .inStockQuantity!
-            .toInt();
-        return e.copyWith(selectedQuantity: qunatity);
+      List<Item>? updatedProducts = [];
+      for (final product in products!) {
+        List<Variation> allVariations = [];
+        if (product.variations != null && product.variations!.isNotEmpty) {
+          allVariations.add(Variation(
+              id: product.id,
+              availabilityData: product.availabilityData,
+              code: product.code,
+              name: product.name,
+              price: product.price,
+              productType: product.productType,
+              properties: product.properties,
+              isMaster: true));
+
+          for (final variation in product.variations!) {
+            allVariations.add(variation.copyWith(isMaster: false));
+          }
+          updatedProducts.add(product.copyWith(variations: allVariations));
+        } else {
+          allVariations.add(Variation(
+              id: product.id,
+              availabilityData: product.availabilityData,
+              code: product.code,
+              name: product.name,
+              price: product.price,
+              productType: product.productType,
+              properties: product.properties,
+              isMaster: true));
+          updatedProducts.add(product.copyWith(variations: allVariations));
+        }
+      }
+      final productsModel = updatedProducts.map((product) {
+        final newVariations = product.variations!.map((variation) {
+          final variationQuantity = variation.availabilityData!.inventories!
+              .firstWhere(orElse: () {
+                return const Inventory(inStockQuantity: 0);
+              },
+                  (inventory) =>
+                      inventory.fulfillmentCenterId ==
+                      StoreConfig.octoberBranchId)
+              .inStockQuantity!
+              .toInt();
+          return variation.copyWith(selectedQuantity: variationQuantity);
+        }).toList();
+
+        return product.copyWith(variations: newVariations);
       }).toList();
+
       return Right((
         productsModels: productsModel,
         proudctsRecords: productsModel.toDomain(),
-        proudctsPosRecords: productsModel.toDomainPOS()
+        proudctsPosRecords: productsModel.toDomainPOS(),
       ));
     });
   }

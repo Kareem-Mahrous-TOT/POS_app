@@ -44,7 +44,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
         fetch: () async {
           await fetchProducts();
         },
-        onIncrement: (product, counter) async {
+        onIncrement: (masterId, counter) async {
           await state.maybeMap(
               orElse: () {},
               fetchSuccessState: (value) async {
@@ -53,40 +53,35 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                   final currentQuantity = counter + 1;
                   for (final e in value.products!) {
                     // for (final element in value.products!) {
-                    if (e.id == product.id) {
+                    if (e.variations!
+                            .firstWhere(
+                                orElse: () => e.variations!.first,
+                                (element) => element.isMaster)
+                            .id ==
+                        masterId) {
                       final selectedProduct =
-                          e.copyWith(selectedQuantity: currentQuantity);
+                          // e.copyWith(selectedQuantity: currentQuantity);
+                          e.copyWith(
+                              variations: e.variations!.map((element) {
+                        if (element.isMaster) {
+                          return element.copyWith(
+                              selectedQuantity: currentQuantity);
+                        } else {
+                          return element;
+                        }
+                      }).toList());
                       updatedProduct.add(selectedProduct);
                     } else {
                       updatedProduct.add(e);
                     }
                   }
-                  // final upatedProduct = value.products!
-                  //     .where((element) => element.id == product.id)
-                  //     .map((e) => e.copyWith(
-                  //             availabilityData: product.availabilityData!
-                  //                 .copyWith(inventories: [
-                  //           product.availabilityData!.inventories!
-                  //               .firstWhere(
-                  //                 (element) =>
-                  //                     element.fulfillmentCenterId ==
-                  //                     (preferences.getString(
-                  //                             LocalKeys.fulfillmentCenterId) ??
-                  //                         StoreConfig.octoberBranchId),
-                  //                 orElse: () =>
-                  //                     const Inventory(inStockQuantity: 0),
-                  //               )
-                  //               .copyWith(inStockQuantity: currentQuantity)
-                  //         ])))
-                  //     .toList();
-                  // print("updatedProduct => $updatedProduct");
                   emit(value.copyWith(
                       records: updatedProduct.toDomainPOS(),
                       products: updatedProduct));
                 }
               });
         },
-        onDecrement: (product, counter) async {
+        onDecrement: (masterId, counter) async {
           await state.maybeMap(
               orElse: () {},
               fetchSuccessState: (value) async {
@@ -95,9 +90,23 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                   final currentQuantity = counter - 1;
                   for (final e in value.products!) {
                     // for (final element in value.products!) {
-                    if (e.id == product.id) {
+                    if (e.variations!
+                            .firstWhere(
+                                orElse: () => e.variations!.first,
+                                (element) => element.isMaster)
+                            .id ==
+                        masterId) {
                       final selectedProduct =
-                          e.copyWith(selectedQuantity: currentQuantity);
+                          // e.copyWith(selectedQuantity: currentQuantity);
+                          e.copyWith(
+                              variations: e.variations!.map((element) {
+                        if (element.isMaster) {
+                          return element.copyWith(
+                              selectedQuantity: currentQuantity);
+                        } else {
+                          return element;
+                        }
+                      }).toList());
                       updatedProduct.add(selectedProduct);
                     } else {
                       updatedProduct.add(e);
@@ -110,24 +119,50 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
               });
         },
         //--------------
-        updateQuantity: (productId, inStockQuantity, reservedQuantity) async {
+        updateQuantity: (masterId, inStockQuantity, reservedQuantity) async {
           await state.maybeMap(
               orElse: () async => state,
               fetchSuccessState: (value) async {
                 emit(value.copyWith(isUpdating: true));
                 final response = await _updateInventoryUsecase.call(
                     UpdateInventoryParams(
-                        productId: productId,
+                        productId: masterId,
                         inStockQuantity: inStockQuantity));
                 final bool result =
                     await response.fold((l) async => false, (r) async => r);
                 if (result) {
                   List<Item> newProducts = [];
                   for (final product in value.products!) {
-                    if (product.id == productId) {
+                    if (product.variations!
+                            .firstWhere(
+                                orElse: () => product.variations!.first,
+                                (element) => element.isMaster)
+                            .id == masterId) {
                       newProducts.add(
                         product.copyWith(
-                          selectedQuantity: inStockQuantity,
+                          variations: product.variations!.map((variation) {
+                            if (variation.isMaster) {
+                              return variation.copyWith(
+                                  availabilityData: variation.availabilityData!
+                                      .copyWith(
+                                          inventories: variation
+                                              .availabilityData!.inventories!
+                                              .map((e) {
+                                if (e.fulfillmentCenterId ==
+                                    (preferences.getString(
+                                            LocalKeys.fulfillmentCenterId) ??
+                                        StoreConfig.octoberBranchId)) {
+                                  return e.copyWith(
+                                      inStockQuantity: inStockQuantity);
+                                } else {
+                                  return e;
+                                }
+                              }).toList()));
+                            } else {
+                              return variation;
+                            }
+                          }).toList(),
+                          // selectedQuantity: inStockQuantity,
                           availabilityData: product.availabilityData!.copyWith(
                               inventories: product
                                   .availabilityData!.inventories!
@@ -144,9 +179,6 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                           }).toList()),
                         ),
                       );
-                      // inStockQuantity: inStockQuantity,
-                      // fulfillmentCenterId: ,
-                      // reservedQuantity: reservedQuantity
                       emit(value.copyWith(
                           records: newProducts.toDomainPOS(),
                           products: newProducts,
@@ -160,6 +192,32 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                     }
                   }
                 }
+              });
+        },
+        changeMasterVariation: (productId, id) async {
+          // masterVariation.id
+          await state.maybeMap(
+              orElse: () {},
+              fetchSuccessState: (value) async {
+                final updatedProducts = value.copyWith(
+                    products: value.products!.map((product) {
+                  if (product.id == productId) {
+                    // for (final selectedProduct in value.products!) {
+                    final updatedProduct = product.copyWith(
+                        variations: product.variations!.map((variation) {
+                      final Variation updatedVariation = variation.copyWith(
+                          isMaster: (variation.id == id) ? true : false);
+                      return updatedVariation;
+                    }).toList());
+                    return updatedProduct;
+                  } else {
+                    return product;
+                  }
+                }).toList());
+
+                emit(value.copyWith(
+                    products: updatedProducts.products,
+                    records: updatedProducts.products!.toDomainPOS()));
               });
         },
         search: (query) async {

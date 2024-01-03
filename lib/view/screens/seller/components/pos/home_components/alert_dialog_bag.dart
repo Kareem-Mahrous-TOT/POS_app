@@ -19,7 +19,8 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
   });
 
   final String id;
-  final void Function(Item product, int count, List<Variation> variations) onAddToCart;
+  final void Function(Item product, int count, List<Variation> variations)
+      onAddToCart;
 
   @override
   Widget build(BuildContext context) {

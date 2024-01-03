@@ -1542,6 +1542,7 @@ mixin _$Variation {
   AvailabilityData? get availabilityData => throw _privateConstructorUsedError;
   bool get isMaster => throw _privateConstructorUsedError;
   Price? get price => throw _privateConstructorUsedError;
+  int get selectedQuantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1562,7 +1563,8 @@ abstract class $VariationCopyWith<$Res> {
       List<Property>? properties,
       AvailabilityData? availabilityData,
       bool isMaster,
-      Price? price});
+      Price? price,
+      int selectedQuantity});
 
   $AvailabilityDataCopyWith<$Res>? get availabilityData;
   $PriceCopyWith<$Res>? get price;
@@ -1589,6 +1591,7 @@ class _$VariationCopyWithImpl<$Res, $Val extends Variation>
     Object? availabilityData = freezed,
     Object? isMaster = null,
     Object? price = freezed,
+    Object? selectedQuantity = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -1623,6 +1626,10 @@ class _$VariationCopyWithImpl<$Res, $Val extends Variation>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price?,
+      selectedQuantity: null == selectedQuantity
+          ? _value.selectedQuantity
+          : selectedQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -1667,7 +1674,8 @@ abstract class _$$VariationImplCopyWith<$Res>
       List<Property>? properties,
       AvailabilityData? availabilityData,
       bool isMaster,
-      Price? price});
+      Price? price,
+      int selectedQuantity});
 
   @override
   $AvailabilityDataCopyWith<$Res>? get availabilityData;
@@ -1694,6 +1702,7 @@ class __$$VariationImplCopyWithImpl<$Res>
     Object? availabilityData = freezed,
     Object? isMaster = null,
     Object? price = freezed,
+    Object? selectedQuantity = null,
   }) {
     return _then(_$VariationImpl(
       id: freezed == id
@@ -1728,6 +1737,10 @@ class __$$VariationImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price?,
+      selectedQuantity: null == selectedQuantity
+          ? _value.selectedQuantity
+          : selectedQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1743,7 +1756,8 @@ class _$VariationImpl implements _Variation {
       final List<Property>? properties,
       this.availabilityData,
       this.isMaster = false,
-      this.price})
+      this.price,
+      this.selectedQuantity = 0})
       : _properties = properties;
 
   factory _$VariationImpl.fromJson(Map<String, dynamic> json) =>
@@ -1774,10 +1788,13 @@ class _$VariationImpl implements _Variation {
   final bool isMaster;
   @override
   final Price? price;
+  @override
+  @JsonKey()
+  final int selectedQuantity;
 
   @override
   String toString() {
-    return 'Variation(id: $id, name: $name, code: $code, productType: $productType, properties: $properties, availabilityData: $availabilityData, isMaster: $isMaster, price: $price)';
+    return 'Variation(id: $id, name: $name, code: $code, productType: $productType, properties: $properties, availabilityData: $availabilityData, isMaster: $isMaster, price: $price, selectedQuantity: $selectedQuantity)';
   }
 
   @override
@@ -1796,7 +1813,9 @@ class _$VariationImpl implements _Variation {
                 other.availabilityData == availabilityData) &&
             (identical(other.isMaster, isMaster) ||
                 other.isMaster == isMaster) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.selectedQuantity, selectedQuantity) ||
+                other.selectedQuantity == selectedQuantity));
   }
 
   @JsonKey(ignore: true)
@@ -1810,7 +1829,8 @@ class _$VariationImpl implements _Variation {
       const DeepCollectionEquality().hash(_properties),
       availabilityData,
       isMaster,
-      price);
+      price,
+      selectedQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -1835,7 +1855,8 @@ abstract class _Variation implements Variation {
       final List<Property>? properties,
       final AvailabilityData? availabilityData,
       final bool isMaster,
-      final Price? price}) = _$VariationImpl;
+      final Price? price,
+      final int selectedQuantity}) = _$VariationImpl;
 
   factory _Variation.fromJson(Map<String, dynamic> json) =
       _$VariationImpl.fromJson;
@@ -1856,6 +1877,8 @@ abstract class _Variation implements Variation {
   bool get isMaster;
   @override
   Price? get price;
+  @override
+  int get selectedQuantity;
   @override
   @JsonKey(ignore: true)
   _$$VariationImplCopyWith<_$VariationImpl> get copyWith =>

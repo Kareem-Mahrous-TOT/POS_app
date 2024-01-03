@@ -78,15 +78,17 @@ class Item with _$Item {
 
 @freezed
 class Variation with _$Variation {
-  const factory Variation(
-      {String? id,
-      String? name,
-      String? code,
-      String? productType,
-      List<Property>? properties,
-      AvailabilityData? availabilityData,
-      @Default(false) bool isMaster,
-      Price? price}) = _Variation;
+  const factory Variation({
+    String? id,
+    String? name,
+    String? code,
+    String? productType,
+    List<Property>? properties,
+    AvailabilityData? availabilityData,
+    @Default(false) bool isMaster,
+    Price? price,
+    @Default(0) int selectedQuantity,
+  }) = _Variation;
   factory Variation.fromJson(Map<String, dynamic> json) =>
       _$VariationFromJson(json);
 }
@@ -103,7 +105,8 @@ class ProductImage with _$ProductImage {
     String? cultureName,
   }) = _ProductImage;
 
-  factory ProductImage.fromJson(Map<String, dynamic> json) => _$ProductImageFromJson(json);
+  factory ProductImage.fromJson(Map<String, dynamic> json) =>
+      _$ProductImageFromJson(json);
 }
 
 @freezed
