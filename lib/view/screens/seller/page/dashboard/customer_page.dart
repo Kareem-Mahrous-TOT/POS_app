@@ -62,15 +62,15 @@ class CustomerPage extends HookWidget {
                                 name: nameController.text,
                               );
 
-                              context.read<RecentCustomersBloc>().add(
-                                    RecentCustomersEvent.addCustomer(
-                                        newCustomer),
-                                  );
-                              if (context.mounted) {
-                                // context
-                                //     .read<HomeBloc>()
-                                //     .add(const HomeEvent.getCustomers());
-                              }
+                              // context.read<RecentCustomersBloc>().add(
+                              //       RecentCustomersEvent.addCustomer(
+                              //           newCustomer),
+                              //     );
+                              // if (context.mounted) {
+                              //   // context
+                              //   //     .read<HomeBloc>()
+                              //   //     .add(const HomeEvent.getCustomers());
+                              // }
 
                               Navigator.pop(context);
                               nameController.clear();

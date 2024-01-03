@@ -20,7 +20,6 @@ mixin _$RecentCustomersEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
     required TResult Function(String? query) searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +27,6 @@ mixin _$RecentCustomersEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
     TResult? Function(String? query)? searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ mixin _$RecentCustomersEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) =>
@@ -45,7 +42,6 @@ mixin _$RecentCustomersEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +49,6 @@ mixin _$RecentCustomersEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +56,6 @@ mixin _$RecentCustomersEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
   }) =>
@@ -118,7 +112,6 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return started();
@@ -129,7 +122,6 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return started?.call();
@@ -140,7 +132,6 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -155,7 +146,6 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
     return started(this);
@@ -166,7 +156,6 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
     return started?.call(this);
@@ -177,7 +166,6 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
   }) {
@@ -223,7 +211,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return loadRecentCustomers();
@@ -234,7 +221,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return loadRecentCustomers?.call();
@@ -245,7 +231,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -260,7 +245,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
     return loadRecentCustomers(this);
@@ -271,7 +255,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
     return loadRecentCustomers?.call(this);
@@ -282,7 +265,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
   }) {
@@ -295,151 +277,6 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
 
 abstract class _LoadRecentCustomers implements RecentCustomersEvent {
   factory _LoadRecentCustomers() = _$LoadRecentCustomersImpl;
-}
-
-/// @nodoc
-abstract class _$$AddCustomerImplCopyWith<$Res> {
-  factory _$$AddCustomerImplCopyWith(
-          _$AddCustomerImpl value, $Res Function(_$AddCustomerImpl) then) =
-      __$$AddCustomerImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Member customer});
-
-  $MemberCopyWith<$Res> get customer;
-}
-
-/// @nodoc
-class __$$AddCustomerImplCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$AddCustomerImpl>
-    implements _$$AddCustomerImplCopyWith<$Res> {
-  __$$AddCustomerImplCopyWithImpl(
-      _$AddCustomerImpl _value, $Res Function(_$AddCustomerImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? customer = null,
-  }) {
-    return _then(_$AddCustomerImpl(
-      null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Member,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MemberCopyWith<$Res> get customer {
-    return $MemberCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$AddCustomerImpl implements _AddCustomer {
-  _$AddCustomerImpl(this.customer);
-
-  @override
-  Member customer;
-
-  @override
-  String toString() {
-    return 'RecentCustomersEvent.addCustomer(customer: $customer)';
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
-      __$$AddCustomerImplCopyWithImpl<_$AddCustomerImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
-    required TResult Function(String? query) searchList,
-  }) {
-    return addCustomer(customer);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
-    TResult? Function(String? query)? searchList,
-  }) {
-    return addCustomer?.call(customer);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
-    TResult Function(String? query)? searchList,
-    required TResult orElse(),
-  }) {
-    if (addCustomer != null) {
-      return addCustomer(customer);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
-    required TResult Function(_SearchList value) searchList,
-  }) {
-    return addCustomer(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
-    TResult? Function(_SearchList value)? searchList,
-  }) {
-    return addCustomer?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
-    TResult Function(_SearchList value)? searchList,
-    required TResult orElse(),
-  }) {
-    if (addCustomer != null) {
-      return addCustomer(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddCustomer implements RecentCustomersEvent {
-  factory _AddCustomer(Member customer) = _$AddCustomerImpl;
-
-  Member get customer;
-  set customer(Member value);
-  @JsonKey(ignore: true)
-  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -497,7 +334,6 @@ class _$SearchListImpl implements _SearchList {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return searchList(query);
@@ -508,7 +344,6 @@ class _$SearchListImpl implements _SearchList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return searchList?.call(query);
@@ -519,7 +354,6 @@ class _$SearchListImpl implements _SearchList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -534,7 +368,6 @@ class _$SearchListImpl implements _SearchList {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
     return searchList(this);
@@ -545,7 +378,6 @@ class _$SearchListImpl implements _SearchList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
     return searchList?.call(this);
@@ -556,7 +388,6 @@ class _$SearchListImpl implements _SearchList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
   }) {
