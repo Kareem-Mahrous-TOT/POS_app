@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../core/theme/palette.dart';
-
 import '../../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 
 class CustomersListMolecule extends StatelessWidget {
   //Should be used in expanded or list
-  final List<Member> model;
+  final List<Member> models;
   final TextStyle? nameStyle;
   final TextStyle? dateStyle;
 
   const CustomersListMolecule({
     super.key,
-    required this.model,
+    required this.models,
     this.nameStyle,
     this.dateStyle,
   });
@@ -24,8 +23,9 @@ class CustomersListMolecule extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return ListView.separated(
-      itemCount: model.length,
+      itemCount: models.length,
       itemBuilder: (context, index) {
+        final model = models[index];
         return SizedBox(
           height: h * 0.1,
           child: Row(
@@ -43,7 +43,7 @@ class CustomersListMolecule extends StatelessWidget {
                         backgroundColor: Palette.grey,
                         child: ClipRRect(
                           child: CachedNetworkImage(
-                            imageUrl: model[index].iconUrl ??
+                            imageUrl: model.iconUrl ??
                                 "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
                             fit: BoxFit.cover,
                           ),
@@ -54,37 +54,37 @@ class CustomersListMolecule extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            model[index].name == null ||
-                                    model[index].name == "" ||
-                                    model[index].name.toString() == "null"
-                                ? "No name found"
-                                : model[index].name.toString(),
-                            style: nameStyle ??
-                                context.titleMedium.copyWith(
-                                  color: Palette.black,
-                                ),
-                          ),
-                          Text(
-                              model[index].emails!.isNotEmpty &&
-                                      model[index].emails![0] != null
-                                  ? model[index].emails![0]!
-                                  : "No emails found",
-                              style: nameStyle ??
-                                  context.titleMedium.copyWith(
-                                    color: Palette.grey,
-                                  )),
-                        ]),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          (model.name?.isEmpty ?? false)
+                              ? "No name found"
+                              : models[index].name.toString(),
+                          style: nameStyle ??
+                              context.titleMedium.copyWith(
+                                color: Palette.black,
+                              ),
+                        ),
+                        Text(
+                          models[index].emails!.isNotEmpty &&
+                                  models[index].emails![0] != null
+                              ? models[index].emails![0]!
+                              : "No emails found",
+                          style: nameStyle ??
+                              context.titleMedium.copyWith(
+                                color: Palette.grey,
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  model[index].createdDate.toString().substring(0, 16),
+                  models[index].createdDate.toString().substring(0, 16),
                   style: dateStyle ??
                       context.titleMedium.copyWith(
                         color: Palette.grey,

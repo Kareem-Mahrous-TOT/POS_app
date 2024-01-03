@@ -50,6 +50,7 @@ import 'domain/cart/usecases/fetch_cart_usecase.dart';
 import 'domain/cart/usecases/prepare_cart_usecase.dart';
 import 'domain/cart/usecases/remove_cart_usecase.dart';
 import 'domain/cart/usecases/remove_items_usecase.dart';
+import 'domain/customers/usecases/add_customer_usecase.dart';
 import 'domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
 import 'domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
 import 'domain/inventory/repo/inventory_repo.dart';
@@ -238,6 +239,8 @@ Future<void> getItInit() async {
   //? customers
   getIt.registerLazySingleton<FetchCustomersUsecase>(
       () => FetchCustomersUsecase(customersRepo: getIt()));
+  getIt.registerLazySingleton<AddCustomersUsecase>(
+      () => AddCustomersUsecase(customersRepo: getIt()));
 
   //--------------------------------------------------------------------------
   //blocs
@@ -255,7 +258,7 @@ Future<void> getItInit() async {
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
   getIt.registerFactory<RecentCustomersBloc>(
-      () => RecentCustomersBloc(fetchCustomersUsecase: getIt()));
+      () => RecentCustomersBloc(fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
   // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
   getIt.registerFactory<ReportChartPieCubit>(

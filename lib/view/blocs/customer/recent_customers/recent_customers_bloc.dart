@@ -2,9 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/usecase/usecase.dart';
-import '../../../../data/old_data/models/request/tot_customer_request/customers_search_model.dart';
-import '../../../../data/old_data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
 import '../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../../domain/customers/usecases/add_customer_usecase.dart';
 import '../../../../domain/customers/usecases/fetch_customers_usecase.dart';
 
 part 'recent_customers_bloc.freezed.dart';
@@ -13,13 +12,17 @@ part 'recent_customers_state.dart';
 
 class RecentCustomersBloc
     extends Bloc<RecentCustomersEvent, RecentCustomersState> {
-  TOTCustomersSearchRequest request =
-      const TOTCustomersSearchRequest(memberType: "Contact", take: 1000);
+  // TOTCustomersSearchRequest request =
+  //     const TOTCustomersSearchRequest(memberType: "Contact", take: 1000);
 
   final FetchCustomersUsecase _fetchCustomersUsecase;
+  final AddCustomersUsecase _addCustomerUsecase;
 
-  RecentCustomersBloc({required FetchCustomersUsecase fetchCustomersUsecase})
-      : _fetchCustomersUsecase = fetchCustomersUsecase,
+  RecentCustomersBloc({
+    required AddCustomersUsecase addCustomerUsecase,
+    required FetchCustomersUsecase fetchCustomersUsecase,
+  })  : _addCustomerUsecase = addCustomerUsecase,
+        _fetchCustomersUsecase = fetchCustomersUsecase,
         super(_Initial()) {
     List<Member> listRecentCustomers = [];
     // List<Member> result;
@@ -39,49 +42,24 @@ class RecentCustomersBloc
 
             emit(state);
           },
-          // addCustomer: (event) async {
-          //   await state.maybeMap(
-          //     loadedRecentCustomerData: (myState) async {
-          //       String firstName = event.customer.emails!.first ?? "Not Found";
-          //       String lastName = event.customer.name!;
-          //       TOTAddCustomerModelRequest addRequest =
-          //           TOTAddCustomerModelRequest(
-          //         memberType: "Contact",
-          //         status: "New",
-          //         firstName: firstName,
-          //         lastName: lastName,
-          //         fullName: firstName + lastName,
-          //       );
-          //       var customers = myState.customers;
-          //       final data = await customersRepoBase.addCustomer(addRequest);
-          //       final fetchNewdata = await customersRepoBase.fetch(request);
-          //       data.fold((l) {
-          //         emit(_AddCustomerFailed(l.message));
-          //       }, (dataSuccess) {
-          //         // customers.add(event.customer);
-          //         listRecentCustomers = customers;
-          //         fetchNewdata.fold(
-          //             (l) => const ServerFailure("Fetching data went wrong"),
-          //             (r) {
-          //           listRecentCustomers = r.results;
-          //           emit(_LoadedRecentCustomerData(r.results));
-          //           // homeBloc.add(const HomeEvent.getCustomers());
-          //         });
-          //       });
-          //     },
-          //     addCustomerFailed: (value) async {
-          //       final data = await customersRepoBase.fetch(request);
-          //       data.fold(
-          //           (l) => emit(_FailedLoadingRecentCustomerData(l.message)),
-          //           (r) {
-          //         listRecentCustomers = r.results;
-          //         emit(
-          //             _LoadedRecentCustomerData(r.results, isSearching: false));
-          //       });
-          //     },
-          //     orElse: () {},
-          //   );
-          // },
+          addCustomer: (addCustomerEvent) async {
+            await state.maybeMap(
+              loadedRecentCustomerData: (myState) async {
+                final result = await _addCustomerUsecase.call(
+                    AddCustomersParams(
+                        email: addCustomerEvent.email,
+                        name: addCustomerEvent.name));
+
+                final newState = result.fold(
+                    (failure) => myState.copyWith(didAddCustomer: false),
+                    (members) => myState.copyWith(
+                        customers: members, didAddCustomer: true));
+
+                emit(newState);
+              },
+              orElse: () {},
+            );
+          },
           searchList: (event) async {
             if (event.query != null && event.query!.isNotEmpty) {
               await state.maybeMap(

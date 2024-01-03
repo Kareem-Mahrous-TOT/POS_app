@@ -6,16 +6,14 @@ class RecentCustomersState with _$RecentCustomersState {
 
   factory RecentCustomersState.loadedRecentCustomerData(
     List<Member> customers, {
+    bool? didAddCustomer,
     bool? isSearching,
-    
   }) = _LoadedRecentCustomerData;
 
   factory RecentCustomersState.failedLoadinRecentCustomerData(String message) =
       _FailedLoadingRecentCustomerData;
-  factory RecentCustomersState.addCustomerFailed(String message) =
-      _AddCustomerFailed;
-  factory RecentCustomersState.addCustomerSuccess(TOTAddCustomerModelResponse response) =
-      _AddCustomerSuccess;
-
-      
+  // factory RecentCustomersState.addCustomerFailed(String message) =
+  //     _AddCustomerFailed;
+  // factory RecentCustomersState.addCustomerSuccess(TOTAddCustomerModelResponse response) =
+  //     _AddCustomerSuccess;
 }
