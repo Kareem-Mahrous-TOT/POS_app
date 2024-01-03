@@ -12,6 +12,7 @@ import 'view/blocs/inventory/inventory_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
 import 'view/blocs/menu/menu_cubit.dart';
+import 'view/blocs/order_details/order_details_bloc.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
@@ -48,6 +49,7 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   getIt<InventoryBloc>()..add(InventoryEvent.fetch())),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
+          BlocProvider(create: (context) => getIt<OrderDetailsBloc>()),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),

@@ -6,6 +6,7 @@ import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
 import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
+import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
 
 import 'core/network/api_consumer.dart';
 import 'core/network/dio_consumer.dart';
@@ -253,9 +254,13 @@ Future<void> getItInit() async {
       () => ReportCostCubit(costUsecase: getIt()));
   getIt.registerFactory<MenuCubit>(
       () => MenuCubit(fetchMenuCategoriesUsecase: getIt()));
-  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(getOrderUseCase: getIt()));
+  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(
+        getOrderUseCase: getIt(),
+      ));
   getIt.registerFactory<ProductsBloc>(
       () => ProductsBloc(getProductsUsecase: getIt()));
   getIt.registerFactory<ProductDetailsBloc>(
       () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
+  getIt.registerFactory<OrderDetailsBloc>(
+      () => OrderDetailsBloc(getOrderByIdUseCase: getIt()));
 }

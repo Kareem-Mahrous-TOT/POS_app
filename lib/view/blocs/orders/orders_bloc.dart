@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../domain/orders/usecases/get_order_by_id_usecase.dart';
 import '../../../domain/orders/usecases/get_orders_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';
@@ -11,7 +12,6 @@ part 'orders_state.dart';
 
 class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   final GetOrdersUseCase _getOrderUseCase;
-
   OrdersBloc({
     required GetOrdersUseCase getOrderUseCase,
   })  : _getOrderUseCase = getOrderUseCase,
