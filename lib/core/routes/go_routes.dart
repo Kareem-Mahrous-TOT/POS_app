@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
+
 import '../../depency_injection.dart';
 import '../../view/screens/seller/page/dashboard/auth/login_page.dart';
-
 import '../../view/screens/seller/page/dashboard/layout.dart';
+import '../constants/local_keys.dart';
 import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();

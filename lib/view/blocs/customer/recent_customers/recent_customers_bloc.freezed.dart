@@ -20,7 +20,8 @@ mixin _$RecentCustomersEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(String email, String name) addCustomer,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +29,8 @@ mixin _$RecentCustomersEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(String email, String name)? addCustomer,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +38,8 @@ mixin _$RecentCustomersEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(String email, String name)? addCustomer,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) =>
@@ -118,7 +121,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(String email, String name) addCustomer,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return started();
@@ -129,7 +133,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(String email, String name)? addCustomer,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return started?.call();
@@ -140,7 +145,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(String email, String name)? addCustomer,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -223,7 +229,8 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(String email, String name) addCustomer,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return loadRecentCustomers();
@@ -234,7 +241,8 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(String email, String name)? addCustomer,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return loadRecentCustomers?.call();
@@ -245,7 +253,8 @@ class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(String email, String name)? addCustomer,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -303,7 +312,7 @@ abstract class _$$AddCustomerImplCopyWith<$Res> {
           _$AddCustomerImpl value, $Res Function(_$AddCustomerImpl) then) =
       __$$AddCustomerImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String name});
+  $Res call({String firstName, String lastName, String email});
 }
 
 /// @nodoc
@@ -317,17 +326,22 @@ class __$$AddCustomerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
     Object? email = null,
-    Object? name = null,
   }) {
     return _then(_$AddCustomerImpl(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -336,16 +350,19 @@ class __$$AddCustomerImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddCustomerImpl implements _AddCustomer {
-  _$AddCustomerImpl({required this.email, required this.name});
+  _$AddCustomerImpl(
+      {required this.firstName, required this.lastName, required this.email});
 
   @override
-  String email;
+  String firstName;
   @override
-  String name;
+  String lastName;
+  @override
+  String email;
 
   @override
   String toString() {
-    return 'RecentCustomersEvent.addCustomer(email: $email, name: $name)';
+    return 'RecentCustomersEvent.addCustomer(firstName: $firstName, lastName: $lastName, email: $email)';
   }
 
   @JsonKey(ignore: true)
@@ -359,10 +376,11 @@ class _$AddCustomerImpl implements _AddCustomer {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(String email, String name) addCustomer,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
-    return addCustomer(email, name);
+    return addCustomer(firstName, lastName, email);
   }
 
   @override
@@ -370,10 +388,11 @@ class _$AddCustomerImpl implements _AddCustomer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(String email, String name)? addCustomer,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
-    return addCustomer?.call(email, name);
+    return addCustomer?.call(firstName, lastName, email);
   }
 
   @override
@@ -381,12 +400,13 @@ class _$AddCustomerImpl implements _AddCustomer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(String email, String name)? addCustomer,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
     if (addCustomer != null) {
-      return addCustomer(email, name);
+      return addCustomer(firstName, lastName, email);
     }
     return orElse();
   }
@@ -430,13 +450,17 @@ class _$AddCustomerImpl implements _AddCustomer {
 }
 
 abstract class _AddCustomer implements RecentCustomersEvent {
-  factory _AddCustomer({required String email, required String name}) =
-      _$AddCustomerImpl;
+  factory _AddCustomer(
+      {required String firstName,
+      required String lastName,
+      required String email}) = _$AddCustomerImpl;
 
+  String get firstName;
+  set firstName(String value);
+  String get lastName;
+  set lastName(String value);
   String get email;
   set email(String value);
-  String get name;
-  set name(String value);
   @JsonKey(ignore: true)
   _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -497,7 +521,8 @@ class _$SearchListImpl implements _SearchList {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(String email, String name) addCustomer,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return searchList(query);
@@ -508,7 +533,8 @@ class _$SearchListImpl implements _SearchList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(String email, String name)? addCustomer,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return searchList?.call(query);
@@ -519,7 +545,8 @@ class _$SearchListImpl implements _SearchList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(String email, String name)? addCustomer,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {

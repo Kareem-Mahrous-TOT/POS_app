@@ -18,13 +18,15 @@
 - [x] orders
   - [x] create order
   - [x] fix bag ui
-  - [x] change order status
-- [ ] discounts
+  - [ ] change order status
+- [x] discounts
   - [x] display products discount(ui)
-  - [ ] add discount to order
+  - [x] add discount to order
     - [x] ui
-    - [ ] add custom discount
-    - [ ] usecase
+    - [x] add custom discount
+    - [x] usecase
+- [ ] bag
+  - [ ] fix loading ui
 - [ ] products
   - [ ] debounce event(request)
 - [ ] data syncing

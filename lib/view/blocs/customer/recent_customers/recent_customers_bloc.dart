@@ -12,8 +12,6 @@ part 'recent_customers_state.dart';
 
 class RecentCustomersBloc
     extends Bloc<RecentCustomersEvent, RecentCustomersState> {
-  // TOTCustomersSearchRequest request =
-  //     const TOTCustomersSearchRequest(memberType: "Contact", take: 1000);
 
   final FetchCustomersUsecase _fetchCustomersUsecase;
   final AddCustomersUsecase _addCustomerUsecase;
@@ -25,7 +23,6 @@ class RecentCustomersBloc
         _fetchCustomersUsecase = fetchCustomersUsecase,
         super(_Initial()) {
     List<Member> listRecentCustomers = [];
-    // List<Member> result;
     on<RecentCustomersEvent>(
       (event, emit) async {
         await event.map(
@@ -45,10 +42,12 @@ class RecentCustomersBloc
           addCustomer: (addCustomerEvent) async {
             await state.maybeMap(
               loadedRecentCustomerData: (myState) async {
-                final result = await _addCustomerUsecase.call(
-                    AddCustomersParams(
-                        email: addCustomerEvent.email,
-                        name: addCustomerEvent.name));
+                final result =
+                    await _addCustomerUsecase.call(AddCustomersParams(
+                  email: addCustomerEvent.email,
+                  firstName: addCustomerEvent.firstName,
+                  lastName: addCustomerEvent.lastName,
+                ));
 
                 final newState = result.fold(
                     (failure) => myState.copyWith(didAddCustomer: false),

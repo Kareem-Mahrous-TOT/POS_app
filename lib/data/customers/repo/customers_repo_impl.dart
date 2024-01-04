@@ -26,18 +26,13 @@ class CustomersRepoImpl implements CustomersRepo {
 
   @override
   Future<bool> addCustomer(
-      {required String email, required String name}) async {
+      {required String email,
+      required String firstName,
+      required String lastName}) async {
     try {
-      final nameSegments = name.split(' ');
-      final firstName = nameSegments.first;
-      String? lastName;
-
-      if (nameSegments.length > 1) {
-        lastName = nameSegments.sublist(1).join(" ");
-      }
       await _remoteDataSource.addContact(
         addCustomerRequest: TOTAddCustomerRequest(
-          fullName: name,
+          fullName: firstName,
           emails: [email],
           memberType: "Contact",
           status: "New",
