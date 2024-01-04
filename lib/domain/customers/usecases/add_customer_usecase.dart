@@ -20,23 +20,28 @@ class AddCustomersUsecase
       AddCustomersParams params) async {
     final didAddCustomer = await _customerRepo.addCustomer(
       email: params.email,
-      name: params.name,
+      firstName: params.firstName,
+      lastName: params.lastName,
     );
 
-    if (!didAddCustomer) return const Left(ServerFailure("لم نستطع اضافة العميل"));
+    if (!didAddCustomer) {
+      return const Left(ServerFailure("لم نستطع اضافة العميل"));
+    }
 
     final result = await _customerRepo.fetchCustomers();
 
     return result.fold((failure) => Left(failure),
-        (customersModel) => Right(customersModel.results));
+        (customerModels) => Right(customerModels));
   }
 }
 
 class AddCustomersParams {
   final String email;
-  final String name;
+  final String firstName;
+  final String lastName;
   AddCustomersParams({
     required this.email,
-    required this.name,
+    required this.firstName,
+    required this.lastName,
   });
 }

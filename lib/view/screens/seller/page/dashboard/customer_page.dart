@@ -17,8 +17,8 @@ class CustomerPage extends HookWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    final emailController = useTextEditingController();
-    final nameController = useTextEditingController();
+    // final emailController = useTextEditingController();
+    // final nameController = useTextEditingController();
     final fToast = useFToast(context: context);
 
     return Container(
@@ -52,30 +52,15 @@ class CustomerPage extends HookWidget {
                             textStyle: context.titleMedium.copyWith(
                               color: Palette.white,
                             ),
-                            nameController: nameController,
-                            emailController: emailController,
-                            onPressed: () {
-                              // final newCustomer = Member(
-                              //   emails: [emailController.text],
-                              //   iconUrl:
-                              //       "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
-                              //   name: nameController.text,
-                              // );
-
+                            onPressed: (firstName, lastName, email) {
                               context.read<RecentCustomersBloc>().add(
                                     RecentCustomersEvent.addCustomer(
-                                        email: emailController.text,
-                                        name: nameController.text),
+                                      firstName: firstName,
+                                      email: email,
+                                      lastName: lastName,
+                                    ),
                                   );
-                              // if (context.mounted) {
-                              //   // context
-                              //   //     .read<HomeBloc>()
-                              //   //     .add(const HomeEvent.getCustomers());
-                              // }
-
                               Navigator.pop(context);
-                              nameController.clear();
-                              emailController.clear();
                             },
                           )),
                         );
@@ -149,11 +134,12 @@ class CustomerPage extends HookWidget {
                               if (loadedRecentCustomestate.didAddCustomer ==
                                   true) {
                                 fToast.showToast(
-                                    child: Text("تمت الاضافة بنجاح"));
+                                    child: const Text("تمت الاضافة بنجاح"));
                               } else if (loadedRecentCustomestate
                                       .didAddCustomer ==
                                   false) {
-                                fToast.showToast(child: Text("فشلت الاضافة"));
+                                fToast.showToast(
+                                    child: const Text("فشلت الاضافة"));
                               }
                             },
                           );

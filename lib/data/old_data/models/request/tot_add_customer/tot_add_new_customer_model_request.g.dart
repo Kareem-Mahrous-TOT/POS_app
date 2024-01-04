@@ -9,8 +9,8 @@ part of 'tot_add_new_customer_model_request.dart';
 _$TOTAddCustomerModelRequestImpl _$$TOTAddCustomerModelRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$TOTAddCustomerModelRequestImpl(
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
       fullName: json['fullName'] as String,
       memberType: json['memberType'] as String,
       status: json['status'] as String?,
