@@ -182,8 +182,7 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                        onTap: (product?.variations?.isEmpty ??
-                                                true)
+                                        onTap: ((product?.variations!.length ?? true) == 1)
                                             ? () {
                                                 context.read<BagBloc>().add(
                                                     BagEvent.addItem(
@@ -278,7 +277,7 @@ class HomePage extends HookWidget {
                                         "تم الطلب بنجاح",
                                         style: context.titleLarge
                                             .copyWith(color: Palette.white),
-                                      )));
+                                      ),),);
                             }
                           },
                           getItems: (getItemsState) {
@@ -303,7 +302,21 @@ class HomePage extends HookWidget {
                       },
                       builder: (context, state) {
                         return state.map(loading: (value) {
-                          return const LoadingCircular();
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Palette.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            margin: const EdgeInsets.all(8.0),
+                            height: h * 0.7,
+                            width: w * 0.33,
+                            child: const Center(
+                              child: LoadingCircular(),
+                            ),
+                          )
+                          ;
                         }, empty: (value) {
                           return Container(
                             decoration: BoxDecoration(

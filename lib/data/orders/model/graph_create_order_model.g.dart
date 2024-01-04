@@ -69,6 +69,9 @@ _$CreateOrderFromCartImpl _$$CreateOrderFromCartImplFromJson(
           ? null
           : Currency.fromJson(json['currency'] as Map<String, dynamic>),
       status: json['status'] as String?,
+      createdBy: json['createdBy'] as String?,
+      modifiedBy: json['modifiedBy'] as String?,
+      modifiedDate: json['modifiedDate'] as String?,
     );
 
 Map<String, dynamic> _$$CreateOrderFromCartImplToJson(
@@ -89,4 +92,7 @@ Map<String, dynamic> _$$CreateOrderFromCartImplToJson(
       'feeTotal': instance.feeTotal,
       'currency': instance.currency?.toJson(),
       'status': instance.status,
+      'createdBy': instance.createdBy,
+      'modifiedBy': instance.modifiedBy,
+      'modifiedDate': instance.modifiedDate,
     };

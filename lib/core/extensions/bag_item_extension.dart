@@ -39,9 +39,9 @@ extension BagExtension on Item {
       createdBy: '',
       modifiedBy: '',
       inStockQuantity: masterVariation
-              ?.availabilityData?.inventories?.first.inStockQuantity
+              ?.availabilityData?.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity
               ?.toInt() ??
-          (availabilityData!.inventories?.first.inStockQuantity?.toInt() ?? 0),
+          (availabilityData!.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity?.toInt() ?? 0),
     );
   }
 }

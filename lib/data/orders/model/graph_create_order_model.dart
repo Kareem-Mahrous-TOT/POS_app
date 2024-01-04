@@ -45,6 +45,9 @@ class CreateOrderFromCart with _$CreateOrderFromCart {
     num? feeTotal,
     Currency? currency,
     String? status,
+    String? createdBy,
+    String? modifiedBy,
+    String? modifiedDate,
   }) = _CreateOrderFromCart;
 
   factory CreateOrderFromCart.fromJson(Map<String, dynamic> json) =>

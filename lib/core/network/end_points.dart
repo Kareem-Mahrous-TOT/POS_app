@@ -38,4 +38,7 @@ abstract class EndPoints {
 
   // End Points for Inventory
   static const totUpdateInventoryQuantity = "/api/inventory/products";
+
+  // End Points for Statistics
+  static const totStatisticsDashboard = "/api/order/dashboardStatistics";
 }
