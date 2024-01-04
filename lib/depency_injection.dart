@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tot_pos/data/bag/data_sources/local_data_source.dart';
 import 'package:tot_pos/data/customers/data_sources/remote_data_source.dart';
 import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
+import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
 import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
@@ -129,6 +130,7 @@ Future<void> getItInit() async {
   getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
   //? report
   getIt.registerSingleton<ReportLocalDataSource>(ReportLocalDataSourceImpl());
+  getIt.registerSingleton<ReportRemoteDataSource>(ReportRemoteDataSourceImpl(apiConsumer: getIt()));
   //? cart
   getIt.registerSingleton<CartLocalDataSource>(
       CartLocalDataSourceImpl(sharedPrefs: getIt()));
@@ -157,7 +159,7 @@ Future<void> getItInit() async {
   ));
   getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
   getIt.registerSingleton<ReportRepo>(
-      ReportRepoImpl(reportLocalDataSource: getIt()));
+      ReportRepoImpl(reportLocalDataSource: getIt(), reportRemoteDataSource: getIt()));
   // getIt.registerSingleton<CustomersRepoBase>(
   //     CustomersRepoImpl(apiConsumer: getIt()));
   // getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));

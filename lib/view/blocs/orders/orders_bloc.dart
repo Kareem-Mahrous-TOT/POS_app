@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/orders/usecases/get_order_by_id_usecase.dart';
 import '../../../domain/orders/usecases/get_orders_usecase.dart';
 
 import '../../../data/orders/model/graph_create_order_model.dart';

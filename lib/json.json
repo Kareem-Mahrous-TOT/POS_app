@@ -1,0 +1,31 @@
+{
+  "startDate": "2023-01-01T00:00:00Z",
+  "endDate": "2024-05-02T00:00:00Z",
+  "revenue": [
+    {
+      "currency": "EGP",
+      "amount": 6927.34
+    },
+    {
+      "currency": "EGP",
+      "amount": 6927.34
+    }
+  ],
+  "revenuePeriodDetails": [],
+  "orderCount": 17,
+  "customersCount": 16,
+  "revenuePerCustomer": [],
+  "avgOrderValue": [
+    {
+      "currency": "EGP",
+      "amount": 407.4905
+    },
+    {
+      "currency": "EGP",
+      "amount": 6927.34
+    }
+  ],
+  "avgOrderValuePeriodDetails": [],
+  "itemsPurchased": 34,
+  "lineItemsPerOrder": 2
+}
