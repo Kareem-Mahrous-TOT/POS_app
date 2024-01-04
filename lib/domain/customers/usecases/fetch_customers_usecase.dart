@@ -5,14 +5,14 @@ import '../repo/customers_repo.dart';
 
 class FetchCustomersUsecase
     implements
-        BaseUsecase<NoParams, FutureEitherFailureOrType<TOTCustomersModel>> {
+        BaseUsecase<NoParams, FutureEitherFailureOrType<List<Member>>> {
   final CustomersRepo _customerRepo;
 
   FetchCustomersUsecase({required CustomersRepo customersRepo})
       : _customerRepo = customersRepo;
 
   @override
-  FutureEitherFailureOrType<TOTCustomersModel> call(NoParams noParams) {
+  FutureEitherFailureOrType<List<Member>> call(NoParams noParams) {
     return _customerRepo.fetchCustomers();
   }
 }

@@ -21,8 +21,8 @@ TOTAddCustomerRequest _$TOTAddCustomerRequestFromJson(
 
 /// @nodoc
 mixin _$TOTAddCustomerRequest {
-  String? get firstName => throw _privateConstructorUsedError;
-  String? get lastName => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get memberType => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
@@ -46,8 +46,8 @@ abstract class $TOTAddCustomerRequestCopyWith<$Res> {
       _$TOTAddCustomerRequestCopyWithImpl<$Res, TOTAddCustomerRequest>;
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {String firstName,
+      String lastName,
       String fullName,
       String memberType,
       String? status,
@@ -72,8 +72,8 @@ class _$TOTAddCustomerRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? fullName = null,
     Object? memberType = null,
     Object? status = freezed,
@@ -84,14 +84,14 @@ class _$TOTAddCustomerRequestCopyWithImpl<$Res,
     Object? dynamicProperties = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -138,8 +138,8 @@ abstract class _$$TOTAddCustomerModelRequestImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {String firstName,
+      String lastName,
       String fullName,
       String memberType,
       String? status,
@@ -163,8 +163,8 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? fullName = null,
     Object? memberType = null,
     Object? status = freezed,
@@ -175,14 +175,14 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
     Object? dynamicProperties = freezed,
   }) {
     return _then(_$TOTAddCustomerModelRequestImpl(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -223,8 +223,8 @@ class __$$TOTAddCustomerModelRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
   const _$TOTAddCustomerModelRequestImpl(
-      {this.firstName,
-      this.lastName,
+      {required this.firstName,
+      required this.lastName,
       required this.fullName,
       required this.memberType,
       this.status,
@@ -243,9 +243,9 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
       _$$TOTAddCustomerModelRequestImplFromJson(json);
 
   @override
-  final String? firstName;
+  final String firstName;
   @override
-  final String? lastName;
+  final String lastName;
   @override
   final String fullName;
   @override
@@ -354,8 +354,8 @@ class _$TOTAddCustomerModelRequestImpl implements _TOTAddCustomerModelRequest {
 
 abstract class _TOTAddCustomerModelRequest implements TOTAddCustomerRequest {
   const factory _TOTAddCustomerModelRequest(
-          {final String? firstName,
-          final String? lastName,
+          {required final String firstName,
+          required final String lastName,
           required final String fullName,
           required final String memberType,
           final String? status,
@@ -370,9 +370,9 @@ abstract class _TOTAddCustomerModelRequest implements TOTAddCustomerRequest {
       _$TOTAddCustomerModelRequestImpl.fromJson;
 
   @override
-  String? get firstName;
+  String get firstName;
   @override
-  String? get lastName;
+  String get lastName;
   @override
   String get fullName;
   @override

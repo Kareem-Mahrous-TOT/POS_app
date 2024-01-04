@@ -84,7 +84,9 @@ class CustomersListMolecule extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  models[index].createdDate.toString().substring(0, 16),
+                  models[index].createdDate != null
+                      ? models[index].createdDate.toString().substring(0, 16)
+                      : "",
                   style: dateStyle ??
                       context.titleMedium.copyWith(
                         color: Palette.grey,

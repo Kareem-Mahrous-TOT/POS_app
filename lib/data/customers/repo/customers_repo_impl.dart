@@ -14,7 +14,7 @@ class CustomersRepoImpl implements CustomersRepo {
       : _remoteDataSource = remoteDataSource;
 
   @override
-  FutureEitherFailureOrType<TOTCustomersModel> fetchCustomers() async {
+  FutureEitherFailureOrType<List<Member>> fetchCustomers() async {
     try {
       final customersModel =
           await _remoteDataSource.fetchContacts(memberType: 'Contact');
@@ -32,7 +32,7 @@ class CustomersRepoImpl implements CustomersRepo {
     try {
       await _remoteDataSource.addContact(
         addCustomerRequest: TOTAddCustomerRequest(
-          fullName: firstName,
+          fullName: "$firstName $lastName",
           emails: [email],
           memberType: "Contact",
           status: "New",

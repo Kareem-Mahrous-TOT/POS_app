@@ -31,7 +31,7 @@ class AddCustomersUsecase
     final result = await _customerRepo.fetchCustomers();
 
     return result.fold((failure) => Left(failure),
-        (customersModel) => Right(customersModel.results));
+        (customerModels) => Right(customerModels));
   }
 }
 

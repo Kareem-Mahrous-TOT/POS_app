@@ -6,8 +6,8 @@ part 'tot_add_new_customer_model_request.g.dart';
 @freezed
 class TOTAddCustomerRequest with _$TOTAddCustomerRequest {
   const factory TOTAddCustomerRequest({
-    String? firstName,
-    String? lastName,
+    required String firstName,
+    required String lastName,
     required String fullName,
     required String memberType,
     String? status,

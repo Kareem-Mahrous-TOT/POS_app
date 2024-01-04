@@ -33,8 +33,8 @@ class RecentCustomersBloc
             final state = result.fold(
               (failure) => RecentCustomersState.failedLoadinRecentCustomerData(
                   failure.message),
-              (customersModel) => RecentCustomersState.loadedRecentCustomerData(
-                  customersModel.results),
+              (customerModels) => RecentCustomersState.loadedRecentCustomerData(
+                  customerModels),
             );
 
             emit(state);

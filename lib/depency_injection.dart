@@ -139,11 +139,10 @@ Future<void> getItInit() async {
       BagLocalDataSourceImpl(sharedPrefs: getIt()));
   //? contacts
   getIt.registerSingleton<ContactsRemoteDataSource>(
-      ContactsRemoteDataSourceImpl(apiConsumer: getIt()));
+      ContactsRemoteDataSourceGraphImpl(graphService: getIt()));
 
   //--------------------------------------------------------------------------
   //repos
-  // getIt.registerSingleton<CustomerRepo>(CustomerRepo());
   getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
     localDataSource: getIt(),
     remotedataSource: getIt(),
@@ -158,9 +157,6 @@ Future<void> getItInit() async {
   getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
   getIt.registerSingleton<ReportRepo>(
       ReportRepoImpl(reportLocalDataSource: getIt()));
-  // getIt.registerSingleton<CustomersRepoBase>(
-  //     CustomersRepoImpl(apiConsumer: getIt()));
-  // getIt.registerSingleton<OrderRepoBase>(OrderRepoImpl(apiConsumer: getIt()));
   getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
   getIt.registerSingleton<UserAddressRepoBase>(
       UserAddressRepoImpl(graphService: getIt()));
@@ -172,8 +168,10 @@ Future<void> getItInit() async {
   getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
   getIt.registerSingleton<InventoryRepo>(
       InventoryRepoImpl(preferences: getIt(), remoteDataSource: getIt()));
-  getIt.registerSingleton<CustomersRepo>(
-      CustomersRepoImpl(remoteDataSource: getIt()));
+  getIt.registerSingleton<CustomersRepo>(CustomersRepoImpl(
+    remoteDataSource: getIt(),
+  ));
+
 
   //--------------------------------------------------------------------------
   //usecase
@@ -258,8 +256,8 @@ Future<void> getItInit() async {
       ));
   getIt.registerFactory<CurrentCustomerCubit>(
       () => CurrentCustomerCubit(getUserUsecase: getIt()));
-  getIt.registerFactory<RecentCustomersBloc>(
-      () => RecentCustomersBloc(fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
+  getIt.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
+      fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
   // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
   getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
   getIt.registerFactory<ReportChartPieCubit>(
