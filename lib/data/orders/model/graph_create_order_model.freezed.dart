@@ -349,6 +349,9 @@ mixin _$CreateOrderFromCart {
   num? get feeTotal => throw _privateConstructorUsedError;
   Currency? get currency => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
+  String? get createdBy => throw _privateConstructorUsedError;
+  String? get modifiedBy => throw _privateConstructorUsedError;
+  String? get modifiedDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -377,7 +380,10 @@ abstract class $CreateOrderFromCartCopyWith<$Res> {
       List<CartItem>? items,
       num? feeTotal,
       Currency? currency,
-      String? status});
+      String? status,
+      String? createdBy,
+      String? modifiedBy,
+      String? modifiedDate});
 
   $MoneyTypeCopyWith<$Res>? get total;
   $MoneyTypeCopyWith<$Res>? get subTotal;
@@ -416,6 +422,9 @@ class _$CreateOrderFromCartCopyWithImpl<$Res, $Val extends CreateOrderFromCart>
     Object? feeTotal = freezed,
     Object? currency = freezed,
     Object? status = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? modifiedDate = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -477,6 +486,18 @@ class _$CreateOrderFromCartCopyWithImpl<$Res, $Val extends CreateOrderFromCart>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -589,7 +610,10 @@ abstract class _$$CreateOrderFromCartImplCopyWith<$Res>
       List<CartItem>? items,
       num? feeTotal,
       Currency? currency,
-      String? status});
+      String? status,
+      String? createdBy,
+      String? modifiedBy,
+      String? modifiedDate});
 
   @override
   $MoneyTypeCopyWith<$Res>? get total;
@@ -633,6 +657,9 @@ class __$$CreateOrderFromCartImplCopyWithImpl<$Res>
     Object? feeTotal = freezed,
     Object? currency = freezed,
     Object? status = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+    Object? modifiedDate = freezed,
   }) {
     return _then(_$CreateOrderFromCartImpl(
       id: freezed == id
@@ -695,6 +722,18 @@ class __$$CreateOrderFromCartImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -717,7 +756,10 @@ class _$CreateOrderFromCartImpl implements _CreateOrderFromCart {
       final List<CartItem>? items,
       this.feeTotal,
       this.currency,
-      this.status})
+      this.status,
+      this.createdBy,
+      this.modifiedBy,
+      this.modifiedDate})
       : _items = items;
 
   factory _$CreateOrderFromCartImpl.fromJson(Map<String, dynamic> json) =>
@@ -761,10 +803,16 @@ class _$CreateOrderFromCartImpl implements _CreateOrderFromCart {
   final Currency? currency;
   @override
   final String? status;
+  @override
+  final String? createdBy;
+  @override
+  final String? modifiedBy;
+  @override
+  final String? modifiedDate;
 
   @override
   String toString() {
-    return 'CreateOrderFromCart(id: $id, number: $number, total: $total, subTotal: $subTotal, taxTotal: $taxTotal, shippingTotal: $shippingTotal, discountTotal: $discountTotal, discountAmount: $discountAmount, customerId: $customerId, customerName: $customerName, createdDate: $createdDate, items: $items, feeTotal: $feeTotal, currency: $currency, status: $status)';
+    return 'CreateOrderFromCart(id: $id, number: $number, total: $total, subTotal: $subTotal, taxTotal: $taxTotal, shippingTotal: $shippingTotal, discountTotal: $discountTotal, discountAmount: $discountAmount, customerId: $customerId, customerName: $customerName, createdDate: $createdDate, items: $items, feeTotal: $feeTotal, currency: $currency, status: $status, createdBy: $createdBy, modifiedBy: $modifiedBy, modifiedDate: $modifiedDate)';
   }
 
   @override
@@ -796,7 +844,13 @@ class _$CreateOrderFromCartImpl implements _CreateOrderFromCart {
                 other.feeTotal == feeTotal) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
+            (identical(other.modifiedBy, modifiedBy) ||
+                other.modifiedBy == modifiedBy) &&
+            (identical(other.modifiedDate, modifiedDate) ||
+                other.modifiedDate == modifiedDate));
   }
 
   @JsonKey(ignore: true)
@@ -817,7 +871,10 @@ class _$CreateOrderFromCartImpl implements _CreateOrderFromCart {
       const DeepCollectionEquality().hash(_items),
       feeTotal,
       currency,
-      status);
+      status,
+      createdBy,
+      modifiedBy,
+      modifiedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -850,7 +907,10 @@ abstract class _CreateOrderFromCart implements CreateOrderFromCart {
       final List<CartItem>? items,
       final num? feeTotal,
       final Currency? currency,
-      final String? status}) = _$CreateOrderFromCartImpl;
+      final String? status,
+      final String? createdBy,
+      final String? modifiedBy,
+      final String? modifiedDate}) = _$CreateOrderFromCartImpl;
 
   factory _CreateOrderFromCart.fromJson(Map<String, dynamic> json) =
       _$CreateOrderFromCartImpl.fromJson;
@@ -885,6 +945,12 @@ abstract class _CreateOrderFromCart implements CreateOrderFromCart {
   Currency? get currency;
   @override
   String? get status;
+  @override
+  String? get createdBy;
+  @override
+  String? get modifiedBy;
+  @override
+  String? get modifiedDate;
   @override
   @JsonKey(ignore: true)
   _$$CreateOrderFromCartImplCopyWith<_$CreateOrderFromCartImpl> get copyWith =>

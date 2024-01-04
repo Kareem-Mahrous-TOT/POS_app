@@ -166,20 +166,11 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
           document: gql(r'''query Order($orderId: String!) {
     order(id: $orderId) {
         id
-        operationType
-        parentOperationId
         number
         isApproved
         status
-        comment
-        outerId
-        isCancelled
-        cancelledDate
-        cancelReason
-        objectType
         customerId
         customerName
-        channelId
         storeId
         storeName
         organizationId
@@ -187,16 +178,8 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         employeeId
         employeeName
         shoppingCartId
-        isPrototype
-        subscriptionNumber
-        subscriptionId
-        purchaseOrderNumber
-        feeWithTax
-        feeTotal
-        feeTotalWithTax
         taxType
         taxPercentRate
-        languageCode
         createdDate
         createdBy
         modifiedDate
@@ -204,7 +187,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         coupons
         total {
             amount
-            decimalDigits
             formattedAmount
             formattedAmountWithoutCurrency
             formattedAmountWithoutPoint
@@ -212,7 +194,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         }
         taxTotal {
             amount
-            decimalDigits
             formattedAmount
             formattedAmountWithoutCurrency
             formattedAmountWithoutPoint
@@ -220,7 +201,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         }
         subTotal {
             amount
-            decimalDigits
             formattedAmount
             formattedAmountWithoutCurrency
             formattedAmountWithoutPoint
@@ -228,7 +208,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         }
         discountAmount {
             amount
-            decimalDigits
             formattedAmount
             formattedAmountWithoutCurrency
             formattedAmountWithoutPoint
@@ -236,7 +215,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
         }
         shippingTotal {
             amount
-            decimalDigits
             formattedAmount
             formattedAmountWithoutCurrency
             formattedAmountWithoutPoint
@@ -250,22 +228,10 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
             shippingMethodCode
             fulfillmentCenterId
             fulfillmentCenterName
-            outerId
-            weightUnit
-            weight
-            measureUnit
-            height
-            length
-            width
-            isCancelled
-            cancelledDate
-            cancelReason
-            objectType
             status
             categoryId
             catalogId
             sku
-            priceId
             taxType
             taxPercentRate
             reserveQuantity
@@ -276,14 +242,8 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
                 code
                 catalogId
                 productType
-                minQuantity
-                maxQuantity
-                outline
-                slug
                 name
                 imgSrc
-                outerId
-                brandName
                 hasVariations
                 inWishlist
                 variations {
@@ -291,21 +251,10 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
                     name
                     code
                     productType
-                    minQuantity
-                    maxQuantity
-                    slug
                     price {
                         discountPercent
-                        currency
-                        validFrom
-                        startDate
-                        validUntil
-                        endDate
-                        pricelistId
-                        minQuantity
                         list {
                             amount
-                            decimalDigits
                             formattedAmount
                             formattedAmountWithoutCurrency
                             formattedAmountWithoutPoint
@@ -313,7 +262,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
                         }
                         actual {
                             amount
-                            decimalDigits
                             formattedAmount
                             formattedAmountWithoutCurrency
                             formattedAmountWithoutPoint
@@ -321,27 +269,11 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
                         }
                     }
                 }
-                masterVariation {
-                    id
-                    name
-                    code
-                    productType
-                    minQuantity
-                    maxQuantity
-                    slug
-                }
                 price {
                     discountPercent
-                    currency
-                    validFrom
-                    startDate
-                    validUntil
-                    endDate
-                    pricelistId
                     minQuantity
                     list {
                         amount
-                        decimalDigits
                         formattedAmount
                         formattedAmountWithoutCurrency
                         formattedAmountWithoutPoint
@@ -349,7 +281,6 @@ mutation ChangeOrderStatus($orderId: String!, $status: String!){
                     }
                     actual {
                         amount
-                        decimalDigits
                         formattedAmount
                         formattedAmountWithoutCurrency
                         formattedAmountWithoutPoint

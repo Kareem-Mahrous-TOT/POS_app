@@ -182,8 +182,7 @@ class HomePage extends HookWidget {
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                        onTap: (product?.variations?.isEmpty ??
-                                                true)
+                                        onTap: ((product?.variations!.length ?? true) == 1)
                                             ? () {
                                                 context.read<BagBloc>().add(
                                                     BagEvent.addItem(
