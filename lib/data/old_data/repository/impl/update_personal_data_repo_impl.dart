@@ -19,22 +19,22 @@ class UpdatePersonalDataRepoImpl implements UpdatePersonalDataRepoBase {
       final res = await graphService.client.query(
         QueryOptions(
           document: gql(r''' 
-        mutation UpdatePersonalData(
-    $firstName:String!,
-    $lastName:String!
-) {
-    updatePersonalData(
-        command: {
-            personalData: 
-            {
-                  firstName: $firstName
-                  lastName: $lastName
-            }                   
-                  }
-    ) {
-        succeeded
-    }
-}
+            mutation UpdatePersonalData(
+            $firstName:String!,
+            $lastName:String!
+            ) {
+                updatePersonalData(
+                    command: {
+                        personalData: 
+                        {
+                            firstName: $firstName
+                            lastName: $lastName
+                        }                   
+                    }
+                ) {
+                    succeeded
+                }
+            }
           '''),
           variables: {
             "firstName": firstName,

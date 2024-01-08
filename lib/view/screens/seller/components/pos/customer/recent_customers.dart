@@ -1,28 +1,57 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
 
-class CustomersListMolecule extends StatelessWidget {
+class CustomersListMolecule extends HookWidget {
   //Should be used in expanded or list
   final List<Member> models;
   final TextStyle? nameStyle;
   final TextStyle? dateStyle;
+  final VoidCallback? onScroll;
 
   const CustomersListMolecule({
     super.key,
     required this.models,
     this.nameStyle,
     this.dateStyle,
+    this.onScroll,
   });
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
+    final scrollController = useScrollController();
+
+    useEffect(() {
+      // if (scrollController.offset > 0.9) {
+      //   onScroll?.call();
+      // }
+      scrollController.addListener(() {
+        // debugPrint("scroll position: ${scrollController.position}");
+        // debugPrint("scroll offset: ${scrollController.offset}");
+
+        // debugPrint(
+        //     "scroll maxScrollExtent: ${scrollController.position.maxScrollExtent}");
+        final prct = (scrollController.offset /
+            scrollController.position.maxScrollExtent);
+        if (0.9 < prct && prct < .92) {
+          log("fetch more");
+          onScroll?.call();
+        }
+      });
+      return null;
+    }, []);
+
     return ListView.separated(
+      controller: scrollController,
       itemCount: models.length,
       itemBuilder: (context, index) {
         final model = models[index];

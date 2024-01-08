@@ -17,8 +17,6 @@ class CustomerPage extends HookWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    // final emailController = useTextEditingController();
-    // final nameController = useTextEditingController();
     final fToast = useFToast(context: context);
 
     return Container(
@@ -173,9 +171,15 @@ class CustomerPage extends HookWidget {
                                 );
                               }
                               return SizedBox(
-                                  height: h * 0.487,
-                                  child: CustomersListMolecule(
-                                      models: value.customers));
+                                height: h * 0.487,
+                                child: CustomersListMolecule(
+                                  models: value.customers,
+                                  onScroll: () => context
+                                      .read<RecentCustomersBloc>()
+                                      .add(RecentCustomersEvent
+                                          .fetchMoreRecentCustomers()),
+                                ),
+                              );
                             },
                           );
                         },
