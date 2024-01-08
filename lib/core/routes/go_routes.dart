@@ -32,11 +32,5 @@ final GoRouter allRoutes = GoRouter(
       name: Routes.login,
       builder: (BuildContext context, GoRouterState state) => const LoginPage(),
     ),
-    // GoRoute(
-    //   path: Routes.signUp.withSlash,
-    //   name: Routes.signUp,
-    //   builder: (BuildContext context, GoRouterState state) =>
-    //       const SignupPage(),
-    // ),
   ],
 );

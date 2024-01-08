@@ -146,7 +146,7 @@ class LayoutScreen extends HookWidget {
                       width: 25,
                       height: 25,
                       child: SvgPicture.asset(
-                        Assets.inventoryIcon,
+                        ImgsManager.inventoryIcon,
                         fit: BoxFit.contain,
                         colorFilter: ColorFilter.mode(
                             selectedIndex == 3 ? Palette.primary : Colors.grey,

@@ -26,7 +26,9 @@
     - [x] add custom discount
     - [x] usecase
 - [ ] bag
-  - [ ] fix loading ui
+  - [x] fix loading ui
 - [ ] products
   - [ ] debounce event(request)
+- [ ] pagination
+- [ ]  
 - [ ] data syncing

@@ -9,7 +9,7 @@ extension ToBagOrgItem on BagItem {
       name: name,
       inStockQuantity: inStockQuantity,
       count: count,
-      price: this.price,
+      price: price,
     );
   }
 }

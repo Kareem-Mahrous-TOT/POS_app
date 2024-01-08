@@ -98,8 +98,10 @@ Future<void> getItInit() async {
 
   //--------------------------------------------------------------------------
   //core
-  getIt.registerSingleton<ApiConsumer>(DioConsumer(dio: getIt()));
-  getIt.registerSingleton<HttpLink>(MyHttpLink(apiConsumer: getIt()));
+  getIt.registerSingleton<ApiConsumer>(
+      DioConsumer(dio: getIt(), sharedPrefs: getIt()));
+  getIt.registerSingleton<HttpLink>(
+      MyHttpLink(apiConsumer: getIt(), sharedPrefs: getIt()));
   getIt.registerSingleton<GraphQLConfig>(GraphQLConfig(httpLink: getIt()));
   getIt.registerSingleton<GraphService>(GraphService(graphQLConfig: getIt()));
 

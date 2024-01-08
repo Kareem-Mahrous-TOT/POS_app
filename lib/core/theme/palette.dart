@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 abstract class Palette {
-  Palette._();
-
   static const Color white = Color(0xFFFFFFFF);
   static const Color lightGrey = Color(0xFFE5E5E5);
   static const Color lightBlue = Color(0xFFCDD3E5);
@@ -20,7 +18,7 @@ abstract class Palette {
   static const Color greenText = Color(0xFF079455);
   static const Color red = Colors.red;
 
-  static const Color primary = Color(0xFF59A29E); //Color(0xff2256a2);
+  static const Color primary = Color(0xFF59A29E);
   static const Color secondary = Color(0xff557BC6);
   static const Color benefits = Color(0xffAABDE3);
   static const Color blue = Color(0xff2156A3);

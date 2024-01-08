@@ -5,7 +5,6 @@ abstract class EndPoints {
 
   /// Products endpoints
   static const String catalogSearchUrl = "/api/catalog/catalogs/search";
-  // static const String searchCategoriesUrl = "/api/catalog/search/categories";
   static const String searchCategoriesUrl = "/api/catalog/listentries";
   static const String searchProductsUrl = "/api/catalog/search/products";
   static const String catalogProductsUrl = '/api/catalog/products';

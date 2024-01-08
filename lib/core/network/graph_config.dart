@@ -3,12 +3,12 @@ import 'dart:developer';
 
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../depency_injection.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
 import '../routes/routes.dart';
-import '../services/cache_user.dart';
 import 'api_consumer.dart';
 import 'end_points.dart';
 
@@ -39,8 +39,11 @@ class GraphService {
 
 class MyHttpLink extends HttpLink {
   final ApiConsumer apiConsumer;
-  MyHttpLink({required this.apiConsumer})
-      : super(EndPoints.graphQL, httpResponseDecoder: (httpResponse) async {
+  final SharedPreferences sharedPrefs;
+  MyHttpLink({
+    required this.sharedPrefs,
+    required this.apiConsumer,
+  }) : super(EndPoints.graphQL, httpResponseDecoder: (httpResponse) async {
           final responseMap = json.decode(
             utf8.decode(
               httpResponse.bodyBytes,
@@ -61,8 +64,8 @@ class MyHttpLink extends HttpLink {
 
           if (errorCode?.toLowerCase() == "unauthorized") {
             try {
-              final username = preferences.getString(LocalKeys.username);
-              final password = preferences.getString(LocalKeys.password);
+              final username = sharedPrefs.getString(LocalKeys.username);
+              final password = sharedPrefs.getString(LocalKeys.password);
 
               final response = await apiConsumer.post(
                 EndPoints.connectTokenUrl,
@@ -73,20 +76,19 @@ class MyHttpLink extends HttpLink {
                   "password": password,
                 },
               );
-
-              log("::: graph auth response: $response :::");
-
-              await CacheUser.tokens(
-                accessToken: response.data["access_token"],
-                refreshToken: response.data["refresh_token"],
-              ).saveTokens();
+              
+              await Future.wait([
+                sharedPrefs.setString(
+                    LocalKeys.accessToken, response.data["access_token"]),
+                sharedPrefs.setString(
+                    LocalKeys.refreshToken, response.data["refresh_token"]),
+              ]);
             } catch (e) {
               //? Logout
               final context = navigatorKey.currentState?.context;
               final isMounted = context?.mounted ?? false;
               if (isMounted) {
-                await preferences.clear();
-                log("preferences::: -after2 clear $preferences ##");
+                await sharedPrefs.clear();
                 context?.goNamed(Routes.login);
               }
             }
