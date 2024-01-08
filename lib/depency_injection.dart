@@ -68,6 +68,7 @@ import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
 import 'domain/reports/repo/report_repo.dart';
+import 'domain/reports/usecase/order_statistics_usecase.dart';
 import 'domain/reports/usecase/pie_chart_usecase.dart';
 import 'domain/reports/usecase/report_cost_usecase.dart';
 import 'domain/sales/repo/repo.dart';
@@ -80,6 +81,7 @@ import 'view/blocs/menu/menu_cubit.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
+import 'view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
@@ -197,6 +199,8 @@ Future<void> getItInit() async {
   //? orders
   getIt.registerLazySingleton<GetOrdersUseCase>(
       () => GetOrdersUseCase(ordersRepo: getIt()));
+  getIt.registerLazySingleton<OrderStatisticsUsecase>(
+      () => OrderStatisticsUsecase(reportRepo: getIt()));
   getIt.registerLazySingleton<GetOrderByIdUseCase>(
       () => GetOrderByIdUseCase(ordersRepo: getIt()));
   getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
@@ -249,6 +253,8 @@ Future<void> getItInit() async {
   //blocs
   // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
   getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
+  getIt
+      .registerFactory<OrderStatisticsBloc>(() => OrderStatisticsBloc(getIt()));
   getIt.registerFactory<BagBloc>(() => BagBloc(
         createOrderFromBagUsecase: getIt(),
         createBagUsecase: getIt(),

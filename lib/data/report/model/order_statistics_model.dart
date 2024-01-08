@@ -10,11 +10,11 @@ class OrderStatisticsDashboard with _$OrderStatisticsDashboard {
     @JsonKey(name: 'startDate') String? startDate,
     @JsonKey(name: 'endDate') String? endDate,
     @JsonKey(name: 'revenue') List<Revenue>? revenue,
-    @JsonKey(name: 'orderCount') int? orderCount,
-    @JsonKey(name: 'customersCount') int? customersCount,
+    @JsonKey(name: 'orderCount') num? orderCount,
+    @JsonKey(name: 'customersCount') num? customersCount,
     @JsonKey(name: 'avgOrderValue') List<AvgOrderValue>? avgOrderValue,
-    @JsonKey(name: 'itemsPurchased') int? itemsPurchased,
-    @JsonKey(name: 'lineItemsPerOrder') int? lineItemsPerOrder,
+    @JsonKey(name: 'itemsPurchased') num? itemsPurchased,
+    @JsonKey(name: 'lineItemsPerOrder') num? lineItemsPerOrder,
   }) = _OrderStatisticsDashboard;
 
   factory OrderStatisticsDashboard.fromJson(Map<String, Object?> json) =>

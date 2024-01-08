@@ -1,7 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:tot_pos/core/theme/palette.dart';
 
 class TOTLineChartMolecule extends StatelessWidget {
@@ -15,8 +14,8 @@ class TOTLineChartMolecule extends StatelessWidget {
       required this.yAxis,
       required this.spots,
       required this.belowBarGradientColors});
-  final List<num> xAxis;
-  final List<DateTime> yAxis;
+  final List<String> xAxis;
+  final List<String> yAxis;
   final List<Color> belowBarGradientColors;
   final List<FlSpot> spots;
   @override
@@ -46,7 +45,10 @@ class TOTLineChartMolecule extends StatelessWidget {
               return SideTitleWidget(
                 axisSide: titleMeta.axisSide,
                 child: Text(
-                  DateFormat("MMM d").format(yAxis[index]).toString(),
+                  yAxis[index]
+                      // DateFormat("MMM d")
+                      //     .format(DateTime.tryParse(yAxis[index]) ?? DateTime.now())
+                      .toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -63,9 +65,7 @@ class TOTLineChartMolecule extends StatelessWidget {
             reservedSize: 60,
             getTitlesWidget: (value, titleMeta) {
               final index = value.toInt();
-              final number =
-                  NumberFormat.currency(symbol: "\$", decimalDigits: 0)
-                      .format(xAxis[index]);
+              final number = xAxis[index];
               return Text(number,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -78,16 +78,14 @@ class TOTLineChartMolecule extends StatelessWidget {
       ),
       lineBarsData: [
         LineChartBarData(
-          aboveBarData: BarAreaData(
-            show: false,
-          ),
+          show: true,
           spots: spots,
           isCurved: false,
           color: Palette.primary,
           barWidth: 5,
-          isStrokeCapRound: true,
+          // isStrokeCapRound: true,
           dotData: const FlDotData(
-            show: false,
+            show: true,
           ),
           belowBarData: BarAreaData(
             show: true,
@@ -100,7 +98,7 @@ class TOTLineChartMolecule extends StatelessWidget {
         ),
       ],
       borderData: FlBorderData(
-        show: false,
+        show: true,
         border: Border.all(color: const Color(0xff37434d)),
       ),
     ));
@@ -112,31 +110,31 @@ class TOTLineChartMolecule extends StatelessWidget {
 //   Colors.blue,
 // ];
 
-// final List<DateTime> times = [
-//   DateTime.now().subtract(const Duration(days: 6)),
-//   DateTime.now().subtract(const Duration(days: 5)),
-//   DateTime.now().subtract(const Duration(days: 4)),
-//   DateTime.now().subtract(const Duration(days: 3)),
-//   DateTime.now().subtract(const Duration(days: 2)),
-//   DateTime.now().subtract(const Duration(days: 1)),
-//   DateTime.now(),
-// ];
+final List<DateTime> times = [
+  DateTime.now().subtract(const Duration(days: 6)),
+  DateTime.now().subtract(const Duration(days: 5)),
+  DateTime.now().subtract(const Duration(days: 4)),
+  DateTime.now().subtract(const Duration(days: 3)),
+  DateTime.now().subtract(const Duration(days: 2)),
+  DateTime.now().subtract(const Duration(days: 1)),
+  DateTime.now(),
+];
 
-// final List<num> price = [
-//   0.0,
-//   7657.210883333333,
-//   15314.421766666666,
-//   22971.63265,
-//   30628.843533333333,
-//   38286.054416666666,
-//   45943.2653,
-// ];
+final List<num> price = [
+  0.0,
+  7657.210883333333,
+  15314.421766666666,
+  22971.63265,
+  30628.843533333333,
+  38286.054416666666,
+  45943.2653,
+];
 
-// final List<FlSpot> spots = [
-//   const FlSpot(0, 1),
-//   const FlSpot(1, 4),
-//   const FlSpot(2, 4),
-//   const FlSpot(3, 1),
-//   const FlSpot(5, 6),
-//   const FlSpot(6, 4),
-// ];
+final List<FlSpot> spots = [
+  const FlSpot(0, 1),
+  const FlSpot(1, 4),
+  const FlSpot(2, 4),
+  const FlSpot(3, 1),
+  const FlSpot(5, 6),
+  const FlSpot(6, 4),
+];

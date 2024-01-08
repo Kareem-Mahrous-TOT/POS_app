@@ -28,15 +28,15 @@ mixin _$OrderStatisticsDashboard {
   @JsonKey(name: 'revenue')
   List<Revenue>? get revenue => throw _privateConstructorUsedError;
   @JsonKey(name: 'orderCount')
-  int? get orderCount => throw _privateConstructorUsedError;
+  num? get orderCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'customersCount')
-  int? get customersCount => throw _privateConstructorUsedError;
+  num? get customersCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'avgOrderValue')
   List<AvgOrderValue>? get avgOrderValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemsPurchased')
-  int? get itemsPurchased => throw _privateConstructorUsedError;
+  num? get itemsPurchased => throw _privateConstructorUsedError;
   @JsonKey(name: 'lineItemsPerOrder')
-  int? get lineItemsPerOrder => throw _privateConstructorUsedError;
+  num? get lineItemsPerOrder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,11 +54,11 @@ abstract class $OrderStatisticsDashboardCopyWith<$Res> {
       {@JsonKey(name: 'startDate') String? startDate,
       @JsonKey(name: 'endDate') String? endDate,
       @JsonKey(name: 'revenue') List<Revenue>? revenue,
-      @JsonKey(name: 'orderCount') int? orderCount,
-      @JsonKey(name: 'customersCount') int? customersCount,
+      @JsonKey(name: 'orderCount') num? orderCount,
+      @JsonKey(name: 'customersCount') num? customersCount,
       @JsonKey(name: 'avgOrderValue') List<AvgOrderValue>? avgOrderValue,
-      @JsonKey(name: 'itemsPurchased') int? itemsPurchased,
-      @JsonKey(name: 'lineItemsPerOrder') int? lineItemsPerOrder});
+      @JsonKey(name: 'itemsPurchased') num? itemsPurchased,
+      @JsonKey(name: 'lineItemsPerOrder') num? lineItemsPerOrder});
 }
 
 /// @nodoc
@@ -100,11 +100,11 @@ class _$OrderStatisticsDashboardCopyWithImpl<$Res,
       orderCount: freezed == orderCount
           ? _value.orderCount
           : orderCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       customersCount: freezed == customersCount
           ? _value.customersCount
           : customersCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       avgOrderValue: freezed == avgOrderValue
           ? _value.avgOrderValue
           : avgOrderValue // ignore: cast_nullable_to_non_nullable
@@ -112,11 +112,11 @@ class _$OrderStatisticsDashboardCopyWithImpl<$Res,
       itemsPurchased: freezed == itemsPurchased
           ? _value.itemsPurchased
           : itemsPurchased // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       lineItemsPerOrder: freezed == lineItemsPerOrder
           ? _value.lineItemsPerOrder
           : lineItemsPerOrder // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
     ) as $Val);
   }
 }
@@ -134,11 +134,11 @@ abstract class _$$OrderStatisticsDashboardImplCopyWith<$Res>
       {@JsonKey(name: 'startDate') String? startDate,
       @JsonKey(name: 'endDate') String? endDate,
       @JsonKey(name: 'revenue') List<Revenue>? revenue,
-      @JsonKey(name: 'orderCount') int? orderCount,
-      @JsonKey(name: 'customersCount') int? customersCount,
+      @JsonKey(name: 'orderCount') num? orderCount,
+      @JsonKey(name: 'customersCount') num? customersCount,
       @JsonKey(name: 'avgOrderValue') List<AvgOrderValue>? avgOrderValue,
-      @JsonKey(name: 'itemsPurchased') int? itemsPurchased,
-      @JsonKey(name: 'lineItemsPerOrder') int? lineItemsPerOrder});
+      @JsonKey(name: 'itemsPurchased') num? itemsPurchased,
+      @JsonKey(name: 'lineItemsPerOrder') num? lineItemsPerOrder});
 }
 
 /// @nodoc
@@ -179,11 +179,11 @@ class __$$OrderStatisticsDashboardImplCopyWithImpl<$Res>
       orderCount: freezed == orderCount
           ? _value.orderCount
           : orderCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       customersCount: freezed == customersCount
           ? _value.customersCount
           : customersCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       avgOrderValue: freezed == avgOrderValue
           ? _value._avgOrderValue
           : avgOrderValue // ignore: cast_nullable_to_non_nullable
@@ -191,11 +191,11 @@ class __$$OrderStatisticsDashboardImplCopyWithImpl<$Res>
       itemsPurchased: freezed == itemsPurchased
           ? _value.itemsPurchased
           : itemsPurchased // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
       lineItemsPerOrder: freezed == lineItemsPerOrder
           ? _value.lineItemsPerOrder
           : lineItemsPerOrder // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
     ));
   }
 }
@@ -237,10 +237,10 @@ class _$OrderStatisticsDashboardImpl implements _OrderStatisticsDashboard {
 
   @override
   @JsonKey(name: 'orderCount')
-  final int? orderCount;
+  final num? orderCount;
   @override
   @JsonKey(name: 'customersCount')
-  final int? customersCount;
+  final num? customersCount;
   final List<AvgOrderValue>? _avgOrderValue;
   @override
   @JsonKey(name: 'avgOrderValue')
@@ -254,10 +254,10 @@ class _$OrderStatisticsDashboardImpl implements _OrderStatisticsDashboard {
 
   @override
   @JsonKey(name: 'itemsPurchased')
-  final int? itemsPurchased;
+  final num? itemsPurchased;
   @override
   @JsonKey(name: 'lineItemsPerOrder')
-  final int? lineItemsPerOrder;
+  final num? lineItemsPerOrder;
 
   @override
   String toString() {
@@ -318,12 +318,12 @@ abstract class _OrderStatisticsDashboard implements OrderStatisticsDashboard {
       {@JsonKey(name: 'startDate') final String? startDate,
       @JsonKey(name: 'endDate') final String? endDate,
       @JsonKey(name: 'revenue') final List<Revenue>? revenue,
-      @JsonKey(name: 'orderCount') final int? orderCount,
-      @JsonKey(name: 'customersCount') final int? customersCount,
+      @JsonKey(name: 'orderCount') final num? orderCount,
+      @JsonKey(name: 'customersCount') final num? customersCount,
       @JsonKey(name: 'avgOrderValue') final List<AvgOrderValue>? avgOrderValue,
-      @JsonKey(name: 'itemsPurchased') final int? itemsPurchased,
+      @JsonKey(name: 'itemsPurchased') final num? itemsPurchased,
       @JsonKey(name: 'lineItemsPerOrder')
-      final int? lineItemsPerOrder}) = _$OrderStatisticsDashboardImpl;
+      final num? lineItemsPerOrder}) = _$OrderStatisticsDashboardImpl;
 
   factory _OrderStatisticsDashboard.fromJson(Map<String, dynamic> json) =
       _$OrderStatisticsDashboardImpl.fromJson;
@@ -339,19 +339,19 @@ abstract class _OrderStatisticsDashboard implements OrderStatisticsDashboard {
   List<Revenue>? get revenue;
   @override
   @JsonKey(name: 'orderCount')
-  int? get orderCount;
+  num? get orderCount;
   @override
   @JsonKey(name: 'customersCount')
-  int? get customersCount;
+  num? get customersCount;
   @override
   @JsonKey(name: 'avgOrderValue')
   List<AvgOrderValue>? get avgOrderValue;
   @override
   @JsonKey(name: 'itemsPurchased')
-  int? get itemsPurchased;
+  num? get itemsPurchased;
   @override
   @JsonKey(name: 'lineItemsPerOrder')
-  int? get lineItemsPerOrder;
+  num? get lineItemsPerOrder;
   @override
   @JsonKey(ignore: true)
   _$$OrderStatisticsDashboardImplCopyWith<_$OrderStatisticsDashboardImpl>

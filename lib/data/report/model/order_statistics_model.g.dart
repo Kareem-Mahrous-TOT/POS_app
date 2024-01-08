@@ -14,13 +14,13 @@ _$OrderStatisticsDashboardImpl _$$OrderStatisticsDashboardImplFromJson(
       revenue: (json['revenue'] as List<dynamic>?)
           ?.map((e) => Revenue.fromJson(e as Map<String, dynamic>))
           .toList(),
-      orderCount: json['orderCount'] as int?,
-      customersCount: json['customersCount'] as int?,
+      orderCount: json['orderCount'] as num?,
+      customersCount: json['customersCount'] as num?,
       avgOrderValue: (json['avgOrderValue'] as List<dynamic>?)
           ?.map((e) => AvgOrderValue.fromJson(e as Map<String, dynamic>))
           .toList(),
-      itemsPurchased: json['itemsPurchased'] as int?,
-      lineItemsPerOrder: json['lineItemsPerOrder'] as int?,
+      itemsPurchased: json['itemsPurchased'] as num?,
+      lineItemsPerOrder: json['lineItemsPerOrder'] as num?,
     );
 
 Map<String, dynamic> _$$OrderStatisticsDashboardImplToJson(

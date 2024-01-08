@@ -91,9 +91,8 @@ class CustomerPage extends HookWidget {
                     color: Palette.primary,
                   )),
                   loadedCurrentCustomerData: (value) => TOTCustomerCardMolecule(
-                    name: value.data.me.contact!.fullName,
-                    code: value.data.me.memberId!
-                        .substring(value.data.me.memberId!.length - 5),
+                    name: value.data.me.contact?.fullName ?? "N/A",
+                    code: value.data.me.memberId ?? "",
                     customerImage: value.data.me.photoUrl ??
                         "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
                     email: value.data.me.email!,

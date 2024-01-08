@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:tot_pos/view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
@@ -50,6 +52,13 @@ class MainApp extends StatelessWidget {
                   getIt<InventoryBloc>()..add(InventoryEvent.fetch())),
           BlocProvider(create: (context) => getIt<ProductDetailsBloc>()),
           BlocProvider(create: (context) => getIt<OrderDetailsBloc>()),
+          BlocProvider(
+              create: (context) => getIt<OrderStatisticsBloc>()
+                ..add(OrderStatisticsEvent.fetch(
+                  startDate: DateFormat("dd-MM-yyyy").format(
+                      (DateTime.now()).subtract(const Duration(days: 30))),
+                  endDate: DateFormat("dd-MM-yyyy").format(DateTime.now()),
+                ))),
           BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),

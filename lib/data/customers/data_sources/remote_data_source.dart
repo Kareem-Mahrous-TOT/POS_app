@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/network/graph_config.dart';
 

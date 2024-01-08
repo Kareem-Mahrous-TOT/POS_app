@@ -18,7 +18,7 @@ dependencies:
   device_preview: ^1.1.0
   dio: ^5.3.4
   equatable: ^2.0.5
-  fl_chart: ^0.64.0
+  # fl_chart: ^0.64.0
   fluentui_system_icons: ^1.1.222
   flutter:
     sdk: flutter
@@ -53,7 +53,8 @@ dependencies:
     git:
       url: https://github.com/TOTPLATFORM/flutter.git
       path: packages/atomic_design
-      ref: tablet-beta
+      ref: merge/table_with_beta
+
   url_launcher: ^6.2.1
   wakelock_plus: ^1.1.3
 

@@ -20,7 +20,7 @@ class ReportRemoteDataSourceImpl implements ReportRemoteDataSource {
     required String startDate,
     required String endDate,
   }) async {
-    final response = await _apiConsumer.post(
+    final response = await _apiConsumer.get(
         "${EndPoints.totStatisticsDashboard}?start=$startDate&end=$endDate");
     return OrderStatisticsDashboard.fromJson(response.data);
   }

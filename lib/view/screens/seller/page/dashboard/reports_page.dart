@@ -1,11 +1,13 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
-import '../../../../blocs/report/report_cost/report_cost_cubit.dart';
+import '../../../../../data/report/model/revenue_model.dart';
+import '../../../../blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 import '../../../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import '../../components/pos/reports/line_chart.dart';
 import '../../components/pos/sales_card.dart';
 
 class ReportsPage extends StatefulWidget {
@@ -76,6 +78,37 @@ class _ReportsPageState extends State<ReportsPage> {
                     ),
                     Expanded(
                       child: TabBar(
+                        onTap: (value) {
+                          switch (value) {
+                            case 2:
+                              {
+                                context.read<OrderStatisticsBloc>().add(
+                                    OrderStatisticsEvent.fetch(
+                                        startDate: DateFormat("dd-MM-yyyy")
+                                            .format((DateTime.now()).subtract(
+                                                const Duration(days: 30))),
+                                        endDate: DateFormat("dd-MM-yyyy")
+                                            .format(DateTime.now())));
+                              }
+                            case 1:
+                              context.read<OrderStatisticsBloc>().add(
+                                  OrderStatisticsEvent.fetch(
+                                      startDate: DateFormat("dd-MM-yyyy")
+                                          .format((DateTime.now()).subtract(
+                                              const Duration(days: 7))),
+                                      endDate: DateFormat("dd-MM-yyyy")
+                                          .format(DateTime.now())));
+
+                            case 0:
+                              context.read<OrderStatisticsBloc>().add(
+                                  OrderStatisticsEvent.fetch(
+                                      startDate: DateFormat("dd-MM-yyyy")
+                                          .format((DateTime.now()).subtract(
+                                              const Duration(days: 1))),
+                                      endDate: DateFormat("dd-MM-yyyy")
+                                          .format(DateTime.now())));
+                          }
+                        },
                         indicatorSize: TabBarIndicatorSize.tab,
                         indicatorColor: Palette.primary,
                         indicator: ShapeDecoration(
@@ -107,6 +140,18 @@ class _ReportsPageState extends State<ReportsPage> {
   }
 }
 
+List<Map<String, dynamic>> data = [
+  {"x": "16", "y": 1910, "meta": null},
+  {"x": "18", "y": 580.2, "meta": null},
+  {"x": "19", "y": 500, "meta": null},
+  {"x": "21", "y": 390, "meta": null},
+  {"x": "23", "y": 2330.94, "meta": null},
+  {"x": "24", "y": 1863.23, "meta": null},
+  {"x": "25", "y": 5630.71, "meta": null},
+  {"x": "26", "y": 4085.8, "meta": null},
+  {"x": "27", "y": 3134.02, "meta": null},
+];
+
 class ReportTab extends StatelessWidget {
   const ReportTab({super.key});
 
@@ -120,51 +165,95 @@ class ReportTab extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          BlocBuilder<ReportCostCubit, ReportCostState>(
+          BlocBuilder<OrderStatisticsBloc, OrderStatisticsState>(
             builder: (context, state) {
-              return state.map(
-                initial: (value) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: Palette.primary,
+              return state.maybeMap(
+                orElse: () {
+                  return Container(
+                    color: const Color.fromARGB(255, 229, 229, 229),
+                    width: w * 0.95,
+                    height: h * 0.2,
+                    child: const Center(
+                      child: CircularProgressIndicator.adaptive(
+                        valueColor: AlwaysStoppedAnimation(Palette.primary),
+                      ),
                     ),
                   );
                 },
-                loadFailed: (value) {
+                fetchFail: (value) {
                   return Center(child: Text(value.message));
                 },
-                loadSuccess: (value) => SizedBox(
+                fetchSuccess: (value) => SizedBox(
                   width: w * 0.95,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TOTSalesCardMolecule(
-                          plus: value.model.revenuePercentType == "plus",
-                          percentage: value.model.revenuePercent.ceilToDouble(),
-                          cost: value.model.revenue.toString(),
+                          plus: value.statisticsDashboard.revenue?.any(
+                                  (element) => (element.amount ?? 0) > 0) ??
+                              false,
+                          percentage: (value.statisticsDashboard.revenue
+                                  ?.firstWhere(orElse: () {
+                                return const Revenue(currency: "0");
+                              },
+                                      (element) =>
+                                          element.currency != null).amount) ??
+                              0,
+                          cost: value.statisticsDashboard.revenue!
+                              .firstWhere(orElse: () {
+                                return const Revenue(amount: 0);
+                              }, (element) => element.amount != null)
+                              .amount!
+                              .toString(),
                           hasLeadingIcon: true,
                           hasPercentage: true,
                           leadingColor: Colors.orange,
                           leadingIcon: Icons.account_balance_wallet_rounded,
                           title: 'Revenue'),
                       TOTSalesCardMolecule(
-                          plus: value.model.ordersPercentType == "plus",
-                          percentage: value.model.ordersPercent.ceilToDouble(),
-                          cost: value.model.orders.toString(),
+                          plus: value.statisticsDashboard.revenue?.any(
+                                  (element) => (element.amount ?? 0) > 0) ??
+                              false,
+                          percentage: (value.statisticsDashboard.revenue
+                                  ?.firstWhere(orElse: () {
+                                return const Revenue(currency: "0");
+                              },
+                                      (element) =>
+                                          element.currency != null).amount) ??
+                              0,
+                          cost: value.statisticsDashboard.revenue!
+                              .firstWhere(orElse: () {
+                                return const Revenue(amount: 0);
+                              }, (element) => element.amount != null)
+                              .amount!
+                              .toString(),
                           hasLeadingIcon: true,
                           hasPercentage: true,
                           leadingColor: Palette.success,
                           leadingIcon: Icons.shopping_cart,
                           title: 'Orders'),
                       TOTSalesCardMolecule(
-                          plus: value.model.averagePercentType == "plus",
-                          percentage: value.model.averagePercent.ceilToDouble(),
-                          cost: value.model.average.toString(),
+                          plus: value.statisticsDashboard.revenue?.any(
+                                  (element) => (element.amount ?? 0) > 0) ??
+                              false,
+                          percentage: (value.statisticsDashboard.revenue
+                                  ?.firstWhere(orElse: () {
+                                return const Revenue(currency: "0");
+                              },
+                                      (element) =>
+                                          element.currency != null).amount) ??
+                              0,
+                          cost: value.statisticsDashboard.revenue!
+                              .firstWhere(orElse: () {
+                                return const Revenue(amount: 0);
+                              }, (element) => element.amount != null)
+                              .amount!
+                              .toString(),
                           hasLeadingIcon: true,
                           hasPercentage: true,
-                          leadingColor: Colors.black,
-                          leadingIcon: Icons.compare_arrows_rounded,
-                          title: 'Average'),
+                          leadingColor: Palette.success,
+                          leadingIcon: Icons.shopping_cart,
+                          title: 'Orders'),
                     ],
                   ),
                 ),
@@ -181,10 +270,15 @@ class ReportTab extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TOTLineChartMolecule(
-              belowBarGradientColors: gradientColors,
-              xAxis: price,
-              spots: spots,
-              yAxis: times,
+              lineColor: Palette.greenText,
+              belowBarGradientColors: const [Palette.primary, Palette.primary],
+              // yAxis: dummy.map((e) => e.keys.toString()).toList(),
+              spots: data
+                  .map((e) =>
+                      FlSpot(double.tryParse(e["x"]) ?? 0.0, e["y"].toDouble()))
+                  .toList(),
+              // ..removeLast(),
+              // xAxis: dummy.map((e) => e.values.toString()).toList(),
             ),
           ),
           const SizedBox(
