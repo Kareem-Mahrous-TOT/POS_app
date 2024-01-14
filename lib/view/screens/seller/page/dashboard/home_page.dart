@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,8 +18,21 @@ import '../../../../ui_mappers/bag_organism_item.dart';
 import '../../../../ui_mappers/to_category_record.dart';
 import '../../components/pos/home_components/alert_dialog_bag.dart';
 
-class HomePage extends HookWidget {
+class HomePage extends StatefulHookWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      context.read<ProductsBloc>().add(ProductsEvent.fetch());
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,8 +196,11 @@ class HomePage extends HookWidget {
                                     itemCount: value.products?.length,
                                     itemBuilder: (context, index) {
                                       final product = value.products?[index];
+                                      final record = value.records?[index];
                                       return TOTPOSFoodCardItemMolecule(
-                                        onTap: ((product?.variations!.length ?? true) == 1)
+                                        onTap: ((product?.variations!.length ??
+                                                    0) <=
+                                                1)
                                             ? () {
                                                 context.read<BagBloc>().add(
                                                     BagEvent.addItem(
@@ -231,25 +249,26 @@ class HomePage extends HookWidget {
                                               },
                                         productImage:
                                             product?.imgSrc.toString(),
-                                        productName: product?.name == null
+                                        productName: record?.name == null
                                             ? "Not found"
-                                            : product!.name,
+                                            : record!.name,
                                         inStock:
-                                            " ${(product?.availabilityData?.availableQuantity ?? 0) == 0 ? "Out of stock" : "In stock"}",
-                                        oldPrice: (product
-                                                        ?.price
-                                                        ?.discountAmount
-                                                        ?.amount ??
-                                                    0) !=
-                                                0
-                                            ? product!.price!.list!
+                                            " ${(record?.quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
+                                        oldPrice: (record?.discount ?? "0") !=
+                                                "0"
+                                            ? product!.variations!
+                                                .firstWhere(
+                                                    orElse: () => product
+                                                        .variations!.first,
+                                                    (element) =>
+                                                        element.id ==
+                                                        record!.variationID)
+                                                .price!
+                                                .list!
                                                 .formattedAmountWithoutPointAndCurrency
                                             : null,
-                                        price: product?.price?.actual
-                                                    ?.formattedAmount !=
-                                                null
-                                            ? product!
-                                                .price!.actual!.formattedAmount
+                                        price: record?.price != null
+                                            ? record!.price
                                             : "",
                                       );
                                     }),
@@ -266,18 +285,19 @@ class HomePage extends HookWidget {
                           empty: (emptyState) {
                             if (emptyState.fromSuccess) {
                               fToast.showToast(
-                                  child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 4),
-                                      decoration: BoxDecoration(
-                                          color: Palette.green,
-                                          borderRadius:
-                                              BorderRadius.circular(4)),
-                                      child: Text(
-                                        "تم الطلب بنجاح",
-                                        style: context.titleLarge
-                                            .copyWith(color: Palette.white),
-                                      ),),);
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      color: Palette.green,
+                                      borderRadius: BorderRadius.circular(4)),
+                                  child: Text(
+                                    "تم الطلب بنجاح",
+                                    style: context.titleLarge
+                                        .copyWith(color: Palette.white),
+                                  ),
+                                ),
+                              );
                             }
                           },
                           getItems: (getItemsState) {
@@ -315,8 +335,7 @@ class HomePage extends HookWidget {
                             child: const Center(
                               child: LoadingCircular(),
                             ),
-                          )
-                          ;
+                          );
                         }, empty: (value) {
                           return Container(
                             decoration: BoxDecoration(

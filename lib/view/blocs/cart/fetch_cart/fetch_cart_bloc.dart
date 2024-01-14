@@ -62,16 +62,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                 (failure) => FetchCartState.updateCartFail(failure.message),
                 (model) => model);
 
-            // if (data != null) {
-            //   log("item Quantity Changed");
-
-            //   await addCart(
-            //     storeId: storeId,
-            //     currencyCode: "EGP",
-            //   );
-            // } else {
-            //   emit(FetchCartState.updateCartFail("Something went wrong"));
-            // }
+          
           } catch (e) {
             emit(FetchCartState.updateCartFail(e.toString()));
           }

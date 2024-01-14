@@ -222,10 +222,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
               final masterVariation = product.variations!.firstWhere(
                   orElse: () => product.variations!.first,
                   (element) => element.isMaster);
-              // counter.value = record.quantity!.toInt();
-              // int counter = record.quantity!.toInt();
-              // print("counter is ${counter}");
-
               return ExpansionTile(
                 shape: const RoundedRectangleBorder(side: BorderSide.none),
                 tilePadding: EdgeInsets.zero,
@@ -277,10 +273,8 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                   InventoryEvent.onIncrement(
                                       productId: masterVariation.id!,
                                       counter: widget.counters[index]));
-                              // counters[index].value++;
                               widget.controllers[index].text =
                                   widget.counters[index].toString();
-                              // print("update request is ${widget.isUpdating}");
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),

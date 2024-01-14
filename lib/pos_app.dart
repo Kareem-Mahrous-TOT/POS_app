@@ -22,8 +22,8 @@ import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class POSApp extends StatelessWidget {
+  const POSApp({super.key});
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

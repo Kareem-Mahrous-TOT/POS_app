@@ -7,6 +7,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../../../core/theme/palette.dart';
 import '../../../../../data/report/model/revenue_model.dart';
 import '../../../../blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
+import '../../../../blocs/report/report_cost/report_cost_cubit.dart';
 import '../../../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import '../../components/pos/sales_card.dart';
 
@@ -18,6 +19,15 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
+  @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      context.read<ReportCostCubit>().loadData();
+      context.read<ReportChartPieCubit>().loadData();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Tab> tabs = [
