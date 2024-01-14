@@ -55,15 +55,12 @@ class AnonymousCustomerRepoImpl implements AnonymousCustomerRepoBase {
           fetchPolicy: FetchPolicy.noCache,
         ),
       );
-      log("::: me response: $response :::");
       if (response.data != null) {
         UserDataModel userData = UserDataModel.fromJson(response.data!);
 
         await preferences.setString(
             LocalKeys.memberId, userData.me.memberId ?? "");
         final memberId = preferences.getString(LocalKeys.memberId);
-
-        log("::: login - memberId: $memberId :::");
 
         return Right(userData);
       } else {

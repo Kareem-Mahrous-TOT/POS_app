@@ -32,7 +32,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             productsList = record.productsModels ?? [];
             emit(ProductsState.fetchSuccessState(
                 products: record.productsModels,
-                records: record.proudctsRecords,
+                records: record.proudctsPosRecords,
                 ));
           });
         } catch (e) {

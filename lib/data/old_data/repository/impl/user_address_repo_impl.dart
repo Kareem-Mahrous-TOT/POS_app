@@ -86,7 +86,6 @@ fragment memberAddressFields on MemberAddressType {
       final response = await _graphService.client.query(
         QueryOptions(
           onError: (error) {
-            log("::: add address error: $error :::");
           },
           document: gql(r''' 
           mutation UpdateMemberAddresses(
@@ -146,7 +145,6 @@ fragment memberAddressFields on MemberAddressType {
           fetchPolicy: FetchPolicy.noCache,
         ),
       );
-      log("******** response.data - add user response :: $response ********");
 
       if (response.data != null) {
         final address =
@@ -167,7 +165,6 @@ fragment memberAddressFields on MemberAddressType {
       final response = await _graphService.client.query(
         QueryOptions(
           onError: (error) {
-            log("::: add address error: $error :::");
           },
           document: gql(r''' 
           mutation DeleteMemberAddresses($command: InputDeleteMemberAddressType!) {
@@ -193,7 +190,6 @@ fragment memberAddressFields on MemberAddressType {
           fetchPolicy: FetchPolicy.noCache,
         ),
       );
-      log("******** response.data - add user response :: $response ********");
 
       if (response.data != null) {
         final address =

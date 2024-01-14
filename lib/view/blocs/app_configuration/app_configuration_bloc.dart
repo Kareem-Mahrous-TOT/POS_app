@@ -41,7 +41,6 @@ class AppConfigurationBloc
           final isUserAnonymous =
               preferences.getBool(LocalKeys.isUserAnonymous) ?? false;
 
-          log("USER ID - app config:: $userId ###");
 
           final configResponse = await appConfigurationRepository.get();
           final userResponse = await authRepository.getUser();

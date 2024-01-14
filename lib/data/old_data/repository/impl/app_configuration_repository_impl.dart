@@ -15,10 +15,8 @@ class AppConfigurationRepositoryImpl implements AppConfigurationRepository {
     try {
       final source = await rootBundle.loadString(path, cache: false);
       final Map<String, dynamic> response = json.decode(source);
-      log("response::: $response ---->");
       return Right(AppConfigurationModel.fromJson(response));
     } catch (e) {
-      log("response::: $e ---->");
       return Future.value(Left(e.toString()));
     }
   }
