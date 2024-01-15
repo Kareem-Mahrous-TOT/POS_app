@@ -29,7 +29,6 @@ class _ReportsPageState extends State<ReportsPage> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     final List<Tab> tabs = [

@@ -6,10 +6,10 @@ part 'sales_model.g.dart';
 @freezed
 class SalesModel with _$SalesModel {
   const factory SalesModel({
-    required String timestamp,
-    required bool status,
-    required String message,
-    required SalesData data,
+     String? timestamp,
+     bool? status,
+     String? message,
+     SalesData? data,
   }) = _SalesModel;
 
   factory SalesModel.fromJson(Map<String, dynamic> json) =>
@@ -19,9 +19,9 @@ class SalesModel with _$SalesModel {
 @freezed
 class SalesData with _$SalesData {
   const factory SalesData({
-    required Statistic statistic,
-    required List<Order> orders,
-    required Meta meta,
+     Statistic? statistic,
+     List<Order>? orders,
+     Meta? meta,
   }) = _SalesData;
 
   factory SalesData.fromJson(Map<String, dynamic> json) =>
@@ -31,21 +31,21 @@ class SalesData with _$SalesData {
 @freezed
 class Statistic with _$Statistic {
   const factory Statistic({
-    @JsonKey(name: 'progress_orders_count') required int? progressOrdersCount,
-    @JsonKey(name: 'delivered_orders_count') required int? deliveredOrdersCount,
+    @JsonKey(name: 'progress_orders_count')  int? progressOrdersCount,
+    @JsonKey(name: 'delivered_orders_count')  int? deliveredOrdersCount,
     @JsonKey(name: 'total_delivered_price')
-    required double? totalDeliveredPrice,
-    @JsonKey(name: 'last_delivered_fee') required double? lastDeliveredFee,
-    @JsonKey(name: 'cancel_orders_count') required int? cancelOrdersCount,
-    @JsonKey(name: 'new_orders_count') required int? newOrdersCount,
-    @JsonKey(name: 'accepted_orders_count') required int? acceptedOrdersCount,
-    @JsonKey(name: 'cooking_orders_count') required int? cookingOrdersCount,
-    @JsonKey(name: 'ready_orders_count') required int? readyOrdersCount,
-    @JsonKey(name: 'on_a_way_orders_count') required int? onAWayOrdersCount,
-    @JsonKey(name: 'orders_count') required int? ordersCount,
-    @JsonKey(name: 'total_price') required double? totalPrice,
-    @JsonKey(name: 'today_count') required int? todayCount,
-    required int total,
+     double? totalDeliveredPrice,
+    @JsonKey(name: 'last_delivered_fee')  double? lastDeliveredFee,
+    @JsonKey(name: 'cancel_orders_count')  int? cancelOrdersCount,
+    @JsonKey(name: 'new_orders_count')  int? newOrdersCount,
+    @JsonKey(name: 'accepted_orders_count')  int? acceptedOrdersCount,
+    @JsonKey(name: 'cooking_orders_count')  int? cookingOrdersCount,
+    @JsonKey(name: 'ready_orders_count')  int? readyOrdersCount,
+    @JsonKey(name: 'on_a_way_orders_count')  int? onAWayOrdersCount,
+    @JsonKey(name: 'orders_count')  int? ordersCount,
+    @JsonKey(name: 'total_price')  double? totalPrice,
+    @JsonKey(name: 'today_count')  int? todayCount,
+     int? total,
   }) = _Statistic;
 
   factory Statistic.fromJson(Map<String, dynamic> json) =>
@@ -55,31 +55,31 @@ class Statistic with _$Statistic {
 @freezed
 class Order with _$Order {
   const factory Order({
-    required int? id,
-    @JsonKey(name: 'user_id') required int? userId,
-    @JsonKey(name: 'total_price') required double? totalPrice,
-    @JsonKey(name: 'origin_price') required double? originPrice,
-    @JsonKey(name: 'seller_fee') required double? sellerFee,
-    required int? rate,
-    @JsonKey(name: 'order_details_count') required int? orderDetailsCount,
-    required double? tax,
-    @JsonKey(name: 'commission_fee') required int? commissionFee,
-    @JsonKey(name: 'service_fee') required int? serviceFee,
-    required String? status,
-    required Location? location,
-    required Address? address,
-    @JsonKey(name: 'delivery_type') required String? deliveryType,
-    @JsonKey(name: 'delivery_date') required String? deliveryDate,
-    @JsonKey(name: 'delivery_time') required String? deliveryTime,
-    @JsonKey(name: 'delivery_date_time') required String? deliveryDateTime,
-    required bool? current,
-    @JsonKey(name: 'created_at') required String? createdAt,
-    @JsonKey(name: 'updated_at') required String? updatedAt,
-    required dynamic deliveryman,
-    required Shop? shop,
-    required Currency? currency,
-    required User? user,
-    required Transaction? transaction,
+     int? id,
+    @JsonKey(name: 'user_id')  int? userId,
+    @JsonKey(name: 'total_price')  double? totalPrice,
+    @JsonKey(name: 'origin_price')  double? originPrice,
+    @JsonKey(name: 'seller_fee')  double? sellerFee,
+     int? rate,
+    @JsonKey(name: 'order_details_count')  int? orderDetailsCount,
+     double? tax,
+    @JsonKey(name: 'commission_fee')  int? commissionFee,
+    @JsonKey(name: 'service_fee')  int? serviceFee,
+     String? status,
+     Location? location,
+     Address? address,
+    @JsonKey(name: 'delivery_type')  String? deliveryType,
+    @JsonKey(name: 'delivery_date')  String? deliveryDate,
+    @JsonKey(name: 'delivery_time')  String? deliveryTime,
+    @JsonKey(name: 'delivery_date_time')  String? deliveryDateTime,
+     bool? current,
+    @JsonKey(name: 'created_at')  String? createdAt,
+    @JsonKey(name: 'updated_at')  String? updatedAt,
+     dynamic deliveryman,
+     Shop? shop,
+     Currency? currency,
+     User? user,
+     Transaction? transaction,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
@@ -88,8 +88,8 @@ class Order with _$Order {
 @freezed
 class Location with _$Location {
   const factory Location({
-    required double? latitude,
-    required double? longitude,
+     double? latitude,
+     double? longitude,
   }) = _Location;
 
   factory Location.fromJson(Map<String, dynamic> json) =>
@@ -112,15 +112,15 @@ class Address with _$Address {
 @freezed
 class Shop with _$Shop {
   const factory Shop({
-    required int? id,
-    required bool? open,
-    required dynamic visibility,
-    required dynamic verify,
-    @JsonKey(name: 'logo_img') required String? logoImg,
-    @JsonKey(name: 'avg_rate') required double? avgRate,
-    @JsonKey(name: 'invite_link') required String? inviteLink,
-    @JsonKey(name: 'products_count') required int? productsCount,
-    required Translation? translation,
+     int? id,
+     bool? open,
+     dynamic visibility,
+     dynamic verify,
+    @JsonKey(name: 'logo_img')  String? logoImg,
+    @JsonKey(name: 'avg_rate')  double? avgRate,
+    @JsonKey(name: 'invite_link')  String? inviteLink,
+    @JsonKey(name: 'products_count')  int? productsCount,
+     Translation? translation,
   }) = _Shop;
 
   factory Shop.fromJson(Map<String, dynamic> json) => _$ShopFromJson(json);
@@ -129,9 +129,9 @@ class Shop with _$Shop {
 @freezed
 class Translation with _$Translation {
   const factory Translation({
-    required int? id,
-    required String? locale,
-    required String? title,
+     int? id,
+     String? locale,
+     String? title,
   }) = _Translation;
 
   factory Translation.fromJson(Map<String, dynamic> json) =>
@@ -141,15 +141,15 @@ class Translation with _$Translation {
 @freezed
 class Currency with _$Currency {
   const factory Currency({
-    required int? id,
-    required String? symbol,
-    required String? title,
-    required int? rate,
-    @JsonKey(name: 'default') required bool? def,
-    required String? position,
-    required bool? active,
-    @JsonKey(name: 'created_at') required String? createdAt,
-    @JsonKey(name: 'updated_at') required String? updatedAt,
+     int? id,
+     String? symbol,
+     String? title,
+     int? rate,
+    @JsonKey(name: 'default')  bool? def,
+     String? position,
+     bool? active,
+    @JsonKey(name: 'created_at')  String? createdAt,
+    @JsonKey(name: 'updated_at')  String? updatedAt,
   }) = _Currency;
 
   factory Currency.fromJson(Map<String, dynamic> json) =>
@@ -159,13 +159,13 @@ class Currency with _$Currency {
 @freezed
 class User with _$User {
   const factory User({
-    required int id,
-    required String firstname,
-    required String? lastname,
-    @JsonKey(name: 'empty_p') required bool? emptyP,
-    required String? phone,
-    required dynamic active,
-    required String? role,
+     int? id,
+     String? firstname,
+     String? lastname,
+    @JsonKey(name: 'empty_p')  bool? emptyP,
+     String? phone,
+     dynamic active,
+     String? role,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -174,17 +174,17 @@ class User with _$User {
 @freezed
 class Transaction with _$Transaction {
   const factory Transaction({
-    required int? id,
-    @JsonKey(name: 'payable_id') required int? payableId,
-    required double? price,
-    required String? note,
-    required String? request,
-    @JsonKey(name: 'perform_time') required String? performTime,
-    required String? status,
-    @JsonKey(name: 'status_description') required String? statusDescription,
-    @JsonKey(name: 'created_at') required String? createdAt,
-    @JsonKey(name: 'updated_at') required String? updatedAt,
-    @JsonKey(name: 'payment_system') required PaymentSystem? paymentSystem,
+     int? id,
+    @JsonKey(name: 'payable_id')  int? payableId,
+     double? price,
+     String? note,
+     String? request,
+    @JsonKey(name: 'perform_time')  String? performTime,
+     String? status,
+    @JsonKey(name: 'status_description')  String? statusDescription,
+    @JsonKey(name: 'created_at')  String? createdAt,
+    @JsonKey(name: 'updated_at')  String? updatedAt,
+    @JsonKey(name: 'payment_system')  PaymentSystem? paymentSystem,
   }) = _Transaction;
 
   factory Transaction.fromJson(Map<String, dynamic> json) =>
@@ -194,12 +194,12 @@ class Transaction with _$Transaction {
 @freezed
 class PaymentSystem with _$PaymentSystem {
   const factory PaymentSystem({
-    required int? id,
-    required String? tag,
-    required int? input,
-    required bool? active,
-    @JsonKey(name: 'created_at') required String createdAt,
-    @JsonKey(name: 'updated_at') required String updatedAt,
+     int? id,
+     String? tag,
+     int? input,
+     bool? active,
+    @JsonKey(name: 'created_at')  String? createdAt,
+    @JsonKey(name: 'updated_at')  String? updatedAt,
   }) = _PaymentSystem;
 
   factory PaymentSystem.fromJson(Map<String, dynamic> json) =>
@@ -209,10 +209,10 @@ class PaymentSystem with _$PaymentSystem {
 @freezed
 class Meta with _$Meta {
   const factory Meta({
-    @JsonKey(name: 'current_page') required int? currentPage,
-    @JsonKey(name: 'per_page') required int? perPage,
-    @JsonKey(name: 'last_page') required int? lastPage,
-    required int total,
+    @JsonKey(name: 'current_page')  int? currentPage,
+    @JsonKey(name: 'per_page')  int? perPage,
+    @JsonKey(name: 'last_page')  int? lastPage,
+     int? total,
   }) = _Meta;
 
   factory Meta.fromJson(Map<String, dynamic> json) => _$MetaFromJson(json);

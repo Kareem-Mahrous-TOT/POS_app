@@ -5,7 +5,7 @@ import '../repo/products_repo_base.dart';
 import '../../../core/types/types.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
-class GetProductByIdUsecase
+class   GetProductByIdUsecase
     implements
         BaseUsecase<GetProductByIdParams,
             FutureEitherFailureOrType<ProdyctByIdRecord>> {

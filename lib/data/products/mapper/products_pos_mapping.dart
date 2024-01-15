@@ -58,6 +58,7 @@ extension ProductPOSMapping on List<Item> {
         ),
       );
     }
+
     return records;
   }
 }
