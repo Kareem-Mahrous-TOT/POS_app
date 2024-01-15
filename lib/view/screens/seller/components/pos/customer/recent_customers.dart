@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../../core/theme/palette.dart';
-import '../../../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../../../../data/models/response/tot_customers/tot_customers.dart';
 
 class CustomersListMolecule extends StatelessWidget {
   //Should be used in expanded or list

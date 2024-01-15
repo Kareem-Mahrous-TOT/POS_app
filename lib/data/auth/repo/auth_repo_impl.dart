@@ -48,7 +48,7 @@ class AuthRepoImpl implements AuthBaseRepo {
   }
 
   @override
-  Future<UserDataModel?> getUser() async {
+  Future<UserDataModel?> getUserData() async {
     try {
       final userModel = await _remoteDataSource.getUser();
       await _localDataSource.cacheUserInfo(

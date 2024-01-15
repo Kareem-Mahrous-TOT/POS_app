@@ -14,7 +14,7 @@ class LoginUsecase implements BaseUsecase<LoginParams, Future<bool>> {
       username: params.username,
       password: params.password,
     );
-    final didFetchUser = (await _authRepo.getUser()) != null;
+    final didFetchUser = (await _authRepo.getUserData()) != null;
 
     return didFetchUser && didFetchTokens;
   }

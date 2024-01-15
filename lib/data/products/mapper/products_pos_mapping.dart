@@ -7,7 +7,6 @@ import '../../../core/constants/local_keys.dart';
 
 extension ProductPOSMapping on List<Item> {
   List<ProductPOSRecord> toDomainPOS() {
-    // final data = this;
 
     List<ProductPOSRecord> records = [];
     final String currentFulfillmentCenterItem =

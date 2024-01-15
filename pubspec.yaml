@@ -27,7 +27,7 @@ dependencies:
   fluttertoast: ^8.2.4
   freezed_annotation: ^2.4.1
   get_it: ^7.6.4
-  go_router: ^12.1.1
+  go_router: ^13.0.1
   graphql_flutter: ^5.1.2
   intl: ^0.18.1
   json_annotation: ^4.8.1
@@ -37,7 +37,7 @@ dependencies:
     git:
       url: https://github.com/TOTPLATFORM/flutter.git
       path: packages/atomic_design
-      ref: merge/table_with_beta
+      ref: beta
   mocktail:
   equatable: ^2.0.5
 
