@@ -182,17 +182,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    // List<ValueNotifier<int>> counters = [];
-    // // widget.records.map((e) {
-    // //   return useState((e.quantity?.toInt() ?? 0));
-    // // }).toList();
-    // useEffect(() {
-    //   counters = widget.records.map((e) {
-    //     return useState((e.quantity?.toInt() ?? 0));
-    //   }).toList();
-    //   return null;
-    // }, [widget.records]);
-
     return Padding(
       padding: const EdgeInsets.only(left: 18.0, right: 8),
       child: Column(
@@ -232,14 +221,12 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                       style: context.titleMedium,
                     ),
                   ),
-                  // const Spacer(),
                   Expanded(
                     child: Text(
                       masterVariation.name!,
                       style: context.titleMedium,
                     ),
                   ),
-                  // const Spacer(),
                   Expanded(
                     child: Text(
                       masterVariation.price!.actual!.formattedAmount!,
@@ -295,7 +282,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder()),
                               style: context.titleMedium,
-                              // initialValue: counters[index].value.,
                               inputFormatters: [
                                 FilteringTextInputFormatter.digitsOnly,
                               ],

@@ -57,6 +57,7 @@ class Item with _$Item {
     Videos? videos, // Add the "videos" field here
     Associations? associations,
     dynamic vendor,
+    bool? inWishlist,
     List<ProductImage>? images, // Add the "images" field here
     AvailabilityData? availabilityData, // Add the "availabilityData" field here
     bool? hasVariations,

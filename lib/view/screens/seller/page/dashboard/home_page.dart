@@ -7,12 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
 import '../../../../../core/theme/palette.dart';
 import '../../../../../core/utils/display_snackbar.dart';
 import '../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../blocs/bag/bag_bloc.dart';
-import '../../../../blocs/menu/menu_cubit.dart';
 import '../../../../blocs/products/products_bloc.dart';
 import '../../../../ui_mappers/bag_organism_item.dart';
 import '../../../../ui_mappers/to_category_record.dart';
@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
     final fToast = useFToast(context: context);
-
     final List<double> discounts = useMemoized(
       () => [
         5,
@@ -48,10 +47,8 @@ class _HomePageState extends State<HomePage> {
         20,
       ],
     );
-
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -76,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
-                BlocConsumer<MenuCubit, MenuState>(listener: (context, state) {
+                BlocConsumer<MenuBloc, MenuState>(listener: (context, state) {
                   state.maybeWhen(
                     orElse: () {},
                     fetchFail: () {
@@ -95,9 +92,8 @@ class _HomePageState extends State<HomePage> {
                       successColor: Palette.primary,
                       falseColor: Palette.white,
                       onCategoryChanged: (selectedRecord) {
-                        context
-                            .read<MenuCubit>()
-                            .changeSelectedCategory(selectedRecord);
+                        context.read<MenuBloc>().add(
+                            MenuEvent.changeSelectedCategory(selectedRecord));
                         if (context.mounted) {
                           context.read<ProductsBloc>().add(
                                 ProductsEvent.fetch(

@@ -28,6 +28,21 @@ extension ProductMapping on List<Item>? {
       masterVariation = product;
       variations.insert(0, product);
 
+    for (final model in this) {
+      Variation masterVariation;
+      Variation? selectedVariation;
+      List<Variation> variations = [...model.variations!];
+      var product = Variation(
+        id: model.id,
+        availabilityData: model.availabilityData,
+        code: model.code,
+        name: model.name,
+        price: model.price,
+        productType: model.productType,
+        properties: model.properties,
+      );
+      masterVariation = product;
+      variations.insert(0, product);
       for (int i = 0; variations.length > i; i++) {
         var variation = variations[i];
         if (variation.availabilityData!.inventories!

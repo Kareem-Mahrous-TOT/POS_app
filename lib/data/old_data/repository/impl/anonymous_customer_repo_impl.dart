@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -60,6 +58,7 @@ class AnonymousCustomerRepoImpl implements AnonymousCustomerRepoBase {
 
         await preferences.setString(
             LocalKeys.memberId, userData.me.memberId ?? "");
+        // ignore: unused_local_variable
         final memberId = preferences.getString(LocalKeys.memberId);
 
         return Right(userData);

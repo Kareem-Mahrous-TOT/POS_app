@@ -42,7 +42,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                     isUpdating: false,
                     itemCount: createCartModel.cart.itemsCount ?? 0,
                   ));
-
           emit(state);
         }
 
@@ -61,8 +60,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
             final state = response.fold(
                 (failure) => FetchCartState.updateCartFail(failure.message),
                 (model) => model);
-
-          
           } catch (e) {
             emit(FetchCartState.updateCartFail(e.toString()));
           }
@@ -144,9 +141,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                     emit(value.copyWith(isUpdating: true));
                   }
                 });
-            // emit(FetchCartState.loading());
-            // await addCart(
-            //     storeId: StoreConfig.storeId, currencyCode: "EGP", userId: userId);
           },
           onDecrement: (cartItem) async {
             await state.maybeMap(

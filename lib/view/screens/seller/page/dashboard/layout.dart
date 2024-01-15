@@ -17,7 +17,6 @@ import 'home_page.dart';
 import 'order_page.dart';
 import 'reports_page.dart';
 import 'sales_page.dart';
-
 class LayoutScreen extends HookWidget {
   const LayoutScreen({super.key});
   @override
@@ -32,9 +31,7 @@ class LayoutScreen extends HookWidget {
           const SalesPage(),
           const ReportsPage(),
         ]);
-
     final fToast = useFToast(context: context);
-
     return BlocConsumer<LayoutBloc, LayoutState>(
       listener: (context, state) {
         state.maybeMap(

@@ -11,25 +11,20 @@ import '../../../../../../core/extensions/translate.dart';
 import '../../../../../../core/theme/palette.dart';
 import '../../../../../../data/products/model/qraph_product_model.dart';
 import '../../../../../blocs/product_details/product_details_bloc.dart';
-
 class TotPosFoodItemAlertDialogOrganism extends HookWidget {
   const TotPosFoodItemAlertDialogOrganism({
     super.key,
     required this.id,
     required this.onAddToCart,
   });
-
   final String id;
   final void Function(Item product, int count, List<Variation> variations)
       onAddToCart;
-
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-
     final counter = useState(1);
-
     useEffect(() {
       if (context.mounted) {
         context.read<ProductDetailsBloc>().add(
@@ -40,7 +35,6 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
       }
       return null;
     }, []);
-
     return BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
       builder: (context, state) {
         return state.when(

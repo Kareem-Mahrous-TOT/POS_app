@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/constants/store_config.dart';
@@ -85,8 +83,7 @@ fragment memberAddressFields on MemberAddressType {
     try {
       final response = await _graphService.client.query(
         QueryOptions(
-          onError: (error) {
-          },
+          onError: (error) {},
           document: gql(r''' 
           mutation UpdateMemberAddresses(
             $memberId: String!,
@@ -164,8 +161,7 @@ fragment memberAddressFields on MemberAddressType {
     try {
       final response = await _graphService.client.query(
         QueryOptions(
-          onError: (error) {
-          },
+          onError: (error) {},
           document: gql(r''' 
           mutation DeleteMemberAddresses($command: InputDeleteMemberAddressType!) {
   deleteMemberAddresses(command: $command) {

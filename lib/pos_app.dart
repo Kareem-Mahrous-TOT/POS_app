@@ -13,7 +13,7 @@ import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/inventory/inventory_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
-import 'view/blocs/menu/menu_cubit.dart';
+import 'view/blocs/menu/menu_bloc.dart';
 import 'view/blocs/order_details/order_details_bloc.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
@@ -59,7 +59,10 @@ class POSApp extends StatelessWidget {
                       (DateTime.now()).subtract(const Duration(days: 30))),
                   endDate: DateFormat("dd-MM-yyyy").format(DateTime.now()),
                 ))),
-          BlocProvider(create: (context) => getIt<MenuCubit>()..loadMenu()),
+          BlocProvider(
+              create: (context) =>
+                  getIt<MenuBloc>()..add(const MenuEvent.loadMenu())),
+
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),
           BlocProvider(

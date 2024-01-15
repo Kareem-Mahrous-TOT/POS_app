@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -17,10 +15,10 @@ class NetworkInterceptor implements InterceptorsWrapper {
     handleError?.call(err, handler);
 
     if (kDebugMode) {
-      log("***********************************");
-      log("Path [onError] $err");
-      log("Data [onError] $handler");
-      log("***********************************");
+      print("***********************************");
+      print("Path [onError] $err");
+      print("Data [onError] $handler");
+      print("***********************************");
     }
     return handler.next(err);
   }
@@ -29,10 +27,10 @@ class NetworkInterceptor implements InterceptorsWrapper {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final String? authToken = preferences.getString(LocalKeys.accessToken);
     if (kDebugMode) {
-      log("***********************************");
-      log("Path [onRequest] ${options.uri}");
-      log("Data [onRequest] ${options.data}");
-      log("***********************************");
+      print("***********************************");
+      print("Path [onRequest] ${options.uri}");
+      print("Data [onRequest] ${options.data}");
+      print("***********************************");
     }
 
     if (options.extra['skipAuthToken'] == true) {
@@ -46,12 +44,12 @@ class NetworkInterceptor implements InterceptorsWrapper {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (kDebugMode) {
-      log("###################################");
-      log("Status Code [onResponse] ${response.statusCode}");
-      log("Status Message [onResponse] ${response.statusMessage}");
-      log("Path [onResponse] ${response.requestOptions.uri}");
-      log("Data [onResponse] ${response.requestOptions.data}");
-      log("###################################");
+      print("###################################");
+      print("Status Code [onResponse] ${response.statusCode}");
+      print("Status Message [onResponse] ${response.statusMessage}");
+      print("Path [onResponse] ${response.requestOptions.uri}");
+      print("Data [onResponse] ${response.requestOptions.data}");
+      print("###################################");
     }
     return handler.next(response);
   }

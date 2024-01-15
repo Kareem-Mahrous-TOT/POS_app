@@ -1,4 +1,4 @@
-part of 'menu_cubit.dart';
+part of 'menu_bloc.dart';
 
 @freezed
 class MenuState with _$MenuState {

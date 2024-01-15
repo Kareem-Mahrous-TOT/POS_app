@@ -30,11 +30,9 @@ class _CustomerPageState extends State<CustomerPage> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-
     // final emailController = useTextEditingController();
     // final nameController = useTextEditingController();
     final fToast = useFToast(context: context);
-
     return Container(
       color: const Color.fromARGB(255, 229, 229, 229),
       child: SizedBox(
