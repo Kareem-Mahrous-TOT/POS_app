@@ -221,7 +221,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
       QueryOptions(
         document: gql(
             r'''query Products($storeId: String!, $filter: String, $sort: String) {
-    products(storeId: $storeId,first: 300, filter: $filter, sort: $sort) {
+    products(storeId: $storeId,first: 300, filter: $filter, sort: $sort, cultureName: "ar-EG") {
         totalCount
         items {
             name

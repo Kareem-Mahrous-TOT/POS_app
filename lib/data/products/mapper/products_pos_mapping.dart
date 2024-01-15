@@ -6,10 +6,10 @@ import 'package:tot_pos/depency_injection.dart';
 import '../../../core/constants/local_keys.dart';
 
 extension ProductPOSMapping on List<Item> {
-  List<ProductCardRecord> toDomainPOS() {
+  List<ProductPOSRecord> toDomainPOS() {
     // final data = this;
 
-    List<ProductCardRecord> records = [];
+    List<ProductPOSRecord> records = [];
     final String currentFulfillmentCenterItem =
         preferences.getString(LocalKeys.fulfillmentCenterId) ??
             StoreConfig.octoberBranchId;

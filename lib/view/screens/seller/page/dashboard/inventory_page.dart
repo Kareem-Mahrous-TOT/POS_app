@@ -20,6 +20,9 @@ class _InventoryPageState extends State<InventoryPage> {
   @override
   void initState() {
     searchController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<InventoryBloc>().add(InventoryEvent.fetch());
+    });
     super.initState();
   }
 
