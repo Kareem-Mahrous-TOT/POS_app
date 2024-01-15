@@ -1,47 +1,63 @@
-import 'package:flutter/foundation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/constants/store_config.dart';
+import 'package:tot_pos/data/products/model/qraph_product_model.dart';
+import 'package:tot_pos/depency_injection.dart';
 
 import '../../../core/constants/local_keys.dart';
-import '../../../core/constants/store_config.dart';
-import '../../../depency_injection.dart';
-import '../model/qraph_product_model.dart';
 
-extension ProductMapping on List<Item> {
-  List<ProductPOSRecord> toDomainPOS() {
-    List<ProductPOSRecord> records = [];
-    final String? currentFulfillmentCenterItem =
-        preferences.getString(LocalKeys.fulfillmentCenterId);
-    if (kDebugMode) {
-      print("$currentFulfillmentCenterItem current branch ");
-    }
+extension ProductPOSMapping on List<Item> {
+  List<ProductCardRecord> toDomainPOS() {
+    // final data = this;
+
+    List<ProductCardRecord> records = [];
+    final String currentFulfillmentCenterItem =
+        preferences.getString(LocalKeys.fulfillmentCenterId) ??
+            StoreConfig.octoberBranchId;
 
     for (final model in this) {
+      Variation masterVariation;
+      Variation? selectedVariation;
+
+      masterVariation = model.variations![0];
+
+      for (var variation in model.variations!) {
+        if (variation.availabilityData!.inventories!
+                .firstWhere(
+                    orElse: () => const Inventory(inStockQuantity: 0),
+                    (element) =>
+                        element.fulfillmentCenterId ==
+                        currentFulfillmentCenterItem)
+                .inStockQuantity! >
+            0) {
+          selectedVariation = variation;
+          break;
+        }
+      }
+      selectedVariation ??= masterVariation;
       records.add(
         (
-          id: model.id ?? "N/A",
-          sku: model.code ?? "N/A",
-          price: model.price?.actual?.formattedAmount.toString() ?? "N/A",
-          name: model.name ?? "",
-          quantity: model.availabilityData!.inventories!
+          id: model.id!,
+          variationID: selectedVariation.id!,
+          discount: (selectedVariation.price?.discountPercent! != 0)
+              ? "خصم ${((selectedVariation.price?.discountPercent!.toDouble() ?? 0) * 100).toInt()}%"
+              : "0",
+          imgUrl: model.imgSrc ?? "",
+          isFav: model.inWishlist,
+          isSpeedyDelivery: true,
+          price: selectedVariation.price?.actual?.formattedAmount ?? 'N/A',
+          label: "وصل حديثا",
+          name: selectedVariation.name!,
+          quantity: selectedVariation.availabilityData!.inventories!
               .firstWhere(
-                orElse: () => const Inventory(inStockQuantity: 0),
-                (element) =>
-                    element.fulfillmentCenterId ==
-                    (preferences.getString(LocalKeys.fulfillmentCenterId) ??
-                        StoreConfig.octoberBranchId),
-              )
+                  orElse: () => const Inventory(inStockQuantity: 0),
+                  (element) =>
+                      element.fulfillmentCenterId ==
+                      currentFulfillmentCenterItem)
               .inStockQuantity,
+          rating: 3.5
         ),
       );
     }
-    // .availabilityData!.inventories!
-    //     .firstWhere(
-    //         orElse: () => const Inventory(),
-    //         (element) =>
-    //             element.fulfillmentCenterId ==
-    //             StoreConfig.octoberBranchId)
-    //     .inStockQuantity
-    //     .toString(),
     return records;
   }
 }

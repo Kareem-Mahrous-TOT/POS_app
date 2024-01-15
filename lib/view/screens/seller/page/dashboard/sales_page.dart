@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../../../core/theme/palette.dart';
+import '../../../../blocs/orders/orders_bloc.dart';
 import '../../../../blocs/sales/sales_cubit.dart';
 import '../../components/pos/sales_card.dart';
 
@@ -18,6 +19,13 @@ class SalesPage extends StatefulWidget {
 class _SalesPageState extends State<SalesPage>
     with SingleTickerProviderStateMixin {
   int currentIndex = 0;
+  @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      context.read<OrdersBloc>().add(const OrdersEvent.getOrders());
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +112,7 @@ class _SalesPageState extends State<SalesPage>
 class SalesTabs extends StatelessWidget {
   const SalesTabs({super.key});
 
-  
-
-
-@override
+  @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -224,7 +229,4 @@ class SalesTabs extends StatelessWidget {
       },
     );
   }
-
-
-
 }

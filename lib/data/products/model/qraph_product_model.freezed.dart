@@ -667,6 +667,7 @@ mixin _$Item {
       throw _privateConstructorUsedError; // Add the "videos" field here
   Associations? get associations => throw _privateConstructorUsedError;
   dynamic get vendor => throw _privateConstructorUsedError;
+  bool? get inWishlist => throw _privateConstructorUsedError;
   List<ProductImage>? get images =>
       throw _privateConstructorUsedError; // Add the "images" field here
   AvailabilityData? get availabilityData =>
@@ -711,6 +712,7 @@ abstract class $ItemCopyWith<$Res> {
       Videos? videos,
       Associations? associations,
       dynamic vendor,
+      bool? inWishlist,
       List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
@@ -761,6 +763,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? videos = freezed,
     Object? associations = freezed,
     Object? vendor = freezed,
+    Object? inWishlist = freezed,
     Object? images = freezed,
     Object? availabilityData = freezed,
     Object? hasVariations = freezed,
@@ -833,6 +836,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      inWishlist: freezed == inWishlist
+          ? _value.inWishlist
+          : inWishlist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -987,6 +994,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       Videos? videos,
       Associations? associations,
       dynamic vendor,
+      bool? inWishlist,
       List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
@@ -1040,6 +1048,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? videos = freezed,
     Object? associations = freezed,
     Object? vendor = freezed,
+    Object? inWishlist = freezed,
     Object? images = freezed,
     Object? availabilityData = freezed,
     Object? hasVariations = freezed,
@@ -1112,6 +1121,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      inWishlist: freezed == inWishlist
+          ? _value.inWishlist
+          : inWishlist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -1190,6 +1203,7 @@ class _$ItemImpl implements _Item {
       this.videos,
       this.associations,
       this.vendor,
+      this.inWishlist,
       final List<ProductImage>? images,
       this.availabilityData,
       this.hasVariations,
@@ -1270,6 +1284,8 @@ class _$ItemImpl implements _Item {
   final Associations? associations;
   @override
   final dynamic vendor;
+  @override
+  final bool? inWishlist;
   final List<ProductImage>? _images;
   @override
   List<ProductImage>? get images {
@@ -1330,7 +1346,7 @@ class _$ItemImpl implements _Item {
 
   @override
   String toString() {
-    return 'Item(name: $name, id: $id, brandName: $brandName, imgSrc: $imgSrc, breadcrumbs: $breadcrumbs, outerId: $outerId, catalogId: $catalogId, price: $price, prices: $prices, minVariationPrice: $minVariationPrice, properties: $properties, videos: $videos, associations: $associations, vendor: $vendor, images: $images, availabilityData: $availabilityData, hasVariations: $hasVariations, variations: $variations, code: $code, productType: $productType, minQuantity: $minQuantity, maxQuantity: $maxQuantity, slug: $slug, descriptions: $descriptions, description: $description, category: $category, masterVariation: $masterVariation, selectedQuantity: $selectedQuantity)';
+    return 'Item(name: $name, id: $id, brandName: $brandName, imgSrc: $imgSrc, breadcrumbs: $breadcrumbs, outerId: $outerId, catalogId: $catalogId, price: $price, prices: $prices, minVariationPrice: $minVariationPrice, properties: $properties, videos: $videos, associations: $associations, vendor: $vendor, inWishlist: $inWishlist, images: $images, availabilityData: $availabilityData, hasVariations: $hasVariations, variations: $variations, code: $code, productType: $productType, minQuantity: $minQuantity, maxQuantity: $maxQuantity, slug: $slug, descriptions: $descriptions, description: $description, category: $category, masterVariation: $masterVariation, selectedQuantity: $selectedQuantity)';
   }
 
   @override
@@ -1358,6 +1374,8 @@ class _$ItemImpl implements _Item {
             (identical(other.associations, associations) ||
                 other.associations == associations) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
+            (identical(other.inWishlist, inWishlist) ||
+                other.inWishlist == inWishlist) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.availabilityData, availabilityData) ||
                 other.availabilityData == availabilityData) &&
@@ -1403,6 +1421,7 @@ class _$ItemImpl implements _Item {
         videos,
         associations,
         const DeepCollectionEquality().hash(vendor),
+        inWishlist,
         const DeepCollectionEquality().hash(_images),
         availabilityData,
         hasVariations,
@@ -1449,6 +1468,7 @@ abstract class _Item implements Item {
       final Videos? videos,
       final Associations? associations,
       final dynamic vendor,
+      final bool? inWishlist,
       final List<ProductImage>? images,
       final AvailabilityData? availabilityData,
       final bool? hasVariations,
@@ -1494,6 +1514,8 @@ abstract class _Item implements Item {
   Associations? get associations;
   @override
   dynamic get vendor;
+  @override
+  bool? get inWishlist;
   @override
   List<ProductImage>? get images;
   @override // Add the "images" field here

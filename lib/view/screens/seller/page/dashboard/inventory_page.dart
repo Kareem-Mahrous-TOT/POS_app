@@ -182,17 +182,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    // List<ValueNotifier<int>> counters = [];
-    // // widget.records.map((e) {
-    // //   return useState((e.quantity?.toInt() ?? 0));
-    // // }).toList();
-    // useEffect(() {
-    //   counters = widget.records.map((e) {
-    //     return useState((e.quantity?.toInt() ?? 0));
-    //   }).toList();
-    //   return null;
-    // }, [widget.records]);
-
     return Padding(
       padding: const EdgeInsets.only(left: 18.0, right: 8),
       child: Column(
@@ -222,10 +211,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
               final masterVariation = product.variations!.firstWhere(
                   orElse: () => product.variations!.first,
                   (element) => element.isMaster);
-              // counter.value = record.quantity!.toInt();
-              // int counter = record.quantity!.toInt();
-              // print("counter is ${counter}");
-
               return ExpansionTile(
                 shape: const RoundedRectangleBorder(side: BorderSide.none),
                 tilePadding: EdgeInsets.zero,
@@ -236,14 +221,12 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                       style: context.titleMedium,
                     ),
                   ),
-                  // const Spacer(),
                   Expanded(
                     child: Text(
                       masterVariation.name!,
                       style: context.titleMedium,
                     ),
                   ),
-                  // const Spacer(),
                   Expanded(
                     child: Text(
                       masterVariation.price!.actual!.formattedAmount!,

@@ -10,6 +10,7 @@ import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
 import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
+import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
 
 import 'core/network/api_consumer.dart';
@@ -27,7 +28,6 @@ import 'data/inventory/repo/inventory_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
 import 'data/old_data/repository/base/user_address_repo_base.dart';
-// import 'data/old_data/repository/impl/customer_repo_impl.dart';
 import 'data/old_data/repository/impl/user_address_repo_impl.dart';
 import 'data/orders/data_source/local_data_source.dart';
 import 'data/orders/data_source/remote_data_source.dart';
@@ -77,7 +77,6 @@ import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
 import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
 import 'view/blocs/layout/layout_bloc.dart';
 import 'view/blocs/login/login_bloc.dart';
-import 'view/blocs/menu/menu_cubit.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
@@ -91,200 +90,222 @@ final GetIt getIt = GetIt.instance;
 SharedPreferences preferences = getIt<SharedPreferences>();
 
 Future<void> getItInit() async {
+  _Dependencies dependencies = _Dependencies();
+
   //external
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  getIt.registerSingleton<SharedPreferences>(sharedPreferences);
-  getIt.registerSingleton<Dio>(Dio());
+  await dependencies.externalDependecies();
 
-  //--------------------------------------------------------------------------
   //core
-  getIt.registerSingleton<ApiConsumer>(
-      DioConsumer(dio: getIt(), sharedPrefs: getIt()));
-  getIt.registerSingleton<HttpLink>(
-      MyHttpLink(apiConsumer: getIt(), sharedPrefs: getIt()));
-  getIt.registerSingleton<GraphQLConfig>(GraphQLConfig(httpLink: getIt()));
-  getIt.registerSingleton<GraphService>(GraphService(graphQLConfig: getIt()));
+  dependencies.coreDependecies();
 
-  //--------------------------------------------------------------------------
   //data sources
-  //? auth
-  getIt.registerSingleton<AuthLocalDataSource>(
-      AuthLocalDataSourceImpl(sharedPreferences: getIt()));
-  getIt.registerSingleton<AuthRemoteDataSource>(AuthRemoteDataSourceImpl(
-    graphService: getIt(),
-    apiConsumer: getIt(),
-  ));
-  getIt
-      .registerSingleton<ProductsRemoteDataSource>(ProductsRemoteDataSourceImpl(
-    graphService: getIt(),
-  ));
-  getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
-  //? orders
-  getIt.registerSingleton<OrdersRemoteDataSource>(OrdersRemoteDataSourceImpl(
-    graphService: getIt(),
-    apiConsumer: getIt(),
-  ));
-  getIt.registerSingleton<InventoryRemoteDataSource>(
-      InventoryRemoteDataSourceImpl(
-    apiConsumer: getIt(),
-  ));
-  getIt.registerSingleton<OrdersLocalDataSource>(
-      OrdersLocalDataSourceImpl(preferences: getIt()));
-  //? sales
-  getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
-  //? report
-  getIt.registerSingleton<ReportLocalDataSource>(ReportLocalDataSourceImpl());
-  getIt.registerSingleton<ReportRemoteDataSource>(
-      ReportRemoteDataSourceImpl(apiConsumer: getIt()));
-  //? cart
-  getIt.registerSingleton<CartLocalDataSource>(
-      CartLocalDataSourceImpl(sharedPrefs: getIt()));
-  getIt.registerSingleton<CartRemoteDataSource>(
-      CartRemoteDataSourceImpl(graphService: getIt()));
-  //? bag
-  getIt.registerSingleton<BagLocalDataSource>(
-      BagLocalDataSourceImpl(sharedPrefs: getIt()));
-  //? contacts
-  getIt.registerSingleton<ContactsRemoteDataSource>(
-      ContactsRemoteDataSourceGraphImpl(graphService: getIt()));
+  dependencies.dataSourceDependecies();
 
-  //--------------------------------------------------------------------------
   //repos
-  getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
-    localDataSource: getIt(),
-    remotedataSource: getIt(),
-  ));
-  getIt.registerSingleton<ProductsRepoBase>(
-      ProductsRepoImpl(remoteDataSourceImpl: getIt()));
-  getIt.registerSingleton<AuthBaseRepo>(AuthRepoImpl(
-    apiConsumer: getIt(),
-    remoteDataSource: getIt(),
-    localDataSource: getIt(),
-  ));
-  getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
-  getIt.registerSingleton<ReportRepo>(ReportRepoImpl(
-    reportLocalDataSource: getIt(),
-    reportRemoteDataSource: getIt(),
-  ));
-  getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
-  getIt.registerSingleton<UserAddressRepoBase>(
-      UserAddressRepoImpl(graphService: getIt()));
-  getIt.registerSingleton<CartRepo>(CartRepoImpl(
-    cartLocalDataSource: getIt(),
-    cartremoteDataSource: getIt(),
-  ));
+  dependencies.repoDependecies();
 
-  getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
-  getIt.registerSingleton<InventoryRepo>(
-      InventoryRepoImpl(preferences: getIt(), remoteDataSource: getIt()));
-  getIt.registerSingleton<CustomersRepo>(CustomersRepoImpl(
-    remoteDataSource: getIt(),
-  ));
-
-  //--------------------------------------------------------------------------
   //usecase
-  //? auth
-  getIt.registerLazySingleton<LoginUsecase>(
-      () => LoginUsecase(authRepo: getIt()));
-  getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
-      () => FetchMenuCategoriesUsecase(menuRepo: getIt()));
-  //? products
-  getIt.registerLazySingleton<GetProductsUsecase>(
-      () => GetProductsUsecase(productsRepo: getIt()));
-  getIt.registerLazySingleton<GetProductByIdUsecase>(
-      () => GetProductByIdUsecase(productsRepo: getIt()));
-  //? reports
-  getIt.registerLazySingleton<PieChartUsecase>(
-      () => PieChartUsecase(reportRepo: getIt()));
-  getIt.registerLazySingleton<ReportCostUsecase>(
-      () => ReportCostUsecase(reportRepo: getIt()));
-  //? orders
-  getIt.registerLazySingleton<GetOrdersUseCase>(
-      () => GetOrdersUseCase(ordersRepo: getIt()));
-  getIt.registerLazySingleton<OrderStatisticsUsecase>(
-      () => OrderStatisticsUsecase(reportRepo: getIt()));
-  getIt.registerLazySingleton<GetOrderByIdUseCase>(
-      () => GetOrderByIdUseCase(ordersRepo: getIt()));
-  getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
-      () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
-  getIt.registerLazySingleton<CreateOrderFormCartUsecase>(
-      () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
-  getIt.registerLazySingleton<CreateOrderFromBagUsecase>(
-      () => CreateOrderFromBagUsecase(ordersRepo: getIt()));
-  //? bag
-  getIt.registerLazySingleton<CreateBagUsecase>(
-      () => CreateBagUsecase(bagRepo: getIt()));
-  //? cart
-  getIt
-      .registerLazySingleton<AddCartAddressUseCase>(() => AddCartAddressUseCase(
-            cartRepo: getIt(),
-            userAddressRepo: getIt(),
-          ));
-  getIt.registerLazySingleton<FetchCartUsecase>(
-      () => FetchCartUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<AddCartCopounUsecase>(
-      () => AddCartCopounUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<AddCartItemUsecase>(
-      () => AddCartItemUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<PrepareCartUsecase>(
-      () => PrepareCartUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<ChangeCartItemQuantityUsecase>(
-      () => ChangeCartItemQuantityUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<RemoveCartItemsUsecase>(
-      () => RemoveCartItemsUsecase(cartRepo: getIt()));
-  getIt.registerLazySingleton<RemoveCartUsecase>(
-      () => RemoveCartUsecase(cartRepo: getIt()));
-  //? fulfillment
-  getIt.registerLazySingleton<GetFulfillmentCentersUseCase>(
-      () => GetFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
-  getIt.registerLazySingleton<ChangeFulfillmentCentersUseCase>(
-      () => ChangeFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
-  //?
-  getIt.registerLazySingleton<GetUserUsecase>(
-      () => GetUserUsecase(authBaseRepo: getIt()));
-  //? inventory
-  getIt.registerLazySingleton<UpdateInventoryQuantityUsecase>(
-      () => UpdateInventoryQuantityUsecase(inventoryRepo: getIt()));
-  //? customers
-  getIt.registerLazySingleton<FetchCustomersUsecase>(
-      () => FetchCustomersUsecase(customersRepo: getIt()));
-  getIt.registerLazySingleton<AddCustomersUsecase>(
-      () => AddCustomersUsecase(customersRepo: getIt()));
+  dependencies.usecaseDependecies();
 
-  //--------------------------------------------------------------------------
   //blocs
-  // getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt(), getIt()));
-  getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
-  getIt
-      .registerFactory<OrderStatisticsBloc>(() => OrderStatisticsBloc(getIt()));
-  getIt.registerFactory<BagBloc>(() => BagBloc(
-        createOrderFromBagUsecase: getIt(),
-        createBagUsecase: getIt(),
-      ));
-  getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
-  getIt.registerFactory<InventoryBloc>(() => InventoryBloc(
-        updateInventoryUsecase: getIt(),
-        getProductsUsecase: getIt(),
-      ));
-  getIt.registerFactory<CurrentCustomerCubit>(
-      () => CurrentCustomerCubit(getUserUsecase: getIt()));
-  getIt.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
-      fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
-  // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
-  getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
-  getIt.registerFactory<ReportChartPieCubit>(
-      () => ReportChartPieCubit(pieChartUsecase: getIt()));
-  getIt.registerFactory<ReportCostCubit>(
-      () => ReportCostCubit(costUsecase: getIt()));
-  getIt.registerFactory<MenuCubit>(
-      () => MenuCubit(fetchMenuCategoriesUsecase: getIt()));
-  getIt.registerFactory<OrdersBloc>(() => OrdersBloc(
-        getOrderUseCase: getIt(),
-      ));
-  getIt.registerFactory<ProductsBloc>(
-      () => ProductsBloc(getProductsUsecase: getIt()));
-  getIt.registerFactory<ProductDetailsBloc>(
-      () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
-  getIt.registerFactory<OrderDetailsBloc>(
-      () => OrderDetailsBloc(getOrderByIdUseCase: getIt()));
+  dependencies.blocDependecies();
+}
+
+class _Dependencies {
+  void blocDependecies() {
+    getIt.registerFactory<LayoutBloc>(() => LayoutBloc(getIt()));
+    getIt.registerFactory<OrderStatisticsBloc>(
+        () => OrderStatisticsBloc(getIt()));
+    getIt.registerFactory<BagBloc>(() => BagBloc(
+          createOrderFromBagUsecase: getIt(),
+          createBagUsecase: getIt(),
+        ));
+    getIt.registerFactory<LoginBloc>(() => LoginBloc(loginUsecase: getIt()));
+    getIt.registerFactory<InventoryBloc>(() => InventoryBloc(
+          updateInventoryUsecase: getIt(),
+          getProductsUsecase: getIt(),
+        ));
+    getIt.registerFactory<CurrentCustomerCubit>(
+        () => CurrentCustomerCubit(getUserUsecase: getIt()));
+    getIt.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
+        fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
+    // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
+    getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
+    getIt.registerFactory<ReportChartPieCubit>(
+        () => ReportChartPieCubit(pieChartUsecase: getIt()));
+    getIt.registerFactory<ReportCostCubit>(
+        () => ReportCostCubit(costUsecase: getIt()));
+    getIt.registerFactory<MenuBloc>(() => MenuBloc(getIt()));
+    getIt.registerFactory<OrdersBloc>(() => OrdersBloc(
+          getOrderUseCase: getIt(),
+        ));
+    getIt.registerFactory<ProductsBloc>(
+        () => ProductsBloc(getProductsUsecase: getIt()));
+    getIt.registerFactory<ProductDetailsBloc>(
+        () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
+    getIt.registerFactory<OrderDetailsBloc>(
+        () => OrderDetailsBloc(getOrderByIdUseCase: getIt()));
+  }
+
+  void usecaseDependecies() {
+    //? auth
+
+    getIt.registerLazySingleton<LoginUsecase>(
+        () => LoginUsecase(authRepo: getIt()));
+    getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
+        () => FetchMenuCategoriesUsecase(menuRepo: getIt()));
+    //? products
+    getIt.registerLazySingleton<GetProductsUsecase>(
+        () => GetProductsUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<GetProductByIdUsecase>(
+        () => GetProductByIdUsecase(productsRepo: getIt()));
+    //? reports
+    getIt.registerLazySingleton<PieChartUsecase>(
+        () => PieChartUsecase(reportRepo: getIt()));
+    getIt.registerLazySingleton<ReportCostUsecase>(
+        () => ReportCostUsecase(reportRepo: getIt()));
+    //? orders
+    getIt.registerLazySingleton<GetOrdersUseCase>(
+        () => GetOrdersUseCase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<OrderStatisticsUsecase>(
+        () => OrderStatisticsUsecase(reportRepo: getIt()));
+    getIt.registerLazySingleton<GetOrderByIdUseCase>(
+        () => GetOrderByIdUseCase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
+        () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<CreateOrderFormCartUsecase>(
+        () => CreateOrderFormCartUsecase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<CreateOrderFromBagUsecase>(
+        () => CreateOrderFromBagUsecase(ordersRepo: getIt()));
+    //? bag
+    getIt.registerLazySingleton<CreateBagUsecase>(
+        () => CreateBagUsecase(bagRepo: getIt()));
+    //? cart
+    getIt.registerLazySingleton<AddCartAddressUseCase>(
+        () => AddCartAddressUseCase(
+              cartRepo: getIt(),
+              userAddressRepo: getIt(),
+            ));
+    getIt.registerLazySingleton<FetchCartUsecase>(
+        () => FetchCartUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<AddCartCopounUsecase>(
+        () => AddCartCopounUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<AddCartItemUsecase>(
+        () => AddCartItemUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<PrepareCartUsecase>(
+        () => PrepareCartUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<ChangeCartItemQuantityUsecase>(
+        () => ChangeCartItemQuantityUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<RemoveCartItemsUsecase>(
+        () => RemoveCartItemsUsecase(cartRepo: getIt()));
+    getIt.registerLazySingleton<RemoveCartUsecase>(
+        () => RemoveCartUsecase(cartRepo: getIt()));
+    //? fulfillment
+    getIt.registerLazySingleton<GetFulfillmentCentersUseCase>(
+        () => GetFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
+    getIt.registerLazySingleton<ChangeFulfillmentCentersUseCase>(
+        () => ChangeFulfillmentCentersUseCase(fulfillmentrepo: getIt()));
+    //?
+    getIt.registerLazySingleton<GetUserUsecase>(
+        () => GetUserUsecase(authBaseRepo: getIt()));
+    //? inventory
+    getIt.registerLazySingleton<UpdateInventoryQuantityUsecase>(
+        () => UpdateInventoryQuantityUsecase(inventoryRepo: getIt()));
+    //? customers
+    getIt.registerLazySingleton<FetchCustomersUsecase>(
+        () => FetchCustomersUsecase(customersRepo: getIt()));
+    getIt.registerLazySingleton<AddCustomersUsecase>(
+        () => AddCustomersUsecase(customersRepo: getIt()));
+  }
+
+  void repoDependecies() {
+    getIt.registerSingleton<OrdersRepoBase>(OrdersRepoImpl(
+      localDataSource: getIt(),
+      remotedataSource: getIt(),
+    ));
+    getIt.registerSingleton<ProductsRepoBase>(
+        ProductsRepoImpl(remoteDataSourceImpl: getIt()));
+    getIt.registerSingleton<AuthBaseRepo>(AuthRepoImpl(
+      apiConsumer: getIt(),
+      remoteDataSource: getIt(),
+      localDataSource: getIt(),
+    ));
+    getIt.registerSingleton<SalesRepo>(SalesRepoImpl(salesDataSource: getIt()));
+    getIt.registerSingleton<ReportRepo>(ReportRepoImpl(
+      reportLocalDataSource: getIt(),
+      reportRemoteDataSource: getIt(),
+    ));
+    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
+    getIt.registerSingleton<UserAddressRepoBase>(
+        UserAddressRepoImpl(graphService: getIt()));
+    getIt.registerSingleton<CartRepo>(CartRepoImpl(
+      cartLocalDataSource: getIt(),
+      cartremoteDataSource: getIt(),
+    ));
+
+    getIt.registerSingleton<BagRepo>(BagRepoImpl(localDataSource: getIt()));
+    getIt.registerSingleton<InventoryRepo>(
+        InventoryRepoImpl(preferences: getIt(), remoteDataSource: getIt()));
+    getIt.registerSingleton<CustomersRepo>(CustomersRepoImpl(
+      remoteDataSource: getIt(),
+    ));
+  }
+
+  void dataSourceDependecies() {
+    //? auth
+    getIt.registerSingleton<AuthLocalDataSource>(
+        AuthLocalDataSourceImpl(sharedPreferences: getIt()));
+    getIt.registerSingleton<AuthRemoteDataSource>(AuthRemoteDataSourceImpl(
+      graphService: getIt(),
+      apiConsumer: getIt(),
+    ));
+    getIt.registerSingleton<ProductsRemoteDataSource>(
+        ProductsRemoteDataSourceImpl(
+      graphService: getIt(),
+    ));
+    getIt.registerSingleton<MenuDataSource>(MenuDataSourceImpl());
+    //? orders
+    getIt.registerSingleton<OrdersRemoteDataSource>(OrdersRemoteDataSourceImpl(
+      graphService: getIt(),
+      apiConsumer: getIt(),
+    ));
+    getIt.registerSingleton<InventoryRemoteDataSource>(
+        InventoryRemoteDataSourceImpl(
+      apiConsumer: getIt(),
+    ));
+    getIt.registerSingleton<OrdersLocalDataSource>(
+        OrdersLocalDataSourceImpl(preferences: getIt()));
+    //? sales
+    getIt.registerSingleton<SalesDataSource>(SalesDataSourceImpl());
+    //? report
+    getIt.registerSingleton<ReportLocalDataSource>(ReportLocalDataSourceImpl());
+    getIt.registerSingleton<ReportRemoteDataSource>(
+        ReportRemoteDataSourceImpl(apiConsumer: getIt()));
+    //? cart
+    getIt.registerSingleton<CartLocalDataSource>(
+        CartLocalDataSourceImpl(sharedPrefs: getIt()));
+    getIt.registerSingleton<CartRemoteDataSource>(
+        CartRemoteDataSourceImpl(graphService: getIt()));
+    //? bag
+    getIt.registerSingleton<BagLocalDataSource>(
+        BagLocalDataSourceImpl(sharedPrefs: getIt()));
+    //? contacts
+    getIt.registerSingleton<ContactsRemoteDataSource>(
+        ContactsRemoteDataSourceGraphImpl(graphService: getIt()));
+  }
+
+  void coreDependecies() {
+    getIt.registerSingleton<ApiConsumer>(
+        DioConsumer(dio: getIt(), sharedPrefs: getIt()));
+    getIt.registerSingleton<HttpLink>(
+        MyHttpLink(apiConsumer: getIt(), sharedPrefs: getIt()));
+    getIt.registerSingleton<GraphQLConfig>(GraphQLConfig(httpLink: getIt()));
+    getIt.registerSingleton<GraphService>(GraphService(graphQLConfig: getIt()));
+  }
+
+  Future<void> externalDependecies() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    getIt.registerSingleton<SharedPreferences>(sharedPreferences);
+    getIt.registerSingleton<Dio>(Dio());
+  }
 }

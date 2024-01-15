@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -50,17 +49,17 @@ class MyHttpLink extends HttpLink {
             ),
           ) as Map<String, dynamic>?;
 
-          log("=================================================");
-          log("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
-          log("=================================================");
-          log("::: GRAPHQL: request:: ${httpResponse.request} :::");
-          log("=================================================");
-          log("::: GRAPHQL: ${httpResponse.runtimeType} :::");
-          log("=================================================");
+          print("=================================================");
+          print("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
+          print("=================================================");
+          print("::: GRAPHQL: request:: ${httpResponse.request} :::");
+          print("=================================================");
+          print("::: GRAPHQL: ${httpResponse.runtimeType} :::");
+          print("=================================================");
           final String? errorCode =
               responseMap?['errors']?[0]?['extensions']?['code'];
 
-          log("::: errorCode: $errorCode :::");
+          print("::: errorCode: $errorCode :::");
 
           if (errorCode?.toLowerCase() == "unauthorized") {
             try {
@@ -76,7 +75,7 @@ class MyHttpLink extends HttpLink {
                   "password": password,
                 },
               );
-              
+
               await Future.wait([
                 sharedPrefs.setString(
                     LocalKeys.accessToken, response.data["access_token"]),

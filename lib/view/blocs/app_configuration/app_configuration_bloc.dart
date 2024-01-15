@@ -1,13 +1,12 @@
-import 'dart:developer';
+import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/constants/local_keys.dart';
 import '../../../data/auth/model/user_data_response_model.dart';
 import '../../../data/old_data/models/app_configuration_model.dart';
 import '../../../data/old_data/repository/base/app_configuration_repository.dart';
-import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../../../depency_injection.dart';
- import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../domain/auth/repo/auth_repo_base.dart';
 
 part 'app_configuration_bloc.freezed.dart';
 part 'app_configuration_event.dart';
@@ -40,8 +39,6 @@ class AppConfigurationBloc
               preferences.getBool(LocalKeys.isUserLoggedIn) ?? false;
           final isUserAnonymous =
               preferences.getBool(LocalKeys.isUserAnonymous) ?? false;
-
-          log("USER ID - app config:: $userId ###");
 
           final configResponse = await appConfigurationRepository.get();
           final userResponse = await authRepository.getUser();
