@@ -27,8 +27,6 @@ import 'data/customers/repo/customers_repo_impl.dart';
 import 'data/inventory/repo/inventory_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
 import 'data/menu/repo/repo_impl.dart';
-import 'data/old_data/repository/base/user_address_repo_base.dart';
-import 'data/old_data/repository/impl/user_address_repo_impl.dart';
 import 'data/orders/data_source/local_data_source.dart';
 import 'data/orders/data_source/remote_data_source.dart';
 import 'data/orders/repo/orders_repo_impl.dart';
@@ -44,7 +42,6 @@ import 'domain/auth/usecases/login_usecase.dart';
 import 'domain/bag/repo/bag_order_repo.dart';
 import 'domain/bag/usecases/create_bag_usecase.dart';
 import 'domain/cart/repo/cart_repo.dart';
-import 'domain/cart/usecases/add_cart_address_use_case.dart';
 import 'domain/cart/usecases/add_copoun_usecase.dart';
 import 'domain/cart/usecases/add_item_usecase.dart';
 import 'domain/cart/usecases/change_item_quantity_usecase.dart';
@@ -181,11 +178,6 @@ class _Dependencies {
     getIt.registerLazySingleton<CreateBagUsecase>(
         () => CreateBagUsecase(bagRepo: getIt()));
     //? cart
-    getIt.registerLazySingleton<AddCartAddressUseCase>(
-        () => AddCartAddressUseCase(
-              cartRepo: getIt(),
-              userAddressRepo: getIt(),
-            ));
     getIt.registerLazySingleton<FetchCartUsecase>(
         () => FetchCartUsecase(cartRepo: getIt()));
     getIt.registerLazySingleton<AddCartCopounUsecase>(
@@ -236,8 +228,6 @@ class _Dependencies {
       reportRemoteDataSource: getIt(),
     ));
     getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
-    getIt.registerSingleton<UserAddressRepoBase>(
-        UserAddressRepoImpl(graphService: getIt()));
     getIt.registerSingleton<CartRepo>(CartRepoImpl(
       cartLocalDataSource: getIt(),
       cartremoteDataSource: getIt(),

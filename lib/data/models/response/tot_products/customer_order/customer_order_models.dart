@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../../../core/enums/orders_status.dart';
+import '../../../../../core/enums/orders_status.dart';
 
 part 'customer_order_models.freezed.dart';
 part 'customer_order_models.g.dart';

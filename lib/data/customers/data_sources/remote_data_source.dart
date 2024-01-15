@@ -3,9 +3,9 @@ import 'package:tot_pos/core/network/graph_config.dart';
 
 import '../../../core/network/api_consumer.dart';
 import '../../../core/network/end_points.dart';
-import '../../old_data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
-import '../../old_data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
-import '../../old_data/models/response/tot_customers/tot_customers.dart';
+import '../../models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import '../../models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
+import '../../models/response/tot_customers/tot_customers.dart';
 
 abstract class ContactsRemoteDataSource {
   Future<List<Member>> fetchContacts({required String memberType});
@@ -88,7 +88,6 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
 
   @override
   Future<List<Member>> fetchContacts({required String memberType}) async {
-    // throw UnimplementedError();
     final queryResult =
         await _graphService.client.query(QueryOptions(document: gql(r'''
           query Contacts($sort: String) {

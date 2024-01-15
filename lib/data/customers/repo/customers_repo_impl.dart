@@ -3,8 +3,8 @@ import 'package:dartz/dartz.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
 import '../../../domain/customers/repo/customers_repo.dart';
-import '../../old_data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
-import '../../old_data/models/response/tot_customers/tot_customers.dart';
+import '../../models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
+import '../../models/response/tot_customers/tot_customers.dart';
 import '../data_sources/remote_data_source.dart';
 
 class CustomersRepoImpl implements CustomersRepo {

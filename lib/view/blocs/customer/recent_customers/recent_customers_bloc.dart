@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/usecase/usecase.dart';
-import '../../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../../data/models/response/tot_customers/tot_customers.dart';
 import '../../../../domain/customers/usecases/add_customer_usecase.dart';
 import '../../../../domain/customers/usecases/fetch_customers_usecase.dart';
 
