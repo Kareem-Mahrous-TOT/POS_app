@@ -20,3 +20,4 @@ void main() async {
       ? DevicePreview(builder: (context) => const POSApp())
       : const POSApp());
 }
+

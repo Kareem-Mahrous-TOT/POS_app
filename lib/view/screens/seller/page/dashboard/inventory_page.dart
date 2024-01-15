@@ -260,10 +260,8 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                   InventoryEvent.onIncrement(
                                       productId: masterVariation.id!,
                                       counter: widget.counters[index]));
-                              // counters[index].value++;
                               widget.controllers[index].text =
                                   widget.counters[index].toString();
-                              // print("update request is ${widget.isUpdating}");
                             },
                             child: Container(
                               padding: const EdgeInsets.all(10),
@@ -284,7 +282,6 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder()),
                               style: context.titleMedium,
-                              // initialValue: counters[index].value.,
                               inputFormatters: [
                                 FilteringTextInputFormatter.digitsOnly,
                               ],

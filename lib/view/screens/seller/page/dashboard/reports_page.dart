@@ -20,7 +20,7 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
-   @override
+  @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
       context.read<ReportCostCubit>().loadData();
@@ -28,7 +28,6 @@ class _ReportsPageState extends State<ReportsPage> {
     });
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
