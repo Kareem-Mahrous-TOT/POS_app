@@ -39,7 +39,6 @@ class AppConfigurationBloc
               preferences.getBool(LocalKeys.isUserLoggedIn) ?? false;
           final isUserAnonymous =
               preferences.getBool(LocalKeys.isUserAnonymous) ?? false;
-
           final configResponse = await appConfigurationRepository.get();
           final userResponse = await authRepository.getUser();
 

@@ -96,6 +96,7 @@ _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
           : AvailabilityData.fromJson(
               json['availabilityData'] as Map<String, dynamic>),
       hasVariations: json['hasVariations'] as bool?,
+      inWishlist: json['inWishlist'] as bool?,
       variations: (json['variations'] as List<dynamic>?)
           ?.map((e) => Variation.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -137,6 +138,7 @@ Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
       'images': instance.images?.map((e) => e.toJson()).toList(),
       'availabilityData': instance.availabilityData?.toJson(),
       'hasVariations': instance.hasVariations,
+      'inWishlist': instance.inWishlist,
       'variations': instance.variations?.map((e) => e.toJson()).toList(),
       'code': instance.code,
       'productType': instance.productType,

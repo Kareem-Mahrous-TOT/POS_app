@@ -2,15 +2,31 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
 import '../../../core/constants/local_keys.dart';
-import '../../../core/constants/store_config.dart';
 import '../../../depency_injection.dart';
 
-extension ProductMapping on List<Item> {
+extension ProductMapping on List<Item>? {
   List<ProductCardRecord> toDomain() {
+    // final data = this;
+
     List<ProductCardRecord> records = [];
-    final String currentFulfillmentCenterItem =
-        preferences.getString(LocalKeys.fulfillmentCenterId) ??
-            StoreConfig.octoberBranchId;
+    final String? currentFulfillmentCenterItem =
+        preferences.getString(LocalKeys.fulfillmentCenterId);
+
+    for (final model in this!) {
+      Variation masterVariation;
+      Variation? selectedVariation;
+      List<Variation> variations = [...model.variations!];
+      var product = Variation(
+        id: model.id,
+        availabilityData: model.availabilityData,
+        code: model.code,
+        name: model.name,
+        price: model.price,
+        productType: model.productType,
+        properties: model.properties,
+      );
+      masterVariation = product;
+      variations.insert(0, product);
 
     for (final model in this) {
       Variation masterVariation;
@@ -50,7 +66,7 @@ extension ProductMapping on List<Item> {
               ? "خصم ${((selectedVariation.price?.discountPercent!.toDouble() ?? 0) * 100).toInt()}%"
               : "0",
           imgUrl: model.imgSrc ?? "",
-          isFav: false,
+          isFav: model.inWishlist,
           isSpeedyDelivery: true,
           price: selectedVariation.price?.actual?.formattedAmount ?? 'N/A',
           label: "وصل حديثا",

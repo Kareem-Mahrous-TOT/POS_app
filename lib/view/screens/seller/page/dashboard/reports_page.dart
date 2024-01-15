@@ -30,6 +30,15 @@ class _ReportsPageState extends State<ReportsPage> {
   }
 
   @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      context.read<ReportCostCubit>().loadData();
+      context.read<ReportChartPieCubit>().loadData();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final List<Tab> tabs = [
       Tab(

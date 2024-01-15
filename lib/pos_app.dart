@@ -62,6 +62,7 @@ class POSApp extends StatelessWidget {
           BlocProvider(
               create: (context) =>
                   getIt<MenuBloc>()..add(const MenuEvent.loadMenu())),
+
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),
           BlocProvider(

@@ -673,6 +673,7 @@ mixin _$Item {
   AvailabilityData? get availabilityData =>
       throw _privateConstructorUsedError; // Add the "availabilityData" field here
   bool? get hasVariations => throw _privateConstructorUsedError;
+  bool? get inWishlist => throw _privateConstructorUsedError;
   List<Variation>? get variations =>
       throw _privateConstructorUsedError; // Add the "variations" field here
   String? get code => throw _privateConstructorUsedError;
@@ -716,6 +717,7 @@ abstract class $ItemCopyWith<$Res> {
       List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
+      bool? inWishlist,
       List<Variation>? variations,
       String? code,
       String? productType,
@@ -767,6 +769,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? images = freezed,
     Object? availabilityData = freezed,
     Object? hasVariations = freezed,
+    Object? inWishlist = freezed,
     Object? variations = freezed,
     Object? code = freezed,
     Object? productType = freezed,
@@ -851,6 +854,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       hasVariations: freezed == hasVariations
           ? _value.hasVariations
           : hasVariations // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      inWishlist: freezed == inWishlist
+          ? _value.inWishlist
+          : inWishlist // ignore: cast_nullable_to_non_nullable
               as bool?,
       variations: freezed == variations
           ? _value.variations
@@ -998,6 +1005,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       List<ProductImage>? images,
       AvailabilityData? availabilityData,
       bool? hasVariations,
+      bool? inWishlist,
       List<Variation>? variations,
       String? code,
       String? productType,
@@ -1052,6 +1060,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? images = freezed,
     Object? availabilityData = freezed,
     Object? hasVariations = freezed,
+    Object? inWishlist = freezed,
     Object? variations = freezed,
     Object? code = freezed,
     Object? productType = freezed,
@@ -1137,6 +1146,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.hasVariations
           : hasVariations // ignore: cast_nullable_to_non_nullable
               as bool?,
+      inWishlist: freezed == inWishlist
+          ? _value.inWishlist
+          : inWishlist // ignore: cast_nullable_to_non_nullable
+              as bool?,
       variations: freezed == variations
           ? _value._variations
           : variations // ignore: cast_nullable_to_non_nullable
@@ -1207,6 +1220,7 @@ class _$ItemImpl implements _Item {
       final List<ProductImage>? images,
       this.availabilityData,
       this.hasVariations,
+      this.inWishlist,
       final List<Variation>? variations,
       this.code,
       this.productType,
@@ -1302,6 +1316,8 @@ class _$ItemImpl implements _Item {
 // Add the "availabilityData" field here
   @override
   final bool? hasVariations;
+  @override
+  final bool? inWishlist;
   final List<Variation>? _variations;
   @override
   List<Variation>? get variations {
@@ -1381,6 +1397,8 @@ class _$ItemImpl implements _Item {
                 other.availabilityData == availabilityData) &&
             (identical(other.hasVariations, hasVariations) ||
                 other.hasVariations == hasVariations) &&
+            (identical(other.inWishlist, inWishlist) ||
+                other.inWishlist == inWishlist) &&
             const DeepCollectionEquality()
                 .equals(other._variations, _variations) &&
             (identical(other.code, code) || other.code == code) &&
@@ -1425,6 +1443,7 @@ class _$ItemImpl implements _Item {
         const DeepCollectionEquality().hash(_images),
         availabilityData,
         hasVariations,
+        inWishlist,
         const DeepCollectionEquality().hash(_variations),
         code,
         productType,
@@ -1472,6 +1491,7 @@ abstract class _Item implements Item {
       final List<ProductImage>? images,
       final AvailabilityData? availabilityData,
       final bool? hasVariations,
+      final bool? inWishlist,
       final List<Variation>? variations,
       final String? code,
       final String? productType,
@@ -1522,6 +1542,8 @@ abstract class _Item implements Item {
   AvailabilityData? get availabilityData;
   @override // Add the "availabilityData" field here
   bool? get hasVariations;
+  @override
+  bool? get inWishlist;
   @override
   List<Variation>? get variations;
   @override // Add the "variations" field here

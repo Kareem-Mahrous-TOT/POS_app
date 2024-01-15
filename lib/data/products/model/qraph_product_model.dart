@@ -61,6 +61,7 @@ class Item with _$Item {
     List<ProductImage>? images, // Add the "images" field here
     AvailabilityData? availabilityData, // Add the "availabilityData" field here
     bool? hasVariations,
+    bool? inWishlist,
     List<Variation>? variations, // Add the "variations" field here
     String? code,
     String? productType,
