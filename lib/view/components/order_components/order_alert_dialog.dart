@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../../../../core/theme/palette.dart';
-import '../../../../../../data/products/model/qraph_product_model.dart';
-import '../../../../../blocs/order_details/order_details_bloc.dart';
+import '../../../core/theme/palette.dart';
+import '../../../data/products/model/qraph_product_model.dart';
+import '../../blocs/order_details/order_details_bloc.dart';
 
 class OrderAlertDialog extends StatelessWidget {
   final double? height;

@@ -8,14 +8,14 @@ import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
-class InventoryPage extends StatefulWidget {
-  const InventoryPage({super.key});
+class InventoryScreen extends StatefulWidget {
+  const InventoryScreen({super.key});
 
   @override
-  State<InventoryPage> createState() => _InventoryPageState();
+  State<InventoryScreen> createState() => _InventoryScreenState();
 }
 
-class _InventoryPageState extends State<InventoryPage> {
+class _InventoryScreenState extends State<InventoryScreen> {
   late TextEditingController searchController;
   @override
   void initState() {

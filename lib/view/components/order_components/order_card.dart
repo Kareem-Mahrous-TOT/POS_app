@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
 
-import '../../../../../../core/theme/palette.dart';
-import '../../../../../../domain/orders/entities/order_entity.dart';
+import '../../../core/theme/palette.dart';
+import '../../../domain/orders/entities/order_entity.dart';
 import 'order_alert_dialog.dart';
 
 class TOTOrderCardMolecule extends StatelessWidget {

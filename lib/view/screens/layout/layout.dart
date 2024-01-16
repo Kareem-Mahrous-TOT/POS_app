@@ -6,17 +6,18 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/constants/assets.dart';
-import 'package:tot_pos/view/screens/seller/page/dashboard/inventory_page.dart';
+import 'package:tot_pos/view/screens/layout/inventory_screen.dart';
 
-import '../../../../../core/extensions/translate.dart';
-import '../../../../../core/routes/routes.dart';
-import '../../../../../core/theme/palette.dart';
-import '../../../../blocs/layout/layout_bloc.dart';
-import 'customer_page.dart';
-import 'home_page.dart';
-import 'order_page.dart';
-import 'reports_page.dart';
-import 'sales_page.dart';
+import '../../../core/extensions/translate.dart';
+import '../../../core/routes/routes.dart';
+import '../../../core/theme/palette.dart';
+import '../../blocs/layout/layout_bloc.dart';
+import 'customer_screen.dart';
+import 'home_screen.dart';
+import 'order_screen.dart';
+import 'reports_screen.dart';
+import 'sales_screen.dart';
+
 class LayoutScreen extends HookWidget {
   const LayoutScreen({super.key});
   @override
@@ -24,12 +25,12 @@ class LayoutScreen extends HookWidget {
     // double h = MediaQuery.sizeOf(context).height;
     double w = MediaQuery.sizeOf(context).width;
     final List<Widget> screens = useMemoized(() => [
-          const HomePage(),
-          const OrderPage(),
-          const CustomerPage(),
-          const InventoryPage(),
-          const SalesPage(),
-          const ReportsPage(),
+          const HomeScreen(),
+          const OrderScreen(),
+          const CustomerScreen(),
+          const InventoryScreen(),
+          const SalesScreen(),
+          const ReportsScreen(),
         ]);
     final fToast = useFToast(context: context);
     return BlocConsumer<LayoutBloc, LayoutState>(

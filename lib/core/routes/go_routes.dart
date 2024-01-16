@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../depency_injection.dart';
-import '../../view/screens/seller/page/dashboard/auth/login_page.dart';
-import '../../view/screens/seller/page/dashboard/layout.dart';
+import '../../view/screens/auth/login_screen.dart';
+import '../../view/screens/layout/layout.dart';
 import '../constants/local_keys.dart';
 import 'routes.dart';
 
@@ -30,7 +30,8 @@ final GoRouter allRoutes = GoRouter(
     GoRoute(
       path: Routes.login.withSlash,
       name: Routes.login,
-      builder: (BuildContext context, GoRouterState state) => const LoginPage(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const LoginScreen(),
     ),
   ],
 );

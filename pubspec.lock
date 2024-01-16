@@ -156,9 +156,11 @@ packages:
   carousel_slider_plus:
     dependency: transitive
     description:
-      path: "C:\\/Users/Mahrous/AppData/Local/Pub/Cache/git/flutter-1efded76a64b93cd88574b0450d1b9425cde8aa8/packages/carousel_slider_plus"
-      relative: true
-    source: path
+      path: "packages/carousel_slider_plus"
+      ref: beta
+      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
+      url: "https://github.com/TOTPLATFORM/flutter.git"
+    source: git
     version: "1.0.0"
   characters:
     dependency: transitive
@@ -353,7 +355,7 @@ packages:
     source: hosted
     version: "1.1.0"
   fl_chart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: fl_chart
       sha256: "5a74434cc83bf64346efb562f1a06eefaf1bcb530dc3d96a104f631a1eff8d79"
@@ -1166,10 +1168,19 @@ packages:
     description:
       path: "packages/atomic_design"
       ref: beta
-      resolved-ref: "1efded76a64b93cd88574b0450d1b9425cde8aa8"
+      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
+  tot_models:
+    dependency: transitive
+    description:
+      path: "packages/tot_models"
+      ref: beta
+      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
+      url: "https://github.com/TOTPLATFORM/flutter.git"
+    source: git
+    version: "0.0.2"
   typed_data:
     dependency: transitive
     description:

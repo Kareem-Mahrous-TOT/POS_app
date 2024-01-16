@@ -4,19 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../../../core/theme/palette.dart';
-import '../../../../blocs/orders/orders_bloc.dart';
-import '../../../../blocs/sales/sales_cubit.dart';
-import '../../components/pos/sales_card.dart';
+import '../../../core/theme/palette.dart';
+import '../../blocs/orders/orders_bloc.dart';
+import '../../blocs/sales/sales_cubit.dart';
+import '../../components/sales_card.dart';
 
-class SalesPage extends StatefulWidget {
-  const SalesPage({super.key});
+class SalesScreen extends StatefulWidget {
+  const SalesScreen({super.key});
 
   @override
-  State<SalesPage> createState() => _SalesPageState();
+  State<SalesScreen> createState() => _SalesScreenState();
 }
 
-class _SalesPageState extends State<SalesPage>
+class _SalesScreenState extends State<SalesScreen>
     with SingleTickerProviderStateMixin {
   int currentIndex = 0;
   @override

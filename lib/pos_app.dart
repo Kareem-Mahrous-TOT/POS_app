@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:tot_pos/view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 
 import 'core/generated/l10n/langs/app_localizations.dart';
 import 'core/routes/go_routes.dart';
@@ -18,6 +17,7 @@ import 'view/blocs/order_details/order_details_bloc.dart';
 import 'view/blocs/orders/orders_bloc.dart';
 import 'view/blocs/product_details/product_details_bloc.dart';
 import 'view/blocs/products/products_bloc.dart';
+import 'view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 import 'view/blocs/report/report_cost/report_cost_cubit.dart';
 import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
 import 'view/blocs/sales/sales_cubit.dart';

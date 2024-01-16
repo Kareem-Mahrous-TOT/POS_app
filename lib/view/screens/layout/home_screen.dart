@@ -7,23 +7,23 @@ import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
-import '../../../../../core/theme/palette.dart';
-import '../../../../../core/utils/display_snackbar.dart';
-import '../../../../../data/products/model/qraph_product_model.dart';
-import '../../../../blocs/bag/bag_bloc.dart';
-import '../../../../blocs/products/products_bloc.dart';
-import '../../../../ui_mappers/bag_organism_item.dart';
-import '../../../../ui_mappers/to_category_record.dart';
-import '../../components/pos/home_components/alert_dialog_bag.dart';
+import '../../../core/theme/palette.dart';
+import '../../../core/utils/display_snackbar.dart';
+import '../../../data/products/model/qraph_product_model.dart';
+import '../../blocs/bag/bag_bloc.dart';
+import '../../blocs/products/products_bloc.dart';
+import '../../ui_mappers/bag_organism_item.dart';
+import '../../ui_mappers/to_category_record.dart';
+import '../../components/home_components/alert_dialog_bag.dart';
 
-class HomePage extends StatefulHookWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulHookWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomeScreen> {
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
