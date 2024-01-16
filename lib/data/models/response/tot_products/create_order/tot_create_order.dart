@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../customers/requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
 
+import '../../../../customers/requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
 import '../customer_order/customer_order_models.dart';
 
 part 'tot_create_order.freezed.dart';
