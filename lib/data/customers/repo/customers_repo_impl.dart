@@ -4,7 +4,7 @@ import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
 import '../../../domain/customers/repo/customers_repo.dart';
 import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
-import '../../models/response/tot_customers/tot_customers.dart';
+import '../responses/customers_response/tot_customers.dart';
 import '../data_sources/remote_data_source.dart';
 
 class CustomersRepoImpl implements CustomersRepo {
