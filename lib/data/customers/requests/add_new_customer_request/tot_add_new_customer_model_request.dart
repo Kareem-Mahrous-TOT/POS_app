@@ -56,7 +56,6 @@ class Address with _$Address {
 class DynamicProperty with _$DynamicProperty {
   const factory DynamicProperty({
     String? objectId,
-    // List<Value>? values,
     String? name,
     String? description,
     String? objectType,
@@ -66,7 +65,6 @@ class DynamicProperty with _$DynamicProperty {
     bool? isRequired,
     int? displayOrder,
     String? valueType,
-    // List<DisplayName>? displayNames,
     DateTime? createdDate,
     DateTime? modifiedDate,
     String? createdBy,
