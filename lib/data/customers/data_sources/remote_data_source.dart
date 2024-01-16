@@ -4,8 +4,8 @@ import 'package:tot_pos/core/network/graph_config.dart';
 import '../../../core/network/api_consumer.dart';
 import '../../../core/network/end_points.dart';
 import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
-import '../../models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
-import '../../models/response/tot_customers/tot_customers.dart';
+import '../responses/add_new_customer/tot_add_new_customer_model.dart';
+import '../responses/customers_response/tot_customers.dart';
 
 abstract class ContactsRemoteDataSource {
   Future<List<Member>> fetchContacts({required String memberType});
