@@ -43,15 +43,15 @@ class ProductDetailsBloc
         await event.when(
             started: () {},
             fetchProductById: (productId) async {
-              await fetchProductById( productId: productId);
+              await fetchProductById(productId: productId);
             },
             changeMasterVariation: (masterVariation) async {
               state.maybeMap(
                   orElse: () {},
                   fetchProductByIdState: (value) {
-                    // for(final variation in value.variations ?? []){
-                    //   (variation.id == masterVariation.id)
-                    // }
+                    for (final variation in value.variations) {
+                      (variation.id == masterVariation.id);
+                    }
                     final variations = value.variations.map((variation) {
                       // element.isMaster = false;
                       return variation.copyWith(
@@ -59,7 +59,7 @@ class ProductDetailsBloc
                               ? true
                               : false);
                     }).toList();
-
+                    
                     emit(value.copyWith(
                         masterVariation: masterVariation,
                         variations: variations));

@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
 import '../../../core/usecase/usecase.dart';
-import '../../../data/models/response/tot_customers/tot_customers.dart';
+import '../../../data/customers/responses/customers_response/tot_customers.dart';
 import '../repo/customers_repo.dart';
 
 class AddCustomersUsecase

@@ -156,7 +156,7 @@ packages:
   carousel_slider_plus:
     dependency: transitive
     description:
-      path: "C:\\/Users/SIGMA/AppData/Local/Pub/Cache/git/flutter-1efded76a64b93cd88574b0450d1b9425cde8aa8/packages/carousel_slider_plus"
+      path: "C:\\/Users/Mahrous/AppData/Local/Pub/Cache/git/flutter-1efded76a64b93cd88574b0450d1b9425cde8aa8/packages/carousel_slider_plus"
       relative: true
     source: path
     version: "1.0.0"

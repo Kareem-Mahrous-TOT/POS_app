@@ -143,6 +143,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                           variations: product.variations!.map((variation) {
                             if (variation.isMaster) {
                               return variation.copyWith(
+                                selectedQuantity: inStockQuantity,
                                   availabilityData: variation.availabilityData!
                                       .copyWith(
                                           inventories: variation
@@ -162,7 +163,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                               return variation;
                             }
                           }).toList(),
-                          // selectedQuantity: inStockQuantity,
+                          selectedQuantity: inStockQuantity,
                           availabilityData: product.availabilityData!.copyWith(
                               inventories: product
                                   .availabilityData!.inventories!
