@@ -1,198 +1,184 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
 
-import '../../../core/theme/palette.dart';
 import '../../../domain/orders/entities/order_entity.dart';
-import 'order_alert_dialog.dart';
 
 class TOTOrderCardMolecule extends StatelessWidget {
   const TOTOrderCardMolecule({
     super.key,
     required this.orderEntity,
+    required this.onTap,
+    this.backgroundColor = Colors.white,
+    this.borderRadius,
+    this.orderNumberStyle,
+    this.dividerColor = Colors.grey,
+    this.bodyTextStyle,
     this.height,
     this.width,
+    this.spacing = 6,
+    this.margin,
+    this.padding,
+    this.dateLabel = "Date",
+    this.dateIcon,
+    this.dateFormat = "dd-MM-yyyy",
+    this.totalLabel = "Total",
+    this.totalIcon,
+    this.paymentMethodLabel = "Payment Method",
+    this.paymentIcon,
+    this.takeAwayLabel = "Take away",
+    this.takeAwayIcon,
+    this.takeAwayBorderRadius,
+    this.takeAwayPadding,
   });
-  final List<OrderEntity>? orderEntity;
+
+  final OrderEntity orderEntity;
+  final void Function(OrderEntity orderEntity) onTap;
+
   final double? height;
   final double? width;
+  final double spacing;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
+  final Color backgroundColor;
+  final BorderRadius? borderRadius;
+  final TextStyle? orderNumberStyle;
+  final TextStyle? bodyTextStyle;
+  final Color dividerColor;
+  final String dateLabel;
+  final IconData? dateIcon;
+  final String dateFormat;
+  final String totalLabel;
+  final IconData? totalIcon;
+  final String paymentMethodLabel;
+  final IconData? paymentIcon;
+  final String takeAwayLabel;
+  final IconData? takeAwayIcon;
+  final EdgeInsets? takeAwayPadding;
+  final BorderRadius? takeAwayBorderRadius;
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    return SizedBox(
-      height: height ?? h * 0.75,
-      width: width ?? w * 0.25,
-      child: ListView.builder(
-        itemCount: orderEntity!.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () async {
-              context
-                  .read<OrderDetailsBloc>()
-                  .add(OrderDetailsEvent.getOrderbyId(orderEntity![index].id));
-              await showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const OrderAlertDialog();
+    return Container(
+      height: height ?? h * 0.4,
+      width: width ?? w * 0.3,
+      margin: margin ?? const EdgeInsets.symmetric(vertical: 8.0),
+      padding: padding ??
+          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: borderRadius ?? BorderRadius.circular(20),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                overflow: TextOverflow.ellipsis,
+                orderEntity.orderNumber.toString(),
+                style: orderNumberStyle ?? context.titleLarge,
+              ),
+              IconButton(
+                icon: const Icon(Icons.keyboard_control_rounded),
+                color: Colors.black,
+                onPressed: () {
+                  onTap(orderEntity);
                 },
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Palette.white,
-                    borderRadius: BorderRadius.circular(20)),
-                height: h * 0.4,
-                width: w * 0.3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+            ],
+          ),
+          Divider(
+            thickness: 0.5,
+            height: 1,
+            color: dividerColor,
+          ),
+          Wrap(
+            spacing: spacing,
+            children: [
+              Icon(dateIcon ?? Icons.calendar_month),
+              RichText(
+                text: TextSpan(
+                  text: "$dateLabel: ",
+                  style: bodyTextStyle ?? context.titleMedium,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                overflow: TextOverflow.ellipsis,
-                                orderEntity![index].orderNumber.toString(),
-                                style: context.titleLarge,
-                              ),
-                              // Text(
-                              //   orderEntity![index].status,
-                              // ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                            icon: const Icon(Icons.keyboard_control_rounded),
-                            color: Palette.black,
-                            onPressed: () {}),
-                      ],
+                    TextSpan(
+                      text: DateFormat(dateFormat).format(DateTime.tryParse(
+                            orderEntity.date,
+                          ) ??
+                          DateTime.now()),
+                      style: bodyTextStyle ?? context.titleMedium,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Divider(
-                        thickness: 0.5,
-                        height: 1,
-                        color: Palette.grey,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.calendar_month),
-                          Text(
-                            "تاريخ العملية: ${DateFormat("dd-MM-yyyy ").format(DateTime.tryParse(
-                                  orderEntity![index].date,
-                                ) ?? DateTime.now())}",
-                            style: context.titleMedium,
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.payments_outlined),
-                          Text(
-                            "المجموع الكلي: ${orderEntity![index].price}",
-                            style: context.titleMedium,
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.payment_outlined),
-                          Text(
-                            "طريقة الدفع: ${orderEntity![index].paymentMethodType}",
-                            style: context.titleMedium,
-                          )
-                        ],
-                      ),
-                    ),
-                    // orderEntity![index].addresses == null ||
-                    //         orderEntity![index].addresses!.isEmpty
-                    //     ? const SizedBox.shrink()
-                    //     : Padding(
-                    //         padding: const EdgeInsets.all(8.0),
-                    //         child: Row(
-                    //           children: [
-                    //             const  Icon(IconData(_))
-                    //                 codePoint: 0xf2a9),
-                    //             Text(
-                    //                 " Address: ${orderEntity![index].addresses!.first}")
-                    //           ],
-                    //         ),
-                    //       ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          border: Border.all(),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 5.0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                orderEntity![index]
-                                        .objectType
-                                        .toString()
-                                        .contains("CustomerOrder")
-                                    ? Text(
-                                        "Take away",
-                                        style: context.titleMedium,
-                                      )
-                                    // : orderEntity![index].objectType == "Pickup"
-                                    //     ? const Text(
-                                    //         "Pickup")
-                                    //     : orderEntity![index]
-                                    //                 .objectType
-                                    //                 .toString() ==
-                                    //             "CustomerOrder"
-                                    //         ? const Text(
-                                    //             "Delivery")
-                                    : const SizedBox.shrink(),
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          color: Colors.black, width: 1)),
-                                  child: orderEntity![index]
-                                          .objectType
-                                          .contains("CustomerOrder")
-                                      ? const Icon(Icons.delivery_dining,
-                                          color: Palette.black)
-                                      : const SizedBox.shrink(),
-                                )
-                              ]),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
+            ],
+          ),
+          Wrap(
+            spacing: spacing,
+            children: [
+              Icon(totalIcon ?? Icons.payments_outlined),
+              RichText(
+                text: TextSpan(
+                  text: "$totalLabel: ",
+                  style: bodyTextStyle ?? context.titleMedium,
+                  children: [
+                    TextSpan(
+                      text: orderEntity.price,
+                      style: bodyTextStyle ?? context.titleMedium,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Wrap(
+            spacing: spacing,
+            children: [
+              Icon(paymentIcon ?? Icons.payment_outlined),
+              RichText(
+                text: TextSpan(
+                  text: "$paymentMethodLabel: ",
+                  style: bodyTextStyle ?? context.titleMedium,
+                  children: [
+                    TextSpan(
+                      text: orderEntity.paymentMethodType,
+                      style: bodyTextStyle ?? context.titleMedium,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: takeAwayPadding ??
+                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: takeAwayBorderRadius ?? BorderRadius.circular(20),
             ),
-          );
-        },
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    takeAwayLabel,
+                    style: bodyTextStyle ?? context.titleMedium,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black, width: 1)),
+                    child: Icon(takeAwayIcon ?? Icons.delivery_dining,
+                        color: Colors.black),
+                  )
+                ]),
+          )
+        ],
       ),
     );
   }
