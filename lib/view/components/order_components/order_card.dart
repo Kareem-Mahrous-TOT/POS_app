@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../domain/orders/entities/order_entity.dart';
+typedef POSOrderRecord = ({
+  String id,
+  String number,
+  String date,
+  String price,
+  String paymentMethod,
+});
 
 class TOTOrderCardMolecule extends StatelessWidget {
   const TOTOrderCardMolecule({
     super.key,
-    required this.orderEntity,
+    required this.orderRecord,
     required this.onTap,
     this.backgroundColor = Colors.white,
     this.borderRadius,
@@ -32,8 +38,8 @@ class TOTOrderCardMolecule extends StatelessWidget {
     this.takeAwayPadding,
   });
 
-  final OrderEntity orderEntity;
-  final void Function(OrderEntity orderEntity) onTap;
+  final POSOrderRecord orderRecord;
+  final void Function(String orderId) onTap;
 
   final double? height;
   final double? width;
@@ -81,14 +87,14 @@ class TOTOrderCardMolecule extends StatelessWidget {
             children: [
               Text(
                 overflow: TextOverflow.ellipsis,
-                orderEntity.orderNumber.toString(),
+                orderRecord.number,
                 style: orderNumberStyle ?? context.titleLarge,
               ),
               IconButton(
                 icon: const Icon(Icons.keyboard_control_rounded),
                 color: Colors.black,
                 onPressed: () {
-                  onTap(orderEntity);
+                  onTap(orderRecord.id);
                 },
               ),
             ],
@@ -109,7 +115,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: DateFormat(dateFormat).format(DateTime.tryParse(
-                            orderEntity.date,
+                            orderRecord.date,
                           ) ??
                           DateTime.now()),
                       style: bodyTextStyle ?? context.titleMedium,
@@ -129,7 +135,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                   style: bodyTextStyle ?? context.titleMedium,
                   children: [
                     TextSpan(
-                      text: orderEntity.price,
+                      text: orderRecord.price,
                       style: bodyTextStyle ?? context.titleMedium,
                     ),
                   ],
@@ -147,7 +153,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
                   style: bodyTextStyle ?? context.titleMedium,
                   children: [
                     TextSpan(
-                      text: orderEntity.paymentMethodType,
+                      text: orderRecord.paymentMethod,
                       style: bodyTextStyle ?? context.titleMedium,
                     ),
                   ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/components/order_components/order_alert_dialog.dart';
+import 'package:tot_pos/view/ui_mappers/order_entity_to_pos_record.dart';
 
 import '../../../core/theme/palette.dart';
 import '../../blocs/order_details/order_details_bloc.dart';
@@ -125,10 +126,10 @@ class _TOTListViewWithHeaderOrganismState
                         itemBuilder: (context, index) {
                           final orderEntity = orderEntities[index];
                           return TOTOrderCardMolecule(
-                            onTap: (orderEntity) async {
+                            onTap: (orderId) async {
                               context.read<OrderDetailsBloc>().add(
                                   OrderDetailsEvent.getOrderbyId(
-                                      orderEntity.id));
+                                      orderId));
                               await showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -136,7 +137,7 @@ class _TOTListViewWithHeaderOrganismState
                                 },
                               );
                             },
-                            orderEntity: orderEntity,
+                            orderRecord: orderEntity.toPosOrderRecord(),
                           );
                         },
                       ),
