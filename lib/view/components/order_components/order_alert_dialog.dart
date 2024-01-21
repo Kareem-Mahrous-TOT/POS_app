@@ -120,14 +120,8 @@ class OrderAlertDialog extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: orderAlertRecord.orderItems.length,
                       itemBuilder: (context, index) {
-                        // final descriptions = order
-                        //     .items?[index].product?.descriptions
-                        //     ?.firstWhere(
-                        //         orElse: () =>
-                        //             const Description(content: ""),
-                        //         (element) => element.content != null)
-                        //     .content;
                         final itemRecord = orderAlertRecord.orderItems[index];
+                        
                         return TotOrderItemMolecule(
                           backgroundColor: itemBackgroundColor ?? Colors.white,
                           elevation: itemElevation ?? 0.0,

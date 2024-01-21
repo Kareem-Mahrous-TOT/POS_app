@@ -13,7 +13,14 @@
     - [x] orders
     - [x] sales
     - [x] reports
-  - [ ] ui(add to package)
+  - [ ] ui
+    - [ ] refactor
+      - [x] bag
+      - [x] order components
+      - [ ] home components
+      - [ ] customer components
+      - [ ] reports components
+    - [ ] add to package
       - [x] bag
 - [x] orders
   - [x] create order
@@ -30,5 +37,4 @@
 - [ ] products
   - [ ] debounce event(request)
 - [ ] pagination
-- [ ]  
 - [ ] data syncing
