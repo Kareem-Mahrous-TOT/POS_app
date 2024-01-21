@@ -356,8 +356,7 @@ mixin _$OrdersState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) =>
@@ -366,8 +365,7 @@ mixin _$OrdersState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) =>
@@ -376,8 +374,7 @@ mixin _$OrdersState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
@@ -387,8 +384,7 @@ mixin _$OrdersState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) =>
@@ -397,8 +393,7 @@ mixin _$OrdersState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) =>
@@ -407,8 +402,7 @@ mixin _$OrdersState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),
@@ -474,8 +468,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
@@ -487,8 +480,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
@@ -500,8 +492,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
@@ -517,8 +508,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) {
@@ -530,8 +520,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) {
@@ -543,8 +532,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),
@@ -600,8 +588,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
@@ -613,8 +600,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
@@ -626,8 +612,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
@@ -643,8 +628,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) {
@@ -656,8 +640,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) {
@@ -669,8 +652,7 @@ class _$GetOrdersLoadingImpl implements _GetOrdersLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),
@@ -687,20 +669,20 @@ abstract class _GetOrdersLoading implements OrdersState {
 }
 
 /// @nodoc
-abstract class _$$GetOrderbyIdFailedImplCopyWith<$Res> {
-  factory _$$GetOrderbyIdFailedImplCopyWith(_$GetOrderbyIdFailedImpl value,
-          $Res Function(_$GetOrderbyIdFailedImpl) then) =
-      __$$GetOrderbyIdFailedImplCopyWithImpl<$Res>;
+abstract class _$$GetOrdersFailureImplCopyWith<$Res> {
+  factory _$$GetOrdersFailureImplCopyWith(_$GetOrdersFailureImpl value,
+          $Res Function(_$GetOrdersFailureImpl) then) =
+      __$$GetOrdersFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$GetOrderbyIdFailedImplCopyWithImpl<$Res>
-    extends _$OrdersStateCopyWithImpl<$Res, _$GetOrderbyIdFailedImpl>
-    implements _$$GetOrderbyIdFailedImplCopyWith<$Res> {
-  __$$GetOrderbyIdFailedImplCopyWithImpl(_$GetOrderbyIdFailedImpl _value,
-      $Res Function(_$GetOrderbyIdFailedImpl) _then)
+class __$$GetOrdersFailureImplCopyWithImpl<$Res>
+    extends _$OrdersStateCopyWithImpl<$Res, _$GetOrdersFailureImpl>
+    implements _$$GetOrdersFailureImplCopyWith<$Res> {
+  __$$GetOrdersFailureImplCopyWithImpl(_$GetOrdersFailureImpl _value,
+      $Res Function(_$GetOrdersFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -708,7 +690,7 @@ class __$$GetOrderbyIdFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$GetOrderbyIdFailedImpl(
+    return _then(_$GetOrdersFailureImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -719,22 +701,22 @@ class __$$GetOrderbyIdFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
-  const _$GetOrderbyIdFailedImpl(this.message);
+class _$GetOrdersFailureImpl implements _GetOrdersFailure {
+  const _$GetOrdersFailureImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'OrdersState.getOrderbyIdFailed(message: $message)';
+    return 'OrdersState.getOrdersFailure(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetOrderbyIdFailedImpl &&
+            other is _$GetOrdersFailureImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -744,8 +726,8 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetOrderbyIdFailedImplCopyWith<_$GetOrderbyIdFailedImpl> get copyWith =>
-      __$$GetOrderbyIdFailedImplCopyWithImpl<_$GetOrderbyIdFailedImpl>(
+  _$$GetOrdersFailureImplCopyWith<_$GetOrdersFailureImpl> get copyWith =>
+      __$$GetOrdersFailureImplCopyWithImpl<_$GetOrdersFailureImpl>(
           this, _$identity);
 
   @override
@@ -753,12 +735,11 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
-    return getOrderbyIdFailed(message);
+    return getOrdersFailure(message);
   }
 
   @override
@@ -766,12 +747,11 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
-    return getOrderbyIdFailed?.call(message);
+    return getOrdersFailure?.call(message);
   }
 
   @override
@@ -779,14 +759,13 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
   }) {
-    if (getOrderbyIdFailed != null) {
-      return getOrderbyIdFailed(message);
+    if (getOrdersFailure != null) {
+      return getOrdersFailure(message);
     }
     return orElse();
   }
@@ -796,12 +775,11 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) {
-    return getOrderbyIdFailed(this);
+    return getOrdersFailure(this);
   }
 
   @override
@@ -809,12 +787,11 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) {
-    return getOrderbyIdFailed?.call(this);
+    return getOrdersFailure?.call(this);
   }
 
   @override
@@ -822,195 +799,25 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),
   }) {
-    if (getOrderbyIdFailed != null) {
-      return getOrderbyIdFailed(this);
+    if (getOrdersFailure != null) {
+      return getOrdersFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetOrderbyIdFailed implements OrdersState {
-  const factory _GetOrderbyIdFailed(final String message) =
-      _$GetOrderbyIdFailedImpl;
+abstract class _GetOrdersFailure implements OrdersState {
+  const factory _GetOrdersFailure(final String message) =
+      _$GetOrdersFailureImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$GetOrderbyIdFailedImplCopyWith<_$GetOrderbyIdFailedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetOrderbyIdSuccessImplCopyWith<$Res> {
-  factory _$$GetOrderbyIdSuccessImplCopyWith(_$GetOrderbyIdSuccessImpl value,
-          $Res Function(_$GetOrderbyIdSuccessImpl) then) =
-      __$$GetOrderbyIdSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({GetOrderByIdModel order});
-
-  $GetOrderByIdModelCopyWith<$Res> get order;
-}
-
-/// @nodoc
-class __$$GetOrderbyIdSuccessImplCopyWithImpl<$Res>
-    extends _$OrdersStateCopyWithImpl<$Res, _$GetOrderbyIdSuccessImpl>
-    implements _$$GetOrderbyIdSuccessImplCopyWith<$Res> {
-  __$$GetOrderbyIdSuccessImplCopyWithImpl(_$GetOrderbyIdSuccessImpl _value,
-      $Res Function(_$GetOrderbyIdSuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? order = null,
-  }) {
-    return _then(_$GetOrderbyIdSuccessImpl(
-      null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as GetOrderByIdModel,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GetOrderByIdModelCopyWith<$Res> get order {
-    return $GetOrderByIdModelCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
-  const _$GetOrderbyIdSuccessImpl(this.order);
-
-  @override
-  final GetOrderByIdModel order;
-
-  @override
-  String toString() {
-    return 'OrdersState.getOrderbyIdSuccess(order: $order)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetOrderbyIdSuccessImpl &&
-            (identical(other.order, order) || other.order == order));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, order);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetOrderbyIdSuccessImplCopyWith<_$GetOrderbyIdSuccessImpl> get copyWith =>
-      __$$GetOrderbyIdSuccessImplCopyWithImpl<_$GetOrderbyIdSuccessImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
-    required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
-    required TResult Function() getOrdersEmpty,
-  }) {
-    return getOrderbyIdSuccess(order);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
-    TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
-    TResult? Function()? getOrdersEmpty,
-  }) {
-    return getOrderbyIdSuccess?.call(order);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
-    TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
-    TResult Function()? getOrdersEmpty,
-    required TResult orElse(),
-  }) {
-    if (getOrderbyIdSuccess != null) {
-      return getOrderbyIdSuccess(order);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
-    required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
-    required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
-  }) {
-    return getOrderbyIdSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
-    TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
-    TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
-  }) {
-    return getOrderbyIdSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
-    TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
-    TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
-    required TResult orElse(),
-  }) {
-    if (getOrderbyIdSuccess != null) {
-      return getOrderbyIdSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetOrderbyIdSuccess implements OrdersState {
-  const factory _GetOrderbyIdSuccess(final GetOrderByIdModel order) =
-      _$GetOrderbyIdSuccessImpl;
-
-  GetOrderByIdModel get order;
-  @JsonKey(ignore: true)
-  _$$GetOrderbyIdSuccessImplCopyWith<_$GetOrderbyIdSuccessImpl> get copyWith =>
+  _$$GetOrdersFailureImplCopyWith<_$GetOrdersFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1088,8 +895,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
@@ -1101,8 +907,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
@@ -1114,8 +919,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
@@ -1131,8 +935,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) {
@@ -1144,8 +947,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) {
@@ -1157,8 +959,7 @@ class _$GetOrdersSuccessImpl implements _GetOrdersSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),
@@ -1220,8 +1021,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getOrdersLoading,
-    required TResult Function(String message) getOrderbyIdFailed,
-    required TResult Function(GetOrderByIdModel order) getOrderbyIdSuccess,
+    required TResult Function(String message) getOrdersFailure,
     required TResult Function(List<OrderEntity> orders) getOrdersSuccess,
     required TResult Function() getOrdersEmpty,
   }) {
@@ -1233,8 +1033,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? getOrdersLoading,
-    TResult? Function(String message)? getOrderbyIdFailed,
-    TResult? Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult? Function(String message)? getOrdersFailure,
     TResult? Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult? Function()? getOrdersEmpty,
   }) {
@@ -1246,8 +1045,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getOrdersLoading,
-    TResult Function(String message)? getOrderbyIdFailed,
-    TResult Function(GetOrderByIdModel order)? getOrderbyIdSuccess,
+    TResult Function(String message)? getOrdersFailure,
     TResult Function(List<OrderEntity> orders)? getOrdersSuccess,
     TResult Function()? getOrdersEmpty,
     required TResult orElse(),
@@ -1263,8 +1061,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_GetOrdersLoading value) getOrdersLoading,
-    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
-    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+    required TResult Function(_GetOrdersFailure value) getOrdersFailure,
     required TResult Function(_GetOrdersSuccess value) getOrdersSuccess,
     required TResult Function(_GetOrdersEmpty value) getOrdersEmpty,
   }) {
@@ -1276,8 +1073,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult? Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult? Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult? Function(_GetOrdersEmpty value)? getOrdersEmpty,
   }) {
@@ -1289,8 +1085,7 @@ class _$GetOrdersEmptyImpl implements _GetOrdersEmpty {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_GetOrdersLoading value)? getOrdersLoading,
-    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
-    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    TResult Function(_GetOrdersFailure value)? getOrdersFailure,
     TResult Function(_GetOrdersSuccess value)? getOrdersSuccess,
     TResult Function(_GetOrdersEmpty value)? getOrdersEmpty,
     required TResult orElse(),

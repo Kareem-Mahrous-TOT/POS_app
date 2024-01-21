@@ -25,6 +25,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     final counter = useState(1);
+    
     useEffect(() {
       if (context.mounted) {
         context.read<ProductDetailsBloc>().add(
@@ -35,6 +36,7 @@ class TotPosFoodItemAlertDialogOrganism extends HookWidget {
       }
       return null;
     }, []);
+
     return BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
       builder: (context, state) {
         return state.when(
