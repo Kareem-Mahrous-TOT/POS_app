@@ -25,7 +25,7 @@ class NetworkInterceptor implements InterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final String? authToken = preferences.getString(LocalKeys.accessToken);
+    final String? authToken = sharedPreferences.getString(LocalKeys.accessToken);
     if (kDebugMode) {
       print("***********************************");
       print("Path [onRequest] ${options.uri}");

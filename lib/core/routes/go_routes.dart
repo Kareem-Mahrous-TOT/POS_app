@@ -13,7 +13,7 @@ final GoRouter allRoutes = GoRouter(
   debugLogDiagnostics: true,
   initialLocation: Routes.login.withSlash,
   redirect: (context, state) async {
-    if (preferences.getString(LocalKeys.accessToken) != null) {
+    if (sharedPreferences.getString(LocalKeys.accessToken) != null) {
       return Routes.layout.withSlash;
     } else {
       return Routes.login.withSlash;

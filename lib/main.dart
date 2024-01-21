@@ -16,8 +16,6 @@ void main() async {
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
   ]);
-  runApp(kDebugMode
-      ? DevicePreview(builder: (context) => const POSApp())
-      : const POSApp());
+  runApp(
+      DevicePreview(enabled: kDebugMode, builder: (context) => const POSApp()));
 }
-

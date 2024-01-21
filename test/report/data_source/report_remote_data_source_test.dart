@@ -12,19 +12,23 @@ void main() {
   late ReportRemoteDataSource sut;
   late MockApiConsumer mockApiConsumer;
 
-  const tStartDate = '2022-01-01';
-  const tEndDate = '2025-01-31';
-  final Map<String, dynamic> tResponse = {'data': <String, dynamic>{}};
-  final tOrderStatisticsDashboard =
-      OrderStatisticsDashboard.fromJson(tResponse['data']!);
-  final expectedResponse =
-      Response(requestOptions: RequestOptions(), data: tResponse['data']);
 
   setUp(() {
     mockApiConsumer = MockApiConsumer();
     sut = ReportRemoteDataSourceImpl(apiConsumer: mockApiConsumer);
   });
 
+  const tStartDate = '2022-01-01';
+  const tEndDate = '2025-01-31';
+
+  final Map<String, dynamic> tResponse = {'data': <String, dynamic>{}};
+  
+  final tOrderStatisticsDashboard =
+      OrderStatisticsDashboard.fromJson(tResponse['data']!);
+  
+  final expectedResponse =
+      Response(requestOptions: RequestOptions(), data: tResponse['data']);
+ 
   test(
     'should perform a Get request on the API Consumer with the correct URL and parameters',
     () async {
@@ -41,8 +45,7 @@ void main() {
       // assert
       verify(
         () => mockApiConsumer.get(
-          '${EndPoints.totStatisticsDashboard}?start=$tStartDate&end=$tEndDate',
-        ),
+            '${EndPoints.totStatisticsDashboard}?start=$tStartDate&end=$tEndDate'),
       ).called(1);
     },
   );

@@ -217,7 +217,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
       filterByCategory =
           'category.subtree:"${StoreConfig.catalogId}/$categoryId"';
     }
-    final response = await _graphService.client.query(
+    final response = await _graphService.query( 
       QueryOptions(
         document: gql(
             r'''query Products($storeId: String!, $filter: String, $sort: String) {
@@ -399,7 +399,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
         fetchPolicy: FetchPolicy.noCache,
       ),
     );
-
     return Products.fromJson(response.data!['products']);
   }
 }

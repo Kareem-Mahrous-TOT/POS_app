@@ -158,7 +158,7 @@ packages:
     description:
       path: "packages/carousel_slider_plus"
       ref: beta
-      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
+      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "1.0.0"
@@ -498,10 +498,10 @@ packages:
     dependency: "direct main"
     description:
       name: get_it
-      sha256: d0b88dc35a7f97fd91fec0cf8f165abd97a57977968d8fc02ba0bc92e14ba07e
+      sha256: e6017ce7fdeaf218dc51a100344d8cb70134b80e28b760f8bb23c242437bafd7
       url: "https://pub.dev"
     source: hosted
-    version: "7.6.6"
+    version: "7.6.7"
   glob:
     dependency: transitive
     description:
@@ -610,10 +610,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: d4872660c46d929f6b8a9ef4e7a7eff7e49bbf0c4ec3f385ee32df5119175139
+      sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.2.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -718,6 +718,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  mockito:
+    dependency: "direct main"
+    description:
+      name: mockito
+      sha256: "6841eed20a7befac0ce07df8116c8b8233ed1f4486a7647c7fc5a02ae6163917"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.4"
   mocktail:
     dependency: "direct main"
     description:
@@ -1103,10 +1111,10 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "4afb43254d436e1d41a2ee2761908650ce3ad3453f5bebd283dfe3185d5026a2"
+      sha256: "205a4dda469ffd1b579cc9400a9b6df266c049cf9401da53944060c0515ea91e"
       url: "https://pub.dev"
     source: hosted
-    version: "24.1.45"
+    version: "24.1.46"
   syncfusion_flutter_sliders:
     dependency: transitive
     description:
@@ -1168,7 +1176,7 @@ packages:
     description:
       path: "packages/atomic_design"
       ref: beta
-      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
+      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
@@ -1177,10 +1185,10 @@ packages:
     description:
       path: "packages/tot_models"
       ref: beta
-      resolved-ref: "9b2f6f272d92d11ace72fd60c1344e707f4c1b3f"
+      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
-    version: "0.0.2"
+    version: "0.0.3"
   typed_data:
     dependency: transitive
     description:
@@ -1302,5 +1310,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.2.3 <4.0.0"
+  dart: ">=3.2.4 <4.0.0"
   flutter: ">=3.16.4"

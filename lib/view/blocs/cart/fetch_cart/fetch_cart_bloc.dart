@@ -115,7 +115,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                           ?.firstWhere(
                             (e) =>
                                 e.fulfillmentCenterId ==
-                                preferences
+                                sharedPreferences
                                     .getString(LocalKeys.fulfillmentCenterId),
                             orElse: () => const Inventory(inStockQuantity: 0),
                           )

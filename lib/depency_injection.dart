@@ -26,6 +26,7 @@ import 'data/cart/repo/cart_repo_impl.dart';
 import 'data/customers/repo/customers_repo_impl.dart';
 import 'data/inventory/repo/inventory_repo_impl.dart';
 import 'data/menu/data_sources/menu_data_source.dart';
+import 'data/menu/mappers/category_mapping.dart';
 import 'data/menu/repo/repo_impl.dart';
 import 'data/orders/data_source/local_data_source.dart';
 import 'data/orders/data_source/remote_data_source.dart';
@@ -55,7 +56,7 @@ import 'domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
 import 'domain/inventory/repo/inventory_repo.dart';
 import 'domain/inventory/usecase/update_inventory_quantity_usecase.dart';
 import 'domain/menu/repo/repo.dart';
-import 'domain/menu/usecases/fetch_menu_categories.dart';
+import 'domain/menu/usecases/fetch_menu_categories_usecase.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
 import 'domain/orders/usecases/change_order_status_usecase.dart';
 import 'domain/orders/usecases/create_order_from_cart_usecase.dart';
@@ -84,9 +85,11 @@ import 'view/blocs/sales/sales_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
-SharedPreferences preferences = getIt<SharedPreferences>();
-
+// SharedPreferences preferences = getIt<SharedPreferences>();
+SharedPreferences sharedPreferences = getIt<SharedPreferences>();
 Future<void> getItInit() async {
+  sharedPreferences = await SharedPreferences.getInstance();
+
   _Dependencies dependencies = _Dependencies();
 
   //external
@@ -227,7 +230,7 @@ class _Dependencies {
       reportLocalDataSource: getIt(),
       reportRemoteDataSource: getIt(),
     ));
-    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt()));
+    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt(),toPosCategoryRecords: ToPosCategoryRecords()));
     getIt.registerSingleton<CartRepo>(CartRepoImpl(
       cartLocalDataSource: getIt(),
       cartremoteDataSource: getIt(),
@@ -294,7 +297,6 @@ class _Dependencies {
   }
 
   Future<void> externalDependecies() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     getIt.registerSingleton<SharedPreferences>(sharedPreferences);
     getIt.registerSingleton<Dio>(Dio());
   }

@@ -16,7 +16,7 @@ class GraphQLConfig {
   GraphQLConfig({required HttpLink httpLink}) : _httpLink = httpLink;
 
   final AuthLink _authLink = AuthLink(getToken: () async {
-    String? token = preferences.getString(LocalKeys.accessToken);
+    String? token = sharedPreferences.getString(LocalKeys.accessToken);
     token = "Bearer $token";
 
     return token;
@@ -35,6 +35,10 @@ class GraphService {
   GraphService({required this.graphQLConfig});
 
   GraphQLClient get client => graphQLConfig.graphQLClient();
+
+  Future<QueryResult> query(QueryOptions options) {
+    return graphQLConfig.graphQLClient().query(options);
+  }
 }
 
 class MyHttpLink extends HttpLink {
@@ -49,7 +53,6 @@ class MyHttpLink extends HttpLink {
               httpResponse.bodyBytes,
             ),
           ) as Map<String, dynamic>?;
-
 
           debugPrint("=================================================");
           debugPrint("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
