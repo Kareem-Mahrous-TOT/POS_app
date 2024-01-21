@@ -16,43 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OrderDetailsEvent {
+  String get orderId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(String orderId) getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(String orderId)? getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(String orderId)? getOrderbyId,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_GetOrderbyId value) getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderbyId value)? getOrderbyId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_GetOrderbyId value)? getOrderbyId,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $OrderDetailsEventCopyWith<OrderDetailsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +60,8 @@ abstract class $OrderDetailsEventCopyWith<$Res> {
   factory $OrderDetailsEventCopyWith(
           OrderDetailsEvent value, $Res Function(OrderDetailsEvent) then) =
       _$OrderDetailsEventCopyWithImpl<$Res, OrderDetailsEvent>;
+  @useResult
+  $Res call({String orderId});
 }
 
 /// @nodoc
@@ -72,115 +73,28 @@ class _$OrderDetailsEventCopyWithImpl<$Res, $Val extends OrderDetailsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+  }) {
+    return _then(_value.copyWith(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$OrderDetailsEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'OrderDetailsEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String orderId) getOrderbyId,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String orderId)? getOrderbyId,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String orderId)? getOrderbyId,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetOrderbyId value) getOrderbyId,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrderbyId value)? getOrderbyId,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetOrderbyId value)? getOrderbyId,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements OrderDetailsEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$GetOrderbyIdImplCopyWith<$Res> {
+abstract class _$$GetOrderbyIdImplCopyWith<$Res>
+    implements $OrderDetailsEventCopyWith<$Res> {
   factory _$$GetOrderbyIdImplCopyWith(
           _$GetOrderbyIdImpl value, $Res Function(_$GetOrderbyIdImpl) then) =
       __$$GetOrderbyIdImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String orderId});
 }
@@ -240,7 +154,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(String orderId) getOrderbyId,
   }) {
     return getOrderbyId(orderId);
@@ -249,7 +162,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(String orderId)? getOrderbyId,
   }) {
     return getOrderbyId?.call(orderId);
@@ -258,7 +170,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(String orderId)? getOrderbyId,
     required TResult orElse(),
   }) {
@@ -271,7 +182,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_GetOrderbyId value) getOrderbyId,
   }) {
     return getOrderbyId(this);
@@ -280,7 +190,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderbyId value)? getOrderbyId,
   }) {
     return getOrderbyId?.call(this);
@@ -289,7 +198,6 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_GetOrderbyId value)? getOrderbyId,
     required TResult orElse(),
   }) {
@@ -303,7 +211,9 @@ class _$GetOrderbyIdImpl implements _GetOrderbyId {
 abstract class _GetOrderbyId implements OrderDetailsEvent {
   const factory _GetOrderbyId(final String orderId) = _$GetOrderbyIdImpl;
 
+  @override
   String get orderId;
+  @override
   @JsonKey(ignore: true)
   _$$GetOrderbyIdImplCopyWith<_$GetOrderbyIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -314,6 +224,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(String message) getOrderbyIdFailed,
     required TResult Function(CreateOrderFromCart order) getOrderbyIdSuccess,
   }) =>
@@ -321,6 +232,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(String message)? getOrderbyIdFailed,
     TResult? Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
   }) =>
@@ -328,6 +240,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(String message)? getOrderbyIdFailed,
     TResult Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -336,6 +249,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
     required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
   }) =>
@@ -343,6 +257,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
   }) =>
@@ -350,6 +265,7 @@ mixin _$OrderDetailsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -414,6 +330,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(String message) getOrderbyIdFailed,
     required TResult Function(CreateOrderFromCart order) getOrderbyIdSuccess,
   }) {
@@ -424,6 +341,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(String message)? getOrderbyIdFailed,
     TResult? Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
   }) {
@@ -434,6 +352,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(String message)? getOrderbyIdFailed,
     TResult Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -448,6 +367,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
     required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
   }) {
@@ -458,6 +378,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
   }) {
@@ -468,6 +389,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -481,6 +403,120 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements OrderDetailsState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$OrderDetailsStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'OrderDetailsState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) getOrderbyIdFailed,
+    required TResult Function(CreateOrderFromCart order) getOrderbyIdSuccess,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? getOrderbyIdFailed,
+    TResult? Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? getOrderbyIdFailed,
+    TResult Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
+    required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
+    TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
+    TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements OrderDetailsState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -549,6 +585,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(String message) getOrderbyIdFailed,
     required TResult Function(CreateOrderFromCart order) getOrderbyIdSuccess,
   }) {
@@ -559,6 +596,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(String message)? getOrderbyIdFailed,
     TResult? Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
   }) {
@@ -569,6 +607,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(String message)? getOrderbyIdFailed,
     TResult Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -583,6 +622,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
     required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
   }) {
@@ -593,6 +633,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
   }) {
@@ -603,6 +644,7 @@ class _$GetOrderbyIdFailedImpl implements _GetOrderbyIdFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -700,6 +742,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(String message) getOrderbyIdFailed,
     required TResult Function(CreateOrderFromCart order) getOrderbyIdSuccess,
   }) {
@@ -710,6 +753,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(String message)? getOrderbyIdFailed,
     TResult? Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
   }) {
@@ -720,6 +764,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(String message)? getOrderbyIdFailed,
     TResult Function(CreateOrderFromCart order)? getOrderbyIdSuccess,
     required TResult orElse(),
@@ -734,6 +779,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_GetOrderbyIdFailed value) getOrderbyIdFailed,
     required TResult Function(_GetOrderbyIdSuccess value) getOrderbyIdSuccess,
   }) {
@@ -744,6 +790,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult? Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
   }) {
@@ -754,6 +801,7 @@ class _$GetOrderbyIdSuccessImpl implements _GetOrderbyIdSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_GetOrderbyIdFailed value)? getOrderbyIdFailed,
     TResult Function(_GetOrderbyIdSuccess value)? getOrderbyIdSuccess,
     required TResult orElse(),

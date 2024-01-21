@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../data/orders/model/graph_create_order_model.dart';
 import '../../../domain/orders/entities/order_entity.dart';
 import '../../../domain/orders/usecases/get_orders_usecase.dart';
 
@@ -26,7 +25,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
 
           await response.fold(
             (failure) async {
-              emit(OrdersState.getOrderbyIdFailed(failure.message));
+              emit(OrdersState.getOrdersFailure(failure.message));
             },
             (myOrders) async {
               if (myOrders.isEmpty) {
