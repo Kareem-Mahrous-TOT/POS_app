@@ -25,7 +25,7 @@
     - [x] ui
     - [x] add custom discount
     - [x] usecase
-- [ ] bag
+- [x] bag
   - [x] fix loading ui
 - [ ] products
   - [ ] debounce event(request)
