@@ -972,8 +972,7 @@ DynamicProperty _$DynamicPropertyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DynamicProperty {
-  String? get objectId =>
-      throw _privateConstructorUsedError; // List<Value>? values,
+  String? get objectId => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get objectType => throw _privateConstructorUsedError;
@@ -982,8 +981,7 @@ mixin _$DynamicProperty {
   bool? get isMultilingual => throw _privateConstructorUsedError;
   bool? get isRequired => throw _privateConstructorUsedError;
   int? get displayOrder => throw _privateConstructorUsedError;
-  String? get valueType =>
-      throw _privateConstructorUsedError; // List<DisplayName>? displayNames,
+  String? get valueType => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
   DateTime? get modifiedDate => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
@@ -1257,7 +1255,6 @@ class _$DynamicPropertyImpl implements _DynamicProperty {
 
   @override
   final String? objectId;
-// List<Value>? values,
   @override
   final String? name;
   @override
@@ -1276,7 +1273,6 @@ class _$DynamicPropertyImpl implements _DynamicProperty {
   final int? displayOrder;
   @override
   final String? valueType;
-// List<DisplayName>? displayNames,
   @override
   final DateTime? createdDate;
   @override
@@ -1385,7 +1381,7 @@ abstract class _DynamicProperty implements DynamicProperty {
 
   @override
   String? get objectId;
-  @override // List<Value>? values,
+  @override
   String? get name;
   @override
   String? get description;
@@ -1403,7 +1399,7 @@ abstract class _DynamicProperty implements DynamicProperty {
   int? get displayOrder;
   @override
   String? get valueType;
-  @override // List<DisplayName>? displayNames,
+  @override
   DateTime? get createdDate;
   @override
   DateTime? get modifiedDate;

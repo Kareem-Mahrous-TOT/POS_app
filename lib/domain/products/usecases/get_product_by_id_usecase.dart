@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import '../../../core/constants/local_keys.dart';
-import '../../../core/constants/store_config.dart';
-import '../../../core/usecase/usecase.dart';
-import '../../../depency_injection.dart';
-import '../repo/products_repo_base.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/types/types.dart';
+import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
+import '../repo/products_repo_base.dart';
 
 class GetProductByIdUsecase
     implements
@@ -19,14 +17,15 @@ class GetProductByIdUsecase
   @override
   FutureEitherFailureOrType<ProdyctByIdRecord> call(
       GetProductByIdParams params) async {
-    final String currentFulfillmentCenterItem =
-        preferences.getString(LocalKeys.fulfillmentCenterId) ??
-            StoreConfig.octoberBranchId;
+    const String currentFulfillmentCenterItem =
+        // sharedPreferences.getString(LocalKeys.fulfillmentCenterId) ??
+        StoreConfig.octoberBranchId;
 
     final res = await _productsRepo.getProductById(productId: params.productId);
     return await res.fold((failure) => Left(failure), (product) {
       final properties = product.properties;
-      final enoughFor = properties?.firstWhere((e) => e.name == "enoughFor");
+      final enoughFor = properties?.firstWhere(
+          orElse: () => const Property(), (e) => e.name == "enoughFor");
       final size = properties?.where((e) => e.name == "size").toList() ?? [];
       final numberOfPieces = properties?.firstWhere(
           (e) => e.name == "numberOfPieces",

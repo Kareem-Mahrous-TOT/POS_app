@@ -9,7 +9,7 @@ extension ProductMapping on List<Item> {
   List<ProductCardRecord> toDomain() {
     List<ProductCardRecord> records = [];
     final String currentFulfillmentCenterItem =
-        preferences.getString(LocalKeys.fulfillmentCenterId) ??
+        sharedPreferences.getString(LocalKeys.fulfillmentCenterId) ??
             StoreConfig.octoberBranchId;
 
     for (final model in this) {

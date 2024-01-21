@@ -61,7 +61,7 @@ void main() {
         when(() => mockReportRepo.fetchCost())
             .thenAnswer((_) async => const Right(tCostModel));
         // act
-        final result = await tReportCostUsecase(NoParams());
+        final result = await tReportCostUsecase.call(NoParams());
         // assert
         expect(result, const Right(tCostModel));
         verify(() => mockReportRepo.fetchCost());

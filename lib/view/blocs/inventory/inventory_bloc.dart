@@ -150,7 +150,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                                               .availabilityData!.inventories!
                                               .map((e) {
                                 if (e.fulfillmentCenterId ==
-                                    (preferences.getString(
+                                    (sharedPreferences.getString(
                                             LocalKeys.fulfillmentCenterId) ??
                                         StoreConfig.octoberBranchId)) {
                                   return e.copyWith(
@@ -169,7 +169,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                                   .availabilityData!.inventories!
                                   .map((e) {
                             if (e.fulfillmentCenterId ==
-                                (preferences.getString(
+                                (sharedPreferences.getString(
                                         LocalKeys.fulfillmentCenterId) ??
                                     StoreConfig.octoberBranchId)) {
                               return e.copyWith(

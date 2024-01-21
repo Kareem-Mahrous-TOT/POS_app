@@ -77,7 +77,7 @@ class AuthRepoImpl implements AuthBaseRepo {
       if (res.statusCode == 200 ||
           res.statusCode == 201 ||
           res.statusCode == 204) {
-        await preferences.setString(
+        await sharedPreferences.setString(
             LocalKeys.tokenByClientId, res.data["access_token"]);
         return true;
       } else {

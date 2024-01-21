@@ -10,7 +10,7 @@ extension ProductPOSMapping on List<Item> {
 
     List<ProductPOSRecord> records = [];
     final String currentFulfillmentCenterItem =
-        preferences.getString(LocalKeys.fulfillmentCenterId) ??
+        sharedPreferences.getString(LocalKeys.fulfillmentCenterId) ??
             StoreConfig.octoberBranchId;
 
     for (final model in this) {
