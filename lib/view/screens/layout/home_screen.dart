@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
@@ -85,11 +86,11 @@ class _HomePageState extends State<HomeScreen> {
                                 );
                               },
                               fetchProductByIdState: (successState) {
+                                final product = successState.product;
                                 return TotPOSProductDetailsDialogOrganism(
-                                  product: successState.product,
-                                  variations: successState.variations,
-                                  masterVariation:
-                                      successState.masterVariation!,
+                                  product: product,
+                                  variations: product.variations ?? [],
+                                  masterVariation: product.masterVariation!,
                                   onVariationTapped: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
@@ -98,15 +99,16 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: (product, count, variations) {
+                                  onAddToCart: (product, count) {
                                     context.read<BagBloc>().add(
-                                          BagEvent.addItemWithVaritations(
+                                          BagEvent.addItem(
                                             item: product,
                                             count: count,
-                                            variations: variations,
                                           ),
                                         );
                                   },
+                                  productFallbackImg: ImgsManager.totLogo,
+                                  addToCartTitle: context.tr.addToCart,
                                   buttonBackgroundColor: Palette.primary,
                                   activeVartiationColor: Palette.primary,
                                   priceTitle: context.tr.price,
@@ -425,7 +427,7 @@ class _HomePageState extends State<HomeScreen> {
                               onClearList: () {
                                 context
                                     .read<BagBloc>()
-                                    .add(const BagEvent.clearBag());
+                                    .add(BagEvent.clearBag());
                               },
                               onSlide: (selectedProductId) {
                                 context.read<BagBloc>().add(BagEvent.removeItem(

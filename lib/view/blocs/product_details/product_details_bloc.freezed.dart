@@ -465,8 +465,6 @@ mixin _$ProductDetailsState {
     required TResult Function(String message) fetchFailState,
     required TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -481,8 +479,6 @@ mixin _$ProductDetailsState {
     TResult? Function(String message)? fetchFailState,
     TResult? Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -497,8 +493,6 @@ mixin _$ProductDetailsState {
     TResult Function(String message)? fetchFailState,
     TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -596,8 +590,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) fetchFailState,
     required TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -615,8 +607,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? fetchFailState,
     TResult? Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -634,8 +624,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? fetchFailState,
     TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -735,8 +723,6 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function(String message) fetchFailState,
     required TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -754,8 +740,6 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function(String message)? fetchFailState,
     TResult? Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -773,8 +757,6 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function(String message)? fetchFailState,
     TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -901,8 +883,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     required TResult Function(String message) fetchFailState,
     required TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -920,8 +900,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult? Function(String message)? fetchFailState,
     TResult? Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -939,8 +917,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult Function(String message)? fetchFailState,
     TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -1011,15 +987,12 @@ abstract class _$$fetchProductByIdStateImplCopyWith<$Res> {
   @useResult
   $Res call(
       {Item product,
-      Variation? masterVariation,
-      List<Variation> variations,
       Property? enoughFor,
       Property? numberOfPieces,
       List<Property> ingredients,
       List<Property> size});
 
   $ItemCopyWith<$Res> get product;
-  $VariationCopyWith<$Res>? get masterVariation;
   $PropertyCopyWith<$Res>? get enoughFor;
   $PropertyCopyWith<$Res>? get numberOfPieces;
 }
@@ -1036,8 +1009,6 @@ class __$$fetchProductByIdStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = null,
-    Object? masterVariation = freezed,
-    Object? variations = null,
     Object? enoughFor = freezed,
     Object? numberOfPieces = freezed,
     Object? ingredients = null,
@@ -1048,14 +1019,6 @@ class __$$fetchProductByIdStateImplCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Item,
-      masterVariation: freezed == masterVariation
-          ? _value.masterVariation
-          : masterVariation // ignore: cast_nullable_to_non_nullable
-              as Variation?,
-      variations: null == variations
-          ? _value._variations
-          : variations // ignore: cast_nullable_to_non_nullable
-              as List<Variation>,
       enoughFor: freezed == enoughFor
           ? _value.enoughFor
           : enoughFor // ignore: cast_nullable_to_non_nullable
@@ -1080,18 +1043,6 @@ class __$$fetchProductByIdStateImplCopyWithImpl<$Res>
   $ItemCopyWith<$Res> get product {
     return $ItemCopyWith<$Res>(_value.product, (value) {
       return _then(_value.copyWith(product: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $VariationCopyWith<$Res>? get masterVariation {
-    if (_value.masterVariation == null) {
-      return null;
-    }
-
-    return $VariationCopyWith<$Res>(_value.masterVariation!, (value) {
-      return _then(_value.copyWith(masterVariation: value));
     });
   }
 
@@ -1124,29 +1075,15 @@ class __$$fetchProductByIdStateImplCopyWithImpl<$Res>
 
 class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
   const _$fetchProductByIdStateImpl(this.product,
-      {this.masterVariation,
-      final List<Variation> variations = const [],
-      this.enoughFor,
+      {this.enoughFor,
       this.numberOfPieces,
       final List<Property> ingredients = const [],
       final List<Property> size = const []})
-      : _variations = variations,
-        _ingredients = ingredients,
+      : _ingredients = ingredients,
         _size = size;
 
   @override
   final Item product;
-  @override
-  final Variation? masterVariation;
-  final List<Variation> _variations;
-  @override
-  @JsonKey()
-  List<Variation> get variations {
-    if (_variations is EqualUnmodifiableListView) return _variations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_variations);
-  }
-
   @override
   final Property? enoughFor;
   @override
@@ -1171,7 +1108,7 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
 
   @override
   String toString() {
-    return 'ProductDetailsState.fetchProductByIdState(product: $product, masterVariation: $masterVariation, variations: $variations, enoughFor: $enoughFor, numberOfPieces: $numberOfPieces, ingredients: $ingredients, size: $size)';
+    return 'ProductDetailsState.fetchProductByIdState(product: $product, enoughFor: $enoughFor, numberOfPieces: $numberOfPieces, ingredients: $ingredients, size: $size)';
   }
 
   @override
@@ -1180,10 +1117,6 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
         (other.runtimeType == runtimeType &&
             other is _$fetchProductByIdStateImpl &&
             (identical(other.product, product) || other.product == product) &&
-            (identical(other.masterVariation, masterVariation) ||
-                other.masterVariation == masterVariation) &&
-            const DeepCollectionEquality()
-                .equals(other._variations, _variations) &&
             (identical(other.enoughFor, enoughFor) ||
                 other.enoughFor == enoughFor) &&
             (identical(other.numberOfPieces, numberOfPieces) ||
@@ -1197,8 +1130,6 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
   int get hashCode => Object.hash(
       runtimeType,
       product,
-      masterVariation,
-      const DeepCollectionEquality().hash(_variations),
       enoughFor,
       numberOfPieces,
       const DeepCollectionEquality().hash(_ingredients),
@@ -1219,16 +1150,14 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
     required TResult Function(String message) fetchFailState,
     required TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
             List<Property> size)
         fetchProductByIdState,
   }) {
-    return fetchProductByIdState(product, masterVariation, variations,
-        enoughFor, numberOfPieces, ingredients, size);
+    return fetchProductByIdState(
+        product, enoughFor, numberOfPieces, ingredients, size);
   }
 
   @override
@@ -1239,16 +1168,14 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
     TResult? Function(String message)? fetchFailState,
     TResult? Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
             List<Property> size)?
         fetchProductByIdState,
   }) {
-    return fetchProductByIdState?.call(product, masterVariation, variations,
-        enoughFor, numberOfPieces, ingredients, size);
+    return fetchProductByIdState?.call(
+        product, enoughFor, numberOfPieces, ingredients, size);
   }
 
   @override
@@ -1259,8 +1186,6 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
     TResult Function(String message)? fetchFailState,
     TResult Function(
             Item product,
-            Variation? masterVariation,
-            List<Variation> variations,
             Property? enoughFor,
             Property? numberOfPieces,
             List<Property> ingredients,
@@ -1269,8 +1194,8 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
     required TResult orElse(),
   }) {
     if (fetchProductByIdState != null) {
-      return fetchProductByIdState(product, masterVariation, variations,
-          enoughFor, numberOfPieces, ingredients, size);
+      return fetchProductByIdState(
+          product, enoughFor, numberOfPieces, ingredients, size);
     }
     return orElse();
   }
@@ -1316,16 +1241,12 @@ class _$fetchProductByIdStateImpl implements _fetchProductByIdState {
 
 abstract class _fetchProductByIdState implements ProductDetailsState {
   const factory _fetchProductByIdState(final Item product,
-      {final Variation? masterVariation,
-      final List<Variation> variations,
-      final Property? enoughFor,
+      {final Property? enoughFor,
       final Property? numberOfPieces,
       final List<Property> ingredients,
       final List<Property> size}) = _$fetchProductByIdStateImpl;
 
   Item get product;
-  Variation? get masterVariation;
-  List<Variation> get variations;
   Property? get enoughFor;
   Property? get numberOfPieces;
   List<Property> get ingredients;

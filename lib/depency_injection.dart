@@ -19,7 +19,7 @@ import 'core/network/graph_config.dart';
 import 'data/auth/data_sources/local_data_source.dart';
 import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';
-import 'data/bag/repo/bag_repo.dart';
+import 'data/bag/repo/bag_repo_impl.dart';
 import 'data/cart/data_sources.dart/local_data_source.dart';
 import 'data/cart/data_sources.dart/remote_data_source.dart';
 import 'data/cart/repo/cart_repo_impl.dart';
@@ -41,6 +41,7 @@ import 'domain/auth/repo/auth_repo_base.dart';
 import 'domain/auth/usecases/get_user_usecase.dart';
 import 'domain/auth/usecases/login_usecase.dart';
 import 'domain/bag/repo/bag_order_repo.dart';
+import 'domain/bag/usecases/add_bag_item_usecase.dart';
 import 'domain/bag/usecases/create_bag_usecase.dart';
 import 'domain/cart/repo/cart_repo.dart';
 import 'domain/cart/usecases/add_copoun_usecase.dart';
@@ -117,6 +118,7 @@ class _Dependencies {
     getIt.registerFactory<OrderStatisticsBloc>(
         () => OrderStatisticsBloc(getIt()));
     getIt.registerFactory<BagBloc>(() => BagBloc(
+          addBagItemUsecase: getIt(),
           createOrderFromBagUsecase: getIt(),
           createBagUsecase: getIt(),
         ));
@@ -149,7 +151,6 @@ class _Dependencies {
 
   void usecaseDependecies() {
     //? auth
-
     getIt.registerLazySingleton<LoginUsecase>(
         () => LoginUsecase(authRepo: getIt()));
     getIt.registerLazySingleton<FetchMenuCategoriesUsecase>(
@@ -180,6 +181,8 @@ class _Dependencies {
     //? bag
     getIt.registerLazySingleton<CreateBagUsecase>(
         () => CreateBagUsecase(bagRepo: getIt()));
+    getIt.registerLazySingleton<AddBagItemUsecase>(
+        () => AddBagItemUsecase(bagRepo: getIt()));
     //? cart
     getIt.registerLazySingleton<FetchCartUsecase>(
         () => FetchCartUsecase(cartRepo: getIt()));
@@ -230,7 +233,8 @@ class _Dependencies {
       reportLocalDataSource: getIt(),
       reportRemoteDataSource: getIt(),
     ));
-    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt(),toPosCategoryRecords: ToPosCategoryRecords()));
+    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(
+        menuDataSource: getIt(), toPosCategoryRecords: ToPosCategoryRecords()));
     getIt.registerSingleton<CartRepo>(CartRepoImpl(
       cartLocalDataSource: getIt(),
       cartremoteDataSource: getIt(),

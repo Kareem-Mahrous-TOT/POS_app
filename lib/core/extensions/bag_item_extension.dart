@@ -5,12 +5,11 @@ import '../constants/store_config.dart';
 extension BagExtension on Item {
   BagItem toBagItem({
     required int quantity,
-    List<Variation> variations = const [],
   }) {
-    Variation? masterVariation;
 
-    if (variations.isNotEmpty) {
-      masterVariation = variations.firstWhere((element) => element.isMaster);
+    Variation? masterVariation;
+    if (variations?.isNotEmpty ?? false) {
+      masterVariation = variations!.firstWhere((element) => element.isMaster);
     }
 
     return BagItem(
@@ -38,10 +37,18 @@ extension BagExtension on Item {
       modifiedDate: DateTime.now().toString(),
       createdBy: '',
       modifiedBy: '',
-      inStockQuantity: masterVariation
-              ?.availabilityData?.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity
+      inStockQuantity: masterVariation?.availabilityData?.inventories
+              ?.firstWhere((inventory) =>
+                  inventory.fulfillmentCenterId == StoreConfig.octoberBranchId)
+              .inStockQuantity
               ?.toInt() ??
-          (availabilityData!.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity?.toInt() ?? 0),
+          (availabilityData!.inventories
+                  ?.firstWhere((inventory) =>
+                      inventory.fulfillmentCenterId ==
+                      StoreConfig.octoberBranchId)
+                  .inStockQuantity
+                  ?.toInt() ??
+              0),
     );
   }
 }

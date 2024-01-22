@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
+import 'package:tot_pos/domain/bag/entities/bag_item.dart';
 
 import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';
@@ -21,5 +24,15 @@ class BagRepoImpl implements BagRepo {
     } catch (e) {
       return Left(CacheFailure(e.toString()));
     }
+  }
+
+  @override
+  FutureOr<bool> addItem({
+    required BagEntity bag,
+    required BagItem bagItem,
+    required int inStock,
+  }) {
+
+    return bag.addItem(bagItem: bagItem, inStock: inStock);
   }
 }

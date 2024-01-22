@@ -4,9 +4,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
+import '../../../core/constants/assets.dart';
 import '../../../core/constants/store_config.dart';
-import '../../../core/extensions/translate.dart';
+// import '../../../data/cart/models/graph_add_item_model.dart';
 import '../../../data/products/model/qraph_product_model.dart';
+// import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
   const TotPOSProductDetailsDialogOrganism({
@@ -23,6 +25,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.buttonBorderRadius,
     this.buttonBackgroundColor,
     this.quantityControlsColor,
+    this.addToCartTitle = "Add to cart",
     this.addTocartTextStyle,
     this.crossAxisSpacing,
     this.productNameTextStyle,
@@ -34,10 +37,10 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.sizeTitle = "Size",
     this.activeVartiationColor,
     this.inActiveVartiationColor,
+    this.productFallbackImg,
   });
 
-  final void Function(Item product, int count, List<Variation> variations)
-      onAddToCart;
+  final void Function(Item product, int count) onAddToCart;
   final Item product;
   final List<Variation> variations;
   final Variation masterVariation;
@@ -50,6 +53,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final double? buttonBorderRadius;
   final Color? buttonBackgroundColor;
   final Color? quantityControlsColor;
+  final String addToCartTitle;
   final TextStyle? addTocartTextStyle;
   final double? crossAxisSpacing;
   final TextStyle? productNameTextStyle;
@@ -61,6 +65,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final String sizeTitle;
   final Color? activeVartiationColor;
   final Color? inActiveVartiationColor;
+  final String? productFallbackImg;
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +92,13 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                     fit: BoxFit.fill,
                     imageUrl: product.imgSrc ?? "",
                     errorWidget: (context, error, stackTrace) {
-                      return Image.network(
-                        height: imgHeight ?? w * 0.135,
-                        width: imgWidth ?? w * 0.18,
-                        "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
-                      );
+                      return (productFallbackImg != null)
+                          ? Image.asset(
+                              ImgsManager.totLogo,
+                            )
+                          : Container(
+                              color: Colors.grey.shade400,
+                            );
                     },
                   ),
                 ),
@@ -103,13 +110,24 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                     addIconColor: quantityControlsColor ?? Colors.white,
                     removeIconColor: quantityControlsColor ?? Colors.white,
                     increment: () {
-                      if (counter.value <
-                          (product.availabilityData?.availableQuantity ?? 0)) {
-                        counter.value++;
+                      if (counter.value >=
+                          (product.masterVariation?.availabilityData
+                                  ?.inventories
+                                  ?.firstWhere(
+                                      orElse: () =>
+                                          const Inventory(inStockQuantity: 0),
+                                      (inventory) =>
+                                          inventory.fulfillmentCenterId ==
+                                          StoreConfig.octoberBranchId)
+                                  .inStockQuantity ??
+                              0)) {
+                        return;
                       }
+                      counter.value++;
                     },
                     decrement: () {
                       if (counter.value <= 1) return;
+
                       counter.value--;
                     },
                     value: counter.value.toString(),
@@ -119,7 +137,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(buttonBorderRadius ?? 16)),
-                  text: context.tr.addToCart,
+                  text: addToCartTitle,
                   onPressed: (masterVariation.availabilityData?.inventories
                                   ?.firstWhere(
                                       orElse: () =>
@@ -131,7 +149,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                               0) >
                           0
                       ? () async {
-                          onAddToCart(product, counter.value, variations);
+                          onAddToCart(product, counter.value);
 
                           context.pop();
                         }
