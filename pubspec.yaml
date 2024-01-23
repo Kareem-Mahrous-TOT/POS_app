@@ -38,7 +38,7 @@ dependencies:
     git:
       url: https://github.com/TOTPLATFORM/flutter.git
       path: packages/atomic_design
-      ref: beta
+      ref: tablet-beta
   mocktail:
   mockito: 
   equatable: ^2.0.5
