@@ -106,7 +106,7 @@ class LayoutScreen extends HookWidget {
                 items: [
                   const BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    label: 'Dashboard',
+                    label: 'Home',
                   ),
                   const BottomNavigationBarItem(
                     icon: Icon(Icons.shopping_bag),

@@ -19,8 +19,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -31,8 +29,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -43,8 +39,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -56,8 +50,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -68,7 +60,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -79,7 +70,6 @@ mixin _$BagEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -156,30 +146,18 @@ class __$$AddItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddItemImpl implements _AddItem {
-  const _$AddItemImpl({required this.item, this.count = 1});
+  _$AddItemImpl({required this.item, this.count = 1});
 
   @override
-  final Item item;
+  Item item;
   @override
   @JsonKey()
-  final int count;
+  int count;
 
   @override
   String toString() {
     return 'BagEvent.addItem(item: $item, count: $count)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddItemImpl &&
-            (identical(other.item, item) || other.item == item) &&
-            (identical(other.count, count) || other.count == count));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, item, count);
 
   @JsonKey(ignore: true)
   @override
@@ -191,8 +169,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -206,8 +182,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -221,8 +195,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -240,8 +212,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -255,7 +225,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -269,7 +238,6 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -285,228 +253,15 @@ class _$AddItemImpl implements _AddItem {
 }
 
 abstract class _AddItem implements BagEvent {
-  const factory _AddItem({required final Item item, final int count}) =
-      _$AddItemImpl;
+  factory _AddItem({required Item item, int count}) = _$AddItemImpl;
 
   Item get item;
+  set item(Item value);
   int get count;
+  set count(int value);
   @JsonKey(ignore: true)
   _$$AddItemImplCopyWith<_$AddItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AddItemWithVaritationsImplCopyWith<$Res> {
-  factory _$$AddItemWithVaritationsImplCopyWith(
-          _$AddItemWithVaritationsImpl value,
-          $Res Function(_$AddItemWithVaritationsImpl) then) =
-      __$$AddItemWithVaritationsImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Item item, int count, List<Variation> variations});
-
-  $ItemCopyWith<$Res> get item;
-}
-
-/// @nodoc
-class __$$AddItemWithVaritationsImplCopyWithImpl<$Res>
-    extends _$BagEventCopyWithImpl<$Res, _$AddItemWithVaritationsImpl>
-    implements _$$AddItemWithVaritationsImplCopyWith<$Res> {
-  __$$AddItemWithVaritationsImplCopyWithImpl(
-      _$AddItemWithVaritationsImpl _value,
-      $Res Function(_$AddItemWithVaritationsImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? item = null,
-    Object? count = null,
-    Object? variations = null,
-  }) {
-    return _then(_$AddItemWithVaritationsImpl(
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as Item,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      variations: null == variations
-          ? _value._variations
-          : variations // ignore: cast_nullable_to_non_nullable
-              as List<Variation>,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ItemCopyWith<$Res> get item {
-    return $ItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$AddItemWithVaritationsImpl implements _AddItemWithVaritations {
-  const _$AddItemWithVaritationsImpl(
-      {required this.item,
-      this.count = 1,
-      required final List<Variation> variations})
-      : _variations = variations;
-
-  @override
-  final Item item;
-  @override
-  @JsonKey()
-  final int count;
-  final List<Variation> _variations;
-  @override
-  List<Variation> get variations {
-    if (_variations is EqualUnmodifiableListView) return _variations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_variations);
-  }
-
-  @override
-  String toString() {
-    return 'BagEvent.addItemWithVaritations(item: $item, count: $count, variations: $variations)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddItemWithVaritationsImpl &&
-            (identical(other.item, item) || other.item == item) &&
-            (identical(other.count, count) || other.count == count) &&
-            const DeepCollectionEquality()
-                .equals(other._variations, _variations));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, item, count,
-      const DeepCollectionEquality().hash(_variations));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddItemWithVaritationsImplCopyWith<_$AddItemWithVaritationsImpl>
-      get copyWith => __$$AddItemWithVaritationsImplCopyWithImpl<
-          _$AddItemWithVaritationsImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
-    required TResult Function(String productId) decreaseItemQuantity,
-    required TResult Function(double? discount) setDiscount,
-    required TResult Function(String productId) removeItem,
-    required TResult Function() clearBag,
-    required TResult Function(BagEntity bag) createOrderFromBag,
-  }) {
-    return addItemWithVaritations(item, count, variations);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
-    TResult? Function(String productId)? decreaseItemQuantity,
-    TResult? Function(double? discount)? setDiscount,
-    TResult? Function(String productId)? removeItem,
-    TResult? Function()? clearBag,
-    TResult? Function(BagEntity bag)? createOrderFromBag,
-  }) {
-    return addItemWithVaritations?.call(item, count, variations);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
-    TResult Function(String productId)? decreaseItemQuantity,
-    TResult Function(double? discount)? setDiscount,
-    TResult Function(String productId)? removeItem,
-    TResult Function()? clearBag,
-    TResult Function(BagEntity bag)? createOrderFromBag,
-    required TResult orElse(),
-  }) {
-    if (addItemWithVaritations != null) {
-      return addItemWithVaritations(item, count, variations);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
-    required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
-    required TResult Function(_SetDiscount value) setDiscount,
-    required TResult Function(_RemoveItem value) removeItem,
-    required TResult Function(_ClearBag value) clearBag,
-    required TResult Function(_CreateOrderFromBag value) createOrderFromBag,
-  }) {
-    return addItemWithVaritations(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
-    TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
-    TResult? Function(_SetDiscount value)? setDiscount,
-    TResult? Function(_RemoveItem value)? removeItem,
-    TResult? Function(_ClearBag value)? clearBag,
-    TResult? Function(_CreateOrderFromBag value)? createOrderFromBag,
-  }) {
-    return addItemWithVaritations?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
-    TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
-    TResult Function(_SetDiscount value)? setDiscount,
-    TResult Function(_RemoveItem value)? removeItem,
-    TResult Function(_ClearBag value)? clearBag,
-    TResult Function(_CreateOrderFromBag value)? createOrderFromBag,
-    required TResult orElse(),
-  }) {
-    if (addItemWithVaritations != null) {
-      return addItemWithVaritations(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddItemWithVaritations implements BagEvent {
-  const factory _AddItemWithVaritations(
-          {required final Item item,
-          final int count,
-          required final List<Variation> variations}) =
-      _$AddItemWithVaritationsImpl;
-
-  Item get item;
-  int get count;
-  List<Variation> get variations;
-  @JsonKey(ignore: true)
-  _$$AddItemWithVaritationsImplCopyWith<_$AddItemWithVaritationsImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -543,27 +298,15 @@ class __$$DecreaseItemQuantityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
-  const _$DecreaseItemQuantityImpl({required this.productId});
+  _$DecreaseItemQuantityImpl({required this.productId});
 
   @override
-  final String productId;
+  String productId;
 
   @override
   String toString() {
     return 'BagEvent.decreaseItemQuantity(productId: $productId)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DecreaseItemQuantityImpl &&
-            (identical(other.productId, productId) ||
-                other.productId == productId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, productId);
 
   @JsonKey(ignore: true)
   @override
@@ -577,8 +320,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -592,8 +333,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -607,8 +346,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -626,8 +363,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -641,7 +376,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -655,7 +389,6 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -671,10 +404,11 @@ class _$DecreaseItemQuantityImpl implements _DecreaseItemQuantity {
 }
 
 abstract class _DecreaseItemQuantity implements BagEvent {
-  const factory _DecreaseItemQuantity({required final String productId}) =
+  factory _DecreaseItemQuantity({required String productId}) =
       _$DecreaseItemQuantityImpl;
 
   String get productId;
+  set productId(String value);
   @JsonKey(ignore: true)
   _$$DecreaseItemQuantityImplCopyWith<_$DecreaseItemQuantityImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -714,27 +448,15 @@ class __$$SetDiscountImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SetDiscountImpl implements _SetDiscount {
-  const _$SetDiscountImpl({this.discount});
+  _$SetDiscountImpl({this.discount});
 
   @override
-  final double? discount;
+  double? discount;
 
   @override
   String toString() {
     return 'BagEvent.setDiscount(discount: $discount)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetDiscountImpl &&
-            (identical(other.discount, discount) ||
-                other.discount == discount));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, discount);
 
   @JsonKey(ignore: true)
   @override
@@ -746,8 +468,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -761,8 +481,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -776,8 +494,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -795,8 +511,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -810,7 +524,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -824,7 +537,6 @@ class _$SetDiscountImpl implements _SetDiscount {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -840,9 +552,10 @@ class _$SetDiscountImpl implements _SetDiscount {
 }
 
 abstract class _SetDiscount implements BagEvent {
-  const factory _SetDiscount({final double? discount}) = _$SetDiscountImpl;
+  factory _SetDiscount({double? discount}) = _$SetDiscountImpl;
 
   double? get discount;
+  set discount(double? value);
   @JsonKey(ignore: true)
   _$$SetDiscountImplCopyWith<_$SetDiscountImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -882,27 +595,15 @@ class __$$RemoveItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RemoveItemImpl implements _RemoveItem {
-  const _$RemoveItemImpl({required this.productId});
+  _$RemoveItemImpl({required this.productId});
 
   @override
-  final String productId;
+  String productId;
 
   @override
   String toString() {
     return 'BagEvent.removeItem(productId: $productId)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RemoveItemImpl &&
-            (identical(other.productId, productId) ||
-                other.productId == productId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, productId);
 
   @JsonKey(ignore: true)
   @override
@@ -914,8 +615,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -929,8 +628,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -944,8 +641,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -963,8 +658,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -978,7 +671,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -992,7 +684,6 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -1008,10 +699,10 @@ class _$RemoveItemImpl implements _RemoveItem {
 }
 
 abstract class _RemoveItem implements BagEvent {
-  const factory _RemoveItem({required final String productId}) =
-      _$RemoveItemImpl;
+  factory _RemoveItem({required String productId}) = _$RemoveItemImpl;
 
   String get productId;
+  set productId(String value);
   @JsonKey(ignore: true)
   _$$RemoveItemImplCopyWith<_$RemoveItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1036,7 +727,7 @@ class __$$ClearBagImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ClearBagImpl implements _ClearBag {
-  const _$ClearBagImpl();
+  _$ClearBagImpl();
 
   @override
   String toString() {
@@ -1044,20 +735,9 @@ class _$ClearBagImpl implements _ClearBag {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClearBagImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -1071,8 +751,6 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -1086,8 +764,6 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -1105,8 +781,6 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -1120,7 +794,6 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -1134,7 +807,6 @@ class _$ClearBagImpl implements _ClearBag {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -1150,7 +822,7 @@ class _$ClearBagImpl implements _ClearBag {
 }
 
 abstract class _ClearBag implements BagEvent {
-  const factory _ClearBag() = _$ClearBagImpl;
+  factory _ClearBag() = _$ClearBagImpl;
 }
 
 /// @nodoc
@@ -1187,26 +859,15 @@ class __$$CreateOrderFromBagImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
-  const _$CreateOrderFromBagImpl(this.bag);
+  _$CreateOrderFromBagImpl(this.bag);
 
   @override
-  final BagEntity bag;
+  BagEntity bag;
 
   @override
   String toString() {
     return 'BagEvent.createOrderFromBag(bag: $bag)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CreateOrderFromBagImpl &&
-            (identical(other.bag, bag) || other.bag == bag));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, bag);
 
   @JsonKey(ignore: true)
   @override
@@ -1219,8 +880,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Item item, int count) addItem,
-    required TResult Function(Item item, int count, List<Variation> variations)
-        addItemWithVaritations,
     required TResult Function(String productId) decreaseItemQuantity,
     required TResult Function(double? discount) setDiscount,
     required TResult Function(String productId) removeItem,
@@ -1234,8 +893,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Item item, int count)? addItem,
-    TResult? Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult? Function(String productId)? decreaseItemQuantity,
     TResult? Function(double? discount)? setDiscount,
     TResult? Function(String productId)? removeItem,
@@ -1249,8 +906,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Item item, int count)? addItem,
-    TResult Function(Item item, int count, List<Variation> variations)?
-        addItemWithVaritations,
     TResult Function(String productId)? decreaseItemQuantity,
     TResult Function(double? discount)? setDiscount,
     TResult Function(String productId)? removeItem,
@@ -1268,8 +923,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddItem value) addItem,
-    required TResult Function(_AddItemWithVaritations value)
-        addItemWithVaritations,
     required TResult Function(_DecreaseItemQuantity value) decreaseItemQuantity,
     required TResult Function(_SetDiscount value) setDiscount,
     required TResult Function(_RemoveItem value) removeItem,
@@ -1283,7 +936,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddItem value)? addItem,
-    TResult? Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult? Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult? Function(_SetDiscount value)? setDiscount,
     TResult? Function(_RemoveItem value)? removeItem,
@@ -1297,7 +949,6 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddItem value)? addItem,
-    TResult Function(_AddItemWithVaritations value)? addItemWithVaritations,
     TResult Function(_DecreaseItemQuantity value)? decreaseItemQuantity,
     TResult Function(_SetDiscount value)? setDiscount,
     TResult Function(_RemoveItem value)? removeItem,
@@ -1313,10 +964,10 @@ class _$CreateOrderFromBagImpl implements _CreateOrderFromBag {
 }
 
 abstract class _CreateOrderFromBag implements BagEvent {
-  const factory _CreateOrderFromBag(final BagEntity bag) =
-      _$CreateOrderFromBagImpl;
+  factory _CreateOrderFromBag(BagEntity bag) = _$CreateOrderFromBagImpl;
 
   BagEntity get bag;
+  set bag(BagEntity value);
   @JsonKey(ignore: true)
   _$$CreateOrderFromBagImplCopyWith<_$CreateOrderFromBagImpl> get copyWith =>
       throw _privateConstructorUsedError;

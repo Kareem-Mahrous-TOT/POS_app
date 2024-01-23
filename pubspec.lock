@@ -158,7 +158,7 @@ packages:
     description:
       path: "packages/carousel_slider_plus"
       ref: beta
-      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
+      resolved-ref: "94631d85147aa15f9f505d76fe88d066a5fd6415"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "1.0.0"
@@ -730,10 +730,10 @@ packages:
     dependency: "direct main"
     description:
       name: mocktail
-      sha256: f603ebd85a576e5914870b02e5839fc5d0243b867bf710651cf239a28ebb365e
+      sha256: c4b5007d91ca4f67256e720cb1b6d704e79a510183a12fa551021f652577dce6
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   nested:
     dependency: transitive
     description:
@@ -1111,18 +1111,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "205a4dda469ffd1b579cc9400a9b6df266c049cf9401da53944060c0515ea91e"
+      sha256: ed8527189f874b9d07f78f2f4306739ce003e8baccfdd7453c0098beef16428f
       url: "https://pub.dev"
     source: hosted
-    version: "24.1.46"
+    version: "24.1.47"
   syncfusion_flutter_sliders:
     dependency: transitive
     description:
       name: syncfusion_flutter_sliders
-      sha256: "8a86158e3ad70443543977a1f615c6153a197c1df15de078806504827e0007d0"
+      sha256: "1d51b5b93e54ccd227f7a9ca291ee511718f9c904c017ba210484a4bad4ddc01"
       url: "https://pub.dev"
     source: hosted
-    version: "24.1.45"
+    version: "24.1.47"
   synchronized:
     dependency: transitive
     description:
@@ -1175,8 +1175,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/atomic_design"
-      ref: beta
-      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
+      ref: tablet-beta
+      resolved-ref: "3b21d9278df39706e8408e76687beb61e6248a4a"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.1+1"
@@ -1185,7 +1185,7 @@ packages:
     description:
       path: "packages/tot_models"
       ref: beta
-      resolved-ref: "48ee8a714383d4ad0ee4254bbddc6fcdfb6e1792"
+      resolved-ref: "94631d85147aa15f9f505d76fe88d066a5fd6415"
       url: "https://github.com/TOTPLATFORM/flutter.git"
     source: git
     version: "0.0.3"

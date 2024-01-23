@@ -24,15 +24,26 @@ class BagEntity {
   double get subTotalPrice => _subTotalPrice.toDouble();
   double get totalPrice => _totalPrice.toDouble();
 
-  void addItem({required BagItem bagItem}) {
+  bool addItem({required BagItem bagItem}) {
     final index =
         items.indexWhere((element) => element.productId == bagItem.productId);
-    if (index != -1) {
-      _items[index].count += bagItem.count;
-    } else {
+
+    if (bagItem.count > bagItem.inStockQuantity) return false;
+    /// if [item] doesn't exist in bag
+    if (index == -1) {
       _items.add(bagItem);
+      _recalculate();
+
+      return true;
     }
+
+    /// if [item] exists in bag
+    final existingItem = _items[index];
+    final resultingQuantity = bagItem.count + existingItem.count;
+    if (resultingQuantity > bagItem.inStockQuantity) return false;
+    existingItem.count = resultingQuantity;
     _recalculate();
+    return true;
   }
 
   void decreaseItemQuantity({required String productId}) {
@@ -71,9 +82,8 @@ class BagEntity {
 
   void setDiscount({double? discount}) {
     final checkForNull = discount != null;
-    final checkForRange = checkForNull && (discount > 100 || discount < 0) ;
+    final checkForRange = checkForNull && (discount > 100 || discount < 0);
     final checkForRepition = discount == _discount;
-
 
     if (checkForRange || checkForRepition) return;
 

@@ -5,9 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
 import '../../../core/utils/show_custom_keyboard.dart';
@@ -87,11 +89,24 @@ class _HomePageState extends State<HomeScreen> {
                                 );
                               },
                               fetchProductByIdState: (successState) {
+                                final product = successState.product;
+                                final hasQuantity = (product.masterVariation
+                                            ?.availabilityData?.inventories
+                                            ?.firstWhere(
+                                                (inventory) =>
+                                                    inventory
+                                                        .fulfillmentCenterId ==
+                                                    StoreConfig.octoberBranchId,
+                                                orElse: () {
+                                          return const Inventory(
+                                              inStockQuantity: 0);
+                                        }).inStockQuantity ??
+                                        0).toInt() ;
                                 return TotPOSProductDetailsDialogOrganism(
-                                  product: successState.product,
-                                  variations: successState.variations,
-                                  masterVariation:
-                                      successState.masterVariation!,
+                                  masterQuantity: hasQuantity,
+                                  product: product,
+                                  variations: product.variations ?? [],
+                                  masterVariation: product.masterVariation!,
                                   onVariationTapped: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
@@ -100,15 +115,18 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: (product, count, variations) {
-                                    context.read<BagBloc>().add(
-                                          BagEvent.addItemWithVaritations(
-                                            item: product,
-                                            count: count,
-                                            variations: variations,
-                                          ),
-                                        );
-                                  },
+                                  onAddToCart: hasQuantity>0
+                                      ? (product, count) {
+                                          context.read<BagBloc>().add(
+                                                BagEvent.addItem(
+                                                  item: product,
+                                                  count: count,
+                                                ),
+                                              );
+                                        }
+                                      : null,
+                                  productFallbackImg: ImgsManager.totLogo,
+                                  addToCartTitle: context.tr.addToCart,
                                   buttonBackgroundColor: Palette.primary,
                                   activeVartiationColor: Palette.primary,
                                   priceTitle: context.tr.price,
@@ -439,7 +457,7 @@ class _HomePageState extends State<HomeScreen> {
                               onClearList: () {
                                 context
                                     .read<BagBloc>()
-                                    .add(const BagEvent.clearBag());
+                                    .add(BagEvent.clearBag());
                               },
                               onSlide: (selectedProductId) {
                                 context.read<BagBloc>().add(BagEvent.removeItem(

@@ -360,7 +360,7 @@ class _TotInventoryListOrganismState extends State<TotInventoryListOrganism> {
                                       .toString(),
                                 )
                                 .toList(),
-                            itemOnTap: (variation) {
+                            onVariationSelected: (variation) {
                               context.read<InventoryBloc>().add(
                                     InventoryEvent.changeMasterVariation(
                                       productId: record.id,

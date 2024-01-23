@@ -5,8 +5,8 @@ import '../network/failure.dart';
 
 typedef ProdyctByIdRecord = ({
   Item product,
-  Variation? masterVariation,
-  List<Variation> variations,
+  // Variation? masterVariation,
+  // List<Variation> variations,
   Property? enoughFor,
   Property? numberOfPieces,
   List<Property> ingredients,

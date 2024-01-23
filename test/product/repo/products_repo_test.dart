@@ -26,7 +26,7 @@ void main() {
           .thenAnswer((_) async => product);
 
       // Act
-      final result = await productsRepo.getProductById(productId: productId);
+      final result = await productsRepo.getProductDetails(productId: productId);
 
       // Assert
       expect(result, equals(const Right(product)));
@@ -39,7 +39,7 @@ void main() {
           .thenThrow(const ServerFailure("Error"));
 
       // Act
-      final result = await productsRepo.getProductById(productId: productId);
+      final result = await productsRepo.getProductDetails(productId: productId);
 
       // Assert
       expect(result, equals(const Left(ServerFailure("Error"))));

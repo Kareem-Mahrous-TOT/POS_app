@@ -10,7 +10,6 @@ part 'products_event.dart';
 part 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  // final ProductsRepoBase productsRepo;
   final GetProductsUsecase _getProductsUsecase;
 
   ProductsBloc({required GetProductsUsecase getProductsUsecase})
@@ -32,7 +31,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             productsList = record.productsModels ?? [];
             emit(ProductsState.fetchSuccessState(
               products: record.productsModels,
-              records: record.proudctsPosRecords,
+              records: record.proudctsPosRecords,  
             ));
           });
         } catch (e) {
@@ -41,7 +40,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       }
 
       await event.when(
-          started: () {},
           refresh: (categoryId) async {
             emit(ProductsState.loadingState());
             await fetchProducts();

@@ -4,8 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../core/extensions/translate.dart';
+import '../../../core/constants/assets.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
@@ -16,6 +15,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     required this.variations,
     required this.masterVariation,
     required this.onVariationTapped,
+    required this.masterQuantity,
     this.padding,
     this.imgHeight,
     this.imgWidth,
@@ -23,6 +23,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.buttonBorderRadius,
     this.buttonBackgroundColor,
     this.quantityControlsColor,
+    this.addToCartTitle = "Add to cart",
     this.addTocartTextStyle,
     this.crossAxisSpacing,
     this.productNameTextStyle,
@@ -34,14 +35,15 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.sizeTitle = "Size",
     this.activeVartiationColor,
     this.inActiveVartiationColor,
+    this.productFallbackImg,
   });
 
-  final void Function(Item product, int count, List<Variation> variations)
-      onAddToCart;
+  final void Function(Item product, int count)? onAddToCart;
   final Item product;
   final List<Variation> variations;
   final Variation masterVariation;
   final void Function(Variation variation) onVariationTapped;
+  final int masterQuantity;
 
   final EdgeInsets? padding;
   final double? imgHeight;
@@ -50,6 +52,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final double? buttonBorderRadius;
   final Color? buttonBackgroundColor;
   final Color? quantityControlsColor;
+  final String addToCartTitle;
   final TextStyle? addTocartTextStyle;
   final double? crossAxisSpacing;
   final TextStyle? productNameTextStyle;
@@ -61,12 +64,33 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final String sizeTitle;
   final Color? activeVartiationColor;
   final Color? inActiveVartiationColor;
+  final String? productFallbackImg;
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
 
     final counter = useState(1);
+
+    final masterHasQuantity = masterQuantity > 0;
+
+    useEffect(() {
+      if (!masterHasQuantity) {
+        counter.value = 0;
+        return;
+      }
+
+      if (counter.value > masterQuantity) {
+        counter.value = masterQuantity;
+        return;
+      }
+
+      if (counter.value == 0) {
+        counter.value = 1;
+        return;
+      }
+      return;
+    }, [masterQuantity]);
 
     return Padding(
       padding: padding ?? const EdgeInsets.all(20.0),
@@ -87,11 +111,13 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                     fit: BoxFit.fill,
                     imageUrl: product.imgSrc ?? "",
                     errorWidget: (context, error, stackTrace) {
-                      return Image.network(
-                        height: imgHeight ?? w * 0.135,
-                        width: imgWidth ?? w * 0.18,
-                        "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
-                      );
+                      return (productFallbackImg != null)
+                          ? Image.asset(
+                              ImgsManager.totLogo,
+                            )
+                          : Container(
+                              color: Colors.grey.shade400,
+                            );
                     },
                   ),
                 ),
@@ -99,43 +125,37 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: TOTPOSItemCounterMolecule(
-                    borderColor: buttonBackgroundColor,
+                    backgroundColor: buttonBackgroundColor,
                     addIconColor: quantityControlsColor ?? Colors.white,
                     removeIconColor: quantityControlsColor ?? Colors.white,
-                    increment: () {
-                      if (counter.value <
-                          (product.availabilityData?.availableQuantity ?? 0)) {
-                        counter.value++;
-                      }
-                    },
-                    decrement: () {
-                      if (counter.value <= 1) return;
-                      counter.value--;
-                    },
+                    onIncrement: masterHasQuantity
+                        ? () {
+                            counter.value++;
+                          }
+                        : null,
+                    onDecrement: masterHasQuantity
+                        ? () {
+                            if (counter.value <= 1) return;
+
+                            counter.value--;
+                          }
+                        : null,
                     value: counter.value.toString(),
                   ),
                 ),
                 TotButtonAtom(
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(buttonBorderRadius ?? 16)),
-                  text: context.tr.addToCart,
-                  onPressed: (masterVariation.availabilityData?.inventories
-                                  ?.firstWhere(
-                                      orElse: () =>
-                                          const Inventory(inStockQuantity: 0),
-                                      (element) =>
-                                          element.fulfillmentCenterId ==
-                                          StoreConfig.octoberBranchId)
-                                  .inStockQuantity ??
-                              0) >
-                          0
-                      ? () async {
-                          onAddToCart(product, counter.value, variations);
+                  text: addToCartTitle,
+                  onPressed: onAddToCart == null
+                      ? null
+                      : () async {
+                          onAddToCart?.call(product, counter.value);
 
                           context.pop();
-                        }
-                      : null,
+                        },
                   textStyle: addTocartTextStyle ??
                       context.titleMedium.copyWith(color: Colors.white),
                   backgroundColor: buttonBackgroundColor,
@@ -197,7 +217,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                             .toString(),
                       )
                       .toList(),
-                  itemOnTap: onVariationTapped,
+                  onVariationSelected: onVariationTapped,
                   reverse: false,
                   title: sizeTitle,
                   titleTextStyle: context.titleMedium,

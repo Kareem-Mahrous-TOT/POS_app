@@ -8,8 +8,6 @@ class ProductDetailsState with _$ProductDetailsState {
       _FetchFailState;
   const factory ProductDetailsState.fetchProductByIdState(
     Item product, {
-    Variation? masterVariation,
-    @Default([]) List<Variation> variations,
     Property? enoughFor,
     Property? numberOfPieces,
     @Default([]) List<Property> ingredients,

@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tot_pos/core/extensions/bag_item_extension.dart';
 
 import '../../../core/enums/payment_method_type.dart';
-import '../../../core/extensions/bag_item_extension.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/bag/entities/bag.dart';
+import '../../../domain/bag/usecases/add_bag_item_usecase.dart';
 import '../../../domain/bag/usecases/create_bag_usecase.dart';
 import '../../../domain/orders/usecases/create_order_from_bag.dart';
 
@@ -16,60 +17,55 @@ part 'bag_state.dart';
 class BagBloc extends Bloc<BagEvent, BagState> {
   final CreateOrderFromBagUsecase _createOrderFromBagUsecase;
   final CreateBagUsecase _createBagUsecase;
+  final AddBagItemUsecase _addBagItemUsecase;
 
-  BagBloc(
-      {required CreateBagUsecase createBagUsecase,
-      required CreateOrderFromBagUsecase createOrderFromBagUsecase})
-      : _createBagUsecase = createBagUsecase,
+  BagBloc({
+    required AddBagItemUsecase addBagItemUsecase,
+    required CreateBagUsecase createBagUsecase,
+    required CreateOrderFromBagUsecase createOrderFromBagUsecase,
+  })  : _addBagItemUsecase = addBagItemUsecase,
+        _createBagUsecase = createBagUsecase,
         _createOrderFromBagUsecase = createOrderFromBagUsecase,
         super(BagState.empty()) {
     on<BagEvent>((event, emit) async {
       await event.map(
         addItem: (addItemEvent) async {
-          final bagItem =
-              addItemEvent.item.toBagItem(quantity: addItemEvent.count);
-          final bagResponse = await _createBagUsecase.call(NoParams());
+          await state.maybeMap(
+              orElse: () {},
+              empty: (emptyState) async {
+                final bagResponse = await _createBagUsecase.call(NoParams());
 
-          bagResponse.fold((failure) {
-            emit(BagState.empty());
-          }, (bagEntity) {
-            state.maybeMap(
-                orElse: () {},
-                empty: (initialState) {
-                  emit(BagState.getItems(
-                      bagEntity: bagEntity..addItem(bagItem: bagItem)));
-                },
-                getItems: (getItemsState) {
-                  final newBagEntity = getItemsState.bagEntity;
-                  newBagEntity.addItem(bagItem: bagItem);
-                  emit(getItemsState.copyWith(
-                      bagEntity: newBagEntity, fromFailure: false));
+                final resultingState = await bagResponse.fold<Future<BagState>>(
+                    (failure) async => emptyState, (bagEntity) async {
+                  final didAddItem =
+                      await _addBagItemUsecase.call(AddBagItemParams(
+                    bag: bagEntity,
+                    bagItem: addItemEvent.item
+                        .toBagItem(quantity: addItemEvent.count),
+                  ));
+
+                  return didAddItem
+                      ? BagState.getItems(bagEntity: bagEntity)
+                      : emptyState;
                 });
-          });
-        },
-        addItemWithVaritations: (_AddItemWithVaritations addItemEvent) async {
-          final bagItem = addItemEvent.item.toBagItem(
-              quantity: addItemEvent.count,
-              variations: addItemEvent.variations);
 
-          final bagResponse = await _createBagUsecase.call(NoParams());
+                emit(resultingState);
+              },
+              getItems: (getItemsState) async {
+                final didAddItem =
+                    await _addBagItemUsecase.call(AddBagItemParams(
+                  bag: getItemsState.bagEntity,
+                  bagItem:
+                      addItemEvent.item.toBagItem(quantity: addItemEvent.count),
+                ));
 
-          bagResponse.fold((failure) {
-            emit(BagState.empty());
-          }, (bagEntity) {
-            state.maybeMap(
-                orElse: () {},
-                empty: (emptyState) {
-                  emit(BagState.getItems(
-                      bagEntity: bagEntity..addItem(bagItem: bagItem)));
-                },
-                getItems: (getItemsState) {
-                  final newBagEntity = getItemsState.bagEntity;
-                  newBagEntity.addItem(bagItem: bagItem);
-                  emit(getItemsState.copyWith(
-                      bagEntity: newBagEntity, fromFailure: false));
-                });
-          });
+                if (!didAddItem) {
+                  emit(getItemsState);
+                  return;
+                }
+
+                emit(BagState.getItems(bagEntity: getItemsState.bagEntity));
+              });
         },
         clearBag: (_) {
           emit(BagState.empty());

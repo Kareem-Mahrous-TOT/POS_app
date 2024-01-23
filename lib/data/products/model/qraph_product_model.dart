@@ -70,7 +70,7 @@ class Item with _$Item {
     List<Description>? descriptions, // Add the "descriptions" field here
     Description? description,
     Category? category,
-    dynamic masterVariation,
+    Variation? masterVariation,
     @Default(0) int selectedQuantity,
   }) = _Item;
 

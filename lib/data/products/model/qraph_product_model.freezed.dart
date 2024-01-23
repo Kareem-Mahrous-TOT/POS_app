@@ -684,7 +684,7 @@ mixin _$Item {
       throw _privateConstructorUsedError; // Add the "descriptions" field here
   Description? get description => throw _privateConstructorUsedError;
   Category? get category => throw _privateConstructorUsedError;
-  dynamic get masterVariation => throw _privateConstructorUsedError;
+  Variation? get masterVariation => throw _privateConstructorUsedError;
   int get selectedQuantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -725,7 +725,7 @@ abstract class $ItemCopyWith<$Res> {
       List<Description>? descriptions,
       Description? description,
       Category? category,
-      dynamic masterVariation,
+      Variation? masterVariation,
       int selectedQuantity});
 
   $PriceCopyWith<$Res>? get price;
@@ -734,6 +734,7 @@ abstract class $ItemCopyWith<$Res> {
   $AvailabilityDataCopyWith<$Res>? get availabilityData;
   $DescriptionCopyWith<$Res>? get description;
   $CategoryCopyWith<$Res>? get category;
+  $VariationCopyWith<$Res>? get masterVariation;
 }
 
 /// @nodoc
@@ -891,7 +892,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       masterVariation: freezed == masterVariation
           ? _value.masterVariation
           : masterVariation // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Variation?,
       selectedQuantity: null == selectedQuantity
           ? _value.selectedQuantity
           : selectedQuantity // ignore: cast_nullable_to_non_nullable
@@ -970,6 +971,18 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       return _then(_value.copyWith(category: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VariationCopyWith<$Res>? get masterVariation {
+    if (_value.masterVariation == null) {
+      return null;
+    }
+
+    return $VariationCopyWith<$Res>(_value.masterVariation!, (value) {
+      return _then(_value.copyWith(masterVariation: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -1007,7 +1020,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       List<Description>? descriptions,
       Description? description,
       Category? category,
-      dynamic masterVariation,
+      Variation? masterVariation,
       int selectedQuantity});
 
   @override
@@ -1022,6 +1035,8 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
   $DescriptionCopyWith<$Res>? get description;
   @override
   $CategoryCopyWith<$Res>? get category;
+  @override
+  $VariationCopyWith<$Res>? get masterVariation;
 }
 
 /// @nodoc
@@ -1176,7 +1191,7 @@ class __$$ItemImplCopyWithImpl<$Res>
       masterVariation: freezed == masterVariation
           ? _value.masterVariation
           : masterVariation // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Variation?,
       selectedQuantity: null == selectedQuantity
           ? _value.selectedQuantity
           : selectedQuantity // ignore: cast_nullable_to_non_nullable
@@ -1339,7 +1354,7 @@ class _$ItemImpl implements _Item {
   @override
   final Category? category;
   @override
-  final dynamic masterVariation;
+  final Variation? masterVariation;
   @override
   @JsonKey()
   final int selectedQuantity;
@@ -1397,8 +1412,8 @@ class _$ItemImpl implements _Item {
                 other.description == description) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            const DeepCollectionEquality()
-                .equals(other.masterVariation, masterVariation) &&
+            (identical(other.masterVariation, masterVariation) ||
+                other.masterVariation == masterVariation) &&
             (identical(other.selectedQuantity, selectedQuantity) ||
                 other.selectedQuantity == selectedQuantity));
   }
@@ -1434,7 +1449,7 @@ class _$ItemImpl implements _Item {
         const DeepCollectionEquality().hash(_descriptions),
         description,
         category,
-        const DeepCollectionEquality().hash(masterVariation),
+        masterVariation,
         selectedQuantity
       ]);
 
@@ -1481,7 +1496,7 @@ abstract class _Item implements Item {
       final List<Description>? descriptions,
       final Description? description,
       final Category? category,
-      final dynamic masterVariation,
+      final Variation? masterVariation,
       final int selectedQuantity}) = _$ItemImpl;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
@@ -1541,7 +1556,7 @@ abstract class _Item implements Item {
   @override
   Category? get category;
   @override
-  dynamic get masterVariation;
+  Variation? get masterVariation;
   @override
   int get selectedQuantity;
   @override
