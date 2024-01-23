@@ -9,6 +9,7 @@ import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
 import '../../../data/products/model/qraph_product_model.dart';
@@ -87,6 +88,19 @@ class _HomePageState extends State<HomeScreen> {
                               },
                               fetchProductByIdState: (successState) {
                                 final product = successState.product;
+                                final hasQuantity = (product.masterVariation?.availabilityData
+                                            ?.inventories
+                                            ?.firstWhere(
+                                                (inventory) =>
+                                                    inventory
+                                                        .fulfillmentCenterId ==
+                                                    StoreConfig.octoberBranchId,
+                                                orElse: () {
+                                          return const Inventory(
+                                              inStockQuantity: 0);
+                                        }).inStockQuantity ??
+                                        0) >
+                                    0;
                                 return TotPOSProductDetailsDialogOrganism(
                                   product: product,
                                   variations: product.variations ?? [],
@@ -99,14 +113,14 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: (product, count) {
+                                  onAddToCart: hasQuantity?(product, count) {
                                     context.read<BagBloc>().add(
                                           BagEvent.addItem(
                                             item: product,
                                             count: count,
                                           ),
                                         );
-                                  },
+                                  }:null,
                                   productFallbackImg: ImgsManager.totLogo,
                                   addToCartTitle: context.tr.addToCart,
                                   buttonBackgroundColor: Palette.primary,

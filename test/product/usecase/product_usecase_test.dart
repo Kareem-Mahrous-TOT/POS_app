@@ -5,7 +5,7 @@ import 'package:tot_pos/core/constants/store_config.dart';
 import 'package:tot_pos/core/network/failure.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
-import 'package:tot_pos/domain/products/usecases/get_product_by_id_usecase.dart';
+import 'package:tot_pos/domain/products/usecases/get_product_details_usecase.dart';
 
 class MockProductsRepo extends Mock implements ProductsRepoBase {}
 
@@ -19,12 +19,12 @@ typedef ProductByIdRecord = ({
   List<Variation> variations
 });
 void main() {
-  late GetProductByIdUsecase usecase;
+  late GetProductDetailsUsecase usecase;
   late MockProductsRepo mockProductsRepo;
 
   setUp(() {
     mockProductsRepo = MockProductsRepo();
-    usecase = GetProductByIdUsecase(productsRepo: mockProductsRepo);
+    usecase = GetProductDetailsUsecase(productsRepo: mockProductsRepo);
   });
 
   group('GetProductByIdUsecase', () {
@@ -46,7 +46,7 @@ void main() {
 
       // Arrange
       when(() async {
-        return mockProductsRepo.getProductById(productId: productId);
+        return mockProductsRepo.getProductDetails(productId: productId);
       }).thenAnswer((_) async => const Right(product));
 
       // Act
@@ -122,15 +122,15 @@ void main() {
         numberOfPieces: numberOfPieces,
       );
       // Assert
-      expect(result, equals(Right<Failure,ProductByIdRecord>(expectedResult)));
-      verify(() => mockProductsRepo.getProductById(productId: productId));
+      expect(result, equals(Right<Failure, ProductByIdRecord>(expectedResult)));
+      verify(() => mockProductsRepo.getProductDetails(productId: productId));
       verifyNoMoreInteractions(mockProductsRepo);
     });
 
     test('should return a failure when an exception occurs', () async {
       // Arrange
       final exception = Exception('Test exception');
-      when(() => mockProductsRepo.getProductById(productId: productId))
+      when(() => mockProductsRepo.getProductDetails(productId: productId))
           .thenAnswer((_) async => Left(ServerFailure(exception.toString())));
 
       // Act
@@ -138,7 +138,7 @@ void main() {
 
       // Assert
       expect(result, Left(ServerFailure(exception.toString())));
-      verify(() => mockProductsRepo.getProductById(productId: productId));
+      verify(() => mockProductsRepo.getProductDetails(productId: productId));
       verifyNoMoreInteractions(mockProductsRepo);
     });
   });

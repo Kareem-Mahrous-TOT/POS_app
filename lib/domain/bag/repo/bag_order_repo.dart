@@ -8,5 +8,5 @@ import '../entities/bag.dart';
 abstract class BagRepo {
   FutureEitherFailureOrType<BagEntity> createBag();
   FutureOr<bool> addItem(
-      {required BagEntity bag, required BagItem bagItem, required int inStock});
+      {required BagEntity bag, required BagItem bagItem});
 }

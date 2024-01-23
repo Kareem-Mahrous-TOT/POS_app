@@ -64,7 +64,7 @@ import 'domain/orders/usecases/create_order_from_cart_usecase.dart';
 import 'domain/orders/usecases/get_order_by_id_usecase.dart';
 import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
-import 'domain/products/usecases/get_product_by_id_usecase.dart';
+import 'domain/products/usecases/get_product_details_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
 import 'domain/reports/repo/report_repo.dart';
 import 'domain/reports/usecase/order_statistics_usecase.dart';
@@ -158,8 +158,8 @@ class _Dependencies {
     //? products
     getIt.registerLazySingleton<GetProductsUsecase>(
         () => GetProductsUsecase(productsRepo: getIt()));
-    getIt.registerLazySingleton<GetProductByIdUsecase>(
-        () => GetProductByIdUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<GetProductDetailsUsecase>(
+        () => GetProductDetailsUsecase(productsRepo: getIt()));
     //? reports
     getIt.registerLazySingleton<PieChartUsecase>(
         () => PieChartUsecase(reportRepo: getIt()));

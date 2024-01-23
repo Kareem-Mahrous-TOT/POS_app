@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
 import 'package:tot_pos/core/extensions/bag_item_extension.dart';
 
 import '../../../core/enums/payment_method_type.dart';
@@ -31,17 +30,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     on<BagEvent>((event, emit) async {
       await event.map(
         addItem: (addItemEvent) async {
-          final inStock =
-              addItemEvent.item.masterVariation?.availabilityData?.inventories
-                      ?.firstWhere(
-                        (inventory) =>
-                            inventory.fulfillmentCenterId ==
-                            StoreConfig.octoberBranchId,
-                        orElse: () => const Inventory(inStockQuantity: 0),
-                      )
-                      .inStockQuantity
-                      ?.toInt() ??
-                  0;
           await state.maybeMap(
               orElse: () {},
               empty: (emptyState) async {
@@ -54,7 +42,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
                     bag: bagEntity,
                     bagItem: addItemEvent.item
                         .toBagItem(quantity: addItemEvent.count),
-                    inStock: inStock,
                   ));
 
                   return didAddItem
@@ -70,7 +57,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
                   bag: getItemsState.bagEntity,
                   bagItem:
                       addItemEvent.item.toBagItem(quantity: addItemEvent.count),
-                  inStock: inStock,
                 ));
 
                 if (!didAddItem) {

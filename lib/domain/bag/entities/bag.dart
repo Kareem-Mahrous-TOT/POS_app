@@ -24,10 +24,11 @@ class BagEntity {
   double get subTotalPrice => _subTotalPrice.toDouble();
   double get totalPrice => _totalPrice.toDouble();
 
-  bool addItem({required BagItem bagItem, required int inStock}) {
+  bool addItem({required BagItem bagItem}) {
     final index =
         items.indexWhere((element) => element.productId == bagItem.productId);
 
+    if (bagItem.count > bagItem.inStockQuantity) return false;
     /// if [item] doesn't exist in bag
     if (index == -1) {
       _items.add(bagItem);
@@ -37,10 +38,10 @@ class BagEntity {
     }
 
     /// if [item] exists in bag
-    final item = _items[index];
-    final resultingQuantity = inStock + item.count;
-    if (resultingQuantity > inStock) return false;
-    item.count = resultingQuantity;
+    final existingItem = _items[index];
+    final resultingQuantity = bagItem.count + existingItem.count;
+    if (resultingQuantity > bagItem.inStockQuantity) return false;
+    existingItem.count = resultingQuantity;
     _recalculate();
     return true;
   }

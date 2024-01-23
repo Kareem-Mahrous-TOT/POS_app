@@ -6,21 +6,21 @@ import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../repo/products_repo_base.dart';
 
-class GetProductByIdUsecase
+class GetProductDetailsUsecase
     implements
         BaseUsecase<GetProductByIdParams,
             FutureEitherFailureOrType<ProdyctByIdRecord>> {
   final ProductsRepoBase _productsRepo;
-  GetProductByIdUsecase({required ProductsRepoBase productsRepo})
+  GetProductDetailsUsecase({required ProductsRepoBase productsRepo})
       : _productsRepo = productsRepo;
 
   @override
   FutureEitherFailureOrType<ProdyctByIdRecord> call(
       GetProductByIdParams params) async {
-    const String currentFulfillmentCenterItem =
-        StoreConfig.octoberBranchId;
+    const String currentFulfillmentCenterItem = StoreConfig.octoberBranchId;
 
-    final result = await _productsRepo.getProductById(productId: params.productId);
+    final result =
+        await _productsRepo.getProductDetails(productId: params.productId);
     return await result.fold((failure) => Left(failure), (product) {
       final properties = product.properties;
       final enoughFor = properties?.firstWhere(

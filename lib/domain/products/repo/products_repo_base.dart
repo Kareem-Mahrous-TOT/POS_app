@@ -11,7 +11,7 @@ abstract class ProductsRepoBase {
     String? categoryId,
     String sort = '',
   });
-  Future<Either<Failure, Item>> getProductById({
+  Future<Either<Failure, Item>> getProductDetails({
     String? endCursor,
     required String productId,
   });

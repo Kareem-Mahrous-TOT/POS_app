@@ -17,7 +17,6 @@ class AddBagItemUsecase
     return _bagRepo.addItem(
       bag: params.bag,
       bagItem: params.bagItem,
-      inStock: params.inStock,
     );
   }
 }
@@ -25,14 +24,12 @@ class AddBagItemUsecase
 class AddBagItemParams extends Equatable {
   final BagEntity bag;
   final BagItem bagItem;
-  final int inStock;
 
   const AddBagItemParams({
     required this.bag,
     required this.bagItem,
-    required this.inStock,
   });
 
   @override
-  List<Object?> get props => [bag, bagItem, inStock];
+  List<Object?> get props => [bag, bagItem];
 }

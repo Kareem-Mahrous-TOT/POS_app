@@ -12,7 +12,7 @@ class ProductsRepoImpl implements ProductsRepoBase {
     required ProductsRemoteDataSource remoteDataSourceImpl,
   }) : _remoteDataSource = remoteDataSourceImpl;
   @override
-  Future<Either<Failure, Item>> getProductById(
+  Future<Either<Failure, Item>> getProductDetails(
       {String? endCursor, required String productId}) async {
     try {
       final product =

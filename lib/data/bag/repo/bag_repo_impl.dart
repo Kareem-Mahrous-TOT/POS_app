@@ -30,9 +30,7 @@ class BagRepoImpl implements BagRepo {
   FutureOr<bool> addItem({
     required BagEntity bag,
     required BagItem bagItem,
-    required int inStock,
   }) {
-
-    return bag.addItem(bagItem: bagItem, inStock: inStock);
+    return bag.addItem(bagItem: bagItem);
   }
 }

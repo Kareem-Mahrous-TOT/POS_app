@@ -6,7 +6,6 @@ extension BagExtension on Item {
   BagItem toBagItem({
     required int quantity,
   }) {
-
     Variation? masterVariation;
     if (variations?.isNotEmpty ?? false) {
       masterVariation = variations!.firstWhere((element) => element.isMaster);
@@ -38,14 +37,21 @@ extension BagExtension on Item {
       createdBy: '',
       modifiedBy: '',
       inStockQuantity: masterVariation?.availabilityData?.inventories
-              ?.firstWhere((inventory) =>
-                  inventory.fulfillmentCenterId == StoreConfig.octoberBranchId)
+              ?.firstWhere(
+                (inventory) =>
+                    inventory.fulfillmentCenterId ==
+                    StoreConfig.octoberBranchId,
+                orElse: () => const Inventory(inStockQuantity: 0),
+              )
               .inStockQuantity
               ?.toInt() ??
           (availabilityData!.inventories
-                  ?.firstWhere((inventory) =>
-                      inventory.fulfillmentCenterId ==
-                      StoreConfig.octoberBranchId)
+                  ?.firstWhere(
+                    (inventory) =>
+                        inventory.fulfillmentCenterId ==
+                        StoreConfig.octoberBranchId,
+                    orElse: () => const Inventory(inStockQuantity: 0),
+                  )
                   .inStockQuantity
                   ?.toInt() ??
               0),

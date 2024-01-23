@@ -6,9 +6,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../core/constants/assets.dart';
 import '../../../core/constants/store_config.dart';
-// import '../../../data/cart/models/graph_add_item_model.dart';
 import '../../../data/products/model/qraph_product_model.dart';
-// import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
   const TotPOSProductDetailsDialogOrganism({
@@ -40,7 +38,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.productFallbackImg,
   });
 
-  final void Function(Item product, int count) onAddToCart;
+  final void Function(Item product, int count)? onAddToCart;
   final Item product;
   final List<Variation> variations;
   final Variation masterVariation;
@@ -138,22 +136,13 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                       borderRadius:
                           BorderRadius.circular(buttonBorderRadius ?? 16)),
                   text: addToCartTitle,
-                  onPressed: (masterVariation.availabilityData?.inventories
-                                  ?.firstWhere(
-                                      orElse: () =>
-                                          const Inventory(inStockQuantity: 0),
-                                      (element) =>
-                                          element.fulfillmentCenterId ==
-                                          StoreConfig.octoberBranchId)
-                                  .inStockQuantity ??
-                              0) >
-                          0
-                      ? () async {
-                          onAddToCart(product, counter.value);
+                  onPressed: onAddToCart == null
+                      ? null
+                      : () async {
+                          onAddToCart?.call(product, counter.value);
 
                           context.pop();
-                        }
-                      : null,
+                        },
                   textStyle: addTocartTextStyle ??
                       context.titleMedium.copyWith(color: Colors.white),
                   backgroundColor: buttonBackgroundColor,

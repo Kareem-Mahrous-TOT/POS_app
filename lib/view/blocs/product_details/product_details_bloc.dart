@@ -3,7 +3,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../data/products/model/qraph_product_model.dart';
-import '../../../domain/products/usecases/get_product_by_id_usecase.dart';
+import '../../../domain/products/usecases/get_product_details_usecase.dart';
 
 part 'product_details_bloc.freezed.dart';
 part 'product_details_event.dart';
@@ -11,9 +11,9 @@ part 'product_details_state.dart';
 
 class ProductDetailsBloc
     extends Bloc<ProductDetailsEvent, ProductDetailsState> {
-  final GetProductByIdUsecase _getProductByIdUsecase;
+  final GetProductDetailsUsecase _getProductByIdUsecase;
 
-  ProductDetailsBloc({required GetProductByIdUsecase getProductByIdUsecase})
+  ProductDetailsBloc({required GetProductDetailsUsecase getProductByIdUsecase})
       : _getProductByIdUsecase = getProductByIdUsecase,
         super(const _Initial()) {
     on<ProductDetailsEvent>(
