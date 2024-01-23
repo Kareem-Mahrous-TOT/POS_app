@@ -105,10 +105,7 @@ class _HomePageState extends State<HomeScreen> {
                                     .toInt();
                                 return TotPOSProductDetailsDialogOrganism(
                                   masterQuantity: hasQuantity,
-                                  product: product,
-                                  variations: product.variations ?? [],
-                                  masterVariation: product.masterVariation!,
-                                  onVariationTapped: (variation) {
+                                  product: product,onVariationChoosen: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
                                               .changeMasterVariation(

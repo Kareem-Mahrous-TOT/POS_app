@@ -12,9 +12,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     super.key,
     required this.onAddToCart,
     required this.product,
-    required this.variations,
-    required this.masterVariation,
-    required this.onVariationTapped,
+    required this.onVariationChoosen,
     required this.masterQuantity,
     this.padding,
     this.imgHeight,
@@ -40,9 +38,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
 
   final void Function(Item product, int count)? onAddToCart;
   final Item product;
-  final List<Variation> variations;
-  final Variation masterVariation;
-  final void Function(Variation variation) onVariationTapped;
+  final void Function(Variation variation) onVariationChoosen;
   final int masterQuantity;
 
   final EdgeInsets? padding;
@@ -166,68 +162,72 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
           SizedBox(width: crossAxisSpacing ?? 30),
           Expanded(
             flex: 3,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  masterVariation.name.toString(),
-                  style: productNameTextStyle ??
-                      context.titleLarge.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                ),
-                Text(
-                    product.descriptions
-                            ?.where(
-                                (element) => element.languageCode == "ar-EG")
-                            .first
-                            .content ??
-                        "",
-                    style: productDescriptionTextStyle ??
-                        context.titleMedium.copyWith(
-                          color: Colors.grey,
-                        )),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "$priceTitle:\n ${masterVariation.price?.actual?.formattedAmount ?? "0"}",
-                      style: priceTextStyle ??
+            child: Builder(builder: (context) {
+              final masterVariation = product.masterVariation!;
+              final variations = product.variations ?? [];
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    masterVariation.name.toString(),
+                    style: productNameTextStyle ??
+                        context.titleLarge.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                  ),
+                  Text(
+                      product.descriptions
+                              ?.where(
+                                  (element) => element.languageCode == "ar-EG")
+                              .first
+                              .content ??
+                          "",
+                      style: productDescriptionTextStyle ??
                           context.titleMedium.copyWith(
-                            color: Colors.black,
-                          ),
-                    ),
-                  ],
-                ),
-                Divider(
-                  thickness: 2,
-                  color: dividerColor ?? Colors.grey,
-                ),
-                TotVariationCardMolecule<Variation>(
-                  height: variationHeight ?? w * 0.028,
-                  variations: variations,
-                  textList: variations
-                      .map(
-                        (e) => e.properties!
-                            .firstWhere((element) => element.name == "size")
-                            .value
-                            .toString(),
-                      )
-                      .toList(),
-                  onVariationSelected: onVariationTapped,
-                  reverse: false,
-                  title: sizeTitle,
-                  titleTextStyle: context.titleMedium,
-                  falseColor: inActiveVartiationColor ?? Colors.white,
-                  successColor: activeVartiationColor ?? Colors.green,
-                  isMasterList: variations.map((e) => e.isMaster).toList(),
-                  itemBorderColor: Colors.transparent,
-                )
-              ],
-            ),
+                            color: Colors.grey,
+                          )),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "$priceTitle:\n ${masterVariation.price?.actual?.formattedAmount ?? "0"}",
+                        style: priceTextStyle ??
+                            context.titleMedium.copyWith(
+                              color: Colors.black,
+                            ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 2,
+                    color: dividerColor ?? Colors.grey,
+                  ),
+                  TotVariationCardMolecule<Variation>(
+                    height: variationHeight ?? w * 0.028,
+                    variations: variations,
+                    textList: variations
+                        .map(
+                          (e) => e.properties!
+                              .firstWhere((element) => element.name == "size")
+                              .value
+                              .toString(),
+                        )
+                        .toList(),
+                    onVariationSelected: onVariationChoosen,
+                    reverse: false,
+                    title: sizeTitle,
+                    titleTextStyle: context.titleMedium,
+                    falseColor: inActiveVartiationColor ?? Colors.white,
+                    successColor: activeVartiationColor ?? Colors.green,
+                    isMasterList: variations.map((e) => e.isMaster).toList(),
+                    itemBorderColor: Colors.transparent,
+                  )
+                ],
+              );
+            }),
           ),
         ],
       ),

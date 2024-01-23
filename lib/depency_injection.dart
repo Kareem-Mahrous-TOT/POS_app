@@ -9,6 +9,7 @@ import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
 import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
+import 'package:tot_pos/domain/products/usecases/change_product_master_variation.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
@@ -143,8 +144,10 @@ class _Dependencies {
         ));
     getIt.registerFactory<ProductsBloc>(
         () => ProductsBloc(getProductsUsecase: getIt()));
-    getIt.registerFactory<ProductDetailsBloc>(
-        () => ProductDetailsBloc(getProductDetailsUsecase: getIt()));
+    getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(
+          getProductDetailsUsecase: getIt(),
+          changeProductMasterVariation: getIt(),
+        ));
     getIt.registerFactory<OrderDetailsBloc>(
         () => OrderDetailsBloc(getOrderDetailsUseCase: getIt()));
   }
@@ -160,6 +163,8 @@ class _Dependencies {
         () => GetProductsUsecase(productsRepo: getIt()));
     getIt.registerLazySingleton<GetProductDetailsUsecase>(
         () => GetProductDetailsUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<ChangeProductMasterVariation>(
+        () => ChangeProductMasterVariation());
     //? reports
     getIt.registerLazySingleton<PieChartUsecase>(
         () => PieChartUsecase(reportRepo: getIt()));
