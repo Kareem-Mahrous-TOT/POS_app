@@ -12,6 +12,7 @@ import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
+import '../../../core/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../blocs/bag/bag_bloc.dart';
 import '../../blocs/product_details/product_details_bloc.dart';
@@ -40,6 +41,7 @@ class _HomePageState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
+
     final fToast = useFToast(context: context);
     final List<double> discounts = useMemoized(
       () => [
@@ -151,6 +153,18 @@ class _HomePageState extends State<HomeScreen> {
                     ),
                   );
             },
+            actions: [
+              IconButton(
+                  onPressed: () => setState(() {
+                        showCustomKeyboardOrganism(
+                            context: context,
+                            inputValue: controller.text,
+                            onChange: (value) => setState(() {
+                                  controller.text = value;
+                                }));
+                      }),
+                  icon: const Icon(Icons.keyboard_alt_outlined))
+            ],
             searchWidth: 650.w,
             appBarBackgroundColor: Palette.grey300,
           ),

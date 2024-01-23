@@ -12,7 +12,6 @@ part 'recent_customers_state.dart';
 
 class RecentCustomersBloc
     extends Bloc<RecentCustomersEvent, RecentCustomersState> {
-
   final FetchCustomersUsecase _fetchCustomersUsecase;
   final AddCustomersUsecase _addCustomerUsecase;
 
@@ -33,8 +32,8 @@ class RecentCustomersBloc
             final state = result.fold(
               (failure) => RecentCustomersState.failedLoadinRecentCustomerData(
                   failure.message),
-              (customerModels) => RecentCustomersState.loadedRecentCustomerData(
-                  customerModels),
+              (customerModels) =>
+                  RecentCustomersState.loadedRecentCustomerData(customerModels),
             );
 
             emit(state);
@@ -94,6 +93,22 @@ class RecentCustomersBloc
                 ),
               );
             }
+          },
+          fetchMoreRecentCustomers: (_FetchMoreRecentCustomers value)async {
+            await state.maybeMap(
+                orElse: () {},
+                loadedRecentCustomerData: (loadedState) async {
+                  final result = await _fetchCustomersUsecase.call(NoParams());
+
+                  final state = result.fold(
+                    (failure) => loadedState,
+                    (customerModels) =>
+                        RecentCustomersState.loadedRecentCustomerData(
+                            loadedState.customers..addAll(customerModels)),
+                  );
+
+                  emit(state);
+                });
           },
         );
       },

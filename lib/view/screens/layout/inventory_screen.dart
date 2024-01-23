@@ -8,6 +8,8 @@ import 'package:tot_pos/core/theme/palette.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
+import '../../../core/utils/show_custom_keyboard.dart';
+
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({super.key});
 
@@ -43,11 +45,31 @@ class _InventoryScreenState extends State<InventoryScreen> {
           child: TOTSearchAppBarOrganism(
             actions: [
               IconButton(
+                  onPressed: () => setState(() {
+                        showCustomKeyboardOrganism(
+                            context: context,
+                            inputValue: searchController.text,
+                            onChange: (value) {
+                              setState(() {
+                                searchController.text = value;
+                              });
+                              context.read<InventoryBloc>().add(
+                                    InventoryEvent.search(
+                                      searchController.text.trim(),
+                                    ),
+                                  );
+                            });
+                      }),
+                  icon: const Icon(Icons.keyboard_alt_outlined)),
+              const SizedBox(
+                width: 10,
+              ),
+              IconButton(
                   onPressed: () async {
                     context.read<InventoryBloc>().add(InventoryEvent.fetch());
                     searchController.clear();
                   },
-                  icon: const Icon(Icons.refresh_rounded))
+                  icon: const Icon(Icons.refresh_rounded)),
             ],
             controller: searchController,
             onChanged: (onChangedValue) {
