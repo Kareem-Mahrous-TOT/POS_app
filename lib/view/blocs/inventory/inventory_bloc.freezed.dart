@@ -1075,11 +1075,17 @@ mixin _$InventoryState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1097,11 +1103,17 @@ mixin _$InventoryState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1119,11 +1131,17 @@ mixin _$InventoryState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1209,11 +1227,17 @@ class _$LoadingImpl implements _Loading {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1234,11 +1258,17 @@ class _$LoadingImpl implements _Loading {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1259,11 +1289,17 @@ class _$LoadingImpl implements _Loading {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1330,7 +1366,20 @@ abstract class _$$FetchSuccessStateImplCopyWith<$Res> {
       bool? isSearching,
       bool isUpdating,
       bool isUpdated,
-      List<({String id, String name, String price, num? quantity, String sku})>?
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
           records});
 }
 
@@ -1373,11 +1422,17 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
           : records // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
+                    String? discount,
                     String id,
+                    String imgUrl,
+                    bool? isFav,
+                    bool isSpeedyDelivery,
+                    String? label,
                     String name,
                     String price,
                     num? quantity,
-                    String sku
+                    double rating,
+                    String variationID
                   })>?,
     ));
   }
@@ -1404,8 +1459,20 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @JsonKey()
   bool isUpdated;
   @override
-  List<({String id, String name, String price, num? quantity, String sku})>?
-      records;
+  List<
+      ({
+        String? discount,
+        String id,
+        String imgUrl,
+        bool? isFav,
+        bool isSpeedyDelivery,
+        String? label,
+        String name,
+        String price,
+        num? quantity,
+        double rating,
+        String variationID
+      })>? records;
 
   @JsonKey(ignore: true)
   @override
@@ -1425,11 +1492,17 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1451,11 +1524,17 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1477,11 +1556,17 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1540,7 +1625,20 @@ abstract class _FetchSuccessState implements InventoryState {
       bool? isSearching,
       bool isUpdating,
       bool isUpdated,
-      List<({String id, String name, String price, num? quantity, String sku})>?
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
           records}) = _$FetchSuccessStateImpl;
 
   List<Item>? get products;
@@ -1551,10 +1649,35 @@ abstract class _FetchSuccessState implements InventoryState {
   set isUpdating(bool value);
   bool get isUpdated;
   set isUpdated(bool value);
-  List<({String id, String name, String price, num? quantity, String sku})>?
-      get records;
+  List<
+      ({
+        String? discount,
+        String id,
+        String imgUrl,
+        bool? isFav,
+        bool isSpeedyDelivery,
+        String? label,
+        String name,
+        String price,
+        num? quantity,
+        double rating,
+        String variationID
+      })>? get records;
   set records(
-      List<({String id, String name, String price, num? quantity, String sku})>?
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
           value);
   @JsonKey(ignore: true)
   _$$FetchSuccessStateImplCopyWith<_$FetchSuccessStateImpl> get copyWith =>
@@ -1618,11 +1741,17 @@ class _$FetchFailStateImpl implements _FetchFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1643,11 +1772,17 @@ class _$FetchFailStateImpl implements _FetchFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1668,11 +1803,17 @@ class _$FetchFailStateImpl implements _FetchFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1791,11 +1932,17 @@ class _$UpdateFailStateImpl implements _UpdateFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1816,11 +1963,17 @@ class _$UpdateFailStateImpl implements _UpdateFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1841,11 +1994,17 @@ class _$UpdateFailStateImpl implements _UpdateFailState {
             bool isUpdated,
             List<
                     ({
+                      String? discount,
                       String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
                       String name,
                       String price,
                       num? quantity,
-                      String sku
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,

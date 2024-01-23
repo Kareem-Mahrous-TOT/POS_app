@@ -1,5 +1,5 @@
 import '../../../core/types/types.dart';
-import '../../../data/old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../data/customers/responses/customers_response/tot_customers.dart';
 
 abstract class CustomersRepo {
   FutureEitherFailureOrType<List<Member>> fetchCustomers();

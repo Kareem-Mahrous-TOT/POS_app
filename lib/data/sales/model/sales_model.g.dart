@@ -8,10 +8,12 @@ part of 'sales_model.dart';
 
 _$SalesModelImpl _$$SalesModelImplFromJson(Map<String, dynamic> json) =>
     _$SalesModelImpl(
-      timestamp: json['timestamp'] as String,
-      status: json['status'] as bool,
-      message: json['message'] as String,
-      data: SalesData.fromJson(json['data'] as Map<String, dynamic>),
+      timestamp: json['timestamp'] as String?,
+      status: json['status'] as bool?,
+      message: json['message'] as String?,
+      data: json['data'] == null
+          ? null
+          : SalesData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SalesModelImplToJson(_$SalesModelImpl instance) =>
@@ -19,23 +21,27 @@ Map<String, dynamic> _$$SalesModelImplToJson(_$SalesModelImpl instance) =>
       'timestamp': instance.timestamp,
       'status': instance.status,
       'message': instance.message,
-      'data': instance.data.toJson(),
+      'data': instance.data?.toJson(),
     };
 
 _$SalesDataImpl _$$SalesDataImplFromJson(Map<String, dynamic> json) =>
     _$SalesDataImpl(
-      statistic: Statistic.fromJson(json['statistic'] as Map<String, dynamic>),
-      orders: (json['orders'] as List<dynamic>)
-          .map((e) => Order.fromJson(e as Map<String, dynamic>))
+      statistic: json['statistic'] == null
+          ? null
+          : Statistic.fromJson(json['statistic'] as Map<String, dynamic>),
+      orders: (json['orders'] as List<dynamic>?)
+          ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
           .toList(),
-      meta: Meta.fromJson(json['meta'] as Map<String, dynamic>),
+      meta: json['meta'] == null
+          ? null
+          : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SalesDataImplToJson(_$SalesDataImpl instance) =>
     <String, dynamic>{
-      'statistic': instance.statistic.toJson(),
-      'orders': instance.orders.map((e) => e.toJson()).toList(),
-      'meta': instance.meta.toJson(),
+      'statistic': instance.statistic?.toJson(),
+      'orders': instance.orders?.map((e) => e.toJson()).toList(),
+      'meta': instance.meta?.toJson(),
     };
 
 _$StatisticImpl _$$StatisticImplFromJson(Map<String, dynamic> json) =>
@@ -53,7 +59,7 @@ _$StatisticImpl _$$StatisticImplFromJson(Map<String, dynamic> json) =>
       ordersCount: json['orders_count'] as int?,
       totalPrice: (json['total_price'] as num?)?.toDouble(),
       todayCount: json['today_count'] as int?,
-      total: json['total'] as int,
+      total: json['total'] as int?,
     );
 
 Map<String, dynamic> _$$StatisticImplToJson(_$StatisticImpl instance) =>
@@ -239,8 +245,8 @@ Map<String, dynamic> _$$CurrencyImplToJson(_$CurrencyImpl instance) =>
     };
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: json['id'] as int,
-      firstname: json['firstname'] as String,
+      id: json['id'] as int?,
+      firstname: json['firstname'] as String?,
       lastname: json['lastname'] as String?,
       emptyP: json['empty_p'] as bool?,
       phone: json['phone'] as String?,
@@ -298,8 +304,8 @@ _$PaymentSystemImpl _$$PaymentSystemImplFromJson(Map<String, dynamic> json) =>
       tag: json['tag'] as String?,
       input: json['input'] as int?,
       active: json['active'] as bool?,
-      createdAt: json['created_at'] as String,
-      updatedAt: json['updated_at'] as String,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$$PaymentSystemImplToJson(_$PaymentSystemImpl instance) =>
@@ -316,7 +322,7 @@ _$MetaImpl _$$MetaImplFromJson(Map<String, dynamic> json) => _$MetaImpl(
       currentPage: json['current_page'] as int?,
       perPage: json['per_page'] as int?,
       lastPage: json['last_page'] as int?,
-      total: json['total'] as int,
+      total: json['total'] as int?,
     );
 
 Map<String, dynamic> _$$MetaImplToJson(_$MetaImpl instance) =>

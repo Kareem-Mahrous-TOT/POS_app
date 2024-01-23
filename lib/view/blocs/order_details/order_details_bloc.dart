@@ -17,7 +17,7 @@ class OrderDetailsBloc extends Bloc<OrderDetailsEvent, OrderDetailsState> {
         super(const OrderDetailsState.initial()) {
     on<OrderDetailsEvent>((event, emit) async {
       Future<void> getOrderById(String orderId) async {
-        emit(const OrderDetailsState.initial());
+        emit(const OrderDetailsState.loading());
         final response = await _getOrderByIdUseCase
             .call(GetOrderByIdParams(orderId: orderId));
         response.fold(
@@ -29,7 +29,6 @@ class OrderDetailsBloc extends Bloc<OrderDetailsEvent, OrderDetailsState> {
       }
 
       await event.map(
-        started: (value) {},
         getOrderbyId: (value) async {
           await getOrderById(value.orderId);
         },

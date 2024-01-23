@@ -143,13 +143,14 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                           variations: product.variations!.map((variation) {
                             if (variation.isMaster) {
                               return variation.copyWith(
+                                selectedQuantity: inStockQuantity,
                                   availabilityData: variation.availabilityData!
                                       .copyWith(
                                           inventories: variation
                                               .availabilityData!.inventories!
                                               .map((e) {
                                 if (e.fulfillmentCenterId ==
-                                    (preferences.getString(
+                                    (sharedPreferences.getString(
                                             LocalKeys.fulfillmentCenterId) ??
                                         StoreConfig.octoberBranchId)) {
                                   return e.copyWith(
@@ -162,13 +163,13 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                               return variation;
                             }
                           }).toList(),
-                          // selectedQuantity: inStockQuantity,
+                          selectedQuantity: inStockQuantity,
                           availabilityData: product.availabilityData!.copyWith(
                               inventories: product
                                   .availabilityData!.inventories!
                                   .map((e) {
                             if (e.fulfillmentCenterId ==
-                                (preferences.getString(
+                                (sharedPreferences.getString(
                                         LocalKeys.fulfillmentCenterId) ??
                                     StoreConfig.octoberBranchId)) {
                               return e.copyWith(

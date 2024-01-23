@@ -42,7 +42,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                     isUpdating: false,
                     itemCount: createCartModel.cart.itemsCount ?? 0,
                   ));
-
           emit(state);
         }
 
@@ -61,17 +60,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
             final state = response.fold(
                 (failure) => FetchCartState.updateCartFail(failure.message),
                 (model) => model);
-
-            // if (data != null) {
-            //   log("item Quantity Changed");
-
-            //   await addCart(
-            //     storeId: storeId,
-            //     currencyCode: "EGP",
-            //   );
-            // } else {
-            //   emit(FetchCartState.updateCartFail("Something went wrong"));
-            // }
           } catch (e) {
             emit(FetchCartState.updateCartFail(e.toString()));
           }
@@ -127,7 +115,7 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                           ?.firstWhere(
                             (e) =>
                                 e.fulfillmentCenterId ==
-                                preferences
+                                sharedPreferences
                                     .getString(LocalKeys.fulfillmentCenterId),
                             orElse: () => const Inventory(inStockQuantity: 0),
                           )
@@ -153,9 +141,6 @@ class FetchCartBloc extends Bloc<FetchCartEvent, FetchCartState> {
                     emit(value.copyWith(isUpdating: true));
                   }
                 });
-            // emit(FetchCartState.loading());
-            // await addCart(
-            //     storeId: StoreConfig.storeId, currencyCode: "EGP", userId: userId);
           },
           onDecrement: (cartItem) async {
             await state.maybeMap(

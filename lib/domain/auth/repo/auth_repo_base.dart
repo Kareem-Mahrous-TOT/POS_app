@@ -3,7 +3,7 @@ import "dart:async";
 import '../../../data/auth/model/user_data_response_model.dart';
 
 abstract class AuthBaseRepo {
-  Future<UserDataModel?> getUser(); //Either<Failure, UserDataModel>
+  Future<UserDataModel?> getUserData(); //Either<Failure, UserDataModel>
 
   Future<bool> userToken(
       {String? grantType, required String username, required String password});

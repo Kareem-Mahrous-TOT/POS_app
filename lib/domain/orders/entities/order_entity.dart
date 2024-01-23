@@ -20,7 +20,6 @@ class OrderEntity {
   factory OrderEntity.fromJson(Map<String, dynamic> json) {
     final inPayments = json['inPayments'] as List?;
     String paymentDescription = "N/A";
-    //"Cash on Delivery";
     if ((inPayments?.isNotEmpty ?? false) &&
         inPayments?[0]?['paymentMethod']?['description'] != null) {
       paymentDescription = inPayments?[0]['paymentMethod']?['description'];

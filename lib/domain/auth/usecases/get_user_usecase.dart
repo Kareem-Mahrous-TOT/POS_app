@@ -9,6 +9,6 @@ class GetUserUsecase implements BaseUsecase<NoParams, Future<UserDataModel?>> {
   }) : _authBaseRepo = authBaseRepo;
   @override
   Future<UserDataModel?> call(NoParams params) {
-    return _authBaseRepo.getUser();
+    return _authBaseRepo.getUserData();
   }
 }

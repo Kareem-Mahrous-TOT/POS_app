@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,7 +16,7 @@ class GraphQLConfig {
   GraphQLConfig({required HttpLink httpLink}) : _httpLink = httpLink;
 
   final AuthLink _authLink = AuthLink(getToken: () async {
-    String? token = preferences.getString(LocalKeys.accessToken);
+    String? token = sharedPreferences.getString(LocalKeys.accessToken);
     token = "Bearer $token";
 
     return token;
@@ -35,6 +35,10 @@ class GraphService {
   GraphService({required this.graphQLConfig});
 
   GraphQLClient get client => graphQLConfig.graphQLClient();
+
+  Future<QueryResult> query(QueryOptions options) {
+    return graphQLConfig.graphQLClient().query(options);
+  }
 }
 
 class MyHttpLink extends HttpLink {
@@ -50,17 +54,17 @@ class MyHttpLink extends HttpLink {
             ),
           ) as Map<String, dynamic>?;
 
-          log("=================================================");
-          log("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
-          log("=================================================");
-          log("::: GRAPHQL: request:: ${httpResponse.request} :::");
-          log("=================================================");
-          log("::: GRAPHQL: ${httpResponse.runtimeType} :::");
-          log("=================================================");
+          debugPrint("=================================================");
+          debugPrint("::: GRAPHQL: headers:: ${httpResponse.headers} :::");
+          debugPrint("=================================================");
+          debugPrint("::: GRAPHQL: request:: ${httpResponse.request} :::");
+          debugPrint("=================================================");
+          debugPrint("::: GRAPHQL: ${httpResponse.runtimeType} :::");
+          debugPrint("=================================================");
           final String? errorCode =
               responseMap?['errors']?[0]?['extensions']?['code'];
 
-          log("::: errorCode: $errorCode :::");
+          debugPrint("::: errorCode: $errorCode :::");
 
           if (errorCode?.toLowerCase() == "unauthorized") {
             try {
@@ -76,7 +80,7 @@ class MyHttpLink extends HttpLink {
                   "password": password,
                 },
               );
-              
+
               await Future.wait([
                 sharedPrefs.setString(
                     LocalKeys.accessToken, response.data["access_token"]),

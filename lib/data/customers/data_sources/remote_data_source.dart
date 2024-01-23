@@ -1,9 +1,11 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/network/graph_config.dart';
 
-import '../../old_data/models/request/tot_add_customer/tot_add_new_customer_model_request.dart';
-import '../../old_data/models/response/tot_add_new_customer/tot_add_new_customer_model.dart';
-import '../../old_data/models/response/tot_customers/tot_customers.dart';
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/end_points.dart';
+import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
+import '../responses/add_new_customer/tot_add_new_customer_model.dart';
+import '../responses/customers_response/tot_customers.dart';
 
 abstract class ContactsRemoteDataSource {
   Future<({List<Member> members, bool hasNextPage, int endCursor})> fetchContacts({
