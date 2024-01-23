@@ -49,7 +49,7 @@ void main() {
       );
 
       // assert
-      expect(result, Right(true));
+      expect(result, const Right(true));
       verify(
           () => mockSharedPreferences.getString(LocalKeys.fulfillmentCenterId));
       verify(() => mockRemoteDataSource.updateInventory(
@@ -79,7 +79,7 @@ void main() {
       );
 
       // assert
-      expect(result, Left(ServerFailure('Exception')));
+      expect(result, const Left(ServerFailure('Exception')));
       verify(
           () => mockSharedPreferences.getString(LocalKeys.fulfillmentCenterId));
       verify(() => mockRemoteDataSource.updateInventory(

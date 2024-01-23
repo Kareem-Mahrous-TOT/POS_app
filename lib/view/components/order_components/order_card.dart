@@ -70,7 +70,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
 
-    final _spacing = spacing ?? 6;
+    final eventualSpacing = spacing ?? 6;
 
     return GestureDetector(
       onTap: () {
@@ -113,7 +113,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
               color: dividerColor ?? Colors.grey,
             ),
             Wrap(
-              spacing: _spacing,
+              spacing: eventualSpacing,
               children: [
                 Icon(dateIcon ?? Icons.calendar_month),
                 RichText(
@@ -135,7 +135,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
               ],
             ),
             Wrap(
-              spacing: _spacing,
+              spacing: eventualSpacing,
               children: [
                 Icon(totalIcon ?? Icons.payments_outlined),
                 RichText(
@@ -153,7 +153,7 @@ class TOTOrderCardMolecule extends StatelessWidget {
               ],
             ),
             Wrap(
-              spacing: _spacing,
+              spacing: eventualSpacing,
               children: [
                 Icon(paymentIcon ?? Icons.payment_outlined),
                 RichText(

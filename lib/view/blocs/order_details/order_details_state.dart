@@ -4,8 +4,6 @@ part of 'order_details_bloc.dart';
 class OrderDetailsState with _$OrderDetailsState {
   const factory OrderDetailsState.initial() = _Initial;
   const factory OrderDetailsState.loading() = _Loading;
-  const factory OrderDetailsState.getOrderbyIdFailed(String message) =
-      _GetOrderbyIdFailed;
-  const factory OrderDetailsState.getOrderbyIdSuccess(CreateOrderFromCart order) =
-      _GetOrderbyIdSuccess;
+  const factory OrderDetailsState.failure(String message) = _Failure;
+  const factory OrderDetailsState.success(CreateOrderFromCart order) = _Success;
 }

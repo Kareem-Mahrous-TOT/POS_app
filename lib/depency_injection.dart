@@ -61,7 +61,7 @@ import 'domain/menu/usecases/fetch_menu_categories_usecase.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
 import 'domain/orders/usecases/change_order_status_usecase.dart';
 import 'domain/orders/usecases/create_order_from_cart_usecase.dart';
-import 'domain/orders/usecases/get_order_by_id_usecase.dart';
+import 'domain/orders/usecases/get_order_details_usecase.dart';
 import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_details_usecase.dart';
@@ -144,9 +144,9 @@ class _Dependencies {
     getIt.registerFactory<ProductsBloc>(
         () => ProductsBloc(getProductsUsecase: getIt()));
     getIt.registerFactory<ProductDetailsBloc>(
-        () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
+        () => ProductDetailsBloc(getProductDetailsUsecase: getIt()));
     getIt.registerFactory<OrderDetailsBloc>(
-        () => OrderDetailsBloc(getOrderByIdUseCase: getIt()));
+        () => OrderDetailsBloc(getOrderDetailsUseCase: getIt()));
   }
 
   void usecaseDependecies() {
@@ -170,8 +170,8 @@ class _Dependencies {
         () => GetOrdersUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<OrderStatisticsUsecase>(
         () => OrderStatisticsUsecase(reportRepo: getIt()));
-    getIt.registerLazySingleton<GetOrderByIdUseCase>(
-        () => GetOrderByIdUseCase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<GetOrderDetailsUseCase>(
+        () => GetOrderDetailsUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
         () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<CreateOrderFormCartUsecase>(

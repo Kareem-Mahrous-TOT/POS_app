@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
@@ -6,8 +8,8 @@ import 'package:tot_pos/view/ui_mappers/order_entity_to_rails_record.dart';
 
 import '../../../core/theme/palette.dart';
 import '../../blocs/order_details/order_details_bloc.dart';
-import '../../components/order_components/tot_orders_rails_organism.dart';
 import '../../components/order_components/order_alert_dialog.dart';
+import '../../components/order_components/tot_orders_rails_organism.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -35,8 +37,14 @@ class _OrderScreenState extends State<OrderScreen> {
     return BlocListener<OrderDetailsBloc, OrderDetailsState>(
       listener: (context, state) {
         state.maybeMap(
-          orElse: () {},
+          orElse: () {
+            log("orElse");
+          },
+          success: (successState) {
+            log("::: log from listener: order details success: $successState :::");
+          },
           loading: (value) async {
+            log("::: log from listener: loading state :::");
             if (context.mounted) {
               await showDialog(
                 context: context,
@@ -54,13 +62,13 @@ class _OrderScreenState extends State<OrderScreen> {
                             ),
                           );
                         },
-                        getOrderbyIdSuccess: (successState) {
+                        success: (successState) {
                           return OrderAlertDialog(
                               width: w * 0.8,
                               height: h * 0.68,
                               orderAlertRecord: successState.order.toRecord());
                         },
-                        getOrderbyIdFailed: (value) {
+                        failure: (value) {
                           return const Center(
                               child: Text("Sorry, something went wrong."));
                         },
@@ -97,7 +105,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   onCardTapped: (orderId) async {
                     context
                         .read<OrderDetailsBloc>()
-                        .add(OrderDetailsEvent.getOrderbyId(orderId));
+                        .add(OrderDetailsEvent.getOrderDetails(orderId));
                   },
                   statuses: const [
                     "New",
