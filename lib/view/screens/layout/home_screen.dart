@@ -59,7 +59,7 @@ class _HomePageState extends State<HomeScreen> {
       listener: (context, state) {
         state.maybeMap(
             orElse: () {},
-            loadingState: (loadingState) {
+            loading: (loadingState) {
               showDialog(
                   context: context,
                   builder: (context) {
@@ -83,12 +83,12 @@ class _HomePageState extends State<HomeScreen> {
                                   child: CircularProgressIndicator.adaptive(),
                                 );
                               },
-                              fetchFailState: (failureState) {
+                              failure: (failureState) {
                                 return Center(
                                   child: Text(failureState.message),
                                 );
                               },
-                              fetchProductByIdState: (successState) {
+                              success: (successState) {
                                 final product = successState.product;
                                 final hasQuantity = (product.masterVariation
                                             ?.availabilityData?.inventories
@@ -101,13 +101,11 @@ class _HomePageState extends State<HomeScreen> {
                                           return const Inventory(
                                               inStockQuantity: 0);
                                         }).inStockQuantity ??
-                                        0).toInt() ;
+                                        0)
+                                    .toInt();
                                 return TotPOSProductDetailsDialogOrganism(
                                   masterQuantity: hasQuantity,
-                                  product: product,
-                                  variations: product.variations ?? [],
-                                  masterVariation: product.masterVariation!,
-                                  onVariationTapped: (variation) {
+                                  product: product,onVariationChoosen: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
                                               .changeMasterVariation(
@@ -115,7 +113,7 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: hasQuantity>0
+                                  onAddToCart: hasQuantity > 0
                                       ? (product, count) {
                                           context.read<BagBloc>().add(
                                                 BagEvent.addItem(
@@ -314,7 +312,7 @@ class _HomePageState extends State<HomeScreen> {
                                                               ProductDetailsBloc>()
                                                           .add(
                                                             ProductDetailsEvent
-                                                                .fetchProductById(
+                                                                .getProductDetails(
                                                               productId:
                                                                   product!.id!,
                                                             ),

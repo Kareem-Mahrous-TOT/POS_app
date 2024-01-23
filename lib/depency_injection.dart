@@ -9,6 +9,7 @@ import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
 import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
+import 'package:tot_pos/domain/products/usecases/change_product_master_variation.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
@@ -61,7 +62,7 @@ import 'domain/menu/usecases/fetch_menu_categories_usecase.dart';
 import 'domain/orders/repo/orders_repo_base.dart';
 import 'domain/orders/usecases/change_order_status_usecase.dart';
 import 'domain/orders/usecases/create_order_from_cart_usecase.dart';
-import 'domain/orders/usecases/get_order_by_id_usecase.dart';
+import 'domain/orders/usecases/get_order_details_usecase.dart';
 import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_details_usecase.dart';
@@ -143,10 +144,12 @@ class _Dependencies {
         ));
     getIt.registerFactory<ProductsBloc>(
         () => ProductsBloc(getProductsUsecase: getIt()));
-    getIt.registerFactory<ProductDetailsBloc>(
-        () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
+    getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(
+          getProductDetailsUsecase: getIt(),
+          changeProductMasterVariation: getIt(),
+        ));
     getIt.registerFactory<OrderDetailsBloc>(
-        () => OrderDetailsBloc(getOrderByIdUseCase: getIt()));
+        () => OrderDetailsBloc(getOrderDetailsUseCase: getIt()));
   }
 
   void usecaseDependecies() {
@@ -160,6 +163,8 @@ class _Dependencies {
         () => GetProductsUsecase(productsRepo: getIt()));
     getIt.registerLazySingleton<GetProductDetailsUsecase>(
         () => GetProductDetailsUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<ChangeProductMasterVariation>(
+        () => ChangeProductMasterVariation());
     //? reports
     getIt.registerLazySingleton<PieChartUsecase>(
         () => PieChartUsecase(reportRepo: getIt()));
@@ -170,8 +175,8 @@ class _Dependencies {
         () => GetOrdersUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<OrderStatisticsUsecase>(
         () => OrderStatisticsUsecase(reportRepo: getIt()));
-    getIt.registerLazySingleton<GetOrderByIdUseCase>(
-        () => GetOrderByIdUseCase(ordersRepo: getIt()));
+    getIt.registerLazySingleton<GetOrderDetailsUseCase>(
+        () => GetOrderDetailsUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<ChangeOrderStatusUseCase>(
         () => ChangeOrderStatusUseCase(ordersRepo: getIt()));
     getIt.registerLazySingleton<CreateOrderFormCartUsecase>(

@@ -1,11 +1,9 @@
 part of 'product_details_bloc.dart';
 
-@unfreezed
+@freezed
 class ProductDetailsEvent with _$ProductDetailsEvent {
-  factory ProductDetailsEvent.started() = _Started;
-  factory ProductDetailsEvent.fetchProductById(
-      {
-      required String productId}) = _FetchProductById;
+  factory ProductDetailsEvent.getProductDetails({required String productId}) =
+      _GetProductDetails;
   factory ProductDetailsEvent.changeMasterVariation(Variation variation) =
       _ChangeMasterVariation;
 }

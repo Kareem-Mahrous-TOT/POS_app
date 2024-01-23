@@ -10,14 +10,14 @@ import 'package:tot_pos/domain/orders/entities/order_entity.dart';
 import 'package:tot_pos/domain/orders/usecases/change_order_status_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_cart_usecase.dart';
-import 'package:tot_pos/domain/orders/usecases/get_order_by_id_usecase.dart';
+import 'package:tot_pos/domain/orders/usecases/get_order_details_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/get_orders_usecase.dart';
 
 class MockOrdersRepo extends Mock implements OrdersRepoImpl {}
 
 void main() {
   late GetOrdersUseCase getOrdersUseCase;
-  late GetOrderByIdUseCase getOrderByIdUsecase;
+  late GetOrderDetailsUseCase getOrderByIdUsecase;
   late CreateOrderFormCartUsecase createOrderFormCartUsecase;
   late CreateOrderFromBagUsecase createOrderFromBagUsecase;
   late ChangeOrderStatusUseCase changeOrderStatusUseCase;
@@ -29,7 +29,7 @@ void main() {
         CreateOrderFromBagUsecase(ordersRepo: mockOrdersRepo);
     createOrderFormCartUsecase =
         CreateOrderFormCartUsecase(ordersRepo: mockOrdersRepo);
-    getOrderByIdUsecase = GetOrderByIdUseCase(ordersRepo: mockOrdersRepo);
+    getOrderByIdUsecase = GetOrderDetailsUseCase(ordersRepo: mockOrdersRepo);
     getOrdersUseCase = GetOrdersUseCase(ordersRepo: mockOrdersRepo);
     changeOrderStatusUseCase =
         ChangeOrderStatusUseCase(ordersRepo: mockOrdersRepo);
@@ -74,7 +74,7 @@ void main() {
   });
   group('GetOrderByIdUseCase', () {
     const mockOrder = GetOrderByIdModel(); // Replace with your mock data
-    const params = GetOrderByIdParams(orderId: '1');
+    const params = GetOrderDetailsParams(orderId: '1');
 
     test('should get order by id from the repository', () async {
       // Arrange

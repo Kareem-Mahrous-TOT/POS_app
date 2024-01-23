@@ -5,24 +5,25 @@ import 'package:tot_pos/domain/orders/repo/orders_repo_base.dart';
 import '../../../core/types/types.dart';
 import '../../../data/orders/model/graph_create_order_model.dart';
 
-class GetOrderByIdUseCase
+class GetOrderDetailsUseCase
     implements
-        BaseUsecase<GetOrderByIdParams,
+        BaseUsecase<GetOrderDetailsParams,
             FutureEitherFailureOrType<GetOrderByIdModel>> {
   final OrdersRepoBase _ordersRepo;
 
-  GetOrderByIdUseCase({required OrdersRepoBase ordersRepo})
+  GetOrderDetailsUseCase({required OrdersRepoBase ordersRepo})
       : _ordersRepo = ordersRepo;
   @override
-  FutureEitherFailureOrType<GetOrderByIdModel> call(GetOrderByIdParams params) {
+  FutureEitherFailureOrType<GetOrderByIdModel> call(
+      GetOrderDetailsParams params) {
     return _ordersRepo.getOrderbyId(orderId: params.orderId);
   }
 }
 
-class GetOrderByIdParams extends Equatable {
+class GetOrderDetailsParams extends Equatable {
   final String orderId;
 
-  const GetOrderByIdParams({required this.orderId});
+  const GetOrderDetailsParams({required this.orderId});
 
   @override
   List<Object?> get props => [orderId];
