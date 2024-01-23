@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../core/constants/assets.dart';
-import '../../../core/constants/store_config.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
@@ -16,6 +15,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     required this.variations,
     required this.masterVariation,
     required this.onVariationTapped,
+    required this.masterQuantity,
     this.padding,
     this.imgHeight,
     this.imgWidth,
@@ -43,6 +43,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final List<Variation> variations;
   final Variation masterVariation;
   final void Function(Variation variation) onVariationTapped;
+  final int masterQuantity;
 
   final EdgeInsets? padding;
   final double? imgHeight;
@@ -70,6 +71,26 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     double w = MediaQuery.of(context).size.width;
 
     final counter = useState(1);
+
+    final masterHasQuantity = masterQuantity > 0;
+
+    useEffect(() {
+      if (!masterHasQuantity) {
+        counter.value = 0;
+        return;
+      }
+
+      if (counter.value > masterQuantity) {
+        counter.value = masterQuantity;
+        return;
+      }
+
+      if (counter.value == 0) {
+        counter.value = 1;
+        return;
+      }
+      return;
+    }, [masterQuantity]);
 
     return Padding(
       padding: padding ?? const EdgeInsets.all(20.0),
@@ -104,34 +125,26 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: TOTPOSItemCounterMolecule(
-                    borderColor: buttonBackgroundColor,
+                    backgroundColor: buttonBackgroundColor,
                     addIconColor: quantityControlsColor ?? Colors.white,
                     removeIconColor: quantityControlsColor ?? Colors.white,
-                    increment: () {
-                      if (counter.value >=
-                          (product.masterVariation?.availabilityData
-                                  ?.inventories
-                                  ?.firstWhere(
-                                      orElse: () =>
-                                          const Inventory(inStockQuantity: 0),
-                                      (inventory) =>
-                                          inventory.fulfillmentCenterId ==
-                                          StoreConfig.octoberBranchId)
-                                  .inStockQuantity ??
-                              0)) {
-                        return;
-                      }
-                      counter.value++;
-                    },
-                    decrement: () {
-                      if (counter.value <= 1) return;
+                    onIncrement: masterHasQuantity
+                        ? () {
+                            counter.value++;
+                          }
+                        : null,
+                    onDecrement: masterHasQuantity
+                        ? () {
+                            if (counter.value <= 1) return;
 
-                      counter.value--;
-                    },
+                            counter.value--;
+                          }
+                        : null,
                     value: counter.value.toString(),
                   ),
                 ),
                 TotButtonAtom(
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(buttonBorderRadius ?? 16)),

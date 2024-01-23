@@ -88,8 +88,8 @@ class _HomePageState extends State<HomeScreen> {
                               },
                               fetchProductByIdState: (successState) {
                                 final product = successState.product;
-                                final hasQuantity = (product.masterVariation?.availabilityData
-                                            ?.inventories
+                                final hasQuantity = (product.masterVariation
+                                            ?.availabilityData?.inventories
                                             ?.firstWhere(
                                                 (inventory) =>
                                                     inventory
@@ -99,9 +99,9 @@ class _HomePageState extends State<HomeScreen> {
                                           return const Inventory(
                                               inStockQuantity: 0);
                                         }).inStockQuantity ??
-                                        0) >
-                                    0;
+                                        0).toInt() ;
                                 return TotPOSProductDetailsDialogOrganism(
+                                  masterQuantity: hasQuantity,
                                   product: product,
                                   variations: product.variations ?? [],
                                   masterVariation: product.masterVariation!,
@@ -113,14 +113,16 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: hasQuantity?(product, count) {
-                                    context.read<BagBloc>().add(
-                                          BagEvent.addItem(
-                                            item: product,
-                                            count: count,
-                                          ),
-                                        );
-                                  }:null,
+                                  onAddToCart: hasQuantity>0
+                                      ? (product, count) {
+                                          context.read<BagBloc>().add(
+                                                BagEvent.addItem(
+                                                  item: product,
+                                                  count: count,
+                                                ),
+                                              );
+                                        }
+                                      : null,
                                   productFallbackImg: ImgsManager.totLogo,
                                   addToCartTitle: context.tr.addToCart,
                                   buttonBackgroundColor: Palette.primary,
