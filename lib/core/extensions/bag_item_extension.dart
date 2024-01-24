@@ -31,7 +31,6 @@ extension BagExtension on Item {
           price!.actual!.amount!.toDouble(),
       salePrice:
           price?.sale?.amount?.toDouble() ?? price!.sale!.amount!.toDouble(),
-      objectType: "TotPlatform.CartModule.Core.Model.LineItem",
       createdDate: DateTime.now().toString(),
       modifiedDate: DateTime.now().toString(),
       createdBy: '',

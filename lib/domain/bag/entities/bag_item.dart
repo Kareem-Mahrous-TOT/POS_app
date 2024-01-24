@@ -12,7 +12,7 @@ class BagItem {
   final double listPrice;
   final double salePrice;
   final double price;
-  final String objectType;
+  final String _objectType;
   final String createdDate;
   String modifiedDate;
   final String createdBy;
@@ -33,17 +33,17 @@ class BagItem {
     required this.listPrice,
     required this.salePrice,
     required this.price,
-    required this.objectType,
     required this.createdDate,
     required this.modifiedDate,
     required this.createdBy,
     required this.modifiedBy,
     required this.inStockQuantity,
-  });
+  }) : _objectType = "TotPlatform.CartModule.Core.Model.LineItem";
+
+  get objectType => _objectType;
 
   BagItem copyWith({
-    int? quantity,
-    String? taxType,
+    int? count,
     String? modifiedDate,
     String? modifiedBy,
   }) {
@@ -53,7 +53,7 @@ class BagItem {
         sku: sku,
         productType: productType,
         name: name,
-        count: quantity ?? count,
+        count: count ?? this.count,
         imageUrl: imageUrl,
         currency: currency,
         priceId: priceId,
@@ -61,7 +61,6 @@ class BagItem {
         listPrice: listPrice,
         salePrice: salePrice,
         price: price,
-        objectType: objectType,
         createdDate: createdDate,
         modifiedDate: modifiedDate ?? this.modifiedDate,
         createdBy: createdBy,
@@ -80,7 +79,7 @@ class BagItem {
       'productId': productId,
       'fulfillmentCenterId': fulfillmentCenterId,
       'fulfillmentCenterName': fulfillmentCenterName,
-      'sku': productId,
+      'sku': sku,
       'productType': productType,
       'name': name,
       'quantity': count,
@@ -91,7 +90,7 @@ class BagItem {
       'salePrice': salePrice,
       'price': price,
       'taxType': taxType.toString(),
-      'objectType': "TotPlatform.CartModule.Core.Model.LineItem",
+      'objectType': _objectType,
       'createdDate': createdDate,
       'modifiedDate': modifiedDate,
       'createdBy': createdBy,
@@ -101,6 +100,6 @@ class BagItem {
 
   @override
   String toString() {
-    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $objectType, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
+    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $_objectType, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
   }
 }
