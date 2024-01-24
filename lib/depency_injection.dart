@@ -132,13 +132,13 @@ class _Dependencies {
         () => CurrentCustomerCubit(getUserUsecase: getIt()));
     getIt.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
         fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
-    // getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
     getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
     getIt.registerFactory<ReportChartPieCubit>(
         () => ReportChartPieCubit(pieChartUsecase: getIt()));
     getIt.registerFactory<ReportCostCubit>(
         () => ReportCostCubit(costUsecase: getIt()));
-    getIt.registerFactory<MenuBloc>(() => MenuBloc(getIt()));
+    // getIt.registerFactory<MenuBloc>(() => MenuBloc(getIt()));
+    getIt.registerLazySingleton<MenuBloc>(() => MenuBloc(getIt()));
     getIt.registerFactory<OrdersBloc>(() => OrdersBloc(
           getOrderUseCase: getIt(),
         ));
