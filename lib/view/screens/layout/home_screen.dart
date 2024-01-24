@@ -14,6 +14,7 @@ import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
 import '../../../core/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
+import '../../../depency_injection.dart';
 import '../../blocs/bag/bag_bloc.dart';
 import '../../blocs/product_details/product_details_bloc.dart';
 import '../../blocs/products/products_bloc.dart';
@@ -21,24 +22,16 @@ import '../../components/home_components/tot_pos_product_details_dialog_organism
 import '../../ui_mappers/bag_organism_item.dart';
 import '../../ui_mappers/to_category_record.dart';
 
-class HomeScreen extends StatefulHookWidget {
+class HomeScreen extends HookWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomeScreen> {
-  @override
-  void initState() {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
-      context.read<ProductsBloc>().add(ProductsEvent.fetch());
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      context.read<ProductsBloc>().add(ProductsEvent.fetch());
+      return;
+    }, []);
+
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
 
@@ -55,91 +48,153 @@ class _HomePageState extends State<HomeScreen> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    return BlocListener<ProductDetailsBloc, ProductDetailsState>(
-      listener: (context, state) {
-        state.maybeMap(
-            orElse: () {},
-            loading: (loadingState) {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      icon: Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: IconButton(
-                              onPressed: () {
-                                context.pop();
-                              },
-                              icon: const Icon(Icons.close))),
-                      content:
-                          BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
-                        builder: (context, state) {
-                          return SizedBox(
-                            width: w * 0.5,
-                            height: h * 0.6,
-                            child: state.maybeMap<Widget>(
-                              orElse: () {
-                                return const Center(
-                                  child: CircularProgressIndicator.adaptive(),
-                                );
-                              },
-                              failure: (failureState) {
-                                return Center(
-                                  child: Text(failureState.message),
-                                );
-                              },
-                              success: (successState) {
-                                final product = successState.product;
-                                final masterQuantity = (product.masterVariation
-                                            ?.availabilityData?.inventories
-                                            ?.firstWhere(
-                                                (inventory) =>
-                                                    inventory
-                                                        .fulfillmentCenterId ==
-                                                    StoreConfig.octoberBranchId,
-                                                orElse: () {
-                                          return const Inventory(
-                                              inStockQuantity: 0);
-                                        }).inStockQuantity ??
-                                        0)
-                                    .toInt();
-                                return TotPOSProductDetailsDialogOrganism(
-                                  masterQuantity: masterQuantity,
-                                  product: product,
-                                  onVariationChoosen: (variation) {
-                                    context.read<ProductDetailsBloc>().add(
-                                          ProductDetailsEvent
-                                              .changeMasterVariation(
-                                            variation,
-                                          ),
-                                        );
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ProductDetailsBloc, ProductDetailsState>(
+          listener: (context, state) {
+            state.maybeMap(
+                orElse: () {},
+                loading: (loadingState) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          icon: Align(
+                              alignment: AlignmentDirectional.topEnd,
+                              child: IconButton(
+                                  onPressed: () {
+                                    context.pop();
                                   },
-                                  onAddToCart: masterQuantity > 0
-                                      ? (product, count) {
-                                          context.read<BagBloc>().add(
-                                                BagEvent.addItem(
-                                                  item: product,
-                                                  count: count,
-                                                ),
-                                              );
-                                        }
-                                      : null,
-                                  productFallbackImg: ImgsManager.totLogo,
-                                  addToCartTitle: context.tr.addToCart,
-                                  buttonBackgroundColor: Palette.primary,
-                                  activeVartiationColor: Palette.primary,
-                                  priceTitle: context.tr.price,
-                                  sizeTitle: context.tr.size,
-                                );
-                              },
-                            ),
-                          );
-                        },
+                                  icon: const Icon(Icons.close))),
+                          content: BlocBuilder<ProductDetailsBloc,
+                              ProductDetailsState>(
+                            builder: (context, state) {
+                              return SizedBox(
+                                width: w * 0.5,
+                                height: h * 0.6,
+                                child: state.maybeMap<Widget>(
+                                  orElse: () {
+                                    return const Center(
+                                      child:
+                                          CircularProgressIndicator.adaptive(),
+                                    );
+                                  },
+                                  failure: (failureState) {
+                                    return Center(
+                                      child: Text(failureState.message),
+                                    );
+                                  },
+                                  success: (successState) {
+                                    final product = successState.product;
+                                    final masterQuantity = (product
+                                                .masterVariation
+                                                ?.availabilityData
+                                                ?.inventories
+                                                ?.firstWhere(
+                                                    (inventory) =>
+                                                        inventory
+                                                            .fulfillmentCenterId ==
+                                                        StoreConfig
+                                                            .octoberBranchId,
+                                                    orElse: () {
+                                              return const Inventory(
+                                                  inStockQuantity: 0);
+                                            }).inStockQuantity ??
+                                            0)
+                                        .toInt();
+                                    return TotPOSProductDetailsDialogOrganism(
+                                      masterQuantity: masterQuantity,
+                                      product: product,
+                                      onVariationChoosen: (variation) {
+                                        context.read<ProductDetailsBloc>().add(
+                                              ProductDetailsEvent
+                                                  .changeMasterVariation(
+                                                variation,
+                                              ),
+                                            );
+                                      },
+                                      onAddToCart: masterQuantity > 0
+                                          ? (product, count) {
+                                              context.read<BagBloc>().add(
+                                                    BagEvent.addItem(
+                                                      item: product,
+                                                      count: count,
+                                                    ),
+                                                  );
+                                            }
+                                          : null,
+                                      productFallbackImg: ImgsManager.totLogo,
+                                      addToCartTitle: context.tr.addToCart,
+                                      buttonBackgroundColor: Palette.primary,
+                                      activeVartiationColor: Palette.primary,
+                                      priceTitle: context.tr.price,
+                                      sizeTitle: context.tr.size,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      });
+                });
+          },
+        ),
+        BlocListener<BagBloc, BagState>(
+          listener: (context, state) {
+            state.maybeMap(
+              orElse: () {},
+              empty: (emptyState) {
+                if (emptyState.fromSuccess) {
+                  fToast.showToast(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                          color: Palette.green,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Text(
+                        "تم الطلب بنجاح",
+                        style:
+                            context.titleLarge.copyWith(color: Palette.white),
                       ),
-                    );
-                  });
-            });
-      },
+                    ),
+                  );
+
+                  final menuState = getIt<MenuBloc>().state;
+                  final selectedCategoryId = menuState.maybeMap<String?>(
+                    orElse: () => null,
+                    fetchSuccess: (successState) => successState.records
+                        .firstWhere((record) => record.isSelected)
+                        .categoryId,
+                  );
+                  context.read<ProductsBloc>().add(
+                        ProductsEvent.fetch(categoryId: selectedCategoryId),
+                      );
+                }
+              },
+              getItems: (getItemsState) {
+                if (getItemsState.fromFailure) {
+                  fToast.showToast(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                          color: Palette.green,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Text(
+                        "فشل الطلب",
+                        style:
+                            context.titleLarge.copyWith(color: Palette.white),
+                      ),
+                    ),
+                  );
+                }
+              },
+            );
+          },
+        )
+      ],
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -154,14 +209,12 @@ class _HomePageState extends State<HomeScreen> {
             },
             actions: [
               IconButton(
-                  onPressed: () => setState(() {
-                        showCustomKeyboardOrganism(
-                            context: context,
-                            inputValue: controller.text,
-                            onChange: (value) => setState(() {
-                                  controller.text = value;
-                                }));
-                      }),
+                  onPressed: () {
+                    showCustomKeyboardOrganism(
+                        context: context,
+                        inputValue: controller.text,
+                        onChange: (value) => controller.text = value);
+                  },
                   icon: const Icon(Icons.keyboard_alt_outlined))
             ],
             searchWidth: 650.w,
@@ -350,48 +403,7 @@ class _HomePageState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      BlocConsumer<BagBloc, BagState>(
-                        listener: (context, state) {
-                          state.maybeMap(
-                            orElse: () {},
-                            empty: (emptyState) {
-                              if (emptyState.fromSuccess) {
-                                fToast.showToast(
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                        color: Palette.green,
-                                        borderRadius: BorderRadius.circular(4)),
-                                    child: Text(
-                                      "تم الطلب بنجاح",
-                                      style: context.titleLarge
-                                          .copyWith(color: Palette.white),
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                            getItems: (getItemsState) {
-                              if (getItemsState.fromFailure) {
-                                fToast.showToast(
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                        color: Palette.green,
-                                        borderRadius: BorderRadius.circular(4)),
-                                    child: Text(
-                                      "فشل الطلب",
-                                      style: context.titleLarge
-                                          .copyWith(color: Palette.white),
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                          );
-                        },
+                      BlocBuilder<BagBloc, BagState>(
                         builder: (context, state) {
                           return state.map(loading: (value) {
                             return Container(
