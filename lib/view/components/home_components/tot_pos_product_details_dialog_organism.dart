@@ -124,11 +124,12 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                     backgroundColor: buttonBackgroundColor,
                     addIconColor: quantityControlsColor ?? Colors.white,
                     removeIconColor: quantityControlsColor ?? Colors.white,
-                    onIncrement: masterHasQuantity
-                        ? () {
-                            counter.value++;
-                          }
-                        : null,
+                    onIncrement:
+                        counter.value < masterQuantity //masterHasQuantity
+                            ? () {
+                                counter.value++;
+                              }
+                            : null,
                     onDecrement: masterHasQuantity
                         ? () {
                             if (counter.value <= 1) return;

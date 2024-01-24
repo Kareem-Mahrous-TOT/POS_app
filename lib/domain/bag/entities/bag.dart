@@ -29,6 +29,7 @@ class BagEntity {
         items.indexWhere((element) => element.productId == bagItem.productId);
 
     if (bagItem.count > bagItem.inStockQuantity) return false;
+
     /// if [item] doesn't exist in bag
     if (index == -1) {
       _items.add(bagItem);
@@ -39,18 +40,18 @@ class BagEntity {
 
     /// if [item] exists in bag
     final existingItem = _items[index];
-    final resultingQuantity = bagItem.count + existingItem.count;
-    if (resultingQuantity > bagItem.inStockQuantity) return false;
-    existingItem.count = resultingQuantity;
-    _recalculate();
-    return true;
+    final didIncreaseCount = existingItem.increaseCount(bagItem.count);
+    if(didIncreaseCount) {
+      _recalculate();
+    }
+    return didIncreaseCount;
   }
 
   void decreaseItemQuantity({required String productId}) {
     final index = items.indexWhere((element) => element.productId == productId);
     if (index != -1) {
       if (_items[index].count > 1) {
-        _items[index].count--;
+        _items[index].decreaseCount();
       } else {
         removeItem(productId: _items[index].productId);
       }

@@ -4,7 +4,7 @@ class BagItem {
   final String? sku;
   final String productType;
   final String name;
-  int count;
+  int _count;
   final String? imageUrl;
   final String currency;
   final String priceId;
@@ -12,7 +12,7 @@ class BagItem {
   final double listPrice;
   final double salePrice;
   final double price;
-  final String objectType;
+  final String _objectType;
   final String createdDate;
   String modifiedDate;
   final String createdBy;
@@ -25,7 +25,7 @@ class BagItem {
     this.sku,
     required this.productType,
     required this.name,
-    required this.count,
+    required int count,
     required this.imageUrl,
     required this.currency,
     required this.priceId,
@@ -33,17 +33,32 @@ class BagItem {
     required this.listPrice,
     required this.salePrice,
     required this.price,
-    required this.objectType,
     required this.createdDate,
     required this.modifiedDate,
     required this.createdBy,
     required this.modifiedBy,
     required this.inStockQuantity,
-  });
+  })  : _count = count >= 1 ? count : 1,
+        _objectType = "TotPlatform.CartModule.Core.Model.LineItem";
+
+  String get objectType => _objectType;
+  int get count => _count;
+
+  bool increaseCount(int newCount) {
+    final resultigCount = _count + newCount;
+    if (resultigCount > inStockQuantity) return false;
+    _count = resultigCount;
+    return true;
+  }
+
+  void decreaseCount() {
+    if (_count >= 1) {
+      _count--;
+    }
+  }
 
   BagItem copyWith({
-    int? quantity,
-    String? taxType,
+    int? count,
     String? modifiedDate,
     String? modifiedBy,
   }) {
@@ -53,7 +68,7 @@ class BagItem {
         sku: sku,
         productType: productType,
         name: name,
-        count: quantity ?? count,
+        count: count ?? _count,
         imageUrl: imageUrl,
         currency: currency,
         priceId: priceId,
@@ -61,7 +76,6 @@ class BagItem {
         listPrice: listPrice,
         salePrice: salePrice,
         price: price,
-        objectType: objectType,
         createdDate: createdDate,
         modifiedDate: modifiedDate ?? this.modifiedDate,
         createdBy: createdBy,
@@ -80,10 +94,10 @@ class BagItem {
       'productId': productId,
       'fulfillmentCenterId': fulfillmentCenterId,
       'fulfillmentCenterName': fulfillmentCenterName,
-      'sku': productId,
+      'sku': sku,
       'productType': productType,
       'name': name,
-      'quantity': count,
+      'quantity': _count,
       'imageUrl': imageUrl,
       'currency': currency,
       'priceId': priceId,
@@ -91,7 +105,7 @@ class BagItem {
       'salePrice': salePrice,
       'price': price,
       'taxType': taxType.toString(),
-      'objectType': "TotPlatform.CartModule.Core.Model.LineItem",
+      'objectType': _objectType,
       'createdDate': createdDate,
       'modifiedDate': modifiedDate,
       'createdBy': createdBy,
@@ -101,6 +115,6 @@ class BagItem {
 
   @override
   String toString() {
-    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $objectType, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
+    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $_count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $_objectType, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
   }
 }

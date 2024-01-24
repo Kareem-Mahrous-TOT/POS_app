@@ -90,7 +90,7 @@ class _HomePageState extends State<HomeScreen> {
                               },
                               success: (successState) {
                                 final product = successState.product;
-                                final hasQuantity = (product.masterVariation
+                                final masterQuantity = (product.masterVariation
                                             ?.availabilityData?.inventories
                                             ?.firstWhere(
                                                 (inventory) =>
@@ -104,8 +104,9 @@ class _HomePageState extends State<HomeScreen> {
                                         0)
                                     .toInt();
                                 return TotPOSProductDetailsDialogOrganism(
-                                  masterQuantity: hasQuantity,
-                                  product: product,onVariationChoosen: (variation) {
+                                  masterQuantity: masterQuantity,
+                                  product: product,
+                                  onVariationChoosen: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
                                               .changeMasterVariation(
@@ -113,7 +114,7 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: hasQuantity > 0
+                                  onAddToCart: masterQuantity > 0
                                       ? (product, count) {
                                           context.read<BagBloc>().add(
                                                 BagEvent.addItem(
