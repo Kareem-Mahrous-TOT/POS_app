@@ -71,9 +71,64 @@ void main() {
       expect(sut.sku, equals(tSku));
     });
 
+    test("bag item count should not be zero when the object is first created",
+        () {
+      // arrange
+      final sut = BagItem(
+        catalogId: tCatalogId,
+        productId: tProductId,
+        productType: tProductType,
+        name: tName,
+        count: 0,
+        imageUrl: tImageUrl,
+        currency: tCurrency,
+        priceId: tPriceId,
+        listWithTax: tListWithTax,
+        listPrice: tListPrice,
+        salePrice: tSalePrice,
+        price: tPrice,
+        createdDate: tCreatedDate,
+        modifiedDate: tModifiedDate,
+        createdBy: tCreatedBy,
+        modifiedBy: tModifiedBy,
+        inStockQuantity: tInStockQuantity,
+        sku: tSku,
+      );
+
+      expect(sut.count, greaterThanOrEqualTo(1));
+    });
+
     test("bag item objectType should return lineItem", () {
       // assert
       expect(sut.objectType, equals(tObjectType));
+    });
+  });
+
+  group("Testing increaseCount method", () {
+    test("count should not exceed tInStockQuantity", () {
+      // act
+      sut.increaseCount(tInStockQuantity + 1);
+      // assert
+      expect(sut.count, lessThanOrEqualTo(tInStockQuantity));
+    });
+  });
+
+  group("Testing decreaseCount method", () {
+    test("should decrement count by one", () {
+      // arrange
+      final countBeforeDecrement = sut.count;
+      // act
+      sut.decreaseCount();
+      // assert
+      expect(sut.count, equals(countBeforeDecrement - 1));
+    });
+
+    test("count should not get less than 0", () {
+      // act
+      sut.decreaseCount();
+      sut.decreaseCount();
+      // assert
+      expect(sut.count, greaterThanOrEqualTo(0));
     });
   });
 
@@ -124,37 +179,34 @@ void main() {
     const tFulfillmentCenterId = "fulfillmentCenterId";
     const tFulfillmentCenterName = "fulfillmentCenterName";
 
-
-    
-
     test("toJson method should return a valid json", () {
       // arrange
       final tTaxRate = (sut.listWithTax - sut.listPrice) / sut.listPrice;
       final tTaxType = (tTaxRate * 100).round();
 
       final tJson = {
-      'catalogId': tCatalogId,
-      'productId': tProductId,
-      'fulfillmentCenterId': tFulfillmentCenterId,
-      'fulfillmentCenterName': tFulfillmentCenterName,
-      'sku': tSku,
-      'productType': tProductType,
-      'name': tName,
-      'quantity': tCount,
-      'imageUrl': tImageUrl,
-      'currency': tCurrency,
-      'priceId': tPriceId,
-      'listPrice': tListPrice,
-      'salePrice': tSalePrice,
-      'price': tPrice,
-      'taxType': tTaxType.toString(),
-      'objectType': tObjectType,
-      'createdDate': tCreatedDate,
-      'modifiedDate': tModifiedDate,
-      'createdBy': tCreatedBy,
-      'modifiedBy': tModifiedBy,
-    };
-      
+        'catalogId': tCatalogId,
+        'productId': tProductId,
+        'fulfillmentCenterId': tFulfillmentCenterId,
+        'fulfillmentCenterName': tFulfillmentCenterName,
+        'sku': tSku,
+        'productType': tProductType,
+        'name': tName,
+        'quantity': tCount,
+        'imageUrl': tImageUrl,
+        'currency': tCurrency,
+        'priceId': tPriceId,
+        'listPrice': tListPrice,
+        'salePrice': tSalePrice,
+        'price': tPrice,
+        'taxType': tTaxType.toString(),
+        'objectType': tObjectType,
+        'createdDate': tCreatedDate,
+        'modifiedDate': tModifiedDate,
+        'createdBy': tCreatedBy,
+        'modifiedBy': tModifiedBy,
+      };
+
       // act
       final expectedJsonjson = sut.toJson(
           fulfillmentCenterId: tFulfillmentCenterId,
