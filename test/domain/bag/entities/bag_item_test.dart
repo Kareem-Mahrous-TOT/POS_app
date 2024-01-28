@@ -208,12 +208,12 @@ void main() {
       };
 
       // act
-      final expectedJsonjson = sut.toJson(
+      final expectedJson = sut.toJson(
           fulfillmentCenterId: tFulfillmentCenterId,
           fulfillmentCenterName: tFulfillmentCenterName);
 
       // assert
-      expect(tJson, equals(expectedJsonjson));
+      expect(tJson, equals(expectedJson));
     });
   });
 }

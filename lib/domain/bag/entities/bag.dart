@@ -23,6 +23,10 @@ class BagEntity {
   List<BagItem> get items => _items.toList();
   double get subTotalPrice => _subTotalPrice.toDouble();
   double get totalPrice => _totalPrice.toDouble();
+  String get createdDate => _createdDate;
+  String get modifiedDate => _modifiedDate;
+  String get createdBy => _createdBy;
+  String get modifiedBy => _modifiedBy;
 
   bool addItem({required BagItem bagItem}) {
     final index =
@@ -41,13 +45,13 @@ class BagEntity {
     /// if [item] exists in bag
     final existingItem = _items[index];
     final didIncreaseCount = existingItem.increaseCount(bagItem.count);
-    if(didIncreaseCount) {
+    if (didIncreaseCount) {
       _recalculate();
     }
     return didIncreaseCount;
   }
 
-  void decreaseItemQuantity({required String productId}) {
+  void decreaseItemCount({required String productId}) {
     final index = items.indexWhere((element) => element.productId == productId);
     if (index != -1) {
       if (_items[index].count > 1) {
@@ -81,19 +85,23 @@ class BagEntity {
     _totalPrice = _subTotalPrice * discountFactor;
   }
 
-  void setDiscount({double? discount}) {
+  bool setDiscount({double? discount}) {
     final checkForNull = discount != null;
-    final checkForRange = checkForNull && (discount > 100 || discount < 0);
-    final checkForRepition = discount == _discount;
+    final isOutOfRange = checkForNull && (discount > 100 || discount < 0);
+    final hasRepition = discount == _discount;
 
-    if (checkForRange || checkForRepition) return;
+    if (isOutOfRange || hasRepition) return false;
 
     _discount = discount;
     _recalculate();
+
+    return true;
   }
 
   Map<String, dynamic> toJson({
     String customerName = "Anonymous",
+    String? fulfillmentCenterName,
+    String? fulfillmentCenterId,
   }) {
     double discountAmount = _subTotalPrice - _totalPrice;
     if (discountAmount < 0) {
@@ -106,8 +114,10 @@ class BagEntity {
       "modifiedBy": _modifiedBy,
       "items": _items
           .map((bagItem) => bagItem.toJson(
-                fulfillmentCenterId: StoreConfig.octoberBranchId,
-                fulfillmentCenterName: StoreConfig.octoberBranchName,
+                fulfillmentCenterId:
+                    fulfillmentCenterId ?? StoreConfig.octoberBranchId,
+                fulfillmentCenterName:
+                    fulfillmentCenterName ?? StoreConfig.octoberBranchName,
               ))
           .toList(),
       "price": _totalPrice,
