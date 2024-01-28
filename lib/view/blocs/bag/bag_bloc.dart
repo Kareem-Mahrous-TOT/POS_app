@@ -103,7 +103,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             orElse: () {},
             getItems: (getItemsState) {
               final newBagEntitiy = getItemsState.bagEntity;
-              newBagEntitiy.decreaseItemQuantity(productId: value.productId);
+              newBagEntitiy.decreaseItemCount(productId: value.productId);
               emit(getItemsState.copyWith(
                   bagEntity: newBagEntitiy, fromFailure: false));
             },
