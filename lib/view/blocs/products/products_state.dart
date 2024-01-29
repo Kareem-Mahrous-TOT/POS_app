@@ -10,6 +10,6 @@ class ProductsState with _$ProductsState {
       bool? isSearching,
       @Default(false) bool hasReachedMax,
       @Default(false) bool addingProducts,
-       List<ProductCardRecord>? records}) = _FetchSuccessState;
+      List<ProductCardRecord>? records}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;
 }
