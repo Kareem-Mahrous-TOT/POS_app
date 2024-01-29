@@ -30,8 +30,6 @@ void showCustomKeyboardOrganism({
   );
 }
 
-//TODO: needs to be added in package
-
 class TotCustomKeyboardMolecule extends StatefulWidget {
   const TotCustomKeyboardMolecule({
     super.key,

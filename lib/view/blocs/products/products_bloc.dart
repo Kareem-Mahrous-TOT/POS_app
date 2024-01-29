@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/data/products/mapper/products_pos_mapping.dart';
@@ -28,27 +29,33 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     List<ProductPOSRecord> recordsList = [];
     on<ProductsEvent>((event, emit) async {
       Future<void> fetchProducts(
-          {String? categoryId,
+          {bool allItems = false,
+          String? categoryId,
           String sort = "",
           String? after,
           int first = 20}) async {
         emit(ProductsState.loadingState());
         try {
+          if (allItems) currentIndex = 0;
           final response = await _getProductsUsecase.call(GetProductsParams(
             categoryId: categoryId,
-            first: first,
-            after: "$currentIndex",
+            first: allItems ? 300 : first,
+            after: after ?? "$currentIndex",
           ));
+
           response.fold(
               (failure) => emit(ProductsState.fetchFailState(failure.message)),
               (record) {
             productsList = record.productsModels ?? [];
             recordsList = record.proudctsPosRecords;
+            // if (allItems) currentIndex = record.productsModels!.length;
             emit(ProductsState.fetchSuccessState(
                 products: productsList,
                 records: recordsList,
-                hasReachedMax: productsList.isEmpty ? true : false));
+                hasReachedMax:
+                    productsList.isEmpty || allItems ? true : false));
           });
+          allItems = false;
         } catch (e) {
           emit(ProductsState.fetchFailState(e.toString()));
         }
@@ -63,8 +70,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
           fetch: (categoryId, allItems) async {
             emit(ProductsState.loadingState());
             await fetchProducts(
+              allItems: allItems,
               after: "0",
-              first: allItems ? 300 : 20,
+              first: 20,
               categoryId: categoryId,
             );
           },
@@ -73,10 +81,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               orElse: () {},
               fetchSuccessState: (data) async {
                 // emit(data.copyWith(addingProducts: true));
-
-                if (data.hasReachedMax) return;
-                currentIndex = data.products.length;
                 log("after::: $currentIndex ##### hasReachedMax ${data.hasReachedMax}");
+                if (data.hasReachedMax) return;
+
+                currentIndex = data.products.length;
 
                 await _getProductsUsecase(
                         GetProductsParams(after: currentIndex.toString()))
@@ -130,6 +138,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               );
             }
           });
-    });
+    }, transformer: droppable());
   }
 }
