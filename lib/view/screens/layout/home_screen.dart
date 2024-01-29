@@ -35,7 +35,7 @@ class _HomePageState extends State<HomeScreen> {
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
-      context.read<ProductsBloc>().add(ProductsEvent.fetch());
+      context.read<ProductsBloc>().add(ProductsEvent.fetch(allItems: false));
     });
     scrollController = ScrollController();
     scrollController.addListener(_onScroll);
@@ -220,7 +220,12 @@ class _HomePageState extends State<HomeScreen> {
                           if (context.mounted) {
                             context.read<ProductsBloc>().add(
                                   ProductsEvent.fetch(
-                                      categoryId: selectedRecord.categoryId),
+                                    categoryId: selectedRecord.categoryId,
+                                    allItems:
+                                        selectedRecord.url.toString() != "null"
+                                            ? true
+                                            : false,
+                                  ),
                                 );
                           }
                         },
@@ -314,8 +319,8 @@ class _HomePageState extends State<HomeScreen> {
                                       controller: scrollController,
                                       shrinkWrap: true,
                                       itemCount: value.hasReachedMax
-                                          ? value.records?.length ?? 0
-                                          : value.records!.length + 1,
+                                          ? value.products.length
+                                          : value.products.length + 1,
                                       itemBuilder: (context, index) {
                                         if ((index >= products.length)) {
                                           return const ShimmerEffect();
