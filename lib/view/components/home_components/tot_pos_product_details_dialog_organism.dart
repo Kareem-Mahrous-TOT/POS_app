@@ -4,8 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../core/extensions/translate.dart';
+import '../../../core/constants/assets.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
@@ -13,9 +12,8 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     super.key,
     required this.onAddToCart,
     required this.product,
-    required this.variations,
-    required this.masterVariation,
-    required this.onVariationTapped,
+    required this.onVariationChoosen,
+    required this.masterQuantity,
     this.padding,
     this.imgHeight,
     this.imgWidth,
@@ -23,6 +21,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.buttonBorderRadius,
     this.buttonBackgroundColor,
     this.quantityControlsColor,
+    this.addToCartTitle = "Add to cart",
     this.addTocartTextStyle,
     this.crossAxisSpacing,
     this.productNameTextStyle,
@@ -34,14 +33,13 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.sizeTitle = "Size",
     this.activeVartiationColor,
     this.inActiveVartiationColor,
+    this.productFallbackImg,
   });
 
-  final void Function(Item product, int count, List<Variation> variations)
-      onAddToCart;
+  final void Function(Item product, int count)? onAddToCart;
   final Item product;
-  final List<Variation> variations;
-  final Variation masterVariation;
-  final void Function(Variation variation) onVariationTapped;
+  final void Function(Variation variation) onVariationChoosen;
+  final int masterQuantity;
 
   final EdgeInsets? padding;
   final double? imgHeight;
@@ -50,6 +48,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final double? buttonBorderRadius;
   final Color? buttonBackgroundColor;
   final Color? quantityControlsColor;
+  final String addToCartTitle;
   final TextStyle? addTocartTextStyle;
   final double? crossAxisSpacing;
   final TextStyle? productNameTextStyle;
@@ -61,12 +60,33 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
   final String sizeTitle;
   final Color? activeVartiationColor;
   final Color? inActiveVartiationColor;
+  final String? productFallbackImg;
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
 
     final counter = useState(1);
+
+    final masterHasQuantity = masterQuantity > 0;
+
+    useEffect(() {
+      if (!masterHasQuantity) {
+        counter.value = 0;
+        return;
+      }
+
+      if (counter.value > masterQuantity) {
+        counter.value = masterQuantity;
+        return;
+      }
+
+      if (counter.value == 0) {
+        counter.value = 1;
+        return;
+      }
+      return;
+    }, [masterQuantity]);
 
     return Padding(
       padding: padding ?? const EdgeInsets.all(20.0),
@@ -87,11 +107,13 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                     fit: BoxFit.fill,
                     imageUrl: product.imgSrc ?? "",
                     errorWidget: (context, error, stackTrace) {
-                      return Image.network(
-                        height: imgHeight ?? w * 0.135,
-                        width: imgWidth ?? w * 0.18,
-                        "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
-                      );
+                      return (productFallbackImg != null)
+                          ? Image.asset(
+                              ImgsManager.totLogo,
+                            )
+                          : Container(
+                              color: Colors.grey.shade400,
+                            );
                     },
                   ),
                 ),
@@ -99,43 +121,38 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: TOTPOSItemCounterMolecule(
-                    borderColor: buttonBackgroundColor,
+                    backgroundColor: buttonBackgroundColor,
                     addIconColor: quantityControlsColor ?? Colors.white,
                     removeIconColor: quantityControlsColor ?? Colors.white,
-                    increment: () {
-                      if (counter.value <
-                          (product.availabilityData?.availableQuantity ?? 0)) {
-                        counter.value++;
-                      }
-                    },
-                    decrement: () {
-                      if (counter.value <= 1) return;
-                      counter.value--;
-                    },
+                    onIncrement:
+                        counter.value < masterQuantity //masterHasQuantity
+                            ? () {
+                                counter.value++;
+                              }
+                            : null,
+                    onDecrement: masterHasQuantity
+                        ? () {
+                            if (counter.value <= 1) return;
+
+                            counter.value--;
+                          }
+                        : null,
                     value: counter.value.toString(),
                   ),
                 ),
                 TotButtonAtom(
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(buttonBorderRadius ?? 16)),
-                  text: context.tr.addToCart,
-                  onPressed: (masterVariation.availabilityData?.inventories
-                                  ?.firstWhere(
-                                      orElse: () =>
-                                          const Inventory(inStockQuantity: 0),
-                                      (element) =>
-                                          element.fulfillmentCenterId ==
-                                          StoreConfig.octoberBranchId)
-                                  .inStockQuantity ??
-                              0) >
-                          0
-                      ? () async {
-                          onAddToCart(product, counter.value, variations);
+                  text: addToCartTitle,
+                  onPressed: onAddToCart == null
+                      ? null
+                      : () async {
+                          onAddToCart?.call(product, counter.value);
 
                           context.pop();
-                        }
-                      : null,
+                        },
                   textStyle: addTocartTextStyle ??
                       context.titleMedium.copyWith(color: Colors.white),
                   backgroundColor: buttonBackgroundColor,
@@ -146,68 +163,72 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
           SizedBox(width: crossAxisSpacing ?? 30),
           Expanded(
             flex: 3,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  masterVariation.name.toString(),
-                  style: productNameTextStyle ??
-                      context.titleLarge.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                ),
-                Text(
-                    product.descriptions
-                            ?.where(
-                                (element) => element.languageCode == "ar-EG")
-                            .first
-                            .content ??
-                        "",
-                    style: productDescriptionTextStyle ??
-                        context.titleMedium.copyWith(
-                          color: Colors.grey,
-                        )),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "$priceTitle:\n ${masterVariation.price?.actual?.formattedAmount ?? "0"}",
-                      style: priceTextStyle ??
+            child: Builder(builder: (context) {
+              final masterVariation = product.masterVariation!;
+              final variations = product.variations ?? [];
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    masterVariation.name.toString(),
+                    style: productNameTextStyle ??
+                        context.titleLarge.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                  ),
+                  Text(
+                      product.descriptions
+                              ?.where(
+                                  (element) => element.languageCode == "ar-EG")
+                              .first
+                              .content ??
+                          "",
+                      style: productDescriptionTextStyle ??
                           context.titleMedium.copyWith(
-                            color: Colors.black,
-                          ),
-                    ),
-                  ],
-                ),
-                Divider(
-                  thickness: 2,
-                  color: dividerColor ?? Colors.grey,
-                ),
-                TotVariationCardMolecule<Variation>(
-                  height: variationHeight ?? w * 0.028,
-                  variations: variations,
-                  textList: variations
-                      .map(
-                        (e) => e.properties!
-                            .firstWhere((element) => element.name == "size")
-                            .value
-                            .toString(),
-                      )
-                      .toList(),
-                  onVariationSelected: onVariationTapped,
-                  reverse: false,
-                  title: sizeTitle,
-                  titleTextStyle: context.titleMedium,
-                  falseColor: inActiveVartiationColor ?? Colors.white,
-                  successColor: activeVartiationColor ?? Colors.green,
-                  isMasterList: variations.map((e) => e.isMaster).toList(),
-                  itemBorderColor: Colors.transparent,
-                )
-              ],
-            ),
+                            color: Colors.grey,
+                          )),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "$priceTitle:\n ${masterVariation.price?.actual?.formattedAmount ?? "0"}",
+                        style: priceTextStyle ??
+                            context.titleMedium.copyWith(
+                              color: Colors.black,
+                            ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 2,
+                    color: dividerColor ?? Colors.grey,
+                  ),
+                  TotVariationCardMolecule<Variation>(
+                    height: variationHeight ?? w * 0.028,
+                    variations: variations,
+                    textList: variations
+                        .map(
+                          (e) => e.properties!
+                              .firstWhere((element) => element.name == "size")
+                              .value
+                              .toString(),
+                        )
+                        .toList(),
+                    onVariationSelected: onVariationChoosen,
+                    reverse: false,
+                    title: sizeTitle,
+                    titleTextStyle: context.titleMedium,
+                    falseColor: inActiveVartiationColor ?? Colors.white,
+                    successColor: activeVartiationColor ?? Colors.green,
+                    isMasterList: variations.map((e) => e.isMaster).toList(),
+                    itemBorderColor: Colors.transparent,
+                  )
+                ],
+              );
+            }),
           ),
         ],
       ),

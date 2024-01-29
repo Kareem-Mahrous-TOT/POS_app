@@ -14,7 +14,6 @@ part 'products_event.dart';
 part 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  // final ProductsRepoBase productsRepo;
   final GetProductsUsecase _getProductsUsecase;
   final SearchUsecase _searchUsecase;
   ProductsBloc(
@@ -61,11 +60,11 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             emit(ProductsState.loadingState());
             await fetchProducts();
           },
-          fetch: (categoryId) async {
+          fetch: (categoryId, allItems) async {
             emit(ProductsState.loadingState());
             await fetchProducts(
               after: "0",
-              first: 20,
+              first: allItems ? 300 : 20,
               categoryId: categoryId,
             );
           },
@@ -122,26 +121,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
                     products: records.productsModels!,
                     records: records.proudctsPosRecords));
               });
-              // await state.maybeMap(
-              //   orElse: () {},
-              //   fetchSuccessState: (value) async {
-              //     emit(value.copyWith(
-              //         products: productsList, isSearching: true));
-              //     final productsAfterSearch = productsList
-              //         .where((element) => element.name!
-              //             .toLowerCase()
-              //             .contains(query.toLowerCase()))
-              //         .toList();
-              //     await Future.delayed(const Duration(seconds: 1), () {
-              //       emit(
-              //         _FetchSuccessState(
-              //             records: productsAfterSearch.toDomainPOS(),
-              //             products: productsAfterSearch,
-              //             isSearching: false),
-              //       );
-              //     });
-              //   },
-              // );
             } else {
               emit(
                 _FetchSuccessState(

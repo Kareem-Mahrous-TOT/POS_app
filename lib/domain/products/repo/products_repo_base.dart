@@ -12,7 +12,7 @@ abstract class ProductsRepoBase {
       String sort = '',
       String after = "0",
       int first = 20});
-  Future<Either<Failure, Item>> getProductById({
+  Future<Either<Failure, Item>> getProductDetails({
     String? endCursor,
     required String productId,
   });

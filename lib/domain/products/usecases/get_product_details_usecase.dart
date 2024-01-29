@@ -6,23 +6,22 @@ import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../repo/products_repo_base.dart';
 
-class GetProductByIdUsecase
+class GetProductDetailsUsecase
     implements
         BaseUsecase<GetProductByIdParams,
             FutureEitherFailureOrType<ProdyctByIdRecord>> {
   final ProductsRepoBase _productsRepo;
-  GetProductByIdUsecase({required ProductsRepoBase productsRepo})
+  GetProductDetailsUsecase({required ProductsRepoBase productsRepo})
       : _productsRepo = productsRepo;
 
   @override
   FutureEitherFailureOrType<ProdyctByIdRecord> call(
       GetProductByIdParams params) async {
-    const String currentFulfillmentCenterItem =
-        // sharedPreferences.getString(LocalKeys.fulfillmentCenterId) ??
-        StoreConfig.octoberBranchId;
+    const String currentFulfillmentCenterItem = StoreConfig.octoberBranchId;
 
-    final res = await _productsRepo.getProductById(productId: params.productId);
-    return await res.fold((failure) => Left(failure), (product) {
+    final result =
+        await _productsRepo.getProductDetails(productId: params.productId);
+    return await result.fold((failure) => Left(failure), (product) {
       final properties = product.properties;
       final enoughFor = properties?.firstWhere(
           orElse: () => const Property(), (e) => e.name == "enoughFor");
@@ -64,7 +63,6 @@ class GetProductByIdUsecase
       }
 
       Variation masterVariation;
-      // Variation? selectedVariation;
 
       masterVariation = product.variations![0];
 
@@ -81,21 +79,18 @@ class GetProductByIdUsecase
           break;
         }
       }
-      // selectedVariation ??= masterVariation.copyWith(isMaster: true);
 
       return Right((
-        product: product,
+        product: product.copyWith(
+            masterVariation: masterVariation,
+            variations: allVariations
+                .map((e) => e.id == masterVariation.id
+                    ? e.copyWith(isMaster: true)
+                    : e.copyWith(isMaster: false))
+                .toList()),
         enoughFor: enoughFor,
         ingredients: ingredients,
         size: size,
-        masterVariation: allVariations.firstWhere(
-            orElse: () => allVariations.first,
-            (element) => element.id == masterVariation.id),
-        variations: allVariations
-            .map((e) => e.id == masterVariation.id
-                ? e.copyWith(isMaster: true)
-                : e.copyWith(isMaster: false))
-            .toList(),
         numberOfPieces: numberOfPieces,
       ));
     });

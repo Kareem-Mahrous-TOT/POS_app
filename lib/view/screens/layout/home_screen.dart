@@ -10,6 +10,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
 import '../../../core/utils/shimmer_effect.dart';
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomeScreen> {
       listener: (context, state) {
         state.maybeMap(
             orElse: () {},
-            loadingState: (loadingState) {
+            loading: (loadingState) {
               showDialog(
                   context: context,
                   builder: (context) {
@@ -106,18 +107,29 @@ class _HomePageState extends State<HomeScreen> {
                                   child: CircularProgressIndicator.adaptive(),
                                 );
                               },
-                              fetchFailState: (failureState) {
+                              failure: (failureState) {
                                 return Center(
                                   child: Text(failureState.message),
                                 );
                               },
-                              fetchProductByIdState: (successState) {
+                              success: (successState) {
+                                final product = successState.product;
+                                final masterQuantity = (product.masterVariation
+                                            ?.availabilityData?.inventories
+                                            ?.firstWhere(
+                                                (inventory) =>
+                                                    inventory
+                                                        .fulfillmentCenterId ==
+                                                    StoreConfig.octoberBranchId,
+                                                orElse: () {
+                                          return const Inventory(
+                                              inStockQuantity: 0);
+                                        }).inStockQuantity ??
+                                        0)
+                                    .toInt();
                                 return TotPOSProductDetailsDialogOrganism(
                                   product: successState.product,
-                                  variations: successState.variations,
-                                  masterVariation:
-                                      successState.masterVariation!,
-                                  onVariationTapped: (variation) {
+                                  onVariationChoosen: (variation) {
                                     context.read<ProductDetailsBloc>().add(
                                           ProductDetailsEvent
                                               .changeMasterVariation(
@@ -125,12 +137,11 @@ class _HomePageState extends State<HomeScreen> {
                                           ),
                                         );
                                   },
-                                  onAddToCart: (product, count, variations) {
+                                  onAddToCart: (product, count) {
                                     context.read<BagBloc>().add(
-                                          BagEvent.addItemWithVaritations(
+                                          BagEvent.addItem(
                                             item: product,
                                             count: count,
-                                            variations: variations,
                                           ),
                                         );
                                   },
@@ -138,6 +149,7 @@ class _HomePageState extends State<HomeScreen> {
                                   activeVartiationColor: Palette.primary,
                                   priceTitle: context.tr.price,
                                   sizeTitle: context.tr.size,
+                                  masterQuantity: masterQuantity,
                                 );
                               },
                             ),
@@ -208,7 +220,8 @@ class _HomePageState extends State<HomeScreen> {
                           if (context.mounted) {
                             context.read<ProductsBloc>().add(
                                   ProductsEvent.fetch(
-                                      categoryId: selectedRecord.categoryId),
+                                      categoryId: selectedRecord.categoryId,
+                                      allItems: true),
                                 );
                           }
                         },
@@ -302,8 +315,8 @@ class _HomePageState extends State<HomeScreen> {
                                       controller: scrollController,
                                       shrinkWrap: true,
                                       itemCount: value.hasReachedMax
-                                          ? value.records?.length ?? 0
-                                          : value.records!.length + 1,
+                                          ? value.products.length
+                                          : value.products.length + 1,
                                       itemBuilder: (context, index) {
                                         if ((index >= products.length)) {
                                           return const ShimmerEffect();
@@ -331,7 +344,7 @@ class _HomePageState extends State<HomeScreen> {
                                                               ProductDetailsBloc>()
                                                           .add(
                                                             ProductDetailsEvent
-                                                                .fetchProductById(
+                                                                .getProductDetails(
                                                               productId: value
                                                                   .products[
                                                                       index]
@@ -477,7 +490,7 @@ class _HomePageState extends State<HomeScreen> {
                               onClearList: () {
                                 context
                                     .read<BagBloc>()
-                                    .add(const BagEvent.clearBag());
+                                    .add(BagEvent.clearBag());
                               },
                               onSlide: (selectedProductId) {
                                 context.read<BagBloc>().add(BagEvent.removeItem(

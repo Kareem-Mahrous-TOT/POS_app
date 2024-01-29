@@ -5,12 +5,10 @@ import '../constants/store_config.dart';
 extension BagExtension on Item {
   BagItem toBagItem({
     required int quantity,
-    List<Variation> variations = const [],
   }) {
     Variation? masterVariation;
-
-    if (variations.isNotEmpty) {
-      masterVariation = variations.firstWhere((element) => element.isMaster);
+    if (variations?.isNotEmpty ?? false) {
+      masterVariation = variations!.firstWhere((element) => element.isMaster);
     }
 
     return BagItem(
@@ -33,15 +31,29 @@ extension BagExtension on Item {
           price!.actual!.amount!.toDouble(),
       salePrice:
           price?.sale?.amount?.toDouble() ?? price!.sale!.amount!.toDouble(),
-      objectType: "TotPlatform.CartModule.Core.Model.LineItem",
       createdDate: DateTime.now().toString(),
       modifiedDate: DateTime.now().toString(),
       createdBy: '',
       modifiedBy: '',
-      inStockQuantity: masterVariation
-              ?.availabilityData?.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity
+      inStockQuantity: masterVariation?.availabilityData?.inventories
+              ?.firstWhere(
+                (inventory) =>
+                    inventory.fulfillmentCenterId ==
+                    StoreConfig.octoberBranchId,
+                orElse: () => const Inventory(inStockQuantity: 0),
+              )
+              .inStockQuantity
               ?.toInt() ??
-          (availabilityData!.inventories?.firstWhere((inventory) => inventory.fulfillmentCenterId == StoreConfig.octoberBranchId).inStockQuantity?.toInt() ?? 0),
+          (availabilityData!.inventories
+                  ?.firstWhere(
+                    (inventory) =>
+                        inventory.fulfillmentCenterId ==
+                        StoreConfig.octoberBranchId,
+                    orElse: () => const Inventory(inStockQuantity: 0),
+                  )
+                  .inStockQuantity
+                  ?.toInt() ??
+              0),
     );
   }
 }

@@ -102,7 +102,8 @@ class _CustomerPageState extends State<CustomerScreen> {
                       child: CircularProgressIndicator(
                     color: Palette.primary,
                   )),
-                  loadedCurrentCustomerData: (value) => TOTCustomerCardMolecule(
+                  loadedCurrentCustomerData: (value) => TOTUserCardMolecule(
+                    imgBackgroundColor: Palette.bgGrey,
                     name: value.data.me.contact?.fullName ?? "N/A",
                     code: value.data.me.memberId ?? "",
                     customerImage: value.data.me.photoUrl ??

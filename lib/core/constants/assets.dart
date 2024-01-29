@@ -1,3 +1,4 @@
 class ImgsManager {
-  static const String inventoryIcon = "assets/icons/warehouse-solid.svg";
+  static const inventoryIcon = "assets/icons/warehouse-solid.svg";
+  static const totLogo = "assets/images/dummyLogo.png";
 }

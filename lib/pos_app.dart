@@ -42,9 +42,7 @@ class POSApp extends StatelessWidget {
           BlocProvider(
               create: (context) => getIt<RecentCustomersBloc>()
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
-          BlocProvider(
-              create: (context) =>
-                  getIt<ProductsBloc>()),
+          BlocProvider(create: (context) => getIt<ProductsBloc>()),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(
@@ -62,7 +60,6 @@ class POSApp extends StatelessWidget {
           BlocProvider(
               create: (context) =>
                   getIt<MenuBloc>()..add(const MenuEvent.loadMenu())),
-
           BlocProvider(
               create: (context) => getIt<ReportChartPieCubit>()..loadData()),
           BlocProvider(

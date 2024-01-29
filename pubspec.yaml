@@ -48,17 +48,10 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.5
   json_serializable: ^6.7.1
-#  feature/login
-#   ? intl
-#  feature/demo
 flutter:
   uses-material-design: true
   assets:
     - assets/
     - assets/images/
-    # - assets/fonts/
-    # - assets/icons/global/
     - assets/icons/
-    # - assets/svg/
     - assets/jsons/
-# - assets/configuration/app_configuration.json
