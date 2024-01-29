@@ -67,6 +67,7 @@ import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_details_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
+import 'domain/products/usecases/search_usecase.dart';
 import 'domain/reports/repo/report_repo.dart';
 import 'domain/reports/usecase/order_statistics_usecase.dart';
 import 'domain/reports/usecase/pie_chart_usecase.dart';
@@ -143,7 +144,7 @@ class _Dependencies {
           getOrderUseCase: getIt(),
         ));
     getIt.registerFactory<ProductsBloc>(
-        () => ProductsBloc(getProductsUsecase: getIt()));
+        () => ProductsBloc(getProductsUsecase: getIt(), searchUsecase: getIt()));
     getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(
           getProductDetailsUsecase: getIt(),
           changeProductMasterVariation: getIt(),
@@ -161,6 +162,8 @@ class _Dependencies {
     //? products
     getIt.registerLazySingleton<GetProductsUsecase>(
         () => GetProductsUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<SearchUsecase >(
+        () => SearchUsecase(productsRepo: getIt()));
     getIt.registerLazySingleton<GetProductDetailsUsecase>(
         () => GetProductDetailsUsecase(productsRepo: getIt()));
     getIt.registerLazySingleton<ChangeProductMasterVariation>(

@@ -5,13 +5,15 @@ import '../../../core/network/graph_config.dart';
 import '../model/qraph_product_model.dart';
 
 abstract class ProductsRemoteDataSource {
-  Future<Products> getProducts({
-    String? endCursor,
-    required String branchId,
-    String? categoryId,
-    String sort = '',
-  });
+  Future<Products> getProducts(
+      {String? endCursor,
+      required String branchId,
+      String? categoryId,
+      String sort = '',
+      String after = "0",
+      int first = 20});
   Future<Item> getProductById({String? endCursor, required String productId});
+  Future<Products> searchProduts({required String query});
 }
 
 class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
@@ -211,17 +213,19 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
       {String? endCursor,
       required String branchId,
       String? categoryId,
-      String sort = ''}) async {
+      String sort = '',
+      String after = "0",
+      int first = 20}) async {
     String filterByCategory = "";
     if (categoryId?.isNotEmpty ?? false) {
       filterByCategory =
           'category.subtree:"${StoreConfig.catalogId}/$categoryId"';
     }
-    final response = await _graphService.query( 
+    final response = await _graphService.query(
       QueryOptions(
         document: gql(
-            r'''query Products($storeId: String!, $filter: String, $sort: String) {
-    products(storeId: $storeId,first: 300, filter: $filter, sort: $sort, cultureName: "ar-EG") {
+            r'''query Products($storeId: String!, $filter: String, $sort: String, $after: String, $first: Int) {
+    products(storeId: $storeId,first: $first, filter: $filter, sort: $sort, cultureName: "ar-EG", after:$after) {
         totalCount
         items {
             name
@@ -395,10 +399,154 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
           "storeId": StoreConfig.storeId,
           "filter": filterByCategory,
           "sort": sort,
+          "after": after,
+          "first": first,
         },
         fetchPolicy: FetchPolicy.noCache,
       ),
     );
+    return Products.fromJson(response.data!['products']);
+  }
+
+  @override
+  Future<Products> searchProduts({required String query}) async {
+    final response = await _graphService.query(QueryOptions(
+        document: gql(
+            r''' query Products($storeId: String!, $filter: String, $sort: String, $after: String, $first: Int, $query: String) {
+    products(storeId: $storeId,first: $first, filter: $filter, sort: $sort, cultureName: "ar-EG", after:$after, query: $query) {
+        totalCount
+        items {
+            name
+            id
+            code
+            catalogId
+            category {
+                id
+            }
+            variations {
+                id
+                name
+                code
+                vendor{
+                    id
+                    name
+                    rating{
+                        reviewCount
+                    }
+                }
+                availabilityData {
+                    availableQuantity
+                    inventories {
+                        fulfillmentCenterId
+                        fulfillmentCenterName
+                        inStockQuantity
+                    }
+                }
+                properties {
+                    name
+                    value
+                    type
+                    hidden
+                    valueType
+                    label
+                }
+                price {
+                    pricelistId
+                    listWithTax {
+                        amount
+                        formattedAmount
+                        formattedAmountWithoutCurrency
+                    }
+                    discountAmount {
+                        amount
+                        formattedAmount
+                    }
+                    sale {
+                        amount
+                        formattedAmount
+                    }
+                    list {
+                        amount
+                        formattedAmount
+                        formattedAmountWithoutCurrency
+                        formattedAmountWithoutPointAndCurrency
+                    }
+                    discountPercent
+                    actual {
+                        amount
+                        formattedAmount
+                        formattedAmountWithoutCurrency
+                    }
+                }
+            }
+            hasVariations
+            imgSrc
+            images {
+                url
+            }
+            availabilityData {
+                availableQuantity
+                inventories {
+                    fulfillmentCenterId
+                    fulfillmentCenterName
+                    inStockQuantity
+                }
+            }
+            price {
+                pricelistId
+                listWithTax {
+                    amount
+                    formattedAmount
+                    formattedAmountWithoutCurrency
+                }
+                discountAmount {
+                    amount
+                    formattedAmount
+                }
+                sale {
+                    amount
+                    formattedAmount
+                }
+                list {
+                    amount
+                    formattedAmount
+                    formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                    currency {
+                        symbol
+                    }
+                }
+                discountPercent
+                actual {
+                    amount
+                    formattedAmount
+                    formattedAmountWithoutCurrency
+                    formattedAmountWithoutPointAndCurrency
+                }
+            }
+            properties {
+                name
+                value
+                type
+                hidden
+                label
+                valueType
+            }
+            descriptions {
+                id
+                reviewType
+                content
+                languageCode
+            }
+        }
+    }
+}'''),
+        variables: {
+          "storeId": StoreConfig.storeId,
+          "query": query,
+        },
+        fetchPolicy: FetchPolicy.noCache));
+
     return Products.fromJson(response.data!['products']);
   }
 }

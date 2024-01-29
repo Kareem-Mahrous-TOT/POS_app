@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -5,16 +7,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/assets.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
-import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
+import '../../../core/utils/shimmer_effect.dart';
 import '../../../core/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
-import '../../../depency_injection.dart';
 import '../../blocs/bag/bag_bloc.dart';
 import '../../blocs/product_details/product_details_bloc.dart';
 import '../../blocs/products/products_bloc.dart';
@@ -22,16 +22,46 @@ import '../../components/home_components/tot_pos_product_details_dialog_organism
 import '../../ui_mappers/bag_organism_item.dart';
 import '../../ui_mappers/to_category_record.dart';
 
-class HomeScreen extends HookWidget {
+class HomeScreen extends StatefulHookWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    useEffect(() {
-      context.read<ProductsBloc>().add(ProductsEvent.fetch());
-      return;
-    }, []);
+  State<HomeScreen> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomeScreen> {
+  late final ScrollController scrollController;
+  @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
+      context.read<ProductsBloc>().add(ProductsEvent.fetch());
+    });
+    scrollController = ScrollController();
+    scrollController.addListener(_onScroll);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.offset;
+    if (currentScroll >= (maxScroll * 0.90)) {
+      log("at 90% of the scroll");
+      context.read<ProductsBloc>().add(
+            ProductsEvent.pagination(),
+          );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
 
@@ -48,153 +78,87 @@ class HomeScreen extends HookWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<ProductDetailsBloc, ProductDetailsState>(
-          listener: (context, state) {
-            state.maybeMap(
-                orElse: () {},
-                loading: (loadingState) {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          icon: Align(
-                              alignment: AlignmentDirectional.topEnd,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context.pop();
+    return BlocListener<ProductDetailsBloc, ProductDetailsState>(
+      listener: (context, state) {
+        state.maybeMap(
+            orElse: () {},
+            loading: (loadingState) {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      icon: Align(
+                          alignment: AlignmentDirectional.topEnd,
+                          child: IconButton(
+                              onPressed: () {
+                                context.pop();
+                              },
+                              icon: const Icon(Icons.close))),
+                      content:
+                          BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
+                        builder: (context, state) {
+                          return SizedBox(
+                            width: w * 0.5,
+                            height: h * 0.6,
+                            child: state.maybeMap<Widget>(
+                              orElse: () {
+                                return const Center(
+                                  child: CircularProgressIndicator.adaptive(),
+                                );
+                              },
+                              failure: (failureState) {
+                                return Center(
+                                  child: Text(failureState.message),
+                                );
+                              },
+                              success: (successState) {
+                                final product = successState.product;
+                                final masterQuantity = (product.masterVariation
+                                            ?.availabilityData?.inventories
+                                            ?.firstWhere(
+                                                (inventory) =>
+                                                    inventory
+                                                        .fulfillmentCenterId ==
+                                                    StoreConfig.octoberBranchId,
+                                                orElse: () {
+                                          return const Inventory(
+                                              inStockQuantity: 0);
+                                        }).inStockQuantity ??
+                                        0)
+                                    .toInt();
+                                return TotPOSProductDetailsDialogOrganism(
+                                  product: successState.product,
+                                  onVariationChoosen: (variation) {
+                                    context.read<ProductDetailsBloc>().add(
+                                          ProductDetailsEvent
+                                              .changeMasterVariation(
+                                            variation,
+                                          ),
+                                        );
                                   },
-                                  icon: const Icon(Icons.close))),
-                          content: BlocBuilder<ProductDetailsBloc,
-                              ProductDetailsState>(
-                            builder: (context, state) {
-                              return SizedBox(
-                                width: w * 0.5,
-                                height: h * 0.6,
-                                child: state.maybeMap<Widget>(
-                                  orElse: () {
-                                    return const Center(
-                                      child:
-                                          CircularProgressIndicator.adaptive(),
-                                    );
+                                  onAddToCart: (product, count) {
+                                    context.read<BagBloc>().add(
+                                          BagEvent.addItem(
+                                            item: product,
+                                            count: count,
+                                          ),
+                                        );
                                   },
-                                  failure: (failureState) {
-                                    return Center(
-                                      child: Text(failureState.message),
-                                    );
-                                  },
-                                  success: (successState) {
-                                    final product = successState.product;
-                                    final masterQuantity = (product
-                                                .masterVariation
-                                                ?.availabilityData
-                                                ?.inventories
-                                                ?.firstWhere(
-                                                    (inventory) =>
-                                                        inventory
-                                                            .fulfillmentCenterId ==
-                                                        StoreConfig
-                                                            .octoberBranchId,
-                                                    orElse: () {
-                                              return const Inventory(
-                                                  inStockQuantity: 0);
-                                            }).inStockQuantity ??
-                                            0)
-                                        .toInt();
-                                    return TotPOSProductDetailsDialogOrganism(
-                                      masterQuantity: masterQuantity,
-                                      product: product,
-                                      onVariationChoosen: (variation) {
-                                        context.read<ProductDetailsBloc>().add(
-                                              ProductDetailsEvent
-                                                  .changeMasterVariation(
-                                                variation,
-                                              ),
-                                            );
-                                      },
-                                      onAddToCart: masterQuantity > 0
-                                          ? (product, count) {
-                                              context.read<BagBloc>().add(
-                                                    BagEvent.addItem(
-                                                      item: product,
-                                                      count: count,
-                                                    ),
-                                                  );
-                                            }
-                                          : null,
-                                      productFallbackImg: ImgsManager.totLogo,
-                                      addToCartTitle: context.tr.addToCart,
-                                      buttonBackgroundColor: Palette.primary,
-                                      activeVartiationColor: Palette.primary,
-                                      priceTitle: context.tr.price,
-                                      sizeTitle: context.tr.size,
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      });
-                });
-          },
-        ),
-        BlocListener<BagBloc, BagState>(
-          listener: (context, state) {
-            state.maybeMap(
-              orElse: () {},
-              empty: (emptyState) {
-                if (emptyState.fromSuccess) {
-                  fToast.showToast(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                          color: Palette.green,
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Text(
-                        "تم الطلب بنجاح",
-                        style:
-                            context.titleLarge.copyWith(color: Palette.white),
+                                  buttonBackgroundColor: Palette.primary,
+                                  activeVartiationColor: Palette.primary,
+                                  priceTitle: context.tr.price,
+                                  sizeTitle: context.tr.size,
+                                  masterQuantity: masterQuantity,
+                                );
+                              },
+                            ),
+                          );
+                        },
                       ),
-                    ),
-                  );
-
-                  final menuState = getIt<MenuBloc>().state;
-                  final selectedCategoryId = menuState.maybeMap<String?>(
-                    orElse: () => null,
-                    fetchSuccess: (successState) => successState.records
-                        .firstWhere((record) => record.isSelected)
-                        .categoryId,
-                  );
-                  context.read<ProductsBloc>().add(
-                        ProductsEvent.fetch(categoryId: selectedCategoryId),
-                      );
-                }
-              },
-              getItems: (getItemsState) {
-                if (getItemsState.fromFailure) {
-                  fToast.showToast(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                          color: Palette.green,
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Text(
-                        "فشل الطلب",
-                        style:
-                            context.titleLarge.copyWith(color: Palette.white),
-                      ),
-                    ),
-                  );
-                }
-              },
-            );
-          },
-        )
-      ],
+                    );
+                  });
+            });
+      },
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -209,12 +173,14 @@ class HomeScreen extends HookWidget {
             },
             actions: [
               IconButton(
-                  onPressed: () {
-                    showCustomKeyboardOrganism(
-                        context: context,
-                        inputValue: controller.text,
-                        onChange: (value) => controller.text = value);
-                  },
+                  onPressed: () => setState(() {
+                        showCustomKeyboardOrganism(
+                            context: context,
+                            inputValue: controller.text,
+                            onChange: (value) => setState(() {
+                                  controller.text = value;
+                                }));
+                      }),
                   icon: const Icon(Icons.keyboard_alt_outlined))
             ],
             searchWidth: 650.w,
@@ -321,8 +287,8 @@ class HomeScreen extends HookWidget {
                                 );
                               },
                               fetchSuccessState: (value) {
-                                final List<Item>? products = value.products;
-                                if ((products ?? []).isEmpty &&
+                                final List<Item> products = value.products;
+                                if ((products).isEmpty &&
                                     value.isSearching == false) {
                                   return Center(
                                     child: Text(
@@ -344,21 +310,31 @@ class HomeScreen extends HookWidget {
                                       crossAxisCount: 4,
                                       crossAxisSpacing: 20,
                                       mainAxisSpacing: 0,
+                                      controller: scrollController,
                                       shrinkWrap: true,
-                                      itemCount: value.products?.length,
+                                      itemCount: value.hasReachedMax
+                                          ? value.records?.length ?? 0
+                                          : value.records!.length + 1,
                                       itemBuilder: (context, index) {
-                                        final product = value.products?[index];
-                                        final record = value.records?[index];
-                                        return TOTPOSFoodCardItemMolecule(
-                                          onTap:
-                                              ((product?.variations!.length ??
-                                                          0) <=
+                                        if ((index >= products.length)) {
+                                          return const ShimmerEffect();
+                                        } else {
+                                          final product = value.products[index];
+                                          final List<ProductPOSRecord> records =
+                                              [...value.records!];
+
+                                          final record = records[index];
+                                          return TOTPOSFoodCardItemMolecule(
+                                              onTap: ((product
+                                                          .variations!.length) <=
                                                       1)
                                                   ? () {
                                                       context
                                                           .read<BagBloc>()
                                                           .add(BagEvent.addItem(
-                                                              item: product!));
+                                                              item: value
+                                                                      .products[
+                                                                  index]));
                                                     }
                                                   : () {
                                                       context
@@ -367,35 +343,38 @@ class HomeScreen extends HookWidget {
                                                           .add(
                                                             ProductDetailsEvent
                                                                 .getProductDetails(
-                                                              productId:
-                                                                  product!.id!,
+                                                              productId: value
+                                                                  .products[
+                                                                      index]
+                                                                  .id!,
                                                             ),
                                                           );
                                                     },
-                                          productImage:
-                                              product?.imgSrc.toString(),
-                                          productName: record?.name == null
-                                              ? "Not found"
-                                              : record!.name,
-                                          inStock:
-                                              " ${(record?.quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
-                                          oldPrice: (record?.discount ?? "0") !=
-                                                  "0"
-                                              ? product!.variations!
-                                                  .firstWhere(
-                                                      orElse: () => product
-                                                          .variations!.first,
-                                                      (element) =>
-                                                          element.id ==
-                                                          record!.variationID)
-                                                  .price!
-                                                  .list!
-                                                  .formattedAmountWithoutPointAndCurrency
-                                              : null,
-                                          price: record?.price != null
-                                              ? record!.price
-                                              : "",
-                                        );
+                                              productImage: product.imgSrc
+                                                  .toString(),
+                                              productName: record.name,
+                                              inStock:
+                                                  " ${(value.records?[index].quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
+                                              oldPrice: (record
+                                                              .discount ??
+                                                          "0") !=
+                                                      "0"
+                                                  ? product
+                                                      .variations!
+                                                      .firstWhere(
+                                                          orElse: () => product
+                                                              .variations!
+                                                              .first,
+                                                          (element) =>
+                                                              element.id ==
+                                                              record
+                                                                  .variationID)
+                                                      .price!
+                                                      .list!
+                                                      .formattedAmountWithoutPointAndCurrency
+                                                  : null,
+                                              price: record.price);
+                                        }
                                       }),
                                 );
                               },
@@ -403,7 +382,48 @@ class HomeScreen extends HookWidget {
                           },
                         ),
                       ),
-                      BlocBuilder<BagBloc, BagState>(
+                      BlocConsumer<BagBloc, BagState>(
+                        listener: (context, state) {
+                          state.maybeMap(
+                            orElse: () {},
+                            empty: (emptyState) {
+                              if (emptyState.fromSuccess) {
+                                fToast.showToast(
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    decoration: BoxDecoration(
+                                        color: Palette.green,
+                                        borderRadius: BorderRadius.circular(4)),
+                                    child: Text(
+                                      "تم الطلب بنجاح",
+                                      style: context.titleLarge
+                                          .copyWith(color: Palette.white),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            getItems: (getItemsState) {
+                              if (getItemsState.fromFailure) {
+                                fToast.showToast(
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    decoration: BoxDecoration(
+                                        color: Palette.green,
+                                        borderRadius: BorderRadius.circular(4)),
+                                    child: Text(
+                                      "فشل الطلب",
+                                      style: context.titleLarge
+                                          .copyWith(color: Palette.white),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          );
+                        },
                         builder: (context, state) {
                           return state.map(loading: (value) {
                             return Container(

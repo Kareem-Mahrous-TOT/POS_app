@@ -5,9 +5,11 @@ class ProductsState with _$ProductsState {
   factory ProductsState.initial() = _Initial;
   factory ProductsState.loadingState() = _LoadingState;
   factory ProductsState.fetchSuccessState(
-      {List<Item>? products,
+      {required List<Item> products,
       String? categoryId,
       bool? isSearching,
-      List<ProductCardRecord>? records}) = _FetchSuccessState;
+      @Default(false) bool hasReachedMax,
+      @Default(false) bool addingProducts,
+       List<ProductCardRecord>? records}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;
 }

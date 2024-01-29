@@ -29,6 +29,8 @@ class ProductsRepoImpl implements ProductsRepoBase {
       // List<ProductCardRecord> proudctsRecords,
       // List<ProductPOSRecord> proudctsPosRecords
       > getProducts({
+    String after = "0",
+    int first = 20,
     String? endCursor,
     required String branchId,
     String? categoryId,
@@ -36,12 +38,26 @@ class ProductsRepoImpl implements ProductsRepoBase {
   }) async {
     try {
       final products = await _remoteDataSource.getProducts(
-          branchId: branchId, categoryId: categoryId);
+          after: after,
+          first: first,
+          branchId: branchId,
+          categoryId: categoryId);
       return Right(
         products.items,
         // proudctsRecords: products.items!.toDomain(),
         // proudctsPosRecords: products.items!.toDomainPOS(),
       );
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Products>> searchProduct(
+      {required String query}) async {
+    try {
+      final products = await _remoteDataSource.searchProduts(query: query);
+      return Right(products);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
