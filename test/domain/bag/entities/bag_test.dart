@@ -23,7 +23,11 @@ void main() {
   late BagItem tBagItem;
   late BagEntity sut;
 
+  late DateTime sutJustBeforeCreationTime;
+
   setUp(() {
+    sutJustBeforeCreationTime = DateTime.now();
+
     sut = BagEntity(createdBy: tCreatedBy);
     tBagItem = BagItem(
       sku: tSku,
@@ -52,25 +56,35 @@ void main() {
       expect(sut.subTotalPrice, equals(0));
       expect(sut.totalPrice, equals(0));
     });
+
+    test("createdDate and modifiedDate should be equal", () {
+      // created date should be created with these bounds
+      expect(sut.createdDate.isBefore(sutJustBeforeCreationTime), isFalse);
+      expect(sut.createdDate.difference(sutJustBeforeCreationTime).inSeconds,
+          lessThanOrEqualTo(5)); // 5 is just an arbitarary number
+
+      expect(sut.createdDate, equals(sut.modifiedDate));
+    });
   });
 
   group("Testing bag addItem method", () {
     test('''item added should be in the items list and since it's the only item
         then total and subtotal prices should be equal to its price''', () {
       // act
-      sut.addItem(
+      final bool didAddItem = sut.addItem(
         bagItem: tBagItem,
       );
       // assert
+      expect(didAddItem, isTrue);
       expect(sut.items.length, equals(1));
       expect(sut.items.contains(tBagItem), equals(true));
       expect(sut.subTotalPrice, tBagItem.price * tBagItem.count);
       expect(sut.totalPrice, tBagItem.price * tBagItem.count);
     });
 
-    test(
-        '''adding the same product twice should result only in the increment of that item's count
-          rather than adding a new item to bag''', () {
+    test('''adding the same product twice should result only in the
+        increment of that item's count rather than adding a new item to bag''',
+        () {
       // arrange
       const tSecondBagItemCount = 3;
 
@@ -90,16 +104,16 @@ void main() {
         () {
       // act
       sut.addItem(bagItem: tBagItem);
-      sut.addItem(bagItem: tBagItem.copyWith(count: tBagItem.inStockQuantity));
+      sut.addItem(
+          bagItem: tBagItem.copyWith(count: tBagItem.inStockQuantity + 1));
+
       // assert
-      // expect(sut.items.length, equals(1));
       expect(sut.items.first.count,
           lessThanOrEqualTo(sut.items.first.inStockQuantity));
     });
 
-    test(
-        "adding different items should result in their addition to the bagEnity items",
-        () {
+    test('''adding different items should result in
+        their addition to the bagEnity items''', () {
       // arrange
       final tSecondBagItem = tBagItem.copyWith(
           productId: "tSecondItemId", count: 2, inStockQuantity: 2, price: 2);
@@ -120,14 +134,47 @@ void main() {
       expect(sut.subTotalPrice, tItemsPrice);
       expect(sut.totalPrice, tItemsPrice);
     });
+
+    test('''when called successfylly, addItem should result in
+        modifiedDate being updated''', () async {
+      // arrange
+      final tModifiedDateJustBeforeAction = sut.modifiedDate;
+      final tTimeJustBeforeModification = DateTime.now();
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      // act
+      final didAddItem = sut.addItem(bagItem: tBagItem);
+
+      // assert
+      expect(didAddItem, isTrue);
+      expect(sut.modifiedDate, isNot(equals(tModifiedDateJustBeforeAction)));
+      expect(sut.modifiedDate.isBefore(tTimeJustBeforeModification), isFalse);
+      expect(sut.modifiedDate.difference(tTimeJustBeforeModification).inSeconds,
+          allOf(lessThanOrEqualTo(5), greaterThanOrEqualTo(0)));
+    });
+
+    test('''when addItem returns false e.g no increment, modifiedDate
+        should not be changed''', () {
+      // arrange
+      final tModifiedDateBefore = sut.modifiedDate;
+
+      // act
+      final didAddItem = sut.addItem(
+          bagItem: tBagItem.copyWith(count: tBagItem.inStockQuantity + 1));
+
+      // assert
+      expect(didAddItem, isFalse);
+      expect(sut.modifiedDate, equals(tModifiedDateBefore));
+    });
   });
 
   group("Testing decreaseItemQuantity", () {
-    test(
-        "decreasing Item count should decrease item by 1 and bag subTotal and total prices should be changed accordingly",
-        () {
+    test('''decreasing Item count should decrease item by 1 and
+        bag subTotal and total prices should be changed accordingly''', () {
       // arrange
       const tDecreasedItemCount = (tFirstBagItemCount - 1);
+
       // act
       sut.addItem(bagItem: tBagItem);
       sut.decreaseItemCount(productId: tBagItem.productId);
@@ -149,26 +196,84 @@ void main() {
       expect(sut.subTotalPrice, equals(0));
       expect(sut.totalPrice, equals(0));
     });
+
+    test('''when called successfylly, decreaseItemCount should result in
+        modifiedDate being updated''', () async {
+      // arrange
+      final didAddItem = sut.addItem(bagItem: tBagItem);
+      final tModifiedDateJustBeforeAction = sut.modifiedDate;
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      // act
+      final didDecreaseItemCount =
+          sut.decreaseItemCount(productId: tBagItem.productId);
+
+      // assert
+      expect(didAddItem, isTrue);
+      expect(didDecreaseItemCount, isTrue);
+      expect(sut.modifiedDate.isBefore(tModifiedDateJustBeforeAction), isFalse);
+      expect(sut.modifiedDate, isNot(equals(tModifiedDateJustBeforeAction)));
+      expect(
+          sut.modifiedDate.difference(tModifiedDateJustBeforeAction).inSeconds,
+          allOf(lessThanOrEqualTo(5), greaterThanOrEqualTo(0)));
+    });
+
+    test('''when addItem returns false e.g no increment, modifiedDate
+        should not be changed''', () {
+      // arrange
+      final tModifiedDateBefore = sut.modifiedDate;
+
+      // act
+      final didDecreaseCount =
+          sut.decreaseItemCount(productId: tBagItem.productId);
+
+      // assert
+      expect(didDecreaseCount, isFalse);
+      expect(sut.modifiedDate, equals(tModifiedDateBefore));
+    });
   });
 
   group("Testing removeItem", () {
     test("remove Item should result in said item removal from bagEntity items",
         () {
+      // arrange
       sut.addItem(bagItem: tBagItem);
-
       expect(sut.items.contains(tBagItem), equals(true));
-      sut.removeItem(productId: tBagItem.productId);
-      expect(sut.items.contains(tBagItem), equals(false));
 
+      // act
+      sut.removeItem(productId: tBagItem.productId);
+
+      // assert
+      expect(sut.items.contains(tBagItem), equals(false));
       expect(sut.totalPrice, equals(0));
       expect(sut.subTotalPrice, equals(0));
+    });
+
+    test('''when called successfylly, removeItem should result in
+        modifiedDate being updated''', () async {
+      // arrange
+      sut.addItem(bagItem: tBagItem);
+      final tModifiedDateJustBeforeAction = sut.modifiedDate;
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      // act
+      sut.removeItem(productId: tBagItem.productId);
+
+      // assert
+      expect(sut.modifiedDate.isAfter(tModifiedDateJustBeforeAction), isTrue);
+      expect(sut.modifiedDate, isNot(equals(tModifiedDateJustBeforeAction)));
+      expect(
+          sut.modifiedDate.difference(tModifiedDateJustBeforeAction).inSeconds,
+          allOf(lessThanOrEqualTo(5), greaterThanOrEqualTo(0)));
     });
   });
 
   group("Testing setDiscount method", () {
     test("set discount should not accept values less than 0", () {
       // arrange
-      const tDiscount = -10.0;
+      const tDiscount = -0.00000000000001;
       sut.addItem(bagItem: tBagItem);
 
       // act
@@ -182,7 +287,7 @@ void main() {
 
     test("set discount should not accept values greater than 100", () {
       // arrange
-      const tDiscount = 1000.0;
+      const tDiscount = 100.000001;
       sut.addItem(bagItem: tBagItem);
 
       // act
@@ -250,6 +355,28 @@ void main() {
       expect(sut.totalPrice,
           equals((tBagItem.price * tBagItem.count) * (1 - (tDiscount / 100))));
     });
+
+    test("when called successfully, setDiscount should update modifiedDate",
+        () async {
+      // arrange
+      const tDiscount = 10.0;
+      final didAddItem = sut.addItem(bagItem: tBagItem);
+      final tModifiedDateJustBeforeAction = sut.modifiedDate;
+
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      // act
+      final didSetDiscount = sut.setDiscount(discount: tDiscount);
+
+      // assert
+      expect(didAddItem, isTrue);
+      expect(didSetDiscount, isTrue);
+      expect(sut.modifiedDate.isAfter(tModifiedDateJustBeforeAction), isTrue);
+      expect(sut.modifiedDate, isNot(equals(tModifiedDateJustBeforeAction)));
+      expect(
+          sut.modifiedDate.difference(tModifiedDateJustBeforeAction).inSeconds,
+          allOf(lessThanOrEqualTo(5), greaterThanOrEqualTo(0)));
+    });
   });
 
   group("Testing toJson method", () {
@@ -279,8 +406,8 @@ void main() {
             .toList(),
         "price": sut.totalPrice,
         "discountAmount": sut.subTotalPrice - sut.totalPrice,
-        "createdDate": sut.createdDate,
-        "modifiedDate": sut.modifiedDate,
+        "createdDate": sut.createdDate.toString(),
+        "modifiedDate": sut.modifiedDate.toString(),
       };
 
       // act
