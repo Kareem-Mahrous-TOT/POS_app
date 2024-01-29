@@ -772,6 +772,8 @@ mixin _$ProductsState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -801,6 +803,8 @@ mixin _$ProductsState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -828,6 +832,8 @@ mixin _$ProductsState {
                       String name,
                       String price,
                       num? quantity,
+                      double rating,
+                      String variationID
                       double rating,
                       String variationID
                     })>?
@@ -932,6 +938,8 @@ class _$InitialImpl implements _Initial {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -964,6 +972,8 @@ class _$InitialImpl implements _Initial {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -994,6 +1004,8 @@ class _$InitialImpl implements _Initial {
                       String name,
                       String price,
                       num? quantity,
+                      double rating,
+                      String variationID
                       double rating,
                       String variationID
                     })>?
@@ -1100,6 +1112,8 @@ class _$LoadingStateImpl implements _LoadingState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1132,6 +1146,8 @@ class _$LoadingStateImpl implements _LoadingState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1162,6 +1178,8 @@ class _$LoadingStateImpl implements _LoadingState {
                       String name,
                       String price,
                       num? quantity,
+                      double rating,
+                      String variationID
                       double rating,
                       String variationID
                     })>?
@@ -1243,6 +1261,8 @@ abstract class _$$FetchSuccessStateImplCopyWith<$Res> {
                 num? quantity,
                 double rating,
                 String variationID
+                double rating,
+                String variationID
               })>?
           records});
 }
@@ -1302,6 +1322,8 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
                     num? quantity,
                     double rating,
                     String variationID
+                    double rating,
+                    String variationID
                   })>?,
     ));
   }
@@ -1344,6 +1366,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
         num? quantity,
         double rating,
         String variationID
+        double rating,
+        String variationID
       })>? records;
 
   @override
@@ -1382,6 +1406,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1415,6 +1441,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1446,6 +1474,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                       String name,
                       String price,
                       num? quantity,
+                      double rating,
+                      String variationID
                       double rating,
                       String variationID
                     })>?
@@ -1519,6 +1549,8 @@ abstract class _FetchSuccessState implements ProductsState {
                 num? quantity,
                 double rating,
                 String variationID
+                double rating,
+                String variationID
               })>?
           records}) = _$FetchSuccessStateImpl;
 
@@ -1545,6 +1577,8 @@ abstract class _FetchSuccessState implements ProductsState {
         num? quantity,
         double rating,
         String variationID
+        double rating,
+        String variationID
       })>? get records;
   set records(
       List<
@@ -1558,6 +1592,8 @@ abstract class _FetchSuccessState implements ProductsState {
                 String name,
                 String price,
                 num? quantity,
+                double rating,
+                String variationID
                 double rating,
                 String variationID
               })>?
@@ -1642,6 +1678,8 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)
         fetchSuccessState,
@@ -1674,6 +1712,8 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       num? quantity,
                       double rating,
                       String variationID
+                      double rating,
+                      String variationID
                     })>?
                 records)?
         fetchSuccessState,
@@ -1704,6 +1744,8 @@ class _$FetchFailStateImpl implements _FetchFailState {
                       String name,
                       String price,
                       num? quantity,
+                      double rating,
+                      String variationID
                       double rating,
                       String variationID
                     })>?

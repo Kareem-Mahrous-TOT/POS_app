@@ -10,7 +10,6 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/core/extensions/translate.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
-import '../../../core/constants/store_config.dart';
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
 import '../../../core/utils/shimmer_effect.dart';
@@ -220,8 +219,7 @@ class _HomePageState extends State<HomeScreen> {
                           if (context.mounted) {
                             context.read<ProductsBloc>().add(
                                   ProductsEvent.fetch(
-                                      categoryId: selectedRecord.categoryId,
-                                      allItems: true),
+                                      categoryId: selectedRecord.categoryId),
                                 );
                           }
                         },
@@ -315,8 +313,8 @@ class _HomePageState extends State<HomeScreen> {
                                       controller: scrollController,
                                       shrinkWrap: true,
                                       itemCount: value.hasReachedMax
-                                          ? value.products.length
-                                          : value.products.length + 1,
+                                          ? value.records?.length ?? 0
+                                          : value.records!.length + 1,
                                       itemBuilder: (context, index) {
                                         if ((index >= products.length)) {
                                           return const ShimmerEffect();
