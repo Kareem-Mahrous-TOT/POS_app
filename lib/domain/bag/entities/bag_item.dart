@@ -13,8 +13,8 @@ class BagItem {
   final double salePrice;
   final double price;
   final String _objectType;
-  final String createdDate;
-  String modifiedDate;
+  DateTime _createdDate;
+  late DateTime _modifiedDate;
   final String createdBy;
   String modifiedBy;
   int inStockQuantity;
@@ -33,28 +33,43 @@ class BagItem {
     required this.listPrice,
     required this.salePrice,
     required this.price,
-    required this.createdDate,
-    required this.modifiedDate,
     required this.createdBy,
     required this.modifiedBy,
     required this.inStockQuantity,
-  })  : _count = count >= 1 ? count : 1,
-        _objectType = "TotPlatform.CartModule.Core.Model.LineItem";
+  })  : _createdDate = DateTime.now(),
+        _count = count >= 1 ? count : 1,
+        _objectType = "TotPlatform.CartModule.Core.Model.LineItem" {
+    _modifiedDate = _createdDate;
+  }
 
+  DateTime get modifiedDate => _modifiedDate;
+  DateTime get createdDate => _createdDate;
   String get objectType => _objectType;
   int get count => _count;
 
+  set modifiedDate(DateTime newDate) => _modifiedDate = newDate;
+
+  void _updateModifiedDate() => _modifiedDate = DateTime.now();
+
   bool increaseCount(int newCount) {
     final resultigCount = _count + newCount;
+
     if (resultigCount > inStockQuantity) return false;
+
     _count = resultigCount;
+    _updateModifiedDate();
     return true;
   }
 
-  void decreaseCount() {
+  bool decreaseCount() {
     if (_count >= 1) {
       _count--;
+
+      _updateModifiedDate();
+
+      return true;
     }
+    return false;
   }
 
   BagItem copyWith({
@@ -73,12 +88,12 @@ class BagItem {
     double? price,
     String? objectType,
     String? createdBy,
-    String? createdDate,
-    String? modifiedDate,
+    DateTime? createdDate,
+    DateTime? modifiedDate,
     String? modifiedBy,
     int? inStockQuantity,
   }) {
-    return BagItem(
+    final newBagItem = BagItem(
         catalogId: catalogId ?? this.catalogId,
         productId: productId ?? this.productId,
         sku: sku ?? this.sku,
@@ -92,11 +107,14 @@ class BagItem {
         listPrice: listPrice ?? this.listPrice,
         salePrice: salePrice ?? this.salePrice,
         price: price ?? this.price,
-        createdDate: createdDate ?? this.createdDate,
-        modifiedDate: modifiedDate ?? this.modifiedDate,
         createdBy: createdBy ?? this.createdBy,
         modifiedBy: modifiedBy ?? this.modifiedBy,
         inStockQuantity: inStockQuantity ?? this.inStockQuantity);
+
+    newBagItem._modifiedDate = modifiedDate ?? _modifiedDate;
+    newBagItem._createdDate = createdDate ?? _createdDate;
+
+    return newBagItem;
   }
 
   Map<String, dynamic> toJson(
@@ -122,8 +140,8 @@ class BagItem {
       'price': price,
       'taxType': taxType.toString(),
       'objectType': _objectType,
-      'createdDate': createdDate,
-      'modifiedDate': modifiedDate,
+      'createdDate': _createdDate.toString(),
+      'modifiedDate': _modifiedDate.toString(),
       'createdBy': createdBy,
       'modifiedBy': modifiedBy,
     };
@@ -131,6 +149,6 @@ class BagItem {
 
   @override
   String toString() {
-    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $_count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $_objectType, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
+    return 'BagItem(catalogId: $catalogId, productId: $productId, sku: $sku, productType: $productType, name: $name, quantity: $_count, imageUrl: $imageUrl, currency: $currency, priceId: $priceId, listWithTax: $listWithTax, listPrice: $listPrice, salePrice: $salePrice, price: $price, objectType: $_objectType, createdDate: $_createdDate, modifiedDate: $_modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, inStockQuantity: $inStockQuantity)';
   }
 }
