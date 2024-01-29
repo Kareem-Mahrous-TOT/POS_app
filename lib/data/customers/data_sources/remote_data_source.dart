@@ -1,14 +1,13 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:tot_pos/core/network/graph_config.dart';
 
-import '../../../core/network/api_consumer.dart';
-import '../../../core/network/end_points.dart';
 import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
 import '../responses/add_new_customer/tot_add_new_customer_model.dart';
 import '../responses/customers_response/tot_customers.dart';
 
 abstract class ContactsRemoteDataSource {
-  Future<({List<Member> members, bool hasNextPage, int endCursor})> fetchContacts({
+  Future<({List<Member> members, bool hasNextPage, int endCursor})>
+      fetchContacts({
     required String memberType,
     int first = 20,
     int after = 0,
@@ -91,7 +90,8 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
   }
 
   @override
-  Future<({List<Member> members, bool hasNextPage, int endCursor})> fetchContacts({
+  Future<({List<Member> members, bool hasNextPage, int endCursor})>
+      fetchContacts({
     required String memberType,
     int first = 20,
     int after = 0,
@@ -138,15 +138,23 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
     }));
     List<Member> members = [];
 
-    final hasNextPage =  (queryResult.data?["contacts"]?["pageInfo"]?["hasNextPage"] as bool?) ?? false;
-    final endCursor =  (queryResult.data?["contacts"]?["pageInfo"]?["endCursor"] as String?) ?? "0";
-    
+    final hasNextPage =
+        (queryResult.data?["contacts"]?["pageInfo"]?["hasNextPage"] as bool?) ??
+            false;
+    final endCursor =
+        (queryResult.data?["contacts"]?["pageInfo"]?["endCursor"] as String?) ??
+            "0";
+
     queryResult.data?["contacts"]?["pageInfo"]["endCursor"];
 
     for (final memberJson in (queryResult.data?["contacts"]?["items"] ?? [])) {
       members.add(Member.fromJson(memberJson));
     }
 
-    return (members:members, hasNextPage: hasNextPage, endCursor: int.parse(endCursor));
+    return (
+      members: members,
+      hasNextPage: hasNextPage,
+      endCursor: int.parse(endCursor)
+    );
   }
 }

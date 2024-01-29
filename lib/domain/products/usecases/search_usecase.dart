@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import 'package:tot_pos/data/products/mapper/products_mapping.dart';
 import 'package:tot_pos/data/products/mapper/products_pos_mapping.dart';
 
 import '../../../core/constants/store_config.dart';
@@ -11,39 +11,31 @@ import '../../../core/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../repo/products_repo_base.dart';
 
-class GetProductsUsecase
+class SearchUsecase
     implements
         BaseUsecase<
-            GetProductsParams,
+            SearchProductsParams,
             FutureEitherFailureOrType<
                 ({
                   List<Item>? productsModels,
-                  List<ProductCardRecord> proudctsRecords,
                   List<ProductPOSRecord> proudctsPosRecords
                 })>> {
   final ProductsRepoBase _productsRepo;
 
-  GetProductsUsecase({required ProductsRepoBase productsRepo})
+  SearchUsecase({required ProductsRepoBase productsRepo})
       : _productsRepo = productsRepo;
 
   @override
   FutureEitherFailureOrType<
       ({
         List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords,
         List<ProductPOSRecord> proudctsPosRecords
-      })> call(GetProductsParams params) async {
-    final response = await _productsRepo.getProducts(
-      branchId: StoreConfig.octoberBranchId,
-      categoryId: params.categoryId,
-      sort: params.sort,
-      endCursor: params.endCursor,
-      first: params.first,
-      after: params.after
-    );
+      })> call(SearchProductsParams params) async {
+    final response =
+        await _productsRepo.searchProduct(query: params.query ?? "");
     return response.fold((fail) => Left(fail), (products) {
       List<Item>? updatedProducts = [];
-      for (final product in products!) {
+      for (final product in products.items!) {
         List<Variation> allVariations = [];
         if (product.variations != null && product.variations!.isNotEmpty) {
           allVariations.add(Variation(
@@ -92,25 +84,19 @@ class GetProductsUsecase
 
       return Right((
         productsModels: productsModel,
-        proudctsRecords: productsModel.toDomain(),
         proudctsPosRecords: productsModel.toDomainPOS(),
       ));
     });
   }
 }
 
-class GetProductsParams {
-  String? endCursor;
-  String? categoryId;
-  String sort;
-  String after;
-  int first;
+class SearchProductsParams with EquatableMixin {
+  String? query;
 
-  GetProductsParams({
-    this.endCursor,
-    this.categoryId,
-    this.sort = "",
-    this.after = "0",
-    this.first = 20,
+  SearchProductsParams({
+    this.query,
   });
+
+  @override
+  List<Object?> get props => [query];
 }

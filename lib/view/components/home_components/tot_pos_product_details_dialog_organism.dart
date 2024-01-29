@@ -197,7 +197,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
                             .toString(),
                       )
                       .toList(),
-                  itemOnTap: onVariationTapped,
+                  onVariationSelected: onVariationTapped,
                   reverse: false,
                   title: sizeTitle,
                   titleTextStyle: context.titleMedium,

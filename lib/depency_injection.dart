@@ -65,6 +65,7 @@ import 'domain/orders/usecases/get_orders_usecase.dart';
 import 'domain/products/repo/products_repo_base.dart';
 import 'domain/products/usecases/get_product_by_id_usecase.dart';
 import 'domain/products/usecases/get_products_usecase.dart';
+import 'domain/products/usecases/search_usecase.dart';
 import 'domain/reports/repo/report_repo.dart';
 import 'domain/reports/usecase/order_statistics_usecase.dart';
 import 'domain/reports/usecase/pie_chart_usecase.dart';
@@ -139,8 +140,8 @@ class _Dependencies {
     getIt.registerFactory<OrdersBloc>(() => OrdersBloc(
           getOrderUseCase: getIt(),
         ));
-    getIt.registerFactory<ProductsBloc>(
-        () => ProductsBloc(getProductsUsecase: getIt()));
+    getIt.registerFactory<ProductsBloc>(() =>
+        ProductsBloc(getProductsUsecase: getIt(), searchUsecase: getIt()));
     getIt.registerFactory<ProductDetailsBloc>(
         () => ProductDetailsBloc(getProductByIdUsecase: getIt()));
     getIt.registerFactory<OrderDetailsBloc>(
@@ -157,6 +158,8 @@ class _Dependencies {
     //? products
     getIt.registerLazySingleton<GetProductsUsecase>(
         () => GetProductsUsecase(productsRepo: getIt()));
+    getIt.registerLazySingleton<SearchUsecase>(
+        () => SearchUsecase(productsRepo: getIt()));
     getIt.registerLazySingleton<GetProductByIdUsecase>(
         () => GetProductByIdUsecase(productsRepo: getIt()));
     //? reports
@@ -230,7 +233,8 @@ class _Dependencies {
       reportLocalDataSource: getIt(),
       reportRemoteDataSource: getIt(),
     ));
-    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(menuDataSource: getIt(),toPosCategoryRecords: ToPosCategoryRecords()));
+    getIt.registerSingleton<MenuRepo>(MenuRepoImpl(
+        menuDataSource: getIt(), toPosCategoryRecords: ToPosCategoryRecords()));
     getIt.registerSingleton<CartRepo>(CartRepoImpl(
       cartLocalDataSource: getIt(),
       cartremoteDataSource: getIt(),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -10,6 +12,7 @@ import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
 import '../../../core/theme/palette.dart';
 import '../../../core/utils/display_snackbar.dart';
+import '../../../core/utils/shimmer_effect.dart';
 import '../../../core/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../blocs/bag/bag_bloc.dart';
@@ -27,12 +30,34 @@ class HomeScreen extends StatefulHookWidget {
 }
 
 class _HomePageState extends State<HomeScreen> {
+  late final ScrollController scrollController;
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
       context.read<ProductsBloc>().add(ProductsEvent.fetch());
     });
+    scrollController = ScrollController();
+    scrollController.addListener(_onScroll);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.offset;
+    if (currentScroll >= (maxScroll * 0.90)) {
+      log("at 90% of the scroll");
+      context.read<ProductsBloc>().add(
+            ProductsEvent.pagination(),
+          );
+    }
   }
 
   @override
@@ -251,8 +276,8 @@ class _HomePageState extends State<HomeScreen> {
                                 );
                               },
                               fetchSuccessState: (value) {
-                                final List<Item>? products = value.products;
-                                if ((products ?? []).isEmpty &&
+                                final List<Item> products = value.products;
+                                if ((products).isEmpty &&
                                     value.isSearching == false) {
                                   return Center(
                                     child: Text(
@@ -274,21 +299,31 @@ class _HomePageState extends State<HomeScreen> {
                                       crossAxisCount: 4,
                                       crossAxisSpacing: 20,
                                       mainAxisSpacing: 0,
+                                      controller: scrollController,
                                       shrinkWrap: true,
-                                      itemCount: value.products?.length,
+                                      itemCount: value.hasReachedMax
+                                          ? value.records?.length ?? 0
+                                          : value.records!.length + 1,
                                       itemBuilder: (context, index) {
-                                        final product = value.products?[index];
-                                        final record = value.records?[index];
-                                        return TOTPOSFoodCardItemMolecule(
-                                          onTap:
-                                              ((product?.variations!.length ??
-                                                          0) <=
+                                        if ((index >= products.length)) {
+                                          return const ShimmerEffect();
+                                        } else {
+                                          final product = value.products[index];
+                                          final List<ProductPOSRecord> records =
+                                              [...value.records!];
+
+                                          final record = records[index];
+                                          return TOTPOSFoodCardItemMolecule(
+                                              onTap: ((product
+                                                          .variations!.length) <=
                                                       1)
                                                   ? () {
                                                       context
                                                           .read<BagBloc>()
                                                           .add(BagEvent.addItem(
-                                                              item: product!));
+                                                              item: value
+                                                                      .products[
+                                                                  index]));
                                                     }
                                                   : () {
                                                       context
@@ -297,35 +332,38 @@ class _HomePageState extends State<HomeScreen> {
                                                           .add(
                                                             ProductDetailsEvent
                                                                 .fetchProductById(
-                                                              productId:
-                                                                  product!.id!,
+                                                              productId: value
+                                                                  .products[
+                                                                      index]
+                                                                  .id!,
                                                             ),
                                                           );
                                                     },
-                                          productImage:
-                                              product?.imgSrc.toString(),
-                                          productName: record?.name == null
-                                              ? "Not found"
-                                              : record!.name,
-                                          inStock:
-                                              " ${(record?.quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
-                                          oldPrice: (record?.discount ?? "0") !=
-                                                  "0"
-                                              ? product!.variations!
-                                                  .firstWhere(
-                                                      orElse: () => product
-                                                          .variations!.first,
-                                                      (element) =>
-                                                          element.id ==
-                                                          record!.variationID)
-                                                  .price!
-                                                  .list!
-                                                  .formattedAmountWithoutPointAndCurrency
-                                              : null,
-                                          price: record?.price != null
-                                              ? record!.price
-                                              : "",
-                                        );
+                                              productImage: product.imgSrc
+                                                  .toString(),
+                                              productName: record.name,
+                                              inStock:
+                                                  " ${(value.records?[index].quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
+                                              oldPrice: (record
+                                                              .discount ??
+                                                          "0") !=
+                                                      "0"
+                                                  ? product
+                                                      .variations!
+                                                      .firstWhere(
+                                                          orElse: () => product
+                                                              .variations!
+                                                              .first,
+                                                          (element) =>
+                                                              element.id ==
+                                                              record
+                                                                  .variationID)
+                                                      .price!
+                                                      .list!
+                                                      .formattedAmountWithoutPointAndCurrency
+                                                  : null,
+                                              price: record.price);
+                                        }
                                       }),
                                 );
                               },

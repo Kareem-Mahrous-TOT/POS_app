@@ -44,7 +44,7 @@ class POSApp extends StatelessWidget {
                 ..add(RecentCustomersEvent.loadRecentCustomers())),
           BlocProvider(
               create: (context) =>
-                  getIt<ProductsBloc>()..add(ProductsEvent.fetch())),
+                  getIt<ProductsBloc>()),
           BlocProvider(create: (context) => getIt<SalesCubit>()..loadData()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
           BlocProvider(

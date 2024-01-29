@@ -107,7 +107,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                     code: value.data.me.memberId ?? "",
                     customerImage: value.data.me.photoUrl ??
                         "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
-                    email: value.data.me.email!,
+                    email: value.data.me.email?? "N/A",
                   ),
                 );
               },

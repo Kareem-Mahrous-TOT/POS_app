@@ -19,6 +19,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() pagination,
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
@@ -27,6 +28,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? pagination,
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
@@ -35,6 +37,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? pagination,
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
@@ -44,6 +47,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
@@ -52,6 +56,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
@@ -60,6 +65,7 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
@@ -116,6 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() pagination,
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
@@ -127,6 +134,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? pagination,
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
@@ -138,6 +146,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? pagination,
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
@@ -153,6 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
@@ -164,6 +174,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
@@ -175,6 +186,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
@@ -189,6 +201,117 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements ProductsEvent {
   factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$PaginationImplCopyWith<$Res> {
+  factory _$$PaginationImplCopyWith(
+          _$PaginationImpl value, $Res Function(_$PaginationImpl) then) =
+      __$$PaginationImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaginationImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$PaginationImpl>
+    implements _$$PaginationImplCopyWith<$Res> {
+  __$$PaginationImplCopyWithImpl(
+      _$PaginationImpl _value, $Res Function(_$PaginationImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PaginationImpl implements _Pagination {
+  _$PaginationImpl();
+
+  @override
+  String toString() {
+    return 'ProductsEvent.pagination()';
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() pagination,
+    required TResult Function(String? categoryId) fetch,
+    required TResult Function(String? categoryId) refresh,
+    required TResult Function(String? query) searchList,
+  }) {
+    return pagination();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? pagination,
+    TResult? Function(String? categoryId)? fetch,
+    TResult? Function(String? categoryId)? refresh,
+    TResult? Function(String? query)? searchList,
+  }) {
+    return pagination?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? pagination,
+    TResult Function(String? categoryId)? fetch,
+    TResult Function(String? categoryId)? refresh,
+    TResult Function(String? query)? searchList,
+    required TResult orElse(),
+  }) {
+    if (pagination != null) {
+      return pagination();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_SearchList value) searchList,
+  }) {
+    return pagination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_SearchList value)? searchList,
+  }) {
+    return pagination?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Refresh value)? refresh,
+    TResult Function(_SearchList value)? searchList,
+    required TResult orElse(),
+  }) {
+    if (pagination != null) {
+      return pagination(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Pagination implements ProductsEvent {
+  factory _Pagination() = _$PaginationImpl;
 }
 
 /// @nodoc
@@ -245,6 +368,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() pagination,
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
@@ -256,6 +380,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? pagination,
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
@@ -267,6 +392,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? pagination,
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
@@ -282,6 +408,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
@@ -293,6 +420,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
@@ -304,6 +432,7 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
@@ -380,6 +509,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() pagination,
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
@@ -391,6 +521,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? pagination,
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
@@ -402,6 +533,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? pagination,
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
@@ -417,6 +549,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
@@ -428,6 +561,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
@@ -439,6 +573,7 @@ class _$RefreshImpl implements _Refresh {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
@@ -515,6 +650,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() pagination,
     required TResult Function(String? categoryId) fetch,
     required TResult Function(String? categoryId) refresh,
     required TResult Function(String? query) searchList,
@@ -526,6 +662,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? pagination,
     TResult? Function(String? categoryId)? fetch,
     TResult? Function(String? categoryId)? refresh,
     TResult? Function(String? query)? searchList,
@@ -537,6 +674,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? pagination,
     TResult Function(String? categoryId)? fetch,
     TResult Function(String? categoryId)? refresh,
     TResult Function(String? query)? searchList,
@@ -552,6 +690,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
     required TResult Function(_SearchList value) searchList,
@@ -563,6 +702,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
     TResult? Function(_SearchList value)? searchList,
@@ -574,6 +714,7 @@ class _$SearchListImpl implements _SearchList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
     TResult Function(_SearchList value)? searchList,
@@ -603,9 +744,11 @@ mixin _$ProductsState {
     required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -630,9 +773,11 @@ mixin _$ProductsState {
     TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -657,9 +802,11 @@ mixin _$ProductsState {
     TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -757,9 +904,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -787,9 +936,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -817,9 +968,11 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -919,9 +1072,11 @@ class _$LoadingStateImpl implements _LoadingState {
     required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -949,9 +1104,11 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -979,9 +1136,11 @@ class _$LoadingStateImpl implements _LoadingState {
     TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1056,9 +1215,11 @@ abstract class _$$FetchSuccessStateImplCopyWith<$Res> {
       __$$FetchSuccessStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<Item>? products,
+      {List<Item> products,
       String? categoryId,
       bool? isSearching,
+      bool hasReachedMax,
+      bool addingProducts,
       List<
               ({
                 String? discount,
@@ -1087,16 +1248,18 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = freezed,
+    Object? products = null,
     Object? categoryId = freezed,
     Object? isSearching = freezed,
+    Object? hasReachedMax = null,
+    Object? addingProducts = null,
     Object? records = freezed,
   }) {
     return _then(_$FetchSuccessStateImpl(
-      products: freezed == products
+      products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<Item>?,
+              as List<Item>,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -1105,6 +1268,14 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
           ? _value.isSearching
           : isSearching // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+      addingProducts: null == addingProducts
+          ? _value.addingProducts
+          : addingProducts // ignore: cast_nullable_to_non_nullable
+              as bool,
       records: freezed == records
           ? _value.records
           : records // ignore: cast_nullable_to_non_nullable
@@ -1130,14 +1301,25 @@ class __$$FetchSuccessStateImplCopyWithImpl<$Res>
 
 class _$FetchSuccessStateImpl implements _FetchSuccessState {
   _$FetchSuccessStateImpl(
-      {this.products, this.categoryId, this.isSearching, this.records});
+      {required this.products,
+      this.categoryId,
+      this.isSearching,
+      this.hasReachedMax = false,
+      this.addingProducts = false,
+      this.records});
 
   @override
-  List<Item>? products;
+  List<Item> products;
   @override
   String? categoryId;
   @override
   bool? isSearching;
+  @override
+  @JsonKey()
+  bool hasReachedMax;
+  @override
+  @JsonKey()
+  bool addingProducts;
   @override
   List<
       ({
@@ -1156,7 +1338,7 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
 
   @override
   String toString() {
-    return 'ProductsState.fetchSuccessState(products: $products, categoryId: $categoryId, isSearching: $isSearching, records: $records)';
+    return 'ProductsState.fetchSuccessState(products: $products, categoryId: $categoryId, isSearching: $isSearching, hasReachedMax: $hasReachedMax, addingProducts: $addingProducts, records: $records)';
   }
 
   @JsonKey(ignore: true)
@@ -1172,9 +1354,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1193,7 +1377,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
   }) {
-    return fetchSuccessState(products, categoryId, isSearching, records);
+    return fetchSuccessState(products, categoryId, isSearching, hasReachedMax,
+        addingProducts, records);
   }
 
   @override
@@ -1202,9 +1387,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1223,7 +1410,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
   }) {
-    return fetchSuccessState?.call(products, categoryId, isSearching, records);
+    return fetchSuccessState?.call(products, categoryId, isSearching,
+        hasReachedMax, addingProducts, records);
   }
 
   @override
@@ -1232,9 +1420,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1255,7 +1445,8 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
-      return fetchSuccessState(products, categoryId, isSearching, records);
+      return fetchSuccessState(products, categoryId, isSearching, hasReachedMax,
+          addingProducts, records);
     }
     return orElse();
   }
@@ -1300,9 +1491,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
 
 abstract class _FetchSuccessState implements ProductsState {
   factory _FetchSuccessState(
-      {List<Item>? products,
+      {required List<Item> products,
       String? categoryId,
       bool? isSearching,
+      bool hasReachedMax,
+      bool addingProducts,
       List<
               ({
                 String? discount,
@@ -1319,12 +1512,16 @@ abstract class _FetchSuccessState implements ProductsState {
               })>?
           records}) = _$FetchSuccessStateImpl;
 
-  List<Item>? get products;
-  set products(List<Item>? value);
+  List<Item> get products;
+  set products(List<Item> value);
   String? get categoryId;
   set categoryId(String? value);
   bool? get isSearching;
   set isSearching(bool? value);
+  bool get hasReachedMax;
+  set hasReachedMax(bool value);
+  bool get addingProducts;
+  set addingProducts(bool value);
   List<
       ({
         String? discount,
@@ -1417,9 +1614,11 @@ class _$FetchFailStateImpl implements _FetchFailState {
     required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1447,9 +1646,11 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
@@ -1477,9 +1678,11 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
-            List<Item>? products,
+            List<Item> products,
             String? categoryId,
             bool? isSearching,
+            bool hasReachedMax,
+            bool addingProducts,
             List<
                     ({
                       String? discount,
