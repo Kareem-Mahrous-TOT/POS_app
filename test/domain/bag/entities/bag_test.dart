@@ -15,8 +15,6 @@ void main() {
   const tListPrice = 1.0;
   const tSalePrice = 1.0;
   const tPrice = 1.0;
-  const tCreatedDate = "createdDate";
-  const tModifiedDate = "modifiedDate";
   const tCreatedBy = "createdBy";
   const tModifiedBy = "modifiedBy";
   const tInStockQuantity = 10;
@@ -41,8 +39,6 @@ void main() {
       listPrice: tListPrice,
       salePrice: tSalePrice,
       price: tPrice,
-      createdDate: tCreatedDate,
-      modifiedDate: tModifiedDate,
       createdBy: tCreatedBy,
       modifiedBy: tModifiedBy,
       inStockQuantity: tInStockQuantity,

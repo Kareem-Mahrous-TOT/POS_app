@@ -3,6 +3,7 @@ import 'package:tot_pos/domain/bag/entities/bag_item.dart';
 
 void main() {
   late BagItem sut;
+  late DateTime sutJustBeforeCreationTime;
 
   const tCatalogId = "catalogId";
   const tProductId = "productId";
@@ -16,16 +17,15 @@ void main() {
   const tListPrice = 1.0;
   const tSalePrice = 1.0;
   const tPrice = 1.0;
-  const tCreatedDate = "createdDate";
-  const tModifiedDate = "modifiedDate";
   const tCreatedBy = "createdBy";
   const tModifiedBy = "modifiedBy";
-  const tInStockQuantity = 1;
+  const tInStockQuantity = 2;
   const tSku = "sku";
 
   const tObjectType = "TotPlatform.CartModule.Core.Model.LineItem";
 
   setUp(() {
+    sutJustBeforeCreationTime = DateTime.now();
     sut = BagItem(
       catalogId: tCatalogId,
       productId: tProductId,
@@ -39,8 +39,6 @@ void main() {
       listPrice: tListPrice,
       salePrice: tSalePrice,
       price: tPrice,
-      createdDate: tCreatedDate,
-      modifiedDate: tModifiedDate,
       createdBy: tCreatedBy,
       modifiedBy: tModifiedBy,
       inStockQuantity: tInStockQuantity,
@@ -63,12 +61,18 @@ void main() {
       expect(sut.listPrice, equals(tListPrice));
       expect(sut.salePrice, equals(tSalePrice));
       expect(sut.price, equals(tPrice));
-      expect(sut.createdDate, equals(tCreatedDate));
-      expect(sut.modifiedDate, equals(tModifiedDate));
       expect(sut.createdBy, equals(tCreatedBy));
       expect(sut.modifiedBy, equals(tModifiedBy));
       expect(sut.inStockQuantity, equals(tInStockQuantity));
       expect(sut.sku, equals(tSku));
+
+      // created date should be created with these bounds
+      expect(sut.createdDate.isBefore(sutJustBeforeCreationTime), isFalse);
+      expect(sut.createdDate.difference(sutJustBeforeCreationTime).inSeconds,
+          lessThanOrEqualTo(5)); // 5 is just an arbitarary number
+
+      // created date and modified date should be the same
+      expect(sut.createdDate, equals(sut.modifiedDate));
     });
 
     test("bag item count should not be zero when the object is first created",
@@ -87,8 +91,6 @@ void main() {
         listPrice: tListPrice,
         salePrice: tSalePrice,
         price: tPrice,
-        createdDate: tCreatedDate,
-        modifiedDate: tModifiedDate,
         createdBy: tCreatedBy,
         modifiedBy: tModifiedBy,
         inStockQuantity: tInStockQuantity,
@@ -107,9 +109,25 @@ void main() {
   group("Testing increaseCount method", () {
     test("count should not exceed tInStockQuantity", () {
       // act
-      sut.increaseCount(tInStockQuantity + 1);
+      final didIncreaseCount = sut.increaseCount(tInStockQuantity + 1);
+
       // assert
+      expect(didIncreaseCount, isFalse);
       expect(sut.count, lessThanOrEqualTo(tInStockQuantity));
+    });
+
+    test("modifiedDate should change accordingly", () {
+      // arrange
+      final tTimeBeforeModification = DateTime.now();
+
+      // act
+      final didIncreaseCount = sut.increaseCount(1);
+
+      // assert
+      expect(didIncreaseCount, isTrue);
+      expect(sut.modifiedDate.isBefore(tTimeBeforeModification), isFalse);
+      expect(sut.modifiedDate.difference(tTimeBeforeModification).inSeconds,
+          lessThanOrEqualTo(5));
     });
   });
 
@@ -124,18 +142,36 @@ void main() {
     });
 
     test("count should not get less than 0", () {
+      // arrange
+      final int count = sut.count;
+
       // act
-      sut.decreaseCount();
-      sut.decreaseCount();
+      for (int i = 0; i <= count; i++) {
+        sut.decreaseCount();
+      }
       // assert
       expect(sut.count, greaterThanOrEqualTo(0));
+    });
+
+    test("modifiedDate should change accordingly", () {
+      // arrange
+      final tTimeBeforeModification = DateTime.now();
+
+      // act
+      final didDecreaseCount = sut.decreaseCount();
+
+      // assert
+      expect(didDecreaseCount, isTrue);
+      expect(sut.modifiedDate.isBefore(tTimeBeforeModification), isFalse);
+      expect(sut.modifiedDate.difference(tTimeBeforeModification).inSeconds,
+          lessThanOrEqualTo(5));
     });
   });
 
   group('Testing copyWith method', () {
     test("copyWith should change the fields it acts upon", () {
       // act
-      const tModifiedDate = "new modifiedDate";
+      final tModifiedDate = DateTime.now();
       const tModifiedBy = "new modifiedBy";
       const tCount = 2;
 
@@ -185,26 +221,26 @@ void main() {
       final tTaxType = (tTaxRate * 100).round();
 
       final tJson = {
-        'catalogId': tCatalogId,
-        'productId': tProductId,
+        'catalogId': sut.catalogId,
+        'productId': sut.productId,
         'fulfillmentCenterId': tFulfillmentCenterId,
         'fulfillmentCenterName': tFulfillmentCenterName,
-        'sku': tSku,
-        'productType': tProductType,
-        'name': tName,
-        'quantity': tCount,
-        'imageUrl': tImageUrl,
-        'currency': tCurrency,
-        'priceId': tPriceId,
-        'listPrice': tListPrice,
-        'salePrice': tSalePrice,
-        'price': tPrice,
+        'sku': sut.sku,
+        'productType': sut.productType,
+        'name': sut.name,
+        'quantity': sut.count,
+        'imageUrl': sut.imageUrl,
+        'currency': sut.currency,
+        'priceId': sut.priceId,
+        'listPrice': sut.listPrice,
+        'salePrice': sut.salePrice,
+        'price': sut.price,
         'taxType': tTaxType.toString(),
-        'objectType': tObjectType,
-        'createdDate': tCreatedDate,
-        'modifiedDate': tModifiedDate,
-        'createdBy': tCreatedBy,
-        'modifiedBy': tModifiedBy,
+        'objectType': sut.objectType,
+        'createdDate': sut.createdDate.toString(),
+        'modifiedDate': sut.modifiedDate.toString(),
+        'createdBy': sut.createdBy,
+        'modifiedBy': sut.modifiedBy,
       };
 
       // act
