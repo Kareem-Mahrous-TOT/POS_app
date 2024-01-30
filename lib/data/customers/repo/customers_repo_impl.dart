@@ -14,11 +14,11 @@ class CustomersRepoImpl implements CustomersRepo {
       : _remoteDataSource = remoteDataSource;
 
   final int _first = 20;
-  late bool _hasNextPage;
   String _after = "0";
   @override
-  FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})> fetchCustomers(
-      {String? after}) async {
+  FutureEitherFailureOrType<
+          ({int endCursor, bool hasNextPage, List<Member> members})>
+      fetchCustomers({String? after}) async {
     try {
       final responseRecord = await _remoteDataSource.fetchContacts(
         memberType: 'Contact',
@@ -26,11 +26,9 @@ class CustomersRepoImpl implements CustomersRepo {
         after: after ?? _after,
       );
       _after = responseRecord.endCursor.toString();
-      _hasNextPage = responseRecord.hasNextPage;
 
       return Right(responseRecord);
     } catch (e) {
-      _hasNextPage = false;
       return Left(ServerFailure(e.toString()));
     }
   }
@@ -55,6 +53,19 @@ class CustomersRepoImpl implements CustomersRepo {
       return true;
     } catch (e) {
       return false;
+    }
+  }
+
+  @override
+  FutureEitherFailureOrType<List<Member>> searchCustomers(
+      {String? query}) async {
+    try {
+      final responseRecord = await _remoteDataSource.fetchContacts(
+          memberType: 'Contact', first: 300, after: "0", query: query);
+
+      return Right(responseRecord.members);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

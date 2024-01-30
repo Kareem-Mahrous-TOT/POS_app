@@ -99,7 +99,7 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
       controller: scrollController,
       itemBuilder: (context, index) {
         if ((index >= widget.models.length)) {
-          return const ShimmerEffect();
+          return ShimmerEffect(height:h * 0.1);
         } else {
           final model = widget.models[index];
           return SizedBox(

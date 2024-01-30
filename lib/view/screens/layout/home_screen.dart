@@ -323,7 +323,9 @@ class _HomePageState extends State<HomeScreen> {
                                           : value.products.length + 1,
                                       itemBuilder: (context, index) {
                                         if ((index >= products.length)) {
-                                          return const ShimmerEffect();
+                                          return const ShimmerEffect(
+                                            height: 200,
+                                          );
                                         } else {
                                           final product = value.products[index];
                                           final List<ProductPOSRecord> records =

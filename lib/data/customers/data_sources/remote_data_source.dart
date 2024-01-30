@@ -7,11 +7,11 @@ import '../responses/customers_response/tot_customers.dart';
 
 abstract class ContactsRemoteDataSource {
   Future<({List<Member> members, bool hasNextPage, int endCursor})>
-      fetchContacts({
-    required String memberType,
-    int first = 20,
-    String after = "0",
-  });
+      fetchContacts(
+          {required String memberType,
+          int first = 20,
+          String after = "0",
+          String? query});
   Future<TOTAddCustomerModelResponse> addContact(
       {required TOTAddCustomerRequest addCustomerRequest});
 }
@@ -92,6 +92,7 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
   @override
   Future<({List<Member> members, bool hasNextPage, int endCursor})>
       fetchContacts({
+    String? query,
     required String memberType,
     int first = 20,
     String after = "0",
@@ -135,6 +136,7 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
       'sort': "createdDate:desc",
       'first': first,
       'after': after.toString(),
+      'query': query
     }));
     List<Member> members = [];
 
