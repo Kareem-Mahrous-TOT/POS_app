@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerEffect extends StatelessWidget {
-  const ShimmerEffect({super.key});
+  const ShimmerEffect({super.key, required this.height});
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ShimmerEffect extends StatelessWidget {
               ),
             ),
             width: MediaQuery.sizeOf(context).width,
-            height: 200,
+            height: height ?? 200,
           ),
         ),
       ),

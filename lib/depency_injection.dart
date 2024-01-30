@@ -8,6 +8,7 @@ import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
 import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/domain/customers/repo/customers_repo.dart';
 import 'package:tot_pos/domain/customers/usecases/fetch_customers_usecase.dart';
+import 'package:tot_pos/domain/customers/usecases/search_usecase.dart';
 import 'package:tot_pos/domain/orders/usecases/create_order_from_bag.dart';
 import 'package:tot_pos/domain/products/usecases/change_product_master_variation.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
@@ -132,7 +133,9 @@ class _Dependencies {
     getIt.registerFactory<CurrentCustomerCubit>(
         () => CurrentCustomerCubit(getUserUsecase: getIt()));
     getIt.registerFactory<RecentCustomersBloc>(() => RecentCustomersBloc(
-        fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt()));
+        fetchCustomersUsecase: getIt(), addCustomerUsecase: getIt(), 
+        // searchCustomerUsecase: getIt()
+        ));
     getIt.registerFactory<SalesCubit>(() => SalesCubit(getIt()));
     getIt.registerFactory<ReportChartPieCubit>(
         () => ReportChartPieCubit(pieChartUsecase: getIt()));
@@ -220,6 +223,8 @@ class _Dependencies {
     //? customers
     getIt.registerLazySingleton<FetchCustomersUsecase>(
         () => FetchCustomersUsecase(customersRepo: getIt()));
+    getIt.registerLazySingleton<SearchCustomersUsecase>(
+        () => SearchCustomersUsecase(customersRepo: getIt()));
     getIt.registerLazySingleton<AddCustomersUsecase>(
         () => AddCustomersUsecase(customersRepo: getIt()));
   }

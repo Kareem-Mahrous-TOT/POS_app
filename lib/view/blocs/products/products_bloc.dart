@@ -126,6 +126,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               }, (records) {
                 log("records: ${records.productsModels!.length}");
                 emit(ProductsState.fetchSuccessState(
+                    hasReachedMax: true,
                     products: records.productsModels!,
                     records: records.proudctsPosRecords));
               });
@@ -134,6 +135,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
                 _FetchSuccessState(
                     records: productsList.toDomainPOS(),
                     products: productsList,
+                    hasReachedMax: false,
                     isSearching: false),
               );
             }
