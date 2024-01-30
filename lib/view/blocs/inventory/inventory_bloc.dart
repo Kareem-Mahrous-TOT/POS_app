@@ -28,7 +28,8 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
     on<InventoryEvent>((event, emit) async {
       Future<void> fetchProducts() async {
         emit(InventoryState.loading());
-        final response = await _getProductsUsecase.call(GetProductsParams());
+        final response = await _getProductsUsecase
+            .call(GetProductsParams(after: "0", first: 300));
         response.fold(
             (failure) => emit(InventoryState.fetchFailState(failure.message)),
             (record) {
@@ -126,8 +127,7 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                 emit(value.copyWith(isUpdating: true));
                 final response = await _updateInventoryUsecase.call(
                     UpdateInventoryParams(
-                        productId: masterId,
-                        inStockQuantity: inStockQuantity));
+                        productId: masterId, inStockQuantity: inStockQuantity));
                 final bool result =
                     await response.fold((l) async => false, (r) async => r);
                 if (result) {
@@ -137,28 +137,29 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                             .firstWhere(
                                 orElse: () => product.variations!.first,
                                 (element) => element.isMaster)
-                            .id == masterId) {
+                            .id ==
+                        masterId) {
                       newProducts.add(
                         product.copyWith(
                           variations: product.variations!.map((variation) {
                             if (variation.isMaster) {
                               return variation.copyWith(
-                                selectedQuantity: inStockQuantity,
+                                  selectedQuantity: inStockQuantity,
                                   availabilityData: variation.availabilityData!
                                       .copyWith(
                                           inventories: variation
                                               .availabilityData!.inventories!
                                               .map((e) {
-                                if (e.fulfillmentCenterId ==
-                                    (sharedPreferences.getString(
-                                            LocalKeys.fulfillmentCenterId) ??
-                                        StoreConfig.octoberBranchId)) {
-                                  return e.copyWith(
-                                      inStockQuantity: inStockQuantity);
-                                } else {
-                                  return e;
-                                }
-                              }).toList()));
+                                    if (e.fulfillmentCenterId ==
+                                        (sharedPreferences.getString(LocalKeys
+                                                .fulfillmentCenterId) ??
+                                            StoreConfig.octoberBranchId)) {
+                                      return e.copyWith(
+                                          inStockQuantity: inStockQuantity);
+                                    } else {
+                                      return e;
+                                    }
+                                  }).toList()));
                             } else {
                               return variation;
                             }
