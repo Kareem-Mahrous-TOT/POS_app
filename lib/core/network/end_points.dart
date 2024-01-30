@@ -10,7 +10,7 @@ abstract class EndPoints {
   static const String catalogProductsUrl = '/api/catalog/products';
   static const String listentriesCatalogUrl = '/api/catalog/listentries';
 
-  /// Authenticated endpoints
+  /// Authentication endpoints
   static const String createUser = 'api/platform/security/users/create';
   static const String loginUrl = "/api/platform/security/login";
   static const String logoutUrl = "/api/platform/security/logout";
