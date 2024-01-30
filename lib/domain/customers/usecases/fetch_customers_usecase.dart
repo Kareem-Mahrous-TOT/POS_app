@@ -1,18 +1,28 @@
+import 'package:equatable/equatable.dart';
+
 import '../../../core/types/types.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../data/customers/responses/customers_response/tot_customers.dart';
 import '../repo/customers_repo.dart';
 
 class FetchCustomersUsecase
-    implements
-        BaseUsecase<NoParams, FutureEitherFailureOrType<List<Member>>> {
+    implements BaseUsecase<FetchCustomerParams, FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})>> {
   final CustomersRepo _customerRepo;
 
   FetchCustomersUsecase({required CustomersRepo customersRepo})
       : _customerRepo = customersRepo;
 
   @override
-  FutureEitherFailureOrType<List<Member>> call(NoParams noParams) {
-    return _customerRepo.fetchCustomers();
+  FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})> call(FetchCustomerParams params) {
+    return _customerRepo.fetchCustomers(after:params.after);
   }
+}
+
+class FetchCustomerParams with EquatableMixin {
+  final String? after;
+
+  FetchCustomerParams({this.after});
+
+  @override
+  List<Object?> get props => [after];
 }

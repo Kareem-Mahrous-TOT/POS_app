@@ -13,23 +13,22 @@ class CustomersRepoImpl implements CustomersRepo {
   CustomersRepoImpl({required ContactsRemoteDataSource remoteDataSource})
       : _remoteDataSource = remoteDataSource;
 
-  int _after = 0;
   final int _first = 20;
   late bool _hasNextPage;
-
+  String _after = "0";
   @override
-  FutureEitherFailureOrType<List<Member>> fetchCustomers() async {
+  FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})> fetchCustomers(
+      {String? after}) async {
     try {
       final responseRecord = await _remoteDataSource.fetchContacts(
         memberType: 'Contact',
         first: _first,
-        after: _after,
+        after: after ?? _after,
       );
-      _after = responseRecord.endCursor;
+      _after = responseRecord.endCursor.toString();
       _hasNextPage = responseRecord.hasNextPage;
 
-      final customersModel = responseRecord.members;
-      return Right(customersModel);
+      return Right(responseRecord);
     } catch (e) {
       _hasNextPage = false;
       return Left(ServerFailure(e.toString()));
