@@ -67,6 +67,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                             textStyle: context.titleMedium.copyWith(
                               color: Palette.white,
                             ),
+                            buttonColor: Palette.primary,
                             onPressed: (firstName, lastName, email) {
                               context.read<RecentCustomersBloc>().add(
                                     RecentCustomersEvent.addCustomer(
