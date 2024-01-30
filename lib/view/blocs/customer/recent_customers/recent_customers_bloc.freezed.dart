@@ -114,12 +114,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   _$StartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'RecentCustomersEvent.started'));
   }
 
   @override
@@ -228,12 +234,21 @@ class __$$LoadRecentCustomersImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadRecentCustomersImpl implements _LoadRecentCustomers {
+class _$LoadRecentCustomersImpl
+    with DiagnosticableTreeMixin
+    implements _LoadRecentCustomers {
   _$LoadRecentCustomersImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.loadRecentCustomers()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'RecentCustomersEvent.loadRecentCustomers'));
   }
 
   @override
@@ -342,12 +357,19 @@ class __$$PaginationImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PaginationImpl implements _Pagination {
+class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   _$PaginationImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.pagination()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'RecentCustomersEvent.pagination'));
   }
 
   @override
@@ -481,7 +503,7 @@ class __$$AddCustomerImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddCustomerImpl implements _AddCustomer {
+class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   _$AddCustomerImpl(
       {required this.firstName, required this.lastName, required this.email});
 
@@ -493,8 +515,18 @@ class _$AddCustomerImpl implements _AddCustomer {
   String email;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.addCustomer(firstName: $firstName, lastName: $lastName, email: $email)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersEvent.addCustomer'))
+      ..add(DiagnosticsProperty('firstName', firstName))
+      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('email', email));
   }
 
   @JsonKey(ignore: true)
@@ -637,15 +669,23 @@ class __$$SearchListImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SearchListImpl implements _SearchList {
+class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   _$SearchListImpl({this.query});
 
   @override
   String? query;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.searchList(query: $query)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersEvent.searchList'))
+      ..add(DiagnosticsProperty('query', query));
   }
 
   @JsonKey(ignore: true)
@@ -839,12 +879,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'RecentCustomersState.initial'));
   }
 
   @override
@@ -978,7 +1024,7 @@ class __$$SuccessStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessStateImpl implements _SuccessState {
+class _$SuccessStateImpl with DiagnosticableTreeMixin implements _SuccessState {
   _$SuccessStateImpl(this.customers,
       {this.didAddCustomer, this.isSearching, this.hasNextPage = false});
 
@@ -993,8 +1039,19 @@ class _$SuccessStateImpl implements _SuccessState {
   bool hasNextPage;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersState.successState(customers: $customers, didAddCustomer: $didAddCustomer, isSearching: $isSearching, hasNextPage: $hasNextPage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersState.successState'))
+      ..add(DiagnosticsProperty('customers', customers))
+      ..add(DiagnosticsProperty('didAddCustomer', didAddCustomer))
+      ..add(DiagnosticsProperty('isSearching', isSearching))
+      ..add(DiagnosticsProperty('hasNextPage', hasNextPage));
   }
 
   @JsonKey(ignore: true)
@@ -1131,15 +1188,23 @@ class __$$FailedStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailedStateImpl implements _FailedState {
+class _$FailedStateImpl with DiagnosticableTreeMixin implements _FailedState {
   _$FailedStateImpl(this.message);
 
   @override
   String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersState.failedState(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersState.failedState'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @JsonKey(ignore: true)

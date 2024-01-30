@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../core/utils/shimmer_effect.dart';
@@ -79,27 +80,13 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    // final scrollController = useScrollController();
-
-    // useEffect(() {
-    //   scrollController.addListener(() {
-    //     final prct = (scrollController.offset /
-    //         scrollController.position.maxScrollExtent);
-    //     if (0.9 < prct && prct < .92) {
-    //       onScroll?.call();
-    //     }
-    //   });
-    //   return null;
-    // }, []);
-
     return ListView.separated(
-      // controller: scrollController,
       itemCount:
           widget.hasNextPage ? widget.models.length + 1 : widget.models.length,
       controller: scrollController,
       itemBuilder: (context, index) {
         if ((index >= widget.models.length)) {
-          return ShimmerEffect(height:h * 0.1);
+          return ShimmerEffect(height: h * 0.1);
         } else {
           final model = widget.models[index];
           return SizedBox(
@@ -135,16 +122,15 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                         Text(
                           (model.name?.isEmpty ?? false)
                               ? "No name found"
-                              : widget.models[index].name.toString(),
+                              : model.name.toString(),
                           style: widget.nameStyle ??
                               context.titleMedium.copyWith(
                                 color: Colors.black,
                               ),
                         ),
                         Text(
-                          widget.models[index].emails!.isNotEmpty &&
-                                  widget.models[index].emails![0] != null
-                              ? widget.models[index].emails![0]!
+                          model.emails!.isNotEmpty && model.emails![0] != null
+                              ? model.emails![0]!
                               : "No emails found",
                           style: widget.nameStyle ??
                               context.titleMedium.copyWith(
@@ -155,17 +141,15 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                     ),
                   ],
                 ),
-                Text(
-                  widget.models[index].createdDate != null
-                      ? widget.models[index].createdDate
-                          .toString()
-                          .substring(0, 16)
-                      : "",
-                  style: widget.dateStyle ??
-                      context.titleMedium.copyWith(
-                        color: Colors.grey,
-                      ),
-                ),
+                if ((model.securityAccounts?.isNotEmpty ?? false) &&
+                    model.securityAccounts?.first.createdDate != null)
+                  Text(
+                    DateFormat('dd/MM/yyyy hh:mm')
+                        .format(model.securityAccounts!.first.createdDate!)
+                        .toString(),
+                    style: widget.dateStyle ??
+                        context.titleMedium.copyWith(color: Colors.grey),
+                  ),
               ],
             ),
           );

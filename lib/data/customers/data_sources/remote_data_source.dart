@@ -129,6 +129,9 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
                     birthDate
                     organizationId
                     organizationsIds
+                    securityAccounts {
+                        createdDate
+                    }
                 }
             }
         }
