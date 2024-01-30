@@ -7,7 +7,7 @@ import 'package:tot_atomic_design/tot_atomic_design.dart';
 import '../../../core/theme/palette.dart';
 import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/sales/sales_cubit.dart';
-import '../../components/sales_card.dart';
+import '../../components/tot_sales_card_molecule.dart';
 
 class SalesScreen extends StatefulWidget {
   const SalesScreen({super.key});
@@ -124,25 +124,25 @@ class SalesTabs extends StatelessWidget {
             children: [
               SizedBox(
                 width: w * 0.95,
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const TOTSalesCardMolecule(
-                      cost: "0.00",
-                      iconData: Icons.account_balance_wallet_rounded,
-                      shadowColor: Colors.greenAccent,
+                    TOTSalesCardMolecule(
+                      returns: "0.00",
+                      trailingIcon: Icons.account_balance_wallet_rounded,
+                      // trailingIconColor: Colors.greenAccent,
                       title: 'Opening Drawer Account',
-                      percentage: null,
                     ),
                     TOTSalesCardMolecule(
-                        cost: "0.00",
-                        iconData: Icons.attach_money_outlined,
-                        shadowColor: Colors.orange[600]!,
+                        returns: "0.00",
+                        trailingIcon: Icons.attach_money_outlined,
+                        // trailingIconColor: Colors.orange[600],
                         title: 'Cash Payment Sale'),
-                    const TOTSalesCardMolecule(
-                        cost: "0.00",
-                        iconData: Icons.credit_card_outlined,
-                        shadowColor: Palette.blue,
+                    TOTSalesCardMolecule(
+                        returns: "0.00",
+                        trailingIcon: Icons.credit_card_outlined,
+                        // trailingIconColor: Palette.blue,
+                        // shadowColor: Palette.blue,
                         title: 'Other Payment Sale'),
                   ],
                 ),

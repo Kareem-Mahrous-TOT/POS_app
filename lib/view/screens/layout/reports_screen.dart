@@ -9,7 +9,7 @@ import '../../../data/report/model/revenue_model.dart';
 import '../../blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
 import '../../blocs/report/report_cost/report_cost_cubit.dart';
 import '../../blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import '../../components/sales_card.dart';
+import '../../components/tot_sales_card_molecule.dart';
 
 class ReportsScreen extends StatefulWidget {
   const ReportsScreen({super.key});
@@ -199,7 +199,7 @@ class ReportTab extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TOTSalesCardMolecule(
-                          plus: value.statisticsDashboard.revenue?.any(
+                          isAscending: value.statisticsDashboard.revenue?.any(
                                   (element) => (element.amount ?? 0) > 0) ??
                               false,
                           percentage: (value.statisticsDashboard.revenue
@@ -209,19 +209,18 @@ class ReportTab extends StatelessWidget {
                                       (element) =>
                                           element.currency != null).amount) ??
                               0,
-                          cost: value.statisticsDashboard.revenue!
+                          returns: value.statisticsDashboard.revenue!
                               .firstWhere(orElse: () {
                                 return const Revenue(amount: 0);
                               }, (element) => element.amount != null)
                               .amount!
                               .toString(),
-                          hasLeadingIcon: true,
-                          hasPercentage: true,
+                          returnsColor: Palette.success,
                           leadingColor: Colors.orange,
-                          leadingIcon: Icons.account_balance_wallet_rounded,
+                          icon: Icons.account_balance_wallet_rounded,
                           title: 'Revenue'),
                       TOTSalesCardMolecule(
-                          plus: value.statisticsDashboard.revenue?.any(
+                          isAscending: value.statisticsDashboard.revenue?.any(
                                   (element) => (element.amount ?? 0) > 0) ??
                               false,
                           percentage: (value.statisticsDashboard.revenue
@@ -231,19 +230,18 @@ class ReportTab extends StatelessWidget {
                                       (element) =>
                                           element.currency != null).amount) ??
                               0,
-                          cost: value.statisticsDashboard.revenue!
+                          returns: value.statisticsDashboard.revenue!
                               .firstWhere(orElse: () {
                                 return const Revenue(amount: 0);
                               }, (element) => element.amount != null)
                               .amount!
                               .toString(),
-                          hasLeadingIcon: true,
-                          hasPercentage: true,
+                          returnsColor: Palette.success,
                           leadingColor: Palette.success,
-                          leadingIcon: Icons.shopping_cart,
+                          icon: Icons.shopping_cart,
                           title: 'Orders'),
                       TOTSalesCardMolecule(
-                          plus: value.statisticsDashboard.revenue?.any(
+                          isAscending: value.statisticsDashboard.revenue?.any(
                                   (element) => (element.amount ?? 0) > 0) ??
                               false,
                           percentage: (value.statisticsDashboard.revenue
@@ -253,16 +251,15 @@ class ReportTab extends StatelessWidget {
                                       (element) =>
                                           element.currency != null).amount) ??
                               0,
-                          cost: value.statisticsDashboard.revenue!
+                          returns: value.statisticsDashboard.revenue!
                               .firstWhere(orElse: () {
                                 return const Revenue(amount: 0);
                               }, (element) => element.amount != null)
                               .amount!
                               .toString(),
-                          hasLeadingIcon: true,
-                          hasPercentage: true,
+                          returnsColor: Palette.success,
                           leadingColor: Palette.success,
-                          leadingIcon: Icons.shopping_cart,
+                          icon: Icons.shopping_cart,
                           title: 'Orders'),
                     ],
                   ),
