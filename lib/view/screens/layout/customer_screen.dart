@@ -16,6 +16,8 @@ class CustomerScreen extends StatefulHookWidget {
 }
 
 class _CustomerPageState extends State<CustomerScreen> {
+  late ScrollController scrollController;
+
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
@@ -23,6 +25,7 @@ class _CustomerPageState extends State<CustomerScreen> {
           .read<RecentCustomersBloc>()
           .add(RecentCustomersEvent.loadRecentCustomers());
     });
+
     super.initState();
   }
 
@@ -108,7 +111,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                     code: value.data.me.memberId ?? "",
                     customerImage: value.data.me.photoUrl ??
                         "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
-                    email: value.data.me.email?? "N/A",
+                    email: value.data.me.email ?? "N/A",
                   ),
                 );
               },
@@ -141,8 +144,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                         listener: (_, state) {
                           state.maybeMap(
                             orElse: () {},
-                            loadedRecentCustomerData:
-                                (loadedRecentCustomestate) {
+                            successState: (loadedRecentCustomestate) {
                               if (loadedRecentCustomestate.didAddCustomer ==
                                   true) {
                                 fToast.showToast(
@@ -166,7 +168,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                                 child: CircularProgressIndicator(
                               color: Palette.primary,
                             )),
-                            loadedRecentCustomerData: (value) {
+                            successState: (value) {
                               if (value.customers.isEmpty &&
                                   value.isSearching == false) {
                                 return Center(
@@ -188,6 +190,7 @@ class _CustomerPageState extends State<CustomerScreen> {
                               return SizedBox(
                                   height: h * 0.487,
                                   child: CustomersListMolecule(
+                                      hasNextPage: value.hasNextPage,
                                       models: value.customers));
                             },
                           );

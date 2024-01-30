@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/usecase/usecase.dart';
 import '../../../../data/customers/responses/customers_response/tot_customers.dart';
 import '../../../../domain/customers/usecases/add_customer_usecase.dart';
 import '../../../../domain/customers/usecases/fetch_customers_usecase.dart';
@@ -22,96 +23,107 @@ class RecentCustomersBloc
         _fetchCustomersUsecase = fetchCustomersUsecase,
         super(_Initial()) {
     List<Member> listRecentCustomers = [];
-    on<RecentCustomersEvent>(
-      (event, emit) async {
-        await event.map(
-          started: (value) {},
-          loadRecentCustomers: (value) async {
-            final result = await _fetchCustomersUsecase.call(NoParams());
 
-            final state = result.fold(
-              (failure) => RecentCustomersState.failedLoadinRecentCustomerData(
-                  failure.message),
-              (customerModels) =>
-                  RecentCustomersState.loadedRecentCustomerData(customerModels),
-            );
+    on<RecentCustomersEvent>((event, emit) async {
+      await event.map(
+        started: (value) {},
+        loadRecentCustomers: (value) async {
+          final result = await _fetchCustomersUsecase
+              .call(FetchCustomerParams(after: "0"));
 
-            emit(state);
-          },
-          addCustomer: (addCustomerEvent) async {
+          final state = result.fold(
+            (failure) => RecentCustomersState.failedState(failure.message),
+            (customerModels) => RecentCustomersState.successState(
+                customerModels.members,
+                hasNextPage: customerModels.hasNextPage),
+          );
+
+          emit(state);
+        },
+        addCustomer: (addCustomerEvent) async {
+          await state.maybeMap(
+            successState: (myState) async {
+              final result = await _addCustomerUsecase.call(AddCustomersParams(
+                email: addCustomerEvent.email,
+                firstName: addCustomerEvent.firstName,
+                lastName: addCustomerEvent.lastName,
+              ));
+
+              final newState = result.fold(
+                  (failure) => myState.copyWith(didAddCustomer: false),
+                  (response) => myState.copyWith(
+                      customers: response.members, didAddCustomer: true));
+
+              emit(newState);
+            },
+            orElse: () {},
+          );
+        },
+        pagination: (event) async {
+          await state.maybeMap(
+            orElse: () {},
+            successState: (data) async {
+              // emit(data.copyWith(addingProducts: true));
+              if (data.hasNextPage == false) return;
+              await _fetchCustomersUsecase
+                  .call(FetchCustomerParams())
+                  .then((value) async {
+                await value.fold(
+                  (l) async =>
+                      emit(RecentCustomersState.failedState(l.message)),
+                  (r) async {
+                    emit(
+                      r.hasNextPage
+                          ? data.copyWith(
+                              hasNextPage: r.hasNextPage,
+                              customers: (List.of(data.customers)
+                                ..addAll(r.members)))
+                          : data.copyWith(hasNextPage: r.hasNextPage),
+                    );
+                    debugPrint("hasNextPage ==> ${data.hasNextPage} ${r.endCursor}");
+
+                  },
+                );
+              });
+            },
+          );
+        },
+        searchList: (event) async {
+          if (event.query != null && event.query!.isNotEmpty) {
             await state.maybeMap(
-              loadedRecentCustomerData: (myState) async {
-                final result =
-                    await _addCustomerUsecase.call(AddCustomersParams(
-                  email: addCustomerEvent.email,
-                  firstName: addCustomerEvent.firstName,
-                  lastName: addCustomerEvent.lastName,
-                ));
-
-                final newState = result.fold(
-                    (failure) => myState.copyWith(didAddCustomer: false),
-                    (members) => myState.copyWith(
-                        customers: members, didAddCustomer: true));
-
-                emit(newState);
-              },
               orElse: () {},
-            );
-          },
-          searchList: (event) async {
-            if (event.query != null && event.query!.isNotEmpty) {
-              await state.maybeMap(
-                orElse: () {},
-                loadedRecentCustomerData: (value) async {
-                  emit(value.copyWith(
-                      customers: listRecentCustomers, isSearching: true));
-                  final recentCustomer = listRecentCustomers.where((element) {
-                    String cName = element.name.toString();
+              successState: (value) async {
+                emit(value.copyWith(
+                    customers: listRecentCustomers, isSearching: true));
+                final recentCustomer = listRecentCustomers.where((element) {
+                  String cName = element.name.toString();
 
-                    if (cName == "null" || cName == "") {
-                      cName = "No name found";
-                      return cName
-                          .toLowerCase()
-                          .contains(event.query!.toLowerCase());
-                    } else {
-                      return cName
-                          .toLowerCase()
-                          .contains(event.query!.toLowerCase());
-                    }
-                  }).toList();
-                  await Future.delayed(const Duration(seconds: 1), () {
-                    emit(_LoadedRecentCustomerData(recentCustomer,
-                        isSearching: false));
-                  });
-                },
-              );
-            } else {
-              emit(
-                _LoadedRecentCustomerData(
-                  listRecentCustomers,
-                  isSearching: false,
-                ),
-              );
-            }
-          },
-          fetchMoreRecentCustomers: (_FetchMoreRecentCustomers value)async {
-            await state.maybeMap(
-                orElse: () {},
-                loadedRecentCustomerData: (loadedState) async {
-                  final result = await _fetchCustomersUsecase.call(NoParams());
-
-                  final state = result.fold(
-                    (failure) => loadedState,
-                    (customerModels) =>
-                        RecentCustomersState.loadedRecentCustomerData(
-                            loadedState.customers..addAll(customerModels)),
-                  );
-
-                  emit(state);
+                  if (cName == "null" || cName == "") {
+                    cName = "No name found";
+                    return cName
+                        .toLowerCase()
+                        .contains(event.query!.toLowerCase());
+                  } else {
+                    return cName
+                        .toLowerCase()
+                        .contains(event.query!.toLowerCase());
+                  }
+                }).toList();
+                await Future.delayed(const Duration(seconds: 1), () {
+                  emit(_SuccessState(recentCustomer, isSearching: false));
                 });
-          },
-        );
-      },
-    );
+              },
+            );
+          } else {
+            emit(
+              _SuccessState(
+                listRecentCustomers,
+                isSearching: false,
+              ),
+            );
+          }
+        },
+      );
+    }, transformer: droppable());
   }
 }

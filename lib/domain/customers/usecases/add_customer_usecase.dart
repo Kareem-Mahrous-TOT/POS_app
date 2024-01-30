@@ -9,14 +9,14 @@ import '../repo/customers_repo.dart';
 class AddCustomersUsecase
     implements
         BaseUsecase<AddCustomersParams,
-            FutureEitherFailureOrType<List<Member>>> {
+            FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})>> {
   final CustomersRepo _customerRepo;
 
   AddCustomersUsecase({required CustomersRepo customersRepo})
       : _customerRepo = customersRepo;
 
   @override
-  FutureEitherFailureOrType<List<Member>> call(
+  FutureEitherFailureOrType<({int endCursor, bool hasNextPage, List<Member> members})> call(
       AddCustomersParams params) async {
     final didAddCustomer = await _customerRepo.addCustomer(
       email: params.email,

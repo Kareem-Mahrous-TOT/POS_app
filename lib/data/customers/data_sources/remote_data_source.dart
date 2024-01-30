@@ -10,7 +10,7 @@ abstract class ContactsRemoteDataSource {
       fetchContacts({
     required String memberType,
     int first = 20,
-    int after = 0,
+    String after = "0",
   });
   Future<TOTAddCustomerModelResponse> addContact(
       {required TOTAddCustomerRequest addCustomerRequest});
@@ -94,7 +94,7 @@ class ContactsRemoteDataSourceGraphImpl implements ContactsRemoteDataSource {
       fetchContacts({
     required String memberType,
     int first = 20,
-    int after = 0,
+    String after = "0",
   }) async {
     final queryResult =
         await _graphService.client.query(QueryOptions(document: gql(r'''
