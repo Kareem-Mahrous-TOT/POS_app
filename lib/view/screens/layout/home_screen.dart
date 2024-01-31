@@ -31,12 +31,15 @@ class HomeScreen extends StatefulHookWidget {
 }
 
 class _HomePageState extends State<HomeScreen> {
+  late bool keyboardVisiable;
+
   late final ScrollController scrollController;
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
       context.read<ProductsBloc>().add(ProductsEvent.fetch(allItems: false));
     });
+    keyboardVisiable = false;
     scrollController = ScrollController();
     scrollController.addListener(_onScroll);
     super.initState();
@@ -178,9 +181,16 @@ class _HomePageState extends State<HomeScreen> {
                         showCustomKeyboardOrganism(
                             context: context,
                             inputValue: controller.text,
-                            onChange: (value) => setState(() {
-                                  controller.text = value;
-                                }));
+                            onChange: (value) {
+                              setState(() {
+                                controller.text = value;
+                                context.read<ProductsBloc>().add(
+                                      ProductsEvent.searchList(
+                                        query: controller.text.trim(),
+                                      ),
+                                    );
+                              });
+                            });
                       }),
                   icon: const Icon(Icons.keyboard_alt_outlined))
             ],
