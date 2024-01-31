@@ -140,8 +140,8 @@ class BagItem {
       'price': price,
       'taxType': taxType.toString(),
       'objectType': _objectType,
-      'createdDate': _createdDate.toString(),
-      'modifiedDate': _modifiedDate.toString(),
+      'createdDate': _createdDate.toUtc().toString(),
+      'modifiedDate': _modifiedDate.toUtc().toString(),
       'createdBy': createdBy,
       'modifiedBy': modifiedBy,
     };

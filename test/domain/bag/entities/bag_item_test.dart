@@ -237,8 +237,8 @@ void main() {
         'price': sut.price,
         'taxType': tTaxType.toString(),
         'objectType': sut.objectType,
-        'createdDate': sut.createdDate.toString(),
-        'modifiedDate': sut.modifiedDate.toString(),
+        'createdDate': sut.createdDate.toUtc().toString(),
+        'modifiedDate': sut.modifiedDate.toUtc().toString(),
         'createdBy': sut.createdBy,
         'modifiedBy': sut.modifiedBy,
       };

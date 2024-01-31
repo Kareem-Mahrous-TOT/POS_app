@@ -134,8 +134,8 @@ class BagEntity {
           .toList(),
       "price": _totalPrice,
       "discountAmount": discountAmount,
-      "createdDate": _createdDate.toString(),
-      "modifiedDate": _modifiedDate.toString(),
+      "createdDate": _createdDate.toUtc().toString(),
+      "modifiedDate": _modifiedDate.toUtc().toString(),
     };
   }
 }

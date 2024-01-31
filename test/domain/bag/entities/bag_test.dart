@@ -406,8 +406,8 @@ void main() {
             .toList(),
         "price": sut.totalPrice,
         "discountAmount": sut.subTotalPrice - sut.totalPrice,
-        "createdDate": sut.createdDate.toString(),
-        "modifiedDate": sut.modifiedDate.toString(),
+        "createdDate": sut.createdDate.toUtc().toString(),
+        "modifiedDate": sut.modifiedDate.toUtc().toString(),
       };
 
       // act
