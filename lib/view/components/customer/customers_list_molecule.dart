@@ -8,12 +8,18 @@ import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../core/utils/shimmer_effect.dart';
-import '../../../data/customers/responses/customers_response/tot_customers.dart';
 import '../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 
+typedef CustomerRecord = ({
+  String imgUrl,
+  String name,
+  String email,
+  DateTime? createdDate
+});
+
+/// Should be used in expanded or list
 class CustomersListMolecule extends StatefulHookWidget {
-  //Should be used in expanded or list
-  final List<Member> models;
+  final List<CustomerRecord> customerRecords;
   final bool hasNextPage;
   final TextStyle? nameStyle;
   final TextStyle? dateStyle;
@@ -28,7 +34,7 @@ class CustomersListMolecule extends StatefulHookWidget {
   final double? dividerThickness;
   const CustomersListMolecule({
     super.key,
-    required this.models,
+    required this.customerRecords,
     required this.hasNextPage,
     this.nameStyle,
     this.dateStyle,
@@ -81,14 +87,15 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
     double h = MediaQuery.of(context).size.height;
 
     return ListView.separated(
-      itemCount:
-          widget.hasNextPage ? widget.models.length + 1 : widget.models.length,
+      itemCount: widget.hasNextPage
+          ? widget.customerRecords.length + 1
+          : widget.customerRecords.length,
       controller: scrollController,
       itemBuilder: (context, index) {
-        if ((index >= widget.models.length)) {
+        if ((index >= widget.customerRecords.length)) {
           return ShimmerEffect(height: h * 0.1);
         } else {
-          final model = widget.models[index];
+          final customerRecord = widget.customerRecords[index];
           return SizedBox(
             height: widget.itemHeight ?? h * 0.1,
             child: Row(
@@ -107,8 +114,7 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                               widget.imgBackgroundColor ?? Colors.grey,
                           child: ClipRRect(
                             child: CachedNetworkImage(
-                              imageUrl: model.iconUrl ??
-                                  "https://ps.w.org/replace-broken-images/assets/icon-256x256.png",
+                              imageUrl: customerRecord.imgUrl,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -120,18 +126,14 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          (model.name?.isEmpty ?? false)
-                              ? "No name found"
-                              : model.name.toString(),
+                          customerRecord.name,
                           style: widget.nameStyle ??
                               context.titleMedium.copyWith(
                                 color: Colors.black,
                               ),
                         ),
                         Text(
-                          model.emails!.isNotEmpty && model.emails![0] != null
-                              ? model.emails![0]!
-                              : "No emails found",
+                          customerRecord.email,
                           style: widget.nameStyle ??
                               context.titleMedium.copyWith(
                                 color: Colors.grey,
@@ -141,11 +143,10 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                     ),
                   ],
                 ),
-                if ((model.securityAccounts?.isNotEmpty ?? false) &&
-                    model.securityAccounts?.first.createdDate != null)
+                if (customerRecord.createdDate != null)
                   Text(
                     DateFormat('dd/MM/yyyy hh:mm')
-                        .format(model.securityAccounts!.first.createdDate!)
+                        .format(customerRecord.createdDate!)
                         .toString(),
                     style: widget.dateStyle ??
                         context.titleMedium.copyWith(color: Colors.grey),
