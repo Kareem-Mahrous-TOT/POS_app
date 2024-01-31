@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
+import 'package:tot_pos/view/ui_mappers/member_to_customer_record.dart';
 
 import '../../../core/theme/palette.dart';
 import '../../blocs/customer/current_customer/current_customer_cubit.dart';
@@ -189,10 +190,15 @@ class _CustomerPageState extends State<CustomerScreen> {
                                 );
                               }
                               return SizedBox(
-                                  height: h * 0.487,
-                                  child: CustomersListMolecule(
-                                      hasNextPage: value.hasNextPage,
-                                      models: value.customers));
+                                height: h * 0.487,
+                                child: CustomersListMolecule(
+                                  hasNextPage: value.hasNextPage,
+                                  customerRecords: value.customers
+                                      .map((customerModel) =>
+                                          customerModel.toCustomerRecord())
+                                      .toList(),
+                                ),
+                              );
                             },
                           );
                         },

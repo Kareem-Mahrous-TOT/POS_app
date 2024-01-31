@@ -48,14 +48,9 @@ _$MemberImpl _$$MemberImplFromJson(Map<String, dynamic> json) => _$MemberImpl(
       seoInfos: (json['seoInfos'] as List<dynamic>?)
           ?.map((e) => SeoInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
-      createdDate: json['createdDate'] == null
-          ? null
-          : DateTime.parse(json['createdDate'] as String),
-      modifiedDate: json['modifiedDate'] == null
-          ? null
-          : DateTime.parse(json['modifiedDate'] as String),
-      createdBy: json['createdBy'] as String?,
-      modifiedBy: json['modifiedBy'] as String?,
+      securityAccounts: (json['securityAccounts'] as List<dynamic>?)
+          ?.map((e) => UserType.fromJson(e as Map<String, dynamic>))
+          .toList(),
       id: json['id'] as String?,
     );
 
@@ -76,11 +71,29 @@ Map<String, dynamic> _$$MemberImplToJson(_$MemberImpl instance) =>
           instance.dynamicProperties?.map((e) => e.toJson()).toList(),
       'seoObjectType': instance.seoObjectType,
       'seoInfos': instance.seoInfos?.map((e) => e.toJson()).toList(),
+      'securityAccounts':
+          instance.securityAccounts?.map((e) => e.toJson()).toList(),
+      'id': instance.id,
+    };
+
+_$UserTypeImpl _$$UserTypeImplFromJson(Map<String, dynamic> json) =>
+    _$UserTypeImpl(
+      createdDate: json['createdDate'] == null
+          ? null
+          : DateTime.parse(json['createdDate'] as String),
+      modifiedDate: json['modifiedDate'] == null
+          ? null
+          : DateTime.parse(json['modifiedDate'] as String),
+      createdBy: json['createdBy'] as String?,
+      modifiedBy: json['modifiedBy'] as String?,
+    );
+
+Map<String, dynamic> _$$UserTypeImplToJson(_$UserTypeImpl instance) =>
+    <String, dynamic>{
       'createdDate': instance.createdDate?.toIso8601String(),
       'modifiedDate': instance.modifiedDate?.toIso8601String(),
       'createdBy': instance.createdBy,
       'modifiedBy': instance.modifiedBy,
-      'id': instance.id,
     };
 
 _$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>

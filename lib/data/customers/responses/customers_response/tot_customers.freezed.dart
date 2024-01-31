@@ -198,11 +198,12 @@ mixin _$Member {
   List<DynamicProperty>? get dynamicProperties =>
       throw _privateConstructorUsedError;
   String? get seoObjectType => throw _privateConstructorUsedError;
-  List<SeoInfo>? get seoInfos => throw _privateConstructorUsedError;
-  DateTime? get createdDate => throw _privateConstructorUsedError;
-  DateTime? get modifiedDate => throw _privateConstructorUsedError;
-  String? get createdBy => throw _privateConstructorUsedError;
-  String? get modifiedBy => throw _privateConstructorUsedError;
+  List<SeoInfo>? get seoInfos =>
+      throw _privateConstructorUsedError; // DateTime? createdDate,
+// DateTime? modifiedDate,
+// String? createdBy,
+// String? modifiedBy,
+  List<UserType>? get securityAccounts => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -230,10 +231,7 @@ abstract class $MemberCopyWith<$Res> {
       List<DynamicProperty>? dynamicProperties,
       String? seoObjectType,
       List<SeoInfo>? seoInfos,
-      DateTime? createdDate,
-      DateTime? modifiedDate,
-      String? createdBy,
-      String? modifiedBy,
+      List<UserType>? securityAccounts,
       String? id});
 }
 
@@ -264,10 +262,7 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
     Object? dynamicProperties = freezed,
     Object? seoObjectType = freezed,
     Object? seoInfos = freezed,
-    Object? createdDate = freezed,
-    Object? modifiedDate = freezed,
-    Object? createdBy = freezed,
-    Object? modifiedBy = freezed,
+    Object? securityAccounts = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
@@ -327,22 +322,10 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
           ? _value.seoInfos
           : seoInfos // ignore: cast_nullable_to_non_nullable
               as List<SeoInfo>?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      modifiedDate: freezed == modifiedDate
-          ? _value.modifiedDate
-          : modifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      modifiedBy: freezed == modifiedBy
-          ? _value.modifiedBy
-          : modifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
+      securityAccounts: freezed == securityAccounts
+          ? _value.securityAccounts
+          : securityAccounts // ignore: cast_nullable_to_non_nullable
+              as List<UserType>?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -373,10 +356,7 @@ abstract class _$$MemberImplCopyWith<$Res> implements $MemberCopyWith<$Res> {
       List<DynamicProperty>? dynamicProperties,
       String? seoObjectType,
       List<SeoInfo>? seoInfos,
-      DateTime? createdDate,
-      DateTime? modifiedDate,
-      String? createdBy,
-      String? modifiedBy,
+      List<UserType>? securityAccounts,
       String? id});
 }
 
@@ -405,10 +385,7 @@ class __$$MemberImplCopyWithImpl<$Res>
     Object? dynamicProperties = freezed,
     Object? seoObjectType = freezed,
     Object? seoInfos = freezed,
-    Object? createdDate = freezed,
-    Object? modifiedDate = freezed,
-    Object? createdBy = freezed,
-    Object? modifiedBy = freezed,
+    Object? securityAccounts = freezed,
     Object? id = freezed,
   }) {
     return _then(_$MemberImpl(
@@ -468,22 +445,10 @@ class __$$MemberImplCopyWithImpl<$Res>
           ? _value._seoInfos
           : seoInfos // ignore: cast_nullable_to_non_nullable
               as List<SeoInfo>?,
-      createdDate: freezed == createdDate
-          ? _value.createdDate
-          : createdDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      modifiedDate: freezed == modifiedDate
-          ? _value.modifiedDate
-          : modifiedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      createdBy: freezed == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as String?,
-      modifiedBy: freezed == modifiedBy
-          ? _value.modifiedBy
-          : modifiedBy // ignore: cast_nullable_to_non_nullable
-              as String?,
+      securityAccounts: freezed == securityAccounts
+          ? _value._securityAccounts
+          : securityAccounts // ignore: cast_nullable_to_non_nullable
+              as List<UserType>?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -510,10 +475,7 @@ class _$MemberImpl implements _Member {
       final List<DynamicProperty>? dynamicProperties,
       this.seoObjectType,
       final List<SeoInfo>? seoInfos,
-      this.createdDate,
-      this.modifiedDate,
-      this.createdBy,
-      this.modifiedBy,
+      final List<UserType>? securityAccounts,
       this.id})
       : _addresses = addresses,
         _phones = phones,
@@ -521,7 +483,8 @@ class _$MemberImpl implements _Member {
         _notes = notes,
         _groups = groups,
         _dynamicProperties = dynamicProperties,
-        _seoInfos = seoInfos;
+        _seoInfos = seoInfos,
+        _securityAccounts = securityAccounts;
 
   factory _$MemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$MemberImplFromJson(json);
@@ -611,20 +574,31 @@ class _$MemberImpl implements _Member {
     return EqualUnmodifiableListView(value);
   }
 
+// DateTime? createdDate,
+// DateTime? modifiedDate,
+// String? createdBy,
+// String? modifiedBy,
+  final List<UserType>? _securityAccounts;
+// DateTime? createdDate,
+// DateTime? modifiedDate,
+// String? createdBy,
+// String? modifiedBy,
   @override
-  final DateTime? createdDate;
-  @override
-  final DateTime? modifiedDate;
-  @override
-  final String? createdBy;
-  @override
-  final String? modifiedBy;
+  List<UserType>? get securityAccounts {
+    final value = _securityAccounts;
+    if (value == null) return null;
+    if (_securityAccounts is EqualUnmodifiableListView)
+      return _securityAccounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? id;
 
   @override
   String toString() {
-    return 'Member(name: $name, memberType: $memberType, outerId: $outerId, status: $status, addresses: $addresses, phones: $phones, emails: $emails, notes: $notes, groups: $groups, iconUrl: $iconUrl, objectType: $objectType, dynamicProperties: $dynamicProperties, seoObjectType: $seoObjectType, seoInfos: $seoInfos, createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy, id: $id)';
+    return 'Member(name: $name, memberType: $memberType, outerId: $outerId, status: $status, addresses: $addresses, phones: $phones, emails: $emails, notes: $notes, groups: $groups, iconUrl: $iconUrl, objectType: $objectType, dynamicProperties: $dynamicProperties, seoObjectType: $seoObjectType, seoInfos: $seoInfos, securityAccounts: $securityAccounts, id: $id)';
   }
 
   @override
@@ -651,41 +625,31 @@ class _$MemberImpl implements _Member {
             (identical(other.seoObjectType, seoObjectType) ||
                 other.seoObjectType == seoObjectType) &&
             const DeepCollectionEquality().equals(other._seoInfos, _seoInfos) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate) &&
-            (identical(other.modifiedDate, modifiedDate) ||
-                other.modifiedDate == modifiedDate) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            (identical(other.modifiedBy, modifiedBy) ||
-                other.modifiedBy == modifiedBy) &&
+            const DeepCollectionEquality()
+                .equals(other._securityAccounts, _securityAccounts) &&
             (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        name,
-        memberType,
-        outerId,
-        status,
-        const DeepCollectionEquality().hash(_addresses),
-        const DeepCollectionEquality().hash(_phones),
-        const DeepCollectionEquality().hash(_emails),
-        const DeepCollectionEquality().hash(_notes),
-        const DeepCollectionEquality().hash(_groups),
-        iconUrl,
-        objectType,
-        const DeepCollectionEquality().hash(_dynamicProperties),
-        seoObjectType,
-        const DeepCollectionEquality().hash(_seoInfos),
-        createdDate,
-        modifiedDate,
-        createdBy,
-        modifiedBy,
-        id
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      memberType,
+      outerId,
+      status,
+      const DeepCollectionEquality().hash(_addresses),
+      const DeepCollectionEquality().hash(_phones),
+      const DeepCollectionEquality().hash(_emails),
+      const DeepCollectionEquality().hash(_notes),
+      const DeepCollectionEquality().hash(_groups),
+      iconUrl,
+      objectType,
+      const DeepCollectionEquality().hash(_dynamicProperties),
+      seoObjectType,
+      const DeepCollectionEquality().hash(_seoInfos),
+      const DeepCollectionEquality().hash(_securityAccounts),
+      id);
 
   @JsonKey(ignore: true)
   @override
@@ -717,10 +681,7 @@ abstract class _Member implements Member {
       final List<DynamicProperty>? dynamicProperties,
       final String? seoObjectType,
       final List<SeoInfo>? seoInfos,
-      final DateTime? createdDate,
-      final DateTime? modifiedDate,
-      final String? createdBy,
-      final String? modifiedBy,
+      final List<UserType>? securityAccounts,
       final String? id}) = _$MemberImpl;
 
   factory _Member.fromJson(Map<String, dynamic> json) = _$MemberImpl.fromJson;
@@ -753,6 +714,206 @@ abstract class _Member implements Member {
   String? get seoObjectType;
   @override
   List<SeoInfo>? get seoInfos;
+  @override // DateTime? createdDate,
+// DateTime? modifiedDate,
+// String? createdBy,
+// String? modifiedBy,
+  List<UserType>? get securityAccounts;
+  @override
+  String? get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserType _$UserTypeFromJson(Map<String, dynamic> json) {
+  return _UserType.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserType {
+  DateTime? get createdDate => throw _privateConstructorUsedError;
+  DateTime? get modifiedDate => throw _privateConstructorUsedError;
+  String? get createdBy => throw _privateConstructorUsedError;
+  String? get modifiedBy => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserTypeCopyWith<UserType> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserTypeCopyWith<$Res> {
+  factory $UserTypeCopyWith(UserType value, $Res Function(UserType) then) =
+      _$UserTypeCopyWithImpl<$Res, UserType>;
+  @useResult
+  $Res call(
+      {DateTime? createdDate,
+      DateTime? modifiedDate,
+      String? createdBy,
+      String? modifiedBy});
+}
+
+/// @nodoc
+class _$UserTypeCopyWithImpl<$Res, $Val extends UserType>
+    implements $UserTypeCopyWith<$Res> {
+  _$UserTypeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+  }) {
+    return _then(_value.copyWith(
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserTypeImplCopyWith<$Res>
+    implements $UserTypeCopyWith<$Res> {
+  factory _$$UserTypeImplCopyWith(
+          _$UserTypeImpl value, $Res Function(_$UserTypeImpl) then) =
+      __$$UserTypeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {DateTime? createdDate,
+      DateTime? modifiedDate,
+      String? createdBy,
+      String? modifiedBy});
+}
+
+/// @nodoc
+class __$$UserTypeImplCopyWithImpl<$Res>
+    extends _$UserTypeCopyWithImpl<$Res, _$UserTypeImpl>
+    implements _$$UserTypeImplCopyWith<$Res> {
+  __$$UserTypeImplCopyWithImpl(
+      _$UserTypeImpl _value, $Res Function(_$UserTypeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? createdDate = freezed,
+    Object? modifiedDate = freezed,
+    Object? createdBy = freezed,
+    Object? modifiedBy = freezed,
+  }) {
+    return _then(_$UserTypeImpl(
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedDate: freezed == modifiedDate
+          ? _value.modifiedDate
+          : modifiedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      createdBy: freezed == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modifiedBy: freezed == modifiedBy
+          ? _value.modifiedBy
+          : modifiedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UserTypeImpl implements _UserType {
+  const _$UserTypeImpl(
+      {this.createdDate, this.modifiedDate, this.createdBy, this.modifiedBy});
+
+  factory _$UserTypeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserTypeImplFromJson(json);
+
+  @override
+  final DateTime? createdDate;
+  @override
+  final DateTime? modifiedDate;
+  @override
+  final String? createdBy;
+  @override
+  final String? modifiedBy;
+
+  @override
+  String toString() {
+    return 'UserType(createdDate: $createdDate, modifiedDate: $modifiedDate, createdBy: $createdBy, modifiedBy: $modifiedBy)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserTypeImpl &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate) &&
+            (identical(other.modifiedDate, modifiedDate) ||
+                other.modifiedDate == modifiedDate) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
+            (identical(other.modifiedBy, modifiedBy) ||
+                other.modifiedBy == modifiedBy));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, createdDate, modifiedDate, createdBy, modifiedBy);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserTypeImplCopyWith<_$UserTypeImpl> get copyWith =>
+      __$$UserTypeImplCopyWithImpl<_$UserTypeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserTypeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserType implements UserType {
+  const factory _UserType(
+      {final DateTime? createdDate,
+      final DateTime? modifiedDate,
+      final String? createdBy,
+      final String? modifiedBy}) = _$UserTypeImpl;
+
+  factory _UserType.fromJson(Map<String, dynamic> json) =
+      _$UserTypeImpl.fromJson;
+
   @override
   DateTime? get createdDate;
   @override
@@ -762,10 +923,8 @@ abstract class _Member implements Member {
   @override
   String? get modifiedBy;
   @override
-  String? get id;
-  @override
   @JsonKey(ignore: true)
-  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
+  _$$UserTypeImplCopyWith<_$UserTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

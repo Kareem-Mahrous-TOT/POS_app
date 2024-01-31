@@ -3,9 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'tot_customers.freezed.dart';
 part 'tot_customers.g.dart';
 
-
-/// endpoint of Members [TOTCustomersModel] 
-/// /api/members/search 
+/// endpoint of Members [TOTCustomersModel]
+/// /api/members/search
 
 @freezed
 class TOTCustomersModel with _$TOTCustomersModel {
@@ -35,14 +34,23 @@ class Member with _$Member {
     List<DynamicProperty>? dynamicProperties,
     String? seoObjectType,
     List<SeoInfo>? seoInfos,
-    DateTime? createdDate,
-    DateTime? modifiedDate,
-    String? createdBy,
-    String? modifiedBy,
+    List<UserType>? securityAccounts,
     String? id,
   }) = _Member;
 
   factory Member.fromJson(Map<String, dynamic> json) => _$MemberFromJson(json);
+}
+
+@freezed
+class UserType with _$UserType {
+  const factory UserType({
+    DateTime? createdDate,
+    DateTime? modifiedDate,
+    String? createdBy,
+    String? modifiedBy,
+  }) = _UserType;
+
+  factory UserType.fromJson(Map<String, dynamic> json) => _$UserTypeFromJson(json);
 }
 
 @freezed
@@ -136,22 +144,22 @@ class Value with _$Value {
 @freezed
 class SeoInfo with _$SeoInfo {
   const factory SeoInfo({
-     String? name,
-     String? semanticUrl,
-     String? pageTitle,
-     String? metaDescription,
-     String? imageAltDescription,
-     String? metaKeywords,
-     String? storeId,
-     String? objectId,
-     String? objectType,
-     bool? isActive,
-     String? languageCode,
-     DateTime? createdDate,
-     DateTime? modifiedDate,
-     String? createdBy,
-     String? modifiedBy,
-     String? id,
+    String? name,
+    String? semanticUrl,
+    String? pageTitle,
+    String? metaDescription,
+    String? imageAltDescription,
+    String? metaKeywords,
+    String? storeId,
+    String? objectId,
+    String? objectType,
+    bool? isActive,
+    String? languageCode,
+    DateTime? createdDate,
+    DateTime? modifiedDate,
+    String? createdBy,
+    String? modifiedBy,
+    String? id,
   }) = _SeoInfo;
 
   factory SeoInfo.fromJson(Map<String, dynamic> json) =>
