@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tot_atomic_design/tot_atomic_design.dart';
 
 import '../../../app/extensions/translate.dart';
 import '../../../app/routes/routes.dart';
 import '../../../app/theme/palette.dart';
 import '../../blocs/login/login_bloc.dart';
+import '../../components/login/tot_pos_login_organism.dart';
 
 class LoginScreen extends HookWidget {
   const LoginScreen({super.key});
@@ -48,13 +48,17 @@ class LoginScreen extends HookWidget {
                   );
                 },
                 builder: (context, state) {
-                  return TOTLoginOrganismCustomWidget(
+                  return TOTPosLoginOrganism(
+                    onSignupTapped: () {},
+                    signupPrefixText: "Don't have an account?",
                     width: 400,
                     height: MediaQuery.of(context).size.height,
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    align: Alignment.center,
+                    buttonAlignment: Alignment.center,
                     lowerText: "Please Enter your email and password",
                     upperText: "Welcome Back",
+                    emailHintText: "Email Address",
+                    passwordHintText: "Password",
                     buttonWidth: 300.w,
                     emailController: usernameController,
                     passwordController: passwordController,
@@ -104,7 +108,7 @@ class LoginScreen extends HookWidget {
                       }
                     },
                     buttonBackgroundColor: Colors.greenAccent,
-                    widget: state.maybeMap(
+                    child: state.maybeMap(
                       loading: (value) {
                         return Center(
                           child: Transform.scale(
@@ -130,180 +134,6 @@ class LoginScreen extends HookWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TOTLoginOrganismCustomWidget extends TotWidget {
-  final String lowerText;
-  final String upperText;
-  final Widget widget;
-  final double? buttonWidth;
-  final double? borderRadius;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final VoidCallback onPressed;
-  final VoidCallback? signUponPressed;
-  final Color buttonBackgroundColor;
-  final Color? textColor;
-  final AlignmentGeometry? align;
-  final TextStyle? lowerTextStyle;
-  final TextStyle? upperTextStyle;
-  final Color? signupColor;
-  final String? Function(String?)? validatorEmail;
-  final String? Function(String?)? validatorPassword;
-  final double? height;
-  final double? width;
-  final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? buttonPadding;
-  final MainAxisAlignment mainAxisAlignment;
-  final CrossAxisAlignment crossAxisAlignment;
-  final double gap;
-
-  const TOTLoginOrganismCustomWidget({
-    super.key,
-    this.validatorEmail,
-    this.validatorPassword,
-    required this.widget,
-    required this.lowerText,
-    required this.upperText,
-    required this.emailController,
-    required this.passwordController,
-    required this.onPressed,
-    required this.buttonBackgroundColor,
-    this.signUponPressed,
-    this.textColor,
-    this.buttonWidth,
-    this.lowerTextStyle,
-    this.upperTextStyle,
-    this.signupColor,
-    this.borderRadius,
-    this.align,
-    this.height,
-    this.width,
-    this.padding,
-    this.buttonPadding,
-    this.mainAxisAlignment = MainAxisAlignment.center,
-    this.crossAxisAlignment = CrossAxisAlignment.center,
-    this.gap = 10,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      padding: padding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            upperText,
-            style: lowerTextStyle,
-          ),
-          Text(
-            lowerText,
-            style: upperTextStyle,
-          ),
-          SizedBox(height: gap),
-          TextFormField(
-            autofocus: true,
-            controller: emailController,
-            decoration: InputDecoration(
-              hintText: "Email Address",
-              disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.red)),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-            ),
-            validator: validatorEmail ??
-                (value) {
-                  return (emailController.text.isNotEmpty)
-                      ? null
-                      : "Please Enter a valid email";
-                },
-          ),
-          SizedBox(height: gap),
-          TextFormField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              hintText: "Password",
-              disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.red)),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Palette.grey)),
-            ),
-            validator: validatorPassword ??
-                (vlaue) {
-                  return (passwordController.text.isNotEmpty)
-                      ? null
-                      : "Please Enter a valid password";
-                },
-          ),
-          SizedBox(height: gap),
-          Container(
-            padding: buttonPadding,
-            child: Align(
-              alignment: align ?? Alignment.center,
-              child: SizedBox(
-                width: buttonWidth,
-                child: ElevatedButton(
-                  onPressed: onPressed,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonBackgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(borderRadius ?? 10),
-                    ),
-                  ),
-                  child: widget,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: gap),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Don't have an account?",
-                  style: context.titleMedium.copyWith(
-                    color: Colors.black,
-                  )),
-              GestureDetector(
-                onTap: signUponPressed,
-                child: Text(
-                  " Sign up",
-                  style: context.titleMedium.copyWith(
-                    color: signupColor,
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }
