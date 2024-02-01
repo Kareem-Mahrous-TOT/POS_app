@@ -26,7 +26,6 @@ class RecentCustomersBloc
 
     on<RecentCustomersEvent>((event, emit) async {
       await event.map(
-        started: (value) {},
         loadRecentCustomers: (value) async {
           final result = await _fetchCustomersUsecase
               .call(FetchCustomerParams(after: "0"));

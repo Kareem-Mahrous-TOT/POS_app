@@ -20,10 +20,10 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
         getOrders: (event) async {
           emit(const OrdersState.getOrdersLoading());
 
-          final response = await _getOrderUseCase
+          final result = await _getOrderUseCase
               .call(GetOrdersParams(first: event.first, sort: event.sort));
 
-          await response.fold(
+          await result.fold(
             (failure) async {
               emit(OrdersState.getOrdersFailure(failure.message));
             },

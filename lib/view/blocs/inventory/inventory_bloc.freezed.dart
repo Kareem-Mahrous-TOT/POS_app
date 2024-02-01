@@ -1090,7 +1090,6 @@ mixin _$InventoryState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
-    required TResult Function(String message) updateFailState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1118,7 +1117,6 @@ mixin _$InventoryState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
-    TResult? Function(String message)? updateFailState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1146,7 +1144,6 @@ mixin _$InventoryState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
-    TResult Function(String message)? updateFailState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1155,7 +1152,6 @@ mixin _$InventoryState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
-    required TResult Function(_UpdateFailState value) updateFailState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1163,7 +1159,6 @@ mixin _$InventoryState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
-    TResult? Function(_UpdateFailState value)? updateFailState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1171,7 +1166,6 @@ mixin _$InventoryState {
     TResult Function(_Loading value)? loading,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
-    TResult Function(_UpdateFailState value)? updateFailState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1217,6 +1211,11 @@ class _$LoadingImpl implements _Loading {
   _$LoadingImpl();
 
   @override
+  String toString() {
+    return 'InventoryState.loading()';
+  }
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -1242,7 +1241,6 @@ class _$LoadingImpl implements _Loading {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
-    required TResult Function(String message) updateFailState,
   }) {
     return loading();
   }
@@ -1273,7 +1271,6 @@ class _$LoadingImpl implements _Loading {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
-    TResult? Function(String message)? updateFailState,
   }) {
     return loading?.call();
   }
@@ -1304,7 +1301,6 @@ class _$LoadingImpl implements _Loading {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
-    TResult Function(String message)? updateFailState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1319,7 +1315,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
-    required TResult Function(_UpdateFailState value) updateFailState,
   }) {
     return loading(this);
   }
@@ -1330,7 +1325,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
-    TResult? Function(_UpdateFailState value)? updateFailState,
   }) {
     return loading?.call(this);
   }
@@ -1341,7 +1335,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
-    TResult Function(_UpdateFailState value)? updateFailState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1474,6 +1467,11 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
         String variationID
       })>? records;
 
+  @override
+  String toString() {
+    return 'InventoryState.fetchSuccessState(products: $products, isSearching: $isSearching, isUpdating: $isUpdating, isUpdated: $isUpdated, records: $records)';
+  }
+
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1507,7 +1505,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
-    required TResult Function(String message) updateFailState,
   }) {
     return fetchSuccessState(
         products, isSearching, isUpdating, isUpdated, records);
@@ -1539,7 +1536,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
-    TResult? Function(String message)? updateFailState,
   }) {
     return fetchSuccessState?.call(
         products, isSearching, isUpdating, isUpdated, records);
@@ -1571,7 +1567,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
-    TResult Function(String message)? updateFailState,
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
@@ -1587,7 +1582,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
-    required TResult Function(_UpdateFailState value) updateFailState,
   }) {
     return fetchSuccessState(this);
   }
@@ -1598,7 +1592,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
-    TResult? Function(_UpdateFailState value)? updateFailState,
   }) {
     return fetchSuccessState?.call(this);
   }
@@ -1609,7 +1602,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
     TResult Function(_Loading value)? loading,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
-    TResult Function(_UpdateFailState value)? updateFailState,
     required TResult orElse(),
   }) {
     if (fetchSuccessState != null) {
@@ -1723,6 +1715,11 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   String message;
 
+  @override
+  String toString() {
+    return 'InventoryState.fetchFailState(message: $message)';
+  }
+
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1756,7 +1753,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)
         fetchSuccessState,
     required TResult Function(String message) fetchFailState,
-    required TResult Function(String message) updateFailState,
   }) {
     return fetchFailState(message);
   }
@@ -1787,7 +1783,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)?
         fetchSuccessState,
     TResult? Function(String message)? fetchFailState,
-    TResult? Function(String message)? updateFailState,
   }) {
     return fetchFailState?.call(message);
   }
@@ -1818,7 +1813,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
                 records)?
         fetchSuccessState,
     TResult Function(String message)? fetchFailState,
-    TResult Function(String message)? updateFailState,
     required TResult orElse(),
   }) {
     if (fetchFailState != null) {
@@ -1833,7 +1827,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
-    required TResult Function(_UpdateFailState value) updateFailState,
   }) {
     return fetchFailState(this);
   }
@@ -1844,7 +1837,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
-    TResult? Function(_UpdateFailState value)? updateFailState,
   }) {
     return fetchFailState?.call(this);
   }
@@ -1855,7 +1847,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
     TResult Function(_Loading value)? loading,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
-    TResult Function(_UpdateFailState value)? updateFailState,
     required TResult orElse(),
   }) {
     if (fetchFailState != null) {
@@ -1872,196 +1863,5 @@ abstract class _FetchFailState implements InventoryState {
   set message(String value);
   @JsonKey(ignore: true)
   _$$FetchFailStateImplCopyWith<_$FetchFailStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateFailStateImplCopyWith<$Res> {
-  factory _$$UpdateFailStateImplCopyWith(_$UpdateFailStateImpl value,
-          $Res Function(_$UpdateFailStateImpl) then) =
-      __$$UpdateFailStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$UpdateFailStateImplCopyWithImpl<$Res>
-    extends _$InventoryStateCopyWithImpl<$Res, _$UpdateFailStateImpl>
-    implements _$$UpdateFailStateImplCopyWith<$Res> {
-  __$$UpdateFailStateImplCopyWithImpl(
-      _$UpdateFailStateImpl _value, $Res Function(_$UpdateFailStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$UpdateFailStateImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateFailStateImpl implements _UpdateFailState {
-  _$UpdateFailStateImpl(this.message);
-
-  @override
-  String message;
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateFailStateImplCopyWith<_$UpdateFailStateImpl> get copyWith =>
-      __$$UpdateFailStateImplCopyWithImpl<_$UpdateFailStateImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(
-            List<Item>? products,
-            bool? isSearching,
-            bool isUpdating,
-            bool isUpdated,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)
-        fetchSuccessState,
-    required TResult Function(String message) fetchFailState,
-    required TResult Function(String message) updateFailState,
-  }) {
-    return updateFailState(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-            List<Item>? products,
-            bool? isSearching,
-            bool isUpdating,
-            bool isUpdated,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)?
-        fetchSuccessState,
-    TResult? Function(String message)? fetchFailState,
-    TResult? Function(String message)? updateFailState,
-  }) {
-    return updateFailState?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-            List<Item>? products,
-            bool? isSearching,
-            bool isUpdating,
-            bool isUpdated,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)?
-        fetchSuccessState,
-    TResult Function(String message)? fetchFailState,
-    TResult Function(String message)? updateFailState,
-    required TResult orElse(),
-  }) {
-    if (updateFailState != null) {
-      return updateFailState(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_FetchSuccessState value) fetchSuccessState,
-    required TResult Function(_FetchFailState value) fetchFailState,
-    required TResult Function(_UpdateFailState value) updateFailState,
-  }) {
-    return updateFailState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
-    TResult? Function(_FetchFailState value)? fetchFailState,
-    TResult? Function(_UpdateFailState value)? updateFailState,
-  }) {
-    return updateFailState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_FetchSuccessState value)? fetchSuccessState,
-    TResult Function(_FetchFailState value)? fetchFailState,
-    TResult Function(_UpdateFailState value)? updateFailState,
-    required TResult orElse(),
-  }) {
-    if (updateFailState != null) {
-      return updateFailState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateFailState implements InventoryState {
-  factory _UpdateFailState(String message) = _$UpdateFailStateImpl;
-
-  String get message;
-  set message(String value);
-  @JsonKey(ignore: true)
-  _$$UpdateFailStateImplCopyWith<_$UpdateFailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

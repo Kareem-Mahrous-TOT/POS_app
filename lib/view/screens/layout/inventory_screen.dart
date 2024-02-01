@@ -110,17 +110,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                       child: BlocBuilder<InventoryBloc, InventoryState>(
                           builder: (context, state) {
                         return state.map(
-                            updateFailState: (value) {
-                              context
-                                  .read<InventoryBloc>()
-                                  .add(InventoryEvent.fetch());
-                              return SizedBox(
-                                height: h * 0.7,
-                                child: const Center(
-                                  child: CircularProgressIndicator.adaptive(),
-                                ),
-                              );
-                            },
                             loading: (value) => SizedBox(
                                   height: h * 0.7,
                                   child: const Center(

@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() pagination,
     required TResult Function(String? categoryId, bool allItems) fetch,
     required TResult Function(String? categoryId) refresh,
@@ -27,7 +26,6 @@ mixin _$ProductsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? pagination,
     TResult? Function(String? categoryId, bool allItems)? fetch,
     TResult? Function(String? categoryId)? refresh,
@@ -36,7 +34,6 @@ mixin _$ProductsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? pagination,
     TResult Function(String? categoryId, bool allItems)? fetch,
     TResult Function(String? categoryId)? refresh,
@@ -46,7 +43,6 @@ mixin _$ProductsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
@@ -55,7 +51,6 @@ mixin _$ProductsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
@@ -64,7 +59,6 @@ mixin _$ProductsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
@@ -90,117 +84,6 @@ class _$ProductsEventCopyWithImpl<$Res, $Val extends ProductsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ProductsEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'ProductsEvent.started()';
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() pagination,
-    required TResult Function(String? categoryId, bool allItems) fetch,
-    required TResult Function(String? categoryId) refresh,
-    required TResult Function(String? query) searchList,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? pagination,
-    TResult? Function(String? categoryId, bool allItems)? fetch,
-    TResult? Function(String? categoryId)? refresh,
-    TResult? Function(String? query)? searchList,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? pagination,
-    TResult Function(String? categoryId, bool allItems)? fetch,
-    TResult Function(String? categoryId)? refresh,
-    TResult Function(String? query)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Pagination value) pagination,
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_Refresh value) refresh,
-    required TResult Function(_SearchList value) searchList,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Pagination value)? pagination,
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_Refresh value)? refresh,
-    TResult? Function(_SearchList value)? searchList,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Pagination value)? pagination,
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_Refresh value)? refresh,
-    TResult Function(_SearchList value)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements ProductsEvent {
-  factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -232,7 +115,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() pagination,
     required TResult Function(String? categoryId, bool allItems) fetch,
     required TResult Function(String? categoryId) refresh,
@@ -244,7 +126,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? pagination,
     TResult? Function(String? categoryId, bool allItems)? fetch,
     TResult? Function(String? categoryId)? refresh,
@@ -256,7 +137,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? pagination,
     TResult Function(String? categoryId, bool allItems)? fetch,
     TResult Function(String? categoryId)? refresh,
@@ -272,7 +152,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
@@ -284,7 +163,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
@@ -296,7 +174,6 @@ class _$PaginationImpl implements _Pagination {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
@@ -375,7 +252,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() pagination,
     required TResult Function(String? categoryId, bool allItems) fetch,
     required TResult Function(String? categoryId) refresh,
@@ -387,7 +263,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? pagination,
     TResult? Function(String? categoryId, bool allItems)? fetch,
     TResult? Function(String? categoryId)? refresh,
@@ -399,7 +274,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? pagination,
     TResult Function(String? categoryId, bool allItems)? fetch,
     TResult Function(String? categoryId)? refresh,
@@ -415,7 +289,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
@@ -427,7 +300,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
@@ -439,7 +311,6 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
@@ -518,7 +389,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() pagination,
     required TResult Function(String? categoryId, bool allItems) fetch,
     required TResult Function(String? categoryId) refresh,
@@ -530,7 +400,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? pagination,
     TResult? Function(String? categoryId, bool allItems)? fetch,
     TResult? Function(String? categoryId)? refresh,
@@ -542,7 +411,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? pagination,
     TResult Function(String? categoryId, bool allItems)? fetch,
     TResult Function(String? categoryId)? refresh,
@@ -558,7 +426,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
@@ -570,7 +437,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
@@ -582,7 +448,6 @@ class _$RefreshImpl implements _Refresh {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,
@@ -659,7 +524,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() pagination,
     required TResult Function(String? categoryId, bool allItems) fetch,
     required TResult Function(String? categoryId) refresh,
@@ -671,7 +535,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? pagination,
     TResult? Function(String? categoryId, bool allItems)? fetch,
     TResult? Function(String? categoryId)? refresh,
@@ -683,7 +546,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? pagination,
     TResult Function(String? categoryId, bool allItems)? fetch,
     TResult Function(String? categoryId)? refresh,
@@ -699,7 +561,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Refresh value) refresh,
@@ -711,7 +572,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Refresh value)? refresh,
@@ -723,7 +583,6 @@ class _$SearchListImpl implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Refresh value)? refresh,

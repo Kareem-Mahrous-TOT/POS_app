@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -48,7 +46,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               (record) {
             productsList = record.productsModels ?? [];
             recordsList = record.proudctsPosRecords;
-            // if (allItems) currentIndex = record.productsModels!.length;
             emit(ProductsState.fetchSuccessState(
                 products: productsList,
                 records: recordsList,
@@ -80,8 +77,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             await state.maybeMap(
               orElse: () {},
               fetchSuccessState: (data) async {
-                // emit(data.copyWith(addingProducts: true));
-                log("after::: $currentIndex ##### hasReachedMax ${data.hasReachedMax}");
                 if (data.hasReachedMax) return;
 
                 currentIndex = data.products.length;
@@ -121,10 +116,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               final result =
                   await _searchUsecase.call(SearchProductsParams(query: query));
               result.fold((failure) {
-                log("failure: ${failure.message}");
                 emit(ProductsState.fetchFailState(failure.message));
               }, (records) {
-                log("records: ${records.productsModels!.length}");
                 emit(ProductsState.fetchSuccessState(
                     hasReachedMax: true,
                     products: records.productsModels!,

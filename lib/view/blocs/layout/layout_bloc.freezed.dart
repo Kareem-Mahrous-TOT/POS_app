@@ -18,21 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LayoutEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int index) updateIndex,
     required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
     TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int index)? updateIndex,
     TResult Function()? logout,
     required TResult orElse(),
@@ -40,21 +37,18 @@ mixin _$LayoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_Logout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_Logout value)? logout,
     required TResult orElse(),
@@ -78,120 +72,6 @@ class _$LayoutEventCopyWithImpl<$Res, $Val extends LayoutEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$LayoutEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LayoutEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LayoutEvent.started'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) updateIndex,
-    required TResult Function() logout,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? updateIndex,
-    TResult? Function()? logout,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? updateIndex,
-    TResult Function()? logout,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_UpdateIndex value) updateIndex,
-    required TResult Function(_Logout value) logout,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_UpdateIndex value)? updateIndex,
-    TResult? Function(_Logout value)? logout,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_UpdateIndex value)? updateIndex,
-    TResult Function(_Logout value)? logout,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements LayoutEvent {
-  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -266,7 +146,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int index) updateIndex,
     required TResult Function() logout,
   }) {
@@ -276,7 +155,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
     TResult? Function()? logout,
   }) {
@@ -286,7 +164,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int index)? updateIndex,
     TResult Function()? logout,
     required TResult orElse(),
@@ -300,7 +177,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_Logout value) logout,
   }) {
@@ -310,7 +186,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_Logout value)? logout,
   }) {
@@ -320,7 +195,6 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_Logout value)? logout,
     required TResult orElse(),
@@ -385,7 +259,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(int index) updateIndex,
     required TResult Function() logout,
   }) {
@@ -395,7 +268,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(int index)? updateIndex,
     TResult? Function()? logout,
   }) {
@@ -405,7 +277,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(int index)? updateIndex,
     TResult Function()? logout,
     required TResult orElse(),
@@ -419,7 +290,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_Logout value) logout,
   }) {
@@ -429,7 +299,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_Logout value)? logout,
   }) {
@@ -439,7 +308,6 @@ class _$LogoutImpl with DiagnosticableTreeMixin implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_Logout value)? logout,
     required TResult orElse(),
