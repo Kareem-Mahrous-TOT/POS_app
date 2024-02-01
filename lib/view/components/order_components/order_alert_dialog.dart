@@ -113,15 +113,14 @@ class OrderAlertDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 5,
+                flex: 4,
                 child: SizedBox(
                   height: itemsScrollHeight ??
-                      ((itemHeight != null) ? (2.5 * itemHeight!) : (h * 0.58)),
+                      ((itemHeight != null) ? (2.5 * itemHeight!) : (h * 0.59)),
                   child: ListView.builder(
                       itemCount: orderAlertRecord.orderItems.length,
                       itemBuilder: (context, index) {
                         final itemRecord = orderAlertRecord.orderItems[index];
-                        
                         return TotOrderItemMolecule(
                           backgroundColor: itemBackgroundColor ?? Colors.white,
                           elevation: itemElevation ?? 0.0,
@@ -133,14 +132,14 @@ class OrderAlertDialog extends StatelessWidget {
                           currency: "",
                           descriptionTextStyle: itemDescriptionTextStyle ??
                               context.titleSmall.copyWith(color: Colors.grey),
-                          titleTextStyle: itemTextStyle ?? context.titleMedium,
+                          titleTextStyle: itemTextStyle ?? context.titleLarge,
                           currentPriceTextStyle:
                               itemTextStyle ?? context.titleMedium,
                           price: itemRecord.price,
                           cardHeight: itemHeight ?? 220,
                           cardWidth: itemWidth ?? 200,
-                          imageHeight: imgHeight ?? 100,
-                          imageWidth: imgWidth ?? 100,
+                          imageHeight: imgHeight ?? 200,
+                          imageWidth: imgWidth ?? 300,
                         );
                       }),
                 ),
@@ -150,27 +149,43 @@ class OrderAlertDialog extends StatelessWidget {
                 flex: 7,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       "$createdByTitle:  ${orderAlertRecord.createdBy}",
                       style: context.titleMedium,
                     ),
+                    const SizedBox(
+                      height: 24,
+                    ),
                     Text(
                       "$numberOfProductsTitle:  ${orderAlertRecord.orderItems.length}",
                       style: context.titleMedium,
+                    ),
+                    const SizedBox(
+                      height: 12,
                     ),
                     Text(
                       "$subTotalTitle:  ${orderAlertRecord.subTotal}",
                       style: context.titleMedium,
                     ),
+                    const SizedBox(
+                      height: 12,
+                    ),
                     Text(
-                      "$discountTitle:  ${orderAlertRecord.discount}",
+                      "$discountTitle:  -${orderAlertRecord.discount}",
                       style: context.titleMedium
-                          .copyWith(color: discountColor ?? Colors.green),
+                          .copyWith(color: discountColor ?? Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 12,
                     ),
                     Text(
                       "$taxTotalTitle:  ${orderAlertRecord.taxTotal}",
                       style: context.titleMedium,
+                    ),
+                    const SizedBox(
+                      height: 24,
                     ),
                     Divider(
                       color: finalDividerColor,
@@ -178,7 +193,8 @@ class OrderAlertDialog extends StatelessWidget {
                     ),
                     Text(
                       "$totalPriceTitle:  ${orderAlertRecord.total}",
-                      style: context.titleMedium,
+                      style: context.titleLarge
+                          .copyWith(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
