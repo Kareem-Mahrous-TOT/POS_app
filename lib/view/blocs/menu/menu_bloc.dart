@@ -3,9 +3,9 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
+import '../../../app/types/types.dart';
 import '../../../app/usecase/usecase.dart';
 import '../../../domain/menu/usecases/fetch_menu_categories_usecase.dart';
-import '../../../app/types/types.dart';
 
 part 'menu_bloc.freezed.dart';
 part 'menu_event.dart';
@@ -47,7 +47,6 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       }
 
       await event.map(
-        started: (value) {},
         loadMenu: (value) async {
           await loadMenu();
         },

@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecentCustomersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
     required TResult Function() pagination,
     required TResult Function(String firstName, String lastName, String email)
@@ -28,7 +27,6 @@ mixin _$RecentCustomersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
     TResult? Function()? pagination,
     TResult? Function(String firstName, String lastName, String email)?
@@ -38,7 +36,6 @@ mixin _$RecentCustomersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
     TResult Function()? pagination,
     TResult Function(String firstName, String lastName, String email)?
@@ -49,7 +46,6 @@ mixin _$RecentCustomersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
@@ -58,7 +54,6 @@ mixin _$RecentCustomersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
@@ -67,7 +62,6 @@ mixin _$RecentCustomersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
@@ -94,126 +88,6 @@ class _$RecentCustomersEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
-  _$StartedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecentCustomersEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'RecentCustomersEvent.started'));
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() loadRecentCustomers,
-    required TResult Function() pagination,
-    required TResult Function(String firstName, String lastName, String email)
-        addCustomer,
-    required TResult Function(String? query) searchList,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? loadRecentCustomers,
-    TResult? Function()? pagination,
-    TResult? Function(String firstName, String lastName, String email)?
-        addCustomer,
-    TResult? Function(String? query)? searchList,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? loadRecentCustomers,
-    TResult Function()? pagination,
-    TResult Function(String firstName, String lastName, String email)?
-        addCustomer,
-    TResult Function(String? query)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_Pagination value) pagination,
-    required TResult Function(_AddCustomer value) addCustomer,
-    required TResult Function(_SearchList value) searchList,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_Pagination value)? pagination,
-    TResult? Function(_AddCustomer value)? addCustomer,
-    TResult? Function(_SearchList value)? searchList,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_Pagination value)? pagination,
-    TResult Function(_AddCustomer value)? addCustomer,
-    TResult Function(_SearchList value)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements RecentCustomersEvent {
-  factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -254,7 +128,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
     required TResult Function() pagination,
     required TResult Function(String firstName, String lastName, String email)
@@ -267,7 +140,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
     TResult? Function()? pagination,
     TResult? Function(String firstName, String lastName, String email)?
@@ -280,7 +152,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
     TResult Function()? pagination,
     TResult Function(String firstName, String lastName, String email)?
@@ -297,7 +168,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
@@ -309,7 +179,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
@@ -321,7 +190,6 @@ class _$LoadRecentCustomersImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
@@ -375,7 +243,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
     required TResult Function() pagination,
     required TResult Function(String firstName, String lastName, String email)
@@ -388,7 +255,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
     TResult? Function()? pagination,
     TResult? Function(String firstName, String lastName, String email)?
@@ -401,7 +267,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
     TResult Function()? pagination,
     TResult Function(String firstName, String lastName, String email)?
@@ -418,7 +283,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
@@ -430,7 +294,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
@@ -442,7 +305,6 @@ class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
@@ -538,7 +400,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
     required TResult Function() pagination,
     required TResult Function(String firstName, String lastName, String email)
@@ -551,7 +412,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
     TResult? Function()? pagination,
     TResult? Function(String firstName, String lastName, String email)?
@@ -564,7 +424,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
     TResult Function()? pagination,
     TResult Function(String firstName, String lastName, String email)?
@@ -581,7 +440,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
@@ -593,7 +451,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
@@ -605,7 +462,6 @@ class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
@@ -697,7 +553,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
     required TResult Function() pagination,
     required TResult Function(String firstName, String lastName, String email)
@@ -710,7 +565,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
     TResult? Function()? pagination,
     TResult? Function(String firstName, String lastName, String email)?
@@ -723,7 +577,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
     TResult Function()? pagination,
     TResult Function(String firstName, String lastName, String email)?
@@ -740,7 +593,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
     required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
@@ -752,7 +604,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
@@ -764,7 +615,6 @@ class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
     TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,

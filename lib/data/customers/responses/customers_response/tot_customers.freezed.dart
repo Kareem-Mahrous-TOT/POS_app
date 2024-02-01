@@ -198,11 +198,7 @@ mixin _$Member {
   List<DynamicProperty>? get dynamicProperties =>
       throw _privateConstructorUsedError;
   String? get seoObjectType => throw _privateConstructorUsedError;
-  List<SeoInfo>? get seoInfos =>
-      throw _privateConstructorUsedError; // DateTime? createdDate,
-// DateTime? modifiedDate,
-// String? createdBy,
-// String? modifiedBy,
+  List<SeoInfo>? get seoInfos => throw _privateConstructorUsedError;
   List<UserType>? get securityAccounts => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
@@ -574,15 +570,7 @@ class _$MemberImpl implements _Member {
     return EqualUnmodifiableListView(value);
   }
 
-// DateTime? createdDate,
-// DateTime? modifiedDate,
-// String? createdBy,
-// String? modifiedBy,
   final List<UserType>? _securityAccounts;
-// DateTime? createdDate,
-// DateTime? modifiedDate,
-// String? createdBy,
-// String? modifiedBy,
   @override
   List<UserType>? get securityAccounts {
     final value = _securityAccounts;
@@ -714,10 +702,7 @@ abstract class _Member implements Member {
   String? get seoObjectType;
   @override
   List<SeoInfo>? get seoInfos;
-  @override // DateTime? createdDate,
-// DateTime? modifiedDate,
-// String? createdBy,
-// String? modifiedBy,
+  @override
   List<UserType>? get securityAccounts;
   @override
   String? get id;

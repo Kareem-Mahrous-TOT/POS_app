@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MenuEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadMenu,
     required TResult Function(
             ({
@@ -32,7 +31,6 @@ mixin _$MenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadMenu,
     TResult? Function(
             ({
@@ -46,7 +44,6 @@ mixin _$MenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadMenu,
     TResult Function(
             ({
@@ -61,7 +58,6 @@ mixin _$MenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadMenu value) loadMenu,
     required TResult Function(_ChangeSelectedCategory value)
         changeSelectedCategory,
@@ -69,14 +65,12 @@ mixin _$MenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadMenu value)? loadMenu,
     TResult? Function(_ChangeSelectedCategory value)? changeSelectedCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadMenu value)? loadMenu,
     TResult Function(_ChangeSelectedCategory value)? changeSelectedCategory,
     required TResult orElse(),
@@ -99,136 +93,6 @@ class _$MenuEventCopyWithImpl<$Res, $Val extends MenuEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$MenuEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'MenuEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() loadMenu,
-    required TResult Function(
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            }) selectedCategory)
-        changeSelectedCategory,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? loadMenu,
-    TResult? Function(
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            }) selectedCategory)?
-        changeSelectedCategory,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? loadMenu,
-    TResult Function(
-            ({
-              String? categoryId,
-              String img,
-              String title,
-              String url
-            }) selectedCategory)?
-        changeSelectedCategory,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadMenu value) loadMenu,
-    required TResult Function(_ChangeSelectedCategory value)
-        changeSelectedCategory,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadMenu value)? loadMenu,
-    TResult? Function(_ChangeSelectedCategory value)? changeSelectedCategory,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadMenu value)? loadMenu,
-    TResult Function(_ChangeSelectedCategory value)? changeSelectedCategory,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements MenuEvent {
-  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -269,7 +133,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadMenu,
     required TResult Function(
             ({
@@ -286,7 +149,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadMenu,
     TResult? Function(
             ({
@@ -303,7 +165,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadMenu,
     TResult Function(
             ({
@@ -324,7 +185,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadMenu value) loadMenu,
     required TResult Function(_ChangeSelectedCategory value)
         changeSelectedCategory,
@@ -335,7 +195,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadMenu value)? loadMenu,
     TResult? Function(_ChangeSelectedCategory value)? changeSelectedCategory,
   }) {
@@ -345,7 +204,6 @@ class _$LoadMenuImpl implements _LoadMenu {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadMenu value)? loadMenu,
     TResult Function(_ChangeSelectedCategory value)? changeSelectedCategory,
     required TResult orElse(),
@@ -440,7 +298,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadMenu,
     required TResult Function(
             ({
@@ -457,7 +314,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadMenu,
     TResult? Function(
             ({
@@ -474,7 +330,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadMenu,
     TResult Function(
             ({
@@ -495,7 +350,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadMenu value) loadMenu,
     required TResult Function(_ChangeSelectedCategory value)
         changeSelectedCategory,
@@ -506,7 +360,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadMenu value)? loadMenu,
     TResult? Function(_ChangeSelectedCategory value)? changeSelectedCategory,
   }) {
@@ -516,7 +369,6 @@ class _$ChangeSelectedCategoryImpl implements _ChangeSelectedCategory {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadMenu value)? loadMenu,
     TResult Function(_ChangeSelectedCategory value)? changeSelectedCategory,
     required TResult orElse(),

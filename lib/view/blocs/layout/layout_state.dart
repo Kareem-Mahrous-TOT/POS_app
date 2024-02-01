@@ -7,7 +7,4 @@ class LayoutState with _$LayoutState {
   factory LayoutState.logoutLoading() = _LogoutLoading;
   factory LayoutState.logoutSuccess() = _LogoutSuccess;
   factory LayoutState.logoutFailed(String message) = _LogoutFailed;
-  // factory LayoutState.sessionTimeoutState() = _SessionTimeoutState;
-  // factory LayoutState.sessionStartedState(Timer timer) = _SessionStartedState;
-  
 }
