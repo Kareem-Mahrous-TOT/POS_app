@@ -71,7 +71,6 @@ class LayoutScreen extends HookWidget {
       builder: (context, state) {
         final selectedIndex = state.maybeMap(
             orElse: () => 0,
-            initial: (value) => 0,
             updateIndex: (value) => value.index);
 
         return Scaffold(

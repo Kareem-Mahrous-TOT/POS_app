@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
 import 'package:tot_pos/view/ui_mappers/alert_order.dart';
 import 'package:tot_pos/view/ui_mappers/order_entity_to_rails_record.dart';
@@ -37,14 +36,8 @@ class _OrderScreenState extends State<OrderScreen> {
     return BlocListener<OrderDetailsBloc, OrderDetailsState>(
       listener: (context, state) {
         state.maybeMap(
-          orElse: () {
-            log("orElse");
-          },
-          success: (successState) {
-            log("::: log from listener: order details success: $successState :::");
-          },
+          orElse: () {},
           loading: (value) async {
-            log("::: log from listener: loading state :::");
             if (context.mounted) {
               await showDialog(
                 context: context,
@@ -64,6 +57,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         },
                         success: (successState) {
                           return OrderAlertDialog(
+                              imgHeight: 200.h,
+                              imgWidth: 300.w,
                               width: w * 0.8,
                               height: h * 0.68,
                               orderAlertRecord: successState.order.toRecord());

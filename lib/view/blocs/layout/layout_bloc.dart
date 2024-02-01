@@ -22,9 +22,8 @@ class LayoutBloc extends Bloc<LayoutEvent, LayoutState> {
               ? LayoutState.logoutSuccess()
               : LayoutState.logoutFailed("لقد حدث خطأ ما"));
         },
-        started: (value) {},
         updateIndex: (value) async {
-          emit(_UpdateIndexState(value.index));
+          emit(LayoutState.updateIndex(value.index));
         },
       );
     });
