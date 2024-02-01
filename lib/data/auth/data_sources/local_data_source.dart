@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/constants/local_keys.dart';
+import '../../../app/constants/local_keys.dart';
 
 abstract class AuthLocalDataSource {
   Future<bool> cacheTokens({

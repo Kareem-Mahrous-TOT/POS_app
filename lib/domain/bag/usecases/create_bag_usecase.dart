@@ -1,5 +1,5 @@
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../entities/bag.dart';
 import '../repo/bag_order_repo.dart';
 

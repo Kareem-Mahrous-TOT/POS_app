@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/enums/payment_method_type.dart';
-import 'package:tot_pos/core/network/failure.dart';
+import 'package:tot_pos/app/enums/payment_method_type.dart';
+import 'package:tot_pos/app/network/failure.dart';
 import 'package:tot_pos/data/orders/model/graph_create_order_model.dart';
 import 'package:tot_pos/data/orders/repo/orders_repo_impl.dart';
 import 'package:tot_pos/domain/bag/entities/bag.dart';

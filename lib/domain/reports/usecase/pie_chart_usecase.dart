@@ -1,5 +1,5 @@
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/report/model/statistic_model.dart';
 import '../repo/report_repo.dart';
 

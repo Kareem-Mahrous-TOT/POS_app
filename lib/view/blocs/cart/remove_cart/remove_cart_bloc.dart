@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/usecase/usecase.dart';
+import '../../../../app/usecase/usecase.dart';
 import '../../../../domain/cart/usecases/remove_cart_usecase.dart';
 
 part 'remove_cart_bloc.freezed.dart';

@@ -1,8 +1,8 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../../../core/network/api_consumer.dart';
-import '../../../core/network/end_points.dart';
-import '../../../core/network/graph_config.dart';
+import '../../../app/network/api_consumer.dart';
+import '../../../app/network/end_points.dart';
+import '../../../app/network/graph_config.dart';
 import '../../../domain/orders/entities/order_entity.dart';
 import '../model/graph_create_order_model.dart';
 

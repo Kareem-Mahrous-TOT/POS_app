@@ -1,4 +1,4 @@
-import '../../../core/types/types.dart';
+import '../../../app/types/types.dart';
 import '../../../data/customers/responses/customers_response/tot_customers.dart';
 
 abstract class CustomersRepo {

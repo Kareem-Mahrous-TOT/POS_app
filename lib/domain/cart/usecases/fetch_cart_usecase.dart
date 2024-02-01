@@ -1,5 +1,5 @@
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/cart/models/graph_create_cart_model.dart';
 import '../repo/cart_repo.dart';
 

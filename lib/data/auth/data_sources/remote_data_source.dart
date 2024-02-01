@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../../../core/network/api_consumer.dart';
-import '../../../core/network/end_points.dart';
-import '../../../core/network/graph_config.dart';
+import '../../../app/network/api_consumer.dart';
+import '../../../app/network/end_points.dart';
+import '../../../app/network/graph_config.dart';
 import '../model/user_data_response_model.dart';
 import '../responses/token_responses.dart';
 

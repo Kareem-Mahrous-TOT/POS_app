@@ -1,7 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../../../core/enums/payment_method_type.dart';
-import '../../../core/network/graph_config.dart';
+import '../../../app/enums/payment_method_type.dart';
+import '../../../app/network/graph_config.dart';
 import '../models/graph_add_item_model.dart';
 import '../models/graph_change_item_quantity.dart';
 import '../models/graph_create_cart_model.dart';

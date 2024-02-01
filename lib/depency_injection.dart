@@ -15,9 +15,9 @@ import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 import 'package:tot_pos/view/blocs/order_details/order_details_bloc.dart';
 
-import 'core/network/api_consumer.dart';
-import 'core/network/dio_consumer.dart';
-import 'core/network/graph_config.dart';
+import 'app/network/api_consumer.dart';
+import 'app/network/dio_consumer.dart';
+import 'app/network/graph_config.dart';
 import 'data/auth/data_sources/local_data_source.dart';
 import 'data/auth/data_sources/remote_data_source.dart';
 import 'data/auth/repo/auth_repo_impl.dart';

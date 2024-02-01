@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/types/types.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/types/types.dart';
 import '../../../domain/customers/repo/customers_repo.dart';
 import '../data_sources/remote_data_source.dart';
 import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';

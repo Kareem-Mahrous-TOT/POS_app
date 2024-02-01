@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/constants/store_config.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../repo/products_repo_base.dart';
 

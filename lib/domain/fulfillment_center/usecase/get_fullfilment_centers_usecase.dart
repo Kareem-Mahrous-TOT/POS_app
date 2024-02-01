@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/constants/store_config.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/fulfillment_center/model/graph_fulfillment_center_model.dart';
 import '../repo/fulfillment_center_repo.dart';
 

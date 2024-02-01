@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../repo/auth_repo_base.dart';
 
 class LoginUsecase implements BaseUsecase<LoginParams, Future<bool>> {

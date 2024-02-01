@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:tot_pos/domain/bag/entities/bag_item.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/types/types.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/types/types.dart';
 import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/bag/repo/bag_order_repo.dart';
 import '../data_sources/local_data_source.dart';

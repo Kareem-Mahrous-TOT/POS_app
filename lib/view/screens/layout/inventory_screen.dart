@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/core/theme/palette.dart';
+import 'package:tot_pos/app/constants/store_config.dart';
+import 'package:tot_pos/app/theme/palette.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
-import '../../../core/utils/show_custom_keyboard.dart';
+import '../../../app/utils/show_custom_keyboard.dart';
 
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({super.key});

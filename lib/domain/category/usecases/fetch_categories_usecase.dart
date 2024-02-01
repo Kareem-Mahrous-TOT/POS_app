@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/categories/models/graph_category_model.dart';
 import '../repo/category_repo_base.dart';
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/utils/shimmer_effect.dart';
+import '../../../app/utils/shimmer_effect.dart';
 import '../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 
 typedef CustomerRecord = ({
@@ -22,6 +20,7 @@ class CustomersListMolecule extends StatefulHookWidget {
   final List<CustomerRecord> customerRecords;
   final bool hasNextPage;
   final TextStyle? nameStyle;
+  final DateFormat? dateFormat;
   final TextStyle? dateStyle;
   final VoidCallback? onScroll;
 
@@ -37,6 +36,7 @@ class CustomersListMolecule extends StatefulHookWidget {
     required this.customerRecords,
     required this.hasNextPage,
     this.nameStyle,
+    this.dateFormat,
     this.dateStyle,
     this.onScroll,
     this.itemHeight,
@@ -74,7 +74,6 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
     final maxScroll = scrollController.position.maxScrollExtent;
     final currentScroll = scrollController.offset;
     if (currentScroll >= (maxScroll * 0.90)) {
-      log("at 90% of the scroll");
       context.read<RecentCustomersBloc>().add(
             RecentCustomersEvent.pagination(),
           );
@@ -145,7 +144,7 @@ class _CustomersListMoleculeState extends State<CustomersListMolecule> {
                 ),
                 if (customerRecord.createdDate != null)
                   Text(
-                    DateFormat('dd/MM/yyyy hh:mm')
+                    (widget.dateFormat ?? DateFormat('dd/MM/yyyy hh:mm'))
                         .format(customerRecord.createdDate!)
                         .toString(),
                     style: widget.dateStyle ??

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/theme/palette.dart';
+import '../../../app/theme/palette.dart';
 import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/sales/sales_cubit.dart';
 import '../../components/tot_sales_card_molecule.dart';

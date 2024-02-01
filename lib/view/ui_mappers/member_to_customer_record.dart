@@ -1,4 +1,4 @@
-import '../../core/constants/app_constants.dart';
+import '../../app/constants/app_constants.dart';
 import '../../data/customers/responses/customers_response/tot_customers.dart';
 import '../components/customer/customers_list_molecule.dart';
 

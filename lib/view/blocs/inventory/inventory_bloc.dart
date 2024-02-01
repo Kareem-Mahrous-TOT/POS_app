@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
+import 'package:tot_pos/app/constants/local_keys.dart';
+import 'package:tot_pos/app/constants/store_config.dart';
 import 'package:tot_pos/data/products/mapper/products_pos_mapping.dart';
 import 'package:tot_pos/depency_injection.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/network/failure.dart';
-import '../../../core/types/types.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/types/types.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 abstract class ProductsRepoBase {

@@ -3,24 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-import 'core/generated/l10n/langs/app_localizations.dart';
-import 'core/routes/go_routes.dart';
-import 'depency_injection.dart';
-import 'view/blocs/bag/bag_bloc.dart';
-import 'view/blocs/customer/current_customer/current_customer_cubit.dart';
-import 'view/blocs/customer/recent_customers/recent_customers_bloc.dart';
-import 'view/blocs/inventory/inventory_bloc.dart';
-import 'view/blocs/layout/layout_bloc.dart';
-import 'view/blocs/login/login_bloc.dart';
-import 'view/blocs/menu/menu_bloc.dart';
-import 'view/blocs/order_details/order_details_bloc.dart';
-import 'view/blocs/orders/orders_bloc.dart';
-import 'view/blocs/product_details/product_details_bloc.dart';
-import 'view/blocs/products/products_bloc.dart';
-import 'view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
-import 'view/blocs/report/report_cost/report_cost_cubit.dart';
-import 'view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
-import 'view/blocs/sales/sales_cubit.dart';
+import '../flavor_config.dart';
+import 'generated/l10n/langs/app_localizations.dart';
+import 'routes/go_routes.dart';
+import '../depency_injection.dart';
+import '../view/blocs/bag/bag_bloc.dart';
+import '../view/blocs/customer/current_customer/current_customer_cubit.dart';
+import '../view/blocs/customer/recent_customers/recent_customers_bloc.dart';
+import '../view/blocs/inventory/inventory_bloc.dart';
+import '../view/blocs/layout/layout_bloc.dart';
+import '../view/blocs/login/login_bloc.dart';
+import '../view/blocs/menu/menu_bloc.dart';
+import '../view/blocs/order_details/order_details_bloc.dart';
+import '../view/blocs/orders/orders_bloc.dart';
+import '../view/blocs/product_details/product_details_bloc.dart';
+import '../view/blocs/products/products_bloc.dart';
+import '../view/blocs/report/order_statistics_bloc/order_statistics_bloc.dart';
+import '../view/blocs/report/report_cost/report_cost_cubit.dart';
+import '../view/blocs/report/report_pie_chart/report_pie_chart_cubit.dart';
+import '../view/blocs/sales/sales_cubit.dart';
 
 class POSApp extends StatelessWidget {
   const POSApp({super.key});
@@ -65,7 +66,7 @@ class POSApp extends StatelessWidget {
         ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: "TOT POS",
+          title: FlavorConfig.appTitle,
           locale: const Locale("en"),
           routerConfig: allRoutes,
           supportedLocales: AppLang.supportedLocales,

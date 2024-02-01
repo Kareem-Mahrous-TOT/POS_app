@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/network/failure.dart';
+import '../../../app/network/failure.dart';
 import '../../../data/fulfillment_center/model/graph_fulfillment_center_model.dart';
 
 abstract class FulfillmentCenterRepo {

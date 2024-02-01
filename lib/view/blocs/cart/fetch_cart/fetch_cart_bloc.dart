@@ -3,8 +3,8 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/constants/local_keys.dart';
-import '../../../../core/constants/store_config.dart';
+import '../../../../app/constants/local_keys.dart';
+import '../../../../app/constants/store_config.dart';
 import '../../../../data/cart/models/graph_create_cart_model.dart';
 import '../../../../data/products/model/qraph_product_model.dart';
 import '../../../../depency_injection.dart';

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/network/failure.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
+import 'package:tot_pos/app/network/failure.dart';
+import 'package:tot_pos/app/usecase/usecase.dart';
 import 'package:tot_pos/data/report/model/cost_model.dart';
 import 'package:tot_pos/data/report/model/order_statistics_model.dart';
 import 'package:tot_pos/data/report/model/statistic_model.dart';

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/network/api_consumer.dart';
-import 'package:tot_pos/core/network/end_points.dart';
+import 'package:tot_pos/app/network/api_consumer.dart';
+import 'package:tot_pos/app/network/end_points.dart';
 import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/data/report/model/order_statistics_model.dart';
 

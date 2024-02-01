@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
+import 'package:tot_pos/app/usecase/usecase.dart';
 
 import '../../../data/products/model/qraph_product_model.dart';
 

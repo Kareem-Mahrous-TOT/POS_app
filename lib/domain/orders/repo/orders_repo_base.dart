@@ -1,5 +1,5 @@
-import '../../../core/enums/payment_method_type.dart';
-import '../../../core/types/types.dart';
+import '../../../app/enums/payment_method_type.dart';
+import '../../../app/types/types.dart';
 import '../../../data/orders/model/graph_create_order_model.dart';
 import '../../bag/entities/bag.dart';
 import '../entities/order_entity.dart';

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
+import 'package:tot_pos/app/usecase/usecase.dart';
 
 import '../../../../data/report/model/cost_model.dart';
 import '../../../../domain/reports/usecase/report_cost_usecase.dart';

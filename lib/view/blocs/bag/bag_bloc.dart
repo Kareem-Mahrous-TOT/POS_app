@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos/core/extensions/bag_item_extension.dart';
+import 'package:tot_pos/app/extensions/bag_item_extension.dart';
 
-import '../../../core/enums/payment_method_type.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/enums/payment_method_type.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../../domain/bag/entities/bag.dart';
 import '../../../domain/bag/usecases/add_bag_item_usecase.dart';

@@ -5,8 +5,8 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/*.gr.dart"
-    - "lib/core/generated/l10n/langs/app_localizations_en.dart"
-    - "lib/core/generated/l10n/langs/app_localizations_ar.dart"
+    - "lib/app/generated/l10n/langs/app_localizations_en.dart"
+    - "lib/app/generated/l10n/langs/app_localizations_ar.dart"
   errors:
     invalid_annotation_target: ignore
 linter:
