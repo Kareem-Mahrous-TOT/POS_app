@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/types/types.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/types/types.dart';
 import '../../../domain/products/repo/products_repo_base.dart';
 import '../data_sources/remote_data_source.dart';
 import '../model/qraph_product_model.dart';

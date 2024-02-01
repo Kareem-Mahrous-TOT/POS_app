@@ -1,7 +1,9 @@
+import '../../flavor_config.dart';
+
 abstract class EndPoints {
   /// Base url
-  static const String baseUrl = "https://dev.alkhbaz.totplatform.net";
-  static const String graphQL = "$baseUrl/graphql";
+  static final String baseUrl = FlavorConfig.baseUrl;
+  static final String graphQL = "$baseUrl/graphql";
 
   /// Products endpoints
   static const String catalogSearchUrl = "/api/catalog/catalogs/search";

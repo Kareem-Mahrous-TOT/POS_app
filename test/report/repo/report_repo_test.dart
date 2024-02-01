@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/network/failure.dart';
+import 'package:tot_pos/app/network/failure.dart';
 import 'package:tot_pos/data/report/data_source/local_data_source.dart';
 import 'package:tot_pos/data/report/data_source/remote_data_source.dart';
 import 'package:tot_pos/data/report/model/cost_model.dart';

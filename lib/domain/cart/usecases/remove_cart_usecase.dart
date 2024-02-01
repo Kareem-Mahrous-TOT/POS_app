@@ -1,4 +1,4 @@
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../repo/cart_repo.dart';
 
 class RemoveCartUsecase implements BaseUsecase<NoParams, Future<bool>> {

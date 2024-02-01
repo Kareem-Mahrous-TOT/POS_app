@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/view/ui_mappers/member_to_customer_record.dart';
 
-import '../../../core/theme/palette.dart';
+import '../../../app/theme/palette.dart';
 import '../../blocs/customer/current_customer/current_customer_cubit.dart';
 import '../../blocs/customer/recent_customers/recent_customers_bloc.dart';
 import '../../components/customer/customer_exp.dart';

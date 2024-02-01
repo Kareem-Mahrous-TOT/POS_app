@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/types/types.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/types/types.dart';
 import '../../../domain/menu/repo/repo.dart';
 import '../data_sources/menu_data_source.dart';
 import '../mappers/category_mapping.dart';

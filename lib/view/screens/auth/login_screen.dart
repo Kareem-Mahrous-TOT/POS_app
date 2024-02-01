@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/extensions/translate.dart';
-import '../../../core/routes/routes.dart';
-import '../../../core/theme/palette.dart';
+import '../../../app/extensions/translate.dart';
+import '../../../app/routes/routes.dart';
+import '../../../app/theme/palette.dart';
 import '../../blocs/login/login_bloc.dart';
 
 class LoginScreen extends HookWidget {

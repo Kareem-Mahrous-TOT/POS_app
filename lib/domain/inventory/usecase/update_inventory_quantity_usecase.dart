@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:tot_pos/core/types/types.dart';
-import 'package:tot_pos/core/usecase/usecase.dart';
+import 'package:tot_pos/app/types/types.dart';
+import 'package:tot_pos/app/usecase/usecase.dart';
 import 'package:tot_pos/domain/inventory/repo/inventory_repo.dart';
 
 class UpdateInventoryQuantityUsecase extends BaseUsecase<UpdateInventoryParams,

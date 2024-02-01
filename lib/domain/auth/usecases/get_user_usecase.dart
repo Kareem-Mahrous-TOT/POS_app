@@ -1,4 +1,4 @@
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/auth/model/user_data_response_model.dart';
 import '../repo/auth_repo_base.dart';
 

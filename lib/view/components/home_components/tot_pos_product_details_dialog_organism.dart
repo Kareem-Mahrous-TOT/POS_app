@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 
-import '../../../core/constants/assets.dart';
+import '../../../app/constants/assets.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 
 class TotPOSProductDetailsDialogOrganism extends HookWidget {

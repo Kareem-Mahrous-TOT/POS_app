@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/core/network/failure.dart';
+import 'package:tot_pos/app/constants/store_config.dart';
+import 'package:tot_pos/app/network/failure.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 import 'package:tot_pos/domain/products/repo/products_repo_base.dart';
 import 'package:tot_pos/domain/products/usecases/get_product_details_usecase.dart';

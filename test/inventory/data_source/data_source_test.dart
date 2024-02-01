@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tot_pos/core/constants/store_config.dart';
-import 'package:tot_pos/core/network/api_consumer.dart';
-import 'package:tot_pos/core/network/end_points.dart';
+import 'package:tot_pos/app/constants/store_config.dart';
+import 'package:tot_pos/app/network/api_consumer.dart';
+import 'package:tot_pos/app/network/end_points.dart';
 import 'package:tot_pos/data/inventory/data_source/remote_data_source.dart';
 
 class MockApiConsumer extends Mock implements ApiConsumer {}

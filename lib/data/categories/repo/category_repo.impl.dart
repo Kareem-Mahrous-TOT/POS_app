@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../../../core/constants/store_config.dart';
-import '../../../core/network/failure.dart';
-import '../../../core/network/graph_config.dart';
+import '../../../app/constants/store_config.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/network/graph_config.dart';
 import '../../../domain/category/repo/category_repo_base.dart';
 import '../models/graph_category_model.dart';
 

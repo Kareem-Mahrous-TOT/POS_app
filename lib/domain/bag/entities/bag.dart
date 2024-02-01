@@ -1,4 +1,4 @@
-import '../../../core/constants/store_config.dart';
+import '../../../app/constants/store_config.dart';
 import 'bag_item.dart';
 
 class BagEntity {

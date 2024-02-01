@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../core/network/failure.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/network/failure.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/report/model/order_statistics_model.dart';
 import '../repo/report_repo.dart';
 

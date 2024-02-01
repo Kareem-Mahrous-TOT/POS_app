@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../core/types/types.dart';
-import '../../../core/usecase/usecase.dart';
+import '../../../app/types/types.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/customers/responses/customers_response/tot_customers.dart';
 import '../repo/customers_repo.dart';
 

@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tot_pos/core/constants/local_keys.dart';
+import 'package:tot_pos/app/constants/local_keys.dart';
 
 abstract class FulfillmentCenterLocalDataSource {
   String getFulFillmentCenterId();

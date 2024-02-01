@@ -1,7 +1,7 @@
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../repo/repo.dart';
 
-import '../../../core/types/types.dart';
+import '../../../app/types/types.dart';
 
 class FetchMenuCategoriesUsecase
     implements

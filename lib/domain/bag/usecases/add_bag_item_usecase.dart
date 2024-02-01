@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../entities/bag.dart';
 import '../entities/bag_item.dart';
 import '../repo/bag_order_repo.dart';

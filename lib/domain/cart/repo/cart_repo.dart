@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/enums/payment_method_type.dart';
-import '../../../core/network/failure.dart';
+import '../../../app/enums/payment_method_type.dart';
+import '../../../app/network/failure.dart';
 import '../../../data/cart/models/graph_add_item_model.dart';
 import '../../../data/cart/models/graph_change_item_quantity.dart';
 import '../../../data/cart/models/graph_create_cart_model.dart';

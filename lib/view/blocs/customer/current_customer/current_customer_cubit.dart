@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/usecase/usecase.dart';
+import '../../../../app/usecase/usecase.dart';
 import '../../../../data/auth/model/user_data_response_model.dart';
 import '../../../../domain/auth/usecases/get_user_usecase.dart';
 

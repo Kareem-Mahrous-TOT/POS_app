@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/usecase/usecase.dart';
+import '../../../app/usecase/usecase.dart';
 import '../../../data/fulfillment_center/model/graph_fulfillment_center_model.dart';
 import '../../../domain/fulfillment_center/usecase/change_fulfillment_center_usecase.dart';
 import '../../../domain/fulfillment_center/usecase/get_fullfilment_centers_usecase.dart';
