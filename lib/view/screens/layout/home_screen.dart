@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -57,7 +55,6 @@ class _HomePageState extends State<HomeScreen> {
     final maxScroll = scrollController.position.maxScrollExtent;
     final currentScroll = scrollController.offset;
     if (currentScroll >= (maxScroll * 0.90)) {
-      log("at 90% of the scroll");
       context.read<ProductsBloc>().add(
             ProductsEvent.pagination(),
           );
