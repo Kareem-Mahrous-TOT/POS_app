@@ -28,15 +28,13 @@ class LoginScreen extends HookWidget {
               key: formKey,
               child: BlocConsumer<LoginBloc, LoginState>(
                 listener: (context, state) {
-                  state.maybeWhen(
+                  state.maybeMap(
                     orElse: () {},
-                    loading: () => const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                    success: () {
+                    success: (successState) {
                       if (context.mounted) context.goNamed(Routes.layout);
                     },
-                    failure: () => ScaffoldMessenger.of(context).showSnackBar(
+                    failure: (failureState) =>
+                        ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Center(
                           child: Text(
@@ -66,34 +64,12 @@ class LoginScreen extends HookWidget {
                       if (value!.isEmpty) {
                         return "Email cannot be empty";
                       }
-                      // else if (!isEmailValid(value)) {
-                      //   return "Make sure your email looks like this example@example.com";
-                      // }
                       return null;
                     },
                     validatorPassword: (value) {
                       if (value!.trim().isEmpty) {
                         return "Password cannot be Empty";
-                      } else if (!value.trim().contains(RegExp(r'[A-Z]'))) {
-                        return "Password must Contains UpperCase Letter";
-                      } else if (!value.trim().contains(RegExp(r'[0-9]'))) {
-                        return "Password must Contains Digit";
-                      } else if (!value.trim().contains(RegExp(r'[a-z]'))) {
-                        return "Password must Contains LowerCase Letter";
                       }
-                      // else if (!value
-                      //     .trim()
-                      //     .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-                      //   return "Password must Contains Special Character";
-                      // }
-                      else if (value.trim().length < 8) {
-                        return "Password must be more than 8 Letters";
-                      }
-                      // else if (!RegExp(
-                      //         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~.]).{8,}$')
-                      //     .hasMatch(value.trim())) {
-                      //   return "Password is not Valid";
-                      // }
                       return null;
                     },
                     textColor: Palette.black,
@@ -112,10 +88,11 @@ class LoginScreen extends HookWidget {
                       loading: (value) {
                         return Center(
                           child: Transform.scale(
-                              scale: 0.5,
-                              child: const CircularProgressIndicator(
-                                color: Palette.primary,
-                              )),
+                            scale: 0.5,
+                            child: const CircularProgressIndicator(
+                              color: Palette.primary,
+                            ),
+                          ),
                         );
                       },
                       orElse: () {
