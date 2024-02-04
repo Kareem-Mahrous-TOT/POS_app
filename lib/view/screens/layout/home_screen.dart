@@ -5,10 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos/app/extensions/translate.dart';
-import 'package:tot_pos/view/blocs/menu/menu_bloc.dart';
 
 import '../../../app/constants/store_config.dart';
+import '../../../app/extensions/translate.dart';
 import '../../../app/theme/palette.dart';
 import '../../../app/utils/display_snackbar.dart';
 import '../../../app/utils/shimmer_effect.dart';
@@ -16,66 +15,42 @@ import '../../../app/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
 import '../../../dependency_injection.dart';
 import '../../blocs/bag/bag_bloc.dart';
+import '../../blocs/menu/menu_bloc.dart';
 import '../../blocs/product_details/product_details_bloc.dart';
 import '../../blocs/products/products_bloc.dart';
 import '../../components/home_components/tot_pos_product_details_dialog_organism.dart';
 import '../../ui_mappers/bag_organism_item.dart';
 import '../../ui_mappers/to_category_record.dart';
 
-class HomeScreen extends StatefulHookWidget {
+class HomeScreen extends HookWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomeScreen> {
-  late bool keyboardVisiable;
-
-  late final ScrollController scrollController;
-  @override
-  void initState() {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
-      context.read<ProductsBloc>().add(ProductsEvent.fetch(allItems: false));
-    });
-    keyboardVisiable = false;
-    scrollController = ScrollController();
-    scrollController.addListener(_onScroll);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    final maxScroll = scrollController.position.maxScrollExtent;
-    final currentScroll = scrollController.offset;
-    if (currentScroll >= (maxScroll * 0.90)) {
-      context.read<ProductsBloc>().add(
-            ProductsEvent.pagination(),
-          );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final controller = useTextEditingController();
-
     final fToast = useFToast(context: context);
     final List<double> discounts = useMemoized(
-      () => [
-        5,
-        10,
-        15,
-        20,
-      ],
+      () => [5, 10, 15, 20],
     );
+
+    final scrollController = useScrollController();
+    final onScroll = useCallback<VoidCallback>(() {
+      final maxScroll = scrollController.position.maxScrollExtent;
+      final currentScroll = scrollController.offset;
+      if (currentScroll >= (maxScroll * 0.90)) {
+        context.read<ProductsBloc>().add(
+              ProductsEvent.pagination(),
+            );
+      }
+    });
+
+    useEffect(() {
+      context.read<ProductsBloc>().add(ProductsEvent.fetch(allItems: false));
+      scrollController.addListener(onScroll);
+
+      return null;
+    }, []);
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -175,21 +150,19 @@ class _HomePageState extends State<HomeScreen> {
             },
             actions: [
               IconButton(
-                  onPressed: () => setState(() {
-                        showCustomKeyboardOrganism(
-                            context: context,
-                            inputValue: controller.text,
-                            onChange: (value) {
-                              setState(() {
-                                controller.text = value;
-                                context.read<ProductsBloc>().add(
-                                      ProductsEvent.searchList(
-                                        query: controller.text.trim(),
-                                      ),
-                                    );
-                              });
-                            });
-                      }),
+                  onPressed: () async {
+                    await showCustomKeyboardOrganism(
+                        context: context,
+                        inputValue: controller.text,
+                        onChange: (value) {
+                          controller.text = value;
+                          context.read<ProductsBloc>().add(
+                                ProductsEvent.searchList(
+                                  query: controller.text.trim(),
+                                ),
+                              );
+                        });
+                  },
                   icon: const Icon(Icons.keyboard_alt_outlined))
             ],
             searchWidth: 650.w,
@@ -429,7 +402,10 @@ class _HomePageState extends State<HomeScreen> {
                                                 .categoryId;
                                           },
                                         );
-                                context.read<ProductsBloc>().add(ProductsEvent.fetch(categoryId: categoryId, allItems: true));
+                                context.read<ProductsBloc>().add(
+                                    ProductsEvent.fetch(
+                                        categoryId: categoryId,
+                                        allItems: true));
                               }
                             },
                             getItems: (getItemsState) {

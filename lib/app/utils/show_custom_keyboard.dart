@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-void showCustomKeyboardOrganism({
+Future<void> showCustomKeyboardOrganism({
   required BuildContext context,
   required void Function(String)? onChange,
   required String inputValue,
-}) {
-  showModalBottomSheet(
+}) async{
+  await showModalBottomSheet(
     
     constraints: BoxConstraints(
         maxWidth: MediaQuery.sizeOf(context).width,
