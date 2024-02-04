@@ -14,6 +14,7 @@ import '../../../app/utils/display_snackbar.dart';
 import '../../../app/utils/shimmer_effect.dart';
 import '../../../app/utils/show_custom_keyboard.dart';
 import '../../../data/products/model/qraph_product_model.dart';
+import '../../../dependency_injection.dart';
 import '../../blocs/bag/bag_bloc.dart';
 import '../../blocs/product_details/product_details_bloc.dart';
 import '../../blocs/products/products_bloc.dart';
@@ -417,6 +418,18 @@ class _HomePageState extends State<HomeScreen> {
                                     ),
                                   ),
                                 );
+
+                                final String? categoryId =
+                                    getIt<MenuBloc>().state.maybeMap(
+                                          orElse: () => "",
+                                          fetchSuccess: (successState) {
+                                            return successState.records
+                                                .firstWhere((categoryRecord) =>
+                                                    categoryRecord.isSelected)
+                                                .categoryId;
+                                          },
+                                        );
+                                context.read<ProductsBloc>().add(ProductsEvent.fetch(categoryId: categoryId, allItems: true));
                               }
                             },
                             getItems: (getItemsState) {
