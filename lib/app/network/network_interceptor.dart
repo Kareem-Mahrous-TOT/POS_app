@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../depency_injection.dart';
+import '../../dependency_injection.dart';
 import '../constants/local_keys.dart';
 
 class NetworkInterceptor implements InterceptorsWrapper {

@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import '../flavor_config.dart';
 import 'generated/l10n/langs/app_localizations.dart';
 import 'routes/go_routes.dart';
-import '../depency_injection.dart';
+import '../dependency_injection.dart';
 import '../view/blocs/bag/bag_bloc.dart';
 import '../view/blocs/customer/current_customer/current_customer_cubit.dart';
 import '../view/blocs/customer/recent_customers/recent_customers_bloc.dart';

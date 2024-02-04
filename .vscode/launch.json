@@ -17,6 +17,20 @@
             ]
         },
         {
+            "name": "development-Profile",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--profile",
+                "--flavor",
+                "development",
+                "--target",
+                "lib/main_development.dart"
+            ]
+        },
+
+        {
             "name": "testing",
             "request": "launch",
             "type": "dart",

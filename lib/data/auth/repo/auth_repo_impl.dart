@@ -2,7 +2,7 @@ import '../../../app/constants/local_keys.dart';
 import '../../../app/constants/store_config.dart';
 import '../../../app/network/api_consumer.dart';
 import '../../../app/network/end_points.dart';
-import '../../../depency_injection.dart';
+import '../../../dependency_injection.dart';
 import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../data_sources/local_data_source.dart';
 import '../data_sources/remote_data_source.dart';

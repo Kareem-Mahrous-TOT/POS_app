@@ -3,7 +3,7 @@ import 'package:tot_pos/data/products/model/qraph_product_model.dart';
 
 import '../../../app/constants/local_keys.dart';
 import '../../../app/constants/store_config.dart';
-import '../../../depency_injection.dart';
+import '../../../dependency_injection.dart';
 
 extension ProductMapping on List<Item> {
   List<ProductCardRecord> toDomain() {

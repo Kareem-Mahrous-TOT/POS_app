@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../depency_injection.dart';
+import '../../dependency_injection.dart';
 import '../constants/local_keys.dart';
 import '../routes/go_routes.dart';
 import '../routes/routes.dart';

@@ -1,7 +1,7 @@
 import 'package:tot_atomic_design/tot_atomic_design.dart';
 import 'package:tot_pos/app/constants/store_config.dart';
 import 'package:tot_pos/data/products/model/qraph_product_model.dart';
-import 'package:tot_pos/depency_injection.dart';
+import 'package:tot_pos/dependency_injection.dart';
 
 import '../../../app/constants/local_keys.dart';
 

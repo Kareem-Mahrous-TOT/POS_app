@@ -33,37 +33,15 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
         name
         id
         code
-        slug
         catalogId
         category {
             id
         }
-        outline
         hasVariations
-        minQuantity
-        maxQuantity
         imgSrc
         inWishlist
-        productType
         images {
             url
-        }
-        assets {
-            id
-            name
-            mimeType
-            size
-            url
-            relativeUrl
-            typeId
-            group
-            cultureName
-        }
-        breadcrumbs {
-            itemId
-            typeName
-            title
-            seoPath
         }
         description {
             content
@@ -84,10 +62,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
             images {
                 url
             }
-            minQuantity
-            maxQuantity
             code
-            productType
             properties {
                 name
                 value
@@ -97,10 +72,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                 label
             }
             availabilityData {
-                isActive
-                isAvailable
-                isBuyable
-                isInStock
                 availableQuantity
                 inventories {
                     fulfillmentCenterId
@@ -132,11 +103,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     formattedAmount
                     formattedAmountWithoutCurrency
                 }
-                sale {
-                    amount
-                    formattedAmount
-                    formattedAmountWithoutCurrency
-                }
                 list {
                     amount
                     formattedAmount
@@ -146,10 +112,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
             }
         }
         availabilityData {
-            isActive
-            isAvailable
-            isBuyable
-            isInStock
             availableQuantity
             inventories {
                 fulfillmentCenterId
@@ -176,10 +138,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                 formattedAmount
             }
             discountAmount {
-                amount
-                formattedAmount
-            }
-            sale {
                 amount
                 formattedAmount
             }
@@ -235,29 +193,13 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
             category {
                 id
             }
-            minQuantity
-            maxQuantity
             inWishlist
-            productType
             variations {
                 id
                 name
                 code
-                minQuantity
-                maxQuantity
-                productType
-                vendor{
-                    id
-                    name
-                    rating{
-                        reviewCount
-                    }
-                }
                 availabilityData {
                     isActive
-                    isAvailable
-                    isBuyable
-                    isInStock
                     availableQuantity
                     inventories {
                         fulfillmentCenterId
@@ -284,18 +226,11 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                         amount
                         formattedAmount
                     }
-                    sale {
-                        amount
-                        formattedAmount
-                    }
                     list {
                         amount
                         formattedAmount
                         formattedAmountWithoutCurrency
                         formattedAmountWithoutPointAndCurrency
-                        currency {
-                            symbol
-                        }
                     }
                     discountPercent
                     actual {
@@ -310,22 +245,10 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
             }
             hasVariations
             slug
-            outline
-            imgSrc
-            breadcrumbs {
-                itemId
-                typeName
-                title
-                seoPath
-            }
             images {
                 url
             }
             availabilityData {
-                isActive
-                isAvailable
-                isBuyable
-                isInStock
                 availableQuantity
                 inventories {
                     fulfillmentCenterId
@@ -348,18 +271,11 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     amount
                     formattedAmount
                 }
-                sale {
-                    amount
-                    formattedAmount
-                }
                 list {
                     amount
                     formattedAmount
                     formattedAmountWithoutCurrency
                     formattedAmountWithoutPointAndCurrency
-                    currency {
-                        symbol
-                    }
                 }
                 discountPercent
                 actual {
@@ -385,10 +301,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                 reviewType
                 content
                 languageCode
-            }
-            vendor {
-                id
-                name
             }
         }
     }
@@ -427,13 +339,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                 id
                 name
                 code
-                vendor{
-                    id
-                    name
-                    rating{
-                        reviewCount
-                    }
-                }
                 availabilityData {
                     availableQuantity
                     inventories {
@@ -461,10 +366,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                         amount
                         formattedAmount
                     }
-                    sale {
-                        amount
-                        formattedAmount
-                    }
                     list {
                         amount
                         formattedAmount
@@ -481,9 +382,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
             }
             hasVariations
             imgSrc
-            images {
-                url
-            }
             availabilityData {
                 availableQuantity
                 inventories {
@@ -500,10 +398,6 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
                     formattedAmountWithoutCurrency
                 }
                 discountAmount {
-                    amount
-                    formattedAmount
-                }
-                sale {
                     amount
                     formattedAmount
                 }

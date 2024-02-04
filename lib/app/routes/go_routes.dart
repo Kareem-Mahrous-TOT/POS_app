@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../depency_injection.dart';
+import '../../dependency_injection.dart';
 import '../../view/screens/auth/login_screen.dart';
 import '../../view/screens/layout/layout.dart';
 import '../constants/local_keys.dart';

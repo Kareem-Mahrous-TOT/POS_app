@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app/bloc_observer.dart';
 import 'app/pos_app.dart';
-import 'depency_injection.dart';
+import 'dependency_injection.dart';
 import 'flavor_config.dart';
 
 void main() async {
