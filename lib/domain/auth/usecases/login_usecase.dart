@@ -1,22 +1,28 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../app/network/failure.dart';
 import '../../../app/usecase/usecase.dart';
 import '../repo/auth_repo_base.dart';
 
-class LoginUsecase implements BaseUsecase<LoginParams, Future<bool>> {
+class LoginUsecase
+    implements BaseUsecase<LoginParams, Future<Either<Failure, bool>>> {
   final AuthBaseRepo _authRepo;
 
   LoginUsecase({required AuthBaseRepo authRepo}) : _authRepo = authRepo;
 
   @override
-  Future<bool> call(LoginParams params) async {
-    final didFetchTokens = await _authRepo.userToken(
+  Future<Either<Failure, bool>> call(LoginParams params) async {
+    final result = await _authRepo.userToken(
       username: params.username,
       password: params.password,
     );
-    final didFetchUser = (await _authRepo.getUserData()) != null;
 
-    return didFetchUser && didFetchTokens;
+    return result.fold((failure) => Left(failure), (r) async {
+      final didFetchUser = (await _authRepo.getUserData()) != null;
+
+      return didFetchUser?Right(didFetchUser):const Left(ServerFailure("fetch user failure"));
+    });
   }
 }
 

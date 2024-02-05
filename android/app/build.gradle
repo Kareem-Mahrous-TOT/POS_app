@@ -54,7 +54,7 @@ android {
         versionName flutterVersionName
     }
 
-    flavorDimension "default"
+    flavorDimensions "default"
     productFlavors{
         development{
             dimension "default"
@@ -65,6 +65,10 @@ android {
             dimension "default"
             applicationIdSuffix ".test"
             resValue "string", "app_name", "POS Test"
+        }
+        releaseMode{
+            dimension "default"
+            resValue "string", "app_name", "POS Release"
         }
     }
 

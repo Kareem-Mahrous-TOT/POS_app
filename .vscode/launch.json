@@ -17,6 +17,19 @@
             ]
         },
         {
+            "name": "development-release",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--release",
+                "--flavor",
+                "development",
+                "--target",
+                "lib/main_development.dart"
+            ]
+        },
+        {
             "name": "development-Profile",
             "request": "launch",
             "type": "dart",
@@ -29,7 +42,6 @@
                 "lib/main_development.dart"
             ]
         },
-
         {
             "name": "testing",
             "request": "launch",
@@ -41,6 +53,19 @@
                 "qualityControl",
                 "--target",
                 "lib/main_testing.dart"
+            ]
+        },
+        {
+            "name": "release",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_release.dart",
+            "args": [
+                "--release",
+                "--flavor",
+                "releaseMode",
+                "--target",
+                "lib/main_release.dart"
             ]
         },
     ]

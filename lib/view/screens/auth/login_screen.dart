@@ -38,7 +38,7 @@ class LoginScreen extends HookWidget {
                       SnackBar(
                         content: Center(
                           child: Text(
-                            context.tr.somethingWentWrong,
+                            failureState.msg,
                           ),
                         ),
                       ),

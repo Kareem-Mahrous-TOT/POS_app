@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -313,6 +316,134 @@ class HomeScreen extends HookWidget {
                                               [...value.records!];
 
                                           final record = records[index];
+                                          return InkWell(
+                                            onTap: ((product
+                                                        .variations!.length) <=
+                                                    1)
+                                                ? () {
+                                                    context.read<BagBloc>().add(
+                                                        BagEvent.addItem(
+                                                            item:
+                                                                value.products[
+                                                                    index]));
+                                                  }
+                                                : () {
+                                                    context
+                                                        .read<
+                                                            ProductDetailsBloc>()
+                                                        .add(
+                                                          ProductDetailsEvent
+                                                              .getProductDetails(
+                                                            productId: value
+                                                                .products[index]
+                                                                .id!,
+                                                          ),
+                                                        );
+                                                  },
+                                            child: Card(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              color: Colors.white,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    // mealImage.toString() == "null"
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Image.network(
+                                                        height: h * 0.15,
+                                                        width: w * 0.3,
+                                                        fit: BoxFit.cover,
+                                                        product.imgSrc ?? "",
+                                                        errorBuilder: (context,
+                                                            error, stackTrace) {
+                                                          return Image.network(
+                                                            height: h * 0.15,
+                                                            width: w * 0.3,
+                                                            fit: BoxFit.contain,
+                                                            "https://dev.alkhbaz.totplatform.net/assets/tot-pos-dummy/dummyLogo.png",
+                                                            errorBuilder:
+                                                                (context, error,
+                                                                    stackTrace) {
+                                                              return Image
+                                                                  .asset(
+                                                                'assets/images/dummyLogo.png',
+                                                                // Provide a local placeholder image
+                                                                height:
+                                                                    h * 0.15,
+                                                                width: w * 0.3,
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    ),
+
+                                                    Text(product.name!,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: context
+                                                            .titleMedium
+                                                            .copyWith(
+                                                          color: Colors.black,
+                                                        )),
+                                                    Text(
+                                                        " ${(record.quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
+                                                        style: context
+                                                            .titleMedium
+                                                            .copyWith(
+                                                                // color: record.quantity
+                                                                // .contains(
+                                                                // "In stock")
+                                                                // ? Colors.green
+                                                                // : Colors.red,
+                                                                )),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        if ((record.discount) !=
+                                                            null)
+                                                          Text(
+                                                            record.discount!,
+                                                            style: context
+                                                                .titleMedium
+                                                                .copyWith(
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .lineThrough,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        Text(
+                                                          record.price ?? "",
+                                                          style: context
+                                                              .titleMedium
+                                                              .copyWith(
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                           return TOTPOSFoodCardItemMolecule(
                                               onTap: ((product
                                                           .variations!.length) <=

@@ -1,7 +1,10 @@
+import 'package:dartz/dartz.dart';
+
 import '../../../app/constants/local_keys.dart';
 import '../../../app/constants/store_config.dart';
 import '../../../app/network/api_consumer.dart';
 import '../../../app/network/end_points.dart';
+import '../../../app/network/failure.dart';
 import '../../../dependency_injection.dart';
 import '../../../domain/auth/repo/auth_repo_base.dart';
 import '../data_sources/local_data_source.dart';
@@ -20,7 +23,7 @@ class AuthRepoImpl implements AuthBaseRepo {
   })  : _localDataSource = localDataSource,
         _remoteDataSource = remoteDataSource;
   @override
-  Future<bool> userToken({
+  Future<Either<Failure, bool>> userToken({
     String? grantType,
     required String username,
     required String password,
@@ -41,9 +44,9 @@ class AuthRepoImpl implements AuthBaseRepo {
       ]);
 
       final didSucceed = !caches.contains(false);
-      return didSucceed;
+      return Right(didSucceed);
     } catch (e) {
-      return false;
+      return Left(ServerFailure(e.toString()));
     }
   }
 

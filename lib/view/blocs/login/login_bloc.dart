@@ -19,14 +19,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           started: (started) async {
             emit(const LoginState.loading());
 
-            final didLogin = await _loginUsecase.call(LoginParams(
+            final result = await _loginUsecase.call(LoginParams(
               username: started.email,
               password: started.password,
             ));
 
-            emit(didLogin
-                ? const LoginState.success()
-                : const LoginState.failure());
+            emit(result.fold((l) => LoginState.failure(l.message),
+                (r) => const LoginState.success()));
+            // ? const LoginState.success()
+            // : const LoginState.failure());
           },
         );
       },
