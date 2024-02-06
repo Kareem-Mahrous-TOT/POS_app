@@ -20,7 +20,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       required SearchUsecase searchUsecase})
       : _getProductsUsecase = getProductsUsecase,
         _searchUsecase = searchUsecase,
-        super(_Initial()) {
+        super(ProductsState.loadingState()) {
     int currentIndex = 0;
 
     List<Item> productsList = [];

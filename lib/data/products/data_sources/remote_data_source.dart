@@ -14,7 +14,8 @@ abstract class ProductsRemoteDataSource {
       String sort = '',
       String after = "0",
       int first = 20});
-  Future<Item> getProductById({String? endCursor, required String productId});
+  Future<Item> getProductDetails(
+      {String? endCursor, required String productId});
   Future<Products> searchProduts({required String query});
 }
 
@@ -25,7 +26,7 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
   }) : _graphService = graphService;
 
   @override
-  Future<Item> getProductById(
+  Future<Item> getProductDetails(
       {String? endCursor, required String productId}) async {
     final response = await _graphService.client.query(
       QueryOptions(

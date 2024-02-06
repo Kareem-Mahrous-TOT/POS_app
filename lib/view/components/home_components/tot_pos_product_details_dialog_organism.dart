@@ -10,8 +10,8 @@ import '../../../data/products/model/qraph_product_model.dart';
 class TotPOSProductDetailsDialogOrganism extends HookWidget {
   const TotPOSProductDetailsDialogOrganism({
     super.key,
-    required this.onAddToCart,
     required this.product,
+    required this.onAddToCart,
     required this.onVariationChoosen,
     required this.masterQuantity,
     this.padding,
@@ -36,8 +36,8 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
     this.productFallbackImg,
   });
 
-  final void Function(Item product, int count)? onAddToCart;
   final Item product;
+  final void Function(Item product, int count)? onAddToCart;
   final void Function(Variation variation) onVariationChoosen;
   final int masterQuantity;
 
@@ -85,7 +85,7 @@ class TotPOSProductDetailsDialogOrganism extends HookWidget {
         counter.value = 1;
         return;
       }
-      return;
+      return null;
     }, [masterQuantity]);
 
     return Padding(

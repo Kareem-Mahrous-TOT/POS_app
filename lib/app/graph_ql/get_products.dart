@@ -65,6 +65,7 @@ String getProductsQuery =
                 }
             }
             hasVariations
+            imgSrc
             slug
             images {
                 url

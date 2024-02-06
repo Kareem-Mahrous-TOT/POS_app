@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -68,12 +65,14 @@ class HomeScreen extends HookWidget {
                   builder: (context) {
                     return AlertDialog(
                       icon: Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: IconButton(
-                              onPressed: () {
-                                context.pop();
-                              },
-                              icon: const Icon(Icons.close))),
+                        alignment: AlignmentDirectional.topEnd,
+                        child: IconButton(
+                          onPressed: () {
+                            context.pop();
+                          },
+                          icon: const Icon(Icons.close),
+                        ),
+                      ),
                       content:
                           BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
                         builder: (context, state) {
@@ -269,17 +268,11 @@ class HomeScreen extends HookWidget {
                                       Palette.primary),
                                 ),
                               ),
-                              initial: (value) {
-                                return const Center(
-                                  child: CircularProgressIndicator(
-                                    color: Palette.primary,
-                                  ),
-                                );
-                              },
-                              fetchSuccessState: (value) {
-                                final List<Item> products = value.products;
-                                if ((products).isEmpty &&
-                                    value.isSearching == false) {
+                              fetchSuccessState: (successState) {
+                                final List<Item> products =
+                                    successState.products;
+                                if (products.isEmpty &&
+                                    successState.isSearching == false) {
                                   return Center(
                                     child: Text(
                                       "لا يوجد منتجات",
@@ -287,7 +280,7 @@ class HomeScreen extends HookWidget {
                                     ),
                                   );
                                 }
-                                if (value.isSearching == true) {
+                                if (successState.isSearching == true) {
                                   return const Center(
                                     child: CircularProgressIndicator(
                                       color: Palette.primary,
@@ -302,44 +295,43 @@ class HomeScreen extends HookWidget {
                                       mainAxisSpacing: 0,
                                       controller: scrollController,
                                       shrinkWrap: true,
-                                      itemCount: value.hasReachedMax
-                                          ? value.products.length
-                                          : value.products.length + 1,
+                                      itemCount: successState.hasReachedMax
+                                          ? successState.products.length
+                                          : successState.products.length + 1,
                                       itemBuilder: (context, index) {
                                         if ((index >= products.length)) {
                                           return const ShimmerEffect(
                                             height: 200,
                                           );
                                         } else {
-                                          final product = value.products[index];
-                                          final List<ProductPOSRecord> records =
-                                              [...value.records!];
+                                          final product =
+                                              successState.products[index];
+                                          final records =
+                                              successState.records ?? [];
 
                                           final record = records[index];
                                           return InkWell(
-                                            onTap: ((product
-                                                        .variations!.length) <=
-                                                    1)
-                                                ? () {
-                                                    context.read<BagBloc>().add(
-                                                        BagEvent.addItem(
-                                                            item:
-                                                                value.products[
-                                                                    index]));
-                                                  }
-                                                : () {
-                                                    context
-                                                        .read<
-                                                            ProductDetailsBloc>()
-                                                        .add(
-                                                          ProductDetailsEvent
-                                                              .getProductDetails(
-                                                            productId: value
-                                                                .products[index]
-                                                                .id!,
-                                                          ),
-                                                        );
-                                                  },
+                                            onTap:
+                                                ((product.variations!.length) <=
+                                                        1)
+                                                    ? () {
+                                                        context
+                                                            .read<BagBloc>()
+                                                            .add(BagEvent.addItem(
+                                                                item: product));
+                                                      }
+                                                    : () {
+                                                        context
+                                                            .read<
+                                                                ProductDetailsBloc>()
+                                                            .add(
+                                                              ProductDetailsEvent
+                                                                  .getProductDetails(
+                                                                productId:
+                                                                    product.id!,
+                                                              ),
+                                                            );
+                                                      },
                                             child: Card(
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
@@ -427,7 +419,7 @@ class HomeScreen extends HookWidget {
                                                             ),
                                                           ),
                                                         Text(
-                                                          record.price ?? "",
+                                                          record.price,
                                                           style: context
                                                               .titleMedium
                                                               .copyWith(
@@ -452,9 +444,7 @@ class HomeScreen extends HookWidget {
                                                       context
                                                           .read<BagBloc>()
                                                           .add(BagEvent.addItem(
-                                                              item: value
-                                                                      .products[
-                                                                  index]));
+                                                              item: product));
                                                     }
                                                   : () {
                                                       context
@@ -463,10 +453,8 @@ class HomeScreen extends HookWidget {
                                                           .add(
                                                             ProductDetailsEvent
                                                                 .getProductDetails(
-                                                              productId: value
-                                                                  .products[
-                                                                      index]
-                                                                  .id!,
+                                                              productId:
+                                                                  record.id,
                                                             ),
                                                           );
                                                     },
@@ -474,7 +462,7 @@ class HomeScreen extends HookWidget {
                                                   .toString(),
                                               productName: record.name,
                                               inStock:
-                                                  " ${(value.records?[index].quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
+                                                  " ${(record.quantity ?? 0) <= 0 ? "Out of stock" : "In stock"}",
                                               oldPrice: (record
                                                               .discount ??
                                                           "0") !=
@@ -560,77 +548,82 @@ class HomeScreen extends HookWidget {
                           );
                         },
                         builder: (context, state) {
-                          return state.map(loading: (value) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Palette.white,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 8),
-                              margin: const EdgeInsets.all(8.0),
-                              height: h * 0.7,
-                              width: w * 0.33,
-                              child: const Center(
-                                child: LoadingCircular(),
-                              ),
-                            );
-                          }, empty: (value) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Palette.white,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 8),
-                              margin: const EdgeInsets.all(8.0),
-                              height: h * 0.7,
-                              width: w * 0.33,
-                              child: Center(
-                                child: Text(
-                                  "The bag is empty",
-                                  style: context.titleMedium
-                                      .copyWith(color: Palette.grey),
+                          return state.map(
+                            loading: (value) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: Palette.white,
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              ),
-                            );
-                          }, getItems: (value) {
-                            return TotBagOrganism<double>(
-                              discountVariations: discounts,
-                              discounts: discounts,
-                              items: value.bagEntity.items
-                                  .map((bagItem) => bagItem.toBagOrgItem())
-                                  .toList(),
-                              subTotalPrice: value.bagEntity.subTotalPrice,
-                              totalPrice: value.bagEntity.totalPrice,
-                              activeDiscountBackgroundColor: Palette.primary,
-                              orDividerColor: Palette.black,
-                              checkoutBackgroundColor: Palette.primary,
-                              onDiscountChoosen: (discount) {
-                                context.read<BagBloc>().add(
-                                    BagEvent.setDiscount(discount: discount));
-                              },
-                              onItemPressed: (productId) {
-                                context.read<BagBloc>().add(
-                                    BagEvent.decreaseItemQuantity(
-                                        productId: productId));
-                              },
-                              onCheckout: () {
-                                context.read<BagBloc>().add(
-                                    BagEvent.createOrderFromBag(
-                                        value.bagEntity));
-                              },
-                              onClearList: () {
-                                context
-                                    .read<BagBloc>()
-                                    .add(BagEvent.clearBag());
-                              },
-                              onSlide: (selectedProductId) {
-                                context.read<BagBloc>().add(BagEvent.removeItem(
-                                    productId: selectedProductId));
-                              },
-                            );
-                          });
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                margin: const EdgeInsets.all(8.0),
+                                height: h * 0.7,
+                                width: w * 0.33,
+                                child: const Center(
+                                  child: LoadingCircular(),
+                                ),
+                              );
+                            },
+                            empty: (value) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: Palette.white,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                margin: const EdgeInsets.all(8.0),
+                                height: h * 0.7,
+                                width: w * 0.33,
+                                child: Center(
+                                  child: Text(
+                                    "The bag is empty",
+                                    style: context.titleMedium
+                                        .copyWith(color: Palette.grey),
+                                  ),
+                                ),
+                              );
+                            },
+                            getItems: (value) {
+                              return TotBagOrganism<double>(
+                                discountVariations: discounts,
+                                discounts: discounts,
+                                items: value.bagEntity.items
+                                    .map((bagItem) => bagItem.toBagOrgItem())
+                                    .toList(),
+                                subTotalPrice: value.bagEntity.subTotalPrice,
+                                totalPrice: value.bagEntity.totalPrice,
+                                activeDiscountBackgroundColor: Palette.primary,
+                                orDividerColor: Palette.black,
+                                checkoutBackgroundColor: Palette.primary,
+                                onDiscountChoosen: (discount) {
+                                  context.read<BagBloc>().add(
+                                      BagEvent.setDiscount(discount: discount));
+                                },
+                                onItemPressed: (productId) {
+                                  context.read<BagBloc>().add(
+                                      BagEvent.decreaseItemQuantity(
+                                          productId: productId));
+                                },
+                                onCheckout: () {
+                                  context.read<BagBloc>().add(
+                                      BagEvent.createOrderFromBag(
+                                          value.bagEntity));
+                                },
+                                onClearList: () {
+                                  context
+                                      .read<BagBloc>()
+                                      .add(BagEvent.clearBag());
+                                },
+                                onSlide: (selectedProductId) {
+                                  context.read<BagBloc>().add(
+                                      BagEvent.removeItem(
+                                          productId: selectedProductId));
+                                },
+                              );
+                            },
+                          );
                         },
                       ),
                     ],

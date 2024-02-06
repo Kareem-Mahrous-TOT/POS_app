@@ -610,7 +610,6 @@ abstract class _SearchList implements ProductsEvent {
 mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
             List<Item> products,
@@ -639,7 +638,6 @@ mixin _$ProductsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
             List<Item> products,
@@ -668,7 +666,6 @@ mixin _$ProductsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
             List<Item> products,
@@ -698,7 +695,6 @@ mixin _$ProductsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
@@ -706,7 +702,6 @@ mixin _$ProductsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
@@ -714,7 +709,6 @@ mixin _$ProductsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
@@ -739,174 +733,6 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ProductsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'ProductsState.initial()';
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingState,
-    required TResult Function(
-            List<Item> products,
-            String? categoryId,
-            bool? isSearching,
-            bool hasReachedMax,
-            bool addingProducts,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)
-        fetchSuccessState,
-    required TResult Function(String message) fetchFailState,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingState,
-    TResult? Function(
-            List<Item> products,
-            String? categoryId,
-            bool? isSearching,
-            bool hasReachedMax,
-            bool addingProducts,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)?
-        fetchSuccessState,
-    TResult? Function(String message)? fetchFailState,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingState,
-    TResult Function(
-            List<Item> products,
-            String? categoryId,
-            bool? isSearching,
-            bool hasReachedMax,
-            bool addingProducts,
-            List<
-                    ({
-                      String? discount,
-                      String id,
-                      String imgUrl,
-                      bool? isFav,
-                      bool isSpeedyDelivery,
-                      String? label,
-                      String name,
-                      String price,
-                      num? quantity,
-                      double rating,
-                      String variationID
-                    })>?
-                records)?
-        fetchSuccessState,
-    TResult Function(String message)? fetchFailState,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingState value) loadingState,
-    required TResult Function(_FetchSuccessState value) fetchSuccessState,
-    required TResult Function(_FetchFailState value) fetchFailState,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingState value)? loadingState,
-    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
-    TResult? Function(_FetchFailState value)? fetchFailState,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingState value)? loadingState,
-    TResult Function(_FetchSuccessState value)? fetchSuccessState,
-    TResult Function(_FetchFailState value)? fetchFailState,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements ProductsState {
-  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -938,7 +764,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
             List<Item> products,
@@ -970,7 +795,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
             List<Item> products,
@@ -1002,7 +826,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
             List<Item> products,
@@ -1038,7 +861,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
@@ -1049,7 +871,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
@@ -1060,7 +881,6 @@ class _$LoadingStateImpl implements _LoadingState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
@@ -1220,7 +1040,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
             List<Item> products,
@@ -1253,7 +1072,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
             List<Item> products,
@@ -1286,7 +1104,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
             List<Item> products,
@@ -1323,7 +1140,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
@@ -1334,7 +1150,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
@@ -1345,7 +1160,6 @@ class _$FetchSuccessStateImpl implements _FetchSuccessState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,
@@ -1480,7 +1294,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loadingState,
     required TResult Function(
             List<Item> products,
@@ -1512,7 +1325,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loadingState,
     TResult? Function(
             List<Item> products,
@@ -1544,7 +1356,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loadingState,
     TResult Function(
             List<Item> products,
@@ -1580,7 +1391,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_LoadingState value) loadingState,
     required TResult Function(_FetchSuccessState value) fetchSuccessState,
     required TResult Function(_FetchFailState value) fetchFailState,
@@ -1591,7 +1401,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadingState value)? loadingState,
     TResult? Function(_FetchSuccessState value)? fetchSuccessState,
     TResult? Function(_FetchFailState value)? fetchFailState,
@@ -1602,7 +1411,6 @@ class _$FetchFailStateImpl implements _FetchFailState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_LoadingState value)? loadingState,
     TResult Function(_FetchSuccessState value)? fetchSuccessState,
     TResult Function(_FetchFailState value)? fetchFailState,

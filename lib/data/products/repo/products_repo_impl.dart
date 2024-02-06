@@ -16,7 +16,7 @@ class ProductsRepoImpl implements ProductsRepoBase {
       {String? endCursor, required String productId}) async {
     try {
       final product =
-          await _remoteDataSource.getProductById(productId: productId);
+          await _remoteDataSource.getProductDetails(productId: productId);
       return Right(product);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -24,11 +24,7 @@ class ProductsRepoImpl implements ProductsRepoBase {
   }
 
   @override
-  FutureEitherFailureOrType<
-      List<Item>?
-      // List<ProductCardRecord> proudctsRecords,
-      // List<ProductPOSRecord> proudctsPosRecords
-      > getProducts({
+  FutureEitherFailureOrType<List<Item>> getProducts({
     String after = "0",
     int first = 20,
     String? endCursor,
@@ -42,10 +38,10 @@ class ProductsRepoImpl implements ProductsRepoBase {
           first: first,
           branchId: branchId,
           categoryId: categoryId);
+
+      final entities = (products.items ?? []).map((product) => null).toList();
       return Right(
-        products.items,
-        // proudctsRecords: products.items!.toDomain(),
-        // proudctsPosRecords: products.items!.toDomainPOS(),
+        products.items ?? [],
       );
     } catch (e) {
       return Left(ServerFailure(e.toString()));

@@ -2,7 +2,7 @@ part of 'products_bloc.dart';
 
 @unfreezed
 class ProductsState with _$ProductsState {
-  factory ProductsState.initial() = _Initial;
+  // factory ProductsState.initial() = _Initial;
   factory ProductsState.loadingState() = _LoadingState;
   factory ProductsState.fetchSuccessState(
       {required List<Item> products,
@@ -10,6 +10,6 @@ class ProductsState with _$ProductsState {
       bool? isSearching,
       @Default(false) bool hasReachedMax,
       @Default(false) bool addingProducts,
-      List<ProductCardRecord>? records}) = _FetchSuccessState;
+      List<ProductPOSRecord>? records}) = _FetchSuccessState;
   factory ProductsState.fetchFailState(String message) = _FetchFailState;
 }

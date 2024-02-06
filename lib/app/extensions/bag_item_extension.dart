@@ -8,7 +8,7 @@ extension BagExtension on Item {
   }) {
     Variation? masterVariation;
     if (variations?.isNotEmpty ?? false) {
-      masterVariation = variations!.firstWhere((element) => element.isMaster);
+      masterVariation = variations?.firstWhere((element) => element.isMaster);
     }
 
     return BagItem(
@@ -27,10 +27,10 @@ extension BagExtension on Item {
       price: masterVariation?.price?.actual?.amount?.toDouble() ??
           price?.actual?.amount?.toDouble() ??
           0,
-      listPrice: price?.actual?.amount?.toDouble() ??
+      listPrice: masterVariation?.price?.actual?.amount?.toDouble() ??
           price!.actual!.amount!.toDouble(),
       salePrice:
-          price?.sale?.amount?.toDouble() ?? price!.sale!.amount!.toDouble(),
+          masterVariation?.price?.sale?.amount?.toDouble() ?? price?.sale?.amount?.toDouble()??price!.actual!.amount!.toDouble(),
       createdBy: '',
       modifiedBy: '',
       inStockQuantity: masterVariation?.availabilityData?.inventories

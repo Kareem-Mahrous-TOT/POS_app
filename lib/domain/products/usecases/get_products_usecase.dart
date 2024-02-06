@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-
-import 'package:tot_pos/data/products/mapper/products_mapping.dart';
 import 'package:tot_pos/data/products/mapper/products_pos_mapping.dart';
 
 import '../../../app/constants/store_config.dart';
@@ -18,7 +15,6 @@ class GetProductsUsecase
             FutureEitherFailureOrType<
                 ({
                   List<Item>? productsModels,
-                  List<ProductCardRecord> proudctsRecords,
                   List<ProductPOSRecord> proudctsPosRecords
                 })>> {
   final ProductsRepoBase _productsRepo;
@@ -30,46 +26,48 @@ class GetProductsUsecase
   FutureEitherFailureOrType<
       ({
         List<Item>? productsModels,
-        List<ProductCardRecord> proudctsRecords,
         List<ProductPOSRecord> proudctsPosRecords
       })> call(GetProductsParams params) async {
     final response = await _productsRepo.getProducts(
-      branchId: StoreConfig.octoberBranchId,
-      categoryId: params.categoryId,
-      sort: params.sort,
-      endCursor: params.endCursor,
-      first: params.first,
-      after: params.after
-    );
+        branchId: StoreConfig.octoberBranchId,
+        categoryId: params.categoryId,
+        sort: params.sort,
+        endCursor: params.endCursor,
+        first: params.first,
+        after: params.after);
     return response.fold((fail) => Left(fail), (products) {
       List<Item>? updatedProducts = [];
       for (final product in products!) {
         List<Variation> allVariations = [];
         if (product.variations != null && product.variations!.isNotEmpty) {
-          allVariations.add(Variation(
-              id: product.id,
-              availabilityData: product.availabilityData,
-              code: product.code,
-              name: product.name,
-              price: product.price,
-              productType: product.productType,
-              properties: product.properties,
-              isMaster: true));
+          allVariations.add(
+            Variation(
+                id: product.id,
+                availabilityData: product.availabilityData,
+                code: product.code,
+                name: product.name,
+                price: product.price,
+                productType: product.productType,
+                properties: product.properties,
+                isMaster: true),
+          );
 
           for (final variation in product.variations!) {
             allVariations.add(variation.copyWith(isMaster: false));
           }
           updatedProducts.add(product.copyWith(variations: allVariations));
         } else {
-          allVariations.add(Variation(
-              id: product.id,
-              availabilityData: product.availabilityData,
-              code: product.code,
-              name: product.name,
-              price: product.price,
-              productType: product.productType,
-              properties: product.properties,
-              isMaster: true));
+          allVariations.add(
+            Variation(
+                id: product.id,
+                availabilityData: product.availabilityData,
+                code: product.code,
+                name: product.name,
+                price: product.price,
+                productType: product.productType,
+                properties: product.properties,
+                isMaster: true),
+          );
           updatedProducts.add(product.copyWith(variations: allVariations));
         }
       }
@@ -92,7 +90,6 @@ class GetProductsUsecase
 
       return Right((
         productsModels: productsModel,
-        proudctsRecords: productsModel.toDomain(),
         proudctsPosRecords: productsModel.toDomainPOS(),
       ));
     });

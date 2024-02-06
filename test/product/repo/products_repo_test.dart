@@ -22,7 +22,7 @@ void main() {
       // Arrange
       const productId = '123';
       const product = Item(id: productId, name: 'Test Product');
-      when(() => mockRemoteDataSource.getProductById(productId: productId))
+      when(() => mockRemoteDataSource.getProductDetails(productId: productId))
           .thenAnswer((_) async => product);
 
       // Act
@@ -35,7 +35,7 @@ void main() {
     test('getProductById throws an exception', () async {
       // Arrange
       const productId = '123';
-      when(() => mockRemoteDataSource.getProductById(productId: productId))
+      when(() => mockRemoteDataSource.getProductDetails(productId: productId))
           .thenThrow(const ServerFailure("Error"));
 
       // Act
