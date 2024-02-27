@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:tot_pos_copy_1/core/usecase/usecase.dart';
-
+ 
+import '../../../../core/usecase/usecase.dart';
 import '../../../../infrastructure/products/model/qraph_product_model.dart';
 
 class ChangeProductMasterVariation

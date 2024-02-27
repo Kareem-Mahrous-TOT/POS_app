@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos_copy_1/core/network/failure.dart';
-import 'package:tot_pos_copy_1/infrastructure/report/data_source/local_data_source.dart';
-import 'package:tot_pos_copy_1/infrastructure/report/data_source/remote_data_source.dart';
-import 'package:tot_pos_copy_1/infrastructure/report/model/cost_model.dart';
-import 'package:tot_pos_copy_1/infrastructure/report/model/order_statistics_model.dart';
-import 'package:tot_pos_copy_1/infrastructure/report/model/statistic_model.dart';
 
+import '../../../core/network/failure.dart';
 import '../../../domain/reports/repo/report_repo.dart';
+import '../data_source/local_data_source.dart';
+import '../data_source/remote_data_source.dart';
+import '../model/cost_model.dart';
+import '../model/order_statistics_model.dart';
+import '../model/statistic_model.dart';
 
 class ReportRepoImpl implements ReportRepo {
   final ReportLocalDataSource _reportLocalDataSource;

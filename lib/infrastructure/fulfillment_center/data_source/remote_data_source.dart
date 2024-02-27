@@ -1,5 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos_copy_1/core/network/graph_config.dart';
+import 'package:tot_pos/core/network/graph_config.dart';
 
 import '../model/graph_fulfillment_center_model.dart';
 

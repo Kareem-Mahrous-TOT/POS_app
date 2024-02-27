@@ -1,6 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos_copy_1/core/network/graph_config.dart';
 
+import '../../../core/network/graph_config.dart';
 import '../requests/add_new_customer_request/tot_add_new_customer_model_request.dart';
 import '../responses/add_new_customer/tot_add_new_customer_model.dart';
 import '../responses/customers_response/tot_customers.dart';

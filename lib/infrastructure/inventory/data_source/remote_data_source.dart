@@ -1,5 +1,6 @@
-import 'package:tot_pos_copy_1/core/network/api_consumer.dart';
-import 'package:tot_pos_copy_1/core/network/end_points.dart';
+
+import '../../../core/network/api_consumer.dart';
+import '../../../core/network/end_points.dart';
 
 abstract class InventoryRemoteDataSource {
   Future<bool> updateInventory({

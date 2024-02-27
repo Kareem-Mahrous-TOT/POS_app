@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos_copy_1/domain/bag/entities/bag_item.dart';
+import 'package:tot_pos/domain/bag/entities/bag_item.dart';
 
 import '../../../core/network/failure.dart';
 import '../../../core/types/types.dart';

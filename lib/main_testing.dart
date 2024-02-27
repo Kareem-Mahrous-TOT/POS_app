@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tot_pos_copy_1/flavor_config.dart';
+import 'package:tot_pos/flavor_config.dart';
 
 import 'core/bloc_observer.dart';
 import 'core/pos_app.dart';

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos_copy_1/core/network/failure.dart';
+import 'package:tot_pos/core/network/failure.dart';
 
 import '../../../infrastructure/report/model/cost_model.dart';
 import '../../../infrastructure/report/model/order_statistics_model.dart';

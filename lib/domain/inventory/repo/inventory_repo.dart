@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos_copy_1/core/network/failure.dart';
+import 'package:tot_pos/core/network/failure.dart';
 
 abstract class InventoryRepo {
   Future<Either<Failure, bool>> updateInventory({

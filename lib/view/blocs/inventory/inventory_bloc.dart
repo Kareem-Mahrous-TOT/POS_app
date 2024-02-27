@@ -1,14 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos_copy_1/core/constants/local_keys.dart';
-import 'package:tot_pos_copy_1/core/constants/store_config.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/mapper/products_pos_mapping.dart';
-import 'package:tot_pos_copy_1/dependency_injection.dart';
+import 'package:tot_pos/infrastructure/products/mapper/products_pos_mapping.dart';
 
-import '../../../infrastructure/products/model/qraph_product_model.dart';
 import '../../../app/usecases/inventory/usecase/update_inventory_quantity_usecase.dart';
 import '../../../app/usecases/products/usecases/get_products_usecase.dart';
+import '../../../core/constants/local_keys.dart';
+import '../../../core/constants/store_config.dart';
+import '../../../dependency_injection.dart';
+import '../../../infrastructure/products/model/qraph_product_model.dart';
 
 part 'inventory_bloc.freezed.dart';
 part 'inventory_event.dart';

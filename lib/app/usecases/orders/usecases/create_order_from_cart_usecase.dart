@@ -1,8 +1,8 @@
-import 'package:equatable/equatable.dart';
-import 'package:tot_pos_copy_1/core/usecase/usecase.dart';
-import 'package:tot_pos_copy_1/domain/orders/repo/orders_repo_base.dart';
+import 'package:equatable/equatable.dart'; 
 
 import '../../../../core/types/types.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../../../../domain/orders/repo/orders_repo_base.dart';
 import '../../../../infrastructure/orders/model/graph_create_order_model.dart';
 
 class CreateOrderFormCartUsecase

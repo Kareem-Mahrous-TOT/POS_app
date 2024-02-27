@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos_copy_1/core/extensions/bag_item_extension.dart';
+import 'package:tot_pos/core/extensions/bag_item_extension.dart';
 
 import '../../../core/enums/payment_method_type.dart';
 import '../../../core/usecase/usecase.dart';
@@ -26,7 +26,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   })  : _addBagItemUsecase = addBagItemUsecase,
         _createBagUsecase = createBagUsecase,
         _createOrderFromBagUsecase = createOrderFromBagUsecase,
-      super(BagState.empty()) {
+        super(BagState.empty()) {
     on<BagEvent>((event, emit) async {
       await event.map(
         addItem: (addItemEvent) async {

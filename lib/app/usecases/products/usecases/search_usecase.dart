@@ -2,7 +2,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/mapper/products_pos_mapping.dart';
+import 'package:tot_pos/infrastructure/products/mapper/products_pos_mapping.dart';
 
 import '../../../../core/constants/store_config.dart';
 import '../../../../core/types/types.dart';

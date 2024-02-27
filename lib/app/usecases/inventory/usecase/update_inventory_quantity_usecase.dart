@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:tot_pos_copy_1/core/types/types.dart';
-import 'package:tot_pos_copy_1/core/usecase/usecase.dart';
-import 'package:tot_pos_copy_1/domain/inventory/repo/inventory_repo.dart';
+import '../../../../core/types/types.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../../../../domain/inventory/repo/inventory_repo.dart';
 
 class UpdateInventoryQuantityUsecase extends BaseUsecase<UpdateInventoryParams,
     FutureEitherFailureOrType<bool>> {

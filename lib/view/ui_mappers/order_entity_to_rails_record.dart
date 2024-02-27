@@ -1,4 +1,4 @@
-import 'package:tot_pos_copy_1/domain/orders/entities/order_entity.dart';
+import 'package:tot_pos/domain/orders/entities/order_entity.dart';
 
 import '../components/order_components/tot_orders_rails_organism.dart';
 

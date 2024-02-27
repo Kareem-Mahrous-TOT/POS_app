@@ -1,6 +1,6 @@
 {
-    "name": "tot_pos_copy_1",
-    "short_name": "tot_pos_copy_1",
+    "name": "tot_pos",
+    "short_name": "tot_pos",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

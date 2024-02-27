@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos_copy_1/core/constants/store_config.dart';
-import 'package:tot_pos_copy_1/core/theme/palette.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/model/qraph_product_model.dart';
-import 'package:tot_pos_copy_1/view/blocs/inventory/inventory_bloc.dart';
+import 'package:tot_pos/core/constants/store_config.dart';
+import 'package:tot_pos/core/theme/palette.dart';
+import 'package:tot_pos/infrastructure/products/model/qraph_product_model.dart';
+import 'package:tot_pos/view/blocs/inventory/inventory_bloc.dart';
 
 import '../../../core/utils/show_custom_keyboard.dart';
 

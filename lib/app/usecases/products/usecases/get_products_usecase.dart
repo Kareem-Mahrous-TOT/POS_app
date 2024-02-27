@@ -1,15 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/mapper/products_mapping.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/mapper/products_pos_mapping.dart';
+import 'package:tot_pos/infrastructure/products/mapper/products_mapping.dart';
+import 'package:tot_pos/infrastructure/products/mapper/products_pos_mapping.dart';
 
 import '../../../../core/constants/store_config.dart';
 import '../../../../core/types/types.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../../../domain/products/repo/products_repo_base.dart';
 import '../../../../infrastructure/products/model/qraph_product_model.dart';
- 
+
 class GetProductsUsecase
     implements
         BaseUsecase<

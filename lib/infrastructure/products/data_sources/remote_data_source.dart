@@ -1,7 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:tot_pos_copy_1/core/graph_ql/get_product_by_id.dart';
 
 import '../../../core/constants/store_config.dart';
+import '../../../core/graph_ql/get_product_by_id.dart';
 import '../../../core/graph_ql/get_products.dart';
 import '../../../core/graph_ql/search_product.dart';
 import '../../../core/network/graph_config.dart';

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:tot_pos_copy_1/core/constants/store_config.dart';
-import 'package:tot_pos_copy_1/infrastructure/fulfillment_center/data_source/remote_data_source.dart';
 
+import '../../../core/constants/store_config.dart';
 import '../../../core/network/failure.dart';
 import '../../../domain/fulfillment_center/repo/fulfillment_center_repo.dart';
 import '../data_source/local_data_source.dart';
+import '../data_source/remote_data_source.dart';
 import '../model/graph_fulfillment_center_model.dart';
 
 class FulfillmentCenterRepoImpl implements FulfillmentCenterRepo {

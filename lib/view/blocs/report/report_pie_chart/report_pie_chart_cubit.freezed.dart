@@ -12,7 +12,7 @@ part of 'report_pie_chart_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ReportChartPieState {
@@ -195,8 +195,6 @@ abstract class _$$LoadSuccessImplCopyWith<$Res> {
       __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ReportPieChart model});
-
-  $ReportPieChartCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -210,22 +208,14 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = null,
+    Object? model = freezed,
   }) {
     return _then(_$LoadSuccessImpl(
-      null == model
+      freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as ReportPieChart,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ReportPieChartCopyWith<$Res> get model {
-    return $ReportPieChartCopyWith<$Res>(_value.model, (value) {
-      return _then(_value.copyWith(model: value));
-    });
   }
 }
 
@@ -247,11 +237,12 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadSuccessImpl &&
-            (identical(other.model, model) || other.model == model));
+            const DeepCollectionEquality().equals(other.model, model));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, model);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(model));
 
   @JsonKey(ignore: true)
   @override

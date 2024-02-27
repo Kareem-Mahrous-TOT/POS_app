@@ -1,4 +1,4 @@
-package com.example.tot_pos_copy_1
+package com.example.tot_pos
 
 import io.flutter.embedding.android.FlutterActivity
 

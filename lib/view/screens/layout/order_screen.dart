@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tot_pos_copy_1/view/blocs/orders/orders_bloc.dart';
-import 'package:tot_pos_copy_1/view/ui_mappers/alert_order.dart';
-import 'package:tot_pos_copy_1/view/ui_mappers/order_entity_to_rails_record.dart';
+import 'package:tot_pos/view/blocs/orders/orders_bloc.dart';
+import 'package:tot_pos/view/ui_mappers/alert_order.dart';
+import 'package:tot_pos/view/ui_mappers/order_entity_to_rails_record.dart';
 
 import '../../../core/theme/palette.dart';
 import '../../blocs/order_details/order_details_bloc.dart';

@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tot_pos_copy_1/core/constants/local_keys.dart';
-import 'package:tot_pos_copy_1/core/network/failure.dart';
-import 'package:tot_pos_copy_1/infrastructure/inventory/data_source/remote_data_source.dart';
-import 'package:tot_pos_copy_1/domain/inventory/repo/inventory_repo.dart';
 
+import '../../../core/constants/local_keys.dart';
 import '../../../core/constants/store_config.dart';
+import '../../../core/network/failure.dart';
+import '../../../domain/inventory/repo/inventory_repo.dart';
+import '../data_source/remote_data_source.dart';
 
 class InventoryRepoImpl implements InventoryRepo {
   final InventoryRemoteDataSource _remoteDataSource;

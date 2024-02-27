@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tot_pos_copy_1/core/constants/local_keys.dart';
-import 'package:tot_pos_copy_1/dependency_injection.dart';
 
 import '../../../app/usecases/auth/usecases/login_usecase.dart';
+import '../../../core/constants/local_keys.dart';
+import '../../../dependency_injection.dart';
 
 part 'login_bloc.freezed.dart';
 part 'login_event.dart';

@@ -1,7 +1,8 @@
 // ignore: depend_on_referenced_packages
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:tot_pos_copy_1/core/theme/palette.dart';
+
+import '../../../core/theme/palette.dart';
 
 class TOTLineChartMolecule extends StatelessWidget {
   /// this is a package from pub.dev called fl_chart

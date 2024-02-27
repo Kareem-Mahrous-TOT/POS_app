@@ -2,11 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tot_atomic_design/tot_atomic_design.dart';
-import 'package:tot_pos_copy_1/infrastructure/products/mapper/products_pos_mapping.dart';
+import 'package:tot_pos/infrastructure/products/mapper/products_pos_mapping.dart';
 
-import '../../../infrastructure/products/model/qraph_product_model.dart';
 import '../../../app/usecases/products/usecases/get_products_usecase.dart';
 import '../../../app/usecases/products/usecases/search_usecase.dart';
+import '../../../infrastructure/products/model/qraph_product_model.dart';
 
 part 'products_bloc.freezed.dart';
 part 'products_event.dart';
