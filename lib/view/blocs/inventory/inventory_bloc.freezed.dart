@@ -1,0 +1,1867 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'inventory_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$InventoryEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InventoryEventCopyWith<$Res> {
+  factory $InventoryEventCopyWith(
+          InventoryEvent value, $Res Function(InventoryEvent) then) =
+      _$InventoryEventCopyWithImpl<$Res, InventoryEvent>;
+}
+
+/// @nodoc
+class _$InventoryEventCopyWithImpl<$Res, $Val extends InventoryEvent>
+    implements $InventoryEventCopyWith<$Res> {
+  _$InventoryEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$FetchImplCopyWith<$Res> {
+  factory _$$FetchImplCopyWith(
+          _$FetchImpl value, $Res Function(_$FetchImpl) then) =
+      __$$FetchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$FetchImpl>
+    implements _$$FetchImplCopyWith<$Res> {
+  __$$FetchImplCopyWithImpl(
+      _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchImpl implements _Fetch {
+  _$FetchImpl();
+
+  @override
+  String toString() {
+    return 'InventoryEvent.fetch()';
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return fetch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return fetch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (fetch != null) {
+      return fetch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return fetch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return fetch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (fetch != null) {
+      return fetch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Fetch implements InventoryEvent {
+  factory _Fetch() = _$FetchImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchImplCopyWith<$Res> {
+  factory _$$SearchImplCopyWith(
+          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
+      __$$SearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? query});
+}
+
+/// @nodoc
+class __$$SearchImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$SearchImpl>
+    implements _$$SearchImplCopyWith<$Res> {
+  __$$SearchImplCopyWithImpl(
+      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = freezed,
+  }) {
+    return _then(_$SearchImpl(
+      freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchImpl implements _Search {
+  _$SearchImpl(this.query);
+
+  @override
+  String? query;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.search(query: $query)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      __$$SearchImplCopyWithImpl<_$SearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return search(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return search?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Search implements InventoryEvent {
+  factory _Search(String? query) = _$SearchImpl;
+
+  String? get query;
+  set query(String? value);
+  @JsonKey(ignore: true)
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeMasterVariationImplCopyWith<$Res> {
+  factory _$$ChangeMasterVariationImplCopyWith(
+          _$ChangeMasterVariationImpl value,
+          $Res Function(_$ChangeMasterVariationImpl) then) =
+      __$$ChangeMasterVariationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId, String masterVariationId});
+}
+
+/// @nodoc
+class __$$ChangeMasterVariationImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$ChangeMasterVariationImpl>
+    implements _$$ChangeMasterVariationImplCopyWith<$Res> {
+  __$$ChangeMasterVariationImplCopyWithImpl(_$ChangeMasterVariationImpl _value,
+      $Res Function(_$ChangeMasterVariationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+    Object? masterVariationId = null,
+  }) {
+    return _then(_$ChangeMasterVariationImpl(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      masterVariationId: null == masterVariationId
+          ? _value.masterVariationId
+          : masterVariationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeMasterVariationImpl implements _ChangeMasterVariation {
+  _$ChangeMasterVariationImpl(
+      {required this.productId, required this.masterVariationId});
+
+  @override
+  String productId;
+  @override
+  String masterVariationId;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.changeMasterVariation(productId: $productId, masterVariationId: $masterVariationId)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeMasterVariationImplCopyWith<_$ChangeMasterVariationImpl>
+      get copyWith => __$$ChangeMasterVariationImplCopyWithImpl<
+          _$ChangeMasterVariationImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return changeMasterVariation(productId, masterVariationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return changeMasterVariation?.call(productId, masterVariationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (changeMasterVariation != null) {
+      return changeMasterVariation(productId, masterVariationId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return changeMasterVariation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return changeMasterVariation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (changeMasterVariation != null) {
+      return changeMasterVariation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeMasterVariation implements InventoryEvent {
+  factory _ChangeMasterVariation(
+      {required String productId,
+      required String masterVariationId}) = _$ChangeMasterVariationImpl;
+
+  String get productId;
+  set productId(String value);
+  String get masterVariationId;
+  set masterVariationId(String value);
+  @JsonKey(ignore: true)
+  _$$ChangeMasterVariationImplCopyWith<_$ChangeMasterVariationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateQuantityImplCopyWith<$Res> {
+  factory _$$UpdateQuantityImplCopyWith(_$UpdateQuantityImpl value,
+          $Res Function(_$UpdateQuantityImpl) then) =
+      __$$UpdateQuantityImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, int inStockQuantity, int? reservedQuantity});
+}
+
+/// @nodoc
+class __$$UpdateQuantityImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$UpdateQuantityImpl>
+    implements _$$UpdateQuantityImplCopyWith<$Res> {
+  __$$UpdateQuantityImplCopyWithImpl(
+      _$UpdateQuantityImpl _value, $Res Function(_$UpdateQuantityImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? inStockQuantity = null,
+    Object? reservedQuantity = freezed,
+  }) {
+    return _then(_$UpdateQuantityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      inStockQuantity: null == inStockQuantity
+          ? _value.inStockQuantity
+          : inStockQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      reservedQuantity: freezed == reservedQuantity
+          ? _value.reservedQuantity
+          : reservedQuantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateQuantityImpl implements _UpdateQuantity {
+  _$UpdateQuantityImpl(
+      {required this.id, required this.inStockQuantity, this.reservedQuantity});
+
+  @override
+  String id;
+  @override
+  int inStockQuantity;
+  @override
+  int? reservedQuantity;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.updateQuantity(id: $id, inStockQuantity: $inStockQuantity, reservedQuantity: $reservedQuantity)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
+      __$$UpdateQuantityImplCopyWithImpl<_$UpdateQuantityImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return updateQuantity(id, inStockQuantity, reservedQuantity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return updateQuantity?.call(id, inStockQuantity, reservedQuantity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (updateQuantity != null) {
+      return updateQuantity(id, inStockQuantity, reservedQuantity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return updateQuantity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return updateQuantity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (updateQuantity != null) {
+      return updateQuantity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateQuantity implements InventoryEvent {
+  factory _UpdateQuantity(
+      {required String id,
+      required int inStockQuantity,
+      int? reservedQuantity}) = _$UpdateQuantityImpl;
+
+  String get id;
+  set id(String value);
+  int get inStockQuantity;
+  set inStockQuantity(int value);
+  int? get reservedQuantity;
+  set reservedQuantity(int? value);
+  @JsonKey(ignore: true)
+  _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnIncrementImplCopyWith<$Res> {
+  factory _$$OnIncrementImplCopyWith(
+          _$OnIncrementImpl value, $Res Function(_$OnIncrementImpl) then) =
+      __$$OnIncrementImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId, int counter});
+}
+
+/// @nodoc
+class __$$OnIncrementImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$OnIncrementImpl>
+    implements _$$OnIncrementImplCopyWith<$Res> {
+  __$$OnIncrementImplCopyWithImpl(
+      _$OnIncrementImpl _value, $Res Function(_$OnIncrementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+    Object? counter = null,
+  }) {
+    return _then(_$OnIncrementImpl(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      counter: null == counter
+          ? _value.counter
+          : counter // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnIncrementImpl implements _OnIncrement {
+  _$OnIncrementImpl({required this.productId, required this.counter});
+
+  @override
+  String productId;
+  @override
+  int counter;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.onIncrement(productId: $productId, counter: $counter)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnIncrementImplCopyWith<_$OnIncrementImpl> get copyWith =>
+      __$$OnIncrementImplCopyWithImpl<_$OnIncrementImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return onIncrement(productId, counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return onIncrement?.call(productId, counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (onIncrement != null) {
+      return onIncrement(productId, counter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return onIncrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return onIncrement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (onIncrement != null) {
+      return onIncrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnIncrement implements InventoryEvent {
+  factory _OnIncrement({required String productId, required int counter}) =
+      _$OnIncrementImpl;
+
+  String get productId;
+  set productId(String value);
+  int get counter;
+  set counter(int value);
+  @JsonKey(ignore: true)
+  _$$OnIncrementImplCopyWith<_$OnIncrementImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnDecrementImplCopyWith<$Res> {
+  factory _$$OnDecrementImplCopyWith(
+          _$OnDecrementImpl value, $Res Function(_$OnDecrementImpl) then) =
+      __$$OnDecrementImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId, int counter});
+}
+
+/// @nodoc
+class __$$OnDecrementImplCopyWithImpl<$Res>
+    extends _$InventoryEventCopyWithImpl<$Res, _$OnDecrementImpl>
+    implements _$$OnDecrementImplCopyWith<$Res> {
+  __$$OnDecrementImplCopyWithImpl(
+      _$OnDecrementImpl _value, $Res Function(_$OnDecrementImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+    Object? counter = null,
+  }) {
+    return _then(_$OnDecrementImpl(
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      counter: null == counter
+          ? _value.counter
+          : counter // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnDecrementImpl implements _OnDecrement {
+  _$OnDecrementImpl({required this.productId, required this.counter});
+
+  @override
+  String productId;
+  @override
+  int counter;
+
+  @override
+  String toString() {
+    return 'InventoryEvent.onDecrement(productId: $productId, counter: $counter)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnDecrementImplCopyWith<_$OnDecrementImpl> get copyWith =>
+      __$$OnDecrementImplCopyWithImpl<_$OnDecrementImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String? query) search,
+    required TResult Function(String productId, String masterVariationId)
+        changeMasterVariation,
+    required TResult Function(
+            String id, int inStockQuantity, int? reservedQuantity)
+        updateQuantity,
+    required TResult Function(String productId, int counter) onIncrement,
+    required TResult Function(String productId, int counter) onDecrement,
+  }) {
+    return onDecrement(productId, counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String? query)? search,
+    TResult? Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult? Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult? Function(String productId, int counter)? onIncrement,
+    TResult? Function(String productId, int counter)? onDecrement,
+  }) {
+    return onDecrement?.call(productId, counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String? query)? search,
+    TResult Function(String productId, String masterVariationId)?
+        changeMasterVariation,
+    TResult Function(String id, int inStockQuantity, int? reservedQuantity)?
+        updateQuantity,
+    TResult Function(String productId, int counter)? onIncrement,
+    TResult Function(String productId, int counter)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (onDecrement != null) {
+      return onDecrement(productId, counter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Search value) search,
+    required TResult Function(_ChangeMasterVariation value)
+        changeMasterVariation,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_OnIncrement value) onIncrement,
+    required TResult Function(_OnDecrement value) onDecrement,
+  }) {
+    return onDecrement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_OnIncrement value)? onIncrement,
+    TResult? Function(_OnDecrement value)? onDecrement,
+  }) {
+    return onDecrement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Search value)? search,
+    TResult Function(_ChangeMasterVariation value)? changeMasterVariation,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_OnIncrement value)? onIncrement,
+    TResult Function(_OnDecrement value)? onDecrement,
+    required TResult orElse(),
+  }) {
+    if (onDecrement != null) {
+      return onDecrement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnDecrement implements InventoryEvent {
+  factory _OnDecrement({required String productId, required int counter}) =
+      _$OnDecrementImpl;
+
+  String get productId;
+  set productId(String value);
+  int get counter;
+  set counter(int value);
+  @JsonKey(ignore: true)
+  _$$OnDecrementImplCopyWith<_$OnDecrementImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$InventoryState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)
+        fetchSuccessState,
+    required TResult Function(String message) fetchFailState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult? Function(String message)? fetchFailState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult Function(String message)? fetchFailState,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_FetchSuccessState value) fetchSuccessState,
+    required TResult Function(_FetchFailState value) fetchFailState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult? Function(_FetchFailState value)? fetchFailState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult Function(_FetchFailState value)? fetchFailState,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InventoryStateCopyWith<$Res> {
+  factory $InventoryStateCopyWith(
+          InventoryState value, $Res Function(InventoryState) then) =
+      _$InventoryStateCopyWithImpl<$Res, InventoryState>;
+}
+
+/// @nodoc
+class _$InventoryStateCopyWithImpl<$Res, $Val extends InventoryState>
+    implements $InventoryStateCopyWith<$Res> {
+  _$InventoryStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$InventoryStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'InventoryState.loading()';
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)
+        fetchSuccessState,
+    required TResult Function(String message) fetchFailState,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult? Function(String message)? fetchFailState,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult Function(String message)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_FetchSuccessState value) fetchSuccessState,
+    required TResult Function(_FetchFailState value) fetchFailState,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult? Function(_FetchFailState value)? fetchFailState,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult Function(_FetchFailState value)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements InventoryState {
+  factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchSuccessStateImplCopyWith<$Res> {
+  factory _$$FetchSuccessStateImplCopyWith(_$FetchSuccessStateImpl value,
+          $Res Function(_$FetchSuccessStateImpl) then) =
+      __$$FetchSuccessStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<Item>? products,
+      bool? isSearching,
+      bool isUpdating,
+      bool isUpdated,
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
+          records});
+}
+
+/// @nodoc
+class __$$FetchSuccessStateImplCopyWithImpl<$Res>
+    extends _$InventoryStateCopyWithImpl<$Res, _$FetchSuccessStateImpl>
+    implements _$$FetchSuccessStateImplCopyWith<$Res> {
+  __$$FetchSuccessStateImplCopyWithImpl(_$FetchSuccessStateImpl _value,
+      $Res Function(_$FetchSuccessStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = freezed,
+    Object? isSearching = freezed,
+    Object? isUpdating = null,
+    Object? isUpdated = null,
+    Object? records = freezed,
+  }) {
+    return _then(_$FetchSuccessStateImpl(
+      products: freezed == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Item>?,
+      isSearching: freezed == isSearching
+          ? _value.isSearching
+          : isSearching // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isUpdating: null == isUpdating
+          ? _value.isUpdating
+          : isUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUpdated: null == isUpdated
+          ? _value.isUpdated
+          : isUpdated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      records: freezed == records
+          ? _value.records
+          : records // ignore: cast_nullable_to_non_nullable
+              as List<
+                  ({
+                    String? discount,
+                    String id,
+                    String imgUrl,
+                    bool? isFav,
+                    bool isSpeedyDelivery,
+                    String? label,
+                    String name,
+                    String price,
+                    num? quantity,
+                    double rating,
+                    String variationID
+                  })>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchSuccessStateImpl implements _FetchSuccessState {
+  _$FetchSuccessStateImpl(
+      {this.products,
+      this.isSearching,
+      this.isUpdating = false,
+      this.isUpdated = false,
+      this.records});
+
+  @override
+  List<Item>? products;
+  @override
+  bool? isSearching;
+  @override
+  @JsonKey()
+  bool isUpdating;
+  @override
+  @JsonKey()
+  bool isUpdated;
+  @override
+  List<
+      ({
+        String? discount,
+        String id,
+        String imgUrl,
+        bool? isFav,
+        bool isSpeedyDelivery,
+        String? label,
+        String name,
+        String price,
+        num? quantity,
+        double rating,
+        String variationID
+      })>? records;
+
+  @override
+  String toString() {
+    return 'InventoryState.fetchSuccessState(products: $products, isSearching: $isSearching, isUpdating: $isUpdating, isUpdated: $isUpdated, records: $records)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchSuccessStateImplCopyWith<_$FetchSuccessStateImpl> get copyWith =>
+      __$$FetchSuccessStateImplCopyWithImpl<_$FetchSuccessStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)
+        fetchSuccessState,
+    required TResult Function(String message) fetchFailState,
+  }) {
+    return fetchSuccessState(
+        products, isSearching, isUpdating, isUpdated, records);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult? Function(String message)? fetchFailState,
+  }) {
+    return fetchSuccessState?.call(
+        products, isSearching, isUpdating, isUpdated, records);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult Function(String message)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (fetchSuccessState != null) {
+      return fetchSuccessState(
+          products, isSearching, isUpdating, isUpdated, records);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_FetchSuccessState value) fetchSuccessState,
+    required TResult Function(_FetchFailState value) fetchFailState,
+  }) {
+    return fetchSuccessState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult? Function(_FetchFailState value)? fetchFailState,
+  }) {
+    return fetchSuccessState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult Function(_FetchFailState value)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (fetchSuccessState != null) {
+      return fetchSuccessState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchSuccessState implements InventoryState {
+  factory _FetchSuccessState(
+      {List<Item>? products,
+      bool? isSearching,
+      bool isUpdating,
+      bool isUpdated,
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
+          records}) = _$FetchSuccessStateImpl;
+
+  List<Item>? get products;
+  set products(List<Item>? value);
+  bool? get isSearching;
+  set isSearching(bool? value);
+  bool get isUpdating;
+  set isUpdating(bool value);
+  bool get isUpdated;
+  set isUpdated(bool value);
+  List<
+      ({
+        String? discount,
+        String id,
+        String imgUrl,
+        bool? isFav,
+        bool isSpeedyDelivery,
+        String? label,
+        String name,
+        String price,
+        num? quantity,
+        double rating,
+        String variationID
+      })>? get records;
+  set records(
+      List<
+              ({
+                String? discount,
+                String id,
+                String imgUrl,
+                bool? isFav,
+                bool isSpeedyDelivery,
+                String? label,
+                String name,
+                String price,
+                num? quantity,
+                double rating,
+                String variationID
+              })>?
+          value);
+  @JsonKey(ignore: true)
+  _$$FetchSuccessStateImplCopyWith<_$FetchSuccessStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchFailStateImplCopyWith<$Res> {
+  factory _$$FetchFailStateImplCopyWith(_$FetchFailStateImpl value,
+          $Res Function(_$FetchFailStateImpl) then) =
+      __$$FetchFailStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$FetchFailStateImplCopyWithImpl<$Res>
+    extends _$InventoryStateCopyWithImpl<$Res, _$FetchFailStateImpl>
+    implements _$$FetchFailStateImplCopyWith<$Res> {
+  __$$FetchFailStateImplCopyWithImpl(
+      _$FetchFailStateImpl _value, $Res Function(_$FetchFailStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$FetchFailStateImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchFailStateImpl implements _FetchFailState {
+  _$FetchFailStateImpl(this.message);
+
+  @override
+  String message;
+
+  @override
+  String toString() {
+    return 'InventoryState.fetchFailState(message: $message)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchFailStateImplCopyWith<_$FetchFailStateImpl> get copyWith =>
+      __$$FetchFailStateImplCopyWithImpl<_$FetchFailStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)
+        fetchSuccessState,
+    required TResult Function(String message) fetchFailState,
+  }) {
+    return fetchFailState(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult? Function(String message)? fetchFailState,
+  }) {
+    return fetchFailState?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            List<Item>? products,
+            bool? isSearching,
+            bool isUpdating,
+            bool isUpdated,
+            List<
+                    ({
+                      String? discount,
+                      String id,
+                      String imgUrl,
+                      bool? isFav,
+                      bool isSpeedyDelivery,
+                      String? label,
+                      String name,
+                      String price,
+                      num? quantity,
+                      double rating,
+                      String variationID
+                    })>?
+                records)?
+        fetchSuccessState,
+    TResult Function(String message)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (fetchFailState != null) {
+      return fetchFailState(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_FetchSuccessState value) fetchSuccessState,
+    required TResult Function(_FetchFailState value) fetchFailState,
+  }) {
+    return fetchFailState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult? Function(_FetchFailState value)? fetchFailState,
+  }) {
+    return fetchFailState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_FetchSuccessState value)? fetchSuccessState,
+    TResult Function(_FetchFailState value)? fetchFailState,
+    required TResult orElse(),
+  }) {
+    if (fetchFailState != null) {
+      return fetchFailState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchFailState implements InventoryState {
+  factory _FetchFailState(String message) = _$FetchFailStateImpl;
+
+  String get message;
+  set message(String value);
+  @JsonKey(ignore: true)
+  _$$FetchFailStateImplCopyWith<_$FetchFailStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

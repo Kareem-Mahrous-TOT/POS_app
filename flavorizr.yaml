@@ -1,0 +1,27 @@
+ide: "vscode"
+app:
+  android:
+    flavorDimensions: "flavor-type"
+  # ios:
+
+flavors:
+  dev:
+    app:
+      name: "tot POS Copy"
+
+    android:
+      applicationId: "com.dev.flavorizer_test"
+    ios:
+      bundleId: "com.dev.flavorizerTest"
+    # macos:
+    #   bundleId: "com.dev.flavorizerTest"
+  prod:
+    app:
+      name: "tot POS"
+
+    android:
+      applicationId: "com.prod.flavorizer_test"
+    ios:
+      bundleId: "com.prod.flavorizerTest"
+    # macos:
+    #   bundleId: "com.prod.flavorizerTest"

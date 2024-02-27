@@ -1,0 +1,16 @@
+{
+    "banners": [
+        {
+            "id": "1",
+            "img": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/banner/banner-el-khbaz-01.jpg"
+        },
+        {
+            "id": "2",
+            "img": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/banner/banner-el-khbaz-02.jpg"
+        },
+        {
+            "id": "3",
+            "img": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/banner/banner-el-khbaz-03.jpg"
+        }
+    ]
+}

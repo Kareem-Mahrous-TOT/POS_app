@@ -1,11 +1,11 @@
-import 'dart:convert';
+// import 'dart:convert';
 
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
-class AppJsonDecoder {
-  Future<Map<String, dynamic>> decode({required String path}) async {
-    final jsonString = await rootBundle.loadString(path);
+// class AppJsonDecoder {
+//   Future<Map<String, dynamic>> decode({required String path}) async {
+//     final jsonString = await rootBundle.loadString(path);
 
-    return jsonDecode(jsonString);
-  }
-}
+//     return jsonDecode(jsonString);
+//   }
+// }

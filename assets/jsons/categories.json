@@ -1,0 +1,165 @@
+{
+  "categories": [
+    {
+      "name": "المخبوزات",
+      "id": "111100000000",
+      "url": "/list/المخبوزات",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png",
+      "children": [
+        {
+          "id": "111001000000",
+          "name": "عيش",
+          "url": "/list/عيش",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png"
+        },
+        {
+          "id": "111002000000",
+          "name": "نواشف",
+          "url": "/list/النواشف",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png"
+        },
+        {
+          "id": "111004000000",
+          "name": "بوريك",
+          "url": "/list/بوريك",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png"
+        },
+        {
+          "id": "111005000000",
+          "name": "باتيهات",
+          "url": "/list/باتيهات",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png",
+          "children": [
+            {
+              "id": "1110050000001",
+              "name": "كرواسون",
+              "url": "/list/كرواسون_"
+            },
+            {
+              "id": "1110050000002",
+              "name": "دنش",
+              "url": "/list/دنش"
+            },
+            {
+              "id": "1110050000003",
+              "name": "سواريهات",
+              "url": "/list/سواريهات"
+            }
+          ]
+        },
+        {
+          "id": "111008000000",
+          "name": "فطير",
+          "url": "/list/فطير",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png"
+        },
+        {
+          "id": "111009000000",
+          "name": "كيك",
+          "url": "/list/كيك",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/bakery.png"
+        }
+      ]
+    },
+    {
+      "name": "بسكويت",
+      "id": "111200000000",
+      "url": "/list/البسكويت",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/biscuits.png",
+
+      "children": [
+        {
+          "id": "111003000000",
+          "name": "منين",
+          "url": "/list/منين",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/biscuits.png"
+        },
+        {
+          "id": "111006000000",
+          "name": "سابليه",
+          "url": "/list/سابليه",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/biscuits.png"
+        },
+        {
+          "id": "111007000000",
+          "name": "بسكويت",
+          "url": "/list/بسكويت",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/biscuits.png"
+        },
+        {
+          "id": "1110070000008",
+          "name": "كوكيز",
+          "url": "/list/كوكيز",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/biscuits.png"
+        }
+      ]
+    },
+    {
+      "name": "كحك وبتي فور",
+      "id": "111300000000",
+      "url": "/list/كحك_و_بتي_فور",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/kahk.png",
+
+      "children": [
+        {
+          "id": "111013000000",
+          "name": "كحك",
+          "url": "/list/كحك",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/kahk.png"
+        },
+        {
+          "id": "1110070000009",
+          "name": "بتي فور",
+          "url": "/list/بيتفور",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/kahk.png"
+        }
+      ]
+    },
+    {
+      "name": "ساليزون",
+      "id": "111010000000",
+      "url": "/list/ساليزون",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/salizone.png",
+      "children": [ 
+        {
+          "id": "1110100000004",
+          "name": "كنابيه",
+          "url": "/list/كنابيه",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/salizone.png"
+        },
+        {
+          "id": "1110100000005",
+          "name": "ميني ساندويتش",
+          "url": "/list/ميني_ساندويتش",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/salizone.png"
+        }
+      ]
+    },
+    {
+      "name": "حلويات غربيه",
+      "id": "111014000000",
+      "url": "/list/غربي",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/western.png",
+      "children": [
+        {
+          "id": "1110140000006",
+          "name": "جاتوه",
+          "url": "/list/جاتوه",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/western.png"
+        },
+        {
+          "id": "1110140000007",
+          "name": "تورت",
+          "url": "/list/تورت",
+          "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/western.png"
+        }
+      ]
+    },
+    {
+      "name": "حلويات شرقي",
+      "id": "111015000000",
+      "url": "/list/شرقي",
+      "image": "https://dev.alkhbaz.totplatform.net/assets/alkhbaz-dummy/category/eastern.png"
+    }
+  ]
+}

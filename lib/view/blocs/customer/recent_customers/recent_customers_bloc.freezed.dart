@@ -18,49 +18,52 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecentCustomersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
+    required TResult Function() pagination,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
+    TResult? Function()? pagination,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
+    TResult Function()? pagination,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
@@ -88,141 +91,47 @@ class _$RecentCustomersEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$LoadRecentCustomersImplCopyWith<$Res> {
+  factory _$$LoadRecentCustomersImplCopyWith(_$LoadRecentCustomersImpl value,
+          $Res Function(_$LoadRecentCustomersImpl) then) =
+      __$$LoadRecentCustomersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$LoadRecentCustomersImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$LoadRecentCustomersImpl>
+    implements _$$LoadRecentCustomersImplCopyWith<$Res> {
+  __$$LoadRecentCustomersImplCopyWithImpl(_$LoadRecentCustomersImpl _value,
+      $Res Function(_$LoadRecentCustomersImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  _$_Started();
+class _$LoadRecentCustomersImpl
+    with DiagnosticableTreeMixin
+    implements _LoadRecentCustomers {
+  _$LoadRecentCustomersImpl();
 
   @override
-  String toString() {
-    return 'RecentCustomersEvent.started()';
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
-    required TResult Function(String? query) searchList,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
-    TResult? Function(String? query)? searchList,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
-    TResult Function(String? query)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
-    required TResult Function(_AddCustomer value) addCustomer,
-    required TResult Function(_SearchList value) searchList,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult? Function(_AddCustomer value)? addCustomer,
-    TResult? Function(_SearchList value)? searchList,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
-    TResult Function(_AddCustomer value)? addCustomer,
-    TResult Function(_SearchList value)? searchList,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements RecentCustomersEvent {
-  factory _Started() = _$_Started;
-}
-
-/// @nodoc
-abstract class _$$_LoadRecentCustomersCopyWith<$Res> {
-  factory _$$_LoadRecentCustomersCopyWith(_$_LoadRecentCustomers value,
-          $Res Function(_$_LoadRecentCustomers) then) =
-      __$$_LoadRecentCustomersCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadRecentCustomersCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_LoadRecentCustomers>
-    implements _$$_LoadRecentCustomersCopyWith<$Res> {
-  __$$_LoadRecentCustomersCopyWithImpl(_$_LoadRecentCustomers _value,
-      $Res Function(_$_LoadRecentCustomers) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_LoadRecentCustomers implements _LoadRecentCustomers {
-  _$_LoadRecentCustomers();
-
-  @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.loadRecentCustomers()';
   }
 
   @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'RecentCustomersEvent.loadRecentCustomers'));
+  }
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
+    required TResult Function() pagination,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return loadRecentCustomers();
@@ -231,9 +140,10 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
+    TResult? Function()? pagination,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return loadRecentCustomers?.call();
@@ -242,9 +152,10 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
+    TResult Function()? pagination,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -257,8 +168,8 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
@@ -268,8 +179,8 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
@@ -279,8 +190,8 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
@@ -293,102 +204,78 @@ class _$_LoadRecentCustomers implements _LoadRecentCustomers {
 }
 
 abstract class _LoadRecentCustomers implements RecentCustomersEvent {
-  factory _LoadRecentCustomers() = _$_LoadRecentCustomers;
+  factory _LoadRecentCustomers() = _$LoadRecentCustomersImpl;
 }
 
 /// @nodoc
-abstract class _$$_AddCustomerCopyWith<$Res> {
-  factory _$$_AddCustomerCopyWith(
-          _$_AddCustomer value, $Res Function(_$_AddCustomer) then) =
-      __$$_AddCustomerCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Member customer});
-
-  $MemberCopyWith<$Res> get customer;
+abstract class _$$PaginationImplCopyWith<$Res> {
+  factory _$$PaginationImplCopyWith(
+          _$PaginationImpl value, $Res Function(_$PaginationImpl) then) =
+      __$$PaginationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddCustomerCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_AddCustomer>
-    implements _$$_AddCustomerCopyWith<$Res> {
-  __$$_AddCustomerCopyWithImpl(
-      _$_AddCustomer _value, $Res Function(_$_AddCustomer) _then)
+class __$$PaginationImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$PaginationImpl>
+    implements _$$PaginationImplCopyWith<$Res> {
+  __$$PaginationImplCopyWithImpl(
+      _$PaginationImpl _value, $Res Function(_$PaginationImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? customer = null,
-  }) {
-    return _then(_$_AddCustomer(
-      null == customer
-          ? _value.customer
-          : customer // ignore: cast_nullable_to_non_nullable
-              as Member,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MemberCopyWith<$Res> get customer {
-    return $MemberCopyWith<$Res>(_value.customer, (value) {
-      return _then(_value.copyWith(customer: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$_AddCustomer implements _AddCustomer {
-  _$_AddCustomer(this.customer);
+class _$PaginationImpl with DiagnosticableTreeMixin implements _Pagination {
+  _$PaginationImpl();
 
   @override
-  Member customer;
-
-  @override
-  String toString() {
-    return 'RecentCustomersEvent.addCustomer(customer: $customer)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecentCustomersEvent.pagination()';
   }
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$_AddCustomerCopyWith<_$_AddCustomer> get copyWith =>
-      __$$_AddCustomerCopyWithImpl<_$_AddCustomer>(this, _$identity);
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'RecentCustomersEvent.pagination'));
+  }
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
+    required TResult Function() pagination,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
-    return addCustomer(customer);
+    return pagination();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
+    TResult? Function()? pagination,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
-    return addCustomer?.call(customer);
+    return pagination?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
+    TResult Function()? pagination,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
-    if (addCustomer != null) {
-      return addCustomer(customer);
+    if (pagination != null) {
+      return pagination();
     }
     return orElse();
   }
@@ -396,8 +283,165 @@ class _$_AddCustomer implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
+    required TResult Function(_Pagination value) pagination,
+    required TResult Function(_AddCustomer value) addCustomer,
+    required TResult Function(_SearchList value) searchList,
+  }) {
+    return pagination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult? Function(_Pagination value)? pagination,
+    TResult? Function(_AddCustomer value)? addCustomer,
+    TResult? Function(_SearchList value)? searchList,
+  }) {
+    return pagination?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult Function(_Pagination value)? pagination,
+    TResult Function(_AddCustomer value)? addCustomer,
+    TResult Function(_SearchList value)? searchList,
+    required TResult orElse(),
+  }) {
+    if (pagination != null) {
+      return pagination(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Pagination implements RecentCustomersEvent {
+  factory _Pagination() = _$PaginationImpl;
+}
+
+/// @nodoc
+abstract class _$$AddCustomerImplCopyWith<$Res> {
+  factory _$$AddCustomerImplCopyWith(
+          _$AddCustomerImpl value, $Res Function(_$AddCustomerImpl) then) =
+      __$$AddCustomerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String firstName, String lastName, String email});
+}
+
+/// @nodoc
+class __$$AddCustomerImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$AddCustomerImpl>
+    implements _$$AddCustomerImplCopyWith<$Res> {
+  __$$AddCustomerImplCopyWithImpl(
+      _$AddCustomerImpl _value, $Res Function(_$AddCustomerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? email = null,
+  }) {
+    return _then(_$AddCustomerImpl(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddCustomerImpl with DiagnosticableTreeMixin implements _AddCustomer {
+  _$AddCustomerImpl(
+      {required this.firstName, required this.lastName, required this.email});
+
+  @override
+  String firstName;
+  @override
+  String lastName;
+  @override
+  String email;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecentCustomersEvent.addCustomer(firstName: $firstName, lastName: $lastName, email: $email)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersEvent.addCustomer'))
+      ..add(DiagnosticsProperty('firstName', firstName))
+      ..add(DiagnosticsProperty('lastName', lastName))
+      ..add(DiagnosticsProperty('email', email));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
+      __$$AddCustomerImplCopyWithImpl<_$AddCustomerImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecentCustomers,
+    required TResult Function() pagination,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
+    required TResult Function(String? query) searchList,
+  }) {
+    return addCustomer(firstName, lastName, email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecentCustomers,
+    TResult? Function()? pagination,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
+    TResult? Function(String? query)? searchList,
+  }) {
+    return addCustomer?.call(firstName, lastName, email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecentCustomers,
+    TResult Function()? pagination,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
+    TResult Function(String? query)? searchList,
+    required TResult orElse(),
+  }) {
+    if (addCustomer != null) {
+      return addCustomer(firstName, lastName, email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
@@ -407,8 +451,8 @@ class _$_AddCustomer implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
@@ -418,8 +462,8 @@ class _$_AddCustomer implements _AddCustomer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
@@ -432,30 +476,37 @@ class _$_AddCustomer implements _AddCustomer {
 }
 
 abstract class _AddCustomer implements RecentCustomersEvent {
-  factory _AddCustomer(Member customer) = _$_AddCustomer;
+  factory _AddCustomer(
+      {required String firstName,
+      required String lastName,
+      required String email}) = _$AddCustomerImpl;
 
-  Member get customer;
-  set customer(Member value);
+  String get firstName;
+  set firstName(String value);
+  String get lastName;
+  set lastName(String value);
+  String get email;
+  set email(String value);
   @JsonKey(ignore: true)
-  _$$_AddCustomerCopyWith<_$_AddCustomer> get copyWith =>
+  _$$AddCustomerImplCopyWith<_$AddCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SearchListCopyWith<$Res> {
-  factory _$$_SearchListCopyWith(
-          _$_SearchList value, $Res Function(_$_SearchList) then) =
-      __$$_SearchListCopyWithImpl<$Res>;
+abstract class _$$SearchListImplCopyWith<$Res> {
+  factory _$$SearchListImplCopyWith(
+          _$SearchListImpl value, $Res Function(_$SearchListImpl) then) =
+      __$$SearchListImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? query});
 }
 
 /// @nodoc
-class __$$_SearchListCopyWithImpl<$Res>
-    extends _$RecentCustomersEventCopyWithImpl<$Res, _$_SearchList>
-    implements _$$_SearchListCopyWith<$Res> {
-  __$$_SearchListCopyWithImpl(
-      _$_SearchList _value, $Res Function(_$_SearchList) _then)
+class __$$SearchListImplCopyWithImpl<$Res>
+    extends _$RecentCustomersEventCopyWithImpl<$Res, _$SearchListImpl>
+    implements _$$SearchListImplCopyWith<$Res> {
+  __$$SearchListImplCopyWithImpl(
+      _$SearchListImpl _value, $Res Function(_$SearchListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -463,7 +514,7 @@ class __$$_SearchListCopyWithImpl<$Res>
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_$_SearchList(
+    return _then(_$SearchListImpl(
       query: freezed == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -474,29 +525,38 @@ class __$$_SearchListCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchList implements _SearchList {
-  _$_SearchList({this.query});
+class _$SearchListImpl with DiagnosticableTreeMixin implements _SearchList {
+  _$SearchListImpl({this.query});
 
   @override
   String? query;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersEvent.searchList(query: $query)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersEvent.searchList'))
+      ..add(DiagnosticsProperty('query', query));
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
-      __$$_SearchListCopyWithImpl<_$_SearchList>(this, _$identity);
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
+      __$$SearchListImplCopyWithImpl<_$SearchListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() loadRecentCustomers,
-    required TResult Function(Member customer) addCustomer,
+    required TResult Function() pagination,
+    required TResult Function(String firstName, String lastName, String email)
+        addCustomer,
     required TResult Function(String? query) searchList,
   }) {
     return searchList(query);
@@ -505,9 +565,10 @@ class _$_SearchList implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? loadRecentCustomers,
-    TResult? Function(Member customer)? addCustomer,
+    TResult? Function()? pagination,
+    TResult? Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult? Function(String? query)? searchList,
   }) {
     return searchList?.call(query);
@@ -516,9 +577,10 @@ class _$_SearchList implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? loadRecentCustomers,
-    TResult Function(Member customer)? addCustomer,
+    TResult Function()? pagination,
+    TResult Function(String firstName, String lastName, String email)?
+        addCustomer,
     TResult Function(String? query)? searchList,
     required TResult orElse(),
   }) {
@@ -531,8 +593,8 @@ class _$_SearchList implements _SearchList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_LoadRecentCustomers value) loadRecentCustomers,
+    required TResult Function(_Pagination value) pagination,
     required TResult Function(_AddCustomer value) addCustomer,
     required TResult Function(_SearchList value) searchList,
   }) {
@@ -542,8 +604,8 @@ class _$_SearchList implements _SearchList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult? Function(_Pagination value)? pagination,
     TResult? Function(_AddCustomer value)? addCustomer,
     TResult? Function(_SearchList value)? searchList,
   }) {
@@ -553,8 +615,8 @@ class _$_SearchList implements _SearchList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_LoadRecentCustomers value)? loadRecentCustomers,
+    TResult Function(_Pagination value)? pagination,
     TResult Function(_AddCustomer value)? addCustomer,
     TResult Function(_SearchList value)? searchList,
     required TResult orElse(),
@@ -567,12 +629,12 @@ class _$_SearchList implements _SearchList {
 }
 
 abstract class _SearchList implements RecentCustomersEvent {
-  factory _SearchList({String? query}) = _$_SearchList;
+  factory _SearchList({String? query}) = _$SearchListImpl;
 
   String? get query;
   set query(String? value);
   @JsonKey(ignore: true)
-  _$$_SearchListCopyWith<_$_SearchList> get copyWith =>
+  _$$SearchListImplCopyWith<_$SearchListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -581,65 +643,50 @@ mixin _$RecentCustomersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
+    required TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)
+        successState,
+    required TResult Function(String message) failedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult? Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult? Function(String message)? failedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult Function(String message)? failedState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
+    required TResult Function(_SuccessState value) successState,
+    required TResult Function(_FailedState value) failedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult? Function(_SuccessState value)? successState,
+    TResult? Function(_FailedState value)? failedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult Function(_SuccessState value)? successState,
+    TResult Function(_FailedState value)? failedState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -665,40 +712,45 @@ class _$RecentCustomersStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  _$_Initial();
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecentCustomersState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'RecentCustomersState.initial'));
   }
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
+    required TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)
+        successState,
+    required TResult Function(String message) failedState,
   }) {
     return initial();
   }
@@ -707,11 +759,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult? Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult? Function(String message)? failedState,
   }) {
     return initial?.call();
   }
@@ -720,11 +771,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult Function(String message)? failedState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -737,12 +787,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
+    required TResult Function(_SuccessState value) successState,
+    required TResult Function(_FailedState value) failedState,
   }) {
     return initial(this);
   }
@@ -751,12 +797,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult? Function(_SuccessState value)? successState,
+    TResult? Function(_FailedState value)? failedState,
   }) {
     return initial?.call(this);
   }
@@ -765,11 +807,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult Function(_SuccessState value)? successState,
+    TResult Function(_FailedState value)? failedState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -780,109 +819,134 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements RecentCustomersState {
-  factory _Initial() = _$_Initial;
+  factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedRecentCustomerDataCopyWith<$Res> {
-  factory _$$_LoadedRecentCustomerDataCopyWith(
-          _$_LoadedRecentCustomerData value,
-          $Res Function(_$_LoadedRecentCustomerData) then) =
-      __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>;
+abstract class _$$SuccessStateImplCopyWith<$Res> {
+  factory _$$SuccessStateImplCopyWith(
+          _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
+      __$$SuccessStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Member> customers, bool? isSearching});
+  $Res call(
+      {List<Member> customers,
+      bool? didAddCustomer,
+      bool? isSearching,
+      bool hasNextPage});
 }
 
 /// @nodoc
-class __$$_LoadedRecentCustomerDataCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res,
-        _$_LoadedRecentCustomerData>
-    implements _$$_LoadedRecentCustomerDataCopyWith<$Res> {
-  __$$_LoadedRecentCustomerDataCopyWithImpl(_$_LoadedRecentCustomerData _value,
-      $Res Function(_$_LoadedRecentCustomerData) _then)
+class __$$SuccessStateImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$SuccessStateImpl>
+    implements _$$SuccessStateImplCopyWith<$Res> {
+  __$$SuccessStateImplCopyWithImpl(
+      _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? customers = null,
+    Object? didAddCustomer = freezed,
     Object? isSearching = freezed,
+    Object? hasNextPage = null,
   }) {
-    return _then(_$_LoadedRecentCustomerData(
+    return _then(_$SuccessStateImpl(
       null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
               as List<Member>,
+      didAddCustomer: freezed == didAddCustomer
+          ? _value.didAddCustomer
+          : didAddCustomer // ignore: cast_nullable_to_non_nullable
+              as bool?,
       isSearching: freezed == isSearching
           ? _value.isSearching
           : isSearching // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hasNextPage: null == hasNextPage
+          ? _value.hasNextPage
+          : hasNextPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LoadedRecentCustomerData implements _LoadedRecentCustomerData {
-  _$_LoadedRecentCustomerData(this.customers, {this.isSearching});
+class _$SuccessStateImpl with DiagnosticableTreeMixin implements _SuccessState {
+  _$SuccessStateImpl(this.customers,
+      {this.didAddCustomer, this.isSearching, this.hasNextPage = false});
 
   @override
   List<Member> customers;
   @override
+  bool? didAddCustomer;
+  @override
   bool? isSearching;
+  @override
+  @JsonKey()
+  bool hasNextPage;
 
   @override
-  String toString() {
-    return 'RecentCustomersState.loadedRecentCustomerData(customers: $customers, isSearching: $isSearching)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecentCustomersState.successState(customers: $customers, didAddCustomer: $didAddCustomer, isSearching: $isSearching, hasNextPage: $hasNextPage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersState.successState'))
+      ..add(DiagnosticsProperty('customers', customers))
+      ..add(DiagnosticsProperty('didAddCustomer', didAddCustomer))
+      ..add(DiagnosticsProperty('isSearching', isSearching))
+      ..add(DiagnosticsProperty('hasNextPage', hasNextPage));
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedRecentCustomerDataCopyWith<_$_LoadedRecentCustomerData>
-      get copyWith => __$$_LoadedRecentCustomerDataCopyWithImpl<
-          _$_LoadedRecentCustomerData>(this, _$identity);
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
+      __$$SuccessStateImplCopyWithImpl<_$SuccessStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
+    required TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)
+        successState,
+    required TResult Function(String message) failedState,
   }) {
-    return loadedRecentCustomerData(customers, isSearching);
+    return successState(customers, didAddCustomer, isSearching, hasNextPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult? Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult? Function(String message)? failedState,
   }) {
-    return loadedRecentCustomerData?.call(customers, isSearching);
+    return successState?.call(
+        customers, didAddCustomer, isSearching, hasNextPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult Function(String message)? failedState,
     required TResult orElse(),
   }) {
-    if (loadedRecentCustomerData != null) {
-      return loadedRecentCustomerData(customers, isSearching);
+    if (successState != null) {
+      return successState(customers, didAddCustomer, isSearching, hasNextPage);
     }
     return orElse();
   }
@@ -891,472 +955,150 @@ class _$_LoadedRecentCustomerData implements _LoadedRecentCustomerData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
+    required TResult Function(_SuccessState value) successState,
+    required TResult Function(_FailedState value) failedState,
   }) {
-    return loadedRecentCustomerData(this);
+    return successState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult? Function(_SuccessState value)? successState,
+    TResult? Function(_FailedState value)? failedState,
   }) {
-    return loadedRecentCustomerData?.call(this);
+    return successState?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult Function(_SuccessState value)? successState,
+    TResult Function(_FailedState value)? failedState,
     required TResult orElse(),
   }) {
-    if (loadedRecentCustomerData != null) {
-      return loadedRecentCustomerData(this);
+    if (successState != null) {
+      return successState(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadedRecentCustomerData implements RecentCustomersState {
-  factory _LoadedRecentCustomerData(List<Member> customers,
-      {bool? isSearching}) = _$_LoadedRecentCustomerData;
+abstract class _SuccessState implements RecentCustomersState {
+  factory _SuccessState(List<Member> customers,
+      {bool? didAddCustomer,
+      bool? isSearching,
+      bool hasNextPage}) = _$SuccessStateImpl;
 
   List<Member> get customers;
   set customers(List<Member> value);
+  bool? get didAddCustomer;
+  set didAddCustomer(bool? value);
   bool? get isSearching;
   set isSearching(bool? value);
+  bool get hasNextPage;
+  set hasNextPage(bool value);
   @JsonKey(ignore: true)
-  _$$_LoadedRecentCustomerDataCopyWith<_$_LoadedRecentCustomerData>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_FailedLoadingRecentCustomerDataCopyWith<$Res> {
-  factory _$$_FailedLoadingRecentCustomerDataCopyWith(
-          _$_FailedLoadingRecentCustomerData value,
-          $Res Function(_$_FailedLoadingRecentCustomerData) then) =
-      __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$_FailedLoadingRecentCustomerDataCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res,
-        _$_FailedLoadingRecentCustomerData>
-    implements _$$_FailedLoadingRecentCustomerDataCopyWith<$Res> {
-  __$$_FailedLoadingRecentCustomerDataCopyWithImpl(
-      _$_FailedLoadingRecentCustomerData _value,
-      $Res Function(_$_FailedLoadingRecentCustomerData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$_FailedLoadingRecentCustomerData(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FailedLoadingRecentCustomerData
-    implements _FailedLoadingRecentCustomerData {
-  _$_FailedLoadingRecentCustomerData(this.message);
-
-  @override
-  String message;
-
-  @override
-  String toString() {
-    return 'RecentCustomersState.failedLoadinRecentCustomerData(message: $message)';
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_FailedLoadingRecentCustomerDataCopyWith<
-          _$_FailedLoadingRecentCustomerData>
-      get copyWith => __$$_FailedLoadingRecentCustomerDataCopyWithImpl<
-          _$_FailedLoadingRecentCustomerData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
-  }) {
-    return failedLoadinRecentCustomerData(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
-  }) {
-    return failedLoadinRecentCustomerData?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
-    required TResult orElse(),
-  }) {
-    if (failedLoadinRecentCustomerData != null) {
-      return failedLoadinRecentCustomerData(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
-  }) {
-    return failedLoadinRecentCustomerData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
-  }) {
-    return failedLoadinRecentCustomerData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
-    required TResult orElse(),
-  }) {
-    if (failedLoadinRecentCustomerData != null) {
-      return failedLoadinRecentCustomerData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FailedLoadingRecentCustomerData
-    implements RecentCustomersState {
-  factory _FailedLoadingRecentCustomerData(String message) =
-      _$_FailedLoadingRecentCustomerData;
-
-  String get message;
-  set message(String value);
-  @JsonKey(ignore: true)
-  _$$_FailedLoadingRecentCustomerDataCopyWith<
-          _$_FailedLoadingRecentCustomerData>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_AddCustomerFailedCopyWith<$Res> {
-  factory _$$_AddCustomerFailedCopyWith(_$_AddCustomerFailed value,
-          $Res Function(_$_AddCustomerFailed) then) =
-      __$$_AddCustomerFailedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$_AddCustomerFailedCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_AddCustomerFailed>
-    implements _$$_AddCustomerFailedCopyWith<$Res> {
-  __$$_AddCustomerFailedCopyWithImpl(
-      _$_AddCustomerFailed _value, $Res Function(_$_AddCustomerFailed) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$_AddCustomerFailed(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AddCustomerFailed implements _AddCustomerFailed {
-  _$_AddCustomerFailed(this.message);
-
-  @override
-  String message;
-
-  @override
-  String toString() {
-    return 'RecentCustomersState.addCustomerFailed(message: $message)';
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_AddCustomerFailedCopyWith<_$_AddCustomerFailed> get copyWith =>
-      __$$_AddCustomerFailedCopyWithImpl<_$_AddCustomerFailed>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
-  }) {
-    return addCustomerFailed(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
-  }) {
-    return addCustomerFailed?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
-    required TResult orElse(),
-  }) {
-    if (addCustomerFailed != null) {
-      return addCustomerFailed(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
-  }) {
-    return addCustomerFailed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
-  }) {
-    return addCustomerFailed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
-    required TResult orElse(),
-  }) {
-    if (addCustomerFailed != null) {
-      return addCustomerFailed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddCustomerFailed implements RecentCustomersState {
-  factory _AddCustomerFailed(String message) = _$_AddCustomerFailed;
-
-  String get message;
-  set message(String value);
-  @JsonKey(ignore: true)
-  _$$_AddCustomerFailedCopyWith<_$_AddCustomerFailed> get copyWith =>
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddCustomerSuccessCopyWith<$Res> {
-  factory _$$_AddCustomerSuccessCopyWith(_$_AddCustomerSuccess value,
-          $Res Function(_$_AddCustomerSuccess) then) =
-      __$$_AddCustomerSuccessCopyWithImpl<$Res>;
+abstract class _$$FailedStateImplCopyWith<$Res> {
+  factory _$$FailedStateImplCopyWith(
+          _$FailedStateImpl value, $Res Function(_$FailedStateImpl) then) =
+      __$$FailedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TOTAddCustomerModelResponse response});
-
-  $TOTAddCustomerModelResponseCopyWith<$Res> get response;
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$_AddCustomerSuccessCopyWithImpl<$Res>
-    extends _$RecentCustomersStateCopyWithImpl<$Res, _$_AddCustomerSuccess>
-    implements _$$_AddCustomerSuccessCopyWith<$Res> {
-  __$$_AddCustomerSuccessCopyWithImpl(
-      _$_AddCustomerSuccess _value, $Res Function(_$_AddCustomerSuccess) _then)
+class __$$FailedStateImplCopyWithImpl<$Res>
+    extends _$RecentCustomersStateCopyWithImpl<$Res, _$FailedStateImpl>
+    implements _$$FailedStateImplCopyWith<$Res> {
+  __$$FailedStateImplCopyWithImpl(
+      _$FailedStateImpl _value, $Res Function(_$FailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? response = null,
+    Object? message = null,
   }) {
-    return _then(_$_AddCustomerSuccess(
-      null == response
-          ? _value.response
-          : response // ignore: cast_nullable_to_non_nullable
-              as TOTAddCustomerModelResponse,
+    return _then(_$FailedStateImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TOTAddCustomerModelResponseCopyWith<$Res> get response {
-    return $TOTAddCustomerModelResponseCopyWith<$Res>(_value.response, (value) {
-      return _then(_value.copyWith(response: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_AddCustomerSuccess implements _AddCustomerSuccess {
-  _$_AddCustomerSuccess(this.response);
+class _$FailedStateImpl with DiagnosticableTreeMixin implements _FailedState {
+  _$FailedStateImpl(this.message);
 
   @override
-  TOTAddCustomerModelResponse response;
+  String message;
 
   @override
-  String toString() {
-    return 'RecentCustomersState.addCustomerSuccess(response: $response)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecentCustomersState.failedState(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecentCustomersState.failedState'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddCustomerSuccessCopyWith<_$_AddCustomerSuccess> get copyWith =>
-      __$$_AddCustomerSuccessCopyWithImpl<_$_AddCustomerSuccess>(
-          this, _$identity);
+  _$$FailedStateImplCopyWith<_$FailedStateImpl> get copyWith =>
+      __$$FailedStateImplCopyWithImpl<_$FailedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Member> customers, bool? isSearching)
-        loadedRecentCustomerData,
-    required TResult Function(String message) failedLoadinRecentCustomerData,
-    required TResult Function(String message) addCustomerFailed,
-    required TResult Function(TOTAddCustomerModelResponse response)
-        addCustomerSuccess,
+    required TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)
+        successState,
+    required TResult Function(String message) failedState,
   }) {
-    return addCustomerSuccess(response);
+    return failedState(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult? Function(String message)? failedLoadinRecentCustomerData,
-    TResult? Function(String message)? addCustomerFailed,
-    TResult? Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult? Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult? Function(String message)? failedState,
   }) {
-    return addCustomerSuccess?.call(response);
+    return failedState?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Member> customers, bool? isSearching)?
-        loadedRecentCustomerData,
-    TResult Function(String message)? failedLoadinRecentCustomerData,
-    TResult Function(String message)? addCustomerFailed,
-    TResult Function(TOTAddCustomerModelResponse response)? addCustomerSuccess,
+    TResult Function(List<Member> customers, bool? didAddCustomer,
+            bool? isSearching, bool hasNextPage)?
+        successState,
+    TResult Function(String message)? failedState,
     required TResult orElse(),
   }) {
-    if (addCustomerSuccess != null) {
-      return addCustomerSuccess(response);
+    if (failedState != null) {
+      return failedState(message);
     }
     return orElse();
   }
@@ -1365,55 +1107,43 @@ class _$_AddCustomerSuccess implements _AddCustomerSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedRecentCustomerData value)
-        loadedRecentCustomerData,
-    required TResult Function(_FailedLoadingRecentCustomerData value)
-        failedLoadinRecentCustomerData,
-    required TResult Function(_AddCustomerFailed value) addCustomerFailed,
-    required TResult Function(_AddCustomerSuccess value) addCustomerSuccess,
+    required TResult Function(_SuccessState value) successState,
+    required TResult Function(_FailedState value) failedState,
   }) {
-    return addCustomerSuccess(this);
+    return failedState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedRecentCustomerData value)?
-        loadedRecentCustomerData,
-    TResult? Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult? Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult? Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult? Function(_SuccessState value)? successState,
+    TResult? Function(_FailedState value)? failedState,
   }) {
-    return addCustomerSuccess?.call(this);
+    return failedState?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedRecentCustomerData value)? loadedRecentCustomerData,
-    TResult Function(_FailedLoadingRecentCustomerData value)?
-        failedLoadinRecentCustomerData,
-    TResult Function(_AddCustomerFailed value)? addCustomerFailed,
-    TResult Function(_AddCustomerSuccess value)? addCustomerSuccess,
+    TResult Function(_SuccessState value)? successState,
+    TResult Function(_FailedState value)? failedState,
     required TResult orElse(),
   }) {
-    if (addCustomerSuccess != null) {
-      return addCustomerSuccess(this);
+    if (failedState != null) {
+      return failedState(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddCustomerSuccess implements RecentCustomersState {
-  factory _AddCustomerSuccess(TOTAddCustomerModelResponse response) =
-      _$_AddCustomerSuccess;
+abstract class _FailedState implements RecentCustomersState {
+  factory _FailedState(String message) = _$FailedStateImpl;
 
-  TOTAddCustomerModelResponse get response;
-  set response(TOTAddCustomerModelResponse value);
+  String get message;
+  set message(String value);
   @JsonKey(ignore: true)
-  _$$_AddCustomerSuccessCopyWith<_$_AddCustomerSuccess> get copyWith =>
+  _$$FailedStateImplCopyWith<_$FailedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

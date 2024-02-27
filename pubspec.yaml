@@ -1,52 +1,62 @@
-name: tot_pos
-description: A new Flutter project.
-publish_to: "none"
+name: tot_pos_copy_1
+description: "A new Flutter project."
+publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ">=3.0.6 <4.0.0"
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
-  bloc: null
+  bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
-  bloc_provider: null
+  connectivity_plus:
+  bloc_test: ^9.1.5
   cached_network_image: ^3.3.0
+  cupertino_icons: ^1.0.6
   dartz: ^0.10.1
-  dio: ^5.3.2
-  logger: ^2.0.2
-  fl_chart: ^0.63.0
+  device_preview: ^1.1.0
+  dio: ^5.3.4
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: null
+  flutter_bloc: ^8.1.3
+  flutter_hooks: ^0.20.3
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.9.0
-  flutter_slidable: ^3.0.0
-  freezed_annotation: null
+  flutter_slidable: ^3.0.1
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_svg: ^2.0.9
+  fluttertoast: ^8.2.4
+  freezed_annotation: ^2.4.1
+  facebook_app_events: ^0.19.0
   get_it: ^7.6.4
-  go_router: ^10.1.2
-  intl: null
-  json_annotation: null
-  shared_preferences: ^2.2.0
+  go_router: ^13.0.1
+  graphql_flutter: ^5.1.2
+  intl: ^0.18.1
+  json_annotation: ^4.8.1
+  shared_preferences: ^2.2.2
   shimmer: ^3.0.0
   tot_atomic_design:
     git:
-      url: https://github.com/TOTPLATFORM/flutter-atoms.git
-      path: packages/tot_atomic_design
-      ref: dev
+      url: https://github.com/TOTPLATFORM/flutter.git
+      path: packages/atomic_design
+      ref: tablet-beta
+  mocktail:
+  stream_transform: ^2.1.0
 
 dev_dependencies:
-  build_runner: null
-  flutter_lints: ^2.0.2
+  build_runner: ^2.4.6
+  flutter_flavorizr: ^2.2.1
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  freezed: null
-  json_serializable: null
-
-dependency_overrides:
-  intl:
-
+  freezed: ^2.4.5
+  json_serializable: ^6.7.1
 flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/jsons/

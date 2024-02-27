@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">7084082508355236</string>
+    <string name="facebook_client_token">02d6a3fb763723d4300275a2b6a87bed</string>
+    <string name="fb_login_protocol_scheme">fb7084082508355236</string>
+    <!-- <string name="app_name">Tot Pos Copy</string> -->
+</resources>
